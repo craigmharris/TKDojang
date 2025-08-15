@@ -1,0 +1,74 @@
+import SwiftUI
+
+/**
+ * TKDojangApp.swift
+ * 
+ * PURPOSE: Main entry point for the TKDojang App
+ * 
+ * ARCHITECTURE DECISION: Using SwiftUI App lifecycle (iOS 14+)
+ * WHY: Provides modern declarative app structure, automatic scene management,
+ * and better integration with SwiftUI views throughout the app.
+ * 
+ * RESPONSIBILITIES:
+ * - Initialize app-wide dependencies
+ * - Configure global app state
+ * - Set up the root coordinator pattern
+ * - Handle app lifecycle events
+ */
+@main
+struct TKDojangApp: App {
+    
+    // MARK: - Properties
+    
+    /**
+     * App coordinator that manages navigation flow throughout the entire application
+     * 
+     * WHY: Coordinator pattern separates navigation logic from view controllers,
+     * making the app more testable and navigation flow easier to modify
+     */
+    @StateObject private var appCoordinator = AppCoordinator()
+    
+    /**
+     * User settings that persist across app launches
+     * 
+     * WHY: Using @AppStorage for simple user preferences provides automatic
+     * UserDefaults integration with SwiftUI's reactive updates
+     */
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    @AppStorage("preferredLanguage") private var preferredLanguage = "en"
+    
+    // MARK: - Body
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .environmentObject(appCoordinator)
+                .onAppear {
+                    setupInitialState()
+                }
+        }
+    }
+    
+    // MARK: - Private Methods
+    
+    /**
+     * Configures the app's initial state when it first appears
+     * 
+     * PURPOSE: Centralizes app initialization logic that needs to run once
+     * when the app starts, such as checking authentication status,
+     * setting up analytics, or restoring user preferences.
+     */
+    private func setupInitialState() {
+        // TODO: Check authentication status
+        // TODO: Initialize analytics
+        // TODO: Load user preferences
+        // TODO: Check for pending data synchronization
+        
+        // Navigate to appropriate initial screen based on onboarding status
+        if hasCompletedOnboarding {
+            appCoordinator.showMainFlow()
+        } else {
+            appCoordinator.showOnboarding()
+        }
+    }
+}
