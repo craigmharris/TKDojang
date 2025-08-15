@@ -1,0 +1,34 @@
+{
+  "belt_level": "8th_keup", 
+  "category": "techniques",
+  "description": "Yellow belt techniques building on white belt foundation",
+  "terms": [
+    {
+      "english": "Front kick",
+      "korean": "앞차기",
+      "pronunciation": "ap-cha-gi", 
+      "phonetic": "/apˈtʃʰagi/",
+      "definition": "Kick delivered straight forward with the ball of the foot",
+      "notes": "Target: solar plexus or face. Keep supporting leg stable",
+      "difficulty": 2
+    },
+    {
+      "english": "Rising block",
+      "korean": "올려막기",
+      "pronunciation": "ol-lyeo-mak-gi",
+      "phonetic": "/olljʌˈmakki/", 
+      "definition": "Upward blocking motion to deflect overhead attacks",
+      "notes": "Protects head area. Forearm moves from low to high",
+      "difficulty": 2
+    },
+    {
+      "english": "Middle punch", 
+      "korean": "몸통지르기",
+      "pronunciation": "mom-tong-ji-reu-gi",
+      "phonetic": "/momtʰoŋˈdʑirɯgi/",
+      "definition": "Straight punch aimed at the middle section of the body",
+      "notes": "Target: solar plexus. Most common attacking technique",
+      "difficulty": 2
+    }
+  ]
+}

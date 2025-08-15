@@ -1,0 +1,25 @@
+{
+  "belt_level": "2nd_keup",
+  "category": "patterns", 
+  "description": "Advanced patterns and forms for red belt level",
+  "terms": [
+    {
+      "english": "Choong-Moo",
+      "korean": "충무",
+      "pronunciation": "choong-moo",
+      "phonetic": "/tʃʰuŋˈmu/",
+      "definition": "Pattern named after Admiral Yi Soon-Sin's pen name", 
+      "notes": "30 movements. Finishes with left hand attack (unusual ending)",
+      "difficulty": 4
+    },
+    {
+      "english": "Kwang-Gae", 
+      "korean": "광개",
+      "pronunciation": "kwang-gae",
+      "phonetic": "/kwaŋˈge/",
+      "definition": "Pattern named after famous Koguryo king", 
+      "notes": "39 movements. Includes jumping and complex footwork",
+      "difficulty": 4
+    }
+  ]
+}

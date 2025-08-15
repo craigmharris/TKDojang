@@ -18,6 +18,10 @@ import SwiftUI
 @main
 struct TKDojangApp: App {
     
+    init() {
+        print("🚀 TKDojang App Starting...")
+    }
+    
     // MARK: - Properties
     
     /**
@@ -43,6 +47,7 @@ struct TKDojangApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(appCoordinator)
+                .withDataContext()
                 .onAppear {
                     setupInitialState()
                 }
@@ -59,6 +64,8 @@ struct TKDojangApp: App {
      * setting up analytics, or restoring user preferences.
      */
     private func setupInitialState() {
+        print("📱 Setting up initial state...")
+        
         // TODO: Check authentication status
         // TODO: Initialize analytics
         // TODO: Load user preferences
@@ -66,8 +73,10 @@ struct TKDojangApp: App {
         
         // Navigate to appropriate initial screen based on onboarding status
         if hasCompletedOnboarding {
+            print("✅ User has completed onboarding, showing main flow")
             appCoordinator.showMainFlow()
         } else {
+            print("🎯 User needs onboarding, showing onboarding flow")
             appCoordinator.showOnboarding()
         }
     }

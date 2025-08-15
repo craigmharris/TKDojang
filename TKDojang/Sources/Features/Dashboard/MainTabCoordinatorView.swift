@@ -19,10 +19,10 @@ struct MainTabCoordinatorView: View {
                 }
                 .tag(0)
             
-            // Techniques Tab
-            TechniquesView()
+            // Korean Terms Tab
+            FlashcardView()
                 .tabItem {
-                    Label("Techniques", systemImage: "figure.martial.arts")
+                    Label("Korean", systemImage: "textformat.abc")
                 }
                 .tag(1)
             
@@ -73,8 +73,8 @@ struct DashboardView: View {
                 Spacer()
                 
                 VStack(spacing: 16) {
-                    Button("Start Training Session") {
-                        // TODO: Navigate to training
+                    NavigationLink(destination: FlashcardView()) {
+                        Text("Study Korean Terms")
                     }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
@@ -168,6 +168,9 @@ struct ProgressView: View {
 
 struct ProfileView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
+    @Environment(DataManager.self) private var dataManager
+    @State private var showingSettings = false
+    @State private var userProfile: UserProfile?
     
     var body: some View {
         NavigationView {
@@ -181,26 +184,32 @@ struct ProfileView: View {
                     .fontWeight(.bold)
                 
                 VStack(spacing: 16) {
-                    Text("Training Student")
+                    Text("TKDojang Student")
                         .font(.title2)
                         .fontWeight(.semibold)
                     
-                    Text("White Belt")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 8)
-                        .background(Color.gray.opacity(0.1))
-                        .cornerRadius(20)
+                    if let profile = userProfile {
+                        Text(profile.currentBeltLevel.name)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 8)
+                            .background(Color.blue.opacity(0.1))
+                            .cornerRadius(20)
+                        
+                        Text("Learning Mode: \\(profile.learningMode.displayName)")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
                 }
                 
                 Spacer()
                 
                 VStack(spacing: 12) {
-                    Button("Settings") {
-                        // TODO: Navigate to settings
+                    Button("Learning Settings") {
+                        showingSettings = true
                     }
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                     .frame(maxWidth: .infinity)
                     
@@ -216,7 +225,17 @@ struct ProfileView: View {
                 .padding(.bottom, 30)
             }
             .navigationTitle("Profile")
+            .onAppear {
+                loadUserProfile()
+            }
+            .sheet(isPresented: $showingSettings) {
+                UserSettingsView()
+            }
         }
+    }
+    
+    private func loadUserProfile() {
+        userProfile = dataManager.getOrCreateDefaultUserProfile()
     }
 }
 

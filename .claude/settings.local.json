@@ -3,9 +3,11 @@
     "allow": [
       "Bash(find:*)",
       "Bash(xcodebuild clean:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
-    "ask": []
+    "ask": [],
+    "defaultMode": "acceptEdits"
   }
 }

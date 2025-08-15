@@ -1,0 +1,47 @@
+{
+  "belt_level": "4th_keup",
+  "category": "basics", 
+  "description": "Blue Belt advanced commands and terminology",
+  "terms": [
+    {
+      "english": "Sparring",
+      "korean": "겨루기",
+      "pronunciation": "gyeo-ru-gi",
+      "phonetic": "/kjʌˈɾuɡi/",
+      "definition": "Free fighting practice with controlled contact",
+      "difficulty": 3
+    },
+    {
+      "english": "Self Defense",
+      "korean": "호신술",
+      "pronunciation": "ho-sin-sul",
+      "phonetic": "/hoˈɕinsul/",
+      "definition": "Techniques for protecting oneself from attack",
+      "difficulty": 3
+    },
+    {
+      "english": "Breaking",
+      "korean": "격파",
+      "pronunciation": "gyeok-pa",
+      "phonetic": "/kjʌkˈpʰa/",
+      "definition": "Breaking boards or tiles to demonstrate power",
+      "difficulty": 3
+    },
+    {
+      "english": "Focus",
+      "korean": "집중",
+      "pronunciation": "jip-jung",
+      "phonetic": "/tɕipˈtɕuŋ/",
+      "definition": "Mental concentration and attention",
+      "difficulty": 3
+    },
+    {
+      "english": "Power",
+      "korean": "힘",
+      "pronunciation": "him",
+      "phonetic": "/him/",
+      "definition": "Physical force and strength in techniques",
+      "difficulty": 3
+    }
+  ]
+}

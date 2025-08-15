@@ -1,0 +1,47 @@
+{
+  "belt_level": "8th_keup",
+  "category": "basics",
+  "description": "Yellow Belt fundamentals and additional commands",
+  "terms": [
+    {
+      "english": "Ready Stance",
+      "korean": "준비 자세",
+      "pronunciation": "jun-bi ja-se",
+      "phonetic": "/tʃunˈbi dʑaˈse/",
+      "definition": "Fighting ready position with feet shoulder-width apart",
+      "difficulty": 2
+    },
+    {
+      "english": "Return",
+      "korean": "바로",
+      "pronunciation": "ba-ro", 
+      "phonetic": "/paˈɾo/",
+      "definition": "Return to starting position",
+      "difficulty": 2
+    },
+    {
+      "english": "Forward",
+      "korean": "앞으로",
+      "pronunciation": "ap-eu-ro",
+      "phonetic": "/apˈɯɾo/",
+      "definition": "Move in forward direction",
+      "difficulty": 2
+    },
+    {
+      "english": "Backward",
+      "korean": "뒤로",
+      "pronunciation": "dwi-ro",
+      "phonetic": "/twiˈɾo/",
+      "definition": "Move in backward direction", 
+      "difficulty": 2
+    },
+    {
+      "english": "Turn",
+      "korean": "돌아",
+      "pronunciation": "dol-a",
+      "phonetic": "/toˈɾa/",
+      "definition": "Turn around or change direction",
+      "difficulty": 2
+    }
+  ]
+}

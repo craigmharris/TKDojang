@@ -1,0 +1,357 @@
+import Foundation
+import SwiftData
+import SwiftUI
+
+/**
+ * TerminologyDataService.swift
+ * 
+ * PURPOSE: Service layer for managing terminology database operations
+ * 
+ * RESPONSIBILITIES:
+ * - Database initialization and seeding
+ * - CRUD operations for terminology content
+ * - Learning algorithm implementation
+ * - Content filtering by belt level and category
+ */
+
+@Observable
+@MainActor
+class TerminologyDataService {
+    private var modelContext: ModelContext
+    
+    init(modelContext: ModelContext) {
+        self.modelContext = modelContext
+    }
+    
+    // MARK: - Public Accessors
+    
+    /**
+     * Provides access to the model context for content loading operations
+     */
+    var modelContextForLoading: ModelContext {
+        return modelContext
+    }
+    
+    // MARK: - Belt Level Operations
+    
+    /**
+     * Creates and returns all TAGB belt levels
+     * 
+     * PURPOSE: Initialize the belt level hierarchy
+     * CALL THIS ONCE: During app first launch to populate belt levels
+     */
+    func createBeltLevels() -> [BeltLevel] {
+        let beltLevels = [
+            // Kyup (Colored Belt) Levels - Descending order
+            BeltLevel(name: "10th Keup (White Belt)", shortName: "10th Keup", colorName: "White", sortOrder: 15, isKyup: true),
+            BeltLevel(name: "9th Keup (White Belt - Yellow Tag)", shortName: "9th Keup", colorName: "White/Yellow", sortOrder: 14, isKyup: true),
+            BeltLevel(name: "8th Keup (Yellow Belt)", shortName: "8th Keup", colorName: "Yellow", sortOrder: 13, isKyup: true),
+            BeltLevel(name: "7th Keup (Yellow Belt - Green Tag)", shortName: "7th Keup", colorName: "Yellow/Green", sortOrder: 12, isKyup: true),
+            BeltLevel(name: "6th Keup (Green Belt)", shortName: "6th Keup", colorName: "Green", sortOrder: 11, isKyup: true),
+            BeltLevel(name: "5th Keup (Green Belt - Blue Tag)", shortName: "5th Keup", colorName: "Green/Blue", sortOrder: 10, isKyup: true),
+            BeltLevel(name: "4th Keup (Blue Belt)", shortName: "4th Keup", colorName: "Blue", sortOrder: 9, isKyup: true),
+            BeltLevel(name: "3rd Keup (Blue Belt - Red Tag)", shortName: "3rd Keup", colorName: "Blue/Red", sortOrder: 8, isKyup: true),
+            BeltLevel(name: "2nd Keup (Red Belt)", shortName: "2nd Keup", colorName: "Red", sortOrder: 7, isKyup: true),
+            BeltLevel(name: "1st Keup (Red Belt - Black Tag)", shortName: "1st Keup", colorName: "Red/Black", sortOrder: 6, isKyup: true),
+            
+            // Dan (Black Belt) Levels - Ascending order
+            BeltLevel(name: "1st Dan (Black Belt)", shortName: "1st Dan", colorName: "Black", sortOrder: 5, isKyup: false),
+            BeltLevel(name: "2nd Dan (Black Belt)", shortName: "2nd Dan", colorName: "Black", sortOrder: 4, isKyup: false),
+            BeltLevel(name: "3rd Dan (Black Belt)", shortName: "3rd Dan", colorName: "Black", sortOrder: 3, isKyup: false),
+            BeltLevel(name: "4th Dan (Black Belt)", shortName: "4th Dan", colorName: "Black", sortOrder: 2, isKyup: false),
+            BeltLevel(name: "5th Dan (Black Belt)", shortName: "5th Dan", colorName: "Black", sortOrder: 1, isKyup: false)
+        ]
+        
+        beltLevels.forEach { modelContext.insert($0) }
+        
+        do {
+            try modelContext.save()
+        } catch {
+            print("Failed to save belt levels: \\(error)")
+        }
+        
+        return beltLevels
+    }
+    
+    /**
+     * Creates and returns all terminology categories
+     */
+    func createTerminologyCategories() -> [TerminologyCategory] {
+        let categories = [
+            TerminologyCategory(name: "basics", displayName: "Basics & Commands", sortOrder: 1),
+            TerminologyCategory(name: "numbers", displayName: "Numbers & Counting", sortOrder: 2),
+            TerminologyCategory(name: "techniques", displayName: "Techniques & Movements", sortOrder: 3),
+            TerminologyCategory(name: "stances", displayName: "Stances & Positions", sortOrder: 4),
+            TerminologyCategory(name: "blocks", displayName: "Blocks & Defense", sortOrder: 5),
+            TerminologyCategory(name: "strikes", displayName: "Strikes & Attacks", sortOrder: 6),
+            TerminologyCategory(name: "kicks", displayName: "Kicks & Leg Techniques", sortOrder: 7),
+            TerminologyCategory(name: "patterns", displayName: "Patterns (Tul)", sortOrder: 8),
+            TerminologyCategory(name: "titles", displayName: "Titles & Ranks", sortOrder: 9),
+            TerminologyCategory(name: "philosophy", displayName: "Philosophy & Tenets", sortOrder: 10)
+        ]
+        
+        categories.forEach { 
+            $0.iconName = getIconName(for: $0.name)
+            modelContext.insert($0) 
+        }
+        
+        do {
+            try modelContext.save()
+        } catch {
+            print("Failed to save categories: \\(error)")
+        }
+        
+        return categories
+    }
+    
+    private func getIconName(for categoryName: String) -> String {
+        switch categoryName {
+        case "basics": return "book.fill"
+        case "numbers": return "number.circle.fill"
+        case "techniques": return "figure.martial.arts"
+        case "stances": return "figure.stand"
+        case "blocks": return "shield.fill"
+        case "strikes": return "hand.raised.fill"
+        case "kicks": return "figure.run"
+        case "patterns": return "square.grid.3x3.fill"
+        case "titles": return "crown.fill"
+        case "philosophy": return "brain.head.profile"
+        default: return "book.fill"
+        }
+    }
+    
+    // MARK: - Terminology CRUD Operations
+    
+    /**
+     * Adds a new terminology entry to the database
+     */
+    func addTerminologyEntry(
+        englishTerm: String,
+        koreanHangul: String,
+        romanizedPronunciation: String,
+        beltLevel: BeltLevel,
+        category: TerminologyCategory,
+        difficulty: Int = 1,
+        phoneticPronunciation: String? = nil,
+        definition: String? = nil,
+        notes: String? = nil
+    ) -> TerminologyEntry {
+        
+        let entry = TerminologyEntry(
+            englishTerm: englishTerm,
+            koreanHangul: koreanHangul,
+            romanizedPronunciation: romanizedPronunciation,
+            beltLevel: beltLevel,
+            category: category,
+            difficulty: difficulty
+        )
+        
+        entry.phoneticPronunciation = phoneticPronunciation
+        entry.definition = definition
+        entry.notes = notes
+        
+        modelContext.insert(entry)
+        
+        do {
+            try modelContext.save()
+        } catch {
+            print("Failed to save terminology entry: \\(error)")
+        }
+        
+        return entry
+    }
+    
+    /**
+     * Fetches terminology entries for a user's learning session
+     * 
+     * PURPOSE: Returns filtered content based on user's belt level and learning mode
+     */
+    func getTerminologyForUser(userProfile: UserProfile, limit: Int = 20) -> [TerminologyEntry] {
+        let currentBeltSortOrder = userProfile.currentBeltLevel.sortOrder
+        print("🔍 Getting terminology for user: Belt=\(userProfile.currentBeltLevel.shortName) (sortOrder=\(currentBeltSortOrder)), Mode=\(userProfile.learningMode)")
+        
+        let descriptor: FetchDescriptor<TerminologyEntry>
+        
+        switch userProfile.learningMode {
+        case .progression:
+            // Focus on next belt level (lower sort order = higher rank)
+            let nextBeltSortOrder = max(1, currentBeltSortOrder - 1)
+            print("📈 Progression mode: Looking for terms with sortOrder=\(nextBeltSortOrder)")
+            descriptor = FetchDescriptor<TerminologyEntry>(
+                predicate: #Predicate { entry in
+                    entry.beltLevel.sortOrder == nextBeltSortOrder
+                },
+                sortBy: [SortDescriptor(\.difficulty), SortDescriptor(\.englishTerm)]
+            )
+            
+        case .mastery:
+            // All content up to and including current belt
+            print("🎓 Mastery mode: Looking for terms with sortOrder>=\(currentBeltSortOrder)")
+            descriptor = FetchDescriptor<TerminologyEntry>(
+                predicate: #Predicate { entry in
+                    entry.beltLevel.sortOrder >= currentBeltSortOrder
+                },
+                sortBy: [SortDescriptor(\.difficulty), SortDescriptor(\.englishTerm)]
+            )
+        }
+        
+        do {
+            let entries = try modelContext.fetch(descriptor)
+            print("📊 Found \(entries.count) total entries, returning \(min(entries.count, limit))")
+            
+            // Debug: Show what belt levels exist in database
+            let allBeltsDescriptor = FetchDescriptor<BeltLevel>()
+            let allBelts = try modelContext.fetch(allBeltsDescriptor)
+            print("🎯 Available belt levels in database:")
+            for belt in allBelts.sorted(by: { $0.sortOrder > $1.sortOrder }) {
+                let beltSortOrder = belt.sortOrder
+                let termCount = try modelContext.fetch(FetchDescriptor<TerminologyEntry>(
+                    predicate: #Predicate { entry in entry.beltLevel.sortOrder == beltSortOrder }
+                )).count
+                print("   - \(belt.shortName) (sortOrder=\(belt.sortOrder)): \(termCount) terms")
+            }
+            
+            return Array(entries.prefix(limit))
+        } catch {
+            print("Failed to fetch terminology: \(error)")
+            return []
+        }
+    }
+    
+    /**
+     * Gets terminology entries that are due for review (spaced repetition)
+     */
+    func getTerminologyDueForReview(userProfile: UserProfile) -> [TerminologyEntry] {
+        let now = Date()
+        let profileId = userProfile.id
+        
+        let descriptor = FetchDescriptor<UserTerminologyProgress>(
+            predicate: #Predicate { progress in
+                progress.userProfile.id == profileId && progress.nextReviewDate <= now
+            }
+        )
+        
+        do {
+            let progressEntries = try modelContext.fetch(descriptor)
+            return progressEntries.map { $0.terminologyEntry }
+        } catch {
+            print("Failed to fetch due reviews: \\(error)")
+            return []
+        }
+    }
+    
+    
+    // MARK: - Progress Tracking
+    
+    /**
+     * Records a user's answer and updates their progress
+     */
+    func recordUserAnswer(
+        userProfile: UserProfile,
+        terminologyEntry: TerminologyEntry,
+        isCorrect: Bool,
+        responseTime: Double
+    ) {
+        
+        // Find existing progress or create new one
+        let profileId = userProfile.id
+        let entryId = terminologyEntry.id
+        
+        let progressDescriptor = FetchDescriptor<UserTerminologyProgress>(
+            predicate: #Predicate { progress in
+                progress.userProfile.id == profileId && 
+                progress.terminologyEntry.id == entryId
+            }
+        )
+        
+        do {
+            let existingProgress = try modelContext.fetch(progressDescriptor).first
+            let progress = existingProgress ?? UserTerminologyProgress(
+                terminologyEntry: terminologyEntry, 
+                userProfile: userProfile
+            )
+            
+            if existingProgress == nil {
+                modelContext.insert(progress)
+            }
+            
+            progress.recordAnswer(isCorrect: isCorrect, responseTime: responseTime)
+            
+            try modelContext.save()
+            
+        } catch {
+            print("Failed to record user answer: \\(error)")
+        }
+    }
+    
+    // MARK: - Statistics and Analytics
+    
+    /**
+     * Gets user's learning statistics
+     */
+    func getUserStatistics(userProfile: UserProfile) -> UserStatistics {
+        let profileId = userProfile.id
+        
+        let descriptor = FetchDescriptor<UserTerminologyProgress>(
+            predicate: #Predicate { progress in
+                progress.userProfile.id == profileId
+            }
+        )
+        
+        do {
+            let progressEntries = try modelContext.fetch(descriptor)
+            
+            let totalTerms = progressEntries.count
+            let masteredTerms = progressEntries.filter { $0.masteryLevel == .mastered }.count
+            let totalCorrect = progressEntries.reduce(0) { $0 + $1.correctCount }
+            let totalIncorrect = progressEntries.reduce(0) { $0 + $1.incorrectCount }
+            let totalReviews = totalCorrect + totalIncorrect
+            
+            let accuracyRate = totalReviews > 0 ? Double(totalCorrect) / Double(totalReviews) : 0.0
+            let masteryRate = totalTerms > 0 ? Double(masteredTerms) / Double(totalTerms) : 0.0
+            
+            return UserStatistics(
+                totalTermsStudied: totalTerms,
+                masteredTerms: masteredTerms,
+                totalReviews: totalReviews,
+                accuracyRate: accuracyRate,
+                masteryRate: masteryRate,
+                currentStreak: calculateCurrentStreak(progressEntries)
+            )
+            
+        } catch {
+            print("Failed to fetch user statistics: \\(error)")
+            return UserStatistics()
+        }
+    }
+    
+    private func calculateCurrentStreak(_ progressEntries: [UserTerminologyProgress]) -> Int {
+        // Calculate the current streak of consecutive correct answers across all terms
+        // This is a simplified version - you might want a more sophisticated streak calculation
+        return progressEntries.map { $0.consecutiveCorrect }.max() ?? 0
+    }
+}
+
+// MARK: - Supporting Data Structures
+
+/**
+ * User learning statistics for display in UI
+ */
+struct UserStatistics {
+    let totalTermsStudied: Int
+    let masteredTerms: Int
+    let totalReviews: Int
+    let accuracyRate: Double // 0.0 to 1.0
+    let masteryRate: Double  // 0.0 to 1.0
+    let currentStreak: Int
+    
+    init(totalTermsStudied: Int = 0, masteredTerms: Int = 0, totalReviews: Int = 0, 
+         accuracyRate: Double = 0.0, masteryRate: Double = 0.0, currentStreak: Int = 0) {
+        self.totalTermsStudied = totalTermsStudied
+        self.masteredTerms = masteredTerms
+        self.totalReviews = totalReviews
+        self.accuracyRate = accuracyRate
+        self.masteryRate = masteryRate
+        self.currentStreak = currentStreak
+    }
+}

@@ -1,0 +1,61 @@
+{
+  "belt_level": "10th_keup",
+  "category": "basics", 
+  "description": "Fundamental commands and dojang etiquette for white belt",
+  "terms": [
+    {
+      "english": "Attention",
+      "korean": "차렷",
+      "pronunciation": "cha-ryeot",
+      "phonetic": "/tʃaˈɾjʌt/",
+      "definition": "Ready position with feet together and body straight",
+      "notes": "Basic starting position for all techniques",
+      "difficulty": 1
+    },
+    {
+      "english": "Bow", 
+      "korean": "경례",
+      "pronunciation": "kyung-rye",
+      "phonetic": "/kʲʌŋˈɾje/", 
+      "definition": "Formal bow showing respect to instructor or partner",
+      "notes": "Essential etiquette - bow when entering/leaving dojang",
+      "difficulty": 1
+    },
+    {
+      "english": "Begin",
+      "korean": "시작", 
+      "pronunciation": "si-jak",
+      "phonetic": "/ɕiˈdʑak/",
+      "definition": "Command to start practice or technique",
+      "notes": "Used by instructor to begin training",
+      "difficulty": 1
+    },
+    {
+      "english": "Stop",
+      "korean": "그만",
+      "pronunciation": "geu-man", 
+      "phonetic": "/kɯˈman/",
+      "definition": "Command to stop or finish practice",
+      "notes": "Important for safety - stop immediately when heard",
+      "difficulty": 1
+    },
+    {
+      "english": "Taekwondo",
+      "korean": "태권도",
+      "pronunciation": "tae-kwon-do",
+      "phonetic": "/tʰeˈkwʌndo/", 
+      "definition": "The way of hand and foot - Korean martial art",
+      "notes": "Tae = foot, Kwon = hand, Do = way/path",
+      "difficulty": 1
+    },
+    {
+      "english": "Dojang", 
+      "korean": "도장",
+      "pronunciation": "do-jang",
+      "phonetic": "/doˈdʑaŋ/",
+      "definition": "Training hall or martial arts school",
+      "notes": "Place where martial arts are practiced",
+      "difficulty": 1
+    }
+  ]
+}
