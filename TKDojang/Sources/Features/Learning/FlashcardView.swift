@@ -23,6 +23,8 @@ struct FlashcardView: View {
     @State private var userProfile: UserProfile?
     @State private var sessionStats = SessionStats()
     @State private var isLoading = true
+    @State private var studyMode: StudyMode = .test
+    @State private var cardDirection: CardDirection = .englishToKorean
     
     var body: some View {
         NavigationView {
@@ -67,6 +69,31 @@ struct FlashcardView: View {
             }
             .navigationTitle("Korean Terms")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Section("Study Mode") {
+                            Button(action: { studyMode = .learn }) {
+                                Label("Learn Mode", systemImage: studyMode == .learn ? "checkmark" : "")
+                            }
+                            Button(action: { studyMode = .test }) {
+                                Label("Test Mode", systemImage: studyMode == .test ? "checkmark" : "")
+                            }
+                        }
+                        
+                        Section("Direction") {
+                            Button(action: { cardDirection = .englishToKorean }) {
+                                Label("English → Korean", systemImage: cardDirection == .englishToKorean ? "checkmark" : "")
+                            }
+                            Button(action: { cardDirection = .koreanToEnglish }) {
+                                Label("Korean → English", systemImage: cardDirection == .koreanToEnglish ? "checkmark" : "")
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "gear")
+                    }
+                }
+            }
             .task {
                 await loadUserData()
             }
@@ -79,13 +106,13 @@ struct FlashcardView: View {
         VStack(spacing: 8) {
             if userProfile != nil {
                 HStack {
-                    Text("Current Level: \\(userProfile!.currentBeltLevel.shortName)")
+                    Text("Current Level: \(userProfile!.currentBeltLevel.shortName)")
                         .font(.caption)
                         .foregroundColor(.secondary)
                     
                     Spacer()
                     
-                    Text("Mode: \\(userProfile!.learningMode.displayName)")
+                    Text("Mode: \(userProfile!.learningMode.displayName)")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -133,45 +160,15 @@ struct FlashcardView: View {
                             .cornerRadius(8)
                     }
                     
-                    if !isShowingAnswer {
-                        // Question side
-                        VStack(spacing: 16) {
-                            Text("What is this in Korean?")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                            
-                            Text(currentTerm.englishTerm)
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                                .foregroundColor(.primary)
-                                .multilineTextAlignment(.center)
-                            
-                            if let definition = currentTerm.definition {
-                                Text(definition)
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.horizontal)
-                            }
-                        }
+                    if studyMode == .learn {
+                        // Learn mode - show all information
+                        learnModeContent(for: currentTerm)
+                    } else if !isShowingAnswer {
+                        // Test mode - Question side
+                        testModeQuestionContent(for: currentTerm)
                     } else {
-                        // Answer side
-                        VStack(spacing: 16) {
-                            Text(currentTerm.koreanHangul)
-                                .font(.system(size: 48, weight: .medium))
-                                .foregroundColor(.primary)
-                            
-                            Text(currentTerm.romanizedPronunciation)
-                                .font(.title2)
-                                .foregroundColor(.primary)
-                                .italic()
-                            
-                            if let phonetic = currentTerm.phoneticPronunciation {
-                                Text("[\(phonetic)]")
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
-                            }
-                        }
+                        // Test mode - Answer side
+                        testModeAnswerContent(for: currentTerm)
                     }
                 }
                 .padding()
@@ -182,13 +179,15 @@ struct FlashcardView: View {
             )
             .scaleEffect(x: isShowingAnswer ? -1 : 1, y: 1) // Fix mirroring
             .onTapGesture {
-                withAnimation(.easeInOut(duration: 0.6)) {
-                    isShowingAnswer.toggle()
+                if studyMode == .test {
+                    withAnimation(.easeInOut(duration: 0.6)) {
+                        isShowingAnswer.toggle()
+                    }
                 }
             }
             
-            // Flip hint
-            if !isShowingAnswer {
+            // Flip hint (only for test mode)
+            if studyMode == .test && !isShowingAnswer {
                 Text("Tap to reveal answer")
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -201,8 +200,22 @@ struct FlashcardView: View {
     
     private var controlButtons: some View {
         HStack(spacing: 20) {
-            if isShowingAnswer {
-                // Answer feedback buttons
+            if studyMode == .learn {
+                // Learn mode - navigation only
+                Button("Previous") {
+                    previousCard()
+                }
+                .buttonStyle(.bordered)
+                .disabled(currentTermIndex == 0)
+                
+                Button("Next") {
+                    nextCard()
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(currentTermIndex >= terms.count - 1)
+                
+            } else if isShowingAnswer {
+                // Test mode - answer feedback buttons
                 Button("Incorrect") {
                     recordAnswer(isCorrect: false)
                 }
@@ -215,7 +228,7 @@ struct FlashcardView: View {
                 .buttonStyle(.borderedProminent)
                 .tint(.green)
             } else {
-                // Navigation buttons
+                // Test mode - navigation buttons
                 Button("Previous") {
                     previousCard()
                 }
@@ -236,7 +249,7 @@ struct FlashcardView: View {
         HStack {
             statItem("Correct", value: sessionStats.correctCount, color: .green)
             statItem("Incorrect", value: sessionStats.incorrectCount, color: .red)
-            statItem("Accuracy", value: "\\(sessionStats.accuracyPercentage)%", color: .blue)
+            statItem("Accuracy", value: "\(sessionStats.accuracyPercentage)%", color: .blue)
         }
         .padding()
         .background(Color(.secondarySystemBackground))
@@ -245,7 +258,7 @@ struct FlashcardView: View {
     
     private func statItem(_ label: String, value: Any, color: Color) -> some View {
         VStack {
-            Text("\\(value)")
+            Text("\(value)")
                 .font(.headline)
                 .foregroundColor(color)
             Text(label)
@@ -341,6 +354,166 @@ struct FlashcardView: View {
         // Move to next card
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             nextCard()
+        }
+    }
+    
+    // MARK: - Content Methods
+    
+    private func learnModeContent(for term: TerminologyEntry) -> some View {
+        VStack(spacing: 20) {
+            // English term
+            VStack(spacing: 8) {
+                Text("English")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Text(term.englishTerm)
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.primary)
+            }
+            
+            Divider()
+            
+            // Korean information
+            VStack(spacing: 12) {
+                Text("Korean")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                
+                Text(term.koreanHangul)
+                    .font(.system(size: 36, weight: .medium))
+                    .foregroundColor(.primary)
+                
+                Text(term.romanizedPronunciation)
+                    .font(.title3)
+                    .foregroundColor(.primary)
+                    .italic()
+                
+                if let phonetic = term.phoneticPronunciation {
+                    Text("[\(phonetic)]")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+            }
+            
+            // Definition if available
+            if let definition = term.definition {
+                Divider()
+                VStack(spacing: 8) {
+                    Text("Definition")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Text(definition)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+            }
+        }
+    }
+    
+    private func testModeQuestionContent(for term: TerminologyEntry) -> some View {
+        VStack(spacing: 16) {
+            Text(cardDirection == .englishToKorean ? "What is this in Korean?" : "What is this in English?")
+                .font(.headline)
+                .foregroundColor(.secondary)
+            
+            if cardDirection == .englishToKorean {
+                Text(term.englishTerm)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .multilineTextAlignment(.center)
+                
+                if let definition = term.definition {
+                    Text(definition)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+                }
+            } else {
+                // Korean to English
+                VStack(spacing: 12) {
+                    Text(term.koreanHangul)
+                        .font(.system(size: 42, weight: .medium))
+                        .foregroundColor(.primary)
+                    
+                    Text(term.romanizedPronunciation)
+                        .font(.title2)
+                        .foregroundColor(.primary)
+                        .italic()
+                    
+                    if let phonetic = term.phoneticPronunciation {
+                        Text("[\(phonetic)]")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func testModeAnswerContent(for term: TerminologyEntry) -> some View {
+        VStack(spacing: 16) {
+            if cardDirection == .englishToKorean {
+                // Show Korean answer
+                Text(term.koreanHangul)
+                    .font(.system(size: 48, weight: .medium))
+                    .foregroundColor(.primary)
+                
+                Text(term.romanizedPronunciation)
+                    .font(.title2)
+                    .foregroundColor(.primary)
+                    .italic()
+                
+                if let phonetic = term.phoneticPronunciation {
+                    Text("[\(phonetic)]")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+            } else {
+                // Show English answer
+                Text(term.englishTerm)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .multilineTextAlignment(.center)
+                
+                if let definition = term.definition {
+                    Text(definition)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Supporting Enums
+
+enum StudyMode: String, CaseIterable {
+    case learn = "learn"
+    case test = "test"
+    
+    var displayName: String {
+        switch self {
+        case .learn: return "Learn Mode"
+        case .test: return "Test Mode"
+        }
+    }
+}
+
+enum CardDirection: String, CaseIterable {
+    case englishToKorean = "en_to_ko"
+    case koreanToEnglish = "ko_to_en"
+    
+    var displayName: String {
+        switch self {
+        case .englishToKorean: return "English → Korean"
+        case .koreanToEnglish: return "Korean → English"
         }
     }
 }

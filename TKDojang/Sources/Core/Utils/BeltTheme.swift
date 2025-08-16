@@ -115,14 +115,40 @@ struct BeltCardBackground: View {
             
             // Belt-styled border: outer primary color + inner secondary color
             RoundedRectangle(cornerRadius: cornerRadius)
-                .strokeBorder(theme.primaryColor, lineWidth: borderWidth)
+                .strokeBorder(effectivePrimaryColor, lineWidth: borderWidth)
                 .overlay(
                     // Inner stripe for belts with tags (secondary color)
                     RoundedRectangle(cornerRadius: cornerRadius - borderWidth/3)
-                        .strokeBorder(theme.secondaryColor, lineWidth: borderWidth/3)
+                        .strokeBorder(effectiveSecondaryColor, lineWidth: borderWidth/3)
                 )
         }
-        .shadow(color: theme.primaryColor.opacity(0.2), radius: 4, x: 0, y: 2)
+        .shadow(color: effectivePrimaryColor.opacity(0.2), radius: 4, x: 0, y: 2)
+    }
+    
+    // Enhanced colors for white belt visibility
+    private var effectivePrimaryColor: Color {
+        if isWhiteBelt(theme.primaryColor) {
+            return Color.gray.opacity(0.6)
+        }
+        return theme.primaryColor
+    }
+    
+    private var effectiveSecondaryColor: Color {
+        if isWhiteBelt(theme.secondaryColor) {
+            return Color.gray.opacity(0.3)
+        }
+        return theme.secondaryColor
+    }
+    
+    private func isWhiteBelt(_ color: Color) -> Bool {
+        // Check if color is very close to white
+        let components = UIColor(color).cgColor.components ?? [1, 1, 1, 1]
+        let red = components[0]
+        let green = components[1]
+        let blue = components[2]
+        
+        // Consider it white if all RGB values are above 0.95
+        return red > 0.95 && green > 0.95 && blue > 0.95
     }
 }
 
