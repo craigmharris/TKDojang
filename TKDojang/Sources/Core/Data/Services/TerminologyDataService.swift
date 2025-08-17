@@ -174,12 +174,11 @@ class TerminologyDataService {
         
         switch userProfile.learningMode {
         case .progression:
-            // Focus on next belt level (lower sort order = higher rank)
-            let nextBeltSortOrder = max(1, currentBeltSortOrder - 1)
-            // Progression mode: looking for next belt level terms
+            // Focus on current belt level only
+            // Progression mode: focus on mastering current belt
             descriptor = FetchDescriptor<TerminologyEntry>(
                 predicate: #Predicate { entry in
-                    entry.beltLevel.sortOrder == nextBeltSortOrder
+                    entry.beltLevel.sortOrder == currentBeltSortOrder
                 },
                 sortBy: [SortDescriptor(\.difficulty), SortDescriptor(\.englishTerm)]
             )

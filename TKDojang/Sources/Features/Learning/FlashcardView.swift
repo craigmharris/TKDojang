@@ -14,6 +14,8 @@ import SwiftData
  */
 
 struct FlashcardView: View {
+    let specificTerms: [TerminologyEntry]?
+    
     @Environment(DataManager.self) private var dataManager
     @Query private var userProfiles: [UserProfile]
     
@@ -26,6 +28,10 @@ struct FlashcardView: View {
     @State private var studyMode: StudyMode = .test
     @State private var cardDirection: CardDirection = .englishToKorean
     @State private var currentCardDirection: CardDirection = .englishToKorean // For random direction
+    
+    init(specificTerms: [TerminologyEntry]? = nil) {
+        self.specificTerms = specificTerms
+    }
     
     var body: some View {
         NavigationStack {
@@ -321,8 +327,14 @@ struct FlashcardView: View {
         
         if let profile = userProfile {
             print("👤 User profile found: Belt=\(profile.currentBeltLevel.shortName), Mode=\(profile.learningMode)")
-            terms = dataManager.terminologyService.getTerminologyForUser(userProfile: profile, limit: 50)
-            print("📚 Loaded \(terms.count) terms for user")
+            
+            if let specificTerms = specificTerms {
+                terms = specificTerms
+                print("📚 Using specific terms from test: \(terms.count) terms")
+            } else {
+                terms = dataManager.terminologyService.getTerminologyForUser(userProfile: profile, limit: 50)
+                print("📚 Loaded \(terms.count) terms for user")
+            }
             
             if terms.isEmpty {
                 print("❌ No terms found! This suggests data loading failed.")

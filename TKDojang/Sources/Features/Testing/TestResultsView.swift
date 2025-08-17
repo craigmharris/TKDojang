@@ -17,6 +17,13 @@ struct TestResultsView: View {
     let testSession: TestSession
     let result: TestResult
     @Environment(\.dismiss) private var dismiss
+    @State private var showingTestSelection = false
+    
+    var incorrectTerms: [TerminologyEntry] {
+        return testSession.questions
+            .filter { !$0.isCorrect && $0.terminologyEntry != nil }
+            .compactMap { $0.terminologyEntry }
+    }
     
     var body: some View {
         NavigationStack {
@@ -73,7 +80,7 @@ struct TestResultsView: View {
                     
                     // Action Buttons
                     VStack(spacing: 12) {
-                        NavigationLink(destination: FlashcardView()) {
+                        NavigationLink(destination: FlashcardView(specificTerms: incorrectTerms)) {
                             HStack {
                                 Image(systemName: "rectangle.on.rectangle")
                                 Text("Review with Flashcards")
@@ -90,7 +97,7 @@ struct TestResultsView: View {
                         .buttonStyle(PlainButtonStyle())
                         
                         Button("Take Another Test") {
-                            // TODO: Navigate to test selection
+                            showingTestSelection = true
                         }
                         .font(.headline)
                         .foregroundColor(.blue)
@@ -119,6 +126,9 @@ struct TestResultsView: View {
                         dismiss()
                     }
                 }
+            }
+            .navigationDestination(isPresented: $showingTestSelection) {
+                TestSelectionView()
             }
         }
     }

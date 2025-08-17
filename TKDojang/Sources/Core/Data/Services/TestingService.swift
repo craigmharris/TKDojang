@@ -352,7 +352,7 @@ class TestingService: ObservableObject {
         // Categories with < 70% accuracy
         for category in categoryPerformance {
             if category.accuracy < 70 {
-                weakAreas.append("\\(category.category) (\\(Int(category.accuracy))% accuracy)")
+                weakAreas.append("\(category.category) (\(Int(category.accuracy))% accuracy)")
             }
         }
         

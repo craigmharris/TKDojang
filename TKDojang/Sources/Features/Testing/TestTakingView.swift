@@ -88,15 +88,18 @@ struct TestTakingView: View {
                                                 .font(.largeTitle)
                                                 .fontWeight(.bold)
                                                 .foregroundColor(.primary)
+                                                .multilineTextAlignment(.center)
                                             
                                             Text(entry.koreanHangul)
                                                 .font(.title)
                                                 .foregroundColor(.secondary)
+                                                .multilineTextAlignment(.center)
                                         } else {
                                             Text(entry.englishTerm)
                                                 .font(.largeTitle)
                                                 .fontWeight(.bold)
                                                 .foregroundColor(.primary)
+                                                .multilineTextAlignment(.center)
                                         }
                                     }
                                     .padding(.vertical)
