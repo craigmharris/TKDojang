@@ -20,6 +20,7 @@ class DataManager {
     
     private(set) var modelContainer: ModelContainer
     private(set) var terminologyService: TerminologyDataService
+    private(set) var patternService: PatternDataService
     
     var modelContext: ModelContext {
         return modelContainer.mainContext
@@ -41,7 +42,10 @@ class DataManager {
                 TestResult.self,
                 CategoryPerformance.self,
                 BeltLevelPerformance.self,
-                TestPerformance.self
+                TestPerformance.self,
+                Pattern.self,
+                PatternMove.self,
+                UserPatternProgress.self
             ])
             
             let modelConfiguration = ModelConfiguration(
@@ -58,6 +62,7 @@ class DataManager {
             // Initialize all properties
             self.modelContainer = container
             self.terminologyService = TerminologyDataService(modelContext: container.mainContext)
+            self.patternService = PatternDataService(modelContext: container.mainContext)
             
             // Perform initial setup if needed
             Task {
@@ -85,6 +90,10 @@ class DataManager {
                 print("🗃️ Database is empty, loading modular TAGB content...")
                 let modularLoader = ModularContentLoader(dataService: terminologyService)
                 modularLoader.loadCompleteSystem()
+                
+                // Load initial patterns after belt levels are created
+                let allBelts = try modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
+                patternService.seedInitialPatterns(beltLevels: allBelts)
             } else {
                 print("✅ Database already contains \(existingBeltLevels.count) belt levels")
                 // Debug: Check if belt levels have colors
@@ -101,6 +110,16 @@ class DataManager {
                     print("🔄 No terms found - forcing content reload...")
                     let modularLoader = ModularContentLoader(dataService: terminologyService)
                     modularLoader.loadCompleteSystem()
+                }
+                
+                // Check if patterns exist, load if needed
+                let patternDescriptor = FetchDescriptor<Pattern>()
+                let existingPatterns = try modelContainer.mainContext.fetch(patternDescriptor)
+                if existingPatterns.isEmpty {
+                    print("🥋 No patterns found - loading initial patterns...")
+                    patternService.seedInitialPatterns(beltLevels: existingBeltLevels)
+                } else {
+                    print("✅ Database contains \(existingPatterns.count) patterns")
                 }
             }
         } catch {

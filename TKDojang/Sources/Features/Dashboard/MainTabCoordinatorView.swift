@@ -297,7 +297,7 @@ struct PracticeMenuCard: View {
                     .lineLimit(2)
             }
             .padding()
-            .frame(maxWidth: .infinity, minHeight: 120)
+            .frame(maxWidth: .infinity, minHeight: 140, maxHeight: 140)
             .background(Color(.systemBackground))
             .cornerRadius(12)
             .overlay(
@@ -312,24 +312,335 @@ struct PracticeMenuCard: View {
 // MARK: - Practice Section Placeholder Views
 
 struct PatternsView: View {
+    @Environment(DataManager.self) private var dataManager
+    @State private var patterns: [Pattern] = []
+    @State private var userProfile: UserProfile?
+    @State private var isLoading = true
+    
     var body: some View {
-        VStack {
-            Image(systemName: "square.grid.3x3.fill")
-                .font(.system(size: 60))
-                .foregroundColor(.blue)
+        VStack(spacing: 20) {
+            // Header
+            VStack(spacing: 12) {
+                Image(systemName: "square.grid.3x3.fill")
+                    .font(.system(size: 60))
+                    .foregroundColor(.blue)
+                
+                Text("Patterns/Tul")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
+                Text("Traditional Taekwondo forms with detailed guidance")
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal)
+            }
             
-            Text("Patterns/Tul")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            
-            Text("Traditional Taekwondo forms with detailed guidance")
-                .multilineTextAlignment(.center)
-                .foregroundColor(.secondary)
-                .padding()
-            
-            Spacer()
+            if isLoading {
+                VStack {
+                    ProgressView()
+                    Text("Loading patterns...")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                    .frame(maxHeight: .infinity)
+            } else if patterns.isEmpty {
+                VStack(spacing: 16) {
+                    Image(systemName: "questionmark.square.dashed")
+                        .font(.system(size: 40))
+                        .foregroundColor(.gray)
+                    
+                    Text("No patterns available")
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                    
+                    Text("Patterns will be available based on your current belt level")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+                .frame(maxHeight: .infinity)
+            } else {
+                // Pattern list
+                ScrollView {
+                    LazyVStack(spacing: 16) {
+                        ForEach(patterns, id: \.id) { pattern in
+                            PatternCard(pattern: pattern, userProfile: userProfile)
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+            }
         }
         .navigationTitle("Patterns")
+        .navigationBarTitleDisplayMode(.large)
+        .task {
+            await loadPatterns()
+        }
+    }
+    
+    @MainActor
+    private func loadPatterns() async {
+        isLoading = true
+        userProfile = dataManager.getOrCreateDefaultUserProfile()
+        
+        if let profile = userProfile {
+            patterns = dataManager.patternService.getPatternsForUser(userProfile: profile)
+            print("🥋 Loaded \(patterns.count) patterns for user")
+        }
+        
+        isLoading = false
+    }
+}
+
+// MARK: - Pattern Card Component
+
+struct PatternCard: View {
+    let pattern: Pattern
+    let userProfile: UserProfile?
+    @Environment(DataManager.self) private var dataManager
+    @State private var userProgress: UserPatternProgress?
+    
+    var body: some View {
+        NavigationLink(destination: PatternDetailView(pattern: pattern)) {
+            VStack(alignment: .leading, spacing: 12) {
+                // Header with pattern name and meaning
+                HStack {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(pattern.name)
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.primary)
+                        
+                        Text(pattern.englishMeaning)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    Spacer()
+                    
+                    // Move count badge
+                    Text("\(pattern.moveCount)")
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(Color.blue)
+                        .cornerRadius(8)
+                }
+                
+                // Progress indicator if user has started this pattern
+                if let progress = userProgress {
+                    PatternProgressIndicator(progress: progress)
+                }
+                
+                // Belt level indicator
+                HStack {
+                    ForEach(pattern.orderedBeltLevels.prefix(3), id: \.id) { belt in
+                        Text(belt.shortName)
+                            .font(.caption2)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(4)
+                    }
+                    
+                    if pattern.beltLevels.count > 3 {
+                        Text("+\(pattern.beltLevels.count - 3)")
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    Spacer()
+                    
+                    Image(systemName: "chevron.right")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+            }
+            .padding()
+            .background(Color(.systemBackground))
+            .cornerRadius(12)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.blue.opacity(0.2), lineWidth: 1)
+            )
+        }
+        .buttonStyle(PlainButtonStyle())
+        .task {
+            loadUserProgress()
+        }
+    }
+    
+    private func loadUserProgress() {
+        guard let profile = userProfile else { return }
+        userProgress = dataManager.patternService.getUserProgress(for: pattern, userProfile: profile)
+    }
+}
+
+// MARK: - Pattern Progress Indicator
+
+struct PatternProgressIndicator: View {
+    let progress: UserPatternProgress
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text("Progress: \(Int(progress.progressPercentage))%")
+                    .font(.caption)
+                    .fontWeight(.medium)
+                
+                Spacer()
+                
+                Text(progress.masteryLevel.displayName)
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .foregroundColor(colorForMastery(progress.masteryLevel))
+            }
+            
+            GeometryReader { geometry in
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.3))
+                        .frame(height: 4)
+                    
+                    Rectangle()
+                        .fill(colorForMastery(progress.masteryLevel))
+                        .frame(width: geometry.size.width * (progress.progressPercentage / 100.0), height: 4)
+                }
+            }
+            .frame(height: 4)
+        }
+    }
+    
+    private func colorForMastery(_ level: PatternMasteryLevel) -> Color {
+        switch level {
+        case .learning: return .red
+        case .familiar: return .orange
+        case .proficient: return .blue
+        case .mastered: return .green
+        }
+    }
+}
+
+// MARK: - Pattern Detail View (Placeholder)
+
+struct PatternDetailView: View {
+    let pattern: Pattern
+    
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .center, spacing: 20) {
+                // Pattern header
+                VStack(alignment: .center, spacing: 12) {
+                    Text(pattern.name)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                    
+                    Text(pattern.hangul)
+                        .font(.title2)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                    
+                    Text(pattern.englishMeaning)
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                    
+                    Text(pattern.significance)
+                        .font(.body)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.leading)
+                        .padding(.top, 8)
+                }
+                
+                Divider()
+                
+                // Pattern details
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
+                        Text("Moves:")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                        Text("\(pattern.moveCount)")
+                            .font(.subheadline)
+                    }
+                    
+                    HStack {
+                        Text("Ready Position:")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                        Text(pattern.startingStance)
+                            .font(.subheadline)
+                    }
+                }
+                
+                // Diagram section
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Pattern Diagram")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                    
+                    Text(pattern.diagramDescription)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    
+                    // Diagram image if available
+                    if let diagramURL = pattern.diagramImageURL, !diagramURL.isEmpty {
+                        AsyncImage(url: URL(string: diagramURL)) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        } placeholder: {
+                            Rectangle()
+                                .fill(Color.gray.opacity(0.2))
+                                .frame(height: 200)
+                                .overlay(
+                                    VStack {
+                                        Image(systemName: "photo")
+                                            .font(.largeTitle)
+                                            .foregroundColor(.gray)
+                                        Text("Diagram Loading...")
+                                            .font(.caption)
+                                            .foregroundColor(.gray)
+                                    }
+                                )
+                        }
+                        .frame(maxHeight: 300)
+                        .cornerRadius(12)
+                    } else {
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.1))
+                            .frame(height: 200)
+                            .overlay(
+                                VStack {
+                                    Image(systemName: "square.grid.3x3")
+                                        .font(.largeTitle)
+                                        .foregroundColor(.gray)
+                                    Text("Diagram Coming Soon")
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                }
+                            )
+                            .cornerRadius(12)
+                    }
+                }
+                
+                // TODO: Add pattern practice interface
+                Text("Pattern practice interface coming soon...")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(8)
+                
+                Spacer()
+            }
+            .padding()
+        }
+        .navigationTitle(pattern.name)
         .navigationBarTitleDisplayMode(.large)
     }
 }
@@ -555,7 +866,7 @@ struct ProfileView: View {
                             .background(Color.blue.opacity(0.1))
                             .cornerRadius(20)
                         
-                        Text("Learning Mode: \\(profile.learningMode.displayName)")
+                        Text("Learning Mode: \(profile.learningMode.displayName)")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
