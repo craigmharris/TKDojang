@@ -192,13 +192,25 @@ class DataManager {
             let profileDescriptor = FetchDescriptor<UserProfile>()
             let categoryDescriptor = FetchDescriptor<TerminologyCategory>()
             let beltDescriptor = FetchDescriptor<BeltLevel>()
+            let patternProgressDescriptor = FetchDescriptor<UserPatternProgress>()
+            let patternMoveDescriptor = FetchDescriptor<PatternMove>()
+            let patternDescriptor = FetchDescriptor<Pattern>()
             
             // Delete in order to avoid relationship conflicts
             let progress = try modelContainer.mainContext.fetch(progressDescriptor)
             progress.forEach { modelContainer.mainContext.delete($0) }
             
+            let patternProgress = try modelContainer.mainContext.fetch(patternProgressDescriptor)
+            patternProgress.forEach { modelContainer.mainContext.delete($0) }
+            
             let entries = try modelContainer.mainContext.fetch(entryDescriptor)
             entries.forEach { modelContainer.mainContext.delete($0) }
+            
+            let moves = try modelContainer.mainContext.fetch(patternMoveDescriptor)
+            moves.forEach { modelContainer.mainContext.delete($0) }
+            
+            let patterns = try modelContainer.mainContext.fetch(patternDescriptor)
+            patterns.forEach { modelContainer.mainContext.delete($0) }
             
             let profiles = try modelContainer.mainContext.fetch(profileDescriptor)
             profiles.forEach { modelContainer.mainContext.delete($0) }
@@ -218,6 +230,12 @@ class DataManager {
                     // Reload with new modular system
                     let modularLoader = ModularContentLoader(dataService: self.terminologyService)
                     modularLoader.loadCompleteSystem()
+                    
+                    // Reload patterns after belt levels are created
+                    let allBelts = try await self.modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
+                    await MainActor.run {
+                        self.patternService.seedInitialPatterns(beltLevels: allBelts)
+                    }
                 }
             }
             
