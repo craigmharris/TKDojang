@@ -17,7 +17,7 @@ struct AuthenticationCoordinatorView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 LinearGradient(
                     gradient: Gradient(colors: [Color.blue.opacity(0.1), Color.purple.opacity(0.1)]),
@@ -86,7 +86,6 @@ struct AuthenticationCoordinatorView: View {
                 }
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private var loginContent: some View {

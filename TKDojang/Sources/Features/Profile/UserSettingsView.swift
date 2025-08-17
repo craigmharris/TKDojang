@@ -14,18 +14,18 @@ struct UserSettingsView: View {
     @Query private var categories: [TerminologyCategory]
     
     @State private var userProfile: UserProfile?
-    @State private var selectedBeltLevel: BeltLevel?
+    @State private var selectedBeltLevelId: UUID?
     @State private var selectedLearningMode: LearningMode = .progression
     @State private var dailyStudyGoal: Int = 20
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section("Current Level") {
-                    Picker("Your Belt Level", selection: $selectedBeltLevel) {
+                    Picker("Your Belt Level", selection: $selectedBeltLevelId) {
                         ForEach(sortedBeltLevels, id: \.id) { belt in
                             Text(belt.name)
-                                .tag(belt as BeltLevel?)
+                                .tag(belt.id as UUID?)
                         }
                     }
                     .pickerStyle(.menu)
@@ -123,6 +123,11 @@ struct UserSettingsView: View {
         beltLevels.sorted { $0.sortOrder > $1.sortOrder } // Higher sortOrder first (10th Keup -> 1st Dan)
     }
     
+    private var selectedBeltLevel: BeltLevel? {
+        guard let id = selectedBeltLevelId else { return nil }
+        return beltLevels.first { $0.id == id }
+    }
+    
     private var learningModeExplanation: String {
         guard let belt = selectedBeltLevel else { return "" }
         
@@ -153,7 +158,7 @@ struct UserSettingsView: View {
         userProfile = dataManager.getOrCreateDefaultUserProfile()
         
         if let profile = userProfile {
-            selectedBeltLevel = profile.currentBeltLevel
+            selectedBeltLevelId = profile.currentBeltLevel.id
             selectedLearningMode = profile.learningMode
             dailyStudyGoal = profile.dailyStudyGoal
         }

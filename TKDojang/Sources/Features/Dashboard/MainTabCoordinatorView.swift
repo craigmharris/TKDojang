@@ -19,17 +19,17 @@ struct MainTabCoordinatorView: View {
                 }
                 .tag(0)
             
-            // Korean Terms Tab
-            FlashcardView()
+            // Learn Tab
+            LearnView()
                 .tabItem {
-                    Label("Korean", systemImage: "textformat.abc")
+                    Label("Learn", systemImage: "book.fill")
                 }
                 .tag(1)
             
-            // Training Tab
-            TrainingView()
+            // Practice Tab
+            PracticeView()
                 .tabItem {
-                    Label("Training", systemImage: "heart.circle")
+                    Label("Practice", systemImage: "figure.martial.arts")
                 }
                 .tag(2)
             
@@ -55,7 +55,7 @@ struct MainTabCoordinatorView: View {
 
 struct DashboardView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 30) {
                 Image(systemName: "house.fill")
                     .font(.system(size: 60))
@@ -96,7 +96,7 @@ struct DashboardView: View {
 
 struct TechniquesView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Image(systemName: "figure.martial.arts")
                     .font(.system(size: 60))
@@ -118,33 +118,94 @@ struct TechniquesView: View {
     }
 }
 
-struct TrainingView: View {
+struct LearnView: View {
     var body: some View {
-        NavigationView {
-            VStack {
-                Image(systemName: "heart.circle.fill")
+        NavigationStack {
+            VStack(spacing: 30) {
+                Image(systemName: "book.fill")
                     .font(.system(size: 60))
-                    .foregroundColor(.red)
+                    .foregroundColor(.blue)
                 
-                Text("Training Sessions")
+                Text("Learning Center")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 
-                Text("Structured workouts, forms practice, and skill development sessions.")
+                Text("Master Korean terminology and test your knowledge")
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal)
+                
+                Spacer()
+                
+                VStack(spacing: 16) {
+                    NavigationLink(destination: FlashcardView()) {
+                        HStack {
+                            Image(systemName: "rectangle.on.rectangle")
+                                .frame(width: 24)
+                            Text("Flashcards")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.secondary)
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue.opacity(0.1))
+                        .cornerRadius(12)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    
+                    NavigationLink(destination: TestSelectionView()) {
+                        HStack {
+                            Image(systemName: "checkmark.circle")
+                                .frame(width: 24)
+                            Text("Tests")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.secondary)
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.green.opacity(0.1))
+                        .cornerRadius(12)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+                .padding(.horizontal)
+                
+                Spacer()
+            }
+            .navigationTitle("Learn")
+        }
+    }
+}
+
+struct PracticeView: View {
+    var body: some View {
+        NavigationStack {
+            VStack {
+                Image(systemName: "figure.martial.arts")
+                    .font(.system(size: 60))
+                    .foregroundColor(.red)
+                
+                Text("Practice Sessions")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
+                Text("Patterns, techniques, and sparring practice sessions.")
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
                     .padding()
                 
                 Spacer()
             }
-            .navigationTitle("Training")
+            .navigationTitle("Practice")
         }
     }
 }
 
 struct ProgressView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Image(systemName: "chart.line.uptrend.xyaxis")
                     .font(.system(size: 60))
@@ -166,6 +227,127 @@ struct ProgressView: View {
     }
 }
 
+struct TestSelectionView: View {
+    @Environment(DataManager.self) private var dataManager
+    @State private var isStartingTest = false
+    @State private var testSession: TestSession?
+    @State private var showingTest = false
+    @State private var errorMessage: String?
+    
+    var body: some View {
+        VStack(spacing: 30) {
+            Image(systemName: "checkmark.circle.fill")
+                .font(.system(size: 60))
+                .foregroundColor(.green)
+            
+            Text("Test Your Knowledge")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            
+            Text("Comprehensive tests to validate your learning progress")
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
+                .padding(.horizontal)
+            
+            Spacer()
+            
+            VStack(spacing: 16) {
+                Button("Comprehensive Test") {
+                    startComprehensiveTest()
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .frame(maxWidth: .infinity)
+                .disabled(isStartingTest)
+                
+                Button("Quick Test (5-10 questions)") {
+                    startQuickTest()
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
+                .frame(maxWidth: .infinity)
+                .disabled(isStartingTest)
+                
+                if let errorMessage = errorMessage {
+                    Text(errorMessage)
+                        .font(.caption)
+                        .foregroundColor(.red)
+                        .multilineTextAlignment(.center)
+                        .padding(.top)
+                }
+            }
+            .padding(.horizontal)
+            
+            if isStartingTest {
+                VStack {
+                    ProgressView()
+                    Text("Preparing your test...")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                .padding()
+            }
+            
+            Spacer()
+        }
+        .navigationTitle("Tests")
+        .navigationBarTitleDisplayMode(.large)
+        .navigationDestination(isPresented: $showingTest) {
+            if let session = testSession {
+                TestTakingView(testSession: session)
+            }
+        }
+    }
+    
+    private func startComprehensiveTest() {
+        let userProfile = dataManager.getOrCreateDefaultUserProfile()
+        
+        isStartingTest = true
+        errorMessage = nil
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            do {
+                let testingService = TestingService(
+                    modelContext: dataManager.modelContext,
+                    terminologyService: dataManager.terminologyService
+                )
+                
+                let session = try testingService.createComprehensiveTest(for: userProfile)
+                self.testSession = session
+                self.showingTest = true
+            } catch {
+                self.errorMessage = "Failed to create test: \(error.localizedDescription)"
+            }
+            
+            self.isStartingTest = false
+        }
+    }
+    
+    private func startQuickTest() {
+        let userProfile = dataManager.getOrCreateDefaultUserProfile()
+        
+        isStartingTest = true
+        errorMessage = nil
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            do {
+                let testingService = TestingService(
+                    modelContext: dataManager.modelContext,
+                    terminologyService: dataManager.terminologyService
+                )
+                
+                let session = try testingService.createQuickTest(for: userProfile)
+                self.testSession = session
+                self.showingTest = true
+            } catch {
+                self.errorMessage = "Failed to create test: \(error.localizedDescription)"
+            }
+            
+            self.isStartingTest = false
+        }
+    }
+}
+
 struct ProfileView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
     @Environment(DataManager.self) private var dataManager
@@ -173,7 +355,7 @@ struct ProfileView: View {
     @State private var userProfile: UserProfile?
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 30) {
                 Image(systemName: "person.circle.fill")
                     .font(.system(size: 80))
