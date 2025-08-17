@@ -182,7 +182,7 @@ struct LearnView: View {
 struct PracticeView: View {
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 30) {
                 Image(systemName: "figure.martial.arts")
                     .font(.system(size: 60))
                     .foregroundColor(.red)
@@ -191,10 +191,51 @@ struct PracticeView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 
-                Text("Patterns, techniques, and sparring practice sessions.")
+                Text("Master your techniques with structured practice sessions")
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
-                    .padding()
+                    .padding(.horizontal)
+                
+                Spacer()
+                
+                LazyVGrid(columns: [
+                    GridItem(.flexible(), spacing: 16),
+                    GridItem(.flexible(), spacing: 16)
+                ], spacing: 16) {
+                    
+                    PracticeMenuCard(
+                        title: "Patterns/Tul",
+                        description: "Traditional forms with step-by-step guidance",
+                        icon: "square.grid.3x3.fill",
+                        color: .blue,
+                        destination: AnyView(PatternsView())
+                    )
+                    
+                    PracticeMenuCard(
+                        title: "Step Sparring",
+                        description: "3, 2, and 1-step sparring techniques",
+                        icon: "figure.2.arms.open",
+                        color: .orange,
+                        destination: AnyView(StepSparringView())
+                    )
+                    
+                    PracticeMenuCard(
+                        title: "Line Work",
+                        description: "Forward/backward technique drills",
+                        icon: "arrow.left.and.right",
+                        color: .green,
+                        destination: AnyView(LineWorkView())
+                    )
+                    
+                    PracticeMenuCard(
+                        title: "Technique How-To",
+                        description: "Detailed breakdowns of every technique",
+                        icon: "magnifyingglass.circle.fill",
+                        color: .purple,
+                        destination: AnyView(TechniqueGuideView())
+                    )
+                }
+                .padding(.horizontal)
                 
                 Spacer()
             }
@@ -224,6 +265,141 @@ struct ProgressView: View {
             }
             .navigationTitle("Progress")
         }
+    }
+}
+
+// MARK: - Practice Menu Components
+
+struct PracticeMenuCard: View {
+    let title: String
+    let description: String
+    let icon: String
+    let color: Color
+    let destination: AnyView
+    
+    var body: some View {
+        NavigationLink(destination: destination) {
+            VStack(spacing: 12) {
+                Image(systemName: icon)
+                    .font(.system(size: 32))
+                    .foregroundColor(color)
+                
+                Text(title)
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.primary)
+                
+                Text(description)
+                    .font(.caption)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary)
+                    .lineLimit(2)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, minHeight: 120)
+            .background(Color(.systemBackground))
+            .cornerRadius(12)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(color.opacity(0.3), lineWidth: 1)
+            )
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+// MARK: - Practice Section Placeholder Views
+
+struct PatternsView: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "square.grid.3x3.fill")
+                .font(.system(size: 60))
+                .foregroundColor(.blue)
+            
+            Text("Patterns/Tul")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            
+            Text("Traditional Taekwondo forms with detailed guidance")
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
+                .padding()
+            
+            Spacer()
+        }
+        .navigationTitle("Patterns")
+        .navigationBarTitleDisplayMode(.large)
+    }
+}
+
+struct StepSparringView: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "figure.2.arms.open")
+                .font(.system(size: 60))
+                .foregroundColor(.orange)
+            
+            Text("Step Sparring")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            
+            Text("Practice 3, 2, and 1-step sparring sequences")
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
+                .padding()
+            
+            Spacer()
+        }
+        .navigationTitle("Step Sparring")
+        .navigationBarTitleDisplayMode(.large)
+    }
+}
+
+struct LineWorkView: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "arrow.left.and.right")
+                .font(.system(size: 60))
+                .foregroundColor(.green)
+            
+            Text("Line Work")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            
+            Text("Forward and backward technique drills")
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
+                .padding()
+            
+            Spacer()
+        }
+        .navigationTitle("Line Work")
+        .navigationBarTitleDisplayMode(.large)
+    }
+}
+
+struct TechniqueGuideView: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "magnifyingglass.circle.fill")
+                .font(.system(size: 60))
+                .foregroundColor(.purple)
+            
+            Text("Technique Guide")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            
+            Text("Detailed breakdowns of every technique and stance")
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
+                .padding()
+            
+            Spacer()
+        }
+        .navigationTitle("Technique Guide")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
