@@ -176,13 +176,9 @@ class JSONGenerator {
                 metadata: TerminologyCollection.Metadata(totalCount: entries.count)
             )
             
-            // Create belt directory if needed
-            let beltDirectory = outputDirectory.appendingPathComponent(beltLevel)
-            try FileManager.default.createDirectory(at: beltDirectory, withIntermediateDirectories: true)
-            
-            // Write JSON file
-            let fileName = "\(category).json"
-            let fileURL = beltDirectory.appendingPathComponent(fileName)
+            // Write JSON file with belt name prefix directly to output directory
+            let fileName = "\(beltLevel)_\(category).json"
+            let fileURL = outputDirectory.appendingPathComponent(fileName)
             
             let encoder = JSONEncoder()
             encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
@@ -191,7 +187,7 @@ class JSONGenerator {
             let jsonData = try encoder.encode(collection)
             try jsonData.write(to: fileURL)
             
-            print("✅ Created: \(beltDirectory.lastPathComponent)/\(fileName) (\(entries.count) terms)")
+            print("✅ Created: \(fileName) (\(entries.count) terms)")
         }
     }
 }
