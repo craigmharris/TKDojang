@@ -627,14 +627,41 @@ struct PatternDetailView: View {
                     }
                 }
                 
-                // TODO: Add pattern practice interface
-                Text("Pattern practice interface coming soon...")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+                // Practice Interface Button
+                NavigationLink(destination: PatternPracticeView(pattern: pattern)) {
+                    HStack {
+                        Image(systemName: "play.circle.fill")
+                            .font(.title2)
+                            .foregroundColor(.white)
+                        
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Start Practice")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                            
+                            Text("Interactive step-by-step guidance")
+                                .font(.subheadline)
+                                .foregroundColor(.white.opacity(0.9))
+                        }
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.white.opacity(0.7))
+                    }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
+                    .background(
+                        LinearGradient(
+                            gradient: Gradient(colors: [Color.blue, Color.blue.opacity(0.8)]),
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .cornerRadius(12)
+                }
+                .buttonStyle(PlainButtonStyle())
                 
                 Spacer()
             }

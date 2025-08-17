@@ -409,6 +409,84 @@ class PatternDataService {
         }
     }
     
+    /**
+     * Creates basic moves for Dan-Gun pattern (placeholder implementation)
+     */
+    private func createDanGunMoves() -> [PatternMove] {
+        let movesData: [(Int, String, String, String, String?, String, String?, String?)] = [
+            (1, "Left walking stance", "High block", "West", "Upper section", "Keep elbows in correct position", "Block too low", "https://example.com/moves/dan-gun-1.jpg"),
+            (2, "Right walking stance", "High punch", "West", "Head level", "Full hip rotation", "Weak follow-through", "https://example.com/moves/dan-gun-2.jpg"),
+            (3, "Right walking stance", "High block", "East", "Upper section", "Mirror first movement", "Inconsistent form", "https://example.com/moves/dan-gun-3.jpg"),
+            (4, "Left walking stance", "High punch", "East", "Head level", "Maintain power", "Dropping guard", "https://example.com/moves/dan-gun-4.jpg"),
+            (5, "Left walking stance", "Twin forearm block", "North", "Middle section", "Both arms move together", "Uneven arm position", "https://example.com/moves/dan-gun-5.jpg"),
+            (6, "Right walking stance", "High punch", "North", "Head level", "Step with conviction", "Hesitant movement", "https://example.com/moves/dan-gun-6.jpg"),
+            (7, "Right walking stance", "High punch", "North", "Head level", "Continue momentum", "Breaking rhythm", "https://example.com/moves/dan-gun-7.jpg"),
+            (8, "Left walking stance", "High punch", "North", "Head level", "Consistent technique", "Rushing moves", "https://example.com/moves/dan-gun-8.jpg"),
+            (9, "Right walking stance", "High punch", "North", "Head level", "Strong finish", "Weak ending", "https://example.com/moves/dan-gun-9.jpg"),
+            (10, "Left walking stance", "Twin forearm block", "South", "Middle section", "Turn with control", "Sloppy turn", "https://example.com/moves/dan-gun-10.jpg"),
+            (11, "Right walking stance", "High punch", "South", "Head level", "Reset technique", "Inconsistent power", "https://example.com/moves/dan-gun-11.jpg"),
+            (12, "Right walking stance", "High punch", "South", "Head level", "Maintain form", "Technique breakdown", "https://example.com/moves/dan-gun-12.jpg"),
+            (13, "Left walking stance", "High punch", "South", "Head level", "Keep shoulders level", "Uneven stance", "https://example.com/moves/dan-gun-13.jpg"),
+            (14, "Right walking stance", "High punch", "South", "Head level", "Finish strong", "Premature relaxation", "https://example.com/moves/dan-gun-14.jpg"),
+            (15, "Left walking stance", "High block", "West", "Upper section", "Return to blocking", "Wrong technique", "https://example.com/moves/dan-gun-15.jpg"),
+            (16, "Right walking stance", "High punch", "West", "Head level", "Coordinate movement", "Poor timing", "https://example.com/moves/dan-gun-16.jpg"),
+            (17, "Right walking stance", "High block", "East", "Upper section", "Final direction change", "Anticipating end", "https://example.com/moves/dan-gun-17.jpg"),
+            (18, "Left walking stance", "High punch", "East", "Head level", "Finish with power", "Weak conclusion", "https://example.com/moves/dan-gun-18.jpg"),
+            (19, "Left walking stance", "High block", "North", "Upper section", "Prepare for close", "Losing focus", "https://example.com/moves/dan-gun-19.jpg"),
+            (20, "Right walking stance", "High punch", "North", "Head level", "Penultimate move", "Rushing to finish", "https://example.com/moves/dan-gun-20.jpg"),
+            (21, "Parallel ready stance", "Return to ready", "North", nil, "Sharp return to attention", "Sloppy conclusion", "https://example.com/moves/dan-gun-21.jpg")
+        ]
+        
+        return movesData.map { (moveNumber, stance, technique, direction, target, keyPoints, commonMistakes, imageURL) in
+            PatternMove(
+                moveNumber: moveNumber,
+                stance: stance,
+                technique: technique,
+                direction: direction,
+                target: target,
+                keyPoints: keyPoints,
+                commonMistakes: commonMistakes,
+                executionNotes: nil,
+                imageURL: imageURL
+            )
+        }
+    }
+    
+    /**
+     * Creates basic placeholder moves for patterns (for development/testing)
+     */
+    private func createBasicPatternMoves(count: Int, patternName: String) -> [PatternMove] {
+        let stances = ["Left walking stance", "Right walking stance", "Left back stance", "Right back stance"]
+        let techniques = ["Low block", "Middle punch", "High punch", "High block", "Knife hand strike", "Front kick"]
+        let directions = ["North", "South", "East", "West", "Northeast", "Northwest", "Southeast", "Southwest"]
+        let targets = ["Lower section", "Middle section", "Upper section", "Solar plexus", "Head level"]
+        
+        var moves: [PatternMove] = []
+        
+        for i in 1...count {
+            let stance = stances[(i - 1) % stances.count]
+            let technique = techniques[(i - 1) % techniques.count]
+            let direction = directions[(i - 1) % directions.count]
+            let target = i == count ? nil : targets[(i - 1) % targets.count]
+            
+            let move = PatternMove(
+                moveNumber: i,
+                stance: i == count ? "Parallel ready stance" : stance,
+                technique: i == count ? "Return to ready" : technique,
+                direction: direction,
+                target: target,
+                keyPoints: "Maintain proper form and technique",
+                commonMistakes: "Rushing the movement",
+                executionNotes: nil,
+                imageURL: "https://example.com/moves/\(patternName.lowercased())-\(i).jpg"
+            )
+            
+            moves.append(move)
+        }
+        
+        return moves
+    }
+    
     // MARK: - Additional Pattern Creation Functions
     
     private func createDanGunPattern(beltLevels: [BeltLevel]) {
@@ -416,6 +494,9 @@ class PatternDataService {
             print("❌ Could not find 8th Keup belt level for Dan-Gun")
             return
         }
+        
+        // Create Dan-Gun pattern moves
+        let moves = createDanGunMoves()
         
         let _ = createPattern(
             name: "Dan-Gun",
@@ -427,10 +508,11 @@ class PatternDataService {
             startingStance: "Parallel ready stance",
             videoURL: "https://example.com/patterns/dan-gun.mp4",
             diagramImageURL: "https://example.com/diagrams/dan-gun-diagram.jpg",
-            beltLevels: [eighthKeup]
+            beltLevels: [eighthKeup],
+            moves: moves
         )
         
-        print("✅ Created Dan-Gun pattern")
+        print("✅ Created Dan-Gun pattern with \(moves.count) moves")
     }
     
     private func createDoSanPattern(beltLevels: [BeltLevel]) {
@@ -438,6 +520,9 @@ class PatternDataService {
             print("❌ Could not find 7th Keup belt level for Do-San")
             return
         }
+        
+        // Create placeholder moves for Do-San
+        let moves = createBasicPatternMoves(count: 24, patternName: "Do-San")
         
         let _ = createPattern(
             name: "Do-San",
@@ -449,10 +534,11 @@ class PatternDataService {
             startingStance: "Parallel ready stance",
             videoURL: "https://example.com/patterns/do-san.mp4",
             diagramImageURL: "https://example.com/diagrams/do-san-diagram.jpg",
-            beltLevels: [seventhKeup]
+            beltLevels: [seventhKeup],
+            moves: moves
         )
         
-        print("✅ Created Do-San pattern")
+        print("✅ Created Do-San pattern with \(moves.count) moves")
     }
     
     private func createWonHyoPattern(beltLevels: [BeltLevel]) {
@@ -460,6 +546,8 @@ class PatternDataService {
             print("❌ Could not find 6th Keup belt level for Won-Hyo")
             return
         }
+        
+        let moves = createBasicPatternMoves(count: 28, patternName: "Won-Hyo")
         
         let _ = createPattern(
             name: "Won-Hyo",
@@ -471,10 +559,11 @@ class PatternDataService {
             startingStance: "Parallel ready stance",
             videoURL: "https://example.com/patterns/won-hyo.mp4",
             diagramImageURL: "https://example.com/diagrams/won-hyo-diagram.jpg",
-            beltLevels: [sixthKeup]
+            beltLevels: [sixthKeup],
+            moves: moves
         )
         
-        print("✅ Created Won-Hyo pattern")
+        print("✅ Created Won-Hyo pattern with \(moves.count) moves")
     }
     
     private func createYulGokPattern(beltLevels: [BeltLevel]) {
@@ -482,6 +571,8 @@ class PatternDataService {
             print("❌ Could not find 5th Keup belt level for Yul-Gok")
             return
         }
+        
+        let moves = createBasicPatternMoves(count: 38, patternName: "Yul-Gok")
         
         let _ = createPattern(
             name: "Yul-Gok",
@@ -493,10 +584,11 @@ class PatternDataService {
             startingStance: "Parallel ready stance",
             videoURL: "https://example.com/patterns/yul-gok.mp4",
             diagramImageURL: "https://example.com/diagrams/yul-gok-diagram.jpg",
-            beltLevels: [fifthKeup]
+            beltLevels: [fifthKeup],
+            moves: moves
         )
         
-        print("✅ Created Yul-Gok pattern")
+        print("✅ Created Yul-Gok pattern with \(moves.count) moves")
     }
     
     private func createJoongGunPattern(beltLevels: [BeltLevel]) {
@@ -504,6 +596,8 @@ class PatternDataService {
             print("❌ Could not find 4th Keup belt level for Joong-Gun")
             return
         }
+        
+        let moves = createBasicPatternMoves(count: 32, patternName: "Joong-Gun")
         
         let _ = createPattern(
             name: "Joong-Gun",
@@ -515,10 +609,11 @@ class PatternDataService {
             startingStance: "Parallel ready stance",
             videoURL: "https://example.com/patterns/joong-gun.mp4",
             diagramImageURL: "https://example.com/diagrams/joong-gun-diagram.jpg",
-            beltLevels: [fourthKeup]
+            beltLevels: [fourthKeup],
+            moves: moves
         )
         
-        print("✅ Created Joong-Gun pattern")
+        print("✅ Created Joong-Gun pattern with \(moves.count) moves")
     }
     
     private func createToiGyePattern(beltLevels: [BeltLevel]) {
@@ -526,6 +621,8 @@ class PatternDataService {
             print("❌ Could not find 3rd Keup belt level for Toi-Gye")
             return
         }
+        
+        let moves = createBasicPatternMoves(count: 37, patternName: "Toi-Gye")
         
         let _ = createPattern(
             name: "Toi-Gye",
@@ -537,10 +634,11 @@ class PatternDataService {
             startingStance: "Parallel ready stance",
             videoURL: "https://example.com/patterns/toi-gye.mp4",
             diagramImageURL: "https://example.com/diagrams/toi-gye-diagram.jpg",
-            beltLevels: [thirdKeup]
+            beltLevels: [thirdKeup],
+            moves: moves
         )
         
-        print("✅ Created Toi-Gye pattern")
+        print("✅ Created Toi-Gye pattern with \(moves.count) moves")
     }
     
     private func createHwaRangPattern(beltLevels: [BeltLevel]) {
@@ -548,6 +646,8 @@ class PatternDataService {
             print("❌ Could not find 2nd Keup belt level for Hwa-Rang")
             return
         }
+        
+        let moves = createBasicPatternMoves(count: 29, patternName: "Hwa-Rang")
         
         let _ = createPattern(
             name: "Hwa-Rang",
@@ -559,10 +659,11 @@ class PatternDataService {
             startingStance: "Parallel ready stance",
             videoURL: "https://example.com/patterns/hwa-rang.mp4",
             diagramImageURL: "https://example.com/diagrams/hwa-rang-diagram.jpg",
-            beltLevels: [secondKeup]
+            beltLevels: [secondKeup],
+            moves: moves
         )
         
-        print("✅ Created Hwa-Rang pattern")
+        print("✅ Created Hwa-Rang pattern with \(moves.count) moves")
     }
     
     private func createChungMuPattern(beltLevels: [BeltLevel]) {
@@ -570,6 +671,8 @@ class PatternDataService {
             print("❌ Could not find 1st Keup belt level for Chung-Mu")
             return
         }
+        
+        let moves = createBasicPatternMoves(count: 30, patternName: "Chung-Mu")
         
         let _ = createPattern(
             name: "Chung-Mu",
@@ -581,10 +684,11 @@ class PatternDataService {
             startingStance: "Parallel ready stance",
             videoURL: "https://example.com/patterns/chung-mu.mp4",
             diagramImageURL: "https://example.com/diagrams/chung-mu-diagram.jpg",
-            beltLevels: [firstKeup]
+            beltLevels: [firstKeup],
+            moves: moves
         )
         
-        print("✅ Created Chung-Mu pattern")
+        print("✅ Created Chung-Mu pattern with \(moves.count) moves")
     }
 }
 

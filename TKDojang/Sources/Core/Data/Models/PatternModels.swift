@@ -325,9 +325,11 @@ extension Pattern {
     
     /**
      * Checks if this pattern is appropriate for a given belt level
+     * User should see patterns for their current belt and below (higher sort_order numbers)
+     * E.g., 8th Keup (sort=13) can see patterns for 9th Keup (sort=14) and 8th Keup (sort=13)
      */
     func isAppropriateFor(beltLevel: BeltLevel) -> Bool {
-        return beltLevels.contains { $0.sortOrder <= beltLevel.sortOrder }
+        return beltLevels.contains { $0.sortOrder >= beltLevel.sortOrder }
     }
     
     /**
