@@ -21,6 +21,10 @@ class DataManager {
     private(set) var modelContainer: ModelContainer
     private(set) var terminologyService: TerminologyDataService
     
+    var modelContext: ModelContext {
+        return modelContainer.mainContext
+    }
+    
     private init() {
         print("🏗️ Initializing DataManager...")
         do {
@@ -30,7 +34,14 @@ class DataManager {
                 TerminologyCategory.self,
                 TerminologyEntry.self,
                 UserProfile.self,
-                UserTerminologyProgress.self
+                UserTerminologyProgress.self,
+                TestSession.self,
+                TestConfiguration.self,
+                TestQuestion.self,
+                TestResult.self,
+                CategoryPerformance.self,
+                BeltLevelPerformance.self,
+                TestPerformance.self
             ])
             
             let modelConfiguration = ModelConfiguration(
@@ -153,34 +164,48 @@ class DataManager {
      */
     func resetAndReloadDatabase() {
         do {
-            // Delete all existing data
-            let beltDescriptor = FetchDescriptor<BeltLevel>()
-            let categoryDescriptor = FetchDescriptor<TerminologyCategory>()
+            // Clear any pending changes first
+            modelContainer.mainContext.rollback()
+            
+            // Delete all existing data in reverse dependency order
+            let progressDescriptor = FetchDescriptor<UserTerminologyProgress>()
             let entryDescriptor = FetchDescriptor<TerminologyEntry>()
             let profileDescriptor = FetchDescriptor<UserProfile>()
-            let progressDescriptor = FetchDescriptor<UserTerminologyProgress>()
+            let categoryDescriptor = FetchDescriptor<TerminologyCategory>()
+            let beltDescriptor = FetchDescriptor<BeltLevel>()
             
-            let belts = try modelContainer.mainContext.fetch(beltDescriptor)
-            let categories = try modelContainer.mainContext.fetch(categoryDescriptor)
-            let entries = try modelContainer.mainContext.fetch(entryDescriptor)
-            let profiles = try modelContainer.mainContext.fetch(profileDescriptor)
+            // Delete in order to avoid relationship conflicts
             let progress = try modelContainer.mainContext.fetch(progressDescriptor)
-            
-            belts.forEach { modelContainer.mainContext.delete($0) }
-            categories.forEach { modelContainer.mainContext.delete($0) }
-            entries.forEach { modelContainer.mainContext.delete($0) }
-            profiles.forEach { modelContainer.mainContext.delete($0) }
             progress.forEach { modelContainer.mainContext.delete($0) }
             
-            try modelContainer.mainContext.save()
-            print("🗑️ Database cleared, reloading with modular content...")
+            let entries = try modelContainer.mainContext.fetch(entryDescriptor)
+            entries.forEach { modelContainer.mainContext.delete($0) }
             
-            // Reload with new modular system
-            let modularLoader = ModularContentLoader(dataService: terminologyService)
-            modularLoader.loadCompleteSystem()
+            let profiles = try modelContainer.mainContext.fetch(profileDescriptor)
+            profiles.forEach { modelContainer.mainContext.delete($0) }
+            
+            let categories = try modelContainer.mainContext.fetch(categoryDescriptor)
+            categories.forEach { modelContainer.mainContext.delete($0) }
+            
+            let belts = try modelContainer.mainContext.fetch(beltDescriptor)
+            belts.forEach { modelContainer.mainContext.delete($0) }
+            
+            try modelContainer.mainContext.save()
+            print("🗑️ Database cleared successfully")
+            
+            // Small delay to ensure database operations complete
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                Task {
+                    // Reload with new modular system
+                    let modularLoader = ModularContentLoader(dataService: self.terminologyService)
+                    modularLoader.loadCompleteSystem()
+                }
+            }
             
         } catch {
             print("❌ Failed to reset database: \\(error)")
+            // If reset fails, try creating a new context
+            modelContainer.mainContext.rollback()
         }
     }
     

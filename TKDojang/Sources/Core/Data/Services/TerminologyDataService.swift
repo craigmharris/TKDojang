@@ -90,9 +90,9 @@ class TerminologyDataService {
             TerminologyCategory(name: "philosophy", displayName: "Philosophy & Tenets", sortOrder: 10)
         ]
         
-        categories.forEach { 
-            $0.iconName = getIconName(for: $0.name)
-            modelContext.insert($0) 
+        categories.forEach { category in
+            category.iconName = getIconName(for: category.name)
+            modelContext.insert(category) 
         }
         
         do {
@@ -168,25 +168,24 @@ class TerminologyDataService {
      */
     func getTerminologyForUser(userProfile: UserProfile, limit: Int = 20) -> [TerminologyEntry] {
         let currentBeltSortOrder = userProfile.currentBeltLevel.sortOrder
-        print("🔍 Getting terminology for user: Belt=\(userProfile.currentBeltLevel.shortName) (sortOrder=\(currentBeltSortOrder)), Mode=\(userProfile.learningMode)")
+        // Getting terminology for user's current belt and learning mode
         
         let descriptor: FetchDescriptor<TerminologyEntry>
         
         switch userProfile.learningMode {
         case .progression:
-            // Focus on next belt level (lower sort order = higher rank)
-            let nextBeltSortOrder = max(1, currentBeltSortOrder - 1)
-            print("📈 Progression mode: Looking for terms with sortOrder=\(nextBeltSortOrder)")
+            // Focus on current belt level only
+            // Progression mode: focus on mastering current belt
             descriptor = FetchDescriptor<TerminologyEntry>(
                 predicate: #Predicate { entry in
-                    entry.beltLevel.sortOrder == nextBeltSortOrder
+                    entry.beltLevel.sortOrder == currentBeltSortOrder
                 },
                 sortBy: [SortDescriptor(\.difficulty), SortDescriptor(\.englishTerm)]
             )
             
         case .mastery:
             // All content up to and including current belt
-            print("🎓 Mastery mode: Looking for terms with sortOrder>=\(currentBeltSortOrder)")
+            // Mastery mode: including all terms up to current belt
             descriptor = FetchDescriptor<TerminologyEntry>(
                 predicate: #Predicate { entry in
                     entry.beltLevel.sortOrder >= currentBeltSortOrder
@@ -197,19 +196,7 @@ class TerminologyDataService {
         
         do {
             let entries = try modelContext.fetch(descriptor)
-            print("📊 Found \(entries.count) total entries, returning \(min(entries.count, limit))")
-            
-            // Debug: Show what belt levels exist in database
-            let allBeltsDescriptor = FetchDescriptor<BeltLevel>()
-            let allBelts = try modelContext.fetch(allBeltsDescriptor)
-            print("🎯 Available belt levels in database:")
-            for belt in allBelts.sorted(by: { $0.sortOrder > $1.sortOrder }) {
-                let beltSortOrder = belt.sortOrder
-                let termCount = try modelContext.fetch(FetchDescriptor<TerminologyEntry>(
-                    predicate: #Predicate { entry in entry.beltLevel.sortOrder == beltSortOrder }
-                )).count
-                print("   - \(belt.shortName) (sortOrder=\(belt.sortOrder)): \(termCount) terms")
-            }
+            // Found terminology entries for practice
             
             return Array(entries.prefix(limit))
         } catch {
@@ -330,6 +317,78 @@ class TerminologyDataService {
         // This is a simplified version - you might want a more sophisticated streak calculation
         return progressEntries.map { $0.consecutiveCorrect }.max() ?? 0
     }
+    
+    /**
+     * Adds a terminology entry to the user's review queue
+     * Used when user gets a question wrong in tests
+     */
+    func addToReviewQueue(_ terminologyEntry: TerminologyEntry) throws {
+        guard let userProfile = getDefaultUserProfile() else {
+            throw DataServiceError.noUserProfile
+        }
+        
+        // Get or create progress for this term
+        let progress = getOrCreateProgress(for: terminologyEntry, userProfile: userProfile)
+        
+        // Reset to first box for immediate review
+        progress.currentBox = 1
+        progress.nextReviewDate = Date() // Available for review immediately
+        progress.lastReviewedAt = Date()
+        
+        try modelContext.save()
+    }
+    
+    private func getDefaultUserProfile() -> UserProfile? {
+        let descriptor = FetchDescriptor<UserProfile>()
+        
+        do {
+            return try modelContext.fetch(descriptor).first
+        } catch {
+            print("Failed to fetch default user profile: \\(error)")
+            return nil
+        }
+    }
+    
+    private func getOrCreateProgress(for terminologyEntry: TerminologyEntry, userProfile: UserProfile) -> UserTerminologyProgress {
+        let profileId = userProfile.id
+        let entryId = terminologyEntry.id
+        
+        let progressDescriptor = FetchDescriptor<UserTerminologyProgress>(
+            predicate: #Predicate { progress in
+                progress.userProfile.id == profileId && 
+                progress.terminologyEntry.id == entryId
+            }
+        )
+        
+        do {
+            if let existingProgress = try modelContext.fetch(progressDescriptor).first {
+                return existingProgress
+            } else {
+                let newProgress = UserTerminologyProgress(
+                    terminologyEntry: terminologyEntry,
+                    userProfile: userProfile
+                )
+                modelContext.insert(newProgress)
+                return newProgress
+            }
+        } catch {
+            print("Failed to fetch existing progress, creating new: \\(error)")
+            let newProgress = UserTerminologyProgress(
+                terminologyEntry: terminologyEntry,
+                userProfile: userProfile
+            )
+            modelContext.insert(newProgress)
+            return newProgress
+        }
+    }
+}
+
+// MARK: - Error Types
+
+enum DataServiceError: Error {
+    case noUserProfile
+    case invalidTerminology
+    case saveFailed
 }
 
 // MARK: - Supporting Data Structures

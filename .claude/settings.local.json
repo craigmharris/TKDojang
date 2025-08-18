@@ -4,7 +4,9 @@
       "Bash(find:*)",
       "Bash(xcodebuild clean:*)",
       "Bash(git add:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(xcodebuild:*)"
     ],
     "deny": [],
     "ask": [],

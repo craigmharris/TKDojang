@@ -23,8 +23,12 @@ struct BeltTheme {
      * Creates a BeltTheme from a BeltLevel model
      */
     init(from beltLevel: BeltLevel) {
-        self.primaryColor = Color(hex: beltLevel.primaryColor ?? "#6C757D")
-        self.secondaryColor = Color(hex: beltLevel.secondaryColor ?? "#E9ECEF")
+        let primaryHex = beltLevel.primaryColor ?? "#6C757D"
+        let secondaryHex = beltLevel.secondaryColor ?? "#E9ECEF"
+        
+        self.primaryColor = Color(hex: primaryHex)
+        // For solid belts, ensure colors are identical
+        self.secondaryColor = primaryHex == secondaryHex ? self.primaryColor : Color(hex: secondaryHex)
         self.textColor = Color(hex: beltLevel.textColor ?? "#000000")
         self.borderColor = Color(hex: beltLevel.borderColor ?? "#DEE2E6")
         
@@ -40,11 +44,11 @@ struct BeltTheme {
      */
     static let `default` = BeltTheme(
         primaryColor: .gray,
-        secondaryColor: .gray.opacity(0.3),
+        secondaryColor: .gray,  // Same color for solid appearance
         textColor: .primary,
         borderColor: .gray,
         gradient: LinearGradient(
-            gradient: Gradient(colors: [.gray, .gray.opacity(0.3)]),
+            gradient: Gradient(colors: [.gray, .gray]),
             startPoint: .topLeading,
             endPoint: .bottomTrailing
         )
@@ -94,6 +98,61 @@ extension Color {
 // MARK: - Belt-Themed UI Components
 
 /**
+ * Proper belt border design with explicit Primary-Secondary-Primary pattern
+ */
+struct BeltBorder: View {
+    let theme: BeltTheme
+    let cornerRadius: CGFloat
+    let borderWidth: CGFloat
+    
+    var body: some View {
+        ZStack {
+            // 2px grey stroke as base layer (outermost)
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .strokeBorder(Color.gray.opacity(0.6), lineWidth: 2)
+            
+            if theme.secondaryColor != theme.primaryColor {
+                // For tag belts: Three concentric layers inside grey stroke
+                BeltThreeLayerDesign(theme: theme, cornerRadius: cornerRadius - 1, borderWidth: borderWidth - 2)
+            } else {
+                // For solid color belts: Single solid color border
+                RoundedRectangle(cornerRadius: cornerRadius - 1)
+                    .strokeBorder(theme.primaryColor, lineWidth: borderWidth - 2)
+            }
+        }
+    }
+}
+
+/**
+ * Three-layer belt design with proper concentric positioning using insets
+ */
+struct BeltThreeLayerDesign: View {
+    let theme: BeltTheme
+    let cornerRadius: CGFloat
+    let borderWidth: CGFloat
+    
+    var body: some View {
+        let thirdWidth = borderWidth / 3
+        
+        ZStack {
+            // Layer 1: Outer ring - Primary color
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .strokeBorder(theme.primaryColor, lineWidth: thirdWidth)
+            
+            // Layer 2: Middle ring - Secondary color (inset by thirdWidth)
+            RoundedRectangle(cornerRadius: max(2, cornerRadius - thirdWidth))
+                .strokeBorder(theme.secondaryColor, lineWidth: thirdWidth)
+                .padding(thirdWidth)
+            
+            // Layer 3: Inner ring - Primary color (inset by 2 * thirdWidth)
+            RoundedRectangle(cornerRadius: max(2, cornerRadius - (thirdWidth * 2)))
+                .strokeBorder(theme.primaryColor, lineWidth: thirdWidth)
+                .padding(thirdWidth * 2)
+        }
+    }
+}
+
+/**
  * Belt-themed card background with white fill and belt-colored border
  */
 struct BeltCardBackground: View {
@@ -101,7 +160,7 @@ struct BeltCardBackground: View {
     let cornerRadius: CGFloat
     let borderWidth: CGFloat
     
-    init(theme: BeltTheme, cornerRadius: CGFloat = 20, borderWidth: CGFloat = 6) {
+    init(theme: BeltTheme, cornerRadius: CGFloat = 20, borderWidth: CGFloat = 15) {
         self.theme = theme
         self.cornerRadius = cornerRadius
         self.borderWidth = borderWidth
@@ -109,51 +168,31 @@ struct BeltCardBackground: View {
     
     var body: some View {
         ZStack {
-            // White card background
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .fill(Color.white)
+            // Belt design: Primary-Secondary-Primary in thirds with grey stroke
+            BeltBorder(theme: theme, cornerRadius: cornerRadius, borderWidth: borderWidth)
             
-            // Belt-styled border: outer primary color + inner secondary color
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .strokeBorder(effectivePrimaryColor, lineWidth: borderWidth)
-                .overlay(
-                    // Inner stripe for belts with tags (secondary color)
-                    RoundedRectangle(cornerRadius: cornerRadius - borderWidth/3)
-                        .strokeBorder(effectiveSecondaryColor, lineWidth: borderWidth/3)
-                )
+            // White card background (positioned inside belt border)
+            RoundedRectangle(cornerRadius: max(2, cornerRadius - borderWidth))
+                .fill(Color.white)
+                .padding(borderWidth)
+            
+            // Belt knot decoration at bottom center
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    BeltKnot(theme: theme)
+                    Spacer()
+                }
+                .offset(y: 8)
+            }
         }
-        .shadow(color: effectivePrimaryColor.opacity(0.2), radius: 4, x: 0, y: 2)
-    }
-    
-    // Enhanced colors for white belt visibility
-    private var effectivePrimaryColor: Color {
-        if isWhiteBelt(theme.primaryColor) {
-            return Color.gray.opacity(0.6)
-        }
-        return theme.primaryColor
-    }
-    
-    private var effectiveSecondaryColor: Color {
-        if isWhiteBelt(theme.secondaryColor) {
-            return Color.gray.opacity(0.3)
-        }
-        return theme.secondaryColor
-    }
-    
-    private func isWhiteBelt(_ color: Color) -> Bool {
-        // Check if color is very close to white
-        let components = UIColor(color).cgColor.components ?? [1, 1, 1, 1]
-        let red = components[0]
-        let green = components[1]
-        let blue = components[2]
-        
-        // Consider it white if all RGB values are above 0.95
-        return red > 0.95 && green > 0.95 && blue > 0.95
+        .shadow(color: theme.primaryColor.opacity(0.15), radius: 4, x: 0, y: 2)
     }
 }
 
 /**
- * Belt-themed progress indicator
+ * Belt-themed progress indicator with proper tag color positioning
  */
 struct BeltProgressBar: View {
     let progress: Double
@@ -161,16 +200,51 @@ struct BeltProgressBar: View {
     
     var body: some View {
         GeometryReader { geometry in
-            HStack(spacing: 2) {
+            HStack(spacing: 1) {
                 ForEach(0..<10, id: \.self) { index in
-                    Rectangle()
-                        .fill(Double(index) < progress * 10 ? theme.primaryColor : theme.secondaryColor)
-                        .frame(height: 4)
+                    BeltProgressSegment(
+                        index: index,
+                        progress: progress,
+                        theme: theme
+                    )
                 }
             }
         }
-        .frame(height: 4)
-        .cornerRadius(2)
+        .frame(height: 6)
+        .cornerRadius(3)
+    }
+}
+
+/**
+ * Individual progress bar segment with center stripe for tag belts
+ */
+struct BeltProgressSegment: View {
+    let index: Int
+    let progress: Double
+    let theme: BeltTheme
+    
+    private var isActive: Bool {
+        Double(index) < progress * 10
+    }
+    
+    var body: some View {
+        ZStack {
+            // Base color (primary for active, gray for inactive)
+            Rectangle()
+                .fill(isActive ? theme.primaryColor : Color.gray.opacity(0.3))
+                .frame(height: 6)
+            
+            // Center stripe for tag belts (only if active and has secondary color)
+            if isActive && theme.secondaryColor != theme.primaryColor {
+                Rectangle()
+                    .fill(theme.secondaryColor)
+                    .frame(height: 2) // Center third of 6px height
+            }
+        }
+        .overlay(
+            Rectangle()
+                .stroke(Color.gray.opacity(0.4), lineWidth: 0.5)
+        )
     }
 }
 
@@ -185,7 +259,7 @@ struct BeltBadge: View {
         Text(beltLevel.colorName)
             .font(.caption)
             .fontWeight(.semibold)
-            .foregroundColor(.white)
+            .foregroundColor(theme.textColor)
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
             .background(
@@ -201,5 +275,65 @@ struct BeltBadge: View {
                     }
                 }
             )
+    }
+}
+
+/**
+ * Small belt knot decoration for card bottom with proper belt ends
+ */
+struct BeltKnot: View {
+    let theme: BeltTheme
+    
+    var body: some View {
+        ZStack {
+            // Belt ends angled downward at 45 degrees with proper belt design
+            HStack(spacing: 20) {
+                // Left belt end
+                BeltEnd(theme: theme, angle: -45)
+                    .offset(x: 2, y: 3)
+                
+                // Right belt end  
+                BeltEnd(theme: theme, angle: 45)
+                    .offset(x: -2, y: 3)
+            }
+            
+            // Main knot body (on top) - sized to match belt thickness
+            RoundedRectangle(cornerRadius: 4)
+                .fill(theme.primaryColor)
+                .frame(width: 20, height: 15)
+            
+            // Knot center tie (secondary color stripe)
+            if theme.secondaryColor != theme.primaryColor {
+                RoundedRectangle(cornerRadius: 1)
+                    .fill(theme.secondaryColor)
+                    .frame(width: 7, height: 15)
+            }
+        }
+        .frame(width: 45, height: 15)
+    }
+}
+
+/**
+ * Individual belt end with proper belt design and thickness
+ */
+struct BeltEnd: View {
+    let theme: BeltTheme
+    let angle: Double
+    
+    var body: some View {
+        ZStack {
+            // Base belt end (primary color) - sized to match belt border
+            Rectangle()
+                .fill(theme.primaryColor)
+                .frame(width: 18, height: 15) // Match 15px belt border thickness
+            
+            // Center stripe for tag belts
+            if theme.secondaryColor != theme.primaryColor {
+                Rectangle()
+                    .fill(theme.secondaryColor)
+                    .frame(width: 18, height: 5) // Center third (5px of 15px)
+            }
+        }
+        .rotationEffect(.degrees(angle))
     }
 }
