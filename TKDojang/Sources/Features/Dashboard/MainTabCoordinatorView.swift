@@ -90,6 +90,11 @@ struct DashboardView: View {
                 Spacer()
             }
             .navigationTitle("Dashboard")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    ProfileSwitcher()
+                }
+            }
         }
     }
 }
@@ -373,19 +378,36 @@ struct PatternsView: View {
         }
         .navigationTitle("Patterns")
         .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                ProfileSwitcher()
+            }
+        }
         .task {
             await loadPatterns()
+        }
+        .onChange(of: dataManager.profileService.activeProfile) {
+            Task {
+                await loadPatterns()
+            }
         }
     }
     
     @MainActor
     private func loadPatterns() async {
         isLoading = true
-        userProfile = dataManager.getOrCreateDefaultUserProfile()
+        
+        // Get the active profile from ProfileService
+        userProfile = dataManager.profileService.getActiveProfile()
+        
+        // If no active profile, ensure we have at least one profile
+        if userProfile == nil {
+            userProfile = dataManager.getOrCreateDefaultUserProfile()
+        }
         
         if let profile = userProfile {
             patterns = dataManager.patternService.getPatternsForUser(userProfile: profile)
-            print("🥋 Loaded \(patterns.count) patterns for user")
+            print("🥋 Loaded \(patterns.count) patterns for user \(profile.name)")
         }
         
         isLoading = false
@@ -814,7 +836,11 @@ struct TestSelectionView: View {
     }
     
     private func startComprehensiveTest() {
-        let userProfile = dataManager.getOrCreateDefaultUserProfile()
+        // Get the active profile from ProfileService
+        guard let userProfile = dataManager.profileService.getActiveProfile() else {
+            errorMessage = "No active profile found. Please create a profile first."
+            return
+        }
         
         isStartingTest = true
         errorMessage = nil
@@ -838,7 +864,11 @@ struct TestSelectionView: View {
     }
     
     private func startQuickTest() {
-        let userProfile = dataManager.getOrCreateDefaultUserProfile()
+        // Get the active profile from ProfileService
+        guard let userProfile = dataManager.profileService.getActiveProfile() else {
+            errorMessage = "No active profile found. Please create a profile first."
+            return
+        }
         
         isStartingTest = true
         errorMessage = nil
@@ -865,73 +895,252 @@ struct TestSelectionView: View {
 struct ProfileView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
     @Environment(DataManager.self) private var dataManager
+    @State private var showingProfileManagement = false
     @State private var showingSettings = false
     @State private var userProfile: UserProfile?
+    @State private var allProfiles: [UserProfile] = []
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 30) {
-                Image(systemName: "person.circle.fill")
-                    .font(.system(size: 80))
-                    .foregroundColor(.blue)
-                
-                Text("Your Profile")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-                VStack(spacing: 16) {
-                    Text("TKDojang Student")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                    
+            ScrollView {
+                VStack(spacing: 24) {
+                    // Current Profile Header
                     if let profile = userProfile {
-                        Text(profile.currentBeltLevel.name)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 8)
-                            .background(Color.blue.opacity(0.1))
-                            .cornerRadius(20)
-                        
-                        Text("Learning Mode: \(profile.learningMode.displayName)")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
+                        ProfileHeaderCard(profile: profile)
                     }
-                }
-                
-                Spacer()
-                
-                VStack(spacing: 12) {
-                    Button("Learning Settings") {
-                        showingSettings = true
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
-                    .frame(maxWidth: .infinity)
                     
-                    Button("Sign Out") {
-                        appCoordinator.logout()
+                    // Profile Management Section
+                    VStack(spacing: 16) {
+                        HStack {
+                            Text("Family Profiles")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                            Spacer()
+                            Text("\(allProfiles.count)/6")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                        ProfileGridView(profiles: allProfiles, currentProfile: userProfile)
+                        
+                        if allProfiles.count < 6 {
+                            Button("Add New Profile") {
+                                showingProfileManagement = true
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .controlSize(.large)
+                            .frame(maxWidth: .infinity)
+                        }
                     }
-                    .buttonStyle(.bordered)
-                    .controlSize(.large)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.red)
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(16)
+                    
+                    // Settings & Actions
+                    VStack(spacing: 12) {
+                        NavigationLink("Learning Settings") {
+                            UserSettingsView()
+                        }
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        .frame(maxWidth: .infinity)
+                        
+                        Button("Manage All Profiles") {
+                            showingProfileManagement = true
+                        }
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        .frame(maxWidth: .infinity)
+                    }
                 }
-                .padding(.horizontal)
-                .padding(.bottom, 30)
+                .padding()
             }
-            .navigationTitle("Profile")
+            .navigationTitle("Profiles")
+            .navigationBarTitleDisplayMode(.large)
             .onAppear {
-                loadUserProfile()
+                loadProfiles()
             }
-            .sheet(isPresented: $showingSettings) {
-                UserSettingsView()
+            .onChange(of: dataManager.profileService.activeProfile) {
+                loadProfiles()
+            }
+            .sheet(isPresented: $showingProfileManagement) {
+                ProfileManagementView()
             }
         }
     }
     
-    private func loadUserProfile() {
-        userProfile = dataManager.getOrCreateDefaultUserProfile()
+    private func loadProfiles() {
+        userProfile = dataManager.profileService.getActiveProfile()
+        
+        // If no active profile, create default
+        if userProfile == nil {
+            userProfile = dataManager.getOrCreateDefaultUserProfile()
+        }
+        
+        // Load all profiles
+        do {
+            allProfiles = try dataManager.profileService.getAllProfiles()
+        } catch {
+            print("❌ Failed to load profiles: \(error)")
+            allProfiles = []
+        }
+    }
+}
+
+// MARK: - Profile Header Card
+
+struct ProfileHeaderCard: View {
+    let profile: UserProfile
+    
+    var body: some View {
+        HStack(spacing: 16) {
+            // Avatar
+            Image(systemName: profile.avatar.rawValue)
+                .font(.system(size: 50))
+                .foregroundColor(profile.colorTheme.primarySwiftUIColor)
+                .frame(width: 70, height: 70)
+                .background(profile.colorTheme.primarySwiftUIColor.opacity(0.1))
+                .clipShape(Circle())
+            
+            // Profile Info
+            VStack(alignment: .leading, spacing: 8) {
+                Text(profile.name)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                
+                HStack {
+                    Text(profile.currentBeltLevel.shortName)
+                        .font(.subheadline)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(profile.colorTheme.primarySwiftUIColor.opacity(0.2))
+                        .cornerRadius(12)
+                    
+                    Text("•")
+                        .foregroundColor(.secondary)
+                    
+                    Text(profile.learningMode.displayName)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                
+                // Quick Stats
+                HStack(spacing: 16) {
+                    StatBadge(title: "Streak", value: "\(profile.streakDays)")
+                    StatBadge(title: "Flashcards", value: "\(profile.totalFlashcardsSeen)")
+                    StatBadge(title: "Tests", value: "\(profile.totalTestsTaken)")
+                }
+            }
+            
+            Spacer()
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color(.systemBackground))
+                .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
+        )
+    }
+}
+
+// MARK: - Profile Grid View
+
+struct ProfileGridView: View {
+    let profiles: [UserProfile]
+    let currentProfile: UserProfile?
+    @Environment(DataManager.self) private var dataManager
+    
+    var body: some View {
+        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 3), spacing: 12) {
+            ForEach(profiles, id: \.id) { profile in
+                ProfileGridCard(
+                    profile: profile,
+                    isActive: profile.id == currentProfile?.id,
+                    onTap: { switchToProfile(profile) }
+                )
+            }
+        }
+    }
+    
+    private func switchToProfile(_ profile: UserProfile) {
+        do {
+            try dataManager.profileService.activateProfile(profile)
+        } catch {
+            print("❌ Failed to switch profile: \(error)")
+        }
+    }
+}
+
+// MARK: - Profile Grid Card
+
+struct ProfileGridCard: View {
+    let profile: UserProfile
+    let isActive: Bool
+    let onTap: () -> Void
+    
+    var body: some View {
+        Button(action: onTap) {
+            VStack(spacing: 8) {
+                // Avatar with active indicator
+                ZStack {
+                    Image(systemName: profile.avatar.rawValue)
+                        .font(.system(size: 24))
+                        .foregroundColor(profile.colorTheme.primarySwiftUIColor)
+                        .frame(width: 50, height: 50)
+                        .background(profile.colorTheme.primarySwiftUIColor.opacity(0.1))
+                        .clipShape(Circle())
+                    
+                    if isActive {
+                        Circle()
+                            .stroke(profile.colorTheme.primarySwiftUIColor, lineWidth: 3)
+                            .frame(width: 58, height: 58)
+                    }
+                }
+                
+                Text(profile.name)
+                    .font(.caption)
+                    .fontWeight(isActive ? .semibold : .regular)
+                    .foregroundColor(isActive ? profile.colorTheme.primarySwiftUIColor : .primary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+                
+                Text(profile.currentBeltLevel.shortName)
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+                    .lineLimit(1)
+            }
+            .padding(.vertical, 12)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(isActive ? profile.colorTheme.primarySwiftUIColor.opacity(0.1) : Color(.tertiarySystemBackground))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(isActive ? profile.colorTheme.primarySwiftUIColor : Color.clear, lineWidth: 2)
+                    )
+            )
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+// MARK: - Stat Badge
+
+struct StatBadge: View {
+    let title: String
+    let value: String
+    
+    var body: some View {
+        VStack(spacing: 2) {
+            Text(value)
+                .font(.caption)
+                .fontWeight(.semibold)
+                .foregroundColor(.primary)
+            Text(title)
+                .font(.caption2)
+                .foregroundColor(.secondary)
+        }
+        .frame(minWidth: 40)
     }
 }
 

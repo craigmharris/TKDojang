@@ -21,6 +21,7 @@ class DataManager {
     private(set) var modelContainer: ModelContainer
     private(set) var terminologyService: TerminologyDataService
     private(set) var patternService: PatternDataService
+    private(set) var profileService: ProfileService
     
     var modelContext: ModelContext {
         return modelContainer.mainContext
@@ -45,7 +46,8 @@ class DataManager {
                 TestPerformance.self,
                 Pattern.self,
                 PatternMove.self,
-                UserPatternProgress.self
+                UserPatternProgress.self,
+                StudySession.self
             ])
             
             let modelConfiguration = ModelConfiguration(
@@ -63,6 +65,7 @@ class DataManager {
             self.modelContainer = container
             self.terminologyService = TerminologyDataService(modelContext: container.mainContext)
             self.patternService = PatternDataService(modelContext: container.mainContext)
+            self.profileService = ProfileService(modelContext: container.mainContext)
             
             // Perform initial setup if needed
             Task {
@@ -70,7 +73,8 @@ class DataManager {
             }
             
         } catch {
-            fatalError("Failed to create model container: \\(error)")
+            print("❌ Failed to create model container: \(error)")
+            fatalError("Failed to create model container: \(error). Please use 'Reset Database & Reload Content' from User Settings.")
         }
     }
     
@@ -128,31 +132,38 @@ class DataManager {
     }
     
     /**
-     * Creates or retrieves the default user profile
+     * Creates or retrieves the active user profile
      * 
-     * PURPOSE: Ensures there's always a user profile for the app to work with
-     * In a multi-user app, this would be more sophisticated
+     * PURPOSE: Ensures there's always an active profile for the app to work with
+     * Uses the new multi-profile system with ProfileService
      */
     func getOrCreateDefaultUserProfile() -> UserProfile {
-        let descriptor = FetchDescriptor<UserProfile>()
+        // Try to get active profile first
+        if let activeProfile = profileService.getActiveProfile() {
+            return activeProfile
+        }
         
+        // No active profile, try to get any existing profile
         do {
-            let existingProfiles = try modelContainer.mainContext.fetch(descriptor)
-            
-            if let existing = existingProfiles.first {
-                return existing
-            } else {
-                // Create default profile with White Belt
-                let beltDescriptor = FetchDescriptor<BeltLevel>()
-                let allBelts = try modelContainer.mainContext.fetch(beltDescriptor)
-                let whiteBelt = allBelts.first { $0.shortName.contains("10th Keup") } ?? allBelts.first!
-                let profile = UserProfile(currentBeltLevel: whiteBelt, learningMode: .mastery)
-                
-                modelContainer.mainContext.insert(profile)
-                try modelContainer.mainContext.save()
-                
-                return profile
+            let existingProfiles = try profileService.getAllProfiles()
+            if let firstProfile = existingProfiles.first {
+                try profileService.activateProfile(firstProfile)
+                return firstProfile
             }
+            
+            // No profiles exist, create default profile
+            let beltDescriptor = FetchDescriptor<BeltLevel>()
+            let allBelts = try modelContainer.mainContext.fetch(beltDescriptor)
+            let whiteBelt = allBelts.first { $0.shortName.contains("10th Keup") } ?? allBelts.first!
+            
+            let defaultProfile = try profileService.createProfile(
+                name: "Student",
+                avatar: .student1,
+                colorTheme: .blue,
+                beltLevel: whiteBelt
+            )
+            
+            return defaultProfile
         } catch {
             fatalError("Failed to create user profile: \\(error)")
         }
@@ -232,7 +243,7 @@ class DataManager {
                     modularLoader.loadCompleteSystem()
                     
                     // Reload patterns after belt levels are created
-                    let allBelts = try await self.modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
+                    let allBelts = try self.modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
                     await MainActor.run {
                         self.patternService.seedInitialPatterns(beltLevels: allBelts)
                     }
@@ -262,6 +273,7 @@ class DataManager {
         // Implementation for importing user progress
         return false
     }
+    
 }
 
 // MARK: - SwiftUI Environment Integration
@@ -270,7 +282,7 @@ class DataManager {
  * SwiftUI Environment key for DataManager
  */
 struct DataManagerKey: EnvironmentKey {
-    @MainActor static let defaultValue = DataManager.shared
+    nonisolated static let defaultValue = DataManager.shared
 }
 
 extension EnvironmentValues {

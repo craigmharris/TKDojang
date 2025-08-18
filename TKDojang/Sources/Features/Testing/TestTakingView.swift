@@ -23,6 +23,7 @@ struct TestTakingView: View {
     @State private var showingFeedback = false
     @State private var feedbackTimer: Timer?
     @State private var showingResults = false
+    @State private var userProfile: UserProfile?
     
     var currentQuestion: TestQuestion? {
         guard currentQuestionIndex < testSession.questions.count else { return nil }
@@ -154,6 +155,10 @@ struct TestTakingView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(showingFeedback)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    ProfileSwitcher()
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if !showingFeedback {
                         Button("Exit") {
@@ -171,10 +176,16 @@ struct TestTakingView: View {
                 )
             }
             
+            // Load the active profile
+            userProfile = dataManager.profileService.getActiveProfile()
+            
             // Mark first question as presented
             if let firstQuestion = currentQuestion {
                 firstQuestion.markAsPresented()
             }
+        }
+        .onChange(of: dataManager.profileService.activeProfile) {
+            userProfile = dataManager.profileService.getActiveProfile()
         }
         .navigationDestination(isPresented: $showingResults) {
             if let result = testSession.result {
@@ -219,7 +230,7 @@ struct TestTakingView: View {
         guard let service = testingService else { return }
         
         do {
-            let result = try service.completeTest(session: testSession)
+            let result = try service.completeTest(session: testSession, for: userProfile)
             // Ensure the result is set on the session for navigation
             testSession.result = result
             showingResults = true

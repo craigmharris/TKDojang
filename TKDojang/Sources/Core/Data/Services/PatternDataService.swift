@@ -77,7 +77,7 @@ class PatternDataService {
      * Fetches all patterns available to a user based on their belt level
      */
     func getPatternsForUser(userProfile: UserProfile) -> [Pattern] {
-        let userBeltSortOrder = userProfile.currentBeltLevel.sortOrder
+        let _ = userProfile.currentBeltLevel.sortOrder
         
         let descriptor = FetchDescriptor<Pattern>()
         
@@ -351,7 +351,7 @@ class PatternDataService {
         // Create Chon-Ji pattern moves
         let moves = createChonJiMoves()
         
-        let chonJi = createPattern(
+        let _ = createPattern(
             name: "Chon-Ji",
             hangul: "천지",
             englishMeaning: "Heaven and Earth",

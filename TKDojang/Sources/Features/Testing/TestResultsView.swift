@@ -121,6 +121,10 @@ struct TestResultsView: View {
             .navigationTitle("Test Results")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    ProfileSwitcher()
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
                         dismiss()

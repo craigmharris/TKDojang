@@ -275,14 +275,14 @@ class TestingService: ObservableObject {
     /**
      * Completes a test session and generates results
      */
-    func completeTest(session: TestSession) throws -> TestResult {
+    func completeTest(session: TestSession, for userProfile: UserProfile? = nil) throws -> TestResult {
         session.completedAt = Date()
         
         let result = generateTestResult(for: session)
         session.result = result
         
         // Update user's historical performance
-        try updatePerformanceHistory(with: result, session: session)
+        try updatePerformanceHistory(with: result, session: session, userProfile: userProfile)
         
         try modelContext.save()
         return result
@@ -425,11 +425,21 @@ class TestingService: ObservableObject {
         }
     }
     
-    private func updatePerformanceHistory(with result: TestResult, session: TestSession) throws {
+    private func updatePerformanceHistory(with result: TestResult, session: TestSession, userProfile: UserProfile? = nil) throws {
         guard let userBeltLevel = session.userBeltLevel else { return }
         
+        // If userProfile is provided, record test history for that specific profile
+        if let profile = userProfile {
+            // Update profile test statistics
+            profile.totalTestsTaken += 1
+            profile.recordActivity()
+            
+            // Record study session for this test
+            try recordProfileTestSession(profile: profile, result: result, session: session)
+        }
+        
         // Get or create performance record for user's belt level
-        let userBeltSortOrder = userBeltLevel.sortOrder
+        let _ = userBeltLevel.sortOrder
         let descriptor = FetchDescriptor<TestPerformance>()
         
         let existingPerformance = try modelContext.fetch(descriptor).first
@@ -461,5 +471,26 @@ class TestingService: ObservableObject {
         if existingPerformance == nil {
             modelContext.insert(performance)
         }
+    }
+    
+    /**
+     * Records a study session for profile-specific test tracking
+     */
+    private func recordProfileTestSession(profile: UserProfile, result: TestResult, session: TestSession) throws {
+        // Create StudySession directly for the specific profile
+        let studySession = StudySession(userProfile: profile, sessionType: .testing)
+        
+        // Set session details
+        studySession.itemsStudied = result.totalQuestions
+        studySession.correctAnswers = result.correctAnswers
+        
+        // Get focus areas from the test session and convert to comma-separated string
+        let focusAreasArray = session.categories.isEmpty ? [profile.currentBeltLevel.shortName] : session.categories
+        studySession.focusAreas = focusAreasArray.joined(separator: ", ")
+        
+        // Insert the session into the model context
+        modelContext.insert(studySession)
+        
+        print("📊 Recorded test session for \(profile.name): \(result.correctAnswers)/\(result.totalQuestions) (\(Int(result.accuracy))%)")
     }
 }

@@ -18,10 +18,10 @@ import SwiftData
 @Model
 class TestSession {
     /// Unique identifier for the test session
-    let id: UUID
+    var id: UUID
     
     /// Type of test being conducted
-    let testType: TestType
+    var testType: TestType
     
     /// User's belt level when test was taken
     var userBeltLevel: BeltLevel?
@@ -46,7 +46,7 @@ class TestSession {
     var questions: [TestQuestion]
     
     /// Timestamp when test was started
-    let startedAt: Date
+    var startedAt: Date
     
     /// Timestamp when test was completed (nil if in progress)
     var completedAt: Date?
@@ -87,7 +87,7 @@ class TestSession {
 @Model
 class TestConfiguration {
     /// Maximum number of questions in the test
-    let maxQuestions: Int
+    var maxQuestions: Int
     
     /// Belt levels to include in question pool
     private var includedBeltLevelsString: String = ""
@@ -114,10 +114,10 @@ class TestConfiguration {
     }
     
     /// Whether to include time limits
-    let hasTimeLimit: Bool
+    var hasTimeLimit: Bool
     
     /// Time limit per question in seconds (if hasTimeLimit is true)
-    let timePerQuestionSeconds: Int
+    var timePerQuestionSeconds: Int
     
     /// Question types to include
     var questionTypes: [QuestionType]
@@ -144,16 +144,16 @@ class TestConfiguration {
 @Model
 class TestQuestion {
     /// Unique identifier for the question
-    let id: UUID
+    var id: UUID
     
     /// Reference to the terminology entry this question is based on
     var terminologyEntry: TerminologyEntry?
     
     /// Type of question (English→Korean, Korean→English, etc.)
-    let questionType: QuestionType
+    var questionType: QuestionType
     
     /// The question text displayed to user
-    let questionText: String
+    var questionText: String
     
     /// Four possible answers (including one correct answer)
     private var optionsString: String = ""
@@ -168,7 +168,7 @@ class TestQuestion {
     }
     
     /// Index of the correct answer in the options array
-    let correctAnswerIndex: Int
+    var correctAnswerIndex: Int
     
     /// Index of the user's selected answer (nil if not answered)
     var userAnswerIndex: Int?
@@ -227,13 +227,13 @@ class TestQuestion {
 @Model
 class TestResult {
     /// Unique identifier for the result
-    let id: UUID
+    var id: UUID
     
     /// Total number of questions in the test
-    let totalQuestions: Int
+    var totalQuestions: Int
     
     /// Number of questions answered correctly
-    let correctAnswers: Int
+    var correctAnswers: Int
     
     /// Overall accuracy percentage
     var accuracy: Double {
@@ -242,7 +242,7 @@ class TestResult {
     }
     
     /// Total time taken for the test (in seconds)
-    let totalTimeSeconds: Double
+    var totalTimeSeconds: Double
     
     /// Average time per question
     var averageTimePerQuestion: Double {
@@ -310,13 +310,13 @@ class TestResult {
 @Model
 class CategoryPerformance {
     /// Category name (basics, techniques, numbers, etc.)
-    let category: String
+    var category: String
     
     /// Number of questions in this category
-    let totalQuestions: Int
+    var totalQuestions: Int
     
     /// Number of correct answers in this category
-    let correctAnswers: Int
+    var correctAnswers: Int
     
     /// Accuracy percentage for this category
     var accuracy: Double {
@@ -334,13 +334,13 @@ class CategoryPerformance {
 @Model
 class BeltLevelPerformance {
     /// Belt level name
-    let beltLevel: String
+    var beltLevel: String
     
     /// Number of questions from this belt level
-    let totalQuestions: Int
+    var totalQuestions: Int
     
     /// Number of correct answers from this belt level
-    let correctAnswers: Int
+    var correctAnswers: Int
     
     /// Accuracy percentage for this belt level
     var accuracy: Double {
@@ -360,7 +360,7 @@ class BeltLevelPerformance {
 @Model
 class TestPerformance {
     /// Unique identifier
-    let id: UUID
+    var id: UUID
     
     /// User's belt level during this performance period
     var userBeltLevel: BeltLevel?
@@ -384,7 +384,7 @@ class TestPerformance {
     var lastTestDate: Date?
     
     /// Date this performance record was created
-    let createdAt: Date
+    var createdAt: Date
     
     /// Date this performance record was last updated
     var updatedAt: Date
