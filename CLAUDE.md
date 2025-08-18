@@ -55,15 +55,17 @@ This is **TKDojang**, a Taekwondo learning iOS app built with SwiftUI using the 
 - Provide usage examples for complex APIs
 - Explain trade-offs and alternative approaches considered
 
-## Current State (Updated: August 17, 2025)
+## Current State (Updated: August 18, 2025)
 
 ### ✅ **WORKING FEATURES - Production Ready:**
 - **Xcode Project**: Complete working iOS project (TKDojang.xcodeproj)
 - **Architecture**: Full MVVM-C implementation with coordinator pattern
-- **UI Screens**: Authentication (sign-in/register), Onboarding, Loading, Main Tab structure
-- **Flashcard System**: Working Korean terminology learning with Leitner spaced repetition
+- **Multi-Profile System**: Support for up to 6 device-local user profiles with creation, editing, deletion, and switching
+- **UI Screens**: Onboarding, Loading, Main Tab structure with profile management
+- **Flashcard System**: Working Korean terminology learning with Leitner spaced repetition, properly filtered by user belt level
+- **Multiple Choice Testing**: Complete testing system with randomized questions and performance tracking
+- **Pattern Learning**: Chon-Ji pattern implementation with step-by-step instruction
 - **Belt Design System**: Concentric belt borders with Primary-Secondary-Primary tag stripes
-- **Progress Tracking**: User statistics, mastery levels, study streaks
 - **Content Management**: Complete terminology system with 88+ entries across multiple belt levels
 - **Navigation**: Coordinator-based navigation with smooth animations
 - **GitHub Repository**: Private repo at https://github.com/craigmharris/TKDojang
@@ -72,9 +74,32 @@ This is **TKDojang**, a Taekwondo learning iOS app built with SwiftUI using the 
 - **Organized Data Structure**: Clean folder organization with Terminology/ and Patterns/ separation
 
 ### 🔧 **Known Issues:**
-- Authentication service (2-second simulation, no real auth backend)
-- User data persistence (uses @AppStorage for basic preferences only)
+- Authentication system removed (multi-profile replaces single-user auth)
+- User data persistence uses SwiftData with device-local storage only
 - Need automated testing framework
+
+### ⚠️ **CRITICAL LESSONS LEARNED - Progress Tracking Pitfalls:**
+
+**DO NOT IMPLEMENT** the following patterns when rebuilding progress tracking:
+
+1. **SwiftData Relationship Navigation on Main Thread**:
+   - Accessing `userProfile.terminologyProgress` directly causes app hangs
+   - Accessing `userProfile.studySessions` synchronously freezes the UI
+   - **Solution**: Use background queues for relationship fetching
+
+2. **Complex Nested Predicates**:
+   - Predicates like `progress.userProfile.id == profileId AND progress.terminologyEntry.beltLevel.id == beltId` cause compilation failures
+   - **Solution**: Use separate queries and combine results programmatically
+
+3. **Service Initialization During DataManager Init**:
+   - ProfileService initialization during DataManager creation causes deadlock
+   - **Solution**: Lazy initialization or dependency injection after container setup
+
+4. **Direct SwiftData Model Access in Views**:
+   - Views directly accessing SwiftData relationships block the main thread
+   - **Solution**: Use ViewModels with async data fetching
+
+**Working State Before Issues**: Commit 77485cd represents the last stable state with multi-profile system functioning correctly before progress tracking was added.
 
 ### 📁 **Project Structure:**
 ```
@@ -83,48 +108,67 @@ TKDojang/
 ├── TKDojang/Sources/
 │   ├── App/                      # App lifecycle and root views
 │   ├── Core/
-│   │   ├── Data/Content/
-│   │   │   ├── Terminology/      # 13 belt-level terminology files
-│   │   │   └── Patterns/         # Pattern definitions (separated)
+│   │   ├── Data/
+│   │   │   ├── Content/
+│   │   │   │   ├── Terminology/  # 13 belt-level terminology files
+│   │   │   │   └── Patterns/     # Pattern definitions (separated)
+│   │   │   ├── DataManager.swift # SwiftData model container management
+│   │   │   └── Services/         # Data access services
 │   │   ├── Coordinators/         # Navigation management
 │   │   └── Utils/                # Shared utilities and theming
 │   └── Features/
-│       ├── Authentication/       # Sign-in/register UI
 │       ├── Learning/             # Flashcard system
-│       └── Profile/             # User settings and preferences
+│       ├── Profile/              # Multi-profile management
+│       ├── Testing/              # Multiple choice testing system
+│       └── Patterns/             # Pattern learning (Chon-Ji)
 ├── Scripts/
 │   └── csv-to-terminology.swift # Enhanced CSV import tool
 ├── README.md                    # Project overview and architecture
 └── CLAUDE.md                    # Development context (this file)
 ```
 
-## Next Development Session (Tomorrow's Tasks):
+## Next Development Session Priority Tasks:
 
-### 📝 **Phase 1: Content Completion & Validation**
+### 🧪 **Phase 1: Automated Testing Framework**
+1. **Database loading tests** - verify all terminology loads correctly across belt levels
+2. **Multi-profile system tests** - ensure profile creation, switching, and data isolation works
+3. **Flashcard functionality tests** - ensure spaced repetition system works correctly
+4. **Multiple choice testing tests** - verify question generation and scoring
+5. **UI tests** for critical user workflows
+6. **Performance tests** for large terminology datasets
+
+### 📊 **Phase 2: Progress Tracking System (REBUILD)**
+**CRITICAL**: Follow the lessons learned above to avoid previous pitfalls
+
+1. **Architecture Design**:
+   - Use background queues for all SwiftData relationship access
+   - Implement async ViewModels instead of direct model access in views
+   - Design simple predicates that don't cross multiple relationship boundaries
+   - Use dependency injection for service initialization
+
+2. **Implementation Strategy**:
+   - Create ProgressTrackingService with async methods only
+   - Implement progress caching to reduce database queries
+   - Use @MainActor for UI updates, background queues for data fetching
+   - Test incrementally with single-relationship queries first
+
+3. **Features to Rebuild**:
+   - User study session tracking
+   - Terminology mastery levels
+   - Study streaks and statistics
+   - Performance analytics dashboard
+   - Progress visualization charts
+
+### 📝 **Phase 3: Content Completion**
 1. **Add remaining terminology files** for 5th_keup to 1st_keup (all theory coverage)
-2. **Cursory testing** to ensure database loading works correctly across all belt levels
-3. **Validate flashcard system** with complete terminology set
+2. **Additional pattern implementations** beyond Chon-Ji
+3. **Advanced testing modes** (time challenges, streak modes)
 
-### 🧪 **Phase 2: Automated Testing Framework**
-1. **Database loading tests** - verify all terminology loads correctly
-2. **Flashcard functionality tests** - ensure spaced repetition system works
-3. **UI tests** for critical user workflows
-4. **Performance tests** for large terminology datasets
-
-### 📊 **Phase 3: Assessment & Metrics System**
-1. **Multiple choice testing system** to verify user knowledge
-2. **Performance tracking** - user progress across belts and categories  
-3. **Visible metrics** - confidence building through performance visualization
-4. **Progress analytics** - streaks, mastery levels, improvement trends
-
-### 🥋 **Phase 4: Pattern Training Foundation**
-1. **First pattern implementation**: Chon-Ji pattern
-2. **New data model** for patterns containing:
-   - Pattern meaning and significance
-   - Number of moves in sequence
-   - Step-by-step move details (position, technique, stance)
-   - Move descriptions for guided training
-3. **Pattern UI foundation** for step-by-step instruction
+### 🔧 **Phase 4: Production Readiness**
+1. **Performance optimization** - reduce app startup time
+2. **Error handling** - comprehensive error states and recovery
+3. **Accessibility** - VoiceOver support and dynamic type
+4. **App Store preparation** - screenshots, descriptions, metadata
 
 ## Development Context Notes:
 - **Current State**: Complete terminology system with organized structure ready for testing
@@ -160,36 +204,56 @@ The app supports multiple environments through build configurations:
 
 Environment-specific constants are managed in `AppConstants.swift` using compiler directives.
 
-## Session Summary (August 17, 2025)
+## Session Summary (August 18, 2025)
 
 ### 🎯 **Major Accomplishments This Session:**
 
-#### 📁 **Complete Terminology System Overhaul:**
-1. **Organized Folder Structure**: Created clean separation with Terminology/ and Patterns/ folders
-2. **Enhanced CSV Tool**: Updated to output belt-prefixed filenames (10th_keup_basics.json) to single directory
-3. **Complete Data Population**: Filled in 88+ missing entries with:
-   - Authentic Korean Hangul characters (차렷, 막기, 경례, etc.)
-   - Proper IPA phonetic pronunciations (/tʃʰa.ɾjət/, /mak.k͈i/, etc.)
-   - Clear, educational definitions for all techniques and terminology
+#### 🔄 **Repository Management & Feature Integration:**
+1. **Branch Analysis**: Systematically reviewed all git branches (main, develop, feature/flashcard-ui-refinements, feature/multiple-choice-testing, feature/patterns-tul)
+2. **Strategic Merging**: Successfully merged flashcard UI refinements and multiple choice testing into develop branch
+3. **Issue Identification**: Discovered critical app hangs in profile-dependent features (flashcards, tests, patterns, progress)
+4. **Root Cause Analysis**: Identified SwiftData performance issues and service initialization deadlocks
+5. **Strategic Revert**: Reverted to commit 77485cd - last stable state with working multi-profile system
+6. **Repository Cleanup**: Pushed clean, working state to develop branch
 
-#### 🔧 **Technical Infrastructure:**
-4. **Enhanced ModularContentLoader**: Added multi-location resource loading with comprehensive debug logging
-5. **Bundle Resource Management**: Fixed file discovery across organized folder structure
-6. **Backward Compatibility**: Maintained support for existing belt system while adding new features
-7. **Quality Assurance**: Verified app builds and loads terminology correctly
+#### 🐛 **Bug Fixes & Code Quality:**
+7. **String Interpolation Errors**: Fixed 14+ instances of `\\(error)` vs `\(error)` across multiple files
+8. **Debug Logging Cleanup**: Removed 20+ performance-impacting debug print statements
+9. **Build Stability**: Ensured all merged features compile and run without crashes
 
-### ✅ **Verified Working:**
-- All 13 terminology files properly organized and loading
-- Flashcard system working with complete Korean terminology
-- CSV import tool updated for new structure
-- Belt design system with proper theming
-- Comprehensive debug logging for troubleshooting
+#### 📚 **Documentation & Knowledge Capture:**
+10. **Comprehensive Analysis**: Documented specific technical issues that caused app hangs
+11. **Lessons Learned**: Captured critical pitfalls to avoid when rebuilding progress tracking
+12. **Current State Documentation**: Updated project status to reflect working features vs. removed problematic code
 
-### 📝 **Tomorrow's Immediate Tasks:**
-1. Add remaining 5th_keup to 1st_keup terminology files
-2. Create automated testing framework
-3. Build multiple choice assessment system
-4. Start Chon-Ji pattern implementation
+### ✅ **Verified Working (Current Stable State):**
+- Multi-profile system with up to 6 device-local profiles
+- Profile creation, editing, deletion, and switching functionality
+- Flashcard system properly filtering by user belt level
+- Multiple choice testing system with performance tracking
+- Chon-Ji pattern learning with step-by-step instruction
+- All terminology loading correctly across belt levels
+- Coordinator-based navigation working smoothly
+- App launches and runs without hangs or crashes
+
+### 🚫 **Removed Features (Due to Performance Issues):**
+- Progress analytics dashboard
+- Study session tracking
+- Terminology mastery statistics
+- User progress visualization charts
+- Complex SwiftData relationship queries
+
+### 🎓 **Critical Technical Lessons:**
+- **SwiftData Performance**: Direct relationship access (`userProfile.terminologyProgress`) on main thread causes hangs
+- **Service Architecture**: Initialization during DataManager setup creates deadlocks
+- **Predicate Complexity**: Nested relationship predicates cause compilation failures
+- **Threading Strategy**: Background queues essential for database relationship navigation
+
+### 📋 **Next Session Priorities:**
+1. Implement comprehensive automated testing framework
+2. Rebuild progress tracking using lessons learned (background queues, simple predicates)
+3. Add remaining belt-level terminology content
+4. Prepare for production release
 
 ## Notes for Claude Code
 
