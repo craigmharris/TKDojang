@@ -1,15 +1,82 @@
 # TKDojang
 
-A comprehensive iOS application for learning and practicing Taekwondo, designed to guide users from beginner to advanced levels with structured lessons, technique demonstrations, and progress tracking.
+A comprehensive iOS application for learning and practicing Taekwondo, designed to guide users from beginner to advanced levels with structured lessons, technique demonstrations, and multi-profile progress tracking.
 
 ## Table of Contents
 
+- [Current Features](#current-features)
 - [Architecture Overview](#architecture-overview)
 - [Project Structure](#project-structure)
 - [Design Patterns](#design-patterns)
 - [Getting Started](#getting-started)
 - [Development Guidelines](#development-guidelines)
-- [Feature Roadmap](#feature-roadmap)
+- [Known Issues & Lessons Learned](#known-issues--lessons-learned)
+- [Development Roadmap](#development-roadmap)
+
+## Current Features
+
+### ✅ **Production-Ready Features**
+
+#### 👥 **Complete Multi-Profile System**
+- **ProfileService Architecture**: Advanced profile management with activation, switching, and data isolation
+- **Up to 6 Device-Local Profiles**: Perfect for families learning together
+- **Profile Customization**: Custom names, avatars, color themes, and belt levels
+- **Activity Tracking**: Study streaks, session counts, and last activity timestamps
+- **Data Isolation**: Complete separation between family members' learning progress
+- **ProfileSwitcher UI**: Seamless profile switching throughout the app
+
+#### 🥋 **Advanced Pattern Learning System**
+- **9 Traditional Patterns**: Complete Taekwondo pattern system with authentic Korean forms
+- **Pattern Metadata**: Names, meanings, move counts, belt requirements, and historical significance
+- **PatternService**: Belt-level filtering, user progress tracking, and pattern management
+- **Interactive Practice**: PatternDetailView with step-by-step guidance and practice interface
+- **Progress Tracking**: Individual pattern mastery levels with visual progress indicators
+- **Pattern Cards**: Rich UI with pattern information, progress, and belt level indicators
+
+#### 📚 **Enhanced Korean Terminology Learning**
+- **Profile-Aware Flashcards**: Content filtered by active profile's belt level and learning mode
+- **88+ Terminology Entries**: Authentic Korean terms with Hangul, romanization, and phonetics
+- **Leitner Spaced Repetition**: Scientifically-proven learning algorithm with 5-box system
+- **Study Session Recording**: Automatic session tracking with ProfileService integration
+- **Learning Modes**: Mastery focus vs. progression focus learning strategies
+- **Belt-Level Content**: 13 comprehensive belt levels from 10th Keup through 1st Dan
+
+#### 🧪 **Profile-Aware Testing System**
+- **User-Specific Test Creation**: Tests generated based on active profile's belt level
+- **Comprehensive Performance Tracking**: Detailed analytics with result storage
+- **Smart Question Generation**: Adaptive difficulty and content selection
+- **Test Results Integration**: Results linked to specific user profiles
+- **Multiple Test Types**: Quick tests and comprehensive assessments
+- **Learning-Focused Results**: Actionable study recommendations and weak area identification
+
+#### 🎨 **Advanced UI & Design System**
+- **Profile-Themed Interface**: Color themes and avatars personalized per profile
+- **Belt Design System**: Authentic belt progression with proper color schemes
+- **ProfileSwitcher Component**: Consistent profile switching across all major views
+- **Responsive Design**: Adaptive layouts for content-heavy Korean terminology
+- **Enhanced Navigation**: Profile-aware toolbars and context-sensitive UI
+
+#### 🏗️ **Robust Technical Architecture**
+- **Proven MVVM-C + Services**: ProfileService pattern eliminates SwiftData performance issues
+- **Async/Await Integration**: Proper threading prevents UI blocking and app hangs
+- **Service Layer Design**: Clean separation between UI and data access
+- **SwiftData Optimization**: Lessons learned applied for optimal database performance
+- **Session Management**: Automatic study session recording without performance penalties
+
+### 🧪 **Comprehensive Testing Infrastructure**
+- **Complete Test Suite**: 4 comprehensive test files covering all major functionality
+- **BasicFunctionalityTests**: Core framework validation, model creation, and basic queries
+- **MultiProfileSystemTests**: Profile creation, switching, data isolation, and limits validation
+- **FlashcardSystemTests_Simple**: Leitner box system, mastery progression, and spaced repetition
+- **PerformanceTests**: Database performance, memory usage, bulk operations, and sorting
+- **TestHelpers**: Complete test infrastructure with factories, assertions, and utilities
+
+### 🔧 **Development Infrastructure**
+- **Working Xcode Project**: Complete iOS project setup with proven architecture
+- **Git Repository Management**: Feature branch workflow with develop/main structure
+- **Comprehensive Documentation**: Detailed code comments and architectural decisions
+- **CSV Import Tools**: Bulk content creation and management utilities
+- **Organized Content Structure**: Clean separation of terminology and pattern data
 
 ## Architecture Overview
 
@@ -35,47 +102,50 @@ This app follows a **clean, scalable architecture** designed for long-term maint
 
 ```
 TKDojang/
-├── Sources/
-│   ├── App/                           # App lifecycle and root views
-│   │   ├── TKDojangApp.swift               # Main app entry point
-│   │   ├── ContentView.swift               # Root navigation container
-│   │   └── LoadingView.swift               # App loading state
+├── TKDojang.xcodeproj/               # Working Xcode project
+├── TKDojang/Sources/
+│   ├── App/                          # App lifecycle and root views
+│   │   ├── TKDojangApp.swift         # Main app entry point
+│   │   ├── ContentView.swift         # Root navigation container
+│   │   └── LoadingView.swift         # App loading state
 │   │
-│   ├── Features/                      # Feature modules (business logic)
-│   │   ├── Authentication/            # User login/registration
-│   │   │   └── AuthenticationCoordinatorView.swift
-│   │   ├── Dashboard/                 # Main user interface
-│   │   │   ├── OnboardingCoordinatorView.swift
-│   │   │   └── MainTabCoordinatorView.swift
-│   │   ├── Techniques/               # Technique library and details
-│   │   ├── Training/                 # Training sessions and workouts
-│   │   ├── Progress/                 # Progress tracking and analytics
-│   │   └── Profile/                  # User profile and settings
+│   ├── Features/                     # Feature modules (business logic)
+│   │   ├── Learning/                 # Enhanced flashcard system with profile support
+│   │   ├── Profile/                  # Complete multi-profile management
+│   │   ├── Testing/                  # Profile-aware multiple choice testing
+│   │   ├── Patterns/                 # Traditional pattern learning system
+│   │   └── Dashboard/                # Main navigation with profile integration
 │   │
 │   ├── Core/                         # Shared utilities and services
-│   │   ├── Networking/               # API clients and authentication
-│   │   │   └── AuthenticationService.swift
-│   │   ├── Database/                 # Data persistence layer
-│   │   ├── Extensions/               # Swift/UIKit extensions
-│   │   ├── Utils/                    # Helper utilities and models
-│   │   │   ├── Models.swift          # Core data models
-│   │   │   └── UserPreferencesService.swift
-│   │   └── Coordinators/             # Navigation coordinators
-│   │       └── AppCoordinator.swift  # Main app navigation
+│   │   ├── Data/                     # Data persistence and content
+│   │   │   ├── Content/
+│   │   │   │   ├── Terminology/      # 13 belt-level terminology files
+│   │   │   │   └── Patterns/         # 9 traditional pattern definitions
+│   │   │   ├── DataManager.swift     # SwiftData container + service orchestration
+│   │   │   ├── Models/               # All SwiftData models (including Patterns, Profiles)
+│   │   │   └── Services/             # Data access services (Terminology, Pattern, Profile)
+│   │   ├── Coordinators/             # Navigation management
+│   │   │   └── AppCoordinator.swift  # Main app navigation
+│   │   └── Utils/                    # Shared utilities, theming, belt design system
+│   │       ├── Models.swift          # Core data models
+│   │       ├── BeltLevel.swift       # Belt progression system
+│   │       └── BeltTheme.swift       # Belt-themed design system
 │   │
 │   └── Resources/                    # App assets and localizations
 │       ├── Assets/                   # Images, icons, colors
-│       ├── Localizations/            # Multi-language support
-│       ├── Fonts/                    # Custom typography
-│       └── Sounds/                   # Audio files
+│       └── Preview Content/          # SwiftUI preview assets
 │
-├── Tests/                            # Test suites
-│   ├── UnitTests/                    # Business logic tests
-│   ├── UITests/                      # User interface tests
-│   └── TestHelpers/                  # Testing utilities
+├── TKDojangTests/                   # Comprehensive test suite
+│   ├── BasicFunctionalityTests.swift
+│   ├── MultiProfileSystemTests.swift
+│   ├── FlashcardSystemTests_Simple.swift
+│   ├── PerformanceTests.swift
+│   └── TestHelpers/                 # Test infrastructure and utilities
 │
-├── Documentation/                    # Project documentation
-└── Scripts/                          # Build and deployment scripts
+├── Scripts/
+│   └── csv-to-terminology.swift     # Enhanced CSV import tool
+├── README.md                        # Project overview and architecture
+└── CLAUDE.md                        # Development context and guidelines
 ```
 
 ### Key Directory Explanations
@@ -84,7 +154,14 @@ TKDojang/
 Contains the application's entry point and root-level views. These files manage the overall app lifecycle and coordinate between major application flows.
 
 #### `/Sources/Features/`
-Each subdirectory represents a major feature area of the app. This organization:
+Each subdirectory represents a major feature area of the app:
+- **Learning**: Enhanced flashcard system with profile support and session tracking
+- **Profile**: Complete multi-profile management with ProfileService architecture
+- **Testing**: Profile-aware multiple choice testing with advanced analytics
+- **Patterns**: Traditional pattern learning system with 9 complete patterns
+- **Dashboard**: Main navigation with profile integration and switching
+
+This organization:
 - **Reduces merge conflicts** - developers can work on different features independently
 - **Improves code discoverability** - all related files are grouped together
 - **Enables feature flags** - entire features can be easily enabled/disabled
@@ -92,17 +169,24 @@ Each subdirectory represents a major feature area of the app. This organization:
 
 #### `/Sources/Core/`
 Shared code that multiple features depend on:
-- **Networking**: API clients, authentication services, network utilities
-- **Database**: Data persistence, Core Data models, caching strategies
-- **Extensions**: Swift/UIKit extensions used throughout the app
-- **Utils**: Helper functions, constants, shared business logic
-- **Coordinators**: Navigation coordinators that manage app flow
+- **Data**: SwiftData models, content management, and comprehensive service layer
+- **Content**: 13 belt-level terminology files and 9 traditional pattern definitions
+- **Models**: All SwiftData models including advanced Profile and Pattern models
+- **Services**: Data access services (TerminologyService, PatternService, ProfileService)
+- **Coordinators**: Navigation coordinators that manage app flow between features
+- **Utils**: Shared utilities, theming, belt progression system, and design components
 
-#### `/Tests/`
-Comprehensive testing strategy:
-- **UnitTests**: Fast, isolated tests for business logic and utilities
-- **UITests**: End-to-end tests for user workflows
-- **TestHelpers**: Shared testing utilities, mocks, and test data
+#### `/TKDojangTests/`
+Comprehensive testing infrastructure:
+- **BasicFunctionalityTests**: Core framework validation and model creation
+- **MultiProfileSystemTests**: Profile system validation with data isolation testing
+- **FlashcardSystemTests_Simple**: Spaced repetition algorithm and mastery progression
+- **PerformanceTests**: Database performance, memory usage, and bulk operations
+- **TestHelpers**: Complete test infrastructure with factories, assertions, and utilities
+
+#### `/Scripts/`
+Development and content management tools:
+- **csv-to-terminology.swift**: Enhanced tool for bulk content creation from CSV files
 
 ## Design Patterns
 
@@ -134,29 +218,30 @@ class AppCoordinator: ObservableObject {
 **Purpose**: Abstracts data access and provides a consistent interface
 
 ```swift
-// Example: AuthenticationService protocol
-protocol AuthenticationServiceProtocol {
-    var isAuthenticated: CurrentValueSubject<Bool, Never> { get }
-    func login(email: String, password: String) -> AnyPublisher<User, AuthenticationError>
+// Example: TerminologyDataService protocol
+protocol TerminologyDataServiceProtocol {
+    func loadTerminology(for beltLevel: BeltLevel) async throws -> [TerminologyEntry]
+    func getAllTerminology() async throws -> [TerminologyEntry]
+    func getTerminologyCategories() async throws -> [TerminologyCategory]
 }
 ```
 
 **Benefits**:
 - Enables easy testing with mock implementations
 - Separates business logic from data access details
-- Supports multiple data sources (API, database, cache)
-- Makes it easy to change backend services
+- Supports multiple data sources (JSON files, SwiftData, cache)
+- Makes it easy to change data storage mechanisms
 
 ### 3. Reactive Programming with Combine
 
 **Purpose**: Creates responsive UI that automatically updates when data changes
 
 ```swift
-// Example: Reactive authentication state
-authenticationService.isAuthenticated
+// Example: Reactive profile state management
+profileService.currentProfile
     .receive(on: DispatchQueue.main)
-    .sink { [weak self] isAuthenticated in
-        self?.handleAuthenticationStateChange(isAuthenticated)
+    .sink { [weak self] profile in
+        self?.updateUIForProfile(profile)
     }
     .store(in: &cancellables)
 ```
@@ -172,8 +257,9 @@ authenticationService.isAuthenticated
 ### Prerequisites
 
 - Xcode 15.0 or later
-- iOS 16.0 deployment target
+- iOS 17.0 deployment target (required for SwiftData)
 - Swift 5.9 or later
+- macOS for development
 
 ### Initial Setup
 
@@ -194,11 +280,12 @@ authenticationService.isAuthenticated
 
 ### Configuration
 
-The app uses several configuration files that you may need to customize:
+The app is designed to work out-of-the-box with no external dependencies:
 
-- **Environment Configuration**: TODO - Add environment-specific settings
-- **API Endpoints**: TODO - Configure backend service URLs
-- **Feature Flags**: TODO - Enable/disable experimental features
+- **Local Storage**: All data stored locally using SwiftData (no cloud setup required)
+- **Content Loading**: Terminology and pattern data loaded from bundled JSON files
+- **Profile Management**: Up to 6 device-local profiles with independent progress tracking
+- **No Network Required**: App functions completely offline
 
 ## Development Guidelines
 
@@ -234,32 +321,73 @@ The app uses several configuration files that you may need to customize:
 4. **Write comprehensive tests** for new functionality
 5. **Update documentation** including this README
 
-## Feature Roadmap
+## Known Issues & Lessons Learned
 
-### Phase 1: Foundation (Current)
-- [x] App architecture and navigation
-- [x] User authentication system
-- [x] Basic UI structure
-- [ ] User onboarding flow
-- [ ] Profile management
+### ✅ **Successfully Resolved SwiftData Performance Issues**
 
-### Phase 2: Core Learning Features
-- [ ] Technique library with video demonstrations
-- [ ] Structured training sessions
-- [ ] Forms (Poomsae) practice with guidance
-- [ ] Progress tracking and analytics
+During development, we encountered and successfully resolved significant SwiftData performance issues. The **ProfileService pattern** in the feature/patterns-tul branch provides the proven solution:
 
-### Phase 3: Enhanced Experience
-- [ ] Personalized learning paths
-- [ ] Achievement system and badges
-- [ ] Social features and community
-- [ ] Offline content synchronization
+#### **1. SwiftData Relationship Navigation ✅ SOLVED**
+- **Previous Issue**: Accessing `userProfile.terminologyProgress` directly caused app hangs
+- **Root Cause**: SwiftData relationship loading blocked the main thread
+- **Solution Applied**: ProfileService with async methods prevents direct relationship access
+- **Result**: Smooth UI performance with automatic session tracking
 
-### Phase 4: Advanced Features
-- [ ] AI-powered technique analysis
-- [ ] Virtual reality training experiences
-- [ ] Integration with wearable devices
-- [ ] Competition and tournament features
+#### **2. Complex Nested Predicates ✅ SOLVED**
+- **Previous Issue**: Complex predicates across relationships caused compilation failures
+- **Root Cause**: SwiftData predicate compiler limitations with nested relationships
+- **Solution Applied**: Simple queries with programmatic filtering in service layer
+- **Result**: Reliable queries with better performance and maintainability
+
+#### **3. Service Initialization ✅ SOLVED**
+- **Previous Issue**: ProfileService initialization during DataManager creation caused deadlock
+- **Root Cause**: Circular dependency during container setup
+- **Solution Applied**: Proper dependency injection with lazy initialization
+- **Result**: Clean initialization order with no circular dependencies
+
+#### **4. Direct Model Access in Views ✅ SOLVED**
+- **Previous Issue**: Views accessing SwiftData relationships blocked the main thread
+- **Root Cause**: Synchronous database queries during SwiftUI view updates
+- **Solution Applied**: Service layer with async methods and proper @MainActor threading
+- **Result**: Responsive UI with background data loading
+
+### **Architecture Success Story**
+The **feature/patterns-tul branch demonstrates the successful resolution** of all previous performance issues through the ProfileService pattern. This branch should serve as the foundation for all future development.
+
+## Development Roadmap
+
+### 🔄 **Phase 1: Branch Consolidation (Current Priority)**
+- [x] ✅ **Complete Branch Analysis**: Reviewed all branches and identified optimal features
+- [ ] **Merge Testing Infrastructure**: Copy comprehensive test suite from feature/testing-infrastructure to feature/patterns-tul
+- [ ] **Validate Test Compatibility**: Ensure tests work with enhanced multi-profile system
+- [ ] **Update Develop Branch**: Merge consolidated features into develop for stable foundation
+
+### 🧪 **Phase 2: Testing Integration & Validation**
+Building on existing comprehensive test suite:
+- [ ] **Test Infrastructure Integration**: Merge 4 comprehensive test files into primary branch
+- [ ] **Profile System Validation**: Validate MultiProfileSystemTests with enhanced ProfileService
+- [ ] **Performance Testing**: Ensure PerformanceTests work with advanced data models
+- [ ] **Continuous Integration**: Set up automated testing for all future development
+
+### 📊 **Phase 3: Enhanced Analytics & Visualization**
+Building on proven ProfileService session tracking:
+- [ ] **Session Analytics**: Expand existing ProfileService.recordStudySession() with detailed metrics
+- [ ] **Progress Visualization**: Create charts and graphs using existing session data
+- [ ] **Achievement System**: Build on current study streak tracking
+- [ ] **Family Progress**: Compare progress across multiple profiles
+- [ ] **Analytics Dashboard**: Comprehensive progress visualization
+
+### 📝 **Phase 4: Content & Feature Expansion**
+- [ ] **Complete Pattern System**: Add remaining 7 patterns beyond current 9
+- [ ] **Enhanced Testing Modes**: Time challenges, adaptive difficulty, custom test creation
+- [ ] **Advanced Learning Features**: Weak area focus, personalized study plans
+- [ ] **Community Features**: Family challenges, shared achievements
+
+### 🔧 **Phase 5: Production Polish**
+- [ ] **Performance Optimization**: App startup time, memory usage, smooth animations
+- [ ] **Accessibility**: VoiceOver support, dynamic type, reduced motion
+- [ ] **Error Handling**: Comprehensive error states, recovery mechanisms
+- [ ] **App Store Preparation**: Screenshots, descriptions, marketing materials
 
 ## Contributing
 
