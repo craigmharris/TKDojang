@@ -35,15 +35,13 @@ struct OnboardingCoordinatorView: View {
             
             VStack(spacing: 16) {
                 Button("Get Started") {
-                    appCoordinator.showAuthentication()
+                    // Mark onboarding as completed
+                    UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
+                    appCoordinator.showMainFlow()
                 }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
-                
-                Button("I Already Have an Account") {
-                    appCoordinator.showAuthentication()
-                }
-                .buttonStyle(.bordered)
+                .frame(maxWidth: .infinity)
             }
             .padding(.horizontal)
             .padding(.bottom, 50)

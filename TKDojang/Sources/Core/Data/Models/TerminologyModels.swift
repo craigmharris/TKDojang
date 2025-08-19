@@ -119,45 +119,6 @@ final class TerminologyEntry {
     }
 }
 
-// MARK: - User Learning Profile
-
-/**
- * User's learning preferences and current belt status
- * 
- * PURPOSE: Personalizes content delivery based on user's level and goals
- * SUPPORTS: Progression vs Mastery modes, belt-specific content filtering
- */
-@Model
-final class UserProfile {
-    var id: UUID
-    var currentBeltLevel: BeltLevel
-    var learningMode: LearningMode
-    var preferredCategoriesString: String = "" // Comma-separated category names
-    var dailyStudyGoal: Int = 20          // Number of terms per session
-    var createdAt: Date
-    var updatedAt: Date
-    
-    @Relationship(deleteRule: .cascade)
-    var terminologyProgress: [UserTerminologyProgress] = []
-    
-    init(currentBeltLevel: BeltLevel, learningMode: LearningMode = .progression) {
-        self.id = UUID()
-        self.currentBeltLevel = currentBeltLevel
-        self.learningMode = learningMode
-        self.createdAt = Date()
-        self.updatedAt = Date()
-    }
-    
-    // Computed property for backward compatibility
-    var preferredCategories: [String] {
-        get {
-            return preferredCategoriesString.isEmpty ? [] : preferredCategoriesString.components(separatedBy: ",")
-        }
-        set {
-            preferredCategoriesString = newValue.joined(separator: ",")
-        }
-    }
-}
 
 /**
  * Learning mode enumeration

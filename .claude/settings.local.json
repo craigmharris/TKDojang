@@ -6,7 +6,12 @@
       "Bash(git add:*)",
       "Bash(mkdir:*)",
       "Bash(cp:*)",
-      "Bash(xcodebuild:*)"
+      "Bash(xcodebuild:*)",
+      "Bash(xcrun simctl boot:*)",
+      "Bash(xcrun simctl install:*)",
+      "Bash(xcrun simctl launch:*)",
+      "Bash(xcrun simctl spawn:*)",
+      "Bash(xcrun simctl uninstall:*)"
     ],
     "deny": [],
     "ask": [],

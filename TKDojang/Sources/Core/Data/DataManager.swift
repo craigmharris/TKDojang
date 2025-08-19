@@ -20,6 +20,8 @@ class DataManager {
     
     private(set) var modelContainer: ModelContainer
     private(set) var terminologyService: TerminologyDataService
+    private(set) var patternService: PatternDataService
+    private(set) var profileService: ProfileService
     
     var modelContext: ModelContext {
         return modelContainer.mainContext
@@ -41,7 +43,11 @@ class DataManager {
                 TestResult.self,
                 CategoryPerformance.self,
                 BeltLevelPerformance.self,
-                TestPerformance.self
+                TestPerformance.self,
+                Pattern.self,
+                PatternMove.self,
+                UserPatternProgress.self,
+                StudySession.self
             ])
             
             let modelConfiguration = ModelConfiguration(
@@ -58,6 +64,8 @@ class DataManager {
             // Initialize all properties
             self.modelContainer = container
             self.terminologyService = TerminologyDataService(modelContext: container.mainContext)
+            self.patternService = PatternDataService(modelContext: container.mainContext)
+            self.profileService = ProfileService(modelContext: container.mainContext)
             
             // Perform initial setup if needed
             Task {
@@ -65,7 +73,8 @@ class DataManager {
             }
             
         } catch {
-            fatalError("Failed to create model container: \\(error)")
+            print("❌ Failed to create model container: \(error)")
+            fatalError("Failed to create model container: \(error). Please use 'Reset Database & Reload Content' from User Settings.")
         }
     }
     
@@ -85,6 +94,10 @@ class DataManager {
                 print("🗃️ Database is empty, loading modular TAGB content...")
                 let modularLoader = ModularContentLoader(dataService: terminologyService)
                 modularLoader.loadCompleteSystem()
+                
+                // Load initial patterns after belt levels are created
+                let allBelts = try modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
+                patternService.seedInitialPatterns(beltLevels: allBelts)
             } else {
                 print("✅ Database already contains \(existingBeltLevels.count) belt levels")
                 // Debug: Check if belt levels have colors
@@ -102,6 +115,16 @@ class DataManager {
                     let modularLoader = ModularContentLoader(dataService: terminologyService)
                     modularLoader.loadCompleteSystem()
                 }
+                
+                // Check if patterns exist, load if needed
+                let patternDescriptor = FetchDescriptor<Pattern>()
+                let existingPatterns = try modelContainer.mainContext.fetch(patternDescriptor)
+                if existingPatterns.isEmpty {
+                    print("🥋 No patterns found - loading initial patterns...")
+                    patternService.seedInitialPatterns(beltLevels: existingBeltLevels)
+                } else {
+                    print("✅ Database contains \(existingPatterns.count) patterns")
+                }
             }
         } catch {
             print("❌ Failed to check existing data: \\(error)")
@@ -109,31 +132,38 @@ class DataManager {
     }
     
     /**
-     * Creates or retrieves the default user profile
+     * Creates or retrieves the active user profile
      * 
-     * PURPOSE: Ensures there's always a user profile for the app to work with
-     * In a multi-user app, this would be more sophisticated
+     * PURPOSE: Ensures there's always an active profile for the app to work with
+     * Uses the new multi-profile system with ProfileService
      */
     func getOrCreateDefaultUserProfile() -> UserProfile {
-        let descriptor = FetchDescriptor<UserProfile>()
+        // Try to get active profile first
+        if let activeProfile = profileService.getActiveProfile() {
+            return activeProfile
+        }
         
+        // No active profile, try to get any existing profile
         do {
-            let existingProfiles = try modelContainer.mainContext.fetch(descriptor)
-            
-            if let existing = existingProfiles.first {
-                return existing
-            } else {
-                // Create default profile with White Belt
-                let beltDescriptor = FetchDescriptor<BeltLevel>()
-                let allBelts = try modelContainer.mainContext.fetch(beltDescriptor)
-                let whiteBelt = allBelts.first { $0.shortName.contains("10th Keup") } ?? allBelts.first!
-                let profile = UserProfile(currentBeltLevel: whiteBelt, learningMode: .mastery)
-                
-                modelContainer.mainContext.insert(profile)
-                try modelContainer.mainContext.save()
-                
-                return profile
+            let existingProfiles = try profileService.getAllProfiles()
+            if let firstProfile = existingProfiles.first {
+                try profileService.activateProfile(firstProfile)
+                return firstProfile
             }
+            
+            // No profiles exist, create default profile
+            let beltDescriptor = FetchDescriptor<BeltLevel>()
+            let allBelts = try modelContainer.mainContext.fetch(beltDescriptor)
+            let whiteBelt = allBelts.first { $0.shortName.contains("10th Keup") } ?? allBelts.first!
+            
+            let defaultProfile = try profileService.createProfile(
+                name: "Student",
+                avatar: .student1,
+                colorTheme: .blue,
+                beltLevel: whiteBelt
+            )
+            
+            return defaultProfile
         } catch {
             fatalError("Failed to create user profile: \\(error)")
         }
@@ -173,13 +203,25 @@ class DataManager {
             let profileDescriptor = FetchDescriptor<UserProfile>()
             let categoryDescriptor = FetchDescriptor<TerminologyCategory>()
             let beltDescriptor = FetchDescriptor<BeltLevel>()
+            let patternProgressDescriptor = FetchDescriptor<UserPatternProgress>()
+            let patternMoveDescriptor = FetchDescriptor<PatternMove>()
+            let patternDescriptor = FetchDescriptor<Pattern>()
             
             // Delete in order to avoid relationship conflicts
             let progress = try modelContainer.mainContext.fetch(progressDescriptor)
             progress.forEach { modelContainer.mainContext.delete($0) }
             
+            let patternProgress = try modelContainer.mainContext.fetch(patternProgressDescriptor)
+            patternProgress.forEach { modelContainer.mainContext.delete($0) }
+            
             let entries = try modelContainer.mainContext.fetch(entryDescriptor)
             entries.forEach { modelContainer.mainContext.delete($0) }
+            
+            let moves = try modelContainer.mainContext.fetch(patternMoveDescriptor)
+            moves.forEach { modelContainer.mainContext.delete($0) }
+            
+            let patterns = try modelContainer.mainContext.fetch(patternDescriptor)
+            patterns.forEach { modelContainer.mainContext.delete($0) }
             
             let profiles = try modelContainer.mainContext.fetch(profileDescriptor)
             profiles.forEach { modelContainer.mainContext.delete($0) }
@@ -199,6 +241,12 @@ class DataManager {
                     // Reload with new modular system
                     let modularLoader = ModularContentLoader(dataService: self.terminologyService)
                     modularLoader.loadCompleteSystem()
+                    
+                    // Reload patterns after belt levels are created
+                    let allBelts = try self.modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
+                    await MainActor.run {
+                        self.patternService.seedInitialPatterns(beltLevels: allBelts)
+                    }
                 }
             }
             
@@ -225,6 +273,7 @@ class DataManager {
         // Implementation for importing user progress
         return false
     }
+    
 }
 
 // MARK: - SwiftUI Environment Integration
@@ -233,7 +282,7 @@ class DataManager {
  * SwiftUI Environment key for DataManager
  */
 struct DataManagerKey: EnvironmentKey {
-    @MainActor static let defaultValue = DataManager.shared
+    nonisolated static let defaultValue = DataManager.shared
 }
 
 extension EnvironmentValues {

@@ -182,7 +182,7 @@ class ModularContentLoader {
         let data = try Data(contentsOf: url)
         
         do {
-            let content = try JSONDecoder().decode(CategoryContent.self, from: data)
+            let _ = try JSONDecoder().decode(CategoryContent.self, from: data)
         } catch {
             print("❌ Failed to decode \(url.lastPathComponent): \(error)")
             throw error

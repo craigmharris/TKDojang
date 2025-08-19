@@ -17,7 +17,6 @@ struct FlashcardView: View {
     let specificTerms: [TerminologyEntry]?
     
     @Environment(DataManager.self) private var dataManager
-    @Query private var userProfiles: [UserProfile]
     
     @State private var currentTermIndex = 0
     @State private var isShowingAnswer = false
@@ -28,6 +27,8 @@ struct FlashcardView: View {
     @State private var studyMode: StudyMode = .test
     @State private var cardDirection: CardDirection = .englishToKorean
     @State private var currentCardDirection: CardDirection = .englishToKorean // For random direction
+    @State private var sessionStartTime: Date?
+    @State private var sessionItemsStudied = 0
     
     init(specificTerms: [TerminologyEntry]? = nil) {
         self.specificTerms = specificTerms
@@ -78,6 +79,10 @@ struct FlashcardView: View {
             .navigationTitle("Korean Terms")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    ProfileSwitcher()
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
                         Section("Study Mode") {
@@ -116,6 +121,17 @@ struct FlashcardView: View {
             }
             .task {
                 await loadUserData()
+                sessionStartTime = Date()
+            }
+            .onChange(of: dataManager.profileService.activeProfile) {
+                Task {
+                    await loadUserData()
+                    sessionStartTime = Date() // Reset session time on profile change
+                    sessionItemsStudied = 0
+                }
+            }
+            .onDisappear {
+                recordStudySession()
             }
         }
     }
@@ -125,16 +141,22 @@ struct FlashcardView: View {
     private var headerView: some View {
         VStack(spacing: 12) {
             // User profile section
-            if userProfile != nil {
+            if let profile = userProfile {
                 HStack {
-                    Text("Current Level: \(userProfile!.currentBeltLevel.shortName)")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                        .minimumScaleFactor(0.8)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(profile.name)
+                            .font(.caption)
+                            .fontWeight(.medium)
+                            .foregroundColor(.primary)
+                        
+                        Text(profile.currentBeltLevel.shortName)
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                    }
                     
                     Spacer()
                     
-                    Text("Mode: \(userProfile!.learningMode.displayName)")
+                    Text("\(profile.learningMode.displayName)")
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .minimumScaleFactor(0.8)
@@ -323,17 +345,24 @@ struct FlashcardView: View {
     private func loadUserData() async {
         print("🎯 FlashcardView: Starting loadUserData()")
         isLoading = true
-        userProfile = dataManager.getOrCreateDefaultUserProfile()
+        
+        // Get the active profile from ProfileService
+        userProfile = dataManager.profileService.getActiveProfile()
+        
+        // If no active profile, ensure we have at least one profile
+        if userProfile == nil {
+            userProfile = dataManager.getOrCreateDefaultUserProfile()
+        }
         
         if let profile = userProfile {
-            print("👤 User profile found: Belt=\(profile.currentBeltLevel.shortName), Mode=\(profile.learningMode)")
+            print("👤 Active profile: \(profile.name) - Belt=\(profile.currentBeltLevel.shortName), Mode=\(profile.learningMode)")
             
             if let specificTerms = specificTerms {
                 terms = specificTerms
                 print("📚 Using specific terms from test: \(terms.count) terms")
             } else {
                 terms = dataManager.terminologyService.getTerminologyForUser(userProfile: profile, limit: 50)
-                print("📚 Loaded \(terms.count) terms for user")
+                print("📚 Loaded \(terms.count) terms for user \(profile.name)")
             }
             
             if terms.isEmpty {
@@ -345,6 +374,25 @@ struct FlashcardView: View {
             print("❌ No user profile found!")
         }
         isLoading = false
+    }
+    
+    private func recordStudySession() {
+        guard let profile = userProfile,
+              let startTime = sessionStartTime,
+              sessionItemsStudied > 0 else { return }
+        
+        do {
+            try dataManager.profileService.recordStudySession(
+                sessionType: .flashcards,
+                itemsStudied: sessionItemsStudied,
+                correctAnswers: sessionStats.correctCount,
+                focusAreas: [profile.currentBeltLevel.shortName]
+            )
+            
+            print("📈 Recorded flashcard session for \(profile.name): \(sessionItemsStudied) items, \(sessionStats.correctCount) correct")
+        } catch {
+            print("❌ Failed to record study session: \(error)")
+        }
     }
     
     private func nextCard() {
@@ -394,6 +442,19 @@ struct FlashcardView: View {
             sessionStats.correctCount += 1
         } else {
             sessionStats.incorrectCount += 1
+        }
+        
+        sessionItemsStudied += 1
+        
+        // Update profile activity
+        profile.recordActivity()
+        profile.totalFlashcardsSeen += 1
+        
+        // Save profile updates
+        do {
+            try dataManager.modelContext.save()
+        } catch {
+            print("❌ Failed to save profile updates: \(error)")
         }
         
         // Move to next card

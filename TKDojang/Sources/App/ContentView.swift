@@ -35,10 +35,6 @@ struct ContentView: View {
                 OnboardingCoordinatorView()
                     .transition(.move(edge: .trailing))
                 
-            case .authentication:
-                AuthenticationCoordinatorView()
-                    .transition(.move(edge: .leading))
-                
             case .main:
                 MainTabCoordinatorView()
                     .transition(.move(edge: .bottom))
