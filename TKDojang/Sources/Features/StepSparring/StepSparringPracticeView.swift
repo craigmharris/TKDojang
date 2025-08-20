@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 /**
  * StepSparringPracticeView.swift
@@ -43,6 +44,64 @@ struct StepSparringPracticeView: View {
     
     private var hasCounterAttack: Bool {
         currentStep?.counterAction != nil
+    }
+    
+    // MARK: - Belt Theme Support
+    
+    /**
+     * Determines the primary belt level for this step sparring sequence
+     * Uses the same logic as StepSparringDataService.manualBeltLevelCheck
+     */
+    private var sequenceBeltLevel: BeltLevel? {
+        let expectedBelts: [String]
+        
+        switch (sequence.type, sequence.sequenceNumber) {
+        // 3-Step Sparring patterns - return the primary/lowest belt for theming
+        case (.threeStep, 1...4):
+            expectedBelts = ["8th_keup"]  // Primary belt for theming
+        case (.threeStep, 5...7):
+            expectedBelts = ["7th_keup"]  // Primary belt for theming
+        case (.threeStep, 8...10):
+            expectedBelts = ["6th_keup"]  // Primary belt for theming
+            
+        // 2-Step Sparring patterns
+        case (.twoStep, 1...4):
+            expectedBelts = ["5th_keup"]  // Primary belt for theming
+        case (.twoStep, 5...8):
+            expectedBelts = ["4th_keup"]  // Primary belt for theming
+            
+        default:
+            expectedBelts = []
+        }
+        
+        // Get the first expected belt and convert to BeltLevel
+        guard let firstBelt = expectedBelts.first else { return nil }
+        
+        let normalizedBelt = firstBelt.replacingOccurrences(of: "_", with: " ")
+            .replacingOccurrences(of: "keup", with: "Keup")
+        
+        // Fetch the belt level from the database
+        let descriptor = FetchDescriptor<BeltLevel>(
+            predicate: #Predicate { belt in belt.shortName == normalizedBelt }
+        )
+        
+        do {
+            let results = try dataManager.modelContext.fetch(descriptor)
+            return results.first
+        } catch {
+            print("❌ Failed to fetch belt level for \(normalizedBelt): \(error)")
+            return nil
+        }
+    }
+    
+    /**
+     * Gets the belt theme for this sequence
+     */
+    private var beltTheme: BeltTheme {
+        if let beltLevel = sequenceBeltLevel {
+            return BeltTheme(from: beltLevel)
+        }
+        return BeltTheme.default
     }
     
     
@@ -118,29 +177,23 @@ struct StepSparringPracticeView: View {
                 
                 Spacer()
                 
-                Text("Attack & Defense")
-                    .font(.subheadline)
-                    .fontWeight(.medium)
-                    .foregroundColor(.orange)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(Color.orange.opacity(0.1))
-                    .cornerRadius(16)
-            }
-            
-            // Step progress bar
-            GeometryReader { geometry in
-                ZStack(alignment: .leading) {
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(height: 4)
-                    
-                    Rectangle()
-                        .fill(Color.orange)
-                        .frame(width: geometry.size.width * progressPercentage, height: 4)
+                if let beltLevel = sequenceBeltLevel {
+                    BeltBadge(beltLevel: beltLevel, theme: beltTheme)
+                } else {
+                    Text("Attack & Defense")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .foregroundColor(.orange)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(Color.orange.opacity(0.1))
+                        .cornerRadius(16)
                 }
             }
-            .frame(height: 4)
+            
+            // Step progress bar with belt theme
+            BeltProgressBar(progress: progressPercentage, theme: beltTheme)
+                .frame(height: 6)
         }
         .padding()
         .background(Color(.systemBackground))
