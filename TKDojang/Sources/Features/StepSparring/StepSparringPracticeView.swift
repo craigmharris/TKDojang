@@ -27,13 +27,18 @@ struct StepSparringPracticeView: View {
     @State private var showingCompletion = false
     @State private var sessionCompleted = false
     
+    // Ensure steps are always sorted by stepNumber (SwiftData relationships don't guarantee order)
+    private var sortedSteps: [StepSparringStep] {
+        sequence.steps.sorted { $0.stepNumber < $1.stepNumber }
+    }
+    
     private var currentStep: StepSparringStep? {
-        guard currentStepIndex < sequence.steps.count else { return nil }
-        return sequence.steps[currentStepIndex]
+        guard currentStepIndex < sortedSteps.count else { return nil }
+        return sortedSteps[currentStepIndex]
     }
     
     private var isLastStep: Bool {
-        currentStepIndex >= sequence.steps.count - 1
+        currentStepIndex >= sortedSteps.count - 1
     }
     
     private var hasCounterAttack: Bool {
@@ -107,7 +112,7 @@ struct StepSparringPracticeView: View {
         VStack(spacing: 12) {
             // Progress indicator
             HStack {
-                Text("Step \(currentStepIndex + 1) of \(sequence.steps.count)")
+                Text("Step \(currentStepIndex + 1) of \(sortedSteps.count)")
                     .font(.headline)
                     .fontWeight(.semibold)
                 
@@ -143,7 +148,7 @@ struct StepSparringPracticeView: View {
     }
     
     private var progressPercentage: Double {
-        let totalSteps = sequence.steps.count
+        let totalSteps = sortedSteps.count
         let completedSteps = currentStepIndex + 1 // Current step is considered in progress
         
         return totalSteps > 0 ? Double(completedSteps) / Double(totalSteps) : 0.0
@@ -183,7 +188,7 @@ struct StepSparringPracticeView: View {
     private var navigationControls: some View {
         VStack(spacing: 16) {
             // Step counter (centered, prominent)
-            Text("Step \(currentStepIndex + 1) of \(sequence.totalSteps)")
+            Text("Step \(currentStepIndex + 1) of \(sortedSteps.count)")
                 .font(.headline)
                 .fontWeight(.semibold)
                 .foregroundColor(.primary)
@@ -200,7 +205,7 @@ struct StepSparringPracticeView: View {
                 .frame(maxWidth: .infinity)
                 
                 // Next step or complete button
-                if currentStepIndex < sequence.totalSteps - 1 {
+                if currentStepIndex < sortedSteps.count - 1 {
                     Button("Next Step") {
                         goToNextStep()
                     }
@@ -287,7 +292,7 @@ struct StepSparringPracticeView: View {
     }
     
     private func goToNextStep() {
-        if currentStepIndex < sequence.totalSteps - 1 {
+        if currentStepIndex < sortedSteps.count - 1 {
             currentStepIndex += 1
         }
     }
@@ -329,7 +334,7 @@ struct StepSparringPracticeView: View {
         guard let profile = userProfile else { return }
         
         let duration = Date().timeIntervalSince(practiceStartTime)
-        let stepsCompleted = sessionCompleted ? sequence.totalSteps : currentStepIndex
+        let stepsCompleted = sessionCompleted ? sortedSteps.count : currentStepIndex
         
         dataManager.stepSparringService.recordPracticeSession(
             sequence: sequence,
