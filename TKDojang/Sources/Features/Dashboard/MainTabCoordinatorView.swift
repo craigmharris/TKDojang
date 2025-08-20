@@ -694,28 +694,7 @@ struct PatternDetailView: View {
     }
 }
 
-struct StepSparringView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "figure.2.arms.open")
-                .font(.system(size: 60))
-                .foregroundColor(.orange)
-            
-            Text("Step Sparring")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            
-            Text("Practice 3, 2, and 1-step sparring sequences")
-                .multilineTextAlignment(.center)
-                .foregroundColor(.secondary)
-                .padding()
-            
-            Spacer()
-        }
-        .navigationTitle("Step Sparring")
-        .navigationBarTitleDisplayMode(.large)
-    }
-}
+// StepSparringView is now defined in StepSparring/StepSparringView.swift
 
 struct LineWorkView: View {
     var body: some View {

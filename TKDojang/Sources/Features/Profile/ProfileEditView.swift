@@ -136,16 +136,16 @@ struct ProfileEditView: View {
                             
                             Picker("Learning Mode", selection: $selectedLearningMode) {
                                 ForEach(LearningMode.allCases, id: \.self) { mode in
-                                    VStack(alignment: .leading) {
-                                        Text(mode.displayName)
-                                        Text(mode.description)
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                    }
-                                    .tag(mode)
+                                    Text(mode.displayName)
+                                        .tag(mode)
                                 }
                             }
-                            .pickerStyle(SegmentedPickerStyle())
+                            .pickerStyle(.segmented)
+                            
+                            // Show description for selected mode
+                            Text(selectedLearningMode.description)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
                         }
                         
                         Divider()

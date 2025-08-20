@@ -22,6 +22,7 @@ class DataManager {
     private(set) var terminologyService: TerminologyDataService
     private(set) var patternService: PatternDataService
     private(set) var profileService: ProfileService
+    private(set) var stepSparringService: StepSparringDataService
     
     var modelContext: ModelContext {
         return modelContainer.mainContext
@@ -47,7 +48,11 @@ class DataManager {
                 Pattern.self,
                 PatternMove.self,
                 UserPatternProgress.self,
-                StudySession.self
+                StudySession.self,
+                StepSparringSequence.self,
+                StepSparringStep.self,
+                StepSparringAction.self,
+                UserStepSparringProgress.self
             ])
             
             let modelConfiguration = ModelConfiguration(
@@ -66,8 +71,10 @@ class DataManager {
             self.terminologyService = TerminologyDataService(modelContext: container.mainContext)
             self.patternService = PatternDataService(modelContext: container.mainContext)
             self.profileService = ProfileService(modelContext: container.mainContext)
+            self.stepSparringService = StepSparringDataService(modelContext: container.mainContext)
             
             // Perform initial setup if needed
+            print("🔍 DEBUG: DataManager init - about to call setupInitialData()")
             Task {
                 await setupInitialData()
             }
@@ -84,6 +91,7 @@ class DataManager {
      * PURPOSE: Ensures the app has content to work with on first launch
      */
     private func setupInitialData() async {
+        print("🔍 DEBUG: setupInitialData() called")
         // Check if we need to seed initial data
         let descriptor = FetchDescriptor<BeltLevel>()
         
@@ -98,6 +106,15 @@ class DataManager {
                 // Load initial patterns after belt levels are created
                 let allBelts = try modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
                 patternService.seedInitialPatterns(beltLevels: allBelts)
+                
+                // Load initial step sparring sequences
+                print("🥊 Loading initial step sparring sequences...")
+                stepSparringService.seedInitialSequences()
+                
+                // Verify sequences were created
+                let stepSparringDescriptor = FetchDescriptor<StepSparringSequence>()
+                let newSequences = try modelContainer.mainContext.fetch(stepSparringDescriptor)
+                print("✅ Loaded \(newSequences.count) step sparring sequences on initial setup")
             } else {
                 print("✅ Database already contains \(existingBeltLevels.count) belt levels")
                 // Debug: Check if belt levels have colors
@@ -124,6 +141,40 @@ class DataManager {
                     patternService.seedInitialPatterns(beltLevels: existingBeltLevels)
                 } else {
                     print("✅ Database contains \(existingPatterns.count) patterns")
+                }
+                
+                print("🔍 DEBUG: About to check step sparring sequences...")
+                
+                // Check if step sparring sequences exist, load if needed
+                let stepSparringDescriptor = FetchDescriptor<StepSparringSequence>()
+                let existingSequences = try modelContainer.mainContext.fetch(stepSparringDescriptor)
+                
+                print("🔍 DEBUG: DataManager found \(existingSequences.count) existing step sparring sequences in database")
+                
+                // TEMPORARY: Force reload to debug belt matching issue
+                if !existingSequences.isEmpty {
+                    print("🔄 TEMP DEBUG: Deleting existing sequences to force fresh load with debug logging")
+                    for sequence in existingSequences {
+                        modelContainer.mainContext.delete(sequence)
+                    }
+                    try modelContainer.mainContext.save()
+                }
+                
+                if existingSequences.isEmpty || true { // Force reload
+                    print("🥊 DEBUG: No step sparring sequences found - calling stepSparringService.seedInitialSequences()...")
+                    stepSparringService.seedInitialSequences()
+                    
+                    // Verify sequences were created
+                    let newSequences = try modelContainer.mainContext.fetch(stepSparringDescriptor)
+                    print("✅ DEBUG: DataManager reports \(newSequences.count) step sparring sequences after seeding")
+                } else {
+                    print("✅ DEBUG: DataManager reports database contains \(existingSequences.count) step sparring sequences")
+                    
+                    // Debug: Check belt level associations of existing sequences
+                    for sequence in existingSequences {
+                        let beltNames = sequence.beltLevels.map { $0.shortName }
+                        print("🔍 DEBUG: Sequence '\(sequence.name)' (#\(sequence.sequenceNumber)) has \(sequence.beltLevels.count) belts: \(beltNames)")
+                    }
                 }
             }
         } catch {
@@ -207,13 +258,24 @@ class DataManager {
             let patternMoveDescriptor = FetchDescriptor<PatternMove>()
             let patternDescriptor = FetchDescriptor<Pattern>()
             
+            // Step sparring descriptors
+            let stepSparringProgressDescriptor = FetchDescriptor<UserStepSparringProgress>()
+            let stepSparringStepDescriptor = FetchDescriptor<StepSparringStep>()
+            let stepSparringActionDescriptor = FetchDescriptor<StepSparringAction>()
+            let stepSparringSequenceDescriptor = FetchDescriptor<StepSparringSequence>()
+            
             // Delete in order to avoid relationship conflicts
+            // 1. Delete all progress records first (they depend on profiles)
             let progress = try modelContainer.mainContext.fetch(progressDescriptor)
             progress.forEach { modelContainer.mainContext.delete($0) }
             
             let patternProgress = try modelContainer.mainContext.fetch(patternProgressDescriptor)
             patternProgress.forEach { modelContainer.mainContext.delete($0) }
             
+            let stepSparringProgress = try modelContainer.mainContext.fetch(stepSparringProgressDescriptor)
+            stepSparringProgress.forEach { modelContainer.mainContext.delete($0) }
+            
+            // 2. Delete content objects (no dependencies on profiles)
             let entries = try modelContainer.mainContext.fetch(entryDescriptor)
             entries.forEach { modelContainer.mainContext.delete($0) }
             
@@ -223,6 +285,16 @@ class DataManager {
             let patterns = try modelContainer.mainContext.fetch(patternDescriptor)
             patterns.forEach { modelContainer.mainContext.delete($0) }
             
+            let stepSparringSteps = try modelContainer.mainContext.fetch(stepSparringStepDescriptor)
+            stepSparringSteps.forEach { modelContainer.mainContext.delete($0) }
+            
+            let stepSparringActions = try modelContainer.mainContext.fetch(stepSparringActionDescriptor)
+            stepSparringActions.forEach { modelContainer.mainContext.delete($0) }
+            
+            let stepSparringSequences = try modelContainer.mainContext.fetch(stepSparringSequenceDescriptor)
+            stepSparringSequences.forEach { modelContainer.mainContext.delete($0) }
+            
+            // 3. Delete profiles after all progress records are gone
             let profiles = try modelContainer.mainContext.fetch(profileDescriptor)
             profiles.forEach { modelContainer.mainContext.delete($0) }
             

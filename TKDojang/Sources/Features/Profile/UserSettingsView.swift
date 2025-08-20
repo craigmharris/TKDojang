@@ -57,13 +57,12 @@ struct UserSettingsView: View {
                     Stepper("Daily Goal: \(dailyStudyGoal) terms", value: $dailyStudyGoal, in: 5...50, step: 5)
                 }
                 
-                Section("Debug Tools") {
-                    Button("Reset Database & Reload Content") {
-                        dataManager.resetAndReloadDatabase()
-                    }
-                    .foregroundColor(.red)
+                Section("Data Management") {
+                    NavigationLink("Manage Profile Data", destination: SafeDataManagementView())
+                        .foregroundColor(.primary)
                     
-                    Text("Use this if belt colors aren't showing correctly. This will delete all progress and reload content with proper colors.")
+                    
+                    Text("Delete profiles, reset progress, or export data. Family-safe options with confirmations.")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }

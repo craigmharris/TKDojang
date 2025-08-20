@@ -60,6 +60,9 @@ final class UserProfile {
     @Relationship(deleteRule: .cascade, inverse: \StudySession.userProfile)
     var studySessions: [StudySession] = []
     
+    @Relationship(deleteRule: .cascade, inverse: \UserStepSparringProgress.userProfile)
+    var stepSparringProgress: [UserStepSparringProgress] = []
+    
     init(
         name: String,
         avatar: ProfileAvatar = .student1,
@@ -184,8 +187,40 @@ enum ProfileAvatar: String, CaseIterable, Codable {
     case student2 = "figure.kickboxing"
     case instructor = "figure.boxing"
     case master = "figure.mind.and.body"
-    case ninja = "person.fill.questionmark"
+    case ninja = "figure.fencing"
     case champion = "trophy.fill"
+    
+    // Legacy case for backwards compatibility (not included in allCases)
+    case ninjaLegacy = "person.fill.questionmark"
+    
+    // Custom allCases to exclude legacy cases
+    static var allCases: [ProfileAvatar] {
+        return [.student1, .student2, .instructor, .master, .ninja, .champion]
+    }
+    
+    // Custom initializer to handle legacy values
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let rawValue = try container.decode(String.self)
+        
+        // Handle legacy ninja icon
+        if rawValue == "person.fill.questionmark" {
+            self = .ninja // Convert legacy to new ninja icon
+        } else if let avatar = ProfileAvatar(rawValue: rawValue) {
+            self = avatar
+        } else {
+            // Fallback to student1 if unknown value
+            self = .student1
+        }
+    }
+    
+    // Custom encoder to always use current values
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        // Never encode the legacy value, always use current rawValue
+        let valueToEncode = (self == .ninjaLegacy) ? ProfileAvatar.ninja.rawValue : self.rawValue
+        try container.encode(valueToEncode)
+    }
     
     var displayName: String {
         switch self {
@@ -193,7 +228,7 @@ enum ProfileAvatar: String, CaseIterable, Codable {
         case .student2: return "Practitioner"
         case .instructor: return "Instructor"
         case .master: return "Master"
-        case .ninja: return "Ninja"
+        case .ninja, .ninjaLegacy: return "Ninja"
         case .champion: return "Champion"
         }
     }
@@ -204,7 +239,7 @@ enum ProfileAvatar: String, CaseIterable, Codable {
         case .student2: return "For dedicated learners"
         case .instructor: return "Teaching and guiding"
         case .master: return "Wisdom and experience"
-        case .ninja: return "Stealth and precision"
+        case .ninja, .ninjaLegacy: return "Stealth and precision"
         case .champion: return "Victory and achievement"
         }
     }

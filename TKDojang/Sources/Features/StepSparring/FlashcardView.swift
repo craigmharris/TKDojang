@@ -378,7 +378,7 @@ struct FlashcardView: View {
     
     private func recordStudySession() {
         guard let profile = userProfile,
-              let startTime = sessionStartTime,
+              sessionStartTime != nil,
               sessionItemsStudied > 0 else { return }
         
         do {

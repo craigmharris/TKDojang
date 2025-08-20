@@ -82,6 +82,7 @@ After comprehensive review of all branches (develop, feature/patterns-tul, featu
 - **Profile-Aware Testing**: User-specific test creation and result tracking
 - **Study Session Recording**: Automatic session logging with ProfileService
 - **Learning Mode Adaptation**: Mastery vs Progression mode support
+- **Step Sparring System**: Complete sparring sequence learning with manual belt filtering
 
 #### **Robust UI & Navigation**
 - **Profile-Aware Toolbars**: ProfileSwitcher in all major views
@@ -122,12 +123,14 @@ The testing-infrastructure branch provides essential testing coverage that shoul
 - ✅ **Simple Queries**: Avoided complex nested predicates that caused compilation failures
 - ✅ **Lazy Initialization**: ProfileService properly initialized after DataManager setup
 - ✅ **Service Layer**: Views use services instead of direct SwiftData model access
+- ✅ **Step Sparring "Nuclear Option"**: Completely bypassed SwiftData many-to-many relationships
 
 #### **Technical Improvements:**
 - **Session Management**: Automatic study session recording with duration and stats
 - **Profile Activity**: Last active tracking, streak counting, usage statistics
 - **Memory Efficiency**: Optimized loading patterns and lazy initialization
 - **Error Handling**: Comprehensive error management throughout profile operations
+- **Manual Belt Filtering**: Hardcoded pattern matching prevents SwiftData relationship corruption
 
 ### ⚠️ **CRITICAL LESSONS LEARNED - SwiftData Performance:**
 
@@ -148,6 +151,10 @@ The testing-infrastructure branch provides essential testing coverage that shoul
 4. **Direct SwiftData Model Access in Views** ✅ SOLVED:
    - **Problem**: Views accessing SwiftData relationships blocked the main thread
    - **Solution**: Service layer with async methods and proper threading
+
+5. **Step Sparring Many-to-Many Relationships** ✅ SOLVED:
+   - **Problem**: SwiftData many-to-many relationships between sequences and belt levels caused object invalidation crashes
+   - **Solution**: "Nuclear Option" - Completely bypass SwiftData relationships and use manual pattern matching based on sequence types and numbers
 
 ### 📁 **Updated Project Structure:**
 ```
@@ -170,6 +177,7 @@ TKDojang/
 │       ├── Profile/              # Complete multi-profile management
 │       ├── Testing/              # Profile-aware multiple choice testing  
 │       ├── Patterns/             # Traditional pattern learning system
+│       ├── StepSparring/         # Step sparring training system with manual belt filtering
 │       └── Dashboard/            # Main navigation with profile integration
 ├── TKDojangTests/               # Comprehensive test suite (needs merge from testing branch)
 │   ├── BasicFunctionalityTests.swift
@@ -266,6 +274,42 @@ The app supports multiple environments through build configurations:
 - `RELEASE`: Production environment
 
 Environment-specific constants are managed in `AppConstants.swift` using compiler directives.
+
+## Session Summary (August 20, 2025)
+
+### 🎯 **Major Accomplishments This Session:**
+
+#### 🥊 **Complete Step Sparring System Implementation:**
+1. **Step Sparring Models**: Full SwiftData models for sequences, steps, actions, and progress tracking
+2. **JSON Content System**: 5 JSON files with 18 total step sparring sequences across 3-step and 2-step categories
+3. **Practice Interface**: Complete step-by-step practice view with attack/defense/counter progression
+4. **Progress Tracking**: User progress monitoring with mastery levels and session recording
+5. **Belt-Level Filtering**: Manual pattern matching system that bypasses SwiftData relationships
+
+#### 🔧 **"Nuclear Option" Architecture Solution:**
+6. **SwiftData Relationship Bypass**: Completely eliminated problematic many-to-many relationships
+7. **Manual Belt Pattern Matching**: Hardcoded logic based on sequence numbers and types
+8. **Crash Prevention**: Solved SwiftData object invalidation issues that were causing app crashes
+9. **Stable Performance**: Reliable filtering and display of all sequences without relationship corruption
+
+#### 🚀 **Production-Ready Features:**
+10. **18 Step Sparring Sequences**: 10 three-step sequences (belts 8th-6th Keup) + 8 two-step sequences (belts 5th-4th Keup)
+11. **Counter Attack Validation**: Ensures counter attacks only appear in final steps
+12. **Belt-Appropriate Content**: Automatic filtering based on user's current belt level
+13. **Visual Progress Indicators**: Mastery-level colored progress bars and completion tracking
+
+### ✅ **Technical Architecture Success:**
+- **✅ No SwiftData Relationships**: Step sparring sequences have empty `beltLevels` arrays
+- **✅ Manual Pattern Logic**: Hardcoded belt eligibility based on sequence type and number
+- **✅ Simple Object Creation**: No complex relationship management during sequence creation
+- **✅ Stable Filtering**: All sequences display correctly without crashes
+- **✅ Counter Attack Logic**: Validated placement in final steps only
+
+### 📋 **Verified Working State:**
+- **6th Keup User**: Sees all 10 three-step sequences (correct)
+- **5th Keup User**: Sees all 10 three-step + all 8 two-step sequences (correct)
+- **No Crashes**: SwiftData object invalidation issues completely resolved
+- **Clean UI**: Progress bars, navigation, and practice interface all functional
 
 ## Session Summary (August 19, 2025)
 
