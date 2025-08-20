@@ -167,7 +167,7 @@ struct StepSparringPracticeView: View {
                         .stroke(Color.blue, lineWidth: 2)
                 )
             
-            // Counter-attack card (full width, different blue shade)
+            // Counter-attack card (full width, different blue shade) - counters only exist in final steps per JSON structure
             if let counter = step.counterAction {
                 TechniqueCard(action: counter, role: "Counter-Attack")
                     .overlay(
