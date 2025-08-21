@@ -1,0 +1,512 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Dashboard/MainTabCoordinatorView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Home",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 18
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learn",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 25
+        }
+      },
+      {
+        "comment": "",
+        "key": "Practice",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "Progress",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Profile",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 46
+        }
+      },
+      {
+        "comment": "",
+        "key": "Dashboard",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 92
+        }
+      },
+      {
+        "comment": "",
+        "key": "Welcome to Your Dashboard",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 64
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your training journey starts here.\nExplore techniques, start training sessions, and track your progress.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 68
+        }
+      },
+      {
+        "comment": "",
+        "key": "Browse Techniques",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "Study Korean Terms",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 77
+        }
+      },
+      {
+        "comment": "",
+        "key": "Techniques",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 121
+        }
+      },
+      {
+        "comment": "",
+        "key": "Technique Library",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learn kicks, blocks, strikes, and forms with step-by-step video guides.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 114
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learn",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 182
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learning Center",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 134
+        }
+      },
+      {
+        "comment": "",
+        "key": "Master Korean terminology and test your knowledge",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 138
+        }
+      },
+      {
+        "comment": "",
+        "key": "Flashcards",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 150
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tests",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 166
+        }
+      },
+      {
+        "comment": "",
+        "key": "Practice",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 247
+        }
+      },
+      {
+        "comment": "",
+        "key": "Practice Sessions",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 195
+        }
+      },
+      {
+        "comment": "",
+        "key": "Master your techniques with structured practice sessions",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 199
+        }
+      },
+      {
+        "comment": "",
+        "key": "Progress",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 271
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your Progress",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 260
+        }
+      },
+      {
+        "comment": "",
+        "key": "Track your training history, skill improvements, and belt progression.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 264
+        }
+      },
+      {
+        "comment": "",
+        "key": "Patterns",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 379
+        }
+      },
+      {
+        "comment": "",
+        "key": "Patterns/Tul",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 333
+        }
+      },
+      {
+        "comment": "",
+        "key": "Traditional Taekwondo forms with detailed guidance",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 337
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading patterns...",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 346
+        }
+      },
+      {
+        "comment": "",
+        "key": "No patterns available",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 357
+        }
+      },
+      {
+        "comment": "",
+        "key": "Patterns will be available based on your current belt level",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 361
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 444
+        }
+      },
+      {
+        "comment": "",
+        "key": "+%lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 471
+        }
+      },
+      {
+        "comment": "",
+        "key": "Progress: %lld%%",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 511
+        }
+      },
+      {
+        "comment": "",
+        "key": "Moves:",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 585
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 588
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ready Position:",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 593
+        }
+      },
+      {
+        "comment": "",
+        "key": "Pattern Diagram",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 603
+        }
+      },
+      {
+        "comment": "",
+        "key": "Diagram Loading...",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 626
+        }
+      },
+      {
+        "comment": "",
+        "key": "Diagram Coming Soon",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 643
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start Practice",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 660
+        }
+      },
+      {
+        "comment": "",
+        "key": "Interactive step-by-step guidance",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 665
+        }
+      },
+      {
+        "comment": "",
+        "key": "Step Sparring",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 715
+        }
+      },
+      {
+        "comment": "",
+        "key": "Step Sparring",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 704
+        }
+      },
+      {
+        "comment": "",
+        "key": "Practice 3, 2, and 1-step sparring sequences",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 708
+        }
+      },
+      {
+        "comment": "",
+        "key": "Line Work",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 738
+        }
+      },
+      {
+        "comment": "",
+        "key": "Line Work",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 727
+        }
+      },
+      {
+        "comment": "",
+        "key": "Forward and backward technique drills",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 731
+        }
+      },
+      {
+        "comment": "",
+        "key": "Technique Guide",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 761
+        }
+      },
+      {
+        "comment": "",
+        "key": "Technique Guide",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 750
+        }
+      },
+      {
+        "comment": "",
+        "key": "Detailed breakdowns of every technique and stance",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 754
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tests",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 829
+        }
+      },
+      {
+        "comment": "",
+        "key": "Test Your Knowledge",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 779
+        }
+      },
+      {
+        "comment": "",
+        "key": "Comprehensive tests to validate your learning progress",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 783
+        }
+      },
+      {
+        "comment": "",
+        "key": "Comprehensive Test",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 791
+        }
+      },
+      {
+        "comment": "",
+        "key": "Quick Test (5-10 questions)",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 799
+        }
+      },
+      {
+        "comment": "",
+        "key": "Preparing your test...",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 820
+        }
+      },
+      {
+        "comment": "",
+        "key": "Profiles",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 958
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add New Profile",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 927
+        }
+      },
+      {
+        "comment": "",
+        "key": "Family Profiles",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 915
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld/6",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 919
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learning Settings",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 941
+        }
+      },
+      {
+        "comment": "",
+        "key": "Manage All Profiles",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 948
+        }
+      },
+      {
+        "comment": "",
+        "key": "•",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 1019
+        }
+      }
+    ]
+  },
+  "version": 1
+}

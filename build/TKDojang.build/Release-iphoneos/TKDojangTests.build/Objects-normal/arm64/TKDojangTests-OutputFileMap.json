@@ -1,0 +1,40 @@
+{
+  "" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-master.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-master.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-master.dia",
+    "emit-module-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-master-emit-module.dia",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-master.swiftdeps"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/BasicFunctionalityTests.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/BasicFunctionalityTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/BasicFunctionalityTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/BasicFunctionalityTests.o"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/FlashcardSystemTests_Simple.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/FlashcardSystemTests_Simple.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/FlashcardSystemTests_Simple.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/FlashcardSystemTests_Simple.o"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/MultiProfileSystemTests.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileSystemTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileSystemTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileSystemTests.o"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/PerformanceTests.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/PerformanceTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/PerformanceTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/PerformanceTests.o"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/TKDojangTests.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests.o"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/TestHelpers/TestHelpers.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestHelpers.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestHelpers.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestHelpers.o"
+  }
+}

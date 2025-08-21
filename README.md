@@ -25,13 +25,15 @@ A comprehensive iOS application for learning and practicing Taekwondo, designed 
 - **Data Isolation**: Complete separation between family members' learning progress
 - **ProfileSwitcher UI**: Seamless profile switching throughout the app
 
-#### 🥋 **Advanced Pattern Learning System**
-- **9 Traditional Patterns**: Complete Taekwondo pattern system with authentic Korean forms
-- **Pattern Metadata**: Names, meanings, move counts, belt requirements, and historical significance
-- **PatternService**: Belt-level filtering, user progress tracking, and pattern management
-- **Interactive Practice**: PatternDetailView with step-by-step guidance and practice interface
-- **Progress Tracking**: Individual pattern mastery levels with visual progress indicators
-- **Pattern Cards**: Rich UI with pattern information, progress, and belt level indicators
+#### 🥋 **Advanced Pattern Learning System (JSON-Based)**
+- **9 Traditional Patterns**: Complete ITF Taekwondo pattern system with authentic Korean forms
+- **JSON Content Structure**: Belt-specific pattern files with comprehensive move breakdowns
+- **Complete Pattern Data**: Names, Hangul, pronunciation, significance, and detailed move sequences
+- **Move-by-Move Instruction**: Each move includes stance, technique, direction, key points, and common mistakes
+- **Korean Terminology Integration**: Authentic Korean technique names alongside English translations
+- **PatternContentLoader**: Consistent JSON loading architecture matching terminology and step sparring
+- **Belt-Level Filtering**: Patterns displayed based on user's current belt progression
+- **Educational Content**: Historical significance, move counts, diagram descriptions, and multimedia support
 
 #### 📚 **Enhanced Korean Terminology Learning**
 - **Profile-Aware Flashcards**: Content filtered by active profile's belt level and learning mode
@@ -48,6 +50,16 @@ A comprehensive iOS application for learning and practicing Taekwondo, designed 
 - **Test Results Integration**: Results linked to specific user profiles
 - **Multiple Test Types**: Quick tests and comprehensive assessments
 - **Learning-Focused Results**: Actionable study recommendations and weak area identification
+
+#### 🥊 **Complete Step Sparring System**
+- **18 Step Sparring Sequences**: 10 three-step sequences (8th-6th Keup) + 8 two-step sequences (5th-4th Keup)
+- **JSON Content Structure**: Belt-specific step sparring files with complete sequence breakdowns
+- **Step-by-Step Practice**: Attack, defense, and counter-attack progression with detailed instructions
+- **Manual Belt Filtering**: Hardcoded belt eligibility bypassing SwiftData relationships for stability
+- **Progress Tracking**: User mastery levels with visual progress indicators and session recording
+- **Educational Content**: Key learning points, timing, common mistakes, and technique validation
+- **Korean Terminology**: Authentic Korean names for all techniques and stances
+- **Nuclear Option Architecture**: SwiftData relationship bypass preventing crashes and object invalidation
 
 #### 🎨 **Advanced UI & Design System**
 - **Profile-Themed Interface**: Color themes and avatars personalized per profile
@@ -113,17 +125,22 @@ TKDojang/
 │   │   ├── Learning/                 # Enhanced flashcard system with profile support
 │   │   ├── Profile/                  # Complete multi-profile management
 │   │   ├── Testing/                  # Profile-aware multiple choice testing
-│   │   ├── Patterns/                 # Traditional pattern learning system
+│   │   ├── Patterns/                 # Traditional pattern learning system (JSON-based)
+│   │   ├── StepSparring/             # Step sparring training system with manual belt filtering
 │   │   └── Dashboard/                # Main navigation with profile integration
 │   │
 │   ├── Core/                         # Shared utilities and services
 │   │   ├── Data/                     # Data persistence and content
 │   │   │   ├── Content/
-│   │   │   │   ├── Terminology/      # 13 belt-level terminology files
-│   │   │   │   └── Patterns/         # 9 traditional pattern definitions
+│   │   │   │   ├── Terminology/             # 13 belt-level terminology files
+│   │   │   │   ├── Patterns/                # 9 belt-specific pattern JSON files
+│   │   │   │   ├── StepSparring/            # 5 belt-specific step sparring files
+│   │   │   │   ├── PatternContentLoader.swift     # Pattern JSON loader
+│   │   │   │   ├── StepSparringContentLoader.swift # Step sparring JSON loader
+│   │   │   │   └── ModularContentLoader.swift     # Terminology JSON loader
 │   │   │   ├── DataManager.swift     # SwiftData container + service orchestration
-│   │   │   ├── Models/               # All SwiftData models (including Patterns, Profiles)
-│   │   │   └── Services/             # Data access services (Terminology, Pattern, Profile)
+│   │   │   ├── Models/               # All SwiftData models (Patterns, Profiles, StepSparring)
+│   │   │   └── Services/             # Data access services (Terminology, Pattern, Profile, StepSparring)
 │   │   ├── Coordinators/             # Navigation management
 │   │   │   └── AppCoordinator.swift  # Main app navigation
 │   │   └── Utils/                    # Shared utilities, theming, belt design system
