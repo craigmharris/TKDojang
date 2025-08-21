@@ -1,0 +1,29 @@
+{
+  "belt_level": "4th_keup",
+  "category": "patterns",
+  "type": "traditional_patterns",
+  "description": "Traditional patterns for 4th keup students",
+  "metadata": {
+    "created_at": "2025-08-20T00:00:00Z",
+    "source": "ITF Pattern Manual",
+    "total_count": 1
+  },
+  "patterns": [
+    {
+      "name": "Joong-Gun",
+      "hangul": "중근",
+      "pronunciation": "joong-gun",
+      "phonetic": "/tʃuŋ.gun/",
+      "english_meaning": "Heavy Roots",
+      "significance": "Named after the patriot Ahn Joong-Gun who assassinated Hiro-Bumi Ito, the first Japanese governor-general of Korea, known as the man who played the leading part in the Korea-Japan merger. The 32 movements in this pattern represent Mr. Ahn's age when he was executed at Lui-Shung prison in 1910.",
+      "move_count": 32,
+      "diagram_description": "I-shaped pattern",
+      "starting_stance": "Parallel ready stance",
+      "difficulty": 4,
+      "applicable_belt_levels": ["4th_keup"],
+      "video_url": "https://example.com/patterns/joong-gun.mp4",
+      "diagram_image_url": "https://example.com/diagrams/joong-gun-diagram.jpg",
+      "moves": []
+    }
+  ]
+}

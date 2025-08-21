@@ -301,7 +301,7 @@ class PatternDataService {
     // MARK: - Content Loading
     
     /**
-     * Seeds the database with initial pattern content
+     * Seeds the database with initial pattern content from JSON files
      */
     func seedInitialPatterns(beltLevels: [BeltLevel]) {
         // Check if patterns already exist
@@ -317,26 +317,65 @@ class PatternDataService {
             print("Failed to check existing patterns: \(error)")
         }
         
-        // Create all patterns from Chon-Ji through Ko-Dang
-        createAllPatterns(beltLevels: beltLevels)
+        // Load patterns from JSON files
+        loadPatternsFromJSON()
         
-        print("✅ Seeded initial patterns")
+        print("✅ Seeded initial patterns from JSON files")
     }
     
     /**
-     * Creates all patterns from Chon-Ji through Ko-Dang
+     * Loads all patterns from JSON files using PatternContentLoader
      */
-    private func createAllPatterns(beltLevels: [BeltLevel]) {
-        createChonJiPattern(beltLevels: beltLevels)
-        createDanGunPattern(beltLevels: beltLevels)
-        createDoSanPattern(beltLevels: beltLevels)
-        createWonHyoPattern(beltLevels: beltLevels)
-        createYulGokPattern(beltLevels: beltLevels)
-        createJoongGunPattern(beltLevels: beltLevels)
-        createToiGyePattern(beltLevels: beltLevels)
-        createHwaRangPattern(beltLevels: beltLevels)
-        createChungMuPattern(beltLevels: beltLevels)
+    private func loadPatternsFromJSON() {
+        print("🌱 Loading patterns from JSON files...")
+        
+        let contentLoader = PatternContentLoader(patternService: self)
+        
+        // Use Task to handle the @MainActor requirement
+        Task { @MainActor in
+            contentLoader.loadAllContent()
+            print("✅ Completed loading patterns from JSON files")
+        }
     }
+    
+    /**
+     * Inserts a pattern into the model context
+     */
+    func insertPattern(_ pattern: Pattern) {
+        modelContext.insert(pattern)
+        
+        // Insert all moves separately to ensure proper relationships
+        pattern.moves.forEach { move in
+            modelContext.insert(move)
+        }
+    }
+    
+    /**
+     * Saves the model context
+     */
+    func saveContext() throws {
+        try modelContext.save()
+    }
+    
+    /**
+     * Gets all belt levels for pattern association
+     */
+    func getAllBeltLevels() -> [BeltLevel] {
+        let descriptor = FetchDescriptor<BeltLevel>(
+            sortBy: [SortDescriptor(\BeltLevel.sortOrder, order: .reverse)]
+        )
+        
+        do {
+            return try modelContext.fetch(descriptor)
+        } catch {
+            print("❌ Failed to fetch belt levels: \(error)")
+            return []
+        }
+    }
+    
+    // MARK: - Legacy Pattern Creation (Replaced by JSON loading)
+    // The following methods are kept for reference but are no longer used
+    // All pattern content is now loaded from JSON files via PatternContentLoader
     
     /**
      * Creates the Chon-Ji pattern with full move breakdown
