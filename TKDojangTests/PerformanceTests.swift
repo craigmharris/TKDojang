@@ -26,13 +26,20 @@ final class PerformanceTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        // Create in-memory test container
+        // Create in-memory test container with all models
         let schema = Schema([
             BeltLevel.self,
             TerminologyCategory.self,
             TerminologyEntry.self,
             UserProfile.self,
-            UserTerminologyProgress.self
+            UserTerminologyProgress.self,
+            Pattern.self,
+            PatternMove.self,
+            UserPatternProgress.self,
+            StepSparringSequence.self,
+            StepSparringStep.self,
+            StepSparringAction.self,
+            UserStepSparringProgress.self
         ])
         
         let configuration = ModelConfiguration(
@@ -541,5 +548,326 @@ final class PerformanceTests: XCTestCase {
     private func measureMemoryUsage(_ info: mach_task_basic_info_data_t) {
         let memory = info.resident_size
         print("🧠 Memory usage: \(memory / 1024 / 1024) MB")
+    }
+    
+    // MARK: - Pattern System Performance Tests
+    
+    func testPatternCreationPerformance() throws {
+        try loadLargeDataset()
+        
+        let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
+        guard let testBelt = beltLevels.first else {
+            XCTFail("No belt levels available")
+            return
+        }
+        
+        measure {
+            // Create 20 patterns with moves for performance testing
+            for i in 1...20 {
+                let pattern = Pattern(
+                    name: "Performance Pattern \(i)",
+                    hangul: "성능\(i)",
+                    englishMeaning: "Performance \(i)",
+                    significance: "Testing pattern creation performance",
+                    moveCount: 10,
+                    diagramDescription: "Test pattern \(i)",
+                    startingStance: "Ready stance"
+                )
+                
+                pattern.beltLevels = [testBelt]
+                
+                // Add 10 moves to each pattern
+                for moveNum in 1...10 {
+                    let move = PatternMove(
+                        moveNumber: moveNum,
+                        stance: "Test stance \(moveNum)",
+                        technique: "Test technique \(moveNum)",
+                        direction: "North",
+                        keyPoints: "Test key points \(moveNum)"
+                    )
+                    move.pattern = pattern
+                    pattern.moves.append(move)
+                    testContext.insert(move)
+                }
+                
+                testContext.insert(pattern)
+            }
+            
+            do {
+                try testContext.save()
+            } catch {
+                XCTFail("Failed to save patterns: \(error)")
+            }
+        }
+    }
+    
+    func testPatternQueryPerformance() throws {
+        // Create test patterns first
+        try testPatternCreationPerformance()
+        
+        measure {
+            let descriptor = FetchDescriptor<Pattern>()
+            _ = try! testContext.fetch(descriptor)
+        }
+    }
+    
+    func testPatternProgressCreationPerformance() throws {
+        try loadLargeDataset()
+        
+        let patterns = try testContext.fetch(FetchDescriptor<Pattern>())
+        let belts = try testContext.fetch(FetchDescriptor<BeltLevel>())
+        guard let testBelt = belts.first else {
+            XCTFail("No belt levels available")
+            return
+        }
+        
+        let testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        testContext.insert(testProfile)
+        try testContext.save()
+        
+        measure {
+            // Create progress for each pattern
+            for pattern in patterns.prefix(10) { // Limit to 10 for reasonable test time
+                let progress = UserPatternProgress(userProfile: testProfile, pattern: pattern)
+                // Record some practice sessions for realistic data
+                progress.recordPracticeSession(accuracy: 0.8, practiceTime: 120.0)
+                testContext.insert(progress)
+            }
+            
+            do {
+                try testContext.save()
+            } catch {
+                XCTFail("Failed to save pattern progress: \(error)")
+            }
+        }
+    }
+    
+    // MARK: - Step Sparring System Performance Tests
+    
+    func testStepSparringCreationPerformance() throws {
+        try loadLargeDataset()
+        
+        let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
+        guard let testBelt = beltLevels.first else {
+            XCTFail("No belt levels available")
+            return
+        }
+        
+        measure {
+            // Create 15 step sparring sequences for performance testing
+            for i in 1...15 {
+                let sequence = StepSparringSequence(
+                    name: "Performance Sequence \(i)",
+                    type: i % 2 == 0 ? .threeStep : .twoStep,
+                    sequenceNumber: i,
+                    sequenceDescription: "Performance testing sequence \(i)",
+                    difficulty: (i % 3) + 1
+                )
+                
+                // Add 3 steps to each sequence
+                for stepNum in 1...3 {
+                    let attackAction = StepSparringAction(
+                        technique: "Performance Attack \(stepNum)",
+                        koreanName: "공격\(stepNum)",
+                        execution: "Right stance to middle section"
+                    )
+                    
+                    let defenseAction = StepSparringAction(
+                        technique: "Performance Defense \(stepNum)",
+                        koreanName: "방어\(stepNum)",
+                        execution: "Left stance to middle section"
+                    )
+                    
+                    let step = StepSparringStep(
+                        sequence: sequence,
+                        stepNumber: stepNum,
+                        attackAction: attackAction,
+                        defenseAction: defenseAction,
+                        timing: "Simultaneous"
+                    )
+                    
+                    sequence.steps.append(step)
+                    testContext.insert(attackAction)
+                    testContext.insert(defenseAction)
+                    testContext.insert(step)
+                }
+                
+                testContext.insert(sequence)
+            }
+            
+            do {
+                try testContext.save()
+            } catch {
+                XCTFail("Failed to save step sparring sequences: \(error)")
+            }
+        }
+    }
+    
+    func testStepSparringQueryPerformance() throws {
+        // Create test sequences first
+        try testStepSparringCreationPerformance()
+        
+        measure {
+            let descriptor = FetchDescriptor<StepSparringSequence>()
+            _ = try! testContext.fetch(descriptor)
+        }
+    }
+    
+    func testStepSparringFilteringPerformance() throws {
+        try testStepSparringCreationPerformance()
+        
+        let sequences = try testContext.fetch(FetchDescriptor<StepSparringSequence>())
+        
+        measure {
+            // Filter sequences by type (simulating manual belt filtering)
+            let threeStepSequences = sequences.filter { $0.type == .threeStep }
+            let twoStepSequences = sequences.filter { $0.type == .twoStep }
+            
+            // Verify filtering worked
+            XCTAssertGreaterThan(threeStepSequences.count, 0, "Should have three-step sequences")
+            XCTAssertGreaterThan(twoStepSequences.count, 0, "Should have two-step sequences")
+        }
+    }
+    
+    // MARK: - JSON Content Loading Performance Tests
+    
+    func testJSONContentLoadingSimulation() throws {
+        // Simulate JSON loading performance without actual files
+        measure {
+            let beltLevels = createAllBeltLevels()
+            for belt in beltLevels {
+                testContext.insert(belt)
+            }
+            
+            // Simulate pattern JSON loading
+            for beltIndex in 0..<min(3, beltLevels.count) {
+                let belt = beltLevels[beltIndex]
+                let pattern = Pattern(
+                    name: "JSON Pattern \(beltIndex + 1)",
+                    hangul: "JSON\(beltIndex + 1)",
+                    englishMeaning: "JSON Pattern \(beltIndex + 1)",
+                    significance: "Simulated JSON loading",
+                    moveCount: 15,
+                    diagramDescription: "JSON Test",
+                    startingStance: "Ready"
+                )
+                pattern.beltLevels = [belt]
+                
+                // Add moves
+                for moveNum in 1...15 {
+                    let move = PatternMove(
+                        moveNumber: moveNum,
+                        stance: "JSON stance \(moveNum)",
+                        technique: "JSON technique \(moveNum)",
+                        direction: "North",
+                        keyPoints: "JSON key points"
+                    )
+                    move.pattern = pattern
+                    pattern.moves.append(move)
+                    testContext.insert(move)
+                }
+                
+                testContext.insert(pattern)
+            }
+            
+            // Simulate step sparring JSON loading
+            for i in 1...8 {
+                let sequence = StepSparringSequence(
+                    name: "JSON Sequence \(i)",
+                    type: i <= 4 ? .threeStep : .twoStep,
+                    sequenceNumber: i,
+                    sequenceDescription: "JSON loaded sequence"
+                )
+                
+                for stepNum in 1...(i <= 4 ? 3 : 2) {
+                    let attackAction = StepSparringAction(
+                        technique: "JSON Attack \(stepNum)",
+                        execution: "JSON execution"
+                    )
+                    let defenseAction = StepSparringAction(
+                        technique: "JSON Defense \(stepNum)",
+                        execution: "JSON execution"
+                    )
+                    let step = StepSparringStep(
+                        sequence: sequence,
+                        stepNumber: stepNum,
+                        attackAction: attackAction,
+                        defenseAction: defenseAction
+                    )
+                    
+                    sequence.steps.append(step)
+                    testContext.insert(attackAction)
+                    testContext.insert(defenseAction)
+                    testContext.insert(step)
+                }
+                
+                testContext.insert(sequence)
+            }
+            
+            do {
+                try testContext.save()
+                print("📊 Simulated JSON content loading completed")
+            } catch {
+                XCTFail("Failed to simulate JSON loading: \(error)")
+            }
+        }
+    }
+    
+    // MARK: - Mixed Content Performance Tests
+    
+    func testMixedContentQueryPerformance() throws {
+        // Load large dataset with all content types
+        try testJSONContentLoadingSimulation()
+        
+        measure {
+            // Query all content types simultaneously
+            let patterns = try! testContext.fetch(FetchDescriptor<Pattern>())
+            let stepSparring = try! testContext.fetch(FetchDescriptor<StepSparringSequence>())
+            let terminology = try! testContext.fetch(FetchDescriptor<TerminologyEntry>())
+            
+            // Verify data exists
+            XCTAssertGreaterThan(patterns.count, 0, "Should have patterns")
+            XCTAssertGreaterThan(stepSparring.count, 0, "Should have step sparring")
+            print("📊 Mixed query: \(patterns.count) patterns, \(stepSparring.count) step sparring, \(terminology.count) terminology")
+        }
+    }
+    
+    func testComplexUserProgressPerformance() throws {
+        try testJSONContentLoadingSimulation()
+        
+        let belts = try testContext.fetch(FetchDescriptor<BeltLevel>())
+        guard let testBelt = belts.first else {
+            XCTFail("No belt levels available")
+            return
+        }
+        
+        let testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        testContext.insert(testProfile)
+        try testContext.save()
+        
+        measure {
+            let patterns = try! testContext.fetch(FetchDescriptor<Pattern>())
+            let sequences = try! testContext.fetch(FetchDescriptor<StepSparringSequence>())
+            
+            // Create progress for multiple content types
+            for pattern in patterns.prefix(5) {
+                let progress = UserPatternProgress(userProfile: testProfile, pattern: pattern)
+                progress.recordPracticeSession(accuracy: 0.85, practiceTime: 180.0)
+                testContext.insert(progress)
+            }
+            
+            for sequence in sequences.prefix(5) {
+                let progress = UserStepSparringProgress(userProfile: testProfile, sequence: sequence)
+                progress.recordPractice(duration: 120.0, stepsCompleted: 2)
+                testContext.insert(progress)
+            }
+            
+            do {
+                try testContext.save()
+                print("📊 Complex user progress created successfully")
+            } catch {
+                XCTFail("Failed to save complex progress: \(error)")
+            }
+        }
     }
 }
