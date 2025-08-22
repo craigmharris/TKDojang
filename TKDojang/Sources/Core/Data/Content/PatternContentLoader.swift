@@ -150,7 +150,12 @@ struct PatternContentLoader {
         
         print("🔍 BELT DEBUG: Pattern '\(data.name)':")
         print("   JSON belt IDs: \(data.applicableBeltLevels)")
+        print("   Available belt levels: \(Array(beltLevelDict.keys).sorted())")
         print("   Found belt levels: \(pattern.beltLevels.map { "\($0.id) (\($0.shortName))" })")
+        
+        if pattern.beltLevels.isEmpty {
+            print("⚠️ WARNING: Pattern '\(data.name)' has no associated belt levels!")
+        }
         
         // Create moves and sort by move number to ensure correct order
         pattern.moves = data.moves

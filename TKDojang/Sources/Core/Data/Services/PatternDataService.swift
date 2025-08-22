@@ -310,8 +310,12 @@ class PatternDataService {
         do {
             let existingPatterns = try modelContext.fetch(descriptor)
             if !existingPatterns.isEmpty {
-                print("📚 Patterns already exist, skipping seeding")
-                return
+                print("📚 Found \(existingPatterns.count) existing patterns - clearing and reloading from JSON")
+                // Clear existing patterns to force reload with new JSON structure
+                for pattern in existingPatterns {
+                    modelContext.delete(pattern)
+                }
+                try modelContext.save()
             }
         } catch {
             print("Failed to check existing patterns: \(error)")
