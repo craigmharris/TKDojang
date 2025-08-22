@@ -316,6 +316,15 @@ class ProfileService {
     
     // MARK: - Private Helpers
     
+    /**
+     * Clears active profile reference for safe database reset
+     * CRITICAL: This prevents SwiftData crashes when profiles are deleted
+     */
+    func clearActiveProfileForReset() {
+        print("🔄 Clearing active profile reference for database reset")
+        activeProfile = nil
+    }
+    
     private func loadActiveProfile() {
         do {
             let descriptor = FetchDescriptor<UserProfile>(

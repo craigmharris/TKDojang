@@ -243,8 +243,14 @@ class DataManager {
      * Resets entire database and reloads with new modular content
      * Use this to force reload when content structure changes
      */
-    func resetAndReloadDatabase() {
+    func resetAndReloadDatabase() async {
         do {
+            // CRITICAL: Clear ProfileService active profile reference to prevent SwiftData crashes
+            profileService.clearActiveProfileForReset()
+            
+            // Small delay to ensure SwiftUI updates and releases references
+            try await Task.sleep(nanoseconds: 250_000_000) // 0.25 seconds
+            
             // Clear any pending changes first
             modelContainer.mainContext.rollback()
             

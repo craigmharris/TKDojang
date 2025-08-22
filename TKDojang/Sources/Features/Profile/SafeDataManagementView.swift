@@ -259,9 +259,13 @@ struct SafeDataManagementView: View {
     
     private func performSystemReset() {
         // This is the dangerous nuclear option - only for extreme cases
-        dataManager.resetAndReloadDatabase()
-        systemResetConfirmation = ""
-        dismiss()
+        Task {
+            await dataManager.resetAndReloadDatabase()
+            await MainActor.run {
+                systemResetConfirmation = ""
+                dismiss()
+            }
+        }
     }
 }
 
