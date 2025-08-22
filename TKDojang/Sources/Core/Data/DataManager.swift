@@ -250,82 +250,78 @@ class DataManager {
     }
     
     /**
-     * Resets entire database and reloads with new modular content
+     * Resets entire database and exits the app for clean restart
      * Use this to force reload when content structure changes
      * 
-     * CRITICAL: This recreates the entire ModelContainer to prevent SwiftData crashes
+     * CRITICAL: This deletes the database file and exits the app for maximum safety
      */
     func resetAndReloadDatabase() async {
         do {
             // Set resetting flag to prevent any profile access
             isResettingDatabase = true
             
-            print("🔄 Starting database reset - recreating ModelContainer...")
+            print("🔄 Starting database reset - will exit app for clean restart...")
             
-            // CRITICAL: Clear ProfileService active profile reference to prevent SwiftData crashes
+            // CRITICAL: Clear ProfileService active profile reference
             profileService.clearActiveProfileForReset()
             
-            // Step 1: Clear current container data
-            let currentContext = modelContainer.mainContext
-            currentContext.rollback()
+            // Delete the database files completely
+            let appSupportDir = URL.applicationSupportDirectory
+            let dbURL = appSupportDir.appending(path: "Model.sqlite")
+            let dbSHMURL = appSupportDir.appending(path: "Model.sqlite-shm")
+            let dbWALURL = appSupportDir.appending(path: "Model.sqlite-wal")
             
-            // Step 2: Delete the database file and recreate container
-            let url = URL.applicationSupportDirectory.appending(path: "Model.sqlite")
-            try? FileManager.default.removeItem(at: url)
+            try? FileManager.default.removeItem(at: dbURL)
+            try? FileManager.default.removeItem(at: dbSHMURL)
+            try? FileManager.default.removeItem(at: dbWALURL)
             
-            // Step 3: Recreate ModelContainer (this invalidates all existing SwiftData references)
-            let schema = Schema([
-                BeltLevel.self,
-                TerminologyCategory.self,
-                TerminologyEntry.self,
-                UserProfile.self,
-                UserTerminologyProgress.self,
-                Pattern.self,
-                PatternMove.self,
-                UserPatternProgress.self,
-                StepSparringSequence.self,
-                StepSparringStep.self,
-                StepSparringAction.self,
-                UserStepSparringProgress.self
-            ])
-            let modelConfiguration = ModelConfiguration(schema: schema)
-            let newContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
+            print("🗑️ Database files deleted - app will exit for clean restart")
             
-            // Step 4: Update all services with new container
-            self.modelContainer = newContainer
-            self.terminologyService = TerminologyDataService(modelContext: newContainer.mainContext)
-            self.patternService = PatternDataService(modelContext: newContainer.mainContext)
-            self.profileService = ProfileService(modelContext: newContainer.mainContext)
-            
-            // Step 5: Trigger complete UI refresh by changing the reset ID
-            self.databaseResetId = UUID()
-            
-            // Clear resetting flag
-            isResettingDatabase = false
-            
-            print("🗑️ Database container recreated successfully - UI refresh triggered")
-            
-            // Small delay to ensure database operations complete
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                Task {
-                    // Reload with new modular system
-                    let modularLoader = ModularContentLoader(dataService: self.terminologyService)
-                    modularLoader.loadCompleteSystem()
-                    
-                    // Reload patterns after belt levels are created
-                    let allBelts = try self.modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
-                    await MainActor.run {
-                        self.patternService.seedInitialPatterns(beltLevels: allBelts)
-                    }
+            // Show final message to user
+            await MainActor.run {
+                // Show alert then exit
+                let alert = UIAlertController(
+                    title: "Database Reset Complete", 
+                    message: "The app will now restart with a fresh database. Please reopen the app.",
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                    exit(0) // Clean app exit
+                })
+                
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let window = windowScene.windows.first,
+                   let rootVC = window.rootViewController {
+                    rootVC.present(alert, animated: true)
+                } else {
+                    // Fallback: exit immediately if we can't show alert
+                    exit(0)
                 }
             }
-            
         } catch {
             print("❌ Failed to reset database: \\(error)")
             // Clear resetting flag on error
             isResettingDatabase = false
-            // If reset fails, try creating a new context
-            modelContainer.mainContext.rollback()
+            
+            // On error, still show message and exit to prevent crashes
+            await MainActor.run {
+                let alert = UIAlertController(
+                    title: "Reset Error", 
+                    message: "Database reset failed. App will exit to prevent crashes. Please restart manually.",
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                    exit(1) // Exit with error code
+                })
+                
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let window = windowScene.windows.first,
+                   let rootVC = window.rootViewController {
+                    rootVC.present(alert, animated: true)
+                } else {
+                    exit(1)
+                }
+            }
         }
     }
     
