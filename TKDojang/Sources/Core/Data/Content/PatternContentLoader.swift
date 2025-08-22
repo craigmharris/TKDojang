@@ -143,14 +143,14 @@ struct PatternContentLoader {
             diagramImageURL: data.diagramImageUrl
         )
         
-        // Associate with belt levels
+        // Associate with belt levels using mapping function
         pattern.beltLevels = data.applicableBeltLevels.compactMap { beltId in
-            beltLevelDict[beltId]
+            mapJSONIdToBeltLevel(jsonId: beltId, beltLevelDict: beltLevelDict)
         }
         
         print("🔍 BELT DEBUG: Pattern '\(data.name)':")
         print("   JSON belt IDs: \(data.applicableBeltLevels)")
-        print("   Found belt levels: \(pattern.beltLevels.map { $0.shortName })")
+        print("   Found belt levels: \(pattern.beltLevels.map { "\($0.id) (\($0.shortName))" })")
         
         // Create moves and sort by move number to ensure correct order
         pattern.moves = data.moves
@@ -223,6 +223,33 @@ struct PatternContentLoader {
     @MainActor
     private func getBeltLevels() -> [BeltLevel] {
         return patternService.getAllBeltLevels()
+    }
+    
+    /**
+     * Maps JSON belt IDs (like "6th_keup") to BeltLevel objects
+     * Uses shortName matching since belt system JSON uses different ID format
+     */
+    private func mapJSONIdToBeltLevel(jsonId: String, beltLevelDict: [String: BeltLevel]) -> BeltLevel? {
+        // Create mapping from JSON ID format to shortName format
+        // "6th_keup" -> "6th Keup", "1st_dan" -> "1st Dan"
+        let shortName = jsonId
+            .replacingOccurrences(of: "_keup", with: " Keup")
+            .replacingOccurrences(of: "_dan", with: " Dan")
+            .replacingOccurrences(of: "keup", with: "Keup")
+            .replacingOccurrences(of: "dan", with: "Dan")
+        
+        if let beltLevel = beltLevelDict[shortName] {
+            return beltLevel
+        }
+        
+        // Fallback: try capitalized version
+        let capitalizedShortName = shortName.capitalized
+        if let beltLevel = beltLevelDict[capitalizedShortName] {
+            return beltLevel
+        }
+        
+        print("⚠️ WARNING: Could not map JSON belt ID '\(jsonId)' to BeltLevel (tried '\(shortName)' and '\(capitalizedShortName)')")
+        return nil
     }
 }
 
