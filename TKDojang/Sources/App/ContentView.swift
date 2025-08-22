@@ -24,6 +24,12 @@ struct ContentView: View {
      */
     @EnvironmentObject var appCoordinator: AppCoordinator
     
+    /**
+     * Data manager for tracking database resets
+     * Forces complete UI refresh when database is recreated
+     */
+    @Environment(DataManager.self) private var dataManager
+    
     var body: some View {
         Group {
             switch appCoordinator.currentFlow {
@@ -41,6 +47,7 @@ struct ContentView: View {
             }
         }
         .animation(.easeInOut(duration: 0.3), value: appCoordinator.currentFlow)
+        .id(dataManager.databaseResetId) // Force complete refresh when database is reset
     }
 }
 

@@ -29,6 +29,9 @@ class DataManager {
     private(set) var profileService: ProfileService
     private(set) var stepSparringService: StepSparringDataService
     
+    // Track database reset state to trigger UI refresh
+    private(set) var databaseResetId = UUID()
+    
     var modelContext: ModelContext {
         return modelContainer.mainContext
     }
@@ -289,7 +292,10 @@ class DataManager {
             self.patternService = PatternDataService(modelContext: newContainer.mainContext)
             self.profileService = ProfileService(modelContext: newContainer.mainContext)
             
-            print("🗑️ Database container recreated successfully")
+            // Step 5: Trigger complete UI refresh by changing the reset ID
+            self.databaseResetId = UUID()
+            
+            print("🗑️ Database container recreated successfully - UI refresh triggered")
             
             // Small delay to ensure database operations complete
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
