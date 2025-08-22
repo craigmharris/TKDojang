@@ -1,0 +1,178 @@
+{
+  "belt_level": "1st Keup",
+  "belt_id": "1st_keup",
+  "theory_sections": [
+    {
+      "id": "black_belt_preparation",
+      "title": "Black Belt Preparation",
+      "category": "Belt Knowledge",
+      "content": {
+        "meaning": "1st Keup represents the final stage before black belt - the student is demonstrating readiness for the responsibilities and knowledge of black belt rank.",
+        "significance": "This is not just another belt level, but a comprehensive preparation for a fundamental change in the student's martial arts journey.",
+        "readiness_indicators": [
+          "Technical proficiency at advanced level",
+          "Mental discipline and focus",
+          "Understanding of martial arts philosophy",
+          "Ability to help and guide junior students",
+          "Commitment to continuous improvement"
+        ],
+        "black_belt_responsibilities": [
+          "Setting positive example for all students",
+          "Assisting with teaching and guidance",
+          "Maintaining highest standards of technique",
+          "Understanding deeper philosophical aspects",
+          "Commitment to lifelong learning"
+        ]
+      },
+      "questions": [
+        {
+          "question": "What does 1st keup represent?",
+          "answer": "The final stage before black belt - demonstrating readiness for black belt responsibilities."
+        },
+        {
+          "question": "What are the key responsibilities of a black belt?",
+          "answer": "Setting positive example, assisting with teaching, maintaining high standards, and lifelong learning."
+        }
+      ]
+    },
+    {
+      "id": "joong_gun_theory",
+      "title": "Joong-Gun Pattern Theory",
+      "category": "Pattern Knowledge",
+      "content": {
+        "pattern_name": "Joong-Gun",
+        "movements": "32 movements",
+        "meaning": "Joong-Gun is named after the patriot Ahn Joong-Gun who assassinated Hiro-Bumi Ito, the first Japanese Governor-General of Korea, known as the man who played the leading part in the Korea-Japan merger.",
+        "significance": "This pattern represents the ultimate sacrifice for one's country and principles, embodying the warrior spirit and unwavering dedication to justice.",
+        "key_techniques": [
+          "Twin vertical punch",
+          "Circular block",
+          "Pressing block",
+          "Jump front kick",
+          "Reverse turning kick"
+        ],
+        "historical_context": [
+          "Ahn Joong-Gun's sacrifice for Korean independence",
+          "The courage to stand up against injustice",
+          "The price of fighting for one's beliefs",
+          "The warrior's commitment to protect others"
+        ],
+        "pre_black_belt_significance": "Joong-Gun is the final pattern before black belt, representing the completion of colored belt training and readiness for advanced study.",
+        "technical_demands": "Contains the most advanced techniques of colored belt patterns, requiring exceptional skill, power, and precision."
+      },
+      "questions": [
+        {
+          "question": "Who is Joong-Gun named after?",
+          "answer": "The patriot Ahn Joong-Gun who assassinated the Japanese Governor-General Hiro-Bumi Ito."
+        },
+        {
+          "question": "How many movements are in Joong-Gun?",
+          "answer": "32 movements"
+        },
+        {
+          "question": "What does Joong-Gun represent?",
+          "answer": "Ultimate sacrifice for country and principles, embodying warrior spirit and dedication to justice."
+        },
+        {
+          "question": "Why is Joong-Gun significant as the final colored belt pattern?",
+          "answer": "It represents completion of colored belt training and contains the most advanced techniques."
+        }
+      ]
+    },
+    {
+      "id": "advanced_one_step_sparring",
+      "title": "Advanced One-Step Sparring",
+      "category": "Philosophy",
+      "content": {
+        "mastery_level": "At 1st keup, students must demonstrate near-black belt level proficiency in one-step sparring.",
+        "advanced_concepts": [
+          {
+            "concept": "Multiple Attack Scenarios",
+            "description": "Defending against various types of attacks with appropriate responses"
+          },
+          {
+            "concept": "Advanced Counter Combinations",
+            "description": "Using multiple techniques in sequence for maximum effectiveness"
+          },
+          {
+            "concept": "Creative Application",
+            "description": "Adapting basic principles to create new and effective responses"
+          },
+          {
+            "concept": "Teaching Others",
+            "description": "Being able to explain and demonstrate techniques to junior students"
+          }
+        ],
+        "black_belt_preparation": [
+          "Demonstrate complete understanding of distance and timing",
+          "Show ability to generate maximum power with control",
+          "Exhibit calm confidence under pressure",
+          "Display creativity while maintaining safety"
+        ],
+        "evaluation_criteria": [
+          "Technical precision and power",
+          "Appropriate response to different attacks",
+          "Control and safety awareness",
+          "Understanding of principles behind techniques"
+        ]
+      },
+      "questions": [
+        {
+          "question": "What level of proficiency is expected in one-step sparring at 1st keup?",
+          "answer": "Near-black belt level proficiency with advanced concepts and teaching ability."
+        },
+        {
+          "question": "What advanced concepts should 1st keup students demonstrate?",
+          "answer": "Multiple attack scenarios, advanced combinations, creative application, and teaching others."
+        },
+        {
+          "question": "What evaluation criteria are used for 1st keup one-step sparring?",
+          "answer": "Technical precision, appropriate responses, control and safety, and understanding of principles."
+        }
+      ]
+    },
+    {
+      "id": "grading_requirements",
+      "title": "1st Keup Grading Requirements",
+      "category": "Grading Knowledge",
+      "content": {
+        "techniques_required": [
+          "All previous techniques at black belt standard",
+          "Twin vertical punch with perfect coordination",
+          "Circular and pressing blocks",
+          "Jump front kick with good height and control",
+          "Reverse turning kick with balance and power"
+        ],
+        "pattern": "Joong-Gun (32 movements)",
+        "step_sparring": "Advanced one-step sparring sequences 13, 14, and 15",
+        "theory_topics": [
+          "Black belt preparation and responsibilities",
+          "Joong-Gun pattern history and meaning",
+          "Advanced one-step sparring principles",
+          "Complete understanding of all previous theory"
+        ],
+        "special_requirements": [
+          "Demonstrate teaching ability with junior students",
+          "Show leadership qualities and positive attitude",
+          "Complete understanding of all Taekwondo philosophy",
+          "Commitment to continued learning and improvement"
+        ],
+        "expectations": "Demonstrate black belt level techniques with excellent control and power, perform most advanced colored belt pattern with complete understanding, execute advanced one-step sparring with creativity and safety, and show readiness for black belt responsibilities"
+      },
+      "questions": [
+        {
+          "question": "What pattern is required for 1st keup grading?",
+          "answer": "Joong-Gun (32 movements)"
+        },
+        {
+          "question": "What special requirements are added at 1st keup?",
+          "answer": "Teaching ability, leadership qualities, complete philosophy understanding, and commitment to improvement."
+        },
+        {
+          "question": "What is the overall expectation for 1st keup grading?",
+          "answer": "Demonstrate readiness for black belt responsibilities with advanced techniques and complete understanding."
+        }
+      ]
+    }
+  ]
+}

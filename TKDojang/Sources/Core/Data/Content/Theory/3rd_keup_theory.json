@@ -1,0 +1,163 @@
+{
+  "belt_level": "3rd Keup",
+  "belt_id": "3rd_keup",
+  "theory_sections": [
+    {
+      "id": "brown_belt_meaning",
+      "title": "Brown Belt Meaning",
+      "category": "Belt Knowledge",
+      "content": {
+        "meaning": "Brown Belt represents the ripening of the seed - the student's techniques are maturing and approaching the level of brown earth that nourishes growth.",
+        "significance": "Like rich, fertile soil that has been cultivated and prepared, the brown belt student has developed solid advanced skills and is preparing for black belt training.",
+        "symbolism": "Maturity, richness of knowledge, preparation for mastery, fertile ground for growth"
+      },
+      "questions": [
+        {
+          "question": "What does the brown belt represent?",
+          "answer": "The ripening of the seed - techniques are maturing and approaching the level of brown earth that nourishes growth."
+        },
+        {
+          "question": "How is the brown belt student like fertile soil?",
+          "answer": "They have developed solid advanced skills and are preparing for black belt training."
+        }
+      ]
+    },
+    {
+      "id": "won_hyo_theory",
+      "title": "Won-Hyo Pattern Theory",
+      "category": "Pattern Knowledge",
+      "content": {
+        "pattern_name": "Won-Hyo",
+        "movements": "28 movements",
+        "meaning": "Won-Hyo was the noted monk who introduced Buddhism to the Silla Dynasty in the year 686 AD.",
+        "significance": "This pattern emphasizes the spiritual and philosophical aspects of martial arts training, connecting physical practice with mental discipline and enlightenment.",
+        "key_techniques": [
+          "Inner forearm block",
+          "High block combinations",
+          "Front snap kick",
+          "Knife hand strike",
+          "Rising block"
+        ],
+        "spiritual_elements": [
+          "Balance between physical and mental training",
+          "Importance of philosophical understanding",
+          "Development of inner peace and discipline",
+          "Connection between martial arts and spiritual growth"
+        ],
+        "buddhist_influence": "Won-Hyo's introduction of Buddhism to Korea represents the integration of physical training with spiritual development that characterizes traditional martial arts."
+      },
+      "questions": [
+        {
+          "question": "Who was Won-Hyo?",
+          "answer": "The noted monk who introduced Buddhism to the Silla Dynasty in 686 AD."
+        },
+        {
+          "question": "How many movements are in Won-Hyo?",
+          "answer": "28 movements"
+        },
+        {
+          "question": "What does Won-Hyo pattern emphasize?",
+          "answer": "The spiritual and philosophical aspects of martial arts training."
+        },
+        {
+          "question": "What new block is introduced in Won-Hyo?",
+          "answer": "Rising block"
+        }
+      ]
+    },
+    {
+      "id": "advanced_kicking_theory",
+      "title": "Advanced Kicking Theory",
+      "category": "Philosophy",
+      "content": {
+        "importance": "Kicking techniques are the hallmark of Taekwondo and require the highest level of balance, flexibility, and coordination.",
+        "key_principles": [
+          {
+            "principle": "Chamber Position",
+            "description": "Proper knee position before executing kick",
+            "importance": "Determines power, accuracy, and balance"
+          },
+          {
+            "principle": "Hip Flexibility",
+            "description": "Range of motion in hip joint",
+            "importance": "Allows for higher kicks and better technique"
+          },
+          {
+            "principle": "Balance Control",
+            "description": "Maintaining stability on supporting leg",
+            "importance": "Essential for power and recovery"
+          },
+          {
+            "principle": "Snap vs. Thrust",
+            "description": "Different power generation methods",
+            "importance": "Determines type of impact and effectiveness"
+          }
+        ],
+        "new_kicks_at_level": [
+          {
+            "kick": "Side Piercing Kick",
+            "focus": "Thrust motion with knife foot",
+            "target": "Solar plexus or ribs"
+          },
+          {
+            "kick": "Turning Kick",
+            "focus": "Circular motion with ball of foot",
+            "target": "Head or body"
+          }
+        ],
+        "training_progression": "Master basic front kicks before advancing to side and turning kicks, always emphasizing proper form over height or power."
+      },
+      "questions": [
+        {
+          "question": "What are kicking techniques considered in Taekwondo?",
+          "answer": "The hallmark of Taekwondo, requiring the highest level of balance, flexibility, and coordination."
+        },
+        {
+          "question": "What determines the power and accuracy of a kick?",
+          "answer": "Proper chamber position"
+        },
+        {
+          "question": "What two new kicks are introduced at brown belt level?",
+          "answer": "Side piercing kick and turning kick"
+        }
+      ]
+    },
+    {
+      "id": "grading_requirements",
+      "title": "3rd Keup Grading Requirements",
+      "category": "Grading Knowledge",
+      "content": {
+        "techniques_required": [
+          "Rising block with proper upward motion",
+          "X-block with both arms coordinated",
+          "Side piercing kick with good balance",
+          "Turning kick with proper hip rotation",
+          "Upset punch"
+        ],
+        "pattern": "Won-Hyo (28 movements)",
+        "step_sparring": "Two-step sparring sequences 7, 8, and 9",
+        "theory_topics": [
+          "Brown belt meaning",
+          "Won-Hyo pattern history and meaning",
+          "Advanced kicking theory and principles",
+          "Spiritual aspects of martial arts training"
+        ],
+        "expectations": "Demonstrate advanced techniques with good power and control, perform pattern with understanding of spiritual elements, and execute complex step sparring with proper timing and distance"
+      },
+      "questions": [
+        {
+          "question": "What pattern is required for 3rd keup grading?",
+          "answer": "Won-Hyo (28 movements)"
+        },
+        {
+          "question": "What advanced kicking techniques are required?",
+          "answer": "Side piercing kick and turning kick"
+        },
+        {
+          "question": "What new blocking technique is introduced at 3rd keup?",
+          "answer": "X-block and rising block"
+        }
+      ]
+    }
+  ]
+}

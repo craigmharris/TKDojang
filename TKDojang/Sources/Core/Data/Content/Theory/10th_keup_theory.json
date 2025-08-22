@@ -1,0 +1,131 @@
+{
+  "belt_level": "10th Keup",
+  "belt_id": "10th_keup",
+  "theory_sections": [
+    {
+      "id": "belt_meaning",
+      "title": "Belt Meaning",
+      "category": "Belt Knowledge",
+      "content": {
+        "meaning": "White Belt represents innocence, as of a beginning student who has no previous knowledge of Taekwondo.",
+        "significance": "The white belt symbolizes the blank canvas of a new student, ready to absorb knowledge and begin their martial arts journey."
+      },
+      "questions": [
+        {
+          "question": "What does the white belt represent?",
+          "answer": "Innocence, as of a beginning student who has no previous knowledge of Taekwondo."
+        }
+      ]
+    },
+    {
+      "id": "taekwondo_tenets",
+      "title": "Taekwondo Tenets",
+      "category": "Philosophy",
+      "content": {
+        "overview": "The five tenets of Taekwondo form the foundation of moral and ethical behavior for all practitioners.",
+        "tenets": [
+          {
+            "name": "Courtesy",
+            "korean": "Ye Ui",
+            "description": "Being polite and showing respect to others, including instructors, fellow students, and oneself."
+          },
+          {
+            "name": "Integrity", 
+            "korean": "Yom Chi",
+            "description": "Being honest and having strong moral principles; doing what is right even when no one is watching."
+          },
+          {
+            "name": "Perseverance",
+            "korean": "In Nae",
+            "description": "Having the determination to continue despite difficulties or obstacles."
+          },
+          {
+            "name": "Self Control",
+            "korean": "Guk Gi",
+            "description": "The ability to control one's emotions, actions, and words, especially in challenging situations."
+          },
+          {
+            "name": "Indomitable Spirit",
+            "korean": "Baekjul Boolgool",
+            "description": "Having an unbreakable will and the courage to stand up for what is right."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "question": "How many tenets of Taekwondo are there?",
+          "answer": "Five tenets"
+        },
+        {
+          "question": "What is the Korean term for Courtesy?",
+          "answer": "Ye Ui"
+        }
+      ]
+    },
+    {
+      "id": "tagb_history",
+      "title": "TAGB History",
+      "category": "Organization",
+      "content": {
+        "overview": "The Taekwondo Association of Great Britain (TAGB) was founded to promote traditional Taekwondo in the United Kingdom.",
+        "founding": {
+          "year": "1983",
+          "founder": "Master C.K. Choi",
+          "purpose": "To establish a unified system of traditional Taekwondo instruction in Great Britain"
+        },
+        "development": "The TAGB has grown to become one of the largest Taekwondo organizations in the UK, maintaining strong ties to traditional ITF-style Taekwondo."
+      },
+      "questions": [
+        {
+          "question": "When was the TAGB founded?",
+          "answer": "1983"
+        },
+        {
+          "question": "Who founded the TAGB?",
+          "answer": "Master C.K. Choi"
+        }
+      ]
+    },
+    {
+      "id": "basic_korean",
+      "title": "Basic Korean Terms",
+      "category": "Language",
+      "content": {
+        "greeting_terms": [
+          {
+            "english": "Hello/Goodbye",
+            "korean": "Annyeong Haseyo",
+            "usage": "Respectful greeting used when entering or leaving the dojang"
+          },
+          {
+            "english": "Thank you",
+            "korean": "Gamsahamnida", 
+            "usage": "Used to show gratitude to instructors and training partners"
+          }
+        ],
+        "dojang_terms": [
+          {
+            "english": "Training hall",
+            "korean": "Dojang",
+            "usage": "The place where Taekwondo is practiced"
+          },
+          {
+            "english": "Uniform",
+            "korean": "Dobok",
+            "usage": "The traditional white clothing worn during training"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "question": "What is the Korean word for training hall?",
+          "answer": "Dojang"
+        },
+        {
+          "question": "How do you say 'thank you' in Korean?",
+          "answer": "Gamsahamnida"
+        }
+      ]
+    }
+  ]
+}

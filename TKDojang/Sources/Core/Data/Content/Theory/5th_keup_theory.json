@@ -1,0 +1,150 @@
+{
+  "belt_level": "5th Keup",
+  "belt_id": "5th_keup",
+  "theory_sections": [
+    {
+      "id": "blue_belt_meaning",
+      "title": "Blue Belt Meaning",
+      "category": "Belt Knowledge",
+      "content": {
+        "meaning": "Blue Belt represents the sky toward which the plant grows - the student is reaching for greater heights in knowledge and skill.",
+        "significance": "Like a plant that has grown tall and strong, reaching toward the blue sky, the blue belt student has developed solid intermediate skills and is ready for advanced challenges.",
+        "symbolism": "Aspiration, reaching higher, expanding horizons, intermediate mastery"
+      },
+      "questions": [
+        {
+          "question": "What does the blue belt represent?",
+          "answer": "The sky toward which the plant grows - the student is reaching for greater heights in knowledge and skill."
+        },
+        {
+          "question": "What stage of development does the blue belt symbolize?",
+          "answer": "A student who has developed solid intermediate skills and is ready for advanced challenges."
+        }
+      ]
+    },
+    {
+      "id": "dan_gun_theory",
+      "title": "Dan-Gun Pattern Theory",
+      "category": "Pattern Knowledge",
+      "content": {
+        "pattern_name": "Dan-Gun",
+        "movements": "21 movements",
+        "meaning": "Dan-Gun is named after the legendary founder of Korea in 2333 BC. He is said to be the grandson of the King of Heaven.",
+        "significance": "This pattern honors Korean heritage and the mythical beginnings of the Korean nation, connecting students to the cultural roots of Taekwondo.",
+        "key_techniques": [
+          "Twin forearm block",
+          "Back fist strike",
+          "High block combinations",
+          "Knife hand strike"
+        ],
+        "historical_importance": "Dan-Gun represents the connection between Korean martial arts and Korean cultural identity, emphasizing the spiritual and cultural aspects of training.",
+        "new_challenges": "Introduces more complex blocking techniques and coordination between multiple limbs."
+      },
+      "questions": [
+        {
+          "question": "Who is Dan-Gun?",
+          "answer": "The legendary founder of Korea in 2333 BC, said to be the grandson of the King of Heaven."
+        },
+        {
+          "question": "How many movements are in Dan-Gun?",
+          "answer": "21 movements"
+        },
+        {
+          "question": "What new blocking technique is introduced in Dan-Gun?",
+          "answer": "Twin forearm block"
+        },
+        {
+          "question": "Why is Dan-Gun pattern culturally important?",
+          "answer": "It honors Korean heritage and connects students to the cultural roots of Taekwondo."
+        }
+      ]
+    },
+    {
+      "id": "step_sparring_introduction",
+      "title": "Introduction to Step Sparring",
+      "category": "Philosophy",
+      "content": {
+        "definition": "Step sparring is a controlled practice method where students practice offensive and defensive techniques in a predetermined sequence.",
+        "purpose": [
+          "Develop timing and distance judgment",
+          "Practice techniques in a realistic but safe environment",
+          "Build confidence in applying techniques",
+          "Learn proper attack and defense coordination"
+        ],
+        "types": [
+          {
+            "name": "Three-step sparring",
+            "description": "Attacker performs three attacks, defender blocks and counters",
+            "focus": "Basic timing and distance"
+          },
+          {
+            "name": "Two-step sparring", 
+            "description": "Attacker performs two attacks, defender blocks and counters",
+            "focus": "Improved timing and closer distance"
+          },
+          {
+            "name": "One-step sparring",
+            "description": "Attacker performs one attack, defender blocks and counters",
+            "focus": "Realistic timing and advanced techniques"
+          }
+        ],
+        "safety_principles": [
+          "Always practice with control",
+          "Focus on technique, not power",
+          "Communicate with your partner",
+          "Stop immediately if someone is uncomfortable"
+        ]
+      },
+      "questions": [
+        {
+          "question": "What is step sparring?",
+          "answer": "A controlled practice method where students practice offensive and defensive techniques in a predetermined sequence."
+        },
+        {
+          "question": "What are the three types of step sparring?",
+          "answer": "Three-step, two-step, and one-step sparring."
+        },
+        {
+          "question": "What is the main purpose of step sparring?",
+          "answer": "Develop timing and distance judgment while practicing techniques safely."
+        }
+      ]
+    },
+    {
+      "id": "grading_requirements",
+      "title": "5th Keup Grading Requirements",
+      "category": "Grading Knowledge",
+      "content": {
+        "techniques_required": [
+          "Twin forearm block with power and coordination",
+          "Back fist strike with proper whipping motion",
+          "Elbow strikes (forward elbow strike)",
+          "Front snap kick with good balance"
+        ],
+        "pattern": "Dan-Gun (21 movements)",
+        "step_sparring": "Three-step sparring sequences 1, 2, and 3",
+        "theory_topics": [
+          "Blue belt meaning",
+          "Dan-Gun pattern history and meaning",
+          "Introduction to step sparring",
+          "Safety principles in partner practice"
+        ],
+        "expectations": "Demonstrate intermediate level techniques with good power and timing, perform pattern with understanding, and safely execute basic step sparring"
+      },
+      "questions": [
+        {
+          "question": "What pattern is required for 5th keup grading?",
+          "answer": "Dan-Gun (21 movements)"
+        },
+        {
+          "question": "What step sparring is introduced at 5th keup?",
+          "answer": "Three-step sparring sequences 1, 2, and 3"
+        },
+        {
+          "question": "What new striking technique is emphasized at 5th keup?",
+          "answer": "Back fist strike and elbow strikes"
+        }
+      ]
+    }
+  ]
+}

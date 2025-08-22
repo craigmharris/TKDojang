@@ -135,7 +135,7 @@ struct LearnView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 
-                Text("Master Korean terminology and test your knowledge")
+                Text("Master Korean terminology, theory knowledge, and test your understanding")
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
                     .padding(.horizontal)
@@ -171,6 +171,22 @@ struct LearnView: View {
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.green.opacity(0.1))
+                        .cornerRadius(12)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    
+                    NavigationLink(destination: TheoryView()) {
+                        HStack {
+                            Image(systemName: "graduationcap")
+                                .frame(width: 24)
+                            Text("Theory")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.secondary)
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.purple.opacity(0.1))
                         .cornerRadius(12)
                     }
                     .buttonStyle(PlainButtonStyle())
@@ -696,28 +712,7 @@ struct PatternDetailView: View {
 
 // StepSparringView is now defined in StepSparring/StepSparringView.swift
 
-struct LineWorkView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "arrow.left.and.right")
-                .font(.system(size: 60))
-                .foregroundColor(.green)
-            
-            Text("Line Work")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            
-            Text("Forward and backward technique drills")
-                .multilineTextAlignment(.center)
-                .foregroundColor(.secondary)
-                .padding()
-            
-            Spacer()
-        }
-        .navigationTitle("Line Work")
-        .navigationBarTitleDisplayMode(.large)
-    }
-}
+// LineWorkView is now defined in LineWork/LineWorkView.swift
 
 struct TechniqueGuideView: View {
     var body: some View {
