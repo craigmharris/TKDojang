@@ -343,6 +343,7 @@ Environment-specific constants are managed in `AppConstants.swift` using compile
 - **Step Sparring**: 18 sequences with manual belt filtering (stable, no crashes)
 - **Multi-Profile System**: Complete with data isolation and activity tracking  
 - **Terminology System**: 88+ entries across 13 belt levels with JSON structure
+- **Flashcard System**: Complete with proper session completion, results screen, and review functionality
 - **Testing Infrastructure**: Comprehensive test suite ready for integration
 
 ## Session Summary (August 19, 2025)
@@ -508,6 +509,59 @@ Environment-specific constants are managed in `AppConstants.swift` using compile
 **To**: Reliable, crash-proof database reset with clear user communication
 
 This session solved a **production-critical issue** that would have made the app unusable for families needing to reset their data, while also providing a comprehensive educational journey through SwiftData complexity and solution approaches.
+
+## Session Summary (August 22, 2025)
+
+### 🎯 **Major Accomplishments This Session:**
+
+#### 🐛 **Critical Flashcard Completion Bug Fix - Production Issue Resolved:**
+
+**PROBLEM**: Flashcard sessions had a critical UX bug where users could remain indefinitely on the last card, continuing to press correct/incorrect buttons and modify their accuracy results. No completion flow existed to redirect to a results screen.
+
+**SOLUTION IMPLEMENTED**:
+
+1. **FlashcardResultsView Creation** (`FlashcardResultsView.swift`):
+   - **Complete Results Screen**: Similar to TestResultsView with session performance summary
+   - **Adaptive Recommendations**: Performance-based study recommendations with 4 different tiers
+   - **Review Functionality**: Direct navigation to review incorrect terms via new flashcard session
+   - **Visual Feedback**: Performance indicators, accuracy metrics, and session details
+   - **Navigation Actions**: Start new session, review missed terms, or return to learning menu
+
+2. **FlashcardView Enhancement**:
+   - **Added State Management**: `showingResults` and `incorrectTerms` tracking
+   - **Fixed `nextCard()` Logic**: Proper completion detection and results navigation
+   - **Enhanced `recordAnswer()`**: Tracks incorrect terms for review functionality
+   - **Learn Mode Completion**: Added `completeLearnSession()` with smart button UX
+   - **Session Recording**: Prevents duplicate session recording during navigation
+
+3. **Complete UX Flow Resolution**:
+   - **Test Mode**: After final card answer → automatic results screen navigation
+   - **Learn Mode**: "Complete Session" button on final card → results screen
+   - **Results Screen**: Review missed terms, start new session, or return to menu
+   - **Statistics Locking**: Final accuracy results are locked once results screen appears
+
+#### ✅ **Technical Implementation Success:**
+
+**Key Improvements**:
+- **✅ Eliminated Stuck State**: Users can no longer remain indefinitely on final flashcard
+- **✅ Results Screen Integration**: Seamless navigation to comprehensive results view
+- **✅ Incorrect Terms Tracking**: Automatic collection of missed terms for targeted review
+- **✅ Learn vs Test Mode Support**: Both modes have appropriate completion flows
+- **✅ Session Analytics**: Proper study session recording for ProfileService integration
+- **✅ Build Verification**: Successfully builds with resolved naming conflicts
+
+**Technical Architecture**:
+- **Component Naming**: Used prefixed components (`FlashcardStudyRecommendationsCard`) to avoid TestResultsView conflicts
+- **Navigation Integration**: Uses SwiftUI `navigationDestination(isPresented:)` for results flow
+- **State Management**: Proper state isolation prevents session recording conflicts
+- **Performance Recommendations**: Dynamic recommendations based on 4 accuracy tiers (90%+, 70%+, 50%+, <50%)
+
+#### 🔄 **Production Impact:**
+
+**From**: Critical UX bug - users stuck on final card with ability to modify results indefinitely
+**To**: Complete learning experience with proper session completion, results visualization, and follow-up actions
+
+This session resolved a **user-blocking bug** that significantly impacted the flashcard learning experience, ensuring users have a complete and satisfying study session flow with proper completion handling.
 
 ## Notes for Claude Code
 

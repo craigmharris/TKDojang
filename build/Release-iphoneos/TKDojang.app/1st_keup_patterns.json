@@ -1,0 +1,29 @@
+{
+  "belt_level": "1st_keup",
+  "category": "patterns",
+  "type": "traditional_patterns",
+  "description": "Traditional patterns for 1st keup students",
+  "metadata": {
+    "created_at": "2025-08-20T00:00:00Z",
+    "source": "ITF Pattern Manual",
+    "total_count": 1
+  },
+  "patterns": [
+    {
+      "name": "Chung-Mu",
+      "hangul": "충무",
+      "pronunciation": "chung-mu",
+      "phonetic": "/tʃʰuŋ.mu/",
+      "english_meaning": "Martial Loyalty",
+      "significance": "Named after the late Admiral Yi Sun-Sin of the Lee Dynasty. He was reputed to have invented the first armoured battleship (Kobukson) in 1592, which is said to be the precursor of the present day submarine. The reason why this pattern ends with a left hand attack is to symbolize his regrettable death, having no chance to show his unrestrained potentiality checked by the forced reservation of his loyalty to the king.",
+      "move_count": 30,
+      "diagram_description": "I-shaped pattern",
+      "starting_stance": "Parallel ready stance",
+      "difficulty": 5,
+      "applicable_belt_levels": ["1st_keup"],
+      "video_url": "https://example.com/patterns/chung-mu.mp4",
+      "diagram_image_url": "https://example.com/diagrams/chung-mu-diagram.jpg",
+      "moves": []
+    }
+  ]
+}

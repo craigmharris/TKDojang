@@ -1,0 +1,114 @@
+{
+  "belt_level": "5th_keup",
+  "category": "patterns",
+  "type": "traditional_patterns",
+  "description": "Traditional patterns for 5th keup students",
+  "metadata": {
+    "created_at": "2025-08-20T00:00:00Z",
+    "source": "ITF Pattern Manual",
+    "total_count": 1
+  },
+  "patterns": [
+    {
+      "name": "Yul-Gok",
+      "hangul": "율곡",
+      "pronunciation": "yul-gok",
+      "phonetic": "/jul.gok/",
+      "english_meaning": "Chestnut Valley",
+      "significance": "Named after the great philosopher and scholar Yi I (1536-1584 A.D.) nicknamed the 'Confucius of Korea'. The 38 movements of this pattern refer to his birthplace on the 38th latitude and the diagram represents 'scholar'.",
+      "move_count": 38,
+      "diagram_description": "Scholar symbol",
+      "starting_stance": "Parallel ready stance",
+      "difficulty": 4,
+      "applicable_belt_levels": ["5th_keup"],
+      "video_url": "https://example.com/patterns/yul-gok.mp4",
+      "diagram_image_url": "https://example.com/diagrams/yul-gok-diagram.jpg",
+      "moves": [
+        {
+          "move_number": 1,
+          "stance": "Left walking stance",
+          "technique": "Low block",
+          "korean_technique": "Najunde makgi",
+          "direction": "West",
+          "target": "Lower section",
+          "key_points": "Strong foundation technique",
+          "common_mistakes": "Weak stance",
+          "execution_notes": "Turn 90 degrees left from ready stance",
+          "image_url": "https://example.com/moves/yul-gok-1.jpg"
+        },
+        {
+          "move_number": 2,
+          "stance": "Right walking stance",
+          "technique": "Middle punch",
+          "korean_technique": "Kaunde jirugi",
+          "direction": "West",
+          "target": "Solar plexus",
+          "key_points": "Full hip rotation",
+          "common_mistakes": "Incomplete stepping",
+          "execution_notes": "Step forward with conviction",
+          "image_url": "https://example.com/moves/yul-gok-2.jpg"
+        },
+        {
+          "move_number": 3,
+          "stance": "Right walking stance",
+          "technique": "Low block",
+          "korean_technique": "Najunde makgi",
+          "direction": "East",
+          "target": "Lower section",
+          "key_points": "180-degree turn control",
+          "common_mistakes": "Loss of balance",
+          "execution_notes": "Sharp pivot maintaining stance",
+          "image_url": "https://example.com/moves/yul-gok-3.jpg"
+        },
+        {
+          "move_number": 4,
+          "stance": "Left walking stance",
+          "technique": "Middle punch",
+          "korean_technique": "Kaunde jirugi",
+          "direction": "East",
+          "target": "Solar plexus",
+          "key_points": "Equal power both sides",
+          "common_mistakes": "Weaker off-side",
+          "execution_notes": "Bilateral technique consistency",
+          "image_url": "https://example.com/moves/yul-gok-4.jpg"
+        },
+        {
+          "move_number": 5,
+          "stance": "Left walking stance",
+          "technique": "Twin forearm block",
+          "korean_technique": "Sang palmok makgi",
+          "direction": "North",
+          "target": "Middle section",
+          "key_points": "Synchronized arm movement",
+          "common_mistakes": "Uneven arm position",
+          "execution_notes": "90-degree turn to face north",
+          "image_url": "https://example.com/moves/yul-gok-5.jpg"
+        },
+        {
+          "move_number": 6,
+          "stance": "Right walking stance",
+          "technique": "Front kick",
+          "korean_technique": "Ap chagi",
+          "direction": "North",
+          "target": "Middle section",
+          "key_points": "Sharp kicking motion",
+          "common_mistakes": "Poor balance",
+          "execution_notes": "Step forward with front kick",
+          "image_url": "https://example.com/moves/yul-gok-6.jpg"
+        },
+        {
+          "move_number": 7,
+          "stance": "Right walking stance",
+          "technique": "High punch",
+          "korean_technique": "Nopunde jirugi",
+          "direction": "North",
+          "target": "Head level",
+          "key_points": "Transition from kick to punch",
+          "common_mistakes": "Poor timing",
+          "execution_notes": "Land from kick into punch",
+          "image_url": "https://example.com/moves/yul-gok-7.jpg"
+        }
+      ]
+    }
+  ]
+}

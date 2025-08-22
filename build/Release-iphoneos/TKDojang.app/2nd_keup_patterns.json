@@ -1,25 +1,29 @@
 {
   "belt_level": "2nd_keup",
-  "category": "patterns", 
-  "description": "Advanced patterns and forms for red belt level",
-  "terms": [
+  "category": "patterns",
+  "type": "traditional_patterns",
+  "description": "Traditional patterns for 2nd keup students",
+  "metadata": {
+    "created_at": "2025-08-20T00:00:00Z",
+    "source": "ITF Pattern Manual",
+    "total_count": 1
+  },
+  "patterns": [
     {
-      "english": "Choong-Moo",
-      "korean": "충무",
-      "pronunciation": "choong-moo",
-      "phonetic": "/tʃʰuŋˈmu/",
-      "definition": "Pattern named after Admiral Yi Soon-Sin's pen name", 
-      "notes": "30 movements. Finishes with left hand attack (unusual ending)",
-      "difficulty": 4
-    },
-    {
-      "english": "Kwang-Gae", 
-      "korean": "광개",
-      "pronunciation": "kwang-gae",
-      "phonetic": "/kwaŋˈge/",
-      "definition": "Pattern named after famous Koguryo king", 
-      "notes": "39 movements. Includes jumping and complex footwork",
-      "difficulty": 4
+      "name": "Hwa-Rang",
+      "hangul": "화랑",
+      "pronunciation": "hwa-rang",
+      "phonetic": "/hwa.raŋ/",
+      "english_meaning": "Flowering Youth",
+      "significance": "Named after the Hwa-Rang youth group which originated in the Silla Dynasty in the early 7th century. The 29 movements refer to the 29th Infantry Division, where Taekwondo developed into maturity.",
+      "move_count": 29,
+      "diagram_description": "I-shaped pattern",
+      "starting_stance": "Parallel ready stance",
+      "difficulty": 4,
+      "applicable_belt_levels": ["2nd_keup"],
+      "video_url": "https://example.com/patterns/hwa-rang.mp4",
+      "diagram_image_url": "https://example.com/diagrams/hwa-rang-diagram.jpg",
+      "moves": []
     }
   ]
 }

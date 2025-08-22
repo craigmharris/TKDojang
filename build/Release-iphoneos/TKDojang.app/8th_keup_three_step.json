@@ -1,0 +1,344 @@
+{
+  "belt_level": "8th_keup",
+  "category": "step_sparring", 
+  "type": "three_step",
+  "description": "Three-step sparring sequences for 8th keup students (sequences 1-4)",
+  "sequences": [
+    {
+      "name": "3-Step Sparring #1",
+      "sequence_number": 1,
+      "description": "Inner forearm block with obverse punch counter",
+      "difficulty": 1,
+      "key_learning_points": "Basic blocking and counter-attack timing",
+      "applicable_belt_levels": ["8th_keup", "7th_keup", "6th_keup"],
+      "steps": [
+        {
+          "step_number": 1,
+          "timing": "Attack and block simultaneously",
+          "key_points": "Maintain proper distance, strong block",
+          "common_mistakes": "Backing away instead of blocking, weak block",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Step forward with right foot into walking stance, execute obverse punch to opponent's middle section"
+          },
+          "defense": {
+            "technique": "Inner forearm block",
+            "korean_name": "An palmok makgi",
+            "stance": "walking stance",
+            "target": "middle section", 
+            "hand": "left",
+            "description": "Step back with left foot into walking stance, execute inner forearm block"
+          }
+        },
+        {
+          "step_number": 2,
+          "timing": "Continuous attack sequence",
+          "key_points": "Maintain forward pressure, strong stance",
+          "common_mistakes": "Hesitation between steps, weak stance transitions",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Continue forward with right foot, execute obverse punch"
+          },
+          "defense": {
+            "technique": "Inner forearm block",
+            "korean_name": "An palmok makgi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "left",
+            "description": "Step back with left foot, execute inner forearm block"
+          }
+        },
+        {
+          "step_number": 3,
+          "timing": "Immediate counter after final block",
+          "key_points": "Quick transition, accurate targeting",
+          "common_mistakes": "Telegraphing the attack, poor timing",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section", 
+            "hand": "right",
+            "description": "Final forward step with obverse punch"
+          },
+          "defense": {
+            "technique": "Inner forearm block",
+            "korean_name": "An palmok makgi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "left",
+            "description": "Step back with left foot, execute inner forearm block"
+          },
+          "counter": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Immediately counter with right obverse punch to opponent's middle section"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3-Step Sparring #2",
+      "sequence_number": 2,
+      "description": "Rising block with front kick counter",
+      "difficulty": 1,
+      "key_learning_points": "High blocks and kicking counters",
+      "applicable_belt_levels": ["8th_keup", "7th_keup", "6th_keup"],
+      "steps": [
+        {
+          "step_number": 1,
+          "timing": "Attack and block simultaneously",
+          "key_points": "High block preparation, good stance",
+          "common_mistakes": "Block too low, poor foot positioning",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "high section",
+            "hand": "right",
+            "description": "Step forward with right foot into walking stance, execute obverse punch to high section"
+          },
+          "defense": {
+            "technique": "Rising block",
+            "korean_name": "Chookyo makgi",
+            "stance": "walking stance",
+            "target": "high section",
+            "hand": "left",
+            "description": "Step back with left foot, execute rising block"
+          }
+        },
+        {
+          "step_number": 2,
+          "timing": "Continuous attack sequence",
+          "key_points": "Maintain rhythm, strong blocks",
+          "common_mistakes": "Timing off, weak transitions",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "high section",
+            "hand": "right",
+            "description": "Continue forward, execute obverse punch to high section"
+          },
+          "defense": {
+            "technique": "Rising block",
+            "korean_name": "Chookyo makgi",
+            "stance": "walking stance",
+            "target": "high section",
+            "hand": "left",
+            "description": "Step back, execute rising block"
+          }
+        },
+        {
+          "step_number": 3,
+          "timing": "Immediate counter after final block",
+          "key_points": "Quick counter, accurate targeting",
+          "common_mistakes": "Slow counter, poor distance",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "high section",
+            "hand": "right",
+            "description": "Final forward step with obverse punch to high section"
+          },
+          "defense": {
+            "technique": "Rising block",
+            "korean_name": "Chookyo makgi",
+            "stance": "walking stance",
+            "target": "high section",
+            "hand": "left",
+            "description": "Final step back with rising block"
+          },
+          "counter": {
+            "technique": "Front kick",
+            "korean_name": "Ap chagi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Immediately counter with right front kick to opponent's middle section"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3-Step Sparring #3",
+      "sequence_number": 3,
+      "description": "Outer forearm block with reverse punch counter",
+      "difficulty": 1,
+      "key_learning_points": "Outside blocking and opposite hand counters",
+      "applicable_belt_levels": ["8th_keup", "7th_keup", "6th_keup"],
+      "steps": [
+        {
+          "step_number": 1,
+          "timing": "Attack and block simultaneously",
+          "key_points": "Strong outside block, proper angle",
+          "common_mistakes": "Weak block, poor arm position",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Step forward with right foot into walking stance, execute obverse punch"
+          },
+          "defense": {
+            "technique": "Outer forearm block",
+            "korean_name": "Bakat palmok makgi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Step back with left foot, execute outer forearm block with right arm"
+          }
+        },
+        {
+          "step_number": 2,
+          "timing": "Continuous attack sequence",
+          "key_points": "Maintain blocking angle, strong stance",
+          "common_mistakes": "Block too wide, poor timing",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Continue forward, execute obverse punch"
+          },
+          "defense": {
+            "technique": "Outer forearm block",
+            "korean_name": "Bakat palmok makgi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Step back, execute outer forearm block with right arm"
+          }
+        },
+        {
+          "step_number": 3,
+          "timing": "Immediate counter after final block",
+          "key_points": "Quick reverse punch, proper hip rotation",
+          "common_mistakes": "Slow counter, no hip movement",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Final forward step with obverse punch"
+          },
+          "defense": {
+            "technique": "Outer forearm block",
+            "korean_name": "Bakat palmok makgi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Final step back with outer forearm block"
+          },
+          "counter": {
+            "technique": "Reverse punch",
+            "korean_name": "Bandae jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "left",
+            "description": "Immediately counter with left reverse punch using hip rotation"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3-Step Sparring #4",
+      "sequence_number": 4,
+      "description": "Low block with side kick counter",
+      "difficulty": 1,
+      "key_learning_points": "Low section defense and powerful side kicks",
+      "applicable_belt_levels": ["8th_keup", "7th_keup", "6th_keup"],
+      "steps": [
+        {
+          "step_number": 1,
+          "timing": "Attack and block simultaneously",
+          "key_points": "Low block angle, strong stance",
+          "common_mistakes": "Block too high, poor stance",
+          "attack": {
+            "technique": "Front kick",
+            "korean_name": "Ap chagi",
+            "stance": "walking stance",
+            "target": "low section",
+            "hand": "right",
+            "description": "Step forward and execute front kick to low section"
+          },
+          "defense": {
+            "technique": "Low block",
+            "korean_name": "Naejeo makgi",
+            "stance": "walking stance",
+            "target": "low section",
+            "hand": "left",
+            "description": "Step back with right foot, execute low block with left arm"
+          }
+        },
+        {
+          "step_number": 2,
+          "timing": "Continuous attack sequence",
+          "key_points": "Consistent blocking, maintain distance",
+          "common_mistakes": "Inconsistent blocks, poor footwork",
+          "attack": {
+            "technique": "Front kick",
+            "korean_name": "Ap chagi",
+            "stance": "walking stance",
+            "target": "low section",
+            "hand": "right",
+            "description": "Continue forward with front kick to low section"
+          },
+          "defense": {
+            "technique": "Low block",
+            "korean_name": "Naejeo makgi",
+            "stance": "walking stance",
+            "target": "low section",
+            "hand": "left",
+            "description": "Step back, execute low block with left arm"
+          }
+        },
+        {
+          "step_number": 3,
+          "timing": "Immediate counter after final block",
+          "key_points": "Powerful side kick, good chamber",
+          "common_mistakes": "Weak kick, poor balance",
+          "attack": {
+            "technique": "Front kick",
+            "korean_name": "Ap chagi",
+            "stance": "walking stance",
+            "target": "low section",
+            "hand": "right",
+            "description": "Final forward step with front kick to low section"
+          },
+          "defense": {
+            "technique": "Low block",
+            "korean_name": "Naejeo makgi",
+            "stance": "walking stance",
+            "target": "low section",
+            "hand": "left",
+            "description": "Final step back with low block"
+          },
+          "counter": {
+            "technique": "Side kick",
+            "korean_name": "Yop chagi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Immediately counter with right side kick to opponent's middle section"
+          }
+        }
+      ]
+    }
+  ]
+}

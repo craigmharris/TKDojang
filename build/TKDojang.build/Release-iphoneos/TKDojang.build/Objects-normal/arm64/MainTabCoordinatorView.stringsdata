@@ -332,34 +332,10 @@
       },
       {
         "comment": "",
-        "key": "Step Sparring",
-        "location": {
-          "startingColumn": 26,
-          "startingLine": 715
-        }
-      },
-      {
-        "comment": "",
-        "key": "Step Sparring",
-        "location": {
-          "startingColumn": 18,
-          "startingLine": 704
-        }
-      },
-      {
-        "comment": "",
-        "key": "Practice 3, 2, and 1-step sparring sequences",
-        "location": {
-          "startingColumn": 18,
-          "startingLine": 708
-        }
-      },
-      {
-        "comment": "",
         "key": "Line Work",
         "location": {
           "startingColumn": 26,
-          "startingLine": 738
+          "startingLine": 717
         }
       },
       {
@@ -367,7 +343,7 @@
         "key": "Line Work",
         "location": {
           "startingColumn": 18,
-          "startingLine": 727
+          "startingLine": 706
         }
       },
       {
@@ -375,7 +351,7 @@
         "key": "Forward and backward technique drills",
         "location": {
           "startingColumn": 18,
-          "startingLine": 731
+          "startingLine": 710
         }
       },
       {
@@ -383,7 +359,7 @@
         "key": "Technique Guide",
         "location": {
           "startingColumn": 26,
-          "startingLine": 761
+          "startingLine": 740
         }
       },
       {
@@ -391,7 +367,7 @@
         "key": "Technique Guide",
         "location": {
           "startingColumn": 18,
-          "startingLine": 750
+          "startingLine": 729
         }
       },
       {
@@ -399,7 +375,7 @@
         "key": "Detailed breakdowns of every technique and stance",
         "location": {
           "startingColumn": 18,
-          "startingLine": 754
+          "startingLine": 733
         }
       },
       {
@@ -407,7 +383,7 @@
         "key": "Tests",
         "location": {
           "startingColumn": 26,
-          "startingLine": 829
+          "startingLine": 808
         }
       },
       {
@@ -415,7 +391,7 @@
         "key": "Test Your Knowledge",
         "location": {
           "startingColumn": 18,
-          "startingLine": 779
+          "startingLine": 758
         }
       },
       {
@@ -423,7 +399,7 @@
         "key": "Comprehensive tests to validate your learning progress",
         "location": {
           "startingColumn": 18,
-          "startingLine": 783
+          "startingLine": 762
         }
       },
       {
@@ -431,7 +407,7 @@
         "key": "Comprehensive Test",
         "location": {
           "startingColumn": 24,
-          "startingLine": 791
+          "startingLine": 770
         }
       },
       {
@@ -439,7 +415,7 @@
         "key": "Quick Test (5-10 questions)",
         "location": {
           "startingColumn": 24,
-          "startingLine": 799
+          "startingLine": 778
         }
       },
       {
@@ -447,7 +423,7 @@
         "key": "Preparing your test...",
         "location": {
           "startingColumn": 26,
-          "startingLine": 820
+          "startingLine": 799
         }
       },
       {
@@ -455,7 +431,7 @@
         "key": "Profiles",
         "location": {
           "startingColumn": 30,
-          "startingLine": 958
+          "startingLine": 937
         }
       },
       {
@@ -463,7 +439,7 @@
         "key": "Add New Profile",
         "location": {
           "startingColumn": 36,
-          "startingLine": 927
+          "startingLine": 906
         }
       },
       {
@@ -471,7 +447,7 @@
         "key": "Family Profiles",
         "location": {
           "startingColumn": 34,
-          "startingLine": 915
+          "startingLine": 894
         }
       },
       {
@@ -479,7 +455,7 @@
         "key": "%lld/6",
         "location": {
           "startingColumn": 34,
-          "startingLine": 919
+          "startingLine": 898
         }
       },
       {
@@ -487,7 +463,7 @@
         "key": "Learning Settings",
         "location": {
           "startingColumn": 40,
-          "startingLine": 941
+          "startingLine": 920
         }
       },
       {
@@ -495,7 +471,7 @@
         "key": "Manage All Profiles",
         "location": {
           "startingColumn": 32,
-          "startingLine": 948
+          "startingLine": 927
         }
       },
       {
@@ -503,7 +479,7 @@
         "key": "•",
         "location": {
           "startingColumn": 26,
-          "startingLine": 1019
+          "startingLine": 998
         }
       }
     ]

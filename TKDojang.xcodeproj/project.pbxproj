@@ -12,8 +12,8 @@
 		44C17C322E5478DC0082CF96 /* TKDojangTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C2D2E5478DC0082CF96 /* TKDojangTests.swift */; };
 		44C17C342E5478DC0082CF96 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C2C2E5478DC0082CF96 /* PerformanceTests.swift */; };
 		44C17C382E5478F20082CF96 /* TKDojangUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C362E5478F20082CF96 /* TKDojangUITests.swift */; };
-	44C17C3B2E5478DC0082CF96 /* BasicFunctionalityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C392E5478DC0082CF96 /* BasicFunctionalityTests.swift */; };
-	44C17C3C2E5478DC0082CF96 /* FlashcardSystemTests_Simple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C3A2E5478DC0082CF96 /* FlashcardSystemTests_Simple.swift */; };
+		44C17C3B2E5478DC0082CF96 /* BasicFunctionalityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C392E5478DC0082CF96 /* BasicFunctionalityTests.swift */; };
+		44C17C3C2E5478DC0082CF96 /* FlashcardSystemTests_Simple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C3A2E5478DC0082CF96 /* FlashcardSystemTests_Simple.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +42,8 @@
 		44C17C2C2E5478DC0082CF96 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		44C17C2D2E5478DC0082CF96 /* TKDojangTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKDojangTests.swift; sourceTree = "<group>"; };
 		44C17C362E5478F20082CF96 /* TKDojangUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKDojangUITests.swift; sourceTree = "<group>"; };
-	44C17C392E5478DC0082CF96 /* BasicFunctionalityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFunctionalityTests.swift; sourceTree = "<group>"; };
-	44C17C3A2E5478DC0082CF96 /* FlashcardSystemTests_Simple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardSystemTests_Simple.swift; sourceTree = "<group>"; };
+		44C17C392E5478DC0082CF96 /* BasicFunctionalityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFunctionalityTests.swift; sourceTree = "<group>"; };
+		44C17C3A2E5478DC0082CF96 /* FlashcardSystemTests_Simple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardSystemTests_Simple.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */

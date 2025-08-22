@@ -29,6 +29,8 @@ struct FlashcardView: View {
     @State private var currentCardDirection: CardDirection = .englishToKorean // For random direction
     @State private var sessionStartTime: Date?
     @State private var sessionItemsStudied = 0
+    @State private var showingResults = false
+    @State private var incorrectTerms: [TerminologyEntry] = []
     
     init(specificTerms: [TerminologyEntry]? = nil) {
         self.specificTerms = specificTerms
@@ -131,7 +133,16 @@ struct FlashcardView: View {
                 }
             }
             .onDisappear {
-                recordStudySession()
+                if !showingResults {
+                    recordStudySession()
+                }
+            }
+            .navigationDestination(isPresented: $showingResults) {
+                FlashcardResultsView(
+                    sessionStats: sessionStats,
+                    terms: terms,
+                    incorrectTerms: incorrectTerms
+                )
             }
         }
     }
@@ -259,11 +270,18 @@ struct FlashcardView: View {
                 .buttonStyle(.bordered)
                 .disabled(currentTermIndex == 0)
                 
-                Button("Next") {
-                    nextCard()
+                if currentTermIndex >= terms.count - 1 {
+                    Button("Complete Session") {
+                        completeLearnSession()
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.green)
+                } else {
+                    Button("Next") {
+                        nextCard()
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
-                .buttonStyle(.borderedProminent)
-                .disabled(currentTermIndex >= terms.count - 1)
                 
             } else if isShowingAnswer {
                 // Test mode - answer feedback buttons
@@ -404,7 +422,24 @@ struct FlashcardView: View {
                     randomizeDirection()
                 }
             }
+        } else if studyMode == .test && sessionStats.totalCount > 0 {
+            // Session is complete - show results
+            recordStudySession()
+            showingResults = true
         }
+    }
+    
+    private func completeLearnSession() {
+        // For learn mode, create a perfect score since there are no incorrect answers
+        sessionStats.correctCount = terms.count
+        sessionStats.incorrectCount = 0
+        sessionItemsStudied = terms.count
+        
+        // Record the study session
+        recordStudySession()
+        
+        // Show results
+        showingResults = true
     }
     
     private func previousCard() {
@@ -442,6 +477,10 @@ struct FlashcardView: View {
             sessionStats.correctCount += 1
         } else {
             sessionStats.incorrectCount += 1
+            // Track incorrect terms for review
+            if !incorrectTerms.contains(where: { $0.id == currentTerm.id }) {
+                incorrectTerms.append(currentTerm)
+            }
         }
         
         sessionItemsStudied += 1

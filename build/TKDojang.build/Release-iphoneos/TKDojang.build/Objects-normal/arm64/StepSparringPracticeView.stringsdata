@@ -1,0 +1,152 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/StepSparringPracticeView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Exit",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 140
+        }
+      },
+      {
+        "comment": "",
+        "key": "Step %lld of %lld",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 174
+        }
+      },
+      {
+        "comment": "",
+        "key": "Attack & Defense",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 183
+        }
+      },
+      {
+        "comment": "",
+        "key": "Step %lld of %lld",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 244
+        }
+      },
+      {
+        "comment": "",
+        "key": "Previous Step",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 253
+        }
+      },
+      {
+        "comment": "",
+        "key": "Next Step",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 262
+        }
+      },
+      {
+        "comment": "",
+        "key": "Complete",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 268
+        }
+      },
+      {
+        "comment": "",
+        "key": "Step %lld Guidance",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 288
+        }
+      },
+      {
+        "comment": "",
+        "key": "Restart",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 317
+        }
+      },
+      {
+        "comment": "",
+        "key": "Practice Time",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 326
+        }
+      },
+      {
+        "comment": "",
+        "key": "Execution",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 455
+        }
+      },
+      {
+        "comment": "",
+        "key": "Notes",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 469
+        }
+      },
+      {
+        "comment": "",
+        "key": "Well Done!",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 595
+        }
+      },
+      {
+        "comment": "",
+        "key": "Sequence Complete!",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 554
+        }
+      },
+      {
+        "comment": "",
+        "key": "You've completed %@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 558
+        }
+      },
+      {
+        "comment": "",
+        "key": "Practice Again",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 578
+        }
+      },
+      {
+        "comment": "",
+        "key": "Continue Training",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 586
+        }
+      },
+      {
+        "comment": "",
+        "key": "Done",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 599
+        }
+      }
+    ]
+  },
+  "version": 1
+}
