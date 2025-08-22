@@ -5,6 +5,7 @@ import SwiftUI
 // MARK: - Notification Names
 extension Notification.Name {
     static let databaseResetStarting = Notification.Name("databaseResetStarting")
+    static let forceAppReset = Notification.Name("forceAppReset")
 }
 
 /**
@@ -31,6 +32,7 @@ class DataManager {
     
     // Track database reset state to trigger UI refresh
     private(set) var databaseResetId = UUID()
+    private(set) var isResettingDatabase = false
     
     var modelContext: ModelContext {
         return modelContainer.mainContext
@@ -255,6 +257,9 @@ class DataManager {
      */
     func resetAndReloadDatabase() async {
         do {
+            // Set resetting flag to prevent any profile access
+            isResettingDatabase = true
+            
             print("🔄 Starting database reset - recreating ModelContainer...")
             
             // CRITICAL: Clear ProfileService active profile reference to prevent SwiftData crashes
@@ -295,6 +300,9 @@ class DataManager {
             // Step 5: Trigger complete UI refresh by changing the reset ID
             self.databaseResetId = UUID()
             
+            // Clear resetting flag
+            isResettingDatabase = false
+            
             print("🗑️ Database container recreated successfully - UI refresh triggered")
             
             // Small delay to ensure database operations complete
@@ -314,6 +322,8 @@ class DataManager {
             
         } catch {
             print("❌ Failed to reset database: \\(error)")
+            // Clear resetting flag on error
+            isResettingDatabase = false
             // If reset fails, try creating a new context
             modelContainer.mainContext.rollback()
         }

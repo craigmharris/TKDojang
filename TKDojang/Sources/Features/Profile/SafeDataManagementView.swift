@@ -259,15 +259,15 @@ struct SafeDataManagementView: View {
     
     private func performSystemReset() {
         // This is the dangerous nuclear option - only for extreme cases
-        // First dismiss this view immediately to prevent SwiftUI from accessing deleted profiles
+        
+        // Clear confirmation and dismiss this view immediately
         systemResetConfirmation = ""
         dismiss()
         
-        // Small delay to ensure view is dismissed before database operations
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            Task {
-                await dataManager.resetAndReloadDatabase()
-            }
+        // Start database reset immediately - the isResettingDatabase flag will
+        // trigger the loading screen in ContentView to prevent any profile access
+        Task {
+            await dataManager.resetAndReloadDatabase()
         }
     }
 }
