@@ -301,6 +301,14 @@ class PatternDataService {
     // MARK: - Content Loading
     
     /**
+     * Development helper: Force reload patterns from JSON (use with caution)
+     */
+    func forceReloadPatternsFromJSON() {
+        print("⚠️ DEVELOPMENT: Force reloading patterns from JSON files...")
+        loadPatternsFromJSON()
+    }
+    
+    /**
      * Seeds the database with initial pattern content from JSON files
      */
     func seedInitialPatterns(beltLevels: [BeltLevel]) {
@@ -310,12 +318,22 @@ class PatternDataService {
         do {
             let existingPatterns = try modelContext.fetch(descriptor)
             if !existingPatterns.isEmpty {
-                print("📚 Found \(existingPatterns.count) existing patterns - clearing and reloading from JSON")
-                // Clear existing patterns to force reload with new JSON structure
-                for pattern in existingPatterns {
-                    modelContext.delete(pattern)
+                print("📚 Patterns already exist, skipping seeding")
+                print("   Found \(existingPatterns.count) existing patterns")
+                
+                // Debug: Check which patterns have no belt levels (this could be the issue!)
+                let patternsWithoutBelts = existingPatterns.filter { $0.beltLevels.isEmpty }
+                if !patternsWithoutBelts.isEmpty {
+                    print("⚠️ WARNING: \(patternsWithoutBelts.count) patterns have NO belt levels!")
+                    print("   Patterns without belts: \(patternsWithoutBelts.map { $0.name })")
                 }
-                try modelContext.save()
+                
+                let patternsWithBelts = existingPatterns.filter { !$0.beltLevels.isEmpty }
+                print("   Patterns with belt levels: \(patternsWithBelts.count)")
+                if !patternsWithBelts.isEmpty {
+                    print("   Belt levels: \(Array(Set(patternsWithBelts.compactMap { $0.beltLevels.first?.shortName })).sorted())")
+                }
+                return
             }
         } catch {
             print("Failed to check existing patterns: \(error)")
