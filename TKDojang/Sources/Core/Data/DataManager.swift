@@ -2,6 +2,11 @@ import Foundation
 import SwiftData
 import SwiftUI
 
+// MARK: - Notification Names
+extension Notification.Name {
+    static let databaseResetStarting = Notification.Name("databaseResetStarting")
+}
+
 /**
  * DataManager.swift
  * 
@@ -242,76 +247,49 @@ class DataManager {
     /**
      * Resets entire database and reloads with new modular content
      * Use this to force reload when content structure changes
+     * 
+     * CRITICAL: This recreates the entire ModelContainer to prevent SwiftData crashes
      */
     func resetAndReloadDatabase() async {
         do {
+            print("🔄 Starting database reset - recreating ModelContainer...")
+            
             // CRITICAL: Clear ProfileService active profile reference to prevent SwiftData crashes
             profileService.clearActiveProfileForReset()
             
-            // Small delay to ensure SwiftUI updates and releases references
-            try await Task.sleep(nanoseconds: 250_000_000) // 0.25 seconds
+            // Step 1: Clear current container data
+            let currentContext = modelContainer.mainContext
+            currentContext.rollback()
             
-            // Clear any pending changes first
-            modelContainer.mainContext.rollback()
+            // Step 2: Delete the database file and recreate container
+            let url = URL.applicationSupportDirectory.appending(path: "Model.sqlite")
+            try? FileManager.default.removeItem(at: url)
             
-            // Delete all existing data in reverse dependency order
-            let progressDescriptor = FetchDescriptor<UserTerminologyProgress>()
-            let entryDescriptor = FetchDescriptor<TerminologyEntry>()
-            let profileDescriptor = FetchDescriptor<UserProfile>()
-            let categoryDescriptor = FetchDescriptor<TerminologyCategory>()
-            let beltDescriptor = FetchDescriptor<BeltLevel>()
-            let patternProgressDescriptor = FetchDescriptor<UserPatternProgress>()
-            let patternMoveDescriptor = FetchDescriptor<PatternMove>()
-            let patternDescriptor = FetchDescriptor<Pattern>()
+            // Step 3: Recreate ModelContainer (this invalidates all existing SwiftData references)
+            let schema = Schema([
+                BeltLevel.self,
+                TerminologyCategory.self,
+                TerminologyEntry.self,
+                UserProfile.self,
+                UserTerminologyProgress.self,
+                Pattern.self,
+                PatternMove.self,
+                UserPatternProgress.self,
+                StepSparringSequence.self,
+                StepSparringStep.self,
+                StepSparringAction.self,
+                UserStepSparringProgress.self
+            ])
+            let modelConfiguration = ModelConfiguration(schema: schema)
+            let newContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
             
-            // Step sparring descriptors
-            let stepSparringProgressDescriptor = FetchDescriptor<UserStepSparringProgress>()
-            let stepSparringStepDescriptor = FetchDescriptor<StepSparringStep>()
-            let stepSparringActionDescriptor = FetchDescriptor<StepSparringAction>()
-            let stepSparringSequenceDescriptor = FetchDescriptor<StepSparringSequence>()
+            // Step 4: Update all services with new container
+            self.modelContainer = newContainer
+            self.terminologyService = TerminologyDataService(modelContext: newContainer.mainContext)
+            self.patternService = PatternDataService(modelContext: newContainer.mainContext)
+            self.profileService = ProfileService(modelContext: newContainer.mainContext)
             
-            // Delete in order to avoid relationship conflicts
-            // 1. Delete all progress records first (they depend on profiles)
-            let progress = try modelContainer.mainContext.fetch(progressDescriptor)
-            progress.forEach { modelContainer.mainContext.delete($0) }
-            
-            let patternProgress = try modelContainer.mainContext.fetch(patternProgressDescriptor)
-            patternProgress.forEach { modelContainer.mainContext.delete($0) }
-            
-            let stepSparringProgress = try modelContainer.mainContext.fetch(stepSparringProgressDescriptor)
-            stepSparringProgress.forEach { modelContainer.mainContext.delete($0) }
-            
-            // 2. Delete content objects (no dependencies on profiles)
-            let entries = try modelContainer.mainContext.fetch(entryDescriptor)
-            entries.forEach { modelContainer.mainContext.delete($0) }
-            
-            let moves = try modelContainer.mainContext.fetch(patternMoveDescriptor)
-            moves.forEach { modelContainer.mainContext.delete($0) }
-            
-            let patterns = try modelContainer.mainContext.fetch(patternDescriptor)
-            patterns.forEach { modelContainer.mainContext.delete($0) }
-            
-            let stepSparringSteps = try modelContainer.mainContext.fetch(stepSparringStepDescriptor)
-            stepSparringSteps.forEach { modelContainer.mainContext.delete($0) }
-            
-            let stepSparringActions = try modelContainer.mainContext.fetch(stepSparringActionDescriptor)
-            stepSparringActions.forEach { modelContainer.mainContext.delete($0) }
-            
-            let stepSparringSequences = try modelContainer.mainContext.fetch(stepSparringSequenceDescriptor)
-            stepSparringSequences.forEach { modelContainer.mainContext.delete($0) }
-            
-            // 3. Delete profiles after all progress records are gone
-            let profiles = try modelContainer.mainContext.fetch(profileDescriptor)
-            profiles.forEach { modelContainer.mainContext.delete($0) }
-            
-            let categories = try modelContainer.mainContext.fetch(categoryDescriptor)
-            categories.forEach { modelContainer.mainContext.delete($0) }
-            
-            let belts = try modelContainer.mainContext.fetch(beltDescriptor)
-            belts.forEach { modelContainer.mainContext.delete($0) }
-            
-            try modelContainer.mainContext.save()
-            print("🗑️ Database cleared successfully")
+            print("🗑️ Database container recreated successfully")
             
             // Small delay to ensure database operations complete
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
