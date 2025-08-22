@@ -29,6 +29,30 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "444D542E2E4F8EF8009F3E49"
+               BuildableName = "TKDojangTests.xctest"
+               BlueprintName = "TKDojangTests"
+               ReferencedContainer = "container:TKDojang.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "444D54382E4F8EF8009F3E49"
+               BuildableName = "TKDojangUITests.xctest"
+               BlueprintName = "TKDojangUITests"
+               ReferencedContainer = "container:TKDojang.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
