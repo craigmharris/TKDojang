@@ -1,0 +1,341 @@
+{
+  "belt_level" : "10th_keup",
+  "category" : "basics",
+  "metadata" : {
+    "created_at" : "2025-08-16T23:26:59Z",
+    "source" : "CSV Import Tool",
+    "total_count" : 30
+  },
+  "terminology" : [
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Command to turn 180 degrees to face the opposite direction",
+      "difficulty" : 1,
+      "english_term" : "About Turn",
+      "korean_hangul" : "뒤로 돌아",
+      "phonetic_pronunciation" : "/twi.ɾo do.ɾa/",
+      "romanized_pronunciation" : "Dwiyro Torro"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Standing at attention position with heels together and body straight",
+      "difficulty" : 1,
+      "english_term" : "Attention",
+      "korean_hangul" : "차렷",
+      "phonetic_pronunciation" : "/tʃʰa.ɾjət/",
+      "romanized_pronunciation" : "Charyot"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Movement or direction toward the rear",
+      "difficulty" : 1,
+      "english_term" : "Backward",
+      "korean_hangul" : "뒤로 가기",
+      "phonetic_pronunciation" : "/twi.ɾo ka.ɡi/",
+      "romanized_pronunciation" : "Dwiyro Kaggi"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Colored belt worn around the waist indicating rank and skill level",
+      "difficulty" : 1,
+      "english_term" : "Belt",
+      "korean_hangul" : "띠",
+      "phonetic_pronunciation" : "/t͈i/",
+      "romanized_pronunciation" : "Ti"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Defensive technique used to deflect or stop an attack",
+      "difficulty" : 1,
+      "english_term" : "Block",
+      "korean_hangul" : "막기",
+      "phonetic_pronunciation" : "/mak.k͈i/",
+      "romanized_pronunciation" : "Makgi"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Respectful greeting performed by bending forward at the waist",
+      "difficulty" : 1,
+      "english_term" : "Bow",
+      "korean_hangul" : "경례",
+      "phonetic_pronunciation" : "/kjʌŋ.ɾje/",
+      "romanized_pronunciation" : "Kyong-Ye"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Command to break from formation or stop current activity",
+      "difficulty" : 1,
+      "english_term" : "Break",
+      "korean_hangul" : "해쳐",
+      "phonetic_pronunciation" : "/hɛ.tʃʰjə/",
+      "romanized_pronunciation" : "Hechyo"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Command to end class and release students",
+      "difficulty" : 1,
+      "english_term" : "Dismiss",
+      "korean_hangul" : "해산",
+      "phonetic_pronunciation" : "/hɛ.san/",
+      "romanized_pronunciation" : "Haessan"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Movement or direction toward the front",
+      "difficulty" : 1,
+      "english_term" : "Forward",
+      "korean_hangul" : "앞으로",
+      "phonetic_pronunciation" : "/a.pɯ.ɾo/",
+      "romanized_pronunciation" : "Apro Kaggi"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Upper target area from shoulders to top of head",
+      "difficulty" : 1,
+      "english_term" : "High Section",
+      "korean_hangul" : "높은데",
+      "phonetic_pronunciation" : "/no.pɯn.de/",
+      "romanized_pronunciation" : "Nopunde"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Inside part of the forearm used for blocking",
+      "difficulty" : 1,
+      "english_term" : "Inner Forearm",
+      "korean_hangul" : "안팔목",
+      "phonetic_pronunciation" : "/an.pʰal.mok/",
+      "romanized_pronunciation" : "An Palmok"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Master teacher who instructs students in martial arts",
+      "difficulty" : 1,
+      "english_term" : "Instructor",
+      "korean_hangul" : "사범",
+      "phonetic_pronunciation" : "/sa.bʌm/",
+      "romanized_pronunciation" : "Sabum"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Direction moving toward the body's centerline",
+      "difficulty" : 1,
+      "english_term" : "Inward",
+      "korean_hangul" : "안으로",
+      "phonetic_pronunciation" : "/a.nɯ.ɾo/",
+      "romanized_pronunciation" : "Anaero"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Left side or direction",
+      "difficulty" : 1,
+      "english_term" : "Left",
+      "korean_hangul" : "왼",
+      "phonetic_pronunciation" : "/wen/",
+      "romanized_pronunciation" : "Wen"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Lower target area from waist to ground level",
+      "difficulty" : 1,
+      "english_term" : "Low Section",
+      "korean_hangul" : "낮은데",
+      "phonetic_pronunciation" : "/na.tɯn.de/",
+      "romanized_pronunciation" : "Nojunde"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Middle target area from waist to shoulders",
+      "difficulty" : 1,
+      "english_term" : "Middle Section",
+      "korean_hangul" : "가운데",
+      "phonetic_pronunciation" : "/ka.un.de/",
+      "romanized_pronunciation" : "Kaunde"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Outside part of the forearm used for blocking",
+      "difficulty" : 1,
+      "english_term" : "Outer Forearm",
+      "korean_hangul" : "바깥팔목",
+      "phonetic_pronunciation" : "/pa.k͈at.pʰal.mok/",
+      "romanized_pronunciation" : "Bakat Palmok"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Direction moving away from the body's centerline",
+      "difficulty" : 1,
+      "english_term" : "Outward",
+      "korean_hangul" : "바깥으로",
+      "phonetic_pronunciation" : "/pa.k͈a.nɯ.ɾo/",
+      "romanized_pronunciation" : "Bakaero"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Predetermined sequence of techniques performed in set order",
+      "difficulty" : 1,
+      "english_term" : "Pattern",
+      "korean_hangul" : "틀",
+      "phonetic_pronunciation" : "/tʰɯl/",
+      "romanized_pronunciation" : "Tul"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Push-up exercise for strengthening arms and chest",
+      "difficulty" : 1,
+      "english_term" : "Press Ups",
+      "korean_hangul" : "몸통받치기",
+      "phonetic_pronunciation" : "/mom.tʰoŋ.pat.tʃʰi.ɡi/",
+      "romanized_pronunciation" : "Momtong Bachia"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Preparatory position before beginning techniques",
+      "difficulty" : 1,
+      "english_term" : "Ready",
+      "korean_hangul" : "준비",
+      "phonetic_pronunciation" : "/tʃun.bi/",
+      "romanized_pronunciation" : "Junbi"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Command to return to ready position after technique",
+      "difficulty" : 1,
+      "english_term" : "Return to Ready",
+      "korean_hangul" : "바로",
+      "phonetic_pronunciation" : "/pa.ɾo/",
+      "romanized_pronunciation" : "Barrol"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Right side or direction",
+      "difficulty" : 1,
+      "english_term" : "Right",
+      "korean_hangul" : "오른",
+      "phonetic_pronunciation" : "/o.ɾɯn/",
+      "romanized_pronunciation" : "Orun"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Loud yell used to focus energy and intimidate opponent",
+      "difficulty" : 1,
+      "english_term" : "Shout",
+      "korean_hangul" : "기합",
+      "phonetic_pronunciation" : "/ki.hap/",
+      "romanized_pronunciation" : "Kihap"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Specific foot and body positioning for balance and power",
+      "difficulty" : 1,
+      "english_term" : "Stance",
+      "korean_hangul" : "서기",
+      "phonetic_pronunciation" : "/sʌ.ɡi/",
+      "romanized_pronunciation" : "Sogi"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Command to commence training or technique",
+      "difficulty" : 1,
+      "english_term" : "Start\/Begin",
+      "korean_hangul" : "시작",
+      "phonetic_pronunciation" : "/ɕi.dʑak/",
+      "romanized_pronunciation" : "Si-Jak"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Command to cease current activity immediately",
+      "difficulty" : 1,
+      "english_term" : "Stop",
+      "korean_hangul" : "그만",
+      "phonetic_pronunciation" : "/kɯ.man/",
+      "romanized_pronunciation" : "Goman"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Person learning martial arts under an instructor",
+      "difficulty" : 1,
+      "english_term" : "Student",
+      "korean_hangul" : "제자",
+      "phonetic_pronunciation" : "/tʃe.dʑa/",
+      "romanized_pronunciation" : "Jeja"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Place where martial arts training takes place",
+      "difficulty" : 1,
+      "english_term" : "Training Hall",
+      "korean_hangul" : "도장",
+      "phonetic_pronunciation" : "/to.dʑaŋ/",
+      "romanized_pronunciation" : "Dojang"
+    },
+    {
+      "belt_level" : "10th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "White uniform worn during martial arts practice",
+      "difficulty" : 1,
+      "english_term" : "Training Suit",
+      "korean_hangul" : "도복",
+      "phonetic_pronunciation" : "/to.bok/",
+      "romanized_pronunciation" : "Dobok"
+    }
+  ]
+}

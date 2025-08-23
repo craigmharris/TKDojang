@@ -1,0 +1,143 @@
+{
+  "belt_level" : "6th_keup",
+  "category" : "techniques",
+  "metadata" : {
+    "created_at" : "2025-08-16T23:26:59Z",
+    "source" : "CSV Import Tool",
+    "total_count" : 12
+  },
+  "terminology" : [
+    {
+      "belt_level" : "6th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Controlled sparring exercise with three predetermined attacks",
+      "difficulty" : 1,
+      "english_term" : "3-step Semi-Free Sparring",
+      "korean_hangul" : "반자유맞서기",
+      "phonetic_pronunciation" : "/pan.dʑa.ju.mat.sʌ.ɡi/",
+      "romanized_pronunciation" : "Ban Jayoo Matsoki"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Rearward kicking technique using heel or sole",
+      "difficulty" : 1,
+      "english_term" : "Back Kick",
+      "korean_hangul" : "뒤차기",
+      "phonetic_pronunciation" : "/twi.tʃʰa.ɡi/",
+      "romanized_pronunciation" : "Dwit Chagi"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Ready position with knees slightly bent for mobility",
+      "difficulty" : 1,
+      "english_term" : "Bending Ready Stance",
+      "korean_hangul" : "구부려서기",
+      "phonetic_pronunciation" : "/ku.bu.ɾjʌ.sʌ.ɡi/",
+      "romanized_pronunciation" : "Guburyo Sogi"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Ready position with feet together and hands ready",
+      "difficulty" : 1,
+      "english_term" : "Closed Ready Stance",
+      "korean_hangul" : "모아준비서기",
+      "phonetic_pronunciation" : "/mo.a.tʃun.bi.sʌ.ɡi/",
+      "romanized_pronunciation" : "Moa Junbi Sogi"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Stable stance with feet firmly planted for balance",
+      "difficulty" : 1,
+      "english_term" : "Fixed Stance",
+      "korean_hangul" : "고정서기",
+      "phonetic_pronunciation" : "/ko.dʑʌŋ.sʌ.ɡi/",
+      "romanized_pronunciation" : "Gojung Sogi"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Circular blocking motion using inner forearm",
+      "difficulty" : 1,
+      "english_term" : "Inner Forearm Circular Block",
+      "korean_hangul" : "안팔목돌리며막기",
+      "phonetic_pronunciation" : "/an.pʰal.mok.tol.li.mjʌ.mak.ɡi/",
+      "romanized_pronunciation" : "An Palmok Dollimyo Makgi"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Inward striking motion using edge of hand",
+      "difficulty" : 1,
+      "english_term" : "Knife Hand Inward Strike",
+      "korean_hangul" : "손칼안으로타어리기",
+      "phonetic_pronunciation" : "/son.kʰal.a.nɯ.ɾo.tʰa.ʌ.ɾi.ɡi/",
+      "romanized_pronunciation" : "Sonkal Anaero Taerigi"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Defensive block at waist level using outer forearm",
+      "difficulty" : 1,
+      "english_term" : "Outer Forearm Waist Block",
+      "korean_hangul" : "바깥팔목허리막기",
+      "phonetic_pronunciation" : "/pa.k͈at.pʰal.mok.hʌ.ɾi.mak.ɡi/",
+      "romanized_pronunciation" : "Bakat Palmok Hori Makgi"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Inward pushing block using palm of hand",
+      "difficulty" : 1,
+      "english_term" : "Palm Inward Pushing Block",
+      "korean_hangul" : "손바닥안으로밀어막기",
+      "phonetic_pronunciation" : "/son.ba.dak.a.nɯ.ɾo.mi.ɾo.mak.ɡi/",
+      "romanized_pronunciation" : "Sonbadak Aaero Miro Makgi"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Striking technique using back edge of hand",
+      "difficulty" : 1,
+      "english_term" : "Reverse Knife Hand Strike",
+      "korean_hangul" : "손칼등타어리기",
+      "phonetic_pronunciation" : "/son.kʰal.dɯŋ.tʰa.ʌ.ɾi.ɡi/",
+      "romanized_pronunciation" : "Sonkal Dung Taerigi"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Punching technique delivered to the side",
+      "difficulty" : 1,
+      "english_term" : "Side Punch",
+      "korean_hangul" : "옆지르기",
+      "phonetic_pronunciation" : "/jʌp.tʃi.ɾɯ.ɡi/",
+      "romanized_pronunciation" : "Yop Jirugi"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Upright stance with straight vertical posture",
+      "difficulty" : 1,
+      "english_term" : "Vertical Stance",
+      "korean_hangul" : "수직서기",
+      "phonetic_pronunciation" : "/su.dʑik.sʌ.ɡi/",
+      "romanized_pronunciation" : "Soo Jik Sogi"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Dashboard/OnboardingCoordinatorView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Welcome to TKDojang",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 22
+        }
+      },
+      {
+        "comment": "",
+        "key": "Master the ancient art of Taekwondo with structured lessons, technique demonstrations, and personalized progress tracking.",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 28
+        }
+      },
+      {
+        "comment": "",
+        "key": "Get Started",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 37
+        }
+      }
+    ]
+  },
+  "version": 1
+}

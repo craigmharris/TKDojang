@@ -1,0 +1,55 @@
+{
+  "belt_level" : "6th_keup",
+  "category" : "basics",
+  "metadata" : {
+    "created_at" : "2025-08-16T23:26:59Z",
+    "source" : "CSV Import Tool",
+    "total_count" : 4
+  },
+  "terminology" : [
+    {
+      "belt_level" : "6th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Bottom back part of the foot used for striking",
+      "difficulty" : 1,
+      "english_term" : "Back Sole",
+      "korean_hangul" : "뒤발굵",
+      "phonetic_pronunciation" : "/twi.bal.kum.tʃʰi/",
+      "romanized_pronunciation" : "Dwi Kumchi"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Moving or adjusting foot position for balance",
+      "difficulty" : 1,
+      "english_term" : "Foot Shifting",
+      "korean_hangul" : "자진발",
+      "phonetic_pronunciation" : "/tʃa.dʑin.bal/",
+      "romanized_pronunciation" : "Jajun Bal"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Inner surface of the hand used for strikes and blocks",
+      "difficulty" : 1,
+      "english_term" : "Palm",
+      "korean_hangul" : "손바닥",
+      "phonetic_pronunciation" : "/son.ba.dak/",
+      "romanized_pronunciation" : "Sonbadak"
+    },
+    {
+      "belt_level" : "6th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Back edge of the hand used for striking techniques",
+      "difficulty" : 1,
+      "english_term" : "Reverse Knife Hand",
+      "korean_hangul" : "손칼등",
+      "phonetic_pronunciation" : "/son.kʰal.dɯŋ/",
+      "romanized_pronunciation" : "Sonkal Dung"
+    }
+  ]
+}

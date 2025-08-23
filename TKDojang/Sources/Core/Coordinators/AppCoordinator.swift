@@ -19,10 +19,9 @@ class AppCoordinator: ObservableObject {
      * Enumeration of major application flows
      */
     enum AppFlow {
-        case loading        // Initial app launch, checking authentication
+        case loading        // Initial app launch, loading data
         case onboarding     // First-time user experience
-        case authentication // Login/signup flow
-        case main          // Authenticated user's main app experience
+        case main          // Main app experience with profiles
     }
     
     // MARK: - Published Properties
@@ -63,14 +62,7 @@ class AppCoordinator: ObservableObject {
         }
     }
     
-    /**
-     * Navigate to authentication flow
-     */
-    func showAuthentication() {
-        withAnimation(.easeInOut(duration: 0.3)) {
-            currentFlow = .authentication
-        }
-    }
+    // Authentication flow removed - app uses device-local profiles
     
     /**
      * Navigate to main app flow
@@ -81,18 +73,7 @@ class AppCoordinator: ObservableObject {
         }
     }
     
-    /**
-     * Handle user logout
-     */
-    func logout() {
-        isLoading = true
-        
-        // Simulate logout process
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.isLoading = false
-            self.showAuthentication()
-        }
-    }
+    // Logout removed - app uses device-local profiles without authentication
     
     // MARK: - Private Methods
     
@@ -100,12 +81,15 @@ class AppCoordinator: ObservableObject {
      * Determine the initial flow when app starts
      */
     private func determineInitialFlow() {
-        // For now, start with onboarding
-        // In a real app, you'd check UserDefaults for onboarding completion
-        // and authentication status
+        // Check if user has completed onboarding
+        let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.showOnboarding()
+            if hasCompletedOnboarding {
+                self.showMainFlow()
+            } else {
+                self.showOnboarding()
+            }
         }
     }
 }

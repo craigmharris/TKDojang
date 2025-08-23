@@ -4,7 +4,17 @@
       "Bash(find:*)",
       "Bash(xcodebuild clean:*)",
       "Bash(git add:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(xcodebuild:*)",
+      "Bash(xcrun simctl boot:*)",
+      "Bash(xcrun simctl install:*)",
+      "Bash(xcrun simctl launch:*)",
+      "Bash(xcrun simctl spawn:*)",
+      "Bash(xcrun simctl uninstall:*)",
+      "Bash(swift -typecheck:*)",
+      "Bash(git branch:*)",
+      "Bash(git for-each-ref:*)"
     ],
     "deny": [],
     "ask": [],

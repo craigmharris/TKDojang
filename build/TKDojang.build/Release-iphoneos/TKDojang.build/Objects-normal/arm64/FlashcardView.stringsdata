@@ -1,0 +1,232 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/FlashcardView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Korean Terms",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 79
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading terms...",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 58
+        }
+      },
+      {
+        "comment": "",
+        "key": "Study Mode",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 88
+        }
+      },
+      {
+        "comment": "",
+        "key": "Direction",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learn Mode",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 90
+        }
+      },
+      {
+        "comment": "",
+        "key": "Test Mode",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "English → Korean",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 102
+        }
+      },
+      {
+        "comment": "",
+        "key": "Korean → English",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 108
+        }
+      },
+      {
+        "comment": "",
+        "key": "Both Directions",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 114
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 159
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld of %lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 178
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tap to reveal answer",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 242
+        }
+      },
+      {
+        "comment": "",
+        "key": "Previous",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 256
+        }
+      },
+      {
+        "comment": "",
+        "key": "Next",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 262
+        }
+      },
+      {
+        "comment": "",
+        "key": "Incorrect",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 270
+        }
+      },
+      {
+        "comment": "",
+        "key": "Correct",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 276
+        }
+      },
+      {
+        "comment": "",
+        "key": "Previous",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 283
+        }
+      },
+      {
+        "comment": "",
+        "key": "Skip",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 289
+        }
+      },
+      {
+        "comment": "",
+        "key": "No terms available",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 330
+        }
+      },
+      {
+        "comment": "",
+        "key": "Check your belt level and learning mode settings",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 334
+        }
+      },
+      {
+        "comment": "",
+        "key": "English",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 473
+        }
+      },
+      {
+        "comment": "",
+        "key": "Korean",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 489
+        }
+      },
+      {
+        "comment": "",
+        "key": "[%@]",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 507
+        }
+      },
+      {
+        "comment": "",
+        "key": "Definition",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 519
+        }
+      },
+      {
+        "comment": "",
+        "key": "What is this in Korean?",
+        "location": {
+          "startingColumn": 61,
+          "startingLine": 538
+        }
+      },
+      {
+        "comment": "",
+        "key": "What is this in English?",
+        "location": {
+          "startingColumn": 89,
+          "startingLine": 538
+        }
+      },
+      {
+        "comment": "",
+        "key": "[%@]",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 569
+        }
+      },
+      {
+        "comment": "",
+        "key": "[%@]",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 592
+        }
+      }
+    ]
+  },
+  "version": 1
+}

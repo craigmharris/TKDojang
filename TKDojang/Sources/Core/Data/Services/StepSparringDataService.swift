@@ -1,0 +1,405 @@
+import Foundation
+import SwiftData
+
+/**
+ * StepSparringDataService.swift
+ * 
+ * PURPOSE: Service layer for step sparring data management
+ * 
+ * FEATURES:
+ * - Load and filter step sparring sequences by belt level and type
+ * - Manage user progress tracking for sequences
+ * - Handle content loading from JSON files
+ * - Progress analytics and mastery tracking
+ */
+
+@Observable
+final class StepSparringDataService {
+    let modelContext: ModelContext
+    private var sequences: [StepSparringSequence] = []
+    
+    init(modelContext: ModelContext) {
+        self.modelContext = modelContext
+    }
+    
+    // MARK: - Sequence Loading and Management
+    
+    /**
+     * Loads all step sparring sequences from the database - WITH RELATIONSHIP LOADING
+     */
+    func loadAllSequences() -> [StepSparringSequence] {
+        var descriptor = FetchDescriptor<StepSparringSequence>()
+        descriptor.relationshipKeyPathsForPrefetching = [\.beltLevels]
+        
+        do {
+            let allSequences = try modelContext.fetch(descriptor)
+            
+            // Force trigger relationship loading
+            for sequence in allSequences {
+                _ = sequence.beltLevels.count
+            }
+            
+            sequences = allSequences.sorted { lhs, rhs in
+                if lhs.type.rawValue != rhs.type.rawValue {
+                    return lhs.type.rawValue < rhs.type.rawValue
+                }
+                return lhs.sequenceNumber < rhs.sequenceNumber
+            }
+            print("📚 DEBUG: loadAllSequences() found \(sequences.count) step sparring sequences in database")
+            return sequences
+        } catch {
+            print("❌ Failed to load step sparring sequences: \(error)")
+            return []
+        }
+    }
+    
+    /**
+     * Gets sequences appropriate for a user's current belt level
+     */
+    func getSequencesForUser(userProfile: UserProfile) -> [StepSparringSequence] {
+        let allSequences = loadAllSequences()
+        return allSequences.filter { sequence in
+            sequence.isAvailableFor(beltLevel: userProfile.currentBeltLevel)
+        }
+    }
+    
+    /**
+     * Gets sequences filtered by type and belt level - BYPASS RELATIONSHIP LOADING
+     */
+    func getSequences(
+        for type: StepSparringType, 
+        userProfile: UserProfile
+    ) -> [StepSparringSequence] {
+        // Simple fetch without relationship prefetching
+        let descriptor = FetchDescriptor<StepSparringSequence>()
+        
+        do {
+            let allSequences = try modelContext.fetch(descriptor)
+            
+            // Filter programmatically with manual belt checking
+            let filteredSequences = allSequences.filter { sequence in
+                // First filter by type
+                guard sequence.type == type else { return false }
+                
+                // Manual belt level checking - BYPASS the relationship entirely
+                let isAvailable = manualBeltLevelCheck(for: sequence, userBelt: userProfile.currentBeltLevel)
+                
+                print("🔍 FILTER DEBUG: Sequence #\(sequence.sequenceNumber) '\(sequence.name)':")
+                print("   SwiftData belt count: \(sequence.beltLevels.count)")
+                print("   Manual belt check result: \(isAvailable)")
+                print("   User belt: \(userProfile.currentBeltLevel.shortName)(\(userProfile.currentBeltLevel.sortOrder))")
+                print("   Available: \(isAvailable)")
+                
+                return isAvailable
+            }
+            
+            let sortedSequences = filteredSequences.sorted { $0.sequenceNumber < $1.sequenceNumber }
+            print("✅ Found \(sortedSequences.count) \(type.displayName) sequences")
+            return sortedSequences
+        } catch {
+            print("❌ Failed to fetch sequences: \(error)")
+            return []
+        }
+    }
+    
+    /**
+     * Manual belt level checking that bypasses SwiftData relationships entirely
+     * Reconstructs the expected belt associations based on sequence patterns
+     */
+    private func manualBeltLevelCheck(for sequence: StepSparringSequence, userBelt: BeltLevel) -> Bool {
+        // Define expected belt patterns based on sequence number and type
+        let expectedBelts: [String]
+        
+        switch (sequence.type, sequence.sequenceNumber) {
+        // 3-Step Sparring patterns
+        case (.threeStep, 1...4):
+            expectedBelts = ["8th_keup", "7th_keup", "6th_keup"]
+        case (.threeStep, 5...7):
+            expectedBelts = ["7th_keup", "6th_keup"]
+        case (.threeStep, 8...10):
+            expectedBelts = ["6th_keup"]
+            
+        // 2-Step Sparring patterns  
+        case (.twoStep, 1...4):
+            expectedBelts = ["5th_keup", "4th_keup"]
+        case (.twoStep, 5...8):
+            expectedBelts = ["4th_keup"]
+            
+        default:
+            expectedBelts = []
+        }
+        
+        // Convert expected belts to normalized names and check against user belt
+        for expectedBelt in expectedBelts {
+            let normalizedBelt = expectedBelt.replacingOccurrences(of: "_", with: " ")
+                .replacingOccurrences(of: "keup", with: "Keup")
+            
+            // Check if user's belt matches any expected belt
+            // User can access sequences for their current belt and all previous belts (higher sort order)
+            if normalizedBelt == userBelt.shortName || 
+               (getBeltSortOrder(for: normalizedBelt) >= userBelt.sortOrder) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    /**
+     * Helper to get sort order for belt names
+     */
+    private func getBeltSortOrder(for beltName: String) -> Int {
+        let descriptor = FetchDescriptor<BeltLevel>(
+            predicate: #Predicate { belt in belt.shortName == beltName }
+        )
+        
+        do {
+            if let belt = try modelContext.fetch(descriptor).first {
+                return belt.sortOrder
+            }
+        } catch {
+            print("❌ Failed to get sort order for \(beltName): \(error)")
+        }
+        
+        return Int.max // Default to inaccessible if belt not found
+    }
+    
+    /**
+     * Gets a specific sequence by ID
+     */
+    func getSequence(id: UUID) -> StepSparringSequence? {
+        let descriptor = FetchDescriptor<StepSparringSequence>(
+            predicate: #Predicate { $0.id == id }
+        )
+        
+        do {
+            let results = try modelContext.fetch(descriptor)
+            return results.first
+        } catch {
+            print("❌ Failed to fetch sequence \(id): \(error)")
+            return nil
+        }
+    }
+    
+    // MARK: - Progress Tracking
+    
+    /**
+     * Gets user's progress for a specific sequence
+     */
+    func getUserProgress(
+        for sequence: StepSparringSequence, 
+        userProfile: UserProfile
+    ) -> UserStepSparringProgress? {
+        // Use IDs instead of object references to avoid invalidated object issues
+        let sequenceId = sequence.id
+        let profileId = userProfile.id
+        
+        let descriptor = FetchDescriptor<UserStepSparringProgress>()
+        
+        do {
+            let results = try modelContext.fetch(descriptor)
+            return results.first { progress in
+                progress.userProfile.id == profileId &&
+                progress.sequence.id == sequenceId
+            }
+        } catch {
+            print("❌ Failed to fetch step sparring progress: \(error)")
+            return nil
+        }
+    }
+    
+    /**
+     * Gets or creates progress record for a sequence
+     */
+    func getOrCreateProgress(
+        for sequence: StepSparringSequence,
+        userProfile: UserProfile
+    ) -> UserStepSparringProgress {
+        if let existing = getUserProgress(for: sequence, userProfile: userProfile) {
+            return existing
+        }
+        
+        let newProgress = UserStepSparringProgress(
+            userProfile: userProfile,
+            sequence: sequence
+        )
+        
+        modelContext.insert(newProgress)
+        
+        do {
+            try modelContext.save()
+            print("✅ Created step sparring progress for \(sequence.name)")
+        } catch {
+            print("❌ Failed to save step sparring progress: \(error)")
+        }
+        
+        return newProgress
+    }
+    
+    /**
+     * Records a practice session for a sequence
+     */
+    func recordPracticeSession(
+        sequence: StepSparringSequence,
+        userProfile: UserProfile,
+        duration: TimeInterval,
+        stepsCompleted: Int
+    ) {
+        let progress = getOrCreateProgress(for: sequence, userProfile: userProfile)
+        progress.recordPractice(duration: duration, stepsCompleted: stepsCompleted)
+        
+        do {
+            try modelContext.save()
+            print("✅ Recorded practice session for \(sequence.name)")
+        } catch {
+            print("❌ Failed to save practice session: \(error)")
+        }
+    }
+    
+    /**
+     * Gets all progress records for a user
+     */
+    func getAllUserProgress(userProfile: UserProfile) -> [UserStepSparringProgress] {
+        let descriptor = FetchDescriptor<UserStepSparringProgress>()
+        
+        do {
+            let allProgress = try modelContext.fetch(descriptor)
+            return allProgress.filter { progress in
+                progress.userProfile.id == userProfile.id
+            }.sorted { lhs, rhs in
+                if lhs.sequence.type.rawValue != rhs.sequence.type.rawValue {
+                    return lhs.sequence.type.rawValue < rhs.sequence.type.rawValue
+                }
+                return lhs.sequence.sequenceNumber < rhs.sequence.sequenceNumber
+            }
+        } catch {
+            print("❌ Failed to fetch user step sparring progress: \(error)")
+            return []
+        }
+    }
+    
+    // MARK: - Progress Analytics
+    
+    /**
+     * Gets summary statistics for a user's step sparring progress
+     */
+    func getProgressSummary(userProfile: UserProfile) -> StepSparringProgressSummary {
+        let allProgress = getAllUserProgress(userProfile: userProfile)
+        
+        var summary = StepSparringProgressSummary()
+        
+        for progress in allProgress {
+            summary.totalSequences += 1
+            summary.totalPracticeSessions += progress.practiceCount
+            summary.totalPracticeTime += progress.totalPracticeTime
+            
+            switch progress.masteryLevel {
+            case .learning:
+                summary.learning += 1
+            case .familiar:
+                summary.familiar += 1
+            case .proficient:
+                summary.proficient += 1
+            case .mastered:
+                summary.mastered += 1
+            }
+            
+            // Track by type
+            switch progress.sequence.type {
+            case .threeStep:
+                summary.threeStepProgress.append(progress)
+            case .twoStep:
+                summary.twoStepProgress.append(progress)
+            case .oneStep:
+                summary.oneStepProgress.append(progress)
+            case .semiFree:
+                summary.semiFreeProgress.append(progress)
+            }
+        }
+        
+        // Calculate overall completion percentage
+        if summary.totalSequences > 0 {
+            summary.overallCompletionPercentage = Double(summary.mastered) / Double(summary.totalSequences) * 100.0
+        }
+        
+        return summary
+    }
+    
+    // MARK: - Content Management
+    
+    /**
+     * Seeds the database with initial step sparring sequences
+     * Called during app initialization if no sequences exist
+     */
+    func seedInitialSequences() {
+        print("🔄 seedInitialSequences() called")
+        let existingCount = loadAllSequences().count
+        print("🔍 loadAllSequences() returned count: \(existingCount)")
+        if existingCount > 0 {
+            print("📚 Step sparring sequences already exist (\(existingCount) found)")
+            return
+        }
+        print("🔄 Proceeding with sequence creation...")
+        
+        print("🌱 Seeding initial step sparring sequences from JSON files...")
+        
+        // Debug: List what resources are available in bundle
+        if let bundlePath = Bundle.main.resourcePath {
+            let fileManager = FileManager.default
+            do {
+                let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
+                print("📦 Bundle root contains: \(contents.filter { $0.contains("StepSparring") || $0.contains("json") })")
+                
+                // Check StepSparring subdirectory specifically
+                let stepSparringPath = "\(bundlePath)/StepSparring"
+                if fileManager.fileExists(atPath: stepSparringPath) {
+                    let stepSparringContents = try fileManager.contentsOfDirectory(atPath: stepSparringPath)
+                    print("📁 StepSparring subdirectory contains: \(stepSparringContents)")
+                } else {
+                    print("❌ StepSparring subdirectory does not exist in bundle")
+                }
+            } catch {
+                print("❌ Failed to list bundle contents: \(error)")
+            }
+        }
+        
+        // Load sequences from JSON files only
+        let contentLoader = StepSparringContentLoader(stepSparringService: self)
+        contentLoader.loadAllContent()
+        
+        // Verify sequences were loaded and debug what's actually in the database
+        let allSequences = loadAllSequences()
+        print("✅ Successfully loaded \(allSequences.count) step sparring sequences from JSON files")
+        
+        // DEBUG: Show all sequences that are actually in the database
+        print("🔍 DEBUG: All sequences in database after loading:")
+        for seq in allSequences {
+            print("   - \(seq.type.shortName) #\(seq.sequenceNumber): '\(seq.name)' (ID: \(seq.id))")
+        }
+    }
+    
+}
+
+// MARK: - Progress Summary Model
+
+/**
+ * Summary statistics for user's step sparring progress
+ */
+struct StepSparringProgressSummary {
+    var totalSequences: Int = 0
+    var totalPracticeSessions: Int = 0
+    var totalPracticeTime: TimeInterval = 0
+    var overallCompletionPercentage: Double = 0.0
+    
+    // Progress by mastery level
+    var learning: Int = 0
+    var familiar: Int = 0
+    var proficient: Int = 0
+    var mastered: Int = 0
+    
+    // Progress by sparring type
+    var threeStepProgress: [UserStepSparringProgress] = []
+    var twoStepProgress: [UserStepSparringProgress] = []
+    var oneStepProgress: [UserStepSparringProgress] = []
+    var semiFreeProgress: [UserStepSparringProgress] = []
+}

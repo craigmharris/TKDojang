@@ -1,0 +1,156 @@
+{
+  "belt_level": "4th Keup",
+  "belt_id": "4th_keup",
+  "theory_sections": [
+    {
+      "id": "blue_belt_advanced",
+      "title": "Advanced Blue Belt Understanding",
+      "category": "Belt Knowledge",
+      "content": {
+        "meaning": "Advanced Blue Belt represents the sky expanding - the student's understanding deepens and their skills become more sophisticated.",
+        "significance": "The 4th keup student has moved beyond basic intermediate techniques and is developing advanced coordination and power.",
+        "development_markers": [
+          "Complex technique combinations",
+          "Improved power generation",
+          "Better understanding of timing",
+          "Advanced stances and transitions"
+        ]
+      },
+      "questions": [
+        {
+          "question": "What does the advanced blue belt represent?",
+          "answer": "The sky expanding - the student's understanding deepens and skills become more sophisticated."
+        },
+        {
+          "question": "What development should a 4th keup student show?",
+          "answer": "Complex technique combinations, improved power, better timing, and advanced stances."
+        }
+      ]
+    },
+    {
+      "id": "do_san_theory",
+      "title": "Do-San Pattern Theory",
+      "category": "Pattern Knowledge",
+      "content": {
+        "pattern_name": "Do-San",
+        "movements": "24 movements",
+        "meaning": "Do-San is the pen name of the patriot Ahn Chang-Ho (1876-1938). He devoted his entire life to furthering the education of Korea and its independence movement.",
+        "significance": "This pattern honors the importance of education and the struggle for Korean independence, emphasizing the value of learning and perseverance.",
+        "key_techniques": [
+          "Sitting stance techniques",
+          "Fixed stance",
+          "Knife hand guarding block",
+          "Spear finger thrust"
+        ],
+        "educational_emphasis": "Do-San reminds students that education and knowledge are as important as physical techniques in martial arts development.",
+        "new_challenges": "Introduces sitting stance and fixed stance, requiring greater leg strength and stability."
+      },
+      "questions": [
+        {
+          "question": "Who is Do-San named after?",
+          "answer": "The patriot Ahn Chang-Ho (1876-1938), who devoted his life to Korean education and independence."
+        },
+        {
+          "question": "How many movements are in Do-San?",
+          "answer": "24 movements"
+        },
+        {
+          "question": "What new stances are introduced in Do-San?",
+          "answer": "Sitting stance and fixed stance"
+        },
+        {
+          "question": "What does Do-San emphasize about education?",
+          "answer": "That education and knowledge are as important as physical techniques in martial arts."
+        }
+      ]
+    },
+    {
+      "id": "advanced_step_sparring",
+      "title": "Advanced Step Sparring Concepts",
+      "category": "Philosophy",
+      "content": {
+        "progression": "Moving from three-step to two-step sparring represents increased speed, closer distance, and more realistic timing.",
+        "key_differences": [
+          {
+            "aspect": "Distance",
+            "three_step": "Farther apart, more room for error",
+            "two_step": "Closer distance, requires more precision"
+          },
+          {
+            "aspect": "Timing",
+            "three_step": "Slower, more predictable",
+            "two_step": "Faster, requires quicker reactions"
+          },
+          {
+            "aspect": "Techniques",
+            "three_step": "Basic blocks and counters",
+            "two_step": "More advanced blocks and multiple counters"
+          }
+        ],
+        "mental_aspects": [
+          "Increased focus and concentration required",
+          "Better anticipation of opponent's movements",
+          "Improved confidence in close-range techniques",
+          "Development of tactical thinking"
+        ],
+        "preparation_tips": [
+          "Practice individual techniques until they are automatic",
+          "Work on distance judgment through repetition",
+          "Develop smooth transitions between defense and attack",
+          "Maintain calm breathing even under pressure"
+        ]
+      },
+      "questions": [
+        {
+          "question": "How does two-step sparring differ from three-step?",
+          "answer": "Closer distance, faster timing, and more advanced techniques are required."
+        },
+        {
+          "question": "What mental aspects develop through advanced step sparring?",
+          "answer": "Increased focus, better anticipation, improved confidence, and tactical thinking."
+        },
+        {
+          "question": "What should students practice to prepare for two-step sparring?",
+          "answer": "Individual techniques until automatic, distance judgment, and smooth transitions."
+        }
+      ]
+    },
+    {
+      "id": "grading_requirements",
+      "title": "4th Keup Grading Requirements",
+      "category": "Grading Knowledge",
+      "content": {
+        "techniques_required": [
+          "Sitting stance and fixed stance with stability",
+          "Knife hand guarding block",
+          "Spear finger thrust with accuracy",
+          "Side elbow thrust",
+          "Back fist strike with power"
+        ],
+        "pattern": "Do-San (24 movements)",
+        "step_sparring": "Two-step sparring sequences 4, 5, and 6",
+        "theory_topics": [
+          "Advanced blue belt understanding",
+          "Do-San pattern history and meaning",
+          "Advanced step sparring concepts",
+          "Education and perseverance in martial arts"
+        ],
+        "expectations": "Demonstrate advanced intermediate techniques with good power and stability, perform pattern with understanding of educational values, and execute two-step sparring with proper timing"
+      },
+      "questions": [
+        {
+          "question": "What pattern is required for 4th keup grading?",
+          "answer": "Do-San (24 movements)"
+        },
+        {
+          "question": "What step sparring sequences are required for 4th keup?",
+          "answer": "Two-step sparring sequences 4, 5, and 6"
+        },
+        {
+          "question": "What new hand technique is introduced at 4th keup?",
+          "answer": "Spear finger thrust"
+        }
+      ]
+    }
+  ]
+}

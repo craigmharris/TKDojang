@@ -24,27 +24,43 @@ struct ContentView: View {
      */
     @EnvironmentObject var appCoordinator: AppCoordinator
     
+    /**
+     * Data manager for tracking database resets
+     * Forces complete UI refresh when database is recreated
+     */
+    @Environment(DataManager.self) private var dataManager
+    
     var body: some View {
         Group {
-            switch appCoordinator.currentFlow {
-            case .loading:
-                LoadingView()
-                    .transition(.opacity)
-                
-            case .onboarding:
-                OnboardingCoordinatorView()
-                    .transition(.move(edge: .trailing))
-                
-            case .authentication:
-                AuthenticationCoordinatorView()
-                    .transition(.move(edge: .leading))
-                
-            case .main:
-                MainTabCoordinatorView()
-                    .transition(.move(edge: .bottom))
+            if dataManager.isResettingDatabase {
+                // Show loading screen during database reset to prevent any profile access
+                VStack(spacing: 20) {
+                    ProgressView()
+                        .scaleEffect(2.0)
+                    Text("Resetting Database...")
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                }
+                .transition(.opacity)
+            } else {
+                switch appCoordinator.currentFlow {
+                case .loading:
+                    LoadingView()
+                        .transition(.opacity)
+                    
+                case .onboarding:
+                    OnboardingCoordinatorView()
+                        .transition(.move(edge: .trailing))
+                    
+                case .main:
+                    MainTabCoordinatorView()
+                        .transition(.move(edge: .bottom))
+                }
             }
         }
         .animation(.easeInOut(duration: 0.3), value: appCoordinator.currentFlow)
+        .animation(.easeInOut(duration: 0.3), value: dataManager.isResettingDatabase)
+        .id(dataManager.databaseResetId) // Force complete refresh when database is reset
     }
 }
 

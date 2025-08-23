@@ -117,4 +117,4 @@ docs/generated/
 *.log
 
 # OS generated files
-Thumbs.db
+Thumbs.dbbuild/

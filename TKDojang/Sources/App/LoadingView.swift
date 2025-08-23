@@ -9,39 +9,69 @@ struct LoadingView: View {
     
     @State private var isAnimating = false
     @State private var textOpacity: Double = 0.5
+    @State private var pulseScale: CGFloat = 1.0
     
     var body: some View {
         ZStack {
-            // Background with subtle gradient
+            // Dynamic gradient background
             LinearGradient(
                 gradient: Gradient(colors: [
-                    Color.blue.opacity(0.1),
-                    Color.purple.opacity(0.05)
+                    Color.blue.opacity(0.2),
+                    Color.purple.opacity(0.15),
+                    Color.red.opacity(0.1)
                 ]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
             .ignoresSafeArea()
             
-            VStack(spacing: 32) {
-                // Animated app logo
-                Image(systemName: "figure.martial.arts")
-                    .font(.system(size: 80, weight: .light))
-                    .foregroundColor(.blue)
-                    .rotationEffect(.degrees(isAnimating ? 360 : 0))
-                    .animation(
-                        Animation.linear(duration: 2)
-                            .repeatForever(autoreverses: false),
-                        value: isAnimating
-                    )
+            VStack(spacing: 40) {
+                Spacer()
                 
-                // Loading indicator and text
+                // Hangul Characters for Tae Kwon Do
                 VStack(spacing: 20) {
-                    ProgressView()
-                        .scaleEffect(1.2)
-                        .progressViewStyle(CircularProgressViewStyle())
+                    Text("태권도")
+                        .font(.system(size: 72, weight: .light, design: .default))
+                        .foregroundColor(.primary)
+                        .scaleEffect(pulseScale)
+                        .animation(
+                            Animation.easeInOut(duration: 2.0)
+                                .repeatForever(autoreverses: true),
+                            value: pulseScale
+                        )
                     
-                    Text("Preparing your training...")
+                    // Animated martial arts figure
+                    Image(systemName: "figure.martial.arts")
+                        .font(.system(size: 60, weight: .medium))
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [.blue, .purple, .red],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .rotationEffect(.degrees(isAnimating ? 360 : 0))
+                        .animation(
+                            Animation.linear(duration: 3)
+                                .repeatForever(autoreverses: false),
+                            value: isAnimating
+                        )
+                }
+                
+                // App Branding
+                VStack(spacing: 12) {
+                    Text("TKDojang")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [.blue, .purple],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                    
+                    Text("Master the Art of Taekwondo")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .opacity(textOpacity)
@@ -54,25 +84,25 @@ struct LoadingView: View {
                 
                 Spacer()
                 
-                // App branding
-                VStack(spacing: 8) {
-                    Text("TKDojang")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.primary)
+                // Loading indicator
+                VStack(spacing: 16) {
+                    ProgressView()
+                        .scaleEffect(1.3)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .blue))
                     
-                    Text("Master the Art of Taekwondo")
-                        .font(.caption)
+                    Text("Preparing your training...")
+                        .font(.subheadline)
                         .foregroundColor(.secondary)
+                        .opacity(textOpacity)
                 }
-                .padding(.bottom, 50)
+                .padding(.bottom, 60)
             }
-            .padding(.top, 100)
             .padding(.horizontal, 40)
         }
         .onAppear {
             isAnimating = true
             textOpacity = 1.0
+            pulseScale = 1.1
         }
     }
 }

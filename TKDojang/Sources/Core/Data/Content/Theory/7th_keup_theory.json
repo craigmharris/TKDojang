@@ -1,0 +1,135 @@
+{
+  "belt_level": "7th Keup",
+  "belt_id": "7th_keup",
+  "theory_sections": [
+    {
+      "id": "green_belt_meaning",
+      "title": "Green Belt Meaning",
+      "category": "Belt Knowledge",
+      "content": {
+        "meaning": "Green Belt represents the plant as it grows - the student's Taekwondo skills are developing and strengthening.",
+        "significance": "Like a healthy plant that has established strong roots and is growing steadily, the green belt student has solid fundamentals and is ready for more advanced techniques.",
+        "symbolism": "Growth, development, strengthening foundations, natural progression"
+      },
+      "questions": [
+        {
+          "question": "What does the green belt represent?",
+          "answer": "The plant as it grows - the student's Taekwondo skills are developing and strengthening."
+        },
+        {
+          "question": "How is the green belt student like a growing plant?",
+          "answer": "They have established strong roots (fundamentals) and are growing steadily toward more advanced techniques."
+        }
+      ]
+    },
+    {
+      "id": "chon_ji_theory",
+      "title": "Chon-Ji Pattern Theory",
+      "category": "Pattern Knowledge",
+      "content": {
+        "pattern_name": "Chon-Ji",
+        "movements": "19 movements",
+        "meaning": "Chon-Ji means 'Heaven and Earth' - it is interpreted as the creation of the world or the beginning of human history.",
+        "significance": "This is the first pattern learned by students and represents the foundation of all pattern work in Taekwondo.",
+        "key_techniques": [
+          "Low block",
+          "Middle block", 
+          "High block",
+          "Straight punch"
+        ],
+        "diagram": "The pattern forms a cross (+) shape, representing the four cardinal directions and the balance between heaven and earth.",
+        "first_pattern_importance": "Chon-Ji teaches basic stances, blocks, and punches while introducing the concept of flowing movements and proper breathing."
+      },
+      "questions": [
+        {
+          "question": "What does 'Chon-Ji' mean?",
+          "answer": "Heaven and Earth - representing the creation of the world or beginning of human history."
+        },
+        {
+          "question": "How many movements are in Chon-Ji?",
+          "answer": "19 movements"
+        },
+        {
+          "question": "What shape does the Chon-Ji pattern form?",
+          "answer": "A cross (+) shape representing the four cardinal directions."
+        },
+        {
+          "question": "Why is Chon-Ji important as the first pattern?",
+          "answer": "It teaches basic stances, blocks, and punches while introducing flowing movements and proper breathing."
+        }
+      ]
+    },
+    {
+      "id": "tagb_introduction",
+      "title": "Introduction to TAGB",
+      "category": "Organization",
+      "content": {
+        "full_name": "Taekwondo Association of Great Britain",
+        "establishment": "Founded to promote and develop Taekwondo throughout Great Britain",
+        "purpose": [
+          "Maintain high standards of Taekwondo instruction",
+          "Provide structured grading system and curriculum",
+          "Organize competitions and events",
+          "Support student development and instructor training"
+        ],
+        "values": [
+          "Traditional Taekwondo values and techniques",
+          "Respect for instructors and fellow students",
+          "Commitment to continuous improvement",
+          "Strong emphasis on character development"
+        ],
+        "student_benefits": "TAGB membership provides access to standardized training, recognized qualifications, and a supportive community of practitioners."
+      },
+      "questions": [
+        {
+          "question": "What does TAGB stand for?",
+          "answer": "Taekwondo Association of Great Britain"
+        },
+        {
+          "question": "What are two main purposes of TAGB?",
+          "answer": "Maintain high standards of instruction and provide structured grading system."
+        },
+        {
+          "question": "What values does TAGB emphasize?",
+          "answer": "Traditional Taekwondo values, respect, continuous improvement, and character development."
+        }
+      ]
+    },
+    {
+      "id": "grading_requirements",
+      "title": "7th Keup Grading Requirements",
+      "category": "Grading Knowledge",
+      "content": {
+        "techniques_required": [
+          "Walking stance and L-stance with proper transitions",
+          "High block with power and proper form",
+          "Knife hand block in L-stance",
+          "Reverse punch and knife hand strike"
+        ],
+        "pattern": "Chon-Ji (19 movements)",
+        "step_sparring": "None required for 7th keup",
+        "theory_topics": [
+          "Green belt meaning",
+          "Chon-Ji pattern history and meaning",
+          "Introduction to TAGB",
+          "Review of all previous theory"
+        ],
+        "expectations": "Demonstrate solid fundamental techniques, perform first pattern with understanding, and show knowledge of organizational structure"
+      },
+      "questions": [
+        {
+          "question": "What pattern is required for 7th keup grading?",
+          "answer": "Chon-Ji (19 movements)"
+        },
+        {
+          "question": "What new stance is introduced at 7th keup?",
+          "answer": "L-stance"
+        },
+        {
+          "question": "What new organization knowledge is required?",
+          "answer": "Introduction to TAGB (Taekwondo Association of Great Britain)"
+        }
+      ]
+    }
+  ]
+}

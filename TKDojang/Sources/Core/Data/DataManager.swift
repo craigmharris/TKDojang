@@ -2,6 +2,12 @@ import Foundation
 import SwiftData
 import SwiftUI
 
+// MARK: - Notification Names
+extension Notification.Name {
+    static let databaseResetStarting = Notification.Name("databaseResetStarting")
+    static let forceAppReset = Notification.Name("forceAppReset")
+}
+
 /**
  * DataManager.swift
  * 
@@ -20,6 +26,17 @@ class DataManager {
     
     private(set) var modelContainer: ModelContainer
     private(set) var terminologyService: TerminologyDataService
+    private(set) var patternService: PatternDataService
+    private(set) var profileService: ProfileService
+    private(set) var stepSparringService: StepSparringDataService
+    
+    // Track database reset state to trigger UI refresh
+    private(set) var databaseResetId = UUID()
+    private(set) var isResettingDatabase = false
+    
+    var modelContext: ModelContext {
+        return modelContainer.mainContext
+    }
     
     private init() {
         print("🏗️ Initializing DataManager...")
@@ -30,7 +47,22 @@ class DataManager {
                 TerminologyCategory.self,
                 TerminologyEntry.self,
                 UserProfile.self,
-                UserTerminologyProgress.self
+                UserTerminologyProgress.self,
+                TestSession.self,
+                TestConfiguration.self,
+                TestQuestion.self,
+                TestResult.self,
+                CategoryPerformance.self,
+                BeltLevelPerformance.self,
+                TestPerformance.self,
+                Pattern.self,
+                PatternMove.self,
+                UserPatternProgress.self,
+                StudySession.self,
+                StepSparringSequence.self,
+                StepSparringStep.self,
+                StepSparringAction.self,
+                UserStepSparringProgress.self
             ])
             
             let modelConfiguration = ModelConfiguration(
@@ -47,14 +79,19 @@ class DataManager {
             // Initialize all properties
             self.modelContainer = container
             self.terminologyService = TerminologyDataService(modelContext: container.mainContext)
+            self.patternService = PatternDataService(modelContext: container.mainContext)
+            self.profileService = ProfileService(modelContext: container.mainContext)
+            self.stepSparringService = StepSparringDataService(modelContext: container.mainContext)
             
             // Perform initial setup if needed
+            print("🔍 DEBUG: DataManager init - about to call setupInitialData()")
             Task {
                 await setupInitialData()
             }
             
         } catch {
-            fatalError("Failed to create model container: \\(error)")
+            print("❌ Failed to create model container: \(error)")
+            fatalError("Failed to create model container: \(error). Please use 'Reset Database & Reload Content' from User Settings.")
         }
     }
     
@@ -64,6 +101,7 @@ class DataManager {
      * PURPOSE: Ensures the app has content to work with on first launch
      */
     private func setupInitialData() async {
+        print("🔍 DEBUG: setupInitialData() called")
         // Check if we need to seed initial data
         let descriptor = FetchDescriptor<BeltLevel>()
         
@@ -74,6 +112,19 @@ class DataManager {
                 print("🗃️ Database is empty, loading modular TAGB content...")
                 let modularLoader = ModularContentLoader(dataService: terminologyService)
                 modularLoader.loadCompleteSystem()
+                
+                // Load initial patterns after belt levels are created
+                let allBelts = try modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
+                patternService.seedInitialPatterns(beltLevels: allBelts)
+                
+                // Load initial step sparring sequences
+                print("🥊 Loading initial step sparring sequences...")
+                stepSparringService.seedInitialSequences()
+                
+                // Verify sequences were created
+                let stepSparringDescriptor = FetchDescriptor<StepSparringSequence>()
+                let newSequences = try modelContainer.mainContext.fetch(stepSparringDescriptor)
+                print("✅ Loaded \(newSequences.count) step sparring sequences on initial setup")
             } else {
                 print("✅ Database already contains \(existingBeltLevels.count) belt levels")
                 // Debug: Check if belt levels have colors
@@ -91,6 +142,50 @@ class DataManager {
                     let modularLoader = ModularContentLoader(dataService: terminologyService)
                     modularLoader.loadCompleteSystem()
                 }
+                
+                // Check if patterns exist, load if needed
+                let patternDescriptor = FetchDescriptor<Pattern>()
+                let existingPatterns = try modelContainer.mainContext.fetch(patternDescriptor)
+                if existingPatterns.isEmpty {
+                    print("🥋 No patterns found - loading initial patterns...")
+                    patternService.seedInitialPatterns(beltLevels: existingBeltLevels)
+                } else {
+                    print("✅ Database contains \(existingPatterns.count) patterns")
+                }
+                
+                print("🔍 DEBUG: About to check step sparring sequences...")
+                
+                // Check if step sparring sequences exist, load if needed
+                let stepSparringDescriptor = FetchDescriptor<StepSparringSequence>()
+                let existingSequences = try modelContainer.mainContext.fetch(stepSparringDescriptor)
+                
+                print("🔍 DEBUG: DataManager found \(existingSequences.count) existing step sparring sequences in database")
+                
+                // TEMPORARY: Force reload to debug belt matching issue
+                if !existingSequences.isEmpty {
+                    print("🔄 TEMP DEBUG: Deleting existing sequences to force fresh load with debug logging")
+                    for sequence in existingSequences {
+                        modelContainer.mainContext.delete(sequence)
+                    }
+                    try modelContainer.mainContext.save()
+                }
+                
+                if existingSequences.isEmpty || true { // Force reload
+                    print("🥊 DEBUG: No step sparring sequences found - calling stepSparringService.seedInitialSequences()...")
+                    stepSparringService.seedInitialSequences()
+                    
+                    // Verify sequences were created
+                    let newSequences = try modelContainer.mainContext.fetch(stepSparringDescriptor)
+                    print("✅ DEBUG: DataManager reports \(newSequences.count) step sparring sequences after seeding")
+                } else {
+                    print("✅ DEBUG: DataManager reports database contains \(existingSequences.count) step sparring sequences")
+                    
+                    // Debug: Check belt level associations of existing sequences
+                    for sequence in existingSequences {
+                        let beltNames = sequence.beltLevels.map { $0.shortName }
+                        print("🔍 DEBUG: Sequence '\(sequence.name)' (#\(sequence.sequenceNumber)) has \(sequence.beltLevels.count) belts: \(beltNames)")
+                    }
+                }
             }
         } catch {
             print("❌ Failed to check existing data: \\(error)")
@@ -98,31 +193,38 @@ class DataManager {
     }
     
     /**
-     * Creates or retrieves the default user profile
+     * Creates or retrieves the active user profile
      * 
-     * PURPOSE: Ensures there's always a user profile for the app to work with
-     * In a multi-user app, this would be more sophisticated
+     * PURPOSE: Ensures there's always an active profile for the app to work with
+     * Uses the new multi-profile system with ProfileService
      */
     func getOrCreateDefaultUserProfile() -> UserProfile {
-        let descriptor = FetchDescriptor<UserProfile>()
+        // Try to get active profile first
+        if let activeProfile = profileService.getActiveProfile() {
+            return activeProfile
+        }
         
+        // No active profile, try to get any existing profile
         do {
-            let existingProfiles = try modelContainer.mainContext.fetch(descriptor)
-            
-            if let existing = existingProfiles.first {
-                return existing
-            } else {
-                // Create default profile with White Belt
-                let beltDescriptor = FetchDescriptor<BeltLevel>()
-                let allBelts = try modelContainer.mainContext.fetch(beltDescriptor)
-                let whiteBelt = allBelts.first { $0.shortName.contains("10th Keup") } ?? allBelts.first!
-                let profile = UserProfile(currentBeltLevel: whiteBelt, learningMode: .mastery)
-                
-                modelContainer.mainContext.insert(profile)
-                try modelContainer.mainContext.save()
-                
-                return profile
+            let existingProfiles = try profileService.getAllProfiles()
+            if let firstProfile = existingProfiles.first {
+                try profileService.activateProfile(firstProfile)
+                return firstProfile
             }
+            
+            // No profiles exist, create default profile
+            let beltDescriptor = FetchDescriptor<BeltLevel>()
+            let allBelts = try modelContainer.mainContext.fetch(beltDescriptor)
+            let whiteBelt = allBelts.first { $0.shortName.contains("10th Keup") } ?? allBelts.first!
+            
+            let defaultProfile = try profileService.createProfile(
+                name: "Student",
+                avatar: .student1,
+                colorTheme: .blue,
+                beltLevel: whiteBelt
+            )
+            
+            return defaultProfile
         } catch {
             fatalError("Failed to create user profile: \\(error)")
         }
@@ -148,39 +250,78 @@ class DataManager {
     }
     
     /**
-     * Resets entire database and reloads with new modular content
+     * Resets entire database and exits the app for clean restart
      * Use this to force reload when content structure changes
+     * 
+     * CRITICAL: This deletes the database file and exits the app for maximum safety
      */
-    func resetAndReloadDatabase() {
+    func resetAndReloadDatabase() async {
         do {
-            // Delete all existing data
-            let beltDescriptor = FetchDescriptor<BeltLevel>()
-            let categoryDescriptor = FetchDescriptor<TerminologyCategory>()
-            let entryDescriptor = FetchDescriptor<TerminologyEntry>()
-            let profileDescriptor = FetchDescriptor<UserProfile>()
-            let progressDescriptor = FetchDescriptor<UserTerminologyProgress>()
+            // Set resetting flag to prevent any profile access
+            isResettingDatabase = true
             
-            let belts = try modelContainer.mainContext.fetch(beltDescriptor)
-            let categories = try modelContainer.mainContext.fetch(categoryDescriptor)
-            let entries = try modelContainer.mainContext.fetch(entryDescriptor)
-            let profiles = try modelContainer.mainContext.fetch(profileDescriptor)
-            let progress = try modelContainer.mainContext.fetch(progressDescriptor)
+            print("🔄 Starting database reset - will exit app for clean restart...")
             
-            belts.forEach { modelContainer.mainContext.delete($0) }
-            categories.forEach { modelContainer.mainContext.delete($0) }
-            entries.forEach { modelContainer.mainContext.delete($0) }
-            profiles.forEach { modelContainer.mainContext.delete($0) }
-            progress.forEach { modelContainer.mainContext.delete($0) }
+            // CRITICAL: Clear ProfileService active profile reference
+            profileService.clearActiveProfileForReset()
             
-            try modelContainer.mainContext.save()
-            print("🗑️ Database cleared, reloading with modular content...")
+            // Delete the database files completely
+            let appSupportDir = URL.applicationSupportDirectory
+            let dbURL = appSupportDir.appending(path: "Model.sqlite")
+            let dbSHMURL = appSupportDir.appending(path: "Model.sqlite-shm")
+            let dbWALURL = appSupportDir.appending(path: "Model.sqlite-wal")
             
-            // Reload with new modular system
-            let modularLoader = ModularContentLoader(dataService: terminologyService)
-            modularLoader.loadCompleteSystem()
+            try? FileManager.default.removeItem(at: dbURL)
+            try? FileManager.default.removeItem(at: dbSHMURL)
+            try? FileManager.default.removeItem(at: dbWALURL)
             
+            print("🗑️ Database files deleted - app will exit for clean restart")
+            
+            // Show final message to user
+            await MainActor.run {
+                // Show alert then exit
+                let alert = UIAlertController(
+                    title: "Database Reset Complete", 
+                    message: "The app will now restart with a fresh database. Please reopen the app.",
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                    exit(0) // Clean app exit
+                })
+                
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let window = windowScene.windows.first,
+                   let rootVC = window.rootViewController {
+                    rootVC.present(alert, animated: true)
+                } else {
+                    // Fallback: exit immediately if we can't show alert
+                    exit(0)
+                }
+            }
         } catch {
             print("❌ Failed to reset database: \\(error)")
+            // Clear resetting flag on error
+            isResettingDatabase = false
+            
+            // On error, still show message and exit to prevent crashes
+            await MainActor.run {
+                let alert = UIAlertController(
+                    title: "Reset Error", 
+                    message: "Database reset failed. App will exit to prevent crashes. Please restart manually.",
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                    exit(1) // Exit with error code
+                })
+                
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let window = windowScene.windows.first,
+                   let rootVC = window.rootViewController {
+                    rootVC.present(alert, animated: true)
+                } else {
+                    exit(1)
+                }
+            }
         }
     }
     
@@ -200,6 +341,7 @@ class DataManager {
         // Implementation for importing user progress
         return false
     }
+    
 }
 
 // MARK: - SwiftUI Environment Integration
@@ -208,7 +350,7 @@ class DataManager {
  * SwiftUI Environment key for DataManager
  */
 struct DataManagerKey: EnvironmentKey {
-    @MainActor static let defaultValue = DataManager.shared
+    nonisolated static let defaultValue = DataManager.shared
 }
 
 extension EnvironmentValues {

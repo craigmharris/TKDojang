@@ -1,0 +1,418 @@
+import XCTest
+import SwiftData
+@testable import TKDojang
+
+/**
+ * FlashcardSystemTests.swift
+ * 
+ * PURPOSE: Comprehensive tests for the flashcard system and Leitner spaced repetition
+ * 
+ * CRITICAL IMPORTANCE: Validates the core learning mechanism of the app
+ * Based on CLAUDE.md: "Flashcard System: Working Korean terminology learning with Leitner spaced repetition"
+ * 
+ * TEST COVERAGE:
+ * - Leitner box system mechanics
+ * - Spaced repetition scheduling
+ * - Progress tracking and mastery levels
+ * - Belt level filtering functionality
+ * - Performance metrics and analytics
+ */
+final class FlashcardSystemTests: XCTestCase {
+    
+    var testContainer: ModelContainer!
+    var testContext: ModelContext!
+    var terminologyService: TerminologyDataService!
+    var testProfile: UserProfile!
+    var testBelt: BeltLevel!
+    var testCategory: TerminologyCategory!
+    var testEntry: TerminologyEntry!
+    
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        
+        // Create in-memory test container
+        let schema = Schema([
+            BeltLevel.self,
+            TerminologyCategory.self,
+            TerminologyEntry.self,
+            UserProfile.self,
+            UserTerminologyProgress.self
+        ])
+        
+        let configuration = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: true
+        )
+        
+        testContainer = try ModelContainer(
+            for: schema,
+            configurations: [configuration]
+        )
+        
+        testContext = ModelContext(testContainer)
+        terminologyService = TerminologyDataService(modelContext: testContext)
+        
+        // Set up test data
+        setupTestData()
+    }
+    
+    override func tearDownWithError() throws {
+        testContainer = nil
+        testContext = nil
+        terminologyService = nil
+        testProfile = nil
+        testBelt = nil
+        testCategory = nil
+        testEntry = nil
+        try super.tearDownWithError()
+    }
+    
+    private func setupTestData() {
+        // Create test belt level
+        testBelt = BeltLevel(name: "10th Keup (White Belt)", shortName: "10th Keup", colorName: "White", sortOrder: 15, isKyup: true)
+        testContext.insert(testBelt)
+        
+        // Create test category
+        testCategory = TerminologyCategory(name: "Techniques", displayName: "Basic Techniques", sortOrder: 1)
+        testContext.insert(testCategory)
+        
+        // Create test terminology entry
+        testEntry = TerminologyEntry(
+            englishTerm: "Front Kick",
+            koreanHangul: "앞차기",
+            romanizedPronunciation: "ap chagi",
+            beltLevel: testBelt,
+            category: testCategory,
+            difficulty: 2
+        )
+        testContext.insert(testEntry)
+        
+        // Create test user profile
+        testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        testContext.insert(testProfile)
+        
+        try! testContext.save()
+    }
+    
+    // MARK: - Leitner Box System Tests
+    
+    func testInitialProgressState() throws {
+        // Create new progress entry
+        let progress = UserTerminologyProgress(terminologyEntry: testEntry, userProfile: testProfile)
+        testContext.insert(progress)
+        try testContext.save()
+        
+        // Verify initial state
+        XCTAssertEqual(progress.currentBox, 1, "Should start in box 1")
+        XCTAssertEqual(progress.correctCount, 0, "Should start with 0 correct answers")
+        XCTAssertEqual(progress.incorrectCount, 0, "Should start with 0 incorrect answers")
+        XCTAssertEqual(progress.consecutiveCorrect, 0, "Should start with 0 consecutive correct")
+        XCTAssertEqual(progress.masteryLevel, .learning, "Should start with learning mastery level")
+        XCTAssertNotNil(progress.nextReviewDate, "Should have initial review date")
+        XCTAssertEqual(progress.totalReviews, 0, "Should start with 0 total reviews")
+    }
+    
+    func testCorrectAnswerProgression() throws {
+        let progress = UserTerminologyProgress(terminologyEntry: testEntry, userProfile: testProfile)
+        testContext.insert(progress)
+        try testContext.save()
+        
+        // Simulate correct answer
+        progress.recordAnswer(isCorrect: true, responseTime: 2.5)
+        
+        // Verify progression
+        XCTAssertEqual(progress.currentBox, 2, "Should advance to box 2 after correct answer")
+        XCTAssertEqual(progress.correctCount, 1, "Should increment correct count")
+        XCTAssertEqual(progress.consecutiveCorrect, 1, "Should track consecutive correct")
+        XCTAssertEqual(progress.totalReviews, 1, "Should increment total reviews")
+        XCTAssertNotNil(progress.lastReviewedAt, "Should record review time")
+        XCTAssertEqual(progress.masteryLevel, .learning, "Should still be learning with 1 correct")
+        
+        // Test multiple correct answers
+        for _ in 1...4 {
+            progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        }
+        
+        XCTAssertEqual(progress.currentBox, 5, "Should reach maximum box 5")
+        XCTAssertEqual(progress.correctCount, 5, "Should have 5 correct answers")
+        XCTAssertEqual(progress.consecutiveCorrect, 5, "Should have 5 consecutive correct")
+        XCTAssertEqual(progress.masteryLevel, .familiar, "Should be familiar with 5 consecutive correct")
+    }
+    
+    func testIncorrectAnswerRegression() throws {
+        let progress = UserTerminologyProgress(terminologyEntry: testEntry, userProfile: testProfile)
+        testContext.insert(progress)
+        
+        // Advance to box 3 with correct answers
+        for _ in 1...3 {
+            progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        }
+        
+        XCTAssertEqual(progress.currentBox, 4, "Should be in box 4 after 3 correct")
+        XCTAssertEqual(progress.consecutiveCorrect, 3, "Should have 3 consecutive correct")
+        
+        // Record incorrect answer
+        progress.recordAnswer(isCorrect: false, responseTime: 5.0)
+        
+        // Verify regression
+        XCTAssertEqual(progress.currentBox, 1, "Should return to box 1 after incorrect answer")
+        XCTAssertEqual(progress.incorrectCount, 1, "Should increment incorrect count")
+        XCTAssertEqual(progress.consecutiveCorrect, 0, "Should reset consecutive correct")
+        XCTAssertEqual(progress.masteryLevel, .learning, "Should return to learning level")
+        XCTAssertEqual(progress.totalReviews, 4, "Should have 4 total reviews")
+    }
+    
+    func testMasteryLevelProgression() throws {
+        let progress = UserTerminologyProgress(terminologyEntry: testEntry, userProfile: testProfile)
+        testContext.insert(progress)
+        
+        // Test each mastery level threshold
+        
+        // Learning (0-2 consecutive correct)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        XCTAssertEqual(progress.masteryLevel, .learning, "Should be learning with 2 consecutive correct")
+        
+        // Familiar (3-5 consecutive correct)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        XCTAssertEqual(progress.masteryLevel, .familiar, "Should be familiar with 3 consecutive correct")
+        
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        XCTAssertEqual(progress.masteryLevel, .familiar, "Should remain familiar with 5 consecutive correct")
+        
+        // Proficient (6-9 consecutive correct)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        XCTAssertEqual(progress.masteryLevel, .proficient, "Should be proficient with 6 consecutive correct")
+        
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        XCTAssertEqual(progress.masteryLevel, .proficient, "Should remain proficient with 9 consecutive correct")
+        
+        // Mastered (10+ consecutive correct)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        XCTAssertEqual(progress.masteryLevel, .mastered, "Should be mastered with 10 consecutive correct")
+    }
+    
+    // MARK: - Spaced Repetition Scheduling Tests
+    
+    func testReviewDateCalculation() throws {
+        let progress = UserTerminologyProgress(terminologyEntry: testEntry, userProfile: testProfile)
+        testContext.insert(progress)
+        
+        let calendar = Calendar.current
+        let today = Date()
+        
+        // Test each box's review interval
+        
+        // Box 1: Review tomorrow (1 day)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        let box2Date = progress.nextReviewDate
+        let expectedBox2 = calendar.date(byAdding: .day, value: 3, to: today)!
+        XCTAssertEqual(
+            calendar.dateInterval(of: .day, for: box2Date)?.start,
+            calendar.dateInterval(of: .day, for: expectedBox2)?.start,
+            "Box 2 should schedule review in 3 days"
+        )
+        
+        // Box 2: Review in 3 days
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        let box3Date = progress.nextReviewDate
+        let expectedBox3 = calendar.date(byAdding: .day, value: 7, to: today)!
+        XCTAssertEqual(
+            calendar.dateInterval(of: .day, for: box3Date)?.start,
+            calendar.dateInterval(of: .day, for: expectedBox3)?.start,
+            "Box 3 should schedule review in 7 days"
+        )
+        
+        // Box 3: Review in 1 week (7 days)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        let box4Date = progress.nextReviewDate
+        let expectedBox4 = calendar.date(byAdding: .day, value: 14, to: today)!
+        XCTAssertEqual(
+            calendar.dateInterval(of: .day, for: box4Date)?.start,
+            calendar.dateInterval(of: .day, for: expectedBox4)?.start,
+            "Box 4 should schedule review in 14 days"
+        )
+        
+        // Box 4: Review in 2 weeks (14 days)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        let box5Date = progress.nextReviewDate
+        let expectedBox5 = calendar.date(byAdding: .day, value: 30, to: today)!
+        XCTAssertEqual(
+            calendar.dateInterval(of: .day, for: box5Date)?.start,
+            calendar.dateInterval(of: .day, for: expectedBox5)?.start,
+            "Box 5 should schedule review in 30 days"
+        )
+    }
+    
+    func testReviewDateAfterIncorrectAnswer() throws {
+        let progress = UserTerminologyProgress(terminologyEntry: testEntry, userProfile: testProfile)
+        testContext.insert(progress)
+        
+        // Advance to box 3
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        
+        // Record incorrect answer
+        progress.recordAnswer(isCorrect: false, responseTime: 5.0)
+        
+        // Should return to box 1 timing (1 day)
+        let calendar = Calendar.current
+        let today = Date()
+        let expectedDate = calendar.date(byAdding: .day, value: 1, to: today)!
+        XCTAssertEqual(
+            calendar.dateInterval(of: .day, for: progress.nextReviewDate)?.start,
+            calendar.dateInterval(of: .day, for: expectedDate)?.start,
+            "Should schedule next review for 1 day after incorrect answer"
+        )
+    }
+    
+    // MARK: - Performance Metrics Tests
+    
+    func testResponseTimeTracking() throws {
+        let progress = UserTerminologyProgress(terminologyEntry: testEntry, userProfile: testProfile)
+        testContext.insert(progress)
+        
+        // Record answers with different response times
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        XCTAssertEqual(progress.averageResponseTime, 2.0, "Should track first response time")
+        
+        progress.recordAnswer(isCorrect: true, responseTime: 4.0)
+        XCTAssertEqual(progress.averageResponseTime, 3.0, "Should calculate average response time")
+        
+        progress.recordAnswer(isCorrect: true, responseTime: 3.0)
+        XCTAssertEqual(progress.averageResponseTime, 3.0, "Should maintain accurate average")
+        
+        progress.recordAnswer(isCorrect: false, responseTime: 8.0)
+        XCTAssertEqual(progress.averageResponseTime, 4.25, "Should include incorrect answer response time")
+    }
+    
+    // MARK: - Belt Level Filtering Tests
+    
+    func testBeltLevelFiltering() throws {
+        // Create additional belt levels and terminology
+        let yellowBelt = BeltLevel(name: "9th Keup (Yellow Belt)", shortName: "9th Keup", colorName: "Yellow", sortOrder: 14, isKyup: true)
+        testContext.insert(yellowBelt)
+        
+        let yellowEntry = TerminologyEntry(
+            englishTerm: "Side Kick",
+            koreanHangul: "옆차기",
+            romanizedPronunciation: "yeop chagi",
+            beltLevel: yellowBelt,
+            category: testCategory
+        )
+        testContext.insert(yellowEntry)
+        
+        try testContext.save()
+        
+        // Test filtering by belt level
+        let whiteBeltTerms = try terminologyService.getTerminologyEntries(forBeltLevel: testBelt)
+        let yellowBeltTerms = try terminologyService.getTerminologyEntries(forBeltLevel: yellowBelt)
+        
+        XCTAssertEqual(whiteBeltTerms.count, 1, "Should find 1 term for white belt")
+        XCTAssertEqual(yellowBeltTerms.count, 1, "Should find 1 term for yellow belt")
+        XCTAssertEqual(whiteBeltTerms.first?.englishTerm, "Front Kick", "Should find correct white belt term")
+        XCTAssertEqual(yellowBeltTerms.first?.englishTerm, "Side Kick", "Should find correct yellow belt term")
+    }
+    
+    func testProgressionVsMasteryFiltering() throws {
+        // Test that progression mode shows only current/next belt material
+        // Test that mastery mode shows all material up to current belt
+        
+        // Create yellow belt profile for progression testing
+        let yellowBelt = BeltLevel(name: "9th Keup (Yellow Belt)", shortName: "9th Keup", colorName: "Yellow", sortOrder: 14, isKyup: true)
+        testContext.insert(yellowBelt)
+        
+        let progressionProfile = UserProfile(currentBeltLevel: yellowBelt, learningMode: .progression)
+        let masteryProfile = UserProfile(currentBeltLevel: yellowBelt, learningMode: .mastery)
+        
+        testContext.insert(progressionProfile)
+        testContext.insert(masteryProfile)
+        
+        try testContext.save()
+        
+        // Verify learning modes are set correctly
+        XCTAssertEqual(progressionProfile.learningMode, .progression, "Should set progression mode")
+        XCTAssertEqual(masteryProfile.learningMode, .mastery, "Should set mastery mode")
+        
+        // Note: Full filtering logic would be implemented in the service layer
+        // These tests verify the profile settings are correct for filtering implementation
+    }
+    
+    // MARK: - Progress Persistence Tests
+    
+    func testProgressPersistence() throws {
+        let progress = UserTerminologyProgress(terminologyEntry: testEntry, userProfile: testProfile)
+        testContext.insert(progress)
+        
+        // Record several answers
+        progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        progress.recordAnswer(isCorrect: true, responseTime: 1.5)
+        progress.recordAnswer(isCorrect: false, responseTime: 4.0)
+        progress.recordAnswer(isCorrect: true, responseTime: 2.2)
+        
+        try testContext.save()
+        
+        // Fetch progress from database
+        let progressDescriptor = FetchDescriptor<UserTerminologyProgress>(
+            predicate: #Predicate { p in
+                p.terminologyEntry.id == testEntry.id && p.userProfile.id == testProfile.id
+            }
+        )
+        
+        let fetchedProgress = try testContext.fetch(progressDescriptor)
+        XCTAssertEqual(fetchedProgress.count, 1, "Should find persisted progress")
+        
+        let persisted = fetchedProgress.first!
+        XCTAssertEqual(persisted.totalReviews, 4, "Should persist total review count")
+        XCTAssertEqual(persisted.correctCount, 3, "Should persist correct count")
+        XCTAssertEqual(persisted.incorrectCount, 1, "Should persist incorrect count")
+        XCTAssertEqual(persisted.consecutiveCorrect, 1, "Should persist consecutive correct")
+        XCTAssertEqual(persisted.currentBox, 2, "Should persist current box")
+        XCTAssertNotNil(persisted.lastReviewedAt, "Should persist last review date")
+    }
+    
+    // MARK: - Performance Tests
+    
+    func testFlashcardSystemPerformance() throws {
+        // Create multiple terminology entries for performance testing
+        for i in 1...20 {
+            let entry = TerminologyEntry(
+                englishTerm: "Test Term \(i)",
+                koreanHangul: "테스트 \(i)",
+                romanizedPronunciation: "test \(i)",
+                beltLevel: testBelt,
+                category: testCategory
+            )
+            testContext.insert(entry)
+            
+            let progress = UserTerminologyProgress(terminologyEntry: entry, userProfile: testProfile)
+            testContext.insert(progress)
+        }
+        
+        try testContext.save()
+        
+        // Measure performance of progress queries
+        measure {
+            let progressDescriptor = FetchDescriptor<UserTerminologyProgress>(
+                predicate: #Predicate { p in
+                    p.userProfile.id == testProfile.id
+                }
+            )
+            _ = try! testContext.fetch(progressDescriptor)
+        }
+    }
+    
+    func testSpacedRepetitionCalculationPerformance() throws {
+        let progress = UserTerminologyProgress(terminologyEntry: testEntry, userProfile: testProfile)
+        testContext.insert(progress)
+        
+        // Measure performance of answer recording and scheduling
+        measure {
+            progress.recordAnswer(isCorrect: true, responseTime: 2.0)
+        }
+    }
+}

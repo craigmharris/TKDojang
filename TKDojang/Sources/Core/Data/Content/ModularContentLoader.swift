@@ -27,27 +27,21 @@ class ModularContentLoader {
      * Loads complete TAGB system from modular JSON files
      */
     func loadCompleteSystem() {
-        print("🌟 Starting ModularContentLoader.loadCompleteSystem()")
-        
-        // Debug: Check what JSON files are available in bundle
-        if let bundlePath = Bundle.main.resourcePath {
-            print("📦 Bundle resource path: \(bundlePath)")
-        }
-        
-        // List all JSON files in bundle
-        let jsonFiles = Bundle.main.paths(forResourcesOfType: "json", inDirectory: nil)
-        print("📄 JSON files in bundle: \(jsonFiles)")
         
         do {
-            // 1. Load belt system configuration
+            // Load belt system configuration
             let beltSystem = try loadBeltSystem()
+            
+            // Create belt levels
             let beltLevels = try createBeltLevels(from: beltSystem)
+            
+            // Create terminology categories
             let categories = dataService.createTerminologyCategories()
             
-            // 2. Discover and load all content files
+            // Discover and load all content files
             try loadAllContent(beltLevels: beltLevels, categories: categories)
             
-            print("✅ Successfully loaded complete TAGB system")
+            print("✅ Successfully loaded complete TAGB system with \(beltLevels.count) belts and \(categories.count) categories")
             
         } catch {
             print("❌ Failed to load TAGB system: \(error)")
@@ -58,20 +52,17 @@ class ModularContentLoader {
      * Loads belt system configuration with colors and metadata
      */
     private func loadBeltSystem() throws -> BeltSystemConfig {
-        print("🔍 Looking for belt_system.json in bundle...")
         guard let url = Bundle.main.url(forResource: "belt_system", withExtension: "json") else {
             print("❌ belt_system.json not found in bundle")
             throw ContentLoadError.missingFile("belt_system.json")
         }
         
-        print("✅ Found belt_system.json at: \(url)")
         guard let data = try? Data(contentsOf: url) else {
             print("❌ Failed to read belt_system.json data")
             throw ContentLoadError.missingFile("belt_system.json")
         }
         
         let config = try JSONDecoder().decode(BeltSystemConfig.self, from: data)
-        print("✅ Successfully decoded belt system with \(config.beltSystem.belts.count) belts")
         return config
     }
     
@@ -97,7 +88,7 @@ class ModularContentLoader {
             belt.textColor = beltConfig.textColor
             belt.borderColor = beltConfig.borderColor
             
-            print("🎯 Created belt: '\(beltConfig.id)' -> '\(belt.shortName)' with colors: \(belt.primaryColor ?? "nil")")
+            // Belt created successfully
             
             dataService.modelContextForLoading.insert(belt)
             beltDict[beltConfig.id] = belt
@@ -123,40 +114,38 @@ class ModularContentLoader {
      * Loads all content files for a specific belt level
      */
     private func loadBeltContent(beltId: String, belt: BeltLevel, categories: [String: TerminologyCategory]) throws {
-        // Try to find belt-specific content files with unique naming
+        // Try to find belt-specific content files in Resources/Content/Belts directory
         let categoryNames = ["basics", "numbers", "techniques", "stances", "blocks", "strikes", "kicks", "patterns", "titles", "philosophy"]
         
         for categoryName in categoryNames {
-            // Try flat file structure that actually exists in bundle
+            // Try unique filename in multiple locations
             let uniqueFileName = "\(beltId)_\(categoryName)"
-            let simpleFileName = categoryName
+            var resourceURL: URL?
             
-            print("🔍 Looking for content files: '\(uniqueFileName).json' or '\(simpleFileName).json'")
+            // First try: Terminology subdirectory
+            resourceURL = Bundle.main.url(forResource: uniqueFileName, withExtension: "json", subdirectory: "Terminology")
             
-            var fileURL: URL?
-            
-            // Try unique filename first (e.g., "10th_keup_basics.json")
-            if let url = Bundle.main.url(forResource: uniqueFileName, withExtension: "json") {
-                print("✅ Found unique filename: \(uniqueFileName).json")
-                fileURL = url
-            } else if let url = Bundle.main.url(forResource: simpleFileName, withExtension: "json") {
-                print("✅ Found simple filename: \(simpleFileName).json")
-                fileURL = url
-            } else {
-                print("❌ Neither file found for \(beltId)/\(categoryName)")
+            // Fallback: try main bundle root
+            if resourceURL == nil {
+                resourceURL = Bundle.main.url(forResource: uniqueFileName, withExtension: "json")
             }
             
-            guard let url = fileURL,
-                  let category = categories[categoryName] else {
-                if fileURL == nil {
-                    print("⚠️ No file found for \(categoryName)")
+            // Fallback: try Core/Data/Content/Terminology path
+            if resourceURL == nil {
+                resourceURL = Bundle.main.url(forResource: uniqueFileName, withExtension: "json", subdirectory: "Core/Data/Content/Terminology")
+            }
+            
+            if let resourceURL = resourceURL {
+                if let category = categories[categoryName] {
+                    do {
+                        try loadCategoryContent(from: resourceURL, belt: belt, category: category)
+                    } catch {
+                        print("❌ Failed to load content from \(uniqueFileName).json: \(error)")
+                    }
                 } else {
-                    print("⚠️ Category '\(categoryName)' not found in categories")
+                    print("❌ Category '\(categoryName)' not found in categories")
                 }
-                continue // Skip if file doesn't exist or category not found
             }
-            
-            try loadCategoryContent(from: url, belt: belt, category: category)
         }
     }
     
@@ -168,7 +157,6 @@ class ModularContentLoader {
         
         // Discover all JSON files in this belt's directory
         guard let beltURL = Bundle.main.url(forResource: beltPath, withExtension: nil) else {
-            print("⚠️ No content directory found for \(beltId)")
             return
         }
         
@@ -180,7 +168,6 @@ class ModularContentLoader {
             let categoryName = fileURL.deletingPathExtension().lastPathComponent
             
             guard let category = categories[categoryName] else {
-                print("⚠️ Unknown category: \(categoryName)")
                 continue
             }
             
@@ -193,12 +180,18 @@ class ModularContentLoader {
      */
     private func loadCategoryContent(from url: URL, belt: BeltLevel, category: TerminologyCategory) throws {
         let data = try Data(contentsOf: url)
+        
+        do {
+            let _ = try JSONDecoder().decode(CategoryContent.self, from: data)
+        } catch {
+            print("❌ Failed to decode \(url.lastPathComponent): \(error)")
+            throw error
+        }
+        
         let content = try JSONDecoder().decode(CategoryContent.self, from: data)
         
         // Create expected belt level ID from belt short name
         let expectedBeltId = belt.shortName.replacingOccurrences(of: " ", with: "_").lowercased()
-        
-        print("🔍 Loading \(url.lastPathComponent): expected belt ID '\(expectedBeltId)', file has '\(content.beltLevel)'")
         
         // Validate that file matches expected belt level
         guard content.beltLevel == expectedBeltId else {
@@ -206,22 +199,45 @@ class ModularContentLoader {
             return
         }
         
-        // Add all terms from this file
-        for term in content.terms {
-            _ = dataService.addTerminologyEntry(
-                englishTerm: term.english,
-                koreanHangul: term.korean,
-                romanizedPronunciation: term.pronunciation,
-                beltLevel: belt,
-                category: category,
-                difficulty: term.difficulty ?? 1,
-                phoneticPronunciation: term.phonetic,
-                definition: term.definition,
-                notes: term.notes
-            )
+        // Handle both old and new format
+        var termsCount = 0
+        
+        if let newTerms = content.terminology {
+            // New format (from CSV tool)
+            for term in newTerms {
+                _ = dataService.addTerminologyEntry(
+                    englishTerm: term.englishTerm,
+                    koreanHangul: term.koreanHangul,
+                    romanizedPronunciation: term.romanizedPronunciation,
+                    beltLevel: belt,
+                    category: category,
+                    difficulty: term.difficulty,
+                    phoneticPronunciation: term.phoneticPronunciation,
+                    definition: term.definition,
+                    notes: nil
+                )
+            }
+            termsCount = newTerms.count
+            
+        } else if let oldTerms = content.terms {
+            // Old format (existing files)
+            for term in oldTerms {
+                _ = dataService.addTerminologyEntry(
+                    englishTerm: term.english,
+                    koreanHangul: term.korean,
+                    romanizedPronunciation: term.pronunciation,
+                    beltLevel: belt,
+                    category: category,
+                    difficulty: term.difficulty ?? 1,
+                    phoneticPronunciation: term.phonetic,
+                    definition: term.definition,
+                    notes: term.notes
+                )
+            }
+            termsCount = oldTerms.count
         }
         
-        print("✅ Loaded \(content.terms.count) terms from \(url.lastPathComponent)")
+        // Successfully loaded terms
     }
 }
 
@@ -278,24 +294,63 @@ struct BeltConfig: Codable {
 }
 
 /**
- * Individual category content file
+ * Individual category content file (supports both old and new formats)
  */
 struct CategoryContent: Codable {
     let beltLevel: String
     let category: String
-    let description: String
-    let terms: [TerminologyItem]
+    let terminology: [TerminologyEntryJSON]?
+    let terms: [TerminologyItemOld]?
+    let metadata: ContentMetadata?
+    let description: String?
     
     private enum CodingKeys: String, CodingKey {
         case beltLevel = "belt_level"
-        case category, description, terms
+        case category, terminology, terms, metadata, description
+    }
+}
+
+struct ContentMetadata: Codable {
+    let createdAt: String
+    let totalCount: Int
+    let source: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case createdAt = "created_at"
+        case totalCount = "total_count"
+        case source
     }
 }
 
 /**
- * Individual terminology item
+ * Individual terminology item (new format from CSV tool)
  */
-struct TerminologyItem: Codable {
+struct TerminologyEntryJSON: Codable {
+    let englishTerm: String
+    let koreanHangul: String
+    let romanizedPronunciation: String
+    let phoneticPronunciation: String?
+    let definition: String?
+    let category: String
+    let difficulty: Int
+    let beltLevel: String
+    let createdAt: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case englishTerm = "english_term"
+        case koreanHangul = "korean_hangul"
+        case romanizedPronunciation = "romanized_pronunciation"
+        case phoneticPronunciation = "phonetic_pronunciation"
+        case definition, category, difficulty
+        case beltLevel = "belt_level"
+        case createdAt = "created_at"
+    }
+}
+
+/**
+ * Individual terminology item (old format)
+ */
+struct TerminologyItemOld: Codable {
     let english: String
     let korean: String
     let pronunciation: String

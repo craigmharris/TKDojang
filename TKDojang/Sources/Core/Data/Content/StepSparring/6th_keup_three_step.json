@@ -1,0 +1,260 @@
+{
+  "belt_level": "6th_keup",
+  "category": "step_sparring", 
+  "type": "three_step",
+  "description": "Three-step sparring sequences for 6th keup students (sequences 8-10)",
+  "sequences": [
+    {
+      "name": "3-Step Sparring #8",
+      "sequence_number": 8,
+      "description": "Rising block with back kick counter",
+      "difficulty": 3,
+      "key_learning_points": "High defense with powerful back techniques",
+      "applicable_belt_levels": ["6th_keup"],
+      "steps": [
+        {
+          "step_number": 1,
+          "timing": "Attack and block simultaneously",
+          "key_points": "Strong rising motion, solid base",
+          "common_mistakes": "Weak rising block, poor balance",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "high section",
+            "hand": "right",
+            "description": "Step forward with right foot into walking stance, execute obverse punch to high section"
+          },
+          "defense": {
+            "technique": "Rising block",
+            "korean_name": "Chookyo makgi",
+            "stance": "walking stance",
+            "target": "high section",
+            "hand": "left",
+            "description": "Step back with left foot, execute strong rising block"
+          }
+        },
+        {
+          "step_number": 2,
+          "timing": "Continuous attack sequence",
+          "key_points": "Maintain high block angle, strong defense",
+          "common_mistakes": "Dropping guard, weak blocks",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "high section",
+            "hand": "right",
+            "description": "Continue forward, execute obverse punch to high section"
+          },
+          "defense": {
+            "technique": "Rising block",
+            "korean_name": "Chookyo makgi",
+            "stance": "walking stance",
+            "target": "high section",
+            "hand": "left",
+            "description": "Step back, execute rising block"
+          }
+        },
+        {
+          "step_number": 3,
+          "timing": "Immediate counter after final block",
+          "key_points": "Powerful back kick, good pivot",
+          "common_mistakes": "Weak kick, poor turning technique",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "high section",
+            "hand": "right",
+            "description": "Final forward step with obverse punch to high section"
+          },
+          "defense": {
+            "technique": "Rising block",
+            "korean_name": "Chookyo makgi",
+            "stance": "walking stance",
+            "target": "high section",
+            "hand": "left",
+            "description": "Final step back with rising block"
+          },
+          "counter": {
+            "technique": "Back kick",
+            "korean_name": "Dwit chagi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Immediately pivot and counter with right back kick to opponent's middle section"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3-Step Sparring #9",
+      "sequence_number": 9,
+      "description": "X-block with side piercing kick counter",
+      "difficulty": 3,
+      "key_learning_points": "Crossed arm defense and piercing kicks",
+      "applicable_belt_levels": ["6th_keup"],
+      "steps": [
+        {
+          "step_number": 1,
+          "timing": "Attack and block simultaneously",
+          "key_points": "Crossed arm formation, strong structure",
+          "common_mistakes": "Poor crossing technique, weak block",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Step forward with right foot into walking stance, execute obverse punch"
+          },
+          "defense": {
+            "technique": "X-block",
+            "korean_name": "Kyocha makgi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "both",
+            "description": "Step back with left foot, execute X-block with crossed forearms"
+          }
+        },
+        {
+          "step_number": 2,
+          "timing": "Continuous attack sequence",
+          "key_points": "Maintain crossed structure, solid defense",
+          "common_mistakes": "Breaking X formation, weak blocks",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Continue forward, execute obverse punch"
+          },
+          "defense": {
+            "technique": "X-block",
+            "korean_name": "Kyocha makgi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "both",
+            "description": "Step back, execute X-block with crossed forearms"
+          }
+        },
+        {
+          "step_number": 3,
+          "timing": "Immediate counter after final block",
+          "key_points": "Piercing kick technique, precise targeting",
+          "common_mistakes": "Poor piercing form, inaccurate targeting",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Final forward step with obverse punch"
+          },
+          "defense": {
+            "technique": "X-block",
+            "korean_name": "Kyocha makgi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "both",
+            "description": "Final step back with X-block"
+          },
+          "counter": {
+            "technique": "Side piercing kick",
+            "korean_name": "Yop cha jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Immediately counter with right side piercing kick to opponent's middle section"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3-Step Sparring #10",
+      "sequence_number": 10,
+      "description": "U-shape block with reverse turning kick counter",
+      "difficulty": 3,
+      "key_learning_points": "Advanced defense patterns and spinning counters",
+      "applicable_belt_levels": ["6th_keup"],
+      "steps": [
+        {
+          "step_number": 1,
+          "timing": "Attack and block simultaneously",
+          "key_points": "U-shape formation, balanced stance",
+          "common_mistakes": "Poor U formation, unstable stance",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Step forward with right foot into walking stance, execute obverse punch"
+          },
+          "defense": {
+            "technique": "U-shape block",
+            "korean_name": "Digutja makgi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "both",
+            "description": "Step back with left foot, execute U-shape block with both arms"
+          }
+        },
+        {
+          "step_number": 2,
+          "timing": "Continuous attack sequence",
+          "key_points": "Maintain U formation, strong blocks",
+          "common_mistakes": "Breaking formation, weak defense",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Continue forward, execute obverse punch"
+          },
+          "defense": {
+            "technique": "U-shape block",
+            "korean_name": "Digutja makgi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "both",
+            "description": "Step back, execute U-shape block with both arms"
+          }
+        },
+        {
+          "step_number": 3,
+          "timing": "Immediate counter after final block",
+          "key_points": "Reverse spinning motion, accurate targeting",
+          "common_mistakes": "Poor spinning technique, loss of balance",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Final forward step with obverse punch"
+          },
+          "defense": {
+            "technique": "U-shape block",
+            "korean_name": "Digutja makgi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "both",
+            "description": "Final step back with U-shape block"
+          },
+          "counter": {
+            "technique": "Reverse turning kick",
+            "korean_name": "Bandae dollyo chagi",
+            "stance": "walking stance",
+            "target": "high section",
+            "hand": "left",
+            "description": "Immediately counter with left reverse turning kick to opponent's high section"
+          }
+        }
+      ]
+    }
+  ]
+}

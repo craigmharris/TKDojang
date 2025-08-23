@@ -6,6 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		44C17C302E5478DC0082CF96 /* MultiProfileSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C2B2E5478DC0082CF96 /* MultiProfileSystemTests.swift */; };
+		44C17C312E5478DC0082CF96 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C262E5478DC0082CF96 /* TestHelpers.swift */; };
+		44C17C322E5478DC0082CF96 /* TKDojangTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C2D2E5478DC0082CF96 /* TKDojangTests.swift */; };
+		44C17C342E5478DC0082CF96 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C2C2E5478DC0082CF96 /* PerformanceTests.swift */; };
+		44C17C382E5478F20082CF96 /* TKDojangUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C362E5478F20082CF96 /* TKDojangUITests.swift */; };
+		44C17C3B2E5478DC0082CF96 /* BasicFunctionalityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C392E5478DC0082CF96 /* BasicFunctionalityTests.swift */; };
+		44C17C3C2E5478DC0082CF96 /* FlashcardSystemTests_Simple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C17C3A2E5478DC0082CF96 /* FlashcardSystemTests_Simple.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		444D54302E4F8EF8009F3E49 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +37,13 @@
 		444D541D2E4F8EF4009F3E49 /* TKDojang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TKDojang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444D542F2E4F8EF8009F3E49 /* TKDojangTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TKDojangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		444D54392E4F8EF8009F3E49 /* TKDojangUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TKDojangUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44C17C262E5478DC0082CF96 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		44C17C2B2E5478DC0082CF96 /* MultiProfileSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiProfileSystemTests.swift; sourceTree = "<group>"; };
+		44C17C2C2E5478DC0082CF96 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		44C17C2D2E5478DC0082CF96 /* TKDojangTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKDojangTests.swift; sourceTree = "<group>"; };
+		44C17C362E5478F20082CF96 /* TKDojangUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKDojangUITests.swift; sourceTree = "<group>"; };
+		44C17C392E5478DC0082CF96 /* BasicFunctionalityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFunctionalityTests.swift; sourceTree = "<group>"; };
+		44C17C3A2E5478DC0082CF96 /* FlashcardSystemTests_Simple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardSystemTests_Simple.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -78,6 +95,8 @@
 		444D54142E4F8EF4009F3E49 = {
 			isa = PBXGroup;
 			children = (
+				44C17C372E5478F20082CF96 /* TKDojangUITests */,
+				44C17C2E2E5478DC0082CF96 /* TKDojangTests */,
 				444D541F2E4F8EF4009F3E49 /* TKDojang */,
 				444D541E2E4F8EF4009F3E49 /* Products */,
 			);
@@ -91,6 +110,35 @@
 				444D54392E4F8EF8009F3E49 /* TKDojangUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		44C17C272E5478DC0082CF96 /* TestHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				44C17C262E5478DC0082CF96 /* TestHelpers.swift */,
+			);
+			path = TestHelpers;
+			sourceTree = "<group>";
+		};
+		44C17C2E2E5478DC0082CF96 /* TKDojangTests */ = {
+			isa = PBXGroup;
+			children = (
+				44C17C272E5478DC0082CF96 /* TestHelpers */,
+				44C17C392E5478DC0082CF96 /* BasicFunctionalityTests.swift */,
+				44C17C3A2E5478DC0082CF96 /* FlashcardSystemTests_Simple.swift */,
+				44C17C2B2E5478DC0082CF96 /* MultiProfileSystemTests.swift */,
+				44C17C2C2E5478DC0082CF96 /* PerformanceTests.swift */,
+				44C17C2D2E5478DC0082CF96 /* TKDojangTests.swift */,
+			);
+			path = TKDojangTests;
+			sourceTree = "<group>";
+		};
+		44C17C372E5478F20082CF96 /* TKDojangUITests */ = {
+			isa = PBXGroup;
+			children = (
+				44C17C362E5478F20082CF96 /* TKDojangUITests.swift */,
+			);
+			path = TKDojangUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +286,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44C17C3B2E5478DC0082CF96 /* BasicFunctionalityTests.swift in Sources */,
+				44C17C3C2E5478DC0082CF96 /* FlashcardSystemTests_Simple.swift in Sources */,
+				44C17C302E5478DC0082CF96 /* MultiProfileSystemTests.swift in Sources */,
+				44C17C312E5478DC0082CF96 /* TestHelpers.swift in Sources */,
+				44C17C322E5478DC0082CF96 /* TKDojangTests.swift in Sources */,
+				44C17C342E5478DC0082CF96 /* PerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44C17C382E5478F20082CF96 /* TKDojangUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
