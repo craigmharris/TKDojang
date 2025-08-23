@@ -108,10 +108,6 @@ struct FlashcardResultsView: View {
             .navigationTitle("Flashcard Results")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    ProfileSwitcher()
-                }
-                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
                         dismiss()

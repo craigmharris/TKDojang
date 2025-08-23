@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 /**
  * MainTabCoordinatorView.swift
@@ -54,47 +55,348 @@ struct MainTabCoordinatorView: View {
 // MARK: - Placeholder Tab Views
 
 struct DashboardView: View {
+    @Environment(DataManager.self) private var dataManager
+    @State private var userProfile: UserProfile?
+    
     var body: some View {
         NavigationStack {
-            VStack(spacing: 30) {
-                Image(systemName: "house.fill")
-                    .font(.system(size: 60))
-                    .foregroundColor(.blue)
-                
-                Text("Welcome to Your Dashboard")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-                Text("Your training journey starts here.\nExplore techniques, start training sessions, and track your progress.")
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.secondary)
-                    .padding(.horizontal)
-                
-                Spacer()
-                
-                VStack(spacing: 16) {
-                    NavigationLink(destination: FlashcardView()) {
-                        Text("Study Korean Terms")
+            ScrollView {
+                VStack(spacing: 24) {
+                    // Personalized Welcome Header
+                    if let profile = userProfile {
+                        PersonalizedWelcomeCard(profile: profile)
+                    } else {
+                        // Fallback for no profile
+                        VStack(spacing: 16) {
+                            Image(systemName: "figure.martial.arts")
+                                .font(.system(size: 60))
+                                .foregroundColor(.blue)
+                            
+                            Text("Welcome to TKDojang")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                            
+                            Text("Your martial arts journey begins here")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.center)
+                        }
+                        .padding()
                     }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
                     
-                    Button("Browse Techniques") {
-                        // TODO: Navigate to techniques
+                    // Quick Action Navigation Cards
+                    QuickActionGrid()
+                    
+                    // Recent Activity Section (if profile exists)
+                    if let profile = userProfile {
+                        RecentActivityCard(profile: profile)
                     }
-                    .buttonStyle(.bordered)
-                    .controlSize(.large)
+                    
+                    Spacer(minLength: 20)
                 }
-                .padding(.horizontal)
-                
-                Spacer()
+                .padding()
             }
-            .navigationTitle("Dashboard")
+            .navigationTitle("Home")
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     ProfileSwitcher()
                 }
             }
+            .onAppear {
+                loadUserProfile()
+            }
+            .onChange(of: dataManager.profileService.activeProfile) {
+                loadUserProfile()
+            }
+        }
+    }
+    
+    private func loadUserProfile() {
+        userProfile = dataManager.profileService.getActiveProfile()
+        
+        // If no active profile, create/get default
+        if userProfile == nil {
+            userProfile = dataManager.getOrCreateDefaultUserProfile()
+        }
+    }
+}
+
+// MARK: - Personalized Welcome Card
+
+struct PersonalizedWelcomeCard: View {
+    let profile: UserProfile
+    
+    var body: some View {
+        VStack(spacing: 16) {
+            // Profile Header
+            HStack(spacing: 16) {
+                // Avatar
+                Image(systemName: profile.avatar.rawValue)
+                    .font(.system(size: 50))
+                    .foregroundColor(profile.colorTheme.primarySwiftUIColor)
+                    .frame(width: 70, height: 70)
+                    .background(
+                        Circle()
+                            .fill(profile.colorTheme.primarySwiftUIColor.opacity(0.1))
+                    )
+                
+                // Welcome Text
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Welcome back,")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    
+                    Text(profile.name)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                    
+                    // Belt Level Badge
+                    HStack(spacing: 8) {
+                        Text(profile.currentBeltLevel.shortName)
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(
+                                Capsule()
+                                    .fill(profile.colorTheme.primarySwiftUIColor)
+                            )
+                        
+                        if profile.streakDays > 0 {
+                            Text("🔥 \(profile.streakDays) day streak")
+                                .font(.caption)
+                                .foregroundColor(.orange)
+                                .fontWeight(.medium)
+                        }
+                    }
+                }
+                
+                Spacer()
+            }
+            
+            // Progress Summary
+            HStack(spacing: 20) {
+                ProgressStat(title: "Flashcards", value: profile.totalFlashcardsSeen, color: .blue)
+                ProgressStat(title: "Tests Taken", value: profile.totalTestsTaken, color: .green)
+                ProgressStat(title: "Patterns", value: profile.totalPatternsLearned, color: .purple)
+            }
+        }
+        .padding(20)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color(.secondarySystemBackground))
+                .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 2)
+        )
+    }
+}
+
+// MARK: - Progress Stat Component
+
+struct ProgressStat: View {
+    let title: String
+    let value: Int
+    let color: Color
+    
+    var body: some View {
+        VStack(spacing: 4) {
+            Text("\(value)")
+                .font(.title3)
+                .fontWeight(.bold)
+                .foregroundColor(color)
+            
+            Text(title)
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
+// MARK: - Quick Action Grid
+
+struct QuickActionGrid: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Quick Actions")
+                .font(.headline)
+                .fontWeight(.semibold)
+                .padding(.horizontal, 4)
+            
+            LazyVGrid(columns: [
+                GridItem(.flexible(), spacing: 12),
+                GridItem(.flexible(), spacing: 12)
+            ], spacing: 12) {
+                
+                QuickActionCard(
+                    title: "Learn",
+                    subtitle: "Flashcards, Tests & Theory",
+                    icon: "book.fill",
+                    color: .blue,
+                    destination: AnyView(LearnView())
+                )
+                
+                QuickActionCard(
+                    title: "Practice",
+                    subtitle: "Patterns, Sparring & Line Work",
+                    icon: "figure.martial.arts",
+                    color: .red,
+                    destination: AnyView(PracticeView())
+                )
+                
+                QuickActionCard(
+                    title: "Progress",
+                    subtitle: "Track your improvement",
+                    icon: "chart.line.uptrend.xyaxis",
+                    color: .green,
+                    destination: AnyView(ProgressView())
+                )
+                
+                QuickActionCard(
+                    title: "Profile",
+                    subtitle: "Manage your settings",
+                    icon: "person.circle",
+                    color: .purple,
+                    destination: AnyView(ProfileView())
+                )
+            }
+        }
+    }
+}
+
+// MARK: - Quick Action Card
+
+struct QuickActionCard: View {
+    let title: String
+    let subtitle: String
+    let icon: String
+    let color: Color
+    let destination: AnyView
+    
+    var body: some View {
+        NavigationLink(destination: destination) {
+            VStack(spacing: 12) {
+                Image(systemName: icon)
+                    .font(.system(size: 32))
+                    .foregroundColor(color)
+                
+                VStack(spacing: 4) {
+                    Text(title)
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.primary)
+                    
+                    Text(subtitle)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                }
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, minHeight: 120)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color(.systemBackground))
+                    .shadow(color: .black.opacity(0.05), radius: 3, x: 0, y: 1)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(color.opacity(0.2), lineWidth: 1)
+            )
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+// MARK: - Recent Activity Card
+
+struct RecentActivityCard: View {
+    let profile: UserProfile
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Recent Activity")
+                .font(.headline)
+                .fontWeight(.semibold)
+                .padding(.horizontal, 4)
+            
+            VStack(spacing: 12) {
+                ActivityRow(
+                    icon: "clock", 
+                    text: "Last active \(timeAgoText(from: profile.lastActiveAt))",
+                    color: .blue
+                )
+                
+                if profile.totalFlashcardsSeen > 0 {
+                    ActivityRow(
+                        icon: "rectangle.on.rectangle",
+                        text: "\(profile.totalFlashcardsSeen) flashcards studied",
+                        color: .green
+                    )
+                }
+                
+                if profile.totalTestsTaken > 0 {
+                    ActivityRow(
+                        icon: "checkmark.circle",
+                        text: "\(profile.totalTestsTaken) tests completed",
+                        color: .orange
+                    )
+                }
+                
+                if profile.totalPatternsLearned > 0 {
+                    ActivityRow(
+                        icon: "square.grid.3x3",
+                        text: "\(profile.totalPatternsLearned) patterns learned",
+                        color: .purple
+                    )
+                }
+            }
+            .padding(16)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color(.tertiarySystemBackground))
+            )
+        }
+    }
+    
+    private func timeAgoText(from date: Date) -> String {
+        let timeInterval = Date().timeIntervalSince(date)
+        let hours = Int(timeInterval / 3600)
+        let days = Int(timeInterval / 86400)
+        
+        if days > 0 {
+            return "\(days) day\(days == 1 ? "" : "s") ago"
+        } else if hours > 0 {
+            return "\(hours) hour\(hours == 1 ? "" : "s") ago"
+        } else {
+            return "recently"
+        }
+    }
+}
+
+// MARK: - Activity Row
+
+struct ActivityRow: View {
+    let icon: String
+    let text: String
+    let color: Color
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: icon)
+                .font(.system(size: 16))
+                .foregroundColor(color)
+                .frame(width: 20)
+            
+            Text(text)
+                .font(.subheadline)
+                .foregroundColor(.primary)
+            
+            Spacer()
         }
     }
 }
