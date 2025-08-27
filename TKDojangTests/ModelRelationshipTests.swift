@@ -77,7 +77,7 @@ final class ModelRelationshipTests: XCTestCase {
         
         // Create test profile
         let testBelt = testBelts.first { $0.shortName == "6th Keup" }!
-        testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        testProfile = UserProfile(name: "Test User", currentBeltLevel: testBelt, learningMode: .mastery)
         testContext.insert(testProfile)
         
         try testContext.save()
@@ -279,8 +279,8 @@ final class ModelRelationshipTests: XCTestCase {
         let stepSparringService = StepSparringDataService(modelContext: testContext)
         
         // Test manual belt filtering for different belt levels
-        let eighthKeupProfile = UserProfile(currentBeltLevel: testBelts.first { $0.shortName == "8th Keup" }!, learningMode: .mastery)
-        let sixthKeupProfile = UserProfile(currentBeltLevel: testBelts.first { $0.shortName == "6th Keup" }!, learningMode: .mastery)
+        let eighthKeupProfile = UserProfile(name: "8th Keup User", currentBeltLevel: testBelts.first { $0.shortName == "8th Keup" }!, learningMode: .mastery)
+        let sixthKeupProfile = UserProfile(name: "6th Keup User", currentBeltLevel: testBelts.first { $0.shortName == "6th Keup" }!, learningMode: .mastery)
         
         testContext.insert(eighthKeupProfile)
         testContext.insert(sixthKeupProfile)

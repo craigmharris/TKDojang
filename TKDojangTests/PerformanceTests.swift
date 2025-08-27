@@ -373,7 +373,7 @@ final class PerformanceTests: XCTestCase {
             return
         }
         
-        let testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        let testProfile = UserProfile(name: "Test User", currentBeltLevel: testBelt, learningMode: .mastery)
         testContext.insert(testProfile)
         try testContext.save()
         
@@ -408,7 +408,7 @@ final class PerformanceTests: XCTestCase {
             return
         }
         
-        let testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        let testProfile = UserProfile(name: "Test User", currentBeltLevel: testBelt, learningMode: .mastery)
         testContext.insert(testProfile)
         
         // Create progress for smaller subset of entries
@@ -621,7 +621,7 @@ final class PerformanceTests: XCTestCase {
             return
         }
         
-        let testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        let testProfile = UserProfile(name: "Test User", currentBeltLevel: testBelt, learningMode: .mastery)
         testContext.insert(testProfile)
         try testContext.save()
         
@@ -841,7 +841,7 @@ final class PerformanceTests: XCTestCase {
             return
         }
         
-        let testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        let testProfile = UserProfile(name: "Test User", currentBeltLevel: testBelt, learningMode: .mastery)
         testContext.insert(testProfile)
         try testContext.save()
         

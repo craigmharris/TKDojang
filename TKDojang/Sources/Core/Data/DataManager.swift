@@ -29,6 +29,7 @@ class DataManager {
     private(set) var patternService: PatternDataService
     private(set) var profileService: ProfileService
     private(set) var stepSparringService: StepSparringDataService
+    private(set) var progressCacheService: ProgressCacheService
     
     // Track database reset state to trigger UI refresh
     private(set) var databaseResetId = UUID()
@@ -62,7 +63,8 @@ class DataManager {
                 StepSparringSequence.self,
                 StepSparringStep.self,
                 StepSparringAction.self,
-                UserStepSparringProgress.self
+                UserStepSparringProgress.self,
+                GradingRecord.self
             ])
             
             let modelConfiguration = ModelConfiguration(
@@ -80,14 +82,15 @@ class DataManager {
             self.modelContainer = container
             self.terminologyService = TerminologyDataService(modelContext: container.mainContext)
             self.patternService = PatternDataService(modelContext: container.mainContext)
+            self.progressCacheService = ProgressCacheService(modelContext: container.mainContext)
             self.profileService = ProfileService(modelContext: container.mainContext)
             self.stepSparringService = StepSparringDataService(modelContext: container.mainContext)
             
-            // Perform initial setup if needed
-            print("🔍 DEBUG: DataManager init - about to call setupInitialData()")
-            Task {
-                await setupInitialData()
-            }
+            // Connect ProfileService to ProgressCacheService for cache updates
+            self.profileService.progressCacheService = self.progressCacheService
+            
+            // Note: Initial data setup will be handled by AppCoordinator
+            print("✅ DataManager initialization complete")
             
         } catch {
             print("❌ Failed to create model container: \(error)")

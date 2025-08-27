@@ -147,6 +147,7 @@ final class BasicFunctionalityTests: XCTestCase {
         
         // Create user profile
         let profile = UserProfile(
+            name: "Test User",
             currentBeltLevel: belt,
             learningMode: .mastery
         )

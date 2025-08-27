@@ -83,7 +83,7 @@ final class StepSparringSystemTests: XCTestCase {
         }
         
         // Create test user profile with 6th Keup belt
-        testProfile = UserProfile(currentBeltLevel: sixthKeup, learningMode: .mastery)
+        testProfile = UserProfile(name: "Test User", currentBeltLevel: sixthKeup, learningMode: .mastery)
         testContext.insert(testProfile)
         
         try testContext.save()
@@ -209,7 +209,7 @@ final class StepSparringSystemTests: XCTestCase {
         try testContext.save()
         
         // Test filtering for 8th Keup (should see sequences 1-4 only)
-        let eighthKeupProfile = UserProfile(currentBeltLevel: testBelts[0], learningMode: .mastery) // 8th keup
+        let eighthKeupProfile = UserProfile(name: "8th Keup User", currentBeltLevel: testBelts[0], learningMode: .mastery) // 8th keup
         testContext.insert(eighthKeupProfile)
         try testContext.save()
         
@@ -218,7 +218,7 @@ final class StepSparringSystemTests: XCTestCase {
         XCTAssertTrue(eighthKeupSequences.contains { $0.sequenceNumber == 1 }, "Should contain sequence 1-4")
         
         // Test filtering for 7th Keup (should see sequences 1-4 and 5-7)
-        let seventhKeupProfile = UserProfile(currentBeltLevel: testBelts[1], learningMode: .mastery) // 7th keup
+        let seventhKeupProfile = UserProfile(name: "7th Keup User", currentBeltLevel: testBelts[1], learningMode: .mastery) // 7th keup
         testContext.insert(seventhKeupProfile)
         try testContext.save()
         
@@ -226,7 +226,7 @@ final class StepSparringSystemTests: XCTestCase {
         XCTAssertEqual(seventhKeupSequences.count, 2, "7th Keup should see 2 three-step sequence ranges")
         
         // Test filtering for 6th Keup (should see all sequences)
-        let sixthKeupProfile = UserProfile(currentBeltLevel: testBelts[2], learningMode: .mastery) // 6th keup
+        let sixthKeupProfile = UserProfile(name: "6th Keup User", currentBeltLevel: testBelts[2], learningMode: .mastery) // 6th keup
         testContext.insert(sixthKeupProfile)
         try testContext.save()
         
@@ -251,7 +251,7 @@ final class StepSparringSystemTests: XCTestCase {
         try testContext.save()
         
         // Test filtering for 5th Keup (should see sequences 1-4 only)
-        let fifthKeupProfile = UserProfile(currentBeltLevel: testBelts[3], learningMode: .mastery) // 5th keup
+        let fifthKeupProfile = UserProfile(name: "5th Keup User", currentBeltLevel: testBelts[3], learningMode: .mastery) // 5th keup
         testContext.insert(fifthKeupProfile)
         try testContext.save()
         
@@ -259,7 +259,7 @@ final class StepSparringSystemTests: XCTestCase {
         XCTAssertEqual(fifthKeupSequences.count, 1, "5th Keup should see 1 two-step sequence range")
         
         // Test filtering for 4th Keup (should see all sequences)
-        let fourthKeupProfile = UserProfile(currentBeltLevel: testBelts[4], learningMode: .mastery) // 4th keup
+        let fourthKeupProfile = UserProfile(name: "4th Keup User", currentBeltLevel: testBelts[4], learningMode: .mastery) // 4th keup
         testContext.insert(fourthKeupProfile)
         try testContext.save()
         

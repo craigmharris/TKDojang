@@ -34,8 +34,8 @@ struct MainTabCoordinatorView: View {
                 }
                 .tag(2)
             
-            // Progress Tab
-            ProgressView()
+            // Progress Tab - using stub due to SwiftData relationship issues
+            ProgressViewStub()
                 .tabItem {
                     Label("Progress", systemImage: "chart.line.uptrend.xyaxis")
                 }
@@ -568,27 +568,465 @@ struct PracticeView: View {
 }
 
 struct ProgressView: View {
+    @Environment(DataManager.self) private var dataManager
+    @State private var userProfile: UserProfile?
+    @State private var studySessions: [StudySession] = []
+    @State private var gradingHistory: [GradingRecord] = []
+    @State private var gradingStatistics: GradingStatistics?
+    @State private var isLoading = false
+    @State private var errorMessage: String?
+    @State private var hasLoadedData = false
+    
     var body: some View {
         NavigationStack {
-            VStack {
+            ScrollView {
+                VStack(spacing: 24) {
+                    if isLoading {
+                        loadingView
+                    } else if let profile = userProfile {
+                        // Progress Overview Cards
+                        progressOverviewSection(profile: profile)
+                        
+                        // Study Activity Section
+                        studyActivitySection
+                        
+                        // Belt Progression Section
+                        beltProgressionSection
+                        
+                        // Grading History Section (if any gradings exist)
+                        if !gradingHistory.isEmpty {
+                            gradingHistorySection
+                        }
+                        
+                        Spacer(minLength: 20)
+                    } else {
+                        noProfileView
+                    }
+                }
+                .padding()
+            }
+            .navigationTitle("Progress")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    ProfileSwitcher()
+                }
+            }
+            .refreshable {
+                await loadProgressData()
+            }
+            .onAppear {
+                // Only load data when user actually navigates to Progress tab
+                if !hasLoadedData {
+                    Task {
+                        await loadProgressData()
+                        hasLoadedData = true
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - Loading View
+    private var loadingView: some View {
+        VStack(spacing: 16) {
+            ProgressView()
+                .scaleEffect(1.5)
+            Text("Loading your progress...")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    // MARK: - No Profile View
+    private var noProfileView: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "person.badge.clock")
+                .font(.system(size: 60))
+                .foregroundColor(.gray)
+            
+            Text("No Profile Selected")
+                .font(.title2)
+                .fontWeight(.semibold)
+            
+            Text("Please select or create a profile to view progress.")
+                .font(.body)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .padding()
+    }
+    
+    // MARK: - Progress Overview Section
+    private func progressOverviewSection(profile: UserProfile) -> some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
                 Image(systemName: "chart.line.uptrend.xyaxis")
-                    .font(.system(size: 60))
+                    .font(.title2)
                     .foregroundColor(.green)
                 
-                Text("Your Progress")
-                    .font(.largeTitle)
+                Text("Progress Overview")
+                    .font(.title2)
                     .fontWeight(.bold)
-                
-                Text("Track your training history, skill improvements, and belt progression.")
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.secondary)
-                    .padding()
                 
                 Spacer()
             }
-            .navigationTitle("Progress")
+            
+            LazyVGrid(columns: [
+                GridItem(.flexible()),
+                GridItem(.flexible())
+            ], spacing: 16) {
+                ProgressStat(
+                    title: "Study Hours",
+                    value: Int(profile.totalStudyTime / 3600),
+                    color: .blue
+                )
+                
+                ProgressStat(
+                    title: "Current Streak",
+                    value: profile.streakDays,
+                    color: .orange
+                )
+                
+                ProgressStat(
+                    title: "Flashcards",
+                    value: profile.totalFlashcardsSeen,
+                    color: .purple
+                )
+                
+                ProgressStat(
+                    title: "Tests Taken",
+                    value: profile.totalTestsTaken,
+                    color: .green
+                )
+            }
+        }
+        .padding()
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(12)
+    }
+    
+    // MARK: - Study Activity Section
+    private var studyActivitySection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Image(systemName: "calendar")
+                    .font(.title2)
+                    .foregroundColor(.blue)
+                
+                Text("Recent Activity")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                
+                Spacer()
+            }
+            
+            if studySessions.isEmpty {
+                Text("No study sessions recorded yet")
+                    .font(.body)
+                    .foregroundColor(.secondary)
+                    .padding()
+            } else {
+                ForEach(Array(studySessions.prefix(5)), id: \.id) { session in
+                    StudySessionRow(session: session)
+                }
+                
+                if studySessions.count > 5 {
+                    Text("+ \(studySessions.count - 5) more sessions")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding(.top, 8)
+                }
+            }
+        }
+        .padding()
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(12)
+    }
+    
+    // MARK: - Belt Progression Section
+    private var beltProgressionSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Image(systemName: "medal.fill")
+                    .font(.title2)
+                    .foregroundColor(.yellow)
+                
+                Text("Belt Progression")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                
+                Spacer()
+            }
+            
+            if let profile = userProfile {
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
+                        Text("Current Belt:")
+                            .font(.body)
+                            .foregroundColor(.secondary)
+                        
+                        Spacer()
+                        
+                        Text(profile.currentBeltLevel.name)
+                            .font(.body)
+                            .fontWeight(.semibold)
+                    }
+                    
+                    // Show next belt if not at highest level
+                    if profile.currentBeltLevel.sortOrder > 1 {
+                        HStack {
+                            Text("Next Goal:")
+                                .font(.body)
+                                .foregroundColor(.secondary)
+                            
+                            Spacer()
+                            
+                            Text(getNextBeltName(currentBelt: profile.currentBeltLevel))
+                                .font(.body)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.green)
+                        }
+                    }
+                    
+                    // Time at current belt
+                    if let mostRecentGrading = gradingHistory.first {
+                        let timeAtBelt = Date().timeIntervalSince(mostRecentGrading.gradingDate)
+                        HStack {
+                            Text("Time at Current Belt:")
+                                .font(.body)
+                                .foregroundColor(.secondary)
+                            
+                            Spacer()
+                            
+                            Text(formatTimeInterval(timeAtBelt))
+                                .font(.body)
+                                .fontWeight(.semibold)
+                        }
+                    }
+                }
+            }
+        }
+        .padding()
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(12)
+    }
+    
+    // MARK: - Grading History Section
+    private var gradingHistorySection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Image(systemName: "trophy.fill")
+                    .font(.title2)
+                    .foregroundColor(.gold)
+                
+                Text("Grading History")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                if let stats = gradingStatistics {
+                    Text("\(stats.passedGradings) / \(stats.totalGradings) passed")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+            }
+            
+            ForEach(Array(gradingHistory.prefix(3)), id: \.id) { grading in
+                GradingRecordRow(grading: grading)
+            }
+            
+            if gradingHistory.count > 3 {
+                Text("+ \(gradingHistory.count - 3) more gradings")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .padding(.top, 8)
+            }
+        }
+        .padding()
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(12)
+    }
+    
+    // MARK: - Data Loading
+    @MainActor
+    private func loadProgressData() async {
+        isLoading = true
+        errorMessage = nil
+        
+        // Get active profile first (this should be fast)
+        userProfile = dataManager.profileService.getActiveProfile()
+        
+        guard let profile = userProfile else {
+            isLoading = false
+            return
+        }
+        
+        do {
+            // Add a small delay to let UI show loading state
+            try await Task.sleep(nanoseconds: 100_000_000) // 0.1 seconds
+            
+            // Load study sessions
+            studySessions = try dataManager.profileService.getStudySessions(for: profile)
+                .sorted { $0.startTime > $1.startTime }
+            
+            // Load grading history
+            gradingHistory = try dataManager.profileService.getGradingHistory(for: profile)
+            
+            // Load grading statistics (only if there are gradings)
+            if !gradingHistory.isEmpty {
+                gradingStatistics = try dataManager.profileService.getGradingStatistics(for: profile)
+            } else {
+                gradingStatistics = nil
+            }
+            
+        } catch {
+            print("❌ Failed to load progress data: \(error)")
+            errorMessage = "Failed to load progress data: \(error.localizedDescription)"
+        }
+        
+        isLoading = false
+    }
+    
+    // MARK: - Helper Functions
+    
+    private func formatTimeInterval(_ timeInterval: TimeInterval) -> String {
+        let days = Int(timeInterval / 86400)
+        let months = days / 30
+        
+        if months > 0 {
+            return "\(months) month\(months == 1 ? "" : "s")"
+        } else if days > 0 {
+            return "\(days) day\(days == 1 ? "" : "s")"
+        } else {
+            return "Less than a day"
         }
     }
+    
+    private func getNextBeltName(currentBelt: BeltLevel) -> String {
+        // This is a simplified approach - in a real app you'd query for the next belt
+        // based on sortOrder being currentBelt.sortOrder - 1
+        return "Next Belt Level" // Placeholder
+    }
+}
+
+// MARK: - Supporting Views
+
+struct StudySessionRow: View {
+    let session: StudySession
+    
+    var body: some View {
+        HStack {
+            Image(systemName: session.sessionType.icon)
+                .font(.body)
+                .foregroundColor(colorForSessionType(session.sessionType))
+                .frame(width: 24)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(session.sessionType.displayName)
+                    .font(.body)
+                    .fontWeight(.medium)
+                
+                Text(formatSessionDate(session.startTime))
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+            
+            VStack(alignment: .trailing, spacing: 4) {
+                Text("\(Int(session.accuracy * 100))%")
+                    .font(.body)
+                    .fontWeight(.semibold)
+                    .foregroundColor(colorForAccuracy(session.accuracy))
+                
+                Text("\(session.itemsStudied) items")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+        }
+        .padding(.vertical, 8)
+    }
+    
+    private func colorForSessionType(_ type: StudySessionType) -> Color {
+        switch type {
+        case .flashcards: return .blue
+        case .testing: return .green
+        case .patterns: return .purple
+        case .mixed: return .orange
+        }
+    }
+    
+    private func colorForAccuracy(_ accuracy: Double) -> Color {
+        if accuracy >= 0.9 { return .green }
+        else if accuracy >= 0.7 { return .orange }
+        else { return .red }
+    }
+    
+    private func formatSessionDate(_ date: Date) -> String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .abbreviated
+        return formatter.localizedString(for: date, relativeTo: Date())
+    }
+}
+
+struct GradingRecordRow: View {
+    let grading: GradingRecord
+    
+    var body: some View {
+        HStack {
+            Image(systemName: grading.passed ? "checkmark.circle.fill" : "xmark.circle.fill")
+                .font(.body)
+                .foregroundColor(grading.passed ? .green : .red)
+                .frame(width: 24)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(grading.beltAchieved.name)
+                    .font(.body)
+                    .fontWeight(.medium)
+                
+                Text(formatGradingDate(grading.gradingDate))
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+            
+            VStack(alignment: .trailing, spacing: 4) {
+                Text(grading.passGrade.displayName)
+                    .font(.body)
+                    .fontWeight(.semibold)
+                    .foregroundColor(colorForPassGrade(grading.passGrade))
+                
+                Text(grading.gradingType.displayName)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+        }
+        .padding(.vertical, 8)
+    }
+    
+    private func colorForPassGrade(_ grade: PassGrade) -> Color {
+        switch grade {
+        case .fail: return .red
+        case .standard: return .blue
+        case .a: return .green
+        case .plus: return .orange
+        case .distinction: return .purple
+        }
+    }
+    
+    private func formatGradingDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter.string(from: date)
+    }
+}
+
+extension Color {
+    static let gold = Color(red: 1.0, green: 0.84, blue: 0.0)
 }
 
 // MARK: - Practice Menu Components

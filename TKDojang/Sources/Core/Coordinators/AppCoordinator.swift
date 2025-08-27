@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import SwiftData
 
 /**
  * AppCoordinator.swift
@@ -81,15 +82,87 @@ class AppCoordinator: ObservableObject {
      * Determine the initial flow when app starts
      */
     private func determineInitialFlow() {
-        // Check if user has completed onboarding
+        print("🔍 AppCoordinator: Determining initial flow...")
+        
+        // Skip data initialization on startup to prevent blocking
+        // Data will be loaded in background once main UI is shown
         let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            if hasCompletedOnboarding {
-                self.showMainFlow()
-            } else {
-                self.showOnboarding()
+        if hasCompletedOnboarding {
+            self.showMainFlow()
+        } else {
+            self.showOnboarding()
+        }
+        
+        // Initialize data in background after UI is shown
+        Task {
+            print("🔍 Starting background data initialization...")
+            await initializeAppData()
+            print("✅ Background data initialization complete")
+        }
+    }
+    
+    /**
+     * Helper to run async operations with timeout
+     */
+    private func withTimeout<T>(seconds: Double, operation: @escaping () async throws -> T) async throws -> T {
+        try await withThrowingTaskGroup(of: T.self) { group in
+            group.addTask {
+                try await operation()
             }
+            
+            group.addTask {
+                try await Task.sleep(nanoseconds: UInt64(seconds * 1_000_000_000))
+                throw TimeoutError()
+            }
+            
+            guard let result = try await group.next() else {
+                throw TimeoutError()
+            }
+            
+            group.cancelAll()
+            return result
+        }
+    }
+    
+    /**
+     * Initialize app data if needed
+     */
+    @MainActor
+    private func initializeAppData() async {
+        print("🔍 AppCoordinator: Initializing app data...")
+        
+        let dataManager = DataManager.shared
+        
+        // Check if we need to seed initial data
+        do {
+            let descriptor = FetchDescriptor<BeltLevel>()
+            let existingBeltLevels = try dataManager.modelContainer.mainContext.fetch(descriptor)
+            
+            if existingBeltLevels.isEmpty {
+                print("🗃️ Database is empty, loading initial content...")
+                
+                // Load terminology and belt data
+                let modularLoader = ModularContentLoader(dataService: dataManager.terminologyService)
+                modularLoader.loadCompleteSystem()
+                print("✅ Terminology and belt data loaded")
+                
+                // Load patterns (must be on main thread for SwiftData)
+                let allBelts = try dataManager.modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
+                print("🥋 Loading patterns for \(allBelts.count) belt levels...")
+                dataManager.patternService.seedInitialPatterns(beltLevels: allBelts)
+                
+                // Load step sparring
+                print("🥊 Loading step sparring sequences...")
+                dataManager.stepSparringService.seedInitialSequences()
+                
+                print("✅ Initial data loading complete")
+            } else {
+                print("✅ Database already has \(existingBeltLevels.count) belt levels, skipping initialization")
+            }
+        } catch {
+            print("❌ Failed to initialize app data: \(error)")
+            // Continue anyway - app can still function with empty database
         }
     }
 }
@@ -132,4 +205,15 @@ extension AppCoordinator {
  */
 enum AppError: Error {
     case unknown
+}
+
+/**
+ * Error thrown when operations exceed timeout
+ */
+struct TimeoutError: Error {
+    let message: String
+    
+    init(_ message: String = "Operation timed out") {
+        self.message = message
+    }
 }

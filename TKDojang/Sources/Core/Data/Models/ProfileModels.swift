@@ -63,6 +63,9 @@ final class UserProfile {
     @Relationship(deleteRule: .cascade, inverse: \UserStepSparringProgress.userProfile)
     var stepSparringProgress: [UserStepSparringProgress] = []
     
+    @Relationship(deleteRule: .cascade, inverse: \GradingRecord.userProfile)
+    var gradingHistory: [GradingRecord] = []
+    
     init(
         name: String,
         avatar: ProfileAvatar = .student1,
@@ -175,6 +178,180 @@ final class StudySession {
     var focusAreasArray: [String] {
         focusAreas.isEmpty ? [] : focusAreas.split(separator: ",").map { String($0.trimmingCharacters(in: .whitespaces)) }
     }
+}
+
+// MARK: - Grading Record
+
+/**
+ * Represents an official Taekwondo grading/examination record
+ * 
+ * PURPOSE: Track actual belt testing results and progression history
+ * SUPPORTS: Multiple grading types, elevated passes, historical progression tracking
+ */
+@Model
+final class GradingRecord {
+    var id: UUID = UUID()
+    var userProfile: UserProfile // Required relationship to profile
+    var gradingDate: Date // Date of the grading/examination
+    var beltTested: BeltLevel // The belt level being tested for
+    var beltAchieved: BeltLevel // The belt actually awarded (may differ for skipped belts)
+    var gradingType: GradingType // Regular, skip, retest, etc.
+    var passGrade: PassGrade // Standard, A, Plus, Distinction, etc.
+    var examiner: String // Name of examining instructor/master
+    var club: String // Testing club/dojang name
+    var notes: String // Additional notes about the grading
+    var preparationTime: TimeInterval // Days of preparation leading up to grading
+    var passed: Bool // Whether the grading was successful
+    var createdAt: Date = Date()
+    var updatedAt: Date = Date()
+    
+    init(
+        userProfile: UserProfile,
+        gradingDate: Date,
+        beltTested: BeltLevel,
+        beltAchieved: BeltLevel,
+        gradingType: GradingType = .regular,
+        passGrade: PassGrade = .standard,
+        examiner: String = "",
+        club: String = "",
+        notes: String = "",
+        preparationTime: TimeInterval = 0,
+        passed: Bool = true
+    ) {
+        self.id = UUID()
+        self.userProfile = userProfile
+        self.gradingDate = gradingDate
+        self.beltTested = beltTested
+        self.beltAchieved = beltAchieved
+        self.gradingType = gradingType
+        self.passGrade = passGrade
+        self.examiner = examiner
+        self.club = club
+        self.notes = notes
+        self.preparationTime = preparationTime
+        self.passed = passed
+        self.createdAt = Date()
+        self.updatedAt = Date()
+    }
+    
+    /**
+     * Updates the grading record information
+     */
+    func update(
+        gradingDate: Date? = nil,
+        beltTested: BeltLevel? = nil,
+        beltAchieved: BeltLevel? = nil,
+        gradingType: GradingType? = nil,
+        passGrade: PassGrade? = nil,
+        examiner: String? = nil,
+        club: String? = nil,
+        notes: String? = nil,
+        preparationTime: TimeInterval? = nil,
+        passed: Bool? = nil
+    ) {
+        if let gradingDate = gradingDate { self.gradingDate = gradingDate }
+        if let beltTested = beltTested { self.beltTested = beltTested }
+        if let beltAchieved = beltAchieved { self.beltAchieved = beltAchieved }
+        if let gradingType = gradingType { self.gradingType = gradingType }
+        if let passGrade = passGrade { self.passGrade = passGrade }
+        if let examiner = examiner { self.examiner = examiner }
+        if let club = club { self.club = club }
+        if let notes = notes { self.notes = notes }
+        if let preparationTime = preparationTime { self.preparationTime = preparationTime }
+        if let passed = passed { self.passed = passed }
+        self.updatedAt = Date()
+    }
+}
+
+/**
+ * Types of Taekwondo gradings
+ */
+enum GradingType: String, CaseIterable, Codable {
+    case regular = "regular"           // Standard belt progression
+    case skip = "skip"                 // Skipping a belt level
+    case retest = "retest"            // Retaking a failed grading
+    case honorary = "honorary"         // Honorary promotion
+    case transfer = "transfer"         // Transfer from another organization
+    
+    var displayName: String {
+        switch self {
+        case .regular: return "Regular Grading"
+        case .skip: return "Skip Grading"
+        case .retest: return "Retest"
+        case .honorary: return "Honorary Promotion"
+        case .transfer: return "Transfer"
+        }
+    }
+    
+    var description: String {
+        switch self {
+        case .regular: return "Standard progression to next belt level"
+        case .skip: return "Advanced promotion skipping one belt level"
+        case .retest: return "Retaking a previously failed grading"
+        case .honorary: return "Honorary promotion without formal testing"
+        case .transfer: return "Belt recognition from another martial arts organization"
+        }
+    }
+}
+
+/**
+ * Grading pass grades and distinctions
+ */
+enum PassGrade: String, CaseIterable, Codable {
+    case fail = "fail"
+    case standard = "standard"         // Basic pass
+    case a = "a"                      // A grade pass (high performance)
+    case plus = "plus"                // Plus pass (exceptional performance)
+    case distinction = "distinction"   // Distinction (outstanding performance)
+    
+    var displayName: String {
+        switch self {
+        case .fail: return "Fail"
+        case .standard: return "Pass"
+        case .a: return "A Grade"
+        case .plus: return "Plus"
+        case .distinction: return "Distinction"
+        }
+    }
+    
+    var description: String {
+        switch self {
+        case .fail: return "Did not meet requirements for belt advancement"
+        case .standard: return "Met all requirements for belt advancement"
+        case .a: return "High performance demonstrating excellent technique and knowledge"
+        case .plus: return "Exceptional performance showing advanced skills and understanding"
+        case .distinction: return "Outstanding performance demonstrating mastery beyond belt requirements"
+        }
+    }
+    
+    var sortOrder: Int {
+        switch self {
+        case .fail: return 0
+        case .standard: return 1
+        case .a: return 2
+        case .plus: return 3
+        case .distinction: return 4
+        }
+    }
+}
+
+// MARK: - Grading Statistics
+
+/**
+ * Summary statistics for grading history
+ */
+struct GradingStatistics {
+    let totalGradings: Int
+    let passedGradings: Int
+    let failedGradings: Int
+    let passRate: Double
+    let averagePreparationTime: TimeInterval
+    let mostRecentGrading: GradingRecord?
+    let nextExpectedGrading: Date?
+    let gradingsByType: [GradingType: Int]
+    let gradingsByPassGrade: [PassGrade: Int]
+    let averageTimeBetweenGradings: TimeInterval
+    let currentBeltTenure: TimeInterval // Time since last successful grading
 }
 
 // MARK: - Profile Configuration Enums

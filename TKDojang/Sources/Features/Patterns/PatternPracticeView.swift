@@ -418,19 +418,20 @@ struct PatternPracticeView: View {
     }
     
     private func recordPracticeSession() {
-        guard let profile = userProfile else { return }
-        
         let practiceTime = Date().timeIntervalSince(practiceStartTime)
-        let accuracy = 0.85 // Placeholder - could be calculated based on user feedback
+        let movesCompleted = currentMoveIndex + 1
+        let totalMoves = pattern.orderedMoves.count
         
-        dataManager.patternService.recordPracticeSession(
-            pattern: pattern,
-            userProfile: profile,
-            accuracy: accuracy,
-            practiceTime: practiceTime
-        )
-        
-        dismiss()
+        do {
+            try dataManager.profileService.recordStudySession(
+                sessionType: .patterns,
+                itemsStudied: totalMoves,
+                correctAnswers: movesCompleted,
+                focusAreas: [pattern.name]
+            )
+        } catch {
+            print("❌ Failed to record pattern practice session: \(error)")
+        }
     }
 }
 

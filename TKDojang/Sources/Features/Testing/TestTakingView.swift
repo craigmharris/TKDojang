@@ -233,9 +233,29 @@ struct TestTakingView: View {
             let result = try service.completeTest(session: testSession, for: userProfile)
             // Ensure the result is set on the session for navigation
             testSession.result = result
+            
+            // Record study session for analytics
+            recordTestSession(result: result)
+            
             showingResults = true
         } catch {
             print("Failed to complete test: \(error)")
+        }
+    }
+    
+    private func recordTestSession(result: TestResult) {
+        let totalQuestions = testSession.questions.count
+        let correctAnswers = testSession.questions.filter { $0.isCorrect }.count
+        
+        do {
+            try dataManager.profileService.recordStudySession(
+                sessionType: .testing,
+                itemsStudied: totalQuestions,
+                correctAnswers: correctAnswers,
+                focusAreas: [testSession.testType.displayName]
+            )
+        } catch {
+            print("❌ Failed to record test session: \(error)")
         }
     }
 }

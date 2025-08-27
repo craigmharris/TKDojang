@@ -81,7 +81,7 @@ final class PatternSystemTests: XCTestCase {
         testBelt = ninthKeup
         
         // Create test user profile
-        testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        testProfile = UserProfile(name: "Test User", currentBeltLevel: testBelt, learningMode: .mastery)
         testContext.insert(testProfile)
         
         try testContext.save()
@@ -211,7 +211,7 @@ final class PatternSystemTests: XCTestCase {
         )
         
         // Test filtering for 9th Keup (should see only beginner pattern)
-        let ninthKeupProfile = UserProfile(currentBeltLevel: belts[0], learningMode: .mastery)
+        let ninthKeupProfile = UserProfile(name: "9th Keup User", currentBeltLevel: belts[0], learningMode: .mastery)
         testContext.insert(ninthKeupProfile)
         try testContext.save()
         
@@ -220,7 +220,7 @@ final class PatternSystemTests: XCTestCase {
         XCTAssertTrue(ninthKeupPatterns.contains { $0.id == beginnerPattern.id }, "Should contain beginner pattern")
         
         // Test filtering for 8th Keup (should see beginner and intermediate patterns)
-        let eighthKeupProfile = UserProfile(currentBeltLevel: belts[1], learningMode: .mastery)
+        let eighthKeupProfile = UserProfile(name: "8th Keup User", currentBeltLevel: belts[1], learningMode: .mastery)
         testContext.insert(eighthKeupProfile)
         try testContext.save()
         
@@ -230,7 +230,7 @@ final class PatternSystemTests: XCTestCase {
         XCTAssertTrue(eighthKeupPatterns.contains { $0.id == intermediatePattern.id }, "Should contain intermediate pattern")
         
         // Test filtering for 7th Keup (should see all patterns)
-        let seventhKeupProfile = UserProfile(currentBeltLevel: belts[2], learningMode: .mastery) 
+        let seventhKeupProfile = UserProfile(name: "7th Keup User", currentBeltLevel: belts[2], learningMode: .mastery) 
         testContext.insert(seventhKeupProfile)
         try testContext.save()
         

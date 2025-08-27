@@ -384,17 +384,19 @@ struct StepSparringPracticeView: View {
     }
     
     private func recordPracticeSession() {
-        guard let profile = userProfile else { return }
+        let totalSteps = sortedSteps.count
+        let stepsCompleted = sessionCompleted ? totalSteps : currentStepIndex
         
-        let duration = Date().timeIntervalSince(practiceStartTime)
-        let stepsCompleted = sessionCompleted ? sortedSteps.count : currentStepIndex
-        
-        dataManager.stepSparringService.recordPracticeSession(
-            sequence: sequence,
-            userProfile: profile,
-            duration: duration,
-            stepsCompleted: stepsCompleted
-        )
+        do {
+            try dataManager.profileService.recordStudySession(
+                sessionType: .mixed, // Step sparring combines various techniques
+                itemsStudied: totalSteps,
+                correctAnswers: stepsCompleted,
+                focusAreas: [sequence.name]
+            )
+        } catch {
+            print("❌ Failed to record step sparring session: \(error)")
+        }
     }
     
     private func formatPracticeTime() -> String {

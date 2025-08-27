@@ -466,7 +466,7 @@ final class ContentLoadingTests: XCTestCase {
     func testBeltLevelFilteringAfterLoading() throws {
         // Test that loaded content can be properly filtered by belt levels
         let testBelt = testBelts.first { $0.shortName == "8th Keup" }!
-        let testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        let testProfile = UserProfile(name: "Test User", currentBeltLevel: testBelt, learningMode: .mastery)
         testContext.insert(testProfile)
         
         // Create patterns with different belt associations
