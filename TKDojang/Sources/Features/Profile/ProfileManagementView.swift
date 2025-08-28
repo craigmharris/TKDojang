@@ -187,7 +187,7 @@ struct ProfileCard: View {
                             Image(systemName: "checkmark.circle.fill")
                                 .font(.system(size: 20))
                                 .foregroundColor(.green)
-                                .background(Color.white.clipShape(Circle()))
+                                .background(Color(UIColor.systemBackground).clipShape(Circle()))
                         }
                     }
                 }
