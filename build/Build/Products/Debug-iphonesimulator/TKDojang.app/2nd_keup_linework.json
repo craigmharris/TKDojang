@@ -1,0 +1,288 @@
+{
+  "belt_level": "2nd Keup",
+  "belt_id": "2nd_keup", 
+  "line_work_sets": [
+    {
+      "id": "master_level_stances",
+      "title": "Master Level Stances",
+      "category": "Stances",
+      "description": "Near-master level stance work with perfect execution",
+      "techniques": [
+        {
+          "id": "close_ready_stance",
+          "name": "Close Ready Stance",
+          "korean": "Moa Junbi Sogi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 8,
+              "description": "Step forward into close ready stance with precise foot positioning"
+            },
+            {
+              "direction": "backward", 
+              "count": 8,
+              "description": "Step backward into close ready stance, maintain perfect alignment"
+            }
+          ],
+          "key_points": [
+            "Feet close together, parallel",
+            "Weight evenly distributed",
+            "Natural upright posture",
+            "Relaxed but ready position",
+            "Perfect balance maintenance"
+          ],
+          "common_mistakes": [
+            "Feet not parallel",
+            "Uneven weight distribution",
+            "Tense posture",
+            "Poor balance"
+          ]
+        },
+        {
+          "id": "x_stance",
+          "name": "X-Stance",
+          "korean": "Gyocha Sogi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 6,
+              "description": "Step forward into X-stance with legs crossing"
+            },
+            {
+              "direction": "backward",
+              "count": 6,
+              "description": "Step backward into X-stance, maintain crossing position"
+            }
+          ],
+          "key_points": [
+            "Legs cross at knee level",
+            "Weight on front leg primarily",
+            "Maintain balance despite crossing",
+            "Natural upper body position",
+            "Smooth transition execution"
+          ],
+          "common_mistakes": [
+            "Crossing too high or low",
+            "Poor weight distribution",
+            "Balance instability",
+            "Awkward transitions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "master_blocks",
+      "title": "Master Level Blocks", 
+      "category": "Blocking",
+      "description": "Expert-level blocking techniques with perfect timing and power",
+      "techniques": [
+        {
+          "id": "palm_block",
+          "name": "Palm Block",
+          "korean": "Sonbadak Makgi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 6,
+              "description": "Step forward, execute palm block with palm surface"
+            },
+            {
+              "direction": "backward",
+              "count": 6,
+              "description": "Step backward, execute palm block maintaining effectiveness"
+            }
+          ],
+          "key_points": [
+            "Block with palm surface",
+            "Strong circular motion",
+            "Fingers pointing upward",
+            "Coordinated hip rotation",
+            "Sharp finishing position"
+          ],
+          "common_mistakes": [
+            "Using wrong hand surface",
+            "Poor circular motion",
+            "Incorrect finger position",
+            "Weak hip coordination"
+          ]
+        },
+        {
+          "id": "twin_forearm_block_advanced",
+          "name": "Twin Forearm Block (Advanced)",
+          "korean": "Sang Palmok Makgi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 4,
+              "description": "Step forward, execute twin forearm block with maximum power"
+            },
+            {
+              "direction": "backward",
+              "count": 4,
+              "description": "Step backward, execute twin forearm block with perfect coordination"
+            }
+          ],
+          "key_points": [
+            "Perfect simultaneous action",
+            "Maximum power in both arms",
+            "Precise parallel positioning",
+            "Strong outward motion",
+            "Complete body coordination"
+          ],
+          "common_mistakes": [
+            "Slight timing differences",
+            "Unequal power distribution",
+            "Poor parallel alignment",
+            "Insufficient outward force"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "expert_strikes",
+      "title": "Expert Strikes",
+      "category": "Striking", 
+      "description": "Master-level striking techniques with devastating effectiveness",
+      "techniques": [
+        {
+          "id": "ridge_hand_strike",
+          "name": "Ridge Hand Strike",
+          "korean": "Sonnal Deung Taerigi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 6,
+              "description": "Step forward, execute ridge hand strike with precision"
+            },
+            {
+              "direction": "backward",
+              "count": 6,
+              "description": "Step backward, execute ridge hand strike maintaining power"
+            }
+          ],
+          "key_points": [
+            "Strike with ridge of hand",
+            "Circular motion to target",
+            "Target at temple or neck",
+            "Sharp snapping action",
+            "Full body coordination"
+          ],
+          "common_mistakes": [
+            "Using wrong hand surface",
+            "Poor circular technique",
+            "Incorrect target level",
+            "Weak snapping finish"
+          ]
+        },
+        {
+          "id": "arc_hand_strike",
+          "name": "Arc Hand Strike",
+          "korean": "Bandalson Taerigi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 4,
+              "description": "Step forward, execute arc hand strike with curved motion"
+            },
+            {
+              "direction": "backward",
+              "count": 4,
+              "description": "Step backward, execute arc hand strike maintaining technique"
+            }
+          ],
+          "key_points": [
+            "Strike with fingertips",
+            "Arc motion to target",
+            "Target at face or throat",
+            "Quick snap and return",
+            "Precise finger positioning"
+          ],
+          "common_mistakes": [
+            "Incorrect finger formation",
+            "Poor arc motion",
+            "Wrong target selection",
+            "Slow return action"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "expert_kicks",
+      "title": "Expert Kicks",
+      "category": "Kicking", 
+      "description": "High-level kicking techniques requiring exceptional balance and power",
+      "techniques": [
+        {
+          "id": "side_piercing_kick_advanced",
+          "name": "Side Piercing Kick (Advanced)",
+          "korean": "Yop Cha Jirugi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 4,
+              "description": "Step forward, execute side piercing kick with master-level technique"
+            },
+            {
+              "direction": "backward",
+              "count": 4,
+              "description": "Step backward, execute side piercing kick with perfect balance"
+            }
+          ],
+          "key_points": [
+            "Perfect chamber position",
+            "Maximum thrust power",
+            "Knife foot edge contact",
+            "Exceptional balance control",
+            "Rapid chamber return"
+          ],
+          "common_mistakes": [
+            "Any chamber imperfection",
+            "Insufficient thrust power",
+            "Wrong contact surface",
+            "Balance instability"
+          ]
+        },
+        {
+          "id": "back_piercing_kick",
+          "name": "Back Piercing Kick",
+          "korean": "Dwit Cha Jirugi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 3,
+              "description": "Step forward, turn and execute back piercing kick"
+            },
+            {
+              "direction": "backward",
+              "count": 3,
+              "description": "Step backward, turn and execute back piercing kick"
+            }
+          ],
+          "key_points": [
+            "Complete 180° turn",
+            "Look over shoulder to target",
+            "Kick with bottom of foot",
+            "Straight thrust backward",
+            "Maintain perfect balance"
+          ],
+          "common_mistakes": [
+            "Incomplete turn",
+            "Not looking at target",
+            "Wrong foot surface",
+            "Poor balance during turn"
+          ]
+        }
+      ]
+    }
+  ],
+  "practice_notes": {
+    "warmup": "Master-level warmup including advanced flexibility, balance, and coordination exercises",
+    "focus_areas": [
+      "Achieve near-perfect technical execution",
+      "Master complex stance transitions", 
+      "Develop exceptional kicking balance and power",
+      "Integrate all techniques with master-level precision"
+    ],
+    "progression": "Emphasize flawless execution with maximum power and competition-ready performance"
+  }
+}

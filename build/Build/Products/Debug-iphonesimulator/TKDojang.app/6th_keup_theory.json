@@ -1,0 +1,148 @@
+{
+  "belt_level": "6th Keup",
+  "belt_id": "6th_keup",
+  "theory_sections": [
+    {
+      "id": "belt_meaning",
+      "title": "Yellow Belt Meaning",
+      "category": "Belt Knowledge",
+      "content": {
+        "meaning": "Yellow Belt represents the earth where a plant takes root as the Taekwondo foundation is being laid.",
+        "significance": "Like a seedling that has sprouted and begins to grow with proper care, the 6th keup student is establishing fundamental techniques and beginning to understand Taekwondo principles."
+      },
+      "questions": [
+        {
+          "question": "What does the yellow belt represent?",
+          "answer": "The earth where a plant takes root as the Taekwondo foundation is being laid."
+        },
+        {
+          "question": "What stage of growth does the yellow belt symbolize?",
+          "answer": "A seedling that has sprouted and begins to grow with proper care."
+        }
+      ]
+    },
+    {
+      "id": "pattern_theory",
+      "title": "Won-Hyo Pattern",
+      "category": "Pattern Knowledge",
+      "content": {
+        "pattern_name": "Won-Hyo",
+        "movements": "28 movements",
+        "meaning": "Won-Hyo was the noted monk who introduced Buddhism to the Silla Dynasty in the year 686 AD.",
+        "significance": "This pattern emphasizes the spiritual and philosophical aspects of martial arts training, connecting physical practice with mental discipline.",
+        "key_techniques": [
+          "Inner forearm block",
+          "High block", 
+          "Front snap kick",
+          "Knife hand strike"
+        ]
+      },
+      "questions": [
+        {
+          "question": "How many movements are in Won-Hyo?",
+          "answer": "28 movements"
+        },
+        {
+          "question": "Who was Won-Hyo?",
+          "answer": "The noted monk who introduced Buddhism to the Silla Dynasty in 686 AD."
+        },
+        {
+          "question": "What does Won-Hyo pattern emphasize?",
+          "answer": "The spiritual and philosophical aspects of martial arts training."
+        }
+      ]
+    },
+    {
+      "id": "basic_korean",
+      "title": "Essential Korean Commands",
+      "category": "Language",
+      "content": {
+        "class_commands": [
+          {
+            "english": "Attention",
+            "korean": "Charyeot",
+            "usage": "Used to call students to attention at the start and end of class"
+          },
+          {
+            "english": "Bow",
+            "korean": "Gyeongnye",
+            "usage": "Command to bow showing respect to instructors and training partners"
+          },
+          {
+            "english": "Ready position",
+            "korean": "Junbi",
+            "usage": "Assume ready stance before beginning techniques or forms"
+          },
+          {
+            "english": "Begin",
+            "korean": "Sijak",
+            "usage": "Command to start practicing forms or techniques"
+          }
+        ],
+        "counting": [
+          {
+            "english": "One",
+            "korean": "Hana",
+            "usage": "First count in Korean counting system"
+          },
+          {
+            "english": "Two", 
+            "korean": "Dul",
+            "usage": "Second count in Korean counting system"
+          },
+          {
+            "english": "Three",
+            "korean": "Set",
+            "usage": "Third count in Korean counting system"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "question": "What is the Korean command for 'Attention'?",
+          "answer": "Charyeot"
+        },
+        {
+          "question": "How do you say 'Bow' in Korean?",
+          "answer": "Gyeongnye"
+        },
+        {
+          "question": "What does 'Junbi' mean?",
+          "answer": "Ready position"
+        }
+      ]
+    },
+    {
+      "id": "grading_requirements",
+      "title": "6th Keup Grading Requirements",
+      "category": "Grading Knowledge",
+      "content": {
+        "techniques_required": [
+          "Walking stance with middle block",
+          "L-stance with knife hand block", 
+          "High block in walking stance",
+          "Inner forearm block",
+          "Front snap kick"
+        ],
+        "pattern": "Won-Hyo (28 movements)",
+        "step_sparring": "3-step sparring sequences 8, 9, and 10",
+        "theory_topics": [
+          "Yellow belt meaning",
+          "Won-Hyo pattern history",
+          "Basic Korean commands",
+          "Taekwondo tenets"
+        ]
+      },
+      "questions": [
+        {
+          "question": "Which pattern is required for 6th keup grading?",
+          "answer": "Won-Hyo (28 movements)"
+        },
+        {
+          "question": "What step sparring sequences are required for 6th keup?",
+          "answer": "3-step sparring sequences 8, 9, and 10"
+        }
+      ]
+    }
+  ]
+}

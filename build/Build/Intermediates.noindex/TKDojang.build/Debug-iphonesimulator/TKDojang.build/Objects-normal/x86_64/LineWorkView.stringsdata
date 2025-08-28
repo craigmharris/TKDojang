@@ -1,0 +1,88 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/LineWork/LineWorkView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Line Work",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading Line Work Content...",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 30
+        }
+      },
+      {
+        "comment": "",
+        "key": "Line work techniques are not available for your current belt level.",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 83
+        }
+      },
+      {
+        "comment": "",
+        "key": "No Line Work Content",
+        "location": {
+          "startingColumn": 17,
+          "startingLine": 81
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld techniques",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 177
+        }
+      },
+      {
+        "comment": "",
+        "key": "Practice Guidelines",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 214
+        }
+      },
+      {
+        "comment": "",
+        "key": "Warmup",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 222
+        }
+      },
+      {
+        "comment": "",
+        "key": "Key Focus Areas",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 233
+        }
+      },
+      {
+        "comment": "",
+        "key": "•",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 240
+        }
+      },
+      {
+        "comment": "",
+        "key": "Progression",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 252
+        }
+      }
+    ]
+  },
+  "version": 1
+}

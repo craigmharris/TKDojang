@@ -1,0 +1,144 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Testing/TestResultsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Test Results",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 121
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld/%lld",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 48
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%% Correct",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 52
+        }
+      },
+      {
+        "comment": "",
+        "key": "Take Another Test",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 99
+        }
+      },
+      {
+        "comment": "",
+        "key": "Return to Learn",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 109
+        }
+      },
+      {
+        "comment": "",
+        "key": "Review with Flashcards",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 86
+        }
+      },
+      {
+        "comment": "",
+        "key": "Done",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 125
+        }
+      },
+      {
+        "comment": "",
+        "key": "Study Recommendations",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 182
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 191
+        }
+      },
+      {
+        "comment": "",
+        "key": "Areas to Focus On",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 227
+        }
+      },
+      {
+        "comment": "",
+        "key": "Breakdown Type",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 279
+        }
+      },
+      {
+        "comment": "",
+        "key": "Performance Breakdown",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 272
+        }
+      },
+      {
+        "comment": "",
+        "key": "Categories",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 280
+        }
+      },
+      {
+        "comment": "",
+        "key": "Belt Levels",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 281
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld/%lld",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 348
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%%",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 352
+        }
+      },
+      {
+        "comment": "",
+        "key": "TestResultsView Preview",
+        "location": {
+          "startingColumn": 14,
+          "startingLine": 380
+        }
+      }
+    ]
+  },
+  "version": 1
+}

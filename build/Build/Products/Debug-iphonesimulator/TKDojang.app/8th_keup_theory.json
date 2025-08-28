@@ -1,0 +1,149 @@
+{
+  "belt_level": "8th Keup",
+  "belt_id": "8th_keup",
+  "theory_sections": [
+    {
+      "id": "orange_belt_advanced",
+      "title": "Advanced Orange Belt Understanding",
+      "category": "Belt Knowledge",
+      "content": {
+        "meaning": "Orange Belt (Advanced) represents the sun rising higher - the student's knowledge is growing stronger and more confident.",
+        "significance": "The 8th keup student has moved beyond basic understanding and is developing real skill in fundamental techniques.",
+        "growth_indicators": [
+          "Improved technique execution",
+          "Better understanding of timing",
+          "Increased physical conditioning",
+          "Growing confidence in abilities"
+        ]
+      },
+      "questions": [
+        {
+          "question": "How does the advanced orange belt differ from basic orange belt?",
+          "answer": "The student's knowledge is growing stronger and more confident, like the sun rising higher."
+        },
+        {
+          "question": "What growth should an 8th keup student show?",
+          "answer": "Improved technique execution, better timing, increased conditioning, and growing confidence."
+        }
+      ]
+    },
+    {
+      "id": "taekwondo_history_basic",
+      "title": "Basic Taekwondo History",
+      "category": "Organization",
+      "content": {
+        "introduction": "Understanding the origins of Taekwondo helps students appreciate the art they are learning.",
+        "key_facts": [
+          {
+            "topic": "Origin",
+            "information": "Taekwondo was developed in Korea in the 1940s and 1950s"
+          },
+          {
+            "topic": "Meaning",
+            "information": "Tae (foot), Kwon (fist), Do (way) - The way of foot and fist"
+          },
+          {
+            "topic": "Founder",
+            "information": "General Choi Hong Hi is credited as the founder of modern Taekwondo"
+          },
+          {
+            "topic": "Development",
+            "information": "Combined traditional Korean martial arts with influences from other fighting styles"
+          }
+        ],
+        "modern_taekwondo": "Today, Taekwondo is practiced worldwide and is an Olympic sport, known for its emphasis on kicking techniques and character development."
+      },
+      "questions": [
+        {
+          "question": "What does 'Taekwondo' mean?",
+          "answer": "Tae (foot), Kwon (fist), Do (way) - The way of foot and fist."
+        },
+        {
+          "question": "Who is credited as the founder of modern Taekwondo?",
+          "answer": "General Choi Hong Hi"
+        },
+        {
+          "question": "When was Taekwondo developed?",
+          "answer": "In Korea in the 1940s and 1950s."
+        }
+      ]
+    },
+    {
+      "id": "breathing_and_focus",
+      "title": "Breathing and Mental Focus",
+      "category": "Philosophy",
+      "content": {
+        "importance": "Proper breathing and mental focus are essential for effective Taekwondo practice and personal development.",
+        "breathing_techniques": [
+          {
+            "technique": "Deep Breathing",
+            "description": "Breathe deeply from the diaphragm, not just the chest",
+            "benefit": "Provides more oxygen and helps with relaxation"
+          },
+          {
+            "technique": "Rhythm Breathing",
+            "description": "Coordinate breathing with movements",
+            "benefit": "Improves timing and power in techniques"
+          },
+          {
+            "technique": "Control Breathing",
+            "description": "Never hold your breath during techniques",
+            "benefit": "Maintains oxygen flow and prevents tension"
+          }
+        ],
+        "mental_focus": [
+          "Concentrate on the technique you are performing",
+          "Visualize successful execution before attempting",
+          "Stay present in the moment, not thinking about other things",
+          "Maintain positive attitude even when techniques are difficult"
+        ]
+      },
+      "questions": [
+        {
+          "question": "Why is proper breathing important in Taekwondo?",
+          "answer": "It provides more oxygen, helps with relaxation, and improves timing and power."
+        },
+        {
+          "question": "What should you do with your breathing during techniques?",
+          "answer": "Coordinate breathing with movements and never hold your breath."
+        },
+        {
+          "question": "What are two important aspects of mental focus?",
+          "answer": "Concentrate on the technique and stay present in the moment."
+        }
+      ]
+    },
+    {
+      "id": "grading_requirements",
+      "title": "8th Keup Grading Requirements",
+      "category": "Grading Knowledge",
+      "content": {
+        "techniques_required": [
+          "Refined basic stances with proper transitions",
+          "Combination techniques: High-Middle blocks, Low-Middle blocks",
+          "Double punching techniques",
+          "Improved power and timing"
+        ],
+        "theory_topics": [
+          "Advanced orange belt understanding",
+          "Basic Taekwondo history",
+          "Breathing and mental focus techniques",
+          "Demonstration of improved etiquette"
+        ],
+        "pattern": "None required for 8th keup",
+        "step_sparring": "None required for 8th keup",
+        "expectations": "Show significant improvement in combination techniques and demonstrate understanding of breathing and focus"
+      },
+      "questions": [
+        {
+          "question": "What combination techniques are required for 8th keup?",
+          "answer": "High-Middle blocks, Low-Middle blocks, and double punching techniques."
+        },
+        {
+          "question": "What new theory topic is introduced at 8th keup?",
+          "answer": "Basic Taekwondo history and breathing/mental focus techniques."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+"/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/StepSparringPracticeView.swift":
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringPracticeView.swiftconstvalues"
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringPracticeView.d"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringPracticeView.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringPracticeView.dia"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringPracticeView.o"
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/TestingService.swift":
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TestingService.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TestingService.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TestingService.dia"
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TestingService.d"
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TestingService.swiftconstvalues"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Theory/TheoryDetailView.swift":
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TheoryDetailView.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TheoryDetailView.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TheoryDetailView.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TheoryDetailView.dia"
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TheoryDetailView.d"
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/DataValidationService.swift":
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/DataValidationService.swiftconstvalues"
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/DataValidationService.dia"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/DataValidationService.swiftdeps"
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/DataValidationService.d"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/DataValidationService.o"

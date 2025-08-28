@@ -1,0 +1,18 @@
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Utils/ColorExtensions.swift":
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ColorExtensions.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ColorExtensions.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ColorExtensions.swiftdeps"
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ColorExtensions.d"
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ColorExtensions.dia"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/FlashcardResultsView.swift":
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/FlashcardResultsView.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/FlashcardResultsView.o"
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/FlashcardResultsView.dia"
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/FlashcardResultsView.d"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/FlashcardResultsView.swiftdeps"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Dashboard/OnboardingCoordinatorView.swift":
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/OnboardingCoordinatorView.dia"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/OnboardingCoordinatorView.o"
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/OnboardingCoordinatorView.d"
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/OnboardingCoordinatorView.swiftconstvalues"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/OnboardingCoordinatorView.swiftdeps"

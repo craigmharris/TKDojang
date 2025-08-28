@@ -19,6 +19,7 @@ import SwiftData
 class DataServices: ObservableObject {
     private var _dataManager: DataManager?
     
+    
     private var dataManager: DataManager {
         if let dm = _dataManager {
             return dm

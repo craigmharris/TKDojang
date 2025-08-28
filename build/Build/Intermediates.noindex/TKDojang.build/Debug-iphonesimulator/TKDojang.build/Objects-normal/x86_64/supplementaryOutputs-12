@@ -1,0 +1,24 @@
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Patterns/PatternPracticeView.swift":
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/PatternPracticeView.dia"
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/PatternPracticeView.swiftconstvalues"
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/PatternPracticeView.d"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/PatternPracticeView.swiftdeps"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/PatternPracticeView.o"
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Models/StepSparringModels.swift":
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringModels.d"
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringModels.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringModels.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringModels.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringModels.dia"
+"/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/DerivedSources/GeneratedAssetSymbols.swift":
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/GeneratedAssetSymbols.dia"
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/GeneratedAssetSymbols.d"
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/GeneratedAssetSymbols.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftdeps"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/ProfileSwitcher.swift":
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProfileSwitcher.dia"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProfileSwitcher.swiftdeps"
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProfileSwitcher.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProfileSwitcher.o"
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProfileSwitcher.d"

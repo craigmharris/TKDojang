@@ -1,0 +1,18 @@
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Testing/TestResultsView.swift":
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TestResultsView.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TestResultsView.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TestResultsView.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TestResultsView.dia"
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TestResultsView.d"
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/StepSparringDataService.swift":
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringDataService.dia"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringDataService.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringDataService.swiftdeps"
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringDataService.d"
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/StepSparringDataService.swiftconstvalues"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/ProfileCreationView.swift":
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProfileCreationView.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProfileCreationView.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProfileCreationView.swiftdeps"
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProfileCreationView.d"
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProfileCreationView.dia"

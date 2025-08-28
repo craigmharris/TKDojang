@@ -1,0 +1,64 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Theory/TheoryDetailView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Quiz",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "Purpose",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 146
+        }
+      },
+      {
+        "comment": "",
+        "key": "Founded:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 131
+        }
+      },
+      {
+        "comment": "",
+        "key": "Founder:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 139
+        }
+      },
+      {
+        "comment": "",
+        "key": "Generic content display for: %@",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 200
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 292
+        }
+      },
+      {
+        "comment": "",
+        "key": "Theory Detail Preview",
+        "location": {
+          "startingColumn": 1,
+          "startingLine": 370
+        }
+      }
+    ]
+  },
+  "version": 1
+}

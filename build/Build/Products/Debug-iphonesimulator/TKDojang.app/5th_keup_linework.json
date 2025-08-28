@@ -1,0 +1,258 @@
+{
+  "belt_level": "5th Keup",
+  "belt_id": "5th_keup", 
+  "line_work_sets": [
+    {
+      "id": "dynamic_stances",
+      "title": "Dynamic Stances",
+      "category": "Stances",
+      "description": "Complex stance work with power and stability",
+      "techniques": [
+        {
+          "id": "walking_stance_power",
+          "name": "Walking Stance (Power)",
+          "korean": "Gunnun Sogi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 8,
+              "description": "Step forward with explosive power, maintain walking stance precision"
+            },
+            {
+              "direction": "backward", 
+              "count": 8,
+              "description": "Step backward with control and power, perfect stance dimensions"
+            }
+          ],
+          "key_points": [
+            "Explosive stepping action",
+            "Perfect stance every step",
+            "Strong landing with control",
+            "Maintain upper body stability",
+            "Consistent timing and rhythm"
+          ],
+          "common_mistakes": [
+            "Loss of stance precision with speed",
+            "Poor landing control",
+            "Inconsistent step timing",
+            "Upper body instability"
+          ]
+        },
+        {
+          "id": "l_stance_advanced",
+          "name": "L-Stance (Advanced)",
+          "korean": "Niunja Sogi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 6,
+              "description": "Step forward into L-stance with perfect weight distribution"
+            },
+            {
+              "direction": "backward",
+              "count": 6,
+              "description": "Step backward into L-stance, maintain stability and balance"
+            }
+          ],
+          "key_points": [
+            "Precise 70/30 weight distribution",
+            "Stable throughout movement",
+            "Quick stance establishment",
+            "Proper foot alignment",
+            "Natural body positioning"
+          ],
+          "common_mistakes": [
+            "Incorrect weight distribution",
+            "Wobbling during transitions",
+            "Slow stance formation",
+            "Poor foot positioning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced_blocks",
+      "title": "Advanced Blocks", 
+      "category": "Blocking",
+      "description": "Complex blocking combinations with enhanced power",
+      "techniques": [
+        {
+          "id": "twin_forearm_block_basic",
+          "name": "Twin Forearm Block (Basic)",
+          "korean": "Sang Palmok Makgi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 4,
+              "description": "Step forward, execute twin forearm block with both arms"
+            },
+            {
+              "direction": "backward",
+              "count": 4,
+              "description": "Step backward, execute twin forearm block maintaining form"
+            }
+          ],
+          "key_points": [
+            "Both forearms block simultaneously",
+            "Arms parallel and shoulder width apart",
+            "Equal power in both arms",
+            "Strong outward motion",
+            "Coordinate with stepping"
+          ],
+          "common_mistakes": [
+            "One arm weaker than the other",
+            "Arms not parallel",
+            "Poor timing coordination",
+            "Insufficient outward power"
+          ]
+        },
+        {
+          "id": "knife_hand_block_advanced",
+          "name": "Knife Hand Block (Advanced)",
+          "korean": "Sonkal Makgi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 6,
+              "description": "Step forward into L-stance, powerful knife hand block"
+            },
+            {
+              "direction": "backward",
+              "count": 6,
+              "description": "Step backward into L-stance, maintain knife hand block power"
+            }
+          ],
+          "key_points": [
+            "Maximum arc motion",
+            "Sharp snapping finish",
+            "Perfect L-stance execution",
+            "Strong supporting hand position",
+            "Full body coordination"
+          ],
+          "common_mistakes": [
+            "Reduced arc motion",
+            "Soft blocking finish",
+            "Poor stance quality",
+            "Weak supporting hand"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "power_strikes",
+      "title": "Power Strikes",
+      "category": "Striking", 
+      "description": "High-impact striking techniques with maximum power development",
+      "techniques": [
+        {
+          "id": "back_fist_strike_basic",
+          "name": "Back Fist Strike (Basic)",
+          "korean": "Dung Joomuk Taerigi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 6,
+              "description": "Step forward, execute back fist strike with whipping motion"
+            },
+            {
+              "direction": "backward",
+              "count": 6,
+              "description": "Step backward, execute back fist strike maintaining power"
+            }
+          ],
+          "key_points": [
+            "Use back of fist for contact",
+            "Whipping motion from elbow",
+            "Target at face level",
+            "Quick snap and return",
+            "Coordinate with body movement"
+          ],
+          "common_mistakes": [
+            "Using wrong part of fist",
+            "Insufficient whipping action",
+            "Poor target level",
+            "Slow return to guard"
+          ]
+        },
+        {
+          "id": "elbow_strike_basic",
+          "name": "Elbow Strike (Basic)",
+          "korean": "Palkup Taerigi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 4,
+              "description": "Step forward, execute forward elbow strike"
+            },
+            {
+              "direction": "backward",
+              "count": 4,
+              "description": "Step backward, execute forward elbow strike"
+            }
+          ],
+          "key_points": [
+            "Drive elbow forward horizontally",
+            "Support with opposite hand",
+            "Hip rotation for power",
+            "Target at solar plexus level",
+            "Strong finishing position"
+          ],
+          "common_mistakes": [
+            "Elbow traveling upward",
+            "No supporting hand",
+            "Poor hip involvement",
+            "Weak finishing position"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "basic_kicks",
+      "title": "Basic Kicks",
+      "category": "Kicking", 
+      "description": "Fundamental kicking techniques with proper form and balance",
+      "techniques": [
+        {
+          "id": "front_snap_kick_advanced",
+          "name": "Front Snap Kick (Advanced)",
+          "korean": "Ap Cha Busigi",
+          "direction_pattern": [
+            {
+              "direction": "forward",
+              "count": 4,
+              "description": "Step forward, execute front snap kick with rear leg"
+            },
+            {
+              "direction": "backward",
+              "count": 4,
+              "description": "Step backward, execute front snap kick with rear leg"
+            }
+          ],
+          "key_points": [
+            "High knee chamber",
+            "Snap kick with ball of foot",
+            "Quick return to chamber",
+            "Maintain perfect balance",
+            "Coordinate with stepping"
+          ],
+          "common_mistakes": [
+            "Low knee chamber",
+            "Pushing instead of snapping",
+            "Poor balance on standing leg",
+            "No return to chamber"
+          ]
+        }
+      ]
+    }
+  ],
+  "practice_notes": {
+    "warmup": "Extended warmup including dynamic stretching and specific preparation for kicking techniques",
+    "focus_areas": [
+      "Develop explosive power in all techniques",
+      "Master twin forearm blocking coordination", 
+      "Build effective elbow striking power",
+      "Improve kicking balance and control"
+    ],
+    "progression": "Emphasize power development while maintaining technical precision in all movements"
+  }
+}

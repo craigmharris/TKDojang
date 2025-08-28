@@ -1,0 +1,40 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/App/LoadingView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "태권도",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 37
+        }
+      },
+      {
+        "comment": "",
+        "key": "TKDojang",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 67
+        }
+      },
+      {
+        "comment": "",
+        "key": "Master the Art of Taekwondo",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 78
+        }
+      },
+      {
+        "comment": "",
+        "key": "Preparing your training...",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 97
+        }
+      }
+    ]
+  },
+  "version": 1
+}

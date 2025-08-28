@@ -1,0 +1,64 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Testing/TestTakingView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Test",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 154
+        }
+      },
+      {
+        "comment": "",
+        "key": "Question %lld of %lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 48
+        }
+      },
+      {
+        "comment": "",
+        "key": "Test Complete!",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 142
+        }
+      },
+      {
+        "comment": "",
+        "key": "Processing your results...",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 146
+        }
+      },
+      {
+        "comment": "",
+        "key": "Exit",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 164
+        }
+      },
+      {
+        "comment": "",
+        "key": "TestTakingView Preview",
+        "location": {
+          "startingColumn": 14,
+          "startingLine": 334
+        }
+      }
+    ]
+  },
+  "version": 1
+}

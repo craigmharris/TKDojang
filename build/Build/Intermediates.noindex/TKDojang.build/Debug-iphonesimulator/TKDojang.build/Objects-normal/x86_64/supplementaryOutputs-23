@@ -1,0 +1,18 @@
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Theory/TheoryDetailView.swift":
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TheoryDetailView.d"
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TheoryDetailView.swiftconstvalues"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TheoryDetailView.swiftdeps"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TheoryDetailView.o"
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/TheoryDetailView.dia"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Dashboard/ProgressViewStub.swift":
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProgressViewStub.d"
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProgressViewStub.dia"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProgressViewStub.swiftdeps"
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProgressViewStub.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/ProgressViewStub.o"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/FlashcardView.swift":
+  dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/FlashcardView.d"
+  const-values: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/FlashcardView.swiftconstvalues"
+  swift-dependencies: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/FlashcardView.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/FlashcardView.dia"
+  object: "/Users/craig/TKDojang/build/Build/Intermediates.noindex/TKDojang.build/Debug-iphonesimulator/TKDojang.build/Objects-normal/x86_64/FlashcardView.o"
