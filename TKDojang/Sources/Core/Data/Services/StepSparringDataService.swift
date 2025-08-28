@@ -34,10 +34,7 @@ final class StepSparringDataService {
         do {
             let allSequences = try modelContext.fetch(descriptor)
             
-            // Force trigger relationship loading
-            for sequence in allSequences {
-                _ = sequence.beltLevels.count
-            }
+            // Skip relationship loading to avoid crashes
             
             sequences = allSequences.sorted { lhs, rhs in
                 if lhs.type.rawValue != rhs.type.rawValue {
@@ -59,7 +56,8 @@ final class StepSparringDataService {
     func getSequencesForUser(userProfile: UserProfile) -> [StepSparringSequence] {
         let allSequences = loadAllSequences()
         return allSequences.filter { sequence in
-            sequence.isAvailableFor(beltLevel: userProfile.currentBeltLevel)
+            // Use manual belt check instead of relationship access
+            manualBeltLevelCheck(for: sequence, userBelt: userProfile.currentBeltLevel)
         }
     }
     
@@ -85,7 +83,6 @@ final class StepSparringDataService {
                 let isAvailable = manualBeltLevelCheck(for: sequence, userBelt: userProfile.currentBeltLevel)
                 
                 print("🔍 FILTER DEBUG: Sequence #\(sequence.sequenceNumber) '\(sequence.name)':")
-                print("   SwiftData belt count: \(sequence.beltLevels.count)")
                 print("   Manual belt check result: \(isAvailable)")
                 print("   User belt: \(userProfile.currentBeltLevel.shortName)(\(userProfile.currentBeltLevel.sortOrder))")
                 print("   Available: \(isAvailable)")
@@ -260,18 +257,21 @@ final class StepSparringDataService {
      * Gets all progress records for a user
      */
     func getAllUserProgress(userProfile: UserProfile) -> [UserStepSparringProgress] {
-        let descriptor = FetchDescriptor<UserStepSparringProgress>()
+        // Use simple predicate instead of relationship navigation
+        let profileId = userProfile.id
+        let predicate = #Predicate<UserStepSparringProgress> { progress in
+            progress.userProfile.id == profileId
+        }
+        
+        let descriptor = FetchDescriptor<UserStepSparringProgress>(
+            predicate: predicate,
+            sortBy: [SortDescriptor(\.createdAt)]
+        )
         
         do {
             let allProgress = try modelContext.fetch(descriptor)
-            return allProgress.filter { progress in
-                progress.userProfile.id == userProfile.id
-            }.sorted { lhs, rhs in
-                if lhs.sequence.type.rawValue != rhs.sequence.type.rawValue {
-                    return lhs.sequence.type.rawValue < rhs.sequence.type.rawValue
-                }
-                return lhs.sequence.sequenceNumber < rhs.sequence.sequenceNumber
-            }
+            // Return without additional sorting to avoid relationship access
+            return allProgress
         } catch {
             print("❌ Failed to fetch user step sparring progress: \(error)")
             return []
@@ -304,22 +304,18 @@ final class StepSparringDataService {
                 summary.mastered += 1
             }
             
-            // Track by type
-            switch progress.sequence.type {
-            case .threeStep:
-                summary.threeStepProgress.append(progress)
-            case .twoStep:
-                summary.twoStepProgress.append(progress)
-            case .oneStep:
-                summary.oneStepProgress.append(progress)
-            case .semiFree:
-                summary.semiFreeProgress.append(progress)
-            }
+            // Track by type - defensive approach to avoid relationship crashes
+            // For now, just categorize all progress as threeStep to avoid the relationship access
+            // This is a temporary fix until we can resolve the SwiftData relationship issues
+            summary.threeStepProgress.append(progress)
         }
         
-        // Calculate overall completion percentage
+        // Calculate overall completion percentage - ensure no NaN
         if summary.totalSequences > 0 {
-            summary.overallCompletionPercentage = Double(summary.mastered) / Double(summary.totalSequences) * 100.0
+            let percentage = Double(summary.mastered) / Double(summary.totalSequences) * 100.0
+            summary.overallCompletionPercentage = percentage.isNaN || percentage.isInfinite ? 0.0 : percentage
+        } else {
+            summary.overallCompletionPercentage = 0.0
         }
         
         return summary

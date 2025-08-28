@@ -115,13 +115,17 @@ class ProgressCacheService {
         let terminologyProgress = try await getTerminologyProgress(for: profileId)
         let patternProgress = try await getPatternProgress(for: profileId)
         let gradingRecords = try await getGradingRecords(for: profileId)
+        let allBeltLevels = try await getAllBeltLevels()
+        let currentProfile = try await getProfile(for: profileId)
         
         // Compute all statistics in memory from simple data
         let stats = computeProgressStats(
             sessions: studySessions,
             terminologyProgress: terminologyProgress,
             patternProgress: patternProgress,
-            gradingRecords: gradingRecords
+            gradingRecords: gradingRecords,
+            allBeltLevels: allBeltLevels,
+            currentProfile: currentProfile
         )
         
         return ProgressSnapshot(
@@ -134,6 +138,7 @@ class ProgressCacheService {
             streakStats: stats.streak,
             beltProgressStats: stats.beltProgress,
             recentActivity: stats.recentActivity,
+            beltJourneyStats: stats.beltJourney,
             weeklyData: stats.weeklyData,
             monthlyData: stats.monthlyData
         )
@@ -210,6 +215,29 @@ class ProgressCacheService {
         return profiles.map { $0.id }
     }
     
+    /**
+     * Gets all belt levels for belt journey computation
+     */
+    private func getAllBeltLevels() async throws -> [BeltLevel] {
+        let descriptor = FetchDescriptor<BeltLevel>(
+            sortBy: [SortDescriptor(\.sortOrder)]
+        )
+        
+        return try modelContext.fetch(descriptor)
+    }
+    
+    /**
+     * Gets a specific profile by ID
+     */
+    private func getProfile(for profileId: UUID) async throws -> UserProfile? {
+        let predicate = #Predicate<UserProfile> { profile in
+            profile.id == profileId
+        }
+        
+        let descriptor = FetchDescriptor<UserProfile>(predicate: predicate)
+        return try modelContext.fetch(descriptor).first
+    }
+    
     // MARK: - Statistics Computation
     
     /**
@@ -220,7 +248,9 @@ class ProgressCacheService {
         sessions: [StudySession],
         terminologyProgress: [UserTerminologyProgress],
         patternProgress: [UserPatternProgress],
-        gradingRecords: [GradingRecord]
+        gradingRecords: [GradingRecord],
+        allBeltLevels: [BeltLevel],
+        currentProfile: UserProfile?
     ) -> ProgressStatsCollection {
         
         let now = Date()
@@ -243,6 +273,14 @@ class ProgressCacheService {
             streak: computeStreakStats(sessions: sessions),
             beltProgress: computeBeltProgressStats(terminologyProgress: terminologyProgress, patternProgress: patternProgress),
             recentActivity: computeRecentActivityStats(recentSessions: recentSessions),
+            beltJourney: computeBeltJourneyStats(
+                gradingRecords: gradingRecords,
+                allBeltLevels: allBeltLevels,
+                currentProfile: currentProfile,
+                terminologyProgress: terminologyProgress,
+                patternProgress: patternProgress,
+                sessions: sessions
+            ),
             weeklyData: computeWeeklyData(sessions: recentSessions),
             monthlyData: computeMonthlyData(sessions: monthlySessions)
         )
@@ -435,6 +473,333 @@ class ProgressCacheService {
         
         return longestStreak
     }
+    
+    private func computeBeltJourneyStats(
+        gradingRecords: [GradingRecord],
+        allBeltLevels: [BeltLevel],
+        currentProfile: UserProfile?,
+        terminologyProgress: [UserTerminologyProgress],
+        patternProgress: [UserPatternProgress],
+        sessions: [StudySession]
+    ) -> BeltJourneyStats {
+        
+        // Get profile information
+        guard let profile = currentProfile else {
+            // Return default/empty belt journey if no profile
+            return createEmptyBeltJourney(allBeltLevels: allBeltLevels)
+        }
+        
+        // Studying belt = what the user is learning (from profile)
+        let studyingBelt = createBeltInfo(from: profile.currentBeltLevel)
+        
+        // Current belt = highest belt from successful grading records (or studying belt if no records)
+        let currentBelt = determineCurrentBelt(
+            gradingRecords: gradingRecords,
+            studyingBelt: profile.currentBeltLevel,
+            allBeltLevels: allBeltLevels
+        )
+        
+        // Find next belt based on studying belt (not current belt)
+        let nextBelt = findNextBelt(currentBelt: profile.currentBeltLevel, allBeltLevels: allBeltLevels)
+        
+        // Check for belt mismatch and generate message
+        let beltMismatch = checkBeltMismatch(
+            currentBelt: currentBelt,
+            studyingBelt: profile.currentBeltLevel,
+            gradingRecords: gradingRecords
+        )
+        
+        // Convert grading records to history entries
+        let gradingHistory = gradingRecords.map { record in
+            createGradingHistoryEntry(from: record)
+        }
+        
+        // Calculate belt progression summary
+        let beltProgression = calculateBeltProgression(
+            gradingRecords: gradingRecords,
+            currentBelt: currentBelt
+        )
+        
+        // Calculate next belt requirements based on studying belt
+        let nextBeltRequirements = nextBelt != nil ? calculateBeltRequirements(
+            nextBelt: nextBelt!,
+            terminologyProgress: terminologyProgress,
+            patternProgress: patternProgress,
+            sessions: sessions
+        ) : nil
+        
+        // Calculate time at current belt
+        let timeAtCurrentBelt = calculateTimeAtCurrentBelt(
+            gradingRecords: gradingRecords,
+            currentBelt: currentBelt
+        )
+        
+        // Calculate grading statistics
+        let totalGradingsTaken = gradingRecords.count
+        let passedGradings = gradingRecords.filter { $0.passed }.count
+        let passRate = totalGradingsTaken > 0 ? Double(passedGradings) / Double(totalGradingsTaken) : 0.0
+        
+        return BeltJourneyStats(
+            currentBelt: createBeltInfo(from: currentBelt),
+            studyingBelt: studyingBelt,
+            nextBelt: nextBelt != nil ? createBeltInfo(from: nextBelt!) : nil,
+            gradingHistory: gradingHistory,
+            beltProgression: beltProgression,
+            nextBeltRequirements: nextBeltRequirements,
+            timeAtCurrentBelt: timeAtCurrentBelt,
+            totalGradingsTaken: totalGradingsTaken,
+            passRate: passRate,
+            hasBeltMismatch: beltMismatch.hasMismatch,
+            beltMismatchMessage: beltMismatch.message
+        )
+    }
+    
+    private func createEmptyBeltJourney(allBeltLevels: [BeltLevel]) -> BeltJourneyStats {
+        // Find white belt (10th keup) as default
+        let whiteBelt = allBeltLevels.first { $0.shortName.contains("10th Keup") } ?? allBeltLevels.last!
+        let currentBelt = createBeltInfo(from: whiteBelt)
+        let nextBelt = findNextBelt(currentBelt: whiteBelt, allBeltLevels: allBeltLevels)
+        
+        return BeltJourneyStats(
+            currentBelt: currentBelt,
+            studyingBelt: currentBelt,
+            nextBelt: nextBelt != nil ? createBeltInfo(from: nextBelt!) : nil,
+            gradingHistory: [],
+            beltProgression: BeltProgressionSummary(
+                totalBeltsEarned: 0,
+                averageTimeBetweenGradings: 0,
+                firstGradingDate: nil,
+                mostRecentGradingDate: nil,
+                longestPreparationTime: 0,
+                shortestPreparationTime: 0,
+                favoriteExaminer: nil,
+                mostCommonClub: nil
+            ),
+            nextBeltRequirements: nil,
+            timeAtCurrentBelt: 0,
+            totalGradingsTaken: 0,
+            passRate: 0.0,
+            hasBeltMismatch: false,
+            beltMismatchMessage: nil
+        )
+    }
+    
+    private func createBeltInfo(from beltLevel: BeltLevel) -> BeltInfo {
+        return BeltInfo(
+            id: beltLevel.id.uuidString,
+            name: beltLevel.name,
+            shortName: beltLevel.shortName,
+            colorName: beltLevel.colorName,
+            sortOrder: beltLevel.sortOrder,
+            isKyup: beltLevel.isKyup,
+            primaryColor: beltLevel.primaryColor,
+            secondaryColor: beltLevel.secondaryColor,
+            textColor: beltLevel.textColor,
+            borderColor: beltLevel.borderColor
+        )
+    }
+    
+    private func findNextBelt(currentBelt: BeltLevel, allBeltLevels: [BeltLevel]) -> BeltLevel? {
+        // Next belt has a lower sort order (closer to 1st Dan)
+        return allBeltLevels.first { $0.sortOrder == currentBelt.sortOrder - 1 }
+    }
+    
+    private func createGradingHistoryEntry(from record: GradingRecord) -> GradingHistoryEntry {
+        return GradingHistoryEntry(
+            id: record.id.uuidString,
+            gradingDate: record.gradingDate,
+            beltTested: createBeltInfo(from: record.beltTested),
+            beltAchieved: createBeltInfo(from: record.beltAchieved),
+            gradingType: record.gradingType.rawValue,
+            passGrade: record.passGrade.rawValue,
+            passed: record.passed,
+            examiner: record.examiner,
+            club: record.club,
+            notes: record.notes,
+            preparationTime: record.preparationTime
+        )
+    }
+    
+    private func calculateBeltProgression(
+        gradingRecords: [GradingRecord],
+        currentBelt: BeltLevel
+    ) -> BeltProgressionSummary {
+        
+        let passedGradings = gradingRecords.filter { $0.passed }.sorted { $0.gradingDate < $1.gradingDate }
+        
+        let totalBeltsEarned = passedGradings.count
+        let firstGrading = passedGradings.first
+        let mostRecent = passedGradings.last
+        
+        // Calculate average time between gradings
+        var averageTime: TimeInterval = 0
+        if passedGradings.count >= 2 {
+            var totalInterval: TimeInterval = 0
+            for i in 1..<passedGradings.count {
+                totalInterval += passedGradings[i].gradingDate.timeIntervalSince(passedGradings[i-1].gradingDate)
+            }
+            averageTime = totalInterval / Double(passedGradings.count - 1)
+        }
+        
+        // Find preparation time ranges
+        let preparationTimes = gradingRecords.map { $0.preparationTime }
+        let longestPrep = preparationTimes.max() ?? 0
+        let shortestPrep = preparationTimes.min() ?? 0
+        
+        // Find most common examiner and club
+        let examiners = gradingRecords.filter { !$0.examiner.isEmpty }.map { $0.examiner }
+        let clubs = gradingRecords.filter { !$0.club.isEmpty }.map { $0.club }
+        
+        let favoriteExaminer = mostFrequent(in: examiners)
+        let mostCommonClub = mostFrequent(in: clubs)
+        
+        return BeltProgressionSummary(
+            totalBeltsEarned: totalBeltsEarned,
+            averageTimeBetweenGradings: averageTime,
+            firstGradingDate: firstGrading?.gradingDate,
+            mostRecentGradingDate: mostRecent?.gradingDate,
+            longestPreparationTime: longestPrep,
+            shortestPreparationTime: shortestPrep,
+            favoriteExaminer: favoriteExaminer,
+            mostCommonClub: mostCommonClub
+        )
+    }
+    
+    private func calculateBeltRequirements(
+        nextBelt: BeltLevel,
+        terminologyProgress: [UserTerminologyProgress],
+        patternProgress: [UserPatternProgress],
+        sessions: [StudySession]
+    ) -> BeltRequirements {
+        
+        // Standard requirements (can be customized per belt)
+        let terminologyRequired: Double = 0.8 // 80% mastery
+        let patternRequired: Double = 1.0 // 100% mastery of required patterns
+        let minimumStudyTime: TimeInterval = 20 * 3600 // 20 hours
+        
+        // Calculate current progress
+        let nextBeltTerminology = terminologyProgress.filter { 
+            $0.terminologyEntry.beltLevel.sortOrder >= nextBelt.sortOrder 
+        }
+        let masteredTerminology = nextBeltTerminology.filter { $0.masteryLevel == .mastered }
+        let currentTerminologyMastery = nextBeltTerminology.isEmpty ? 0.0 : 
+            Double(masteredTerminology.count) / Double(nextBeltTerminology.count)
+        
+        let nextBeltPatterns = patternProgress.filter { 
+            $0.pattern.beltLevels.contains { $0.sortOrder >= nextBelt.sortOrder }
+        }
+        let masteredPatterns = nextBeltPatterns.filter { $0.masteryLevel == PatternMasteryLevel.mastered }
+        let currentPatternMastery = nextBeltPatterns.isEmpty ? 0.0 : 
+            Double(masteredPatterns.count) / Double(nextBeltPatterns.count)
+        
+        let currentStudyTime = sessions.reduce(0) { $0 + $1.duration }
+        
+        // Estimate readiness date based on current progress rate
+        let overallProgress = (currentTerminologyMastery / terminologyRequired + 
+                              currentPatternMastery / patternRequired + 
+                              currentStudyTime / minimumStudyTime) / 3.0
+        
+        let estimatedReadinessDate: Date?
+        if overallProgress > 0 && overallProgress < 1.0 {
+            let remainingWork = 1.0 - overallProgress
+            let recentActivity = sessions.filter { $0.startTime >= Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date() }
+            let monthlyProgressRate = recentActivity.isEmpty ? 0.0 : Double(recentActivity.count) / 30.0
+            
+            if monthlyProgressRate > 0 {
+                let estimatedDaysToCompletion = remainingWork * 30.0 / monthlyProgressRate
+                estimatedReadinessDate = Calendar.current.date(byAdding: .day, value: Int(estimatedDaysToCompletion), to: Date())
+            } else {
+                estimatedReadinessDate = nil
+            }
+        } else {
+            estimatedReadinessDate = overallProgress >= 1.0 ? Date() : nil
+        }
+        
+        return BeltRequirements(
+            terminologyMasteryRequired: terminologyRequired,
+            patternMasteryRequired: patternRequired,
+            minimumStudyTime: minimumStudyTime,
+            currentTerminologyMastery: currentTerminologyMastery,
+            currentPatternMastery: currentPatternMastery,
+            currentStudyTime: currentStudyTime,
+            estimatedReadinessDate: estimatedReadinessDate
+        )
+    }
+    
+    private func calculateTimeAtCurrentBelt(
+        gradingRecords: [GradingRecord],
+        currentBelt: BeltLevel
+    ) -> TimeInterval {
+        // Find the most recent successful grading that resulted in current belt
+        let relevantGradings = gradingRecords.filter { 
+            $0.passed && $0.beltAchieved.sortOrder == currentBelt.sortOrder 
+        }.sorted { $0.gradingDate > $1.gradingDate }
+        
+        if let mostRecentGrading = relevantGradings.first {
+            return Date().timeIntervalSince(mostRecentGrading.gradingDate)
+        } else {
+            // No grading records for current belt, assume they've had it for a long time
+            return 365 * 24 * 3600 // 1 year default
+        }
+    }
+    
+    private func mostFrequent<T: Hashable>(in array: [T]) -> T? {
+        guard !array.isEmpty else { return nil }
+        
+        let counts = Dictionary(grouping: array) { $0 }.mapValues { $0.count }
+        return counts.max { $0.value < $1.value }?.key
+    }
+    
+    private func determineCurrentBelt(
+        gradingRecords: [GradingRecord],
+        studyingBelt: BeltLevel,
+        allBeltLevels: [BeltLevel]
+    ) -> BeltLevel {
+        // Find the highest belt from successful grading records
+        let successfulGradings = gradingRecords.filter { $0.passed }
+        
+        guard !successfulGradings.isEmpty else {
+            // No grading records, current belt = studying belt
+            return studyingBelt
+        }
+        
+        // Find the highest belt (lowest sort order) from grading records
+        let highestBelt = successfulGradings
+            .map { $0.beltAchieved }
+            .min { $0.sortOrder < $1.sortOrder }
+        
+        return highestBelt ?? studyingBelt
+    }
+    
+    private func checkBeltMismatch(
+        currentBelt: BeltLevel,
+        studyingBelt: BeltLevel,
+        gradingRecords: [GradingRecord]
+    ) -> (hasMismatch: Bool, message: String?) {
+        
+        // If they match, no mismatch
+        if currentBelt.sortOrder == studyingBelt.sortOrder {
+            return (false, nil)
+        }
+        
+        let hasGradingRecords = !gradingRecords.filter { $0.passed }.isEmpty
+        
+        // Generate appropriate message based on the situation
+        let message: String
+        
+        if !hasGradingRecords {
+            // No grading records, so studying belt is the de facto current belt
+            return (false, nil)
+        } else if currentBelt.sortOrder > studyingBelt.sortOrder {
+            // Current belt is lower than studying belt (studying ahead)
+            message = "You're studying \(studyingBelt.shortName) content, but your highest graded belt is \(currentBelt.shortName). Consider updating your study level or taking your next grading."
+        } else {
+            // Current belt is higher than studying belt (reviewing lower content)
+            message = "You're reviewing \(studyingBelt.shortName) content while having achieved \(currentBelt.shortName). This is great for reinforcing fundamentals!"
+        }
+        
+        return (true, message)
+    }
 }
 
 // MARK: - Data Structures
@@ -456,6 +821,9 @@ struct ProgressSnapshot: Codable {
     let beltProgressStats: BeltProgressStats
     let recentActivity: RecentActivityStats
     
+    // Belt journey data
+    let beltJourneyStats: BeltJourneyStats
+    
     // Time-series data for charts
     let weeklyData: [DailyProgressData]
     let monthlyData: [DailyProgressData]
@@ -472,6 +840,7 @@ private struct ProgressStatsCollection {
     let streak: StreakProgressStats
     let beltProgress: BeltProgressStats
     let recentActivity: RecentActivityStats
+    let beltJourney: BeltJourneyStats
     let weeklyData: [DailyProgressData]
     let monthlyData: [DailyProgressData]
 }
@@ -596,5 +965,125 @@ struct DailyProgressData: Codable, Equatable {
     
     var accuracyPercentage: Int {
         return Int(averageAccuracy * 100)
+    }
+}
+
+// MARK: - Belt Journey Statistics
+
+struct BeltJourneyStats: Codable {
+    let currentBelt: BeltInfo              // Highest belt from grading records
+    let studyingBelt: BeltInfo             // Belt level they're learning (from profile)
+    let nextBelt: BeltInfo?                // Next belt to study for
+    let gradingHistory: [GradingHistoryEntry]
+    let beltProgression: BeltProgressionSummary
+    let nextBeltRequirements: BeltRequirements?
+    let timeAtCurrentBelt: TimeInterval
+    let totalGradingsTaken: Int
+    let passRate: Double
+    let hasBeltMismatch: Bool              // True if current != studying belt
+    let beltMismatchMessage: String?       // Explanation of the mismatch
+}
+
+struct BeltInfo: Codable {
+    let id: String
+    let name: String
+    let shortName: String
+    let colorName: String
+    let sortOrder: Int
+    let isKyup: Bool
+    let primaryColor: String?
+    let secondaryColor: String?
+    let textColor: String?
+    let borderColor: String?
+}
+
+struct GradingHistoryEntry: Codable {
+    let id: String
+    let gradingDate: Date
+    let beltTested: BeltInfo
+    let beltAchieved: BeltInfo
+    let gradingType: String
+    let passGrade: String
+    let passed: Bool
+    let examiner: String
+    let club: String
+    let notes: String
+    let preparationTime: TimeInterval
+    
+    var formattedGradingDate: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter.string(from: gradingDate)
+    }
+    
+    var formattedPreparationTime: String {
+        let days = Int(preparationTime / (24 * 3600))
+        return "\(days) days"
+    }
+}
+
+struct BeltProgressionSummary: Codable {
+    let totalBeltsEarned: Int
+    let averageTimeBetweenGradings: TimeInterval
+    let firstGradingDate: Date?
+    let mostRecentGradingDate: Date?
+    let longestPreparationTime: TimeInterval
+    let shortestPreparationTime: TimeInterval
+    let favoriteExaminer: String?
+    let mostCommonClub: String?
+    
+    var formattedAverageTime: String {
+        let months = Int(averageTimeBetweenGradings / (30 * 24 * 3600))
+        return "\(months) months"
+    }
+    
+    var totalJourneyTime: TimeInterval {
+        guard let first = firstGradingDate, let recent = mostRecentGradingDate else { return 0 }
+        return recent.timeIntervalSince(first)
+    }
+    
+    var formattedJourneyTime: String {
+        let years = Int(totalJourneyTime / (365 * 24 * 3600))
+        let remainingMonths = Int((totalJourneyTime.truncatingRemainder(dividingBy: 365 * 24 * 3600)) / (30 * 24 * 3600))
+        
+        if years > 0 {
+            return remainingMonths > 0 ? "\(years)y \(remainingMonths)m" : "\(years) years"
+        } else {
+            return "\(remainingMonths) months"
+        }
+    }
+}
+
+struct BeltRequirements: Codable {
+    let terminologyMasteryRequired: Double
+    let patternMasteryRequired: Double
+    let minimumStudyTime: TimeInterval
+    let currentTerminologyMastery: Double
+    let currentPatternMastery: Double
+    let currentStudyTime: TimeInterval
+    let estimatedReadinessDate: Date?
+    
+    var terminologyProgress: Double {
+        return min(1.0, currentTerminologyMastery / terminologyMasteryRequired)
+    }
+    
+    var patternProgress: Double {
+        return min(1.0, currentPatternMastery / patternMasteryRequired)
+    }
+    
+    var studyTimeProgress: Double {
+        return min(1.0, currentStudyTime / minimumStudyTime)
+    }
+    
+    var overallReadiness: Double {
+        return (terminologyProgress + patternProgress + studyTimeProgress) / 3.0
+    }
+    
+    var readinessPercentage: Int {
+        return Int(overallReadiness * 100)
+    }
+    
+    var isReady: Bool {
+        return overallReadiness >= 0.8 // 80% readiness threshold
     }
 }
