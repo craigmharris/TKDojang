@@ -15,7 +15,8 @@
       "Bash(swift -typecheck:*)",
       "Bash(git branch:*)",
       "Bash(git for-each-ref:*)",
-      "WebFetch(domain:www.blackbeltschools.com)"
+      "WebFetch(domain:www.blackbeltschools.com)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "ask": [],

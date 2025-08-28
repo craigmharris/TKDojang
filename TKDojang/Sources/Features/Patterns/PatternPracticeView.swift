@@ -15,7 +15,7 @@ import SwiftUI
 
 struct PatternPracticeView: View {
     let pattern: Pattern
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @Environment(\.dismiss) private var dismiss
     
     @State private var currentMoveIndex = 0
@@ -378,7 +378,7 @@ struct PatternPracticeView: View {
     // MARK: - Actions
     
     private func loadUserProfile() {
-        userProfile = dataManager.getOrCreateDefaultUserProfile()
+        userProfile = dataServices.getOrCreateDefaultUserProfile()
     }
     
     private func startPractice() {
@@ -423,7 +423,7 @@ struct PatternPracticeView: View {
         let totalMoves = pattern.orderedMoves.count
         
         do {
-            try dataManager.profileService.recordStudySession(
+            try dataServices.profileService.recordStudySession(
                 sessionType: .patterns,
                 itemsStudied: totalMoves,
                 correctAnswers: movesCompleted,

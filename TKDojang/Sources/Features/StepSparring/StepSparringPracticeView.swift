@@ -17,7 +17,7 @@ import SwiftData
 struct StepSparringPracticeView: View {
     let sequence: StepSparringSequence
     
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @Environment(\.dismiss) private var dismiss
     
     @State private var currentStepIndex = 0
@@ -86,7 +86,7 @@ struct StepSparringPracticeView: View {
         )
         
         do {
-            let results = try dataManager.modelContext.fetch(descriptor)
+            let results = try dataServices.modelContext.fetch(descriptor)
             return results.first
         } catch {
             print("❌ Failed to fetch belt level for \(normalizedBelt): \(error)")
@@ -368,14 +368,14 @@ struct StepSparringPracticeView: View {
         userProfile = nil
         progress = nil
         
-        userProfile = dataManager.profileService.getActiveProfile()
+        userProfile = dataServices.profileService.getActiveProfile()
         if userProfile == nil {
-            userProfile = dataManager.getOrCreateDefaultUserProfile()
+            userProfile = dataServices.getOrCreateDefaultUserProfile()
         }
         
         if let profile = userProfile {
             do {
-                progress = dataManager.stepSparringService.getUserProgress(for: sequence, userProfile: profile)
+                progress = dataServices.stepSparringService.getUserProgress(for: sequence, userProfile: profile)
             } catch {
                 print("❌ Failed to load user progress: \(error)")
                 progress = nil
@@ -388,7 +388,7 @@ struct StepSparringPracticeView: View {
         let stepsCompleted = sessionCompleted ? totalSteps : currentStepIndex
         
         do {
-            try dataManager.profileService.recordStudySession(
+            try dataServices.profileService.recordStudySession(
                 sessionType: .mixed, // Step sparring combines various techniques
                 itemsStudied: totalSteps,
                 correctAnswers: stepsCompleted,

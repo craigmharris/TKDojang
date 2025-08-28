@@ -40,7 +40,7 @@ class DataManager {
     }
     
     private init() {
-        print("🏗️ Initializing DataManager...")
+        print("🏗️ Initializing DataManager... - \(Date())")
         do {
             // Configure the SwiftData model container
             let schema = Schema([
@@ -90,7 +90,7 @@ class DataManager {
             self.profileService.progressCacheService = self.progressCacheService
             
             // Note: Initial data setup will be handled by AppCoordinator
-            print("✅ DataManager initialization complete")
+            print("✅ DataManager initialization complete - \(Date())")
             
         } catch {
             print("❌ Failed to create model container: \(error)")
@@ -347,21 +347,8 @@ class DataManager {
     
 }
 
-// MARK: - SwiftUI Environment Integration
-
-/**
- * SwiftUI Environment key for DataManager
- */
-struct DataManagerKey: EnvironmentKey {
-    nonisolated static let defaultValue = DataManager.shared
-}
-
-extension EnvironmentValues {
-    var dataManager: DataManager {
-        get { self[DataManagerKey.self] }
-        set { self[DataManagerKey.self] = newValue }
-    }
-}
+// MARK: - SwiftUI Environment Integration - DEPRECATED
+// This section is no longer used - we use DataServices instead to avoid static initialization
 
 // MARK: - Supporting Types
 
@@ -392,26 +379,5 @@ struct UserProgressExport: Codable {
     let nextReviewDate: Date
 }
 
-// MARK: - View Modifier for Data Context
-
-/**
- * View modifier to inject data context into SwiftUI views
- */
-struct DataContextModifier: ViewModifier {
-    @MainActor let dataManager = DataManager.shared
-    
-    func body(content: Content) -> some View {
-        content
-            .modelContainer(dataManager.modelContainer)
-            .environment(dataManager)
-    }
-}
-
-extension View {
-    /**
-     * Convenience method to add data context to any view
-     */
-    func withDataContext() -> some View {
-        modifier(DataContextModifier())
-    }
-}
+// MARK: - View Modifier for Data Context - DEPRECATED
+// This section is no longer used - we use DataServicesModifier instead to avoid static initialization

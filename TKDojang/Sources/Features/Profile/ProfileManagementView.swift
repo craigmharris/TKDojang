@@ -21,7 +21,7 @@ import SwiftData
  */
 
 struct ProfileManagementView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @Environment(\.dismiss) private var dismiss
     
     @State private var profiles: [UserProfile] = []
@@ -75,7 +75,7 @@ struct ProfileManagementView: View {
             .onAppear {
                 loadProfiles()
             }
-            .onChange(of: dataManager.profileService.activeProfile) {
+            .onChange(of: dataServices.profileService.activeProfile) {
                 loadProfiles()
             }
             .sheet(isPresented: $showingCreateProfile) {
@@ -123,7 +123,7 @@ struct ProfileManagementView: View {
     
     private func loadProfiles() {
         do {
-            profiles = try dataManager.profileService.getAllProfiles()
+            profiles = try dataServices.profileService.getAllProfiles()
         } catch {
             errorMessage = "Failed to load profiles: \(error.localizedDescription)"
             showingError = true
@@ -132,7 +132,7 @@ struct ProfileManagementView: View {
     
     private func activateProfile(_ profile: UserProfile) {
         do {
-            try dataManager.profileService.activateProfile(profile)
+            try dataServices.profileService.activateProfile(profile)
             loadProfiles() // Refresh to show active state
             
             // Dismiss after a short delay to show selection feedback
@@ -147,7 +147,7 @@ struct ProfileManagementView: View {
     
     private func deleteProfile(_ profile: UserProfile) {
         do {
-            try dataManager.profileService.deleteProfile(profile)
+            try dataServices.profileService.deleteProfile(profile)
             loadProfiles()
         } catch {
             errorMessage = "Failed to delete profile: \(error.localizedDescription)"
@@ -330,5 +330,5 @@ struct StatItem: View {
 
 #Preview {
     ProfileManagementView()
-        .withDataContext()
+        
 }

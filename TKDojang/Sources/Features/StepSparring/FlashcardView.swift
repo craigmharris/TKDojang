@@ -16,7 +16,7 @@ import SwiftData
 struct FlashcardView: View {
     let specificTerms: [TerminologyEntry]?
     
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     
     @State private var currentTermIndex = 0
     @State private var isShowingAnswer = false
@@ -125,7 +125,7 @@ struct FlashcardView: View {
                 await loadUserData()
                 sessionStartTime = Date()
             }
-            .onChange(of: dataManager.profileService.activeProfile) {
+            .onChange(of: dataServices.profileService.activeProfile) {
                 Task {
                     await loadUserData()
                     sessionStartTime = Date() // Reset session time on profile change
@@ -365,11 +365,11 @@ struct FlashcardView: View {
         isLoading = true
         
         // Get the active profile from ProfileService
-        userProfile = dataManager.profileService.getActiveProfile()
+        userProfile = dataServices.profileService.getActiveProfile()
         
         // If no active profile, ensure we have at least one profile
         if userProfile == nil {
-            userProfile = dataManager.getOrCreateDefaultUserProfile()
+            userProfile = dataServices.getOrCreateDefaultUserProfile()
         }
         
         if let profile = userProfile {
@@ -379,7 +379,7 @@ struct FlashcardView: View {
                 terms = specificTerms
                 print("📚 Using specific terms from test: \(terms.count) terms")
             } else {
-                terms = dataManager.terminologyService.getTerminologyForUser(userProfile: profile, limit: 50)
+                terms = dataServices.terminologyService.getTerminologyForUser(userProfile: profile, limit: 50)
                 print("📚 Loaded \(terms.count) terms for user \(profile.name)")
             }
             
@@ -400,7 +400,7 @@ struct FlashcardView: View {
               sessionItemsStudied > 0 else { return }
         
         do {
-            try dataManager.profileService.recordStudySession(
+            try dataServices.profileService.recordStudySession(
                 sessionType: .flashcards,
                 itemsStudied: sessionItemsStudied,
                 correctAnswers: sessionStats.correctCount,
@@ -465,7 +465,7 @@ struct FlashcardView: View {
         let currentTerm = terms[currentTermIndex]
         
         // Record in database
-        dataManager.terminologyService.recordUserAnswer(
+        dataServices.terminologyService.recordUserAnswer(
             userProfile: profile,
             terminologyEntry: currentTerm,
             isCorrect: isCorrect,
@@ -491,7 +491,7 @@ struct FlashcardView: View {
         
         // Save profile updates
         do {
-            try dataManager.modelContext.save()
+            try dataServices.modelContext.save()
         } catch {
             print("❌ Failed to save profile updates: \(error)")
         }
@@ -701,6 +701,6 @@ struct SessionStats {
 struct FlashcardView_Previews: PreviewProvider {
     static var previews: some View {
         FlashcardView()
-            .withDataContext()
+            
     }
 }

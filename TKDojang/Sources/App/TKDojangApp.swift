@@ -19,7 +19,8 @@ import SwiftUI
 struct TKDojangApp: App {
     
     init() {
-        print("🚀 TKDojang App Starting...")
+        print("🏁 TKDojangApp.init() - App struct being created - \(Date())")
+        print("🚀 TKDojang App Starting... - \(Date())")
     }
     
     // MARK: - Properties
@@ -30,7 +31,17 @@ struct TKDojangApp: App {
      * WHY: Coordinator pattern separates navigation logic from view controllers,
      * making the app more testable and navigation flow easier to modify
      */
-    @StateObject private var appCoordinator = AppCoordinator()
+    @StateObject private var appCoordinator = {
+        print("📋 Creating AppCoordinator... - \(Date())")
+        return AppCoordinator()
+    }()
+    
+    /**
+     * DataServices with truly lazy initialization
+     * This exists at app level to satisfy SwiftUI's pre-processing, but DataManager
+     * is only created when a view actually accesses it
+     */
+    @StateObject private var dataServices = DataServices()
     
     /**
      * User settings that persist across app launches
@@ -44,13 +55,12 @@ struct TKDojangApp: App {
     // MARK: - Body
     
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        print("🏗️ Building WindowGroup scene... - \(Date())")
+        return WindowGroup {
+            print("🖼️ Creating AppInitializationView... - \(Date())")
+            return AppInitializationView()
                 .environmentObject(appCoordinator)
-                .withDataContext()
-                .onAppear {
-                    setupInitialState()
-                }
+                .environmentObject(dataServices) // Provide DataServices but it won't initialize DataManager until accessed
         }
     }
     

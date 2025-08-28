@@ -19,7 +19,7 @@ struct LineWorkPracticeView: View {
     let practiceNotes: PracticeNotes
     
     @Environment(\.dismiss) private var dismiss
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var currentTechniqueIndex = 0
     @State private var currentDirectionIndex = 0
     @State private var currentRepetition = 1
@@ -361,7 +361,7 @@ struct LineWorkPracticeView: View {
         let completedCount = completedTechniques.count
         
         do {
-            try dataManager.profileService.recordStudySession(
+            try dataServices.profileService.recordStudySession(
                 sessionType: .mixed, // Line work is mixed technique practice
                 itemsStudied: totalTechniques,
                 correctAnswers: completedCount,

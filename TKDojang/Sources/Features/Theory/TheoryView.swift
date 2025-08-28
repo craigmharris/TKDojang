@@ -15,7 +15,7 @@ import SwiftUI
  */
 
 struct TheoryView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var theoryContent: [String: TheoryContent] = [:]
     @State private var isLoading = true
     @State private var selectedCategory: String? = nil
@@ -52,7 +52,7 @@ struct TheoryView: View {
     
     @ViewBuilder
     private var theoryContentView: some View {
-        if let activeProfile = dataManager.profileService.activeProfile,
+        if let activeProfile = dataServices.profileService.activeProfile,
            let beltId = mapBeltLevelToId(activeProfile.currentBeltLevel.shortName),
            let content = theoryContent[beltId] {
             

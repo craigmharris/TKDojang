@@ -55,7 +55,7 @@ struct MainTabCoordinatorView: View {
 // MARK: - Placeholder Tab Views
 
 struct DashboardView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var userProfile: UserProfile?
     
     var body: some View {
@@ -105,19 +105,18 @@ struct DashboardView: View {
             }
             .onAppear {
                 loadUserProfile()
-            }
-            .onChange(of: dataManager.profileService.activeProfile) {
-                loadUserProfile()
+                // Note: onChange listeners removed to prevent early DataManager initialization
+                // Profile changes will be handled through manual refresh or navigation patterns
             }
         }
     }
     
     private func loadUserProfile() {
-        userProfile = dataManager.profileService.getActiveProfile()
+        userProfile = dataServices.profileService.getActiveProfile()
         
         // If no active profile, create/get default
         if userProfile == nil {
-            userProfile = dataManager.getOrCreateDefaultUserProfile()
+            userProfile = dataServices.getOrCreateDefaultUserProfile()
         }
     }
 }
@@ -297,7 +296,7 @@ struct QuickActionCard: View {
                 }
             }
             .padding(16)
-            .frame(maxWidth: .infinity, minHeight: 120)
+            .frame(maxWidth: .infinity, minHeight: 120, maxHeight: 120)
             .background(
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color(.systemBackground))
@@ -568,7 +567,7 @@ struct PracticeView: View {
 }
 
 struct ProgressView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var userProfile: UserProfile?
     @State private var studySessions: [StudySession] = []
     @State private var gradingHistory: [GradingRecord] = []
@@ -857,7 +856,7 @@ struct ProgressView: View {
         errorMessage = nil
         
         // Get active profile first (this should be fast)
-        userProfile = dataManager.profileService.getActiveProfile()
+        userProfile = dataServices.profileService.getActiveProfile()
         
         guard let profile = userProfile else {
             isLoading = false
@@ -869,15 +868,15 @@ struct ProgressView: View {
             try await Task.sleep(nanoseconds: 100_000_000) // 0.1 seconds
             
             // Load study sessions
-            studySessions = try dataManager.profileService.getStudySessions(for: profile)
+            studySessions = try dataServices.profileService.getStudySessions(for: profile)
                 .sorted { $0.startTime > $1.startTime }
             
             // Load grading history
-            gradingHistory = try dataManager.profileService.getGradingHistory(for: profile)
+            gradingHistory = try dataServices.profileService.getGradingHistory(for: profile)
             
             // Load grading statistics (only if there are gradings)
             if !gradingHistory.isEmpty {
-                gradingStatistics = try dataManager.profileService.getGradingStatistics(for: profile)
+                gradingStatistics = try dataServices.profileService.getGradingStatistics(for: profile)
             } else {
                 gradingStatistics = nil
             }
@@ -1073,7 +1072,7 @@ struct PracticeMenuCard: View {
 // MARK: - Practice Section Placeholder Views
 
 struct PatternsView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var patterns: [Pattern] = []
     @State private var userProfile: UserProfile?
     @State private var isLoading = true
@@ -1141,11 +1140,7 @@ struct PatternsView: View {
         }
         .task {
             await loadPatterns()
-        }
-        .onChange(of: dataManager.profileService.activeProfile) {
-            Task {
-                await loadPatterns()
-            }
+            // Note: onChange listener removed to prevent early DataManager initialization
         }
     }
     
@@ -1154,15 +1149,15 @@ struct PatternsView: View {
         isLoading = true
         
         // Get the active profile from ProfileService
-        userProfile = dataManager.profileService.getActiveProfile()
+        userProfile = dataServices.profileService.getActiveProfile()
         
         // If no active profile, ensure we have at least one profile
         if userProfile == nil {
-            userProfile = dataManager.getOrCreateDefaultUserProfile()
+            userProfile = dataServices.getOrCreateDefaultUserProfile()
         }
         
         if let profile = userProfile {
-            patterns = dataManager.patternService.getPatternsForUser(userProfile: profile)
+            patterns = dataServices.patternService.getPatternsForUser(userProfile: profile)
             print("🥋 Loaded \(patterns.count) patterns for user \(profile.name)")
         }
         
@@ -1175,7 +1170,7 @@ struct PatternsView: View {
 struct PatternCard: View {
     let pattern: Pattern
     let userProfile: UserProfile?
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var userProgress: UserPatternProgress?
     
     var body: some View {
@@ -1252,7 +1247,7 @@ struct PatternCard: View {
     
     private func loadUserProgress() {
         guard let profile = userProfile else { return }
-        userProgress = dataManager.patternService.getUserProgress(for: pattern, userProfile: profile)
+        userProgress = dataServices.patternService.getUserProgress(for: pattern, userProfile: profile)
     }
 }
 
@@ -1478,7 +1473,7 @@ struct TechniqueGuideView: View {
 }
 
 struct TestSelectionView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var isStartingTest = false
     @State private var testSession: TestSession?
     @State private var showingTest = false
@@ -1551,7 +1546,7 @@ struct TestSelectionView: View {
     
     private func startComprehensiveTest() {
         // Get the active profile from ProfileService
-        guard let userProfile = dataManager.profileService.getActiveProfile() else {
+        guard let userProfile = dataServices.profileService.getActiveProfile() else {
             errorMessage = "No active profile found. Please create a profile first."
             return
         }
@@ -1562,8 +1557,8 @@ struct TestSelectionView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             do {
                 let testingService = TestingService(
-                    modelContext: dataManager.modelContext,
-                    terminologyService: dataManager.terminologyService
+                    modelContext: dataServices.modelContext,
+                    terminologyService: dataServices.terminologyService
                 )
                 
                 let session = try testingService.createComprehensiveTest(for: userProfile)
@@ -1579,7 +1574,7 @@ struct TestSelectionView: View {
     
     private func startQuickTest() {
         // Get the active profile from ProfileService
-        guard let userProfile = dataManager.profileService.getActiveProfile() else {
+        guard let userProfile = dataServices.profileService.getActiveProfile() else {
             errorMessage = "No active profile found. Please create a profile first."
             return
         }
@@ -1590,8 +1585,8 @@ struct TestSelectionView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             do {
                 let testingService = TestingService(
-                    modelContext: dataManager.modelContext,
-                    terminologyService: dataManager.terminologyService
+                    modelContext: dataServices.modelContext,
+                    terminologyService: dataServices.terminologyService
                 )
                 
                 let session = try testingService.createQuickTest(for: userProfile)
@@ -1608,7 +1603,7 @@ struct TestSelectionView: View {
 
 struct ProfileView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var showingProfileManagement = false
     @State private var showingSettings = false
     @State private var userProfile: UserProfile?
@@ -1673,9 +1668,7 @@ struct ProfileView: View {
             .navigationBarTitleDisplayMode(.large)
             .onAppear {
                 loadProfiles()
-            }
-            .onChange(of: dataManager.profileService.activeProfile) {
-                loadProfiles()
+                // Note: onChange listener removed to prevent early DataManager initialization
             }
             .sheet(isPresented: $showingProfileManagement) {
                 ProfileManagementView()
@@ -1684,16 +1677,16 @@ struct ProfileView: View {
     }
     
     private func loadProfiles() {
-        userProfile = dataManager.profileService.getActiveProfile()
+        userProfile = dataServices.profileService.getActiveProfile()
         
         // If no active profile, create default
         if userProfile == nil {
-            userProfile = dataManager.getOrCreateDefaultUserProfile()
+            userProfile = dataServices.getOrCreateDefaultUserProfile()
         }
         
         // Load all profiles
         do {
-            allProfiles = try dataManager.profileService.getAllProfiles()
+            allProfiles = try dataServices.profileService.getAllProfiles()
         } catch {
             print("❌ Failed to load profiles: \(error)")
             allProfiles = []
@@ -1762,7 +1755,7 @@ struct ProfileHeaderCard: View {
 struct ProfileGridView: View {
     let profiles: [UserProfile]
     let currentProfile: UserProfile?
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     
     var body: some View {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 3), spacing: 12) {
@@ -1778,7 +1771,7 @@ struct ProfileGridView: View {
     
     private func switchToProfile(_ profile: UserProfile) {
         do {
-            try dataManager.profileService.activateProfile(profile)
+            try dataServices.profileService.activateProfile(profile)
         } catch {
             print("❌ Failed to switch profile: \(error)")
         }

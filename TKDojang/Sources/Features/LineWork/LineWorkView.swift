@@ -14,7 +14,7 @@ import SwiftUI
  */
 
 struct LineWorkView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var lineWorkContent: [String: LineWorkContent] = [:]
     @State private var isLoading = true
     @State private var selectedCategory: String? = nil
@@ -51,7 +51,7 @@ struct LineWorkView: View {
     
     @ViewBuilder
     private var lineWorkContentView: some View {
-        if let activeProfile = dataManager.profileService.activeProfile,
+        if let activeProfile = dataServices.profileService.activeProfile,
            let beltId = mapBeltLevelToId(activeProfile.currentBeltLevel.shortName),
            let content = lineWorkContent[beltId] {
             

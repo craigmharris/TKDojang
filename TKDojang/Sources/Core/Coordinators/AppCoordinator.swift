@@ -80,25 +80,36 @@ class AppCoordinator: ObservableObject {
     
     /**
      * Determine the initial flow when app starts
+     * SIMPLE APPROACH: Always start with loading screen first
      */
     private func determineInitialFlow() {
-        print("🔍 AppCoordinator: Determining initial flow...")
+        print("🔍 AppCoordinator: Starting with loading screen... - \(Date())")
         
-        // Skip data initialization on startup to prevent blocking
-        // Data will be loaded in background once main UI is shown
-        let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
+        // ALWAYS start with loading screen to show Korean animation
+        currentFlow = .loading
         
-        if hasCompletedOnboarding {
-            self.showMainFlow()
-        } else {
-            self.showOnboarding()
-        }
-        
-        // Initialize data in background after UI is shown
+        // After a short delay, determine and transition to appropriate flow
         Task {
-            print("🔍 Starting background data initialization...")
+            // Show loading screen for minimum 1 second for smooth UX
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            
+            // Initialize data while still showing loading screen
+            print("🔍 Starting background data initialization... - \(Date())")
             await initializeAppData()
-            print("✅ Background data initialization complete")
+            print("✅ Background data initialization complete - \(Date())")
+            
+            // Now determine the appropriate flow
+            await MainActor.run {
+                let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
+                
+                if hasCompletedOnboarding {
+                    print("✅ User has completed onboarding, showing main flow - \(Date())")
+                    self.showMainFlow()
+                } else {
+                    print("🎯 User needs onboarding, showing onboarding flow")
+                    self.showOnboarding()
+                }
+            }
         }
     }
     
@@ -130,35 +141,35 @@ class AppCoordinator: ObservableObject {
      */
     @MainActor
     private func initializeAppData() async {
-        print("🔍 AppCoordinator: Initializing app data...")
+        print("🔍 AppCoordinator: Initializing app data... - \(Date())")
         
         let dataManager = DataManager.shared
         
         // Check if we need to seed initial data
         do {
             let descriptor = FetchDescriptor<BeltLevel>()
-            let existingBeltLevels = try dataManager.modelContainer.mainContext.fetch(descriptor)
+            let existingBeltLevels = try DataManager.shared.modelContainer.mainContext.fetch(descriptor)
             
             if existingBeltLevels.isEmpty {
                 print("🗃️ Database is empty, loading initial content...")
                 
                 // Load terminology and belt data
-                let modularLoader = ModularContentLoader(dataService: dataManager.terminologyService)
+                let modularLoader = ModularContentLoader(dataService: DataManager.shared.terminologyService)
                 modularLoader.loadCompleteSystem()
                 print("✅ Terminology and belt data loaded")
                 
                 // Load patterns (must be on main thread for SwiftData)
-                let allBelts = try dataManager.modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
+                let allBelts = try DataManager.shared.modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
                 print("🥋 Loading patterns for \(allBelts.count) belt levels...")
-                dataManager.patternService.seedInitialPatterns(beltLevels: allBelts)
+                DataManager.shared.patternService.seedInitialPatterns(beltLevels: allBelts)
                 
                 // Load step sparring
                 print("🥊 Loading step sparring sequences...")
-                dataManager.stepSparringService.seedInitialSequences()
+                DataManager.shared.stepSparringService.seedInitialSequences()
                 
                 print("✅ Initial data loading complete")
             } else {
-                print("✅ Database already has \(existingBeltLevels.count) belt levels, skipping initialization")
+                print("✅ Database already has \(existingBeltLevels.count) belt levels, skipping initialization - \(Date())")
             }
         } catch {
             print("❌ Failed to initialize app data: \(error)")

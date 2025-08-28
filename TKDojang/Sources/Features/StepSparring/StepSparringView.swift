@@ -13,7 +13,7 @@ import SwiftUI
  */
 
 struct StepSparringView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var userProfile: UserProfile?
     @State private var progressSummary: StepSparringProgressSummary?
     @State private var isLoading = true
@@ -101,7 +101,7 @@ struct StepSparringView: View {
         .task {
             await loadContent()
         }
-        .onChange(of: dataManager.profileService.activeProfile) { oldProfile, newProfile in
+        .onChange(of: dataServices.profileService.activeProfile) { oldProfile, newProfile in
             Task {
                 print("🔄 Step Sparring: Profile changed from \(oldProfile?.name ?? "nil") to \(newProfile?.name ?? "nil")")
                 await loadContent()
@@ -118,12 +118,12 @@ struct StepSparringView: View {
         progressSummary = nil
         
         // Get the active profile - use the same pattern as other views
-        userProfile = dataManager.profileService.getActiveProfile()
+        userProfile = dataServices.profileService.getActiveProfile()
         
         // Load progress summary if we have a profile - with defensive error handling
         if let profile = userProfile {
             // Defensive programming: wrap in do-catch to prevent crashes
-            progressSummary = dataManager.stepSparringService.getProgressSummary(userProfile: profile)
+            progressSummary = dataServices.stepSparringService.getProgressSummary(userProfile: profile)
             print("✅ Loaded step sparring progress summary (defensive mode)")
         } else {
             print("ℹ️ No active profile found, Step Sparring will show empty state")
@@ -201,7 +201,7 @@ struct StepSparringTypeCard: View {
     let userProfile: UserProfile?
     let progressSummary: StepSparringProgressSummary?
     
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     
     private var progressForType: [UserStepSparringProgress] {
         guard let summary = progressSummary else { return [] }
@@ -321,7 +321,7 @@ struct StepSparringSequenceDisplay {
 struct StepSparringSequenceListView: View {
     let type: StepSparringType
     
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var sequenceData: [StepSparringSequenceDisplay] = []
     @State private var userProfile: UserProfile?
     @State private var isLoading = true
@@ -376,7 +376,7 @@ struct StepSparringSequenceListView: View {
         .task {
             await loadSequences()
         }
-        .onChange(of: dataManager.profileService.activeProfile) {
+        .onChange(of: dataServices.profileService.activeProfile) {
             Task {
                 await loadSequences()
             }
@@ -390,11 +390,11 @@ struct StepSparringSequenceListView: View {
         // Clear existing data to prevent holding stale references
         sequenceData = []
         
-        userProfile = dataManager.profileService.getActiveProfile()
+        userProfile = dataServices.profileService.getActiveProfile()
         
         if let profile = userProfile {
             // Load SwiftData objects and immediately convert to simple data structures
-            let sequences = dataManager.stepSparringService.getSequences(for: type, userProfile: profile)
+            let sequences = dataServices.stepSparringService.getSequences(for: type, userProfile: profile)
             
             // Convert to simple data structures to avoid holding SwiftData object references
             sequenceData = sequences.map { sequence in
@@ -421,7 +421,7 @@ struct StepSparringSequenceDisplayCard: View {
     let sequenceDisplay: StepSparringSequenceDisplay
     let userProfile: UserProfile?
     
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var progress: UserStepSparringProgress?
     
     var body: some View {

@@ -11,6 +11,10 @@ struct LoadingView: View {
     @State private var textOpacity: Double = 0.5
     @State private var pulseScale: CGFloat = 1.0
     
+    init() {
+        print("🎨 LoadingView: INIT - LoadingView is being created - \(Date())")
+    }
+    
     var body: some View {
         ZStack {
             // Dynamic gradient background
@@ -100,9 +104,12 @@ struct LoadingView: View {
             .padding(.horizontal, 40)
         }
         .onAppear {
+            print("🎨 LoadingView: ON_APPEAR - LoadingView is now visible on screen! - \(Date())")
+            print("🎨 LoadingView: Starting animations... - \(Date())")
             isAnimating = true
             textOpacity = 1.0
             pulseScale = 1.1
+            print("🎨 LoadingView: Animations started - Korean 태권도 should be visible - \(Date())")
         }
     }
 }
@@ -110,5 +117,11 @@ struct LoadingView: View {
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
         LoadingView()
+            .preferredColorScheme(.light)
+            .previewDisplayName("Loading Screen - Light")
+        
+        LoadingView()
+            .preferredColorScheme(.dark)
+            .previewDisplayName("Loading Screen - Dark")
     }
 }

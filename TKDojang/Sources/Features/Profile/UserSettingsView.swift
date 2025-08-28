@@ -8,7 +8,7 @@ import SwiftData
  */
 
 struct UserSettingsView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @Environment(\.dismiss) private var dismiss
     @Query private var beltLevels: [BeltLevel]
     @Query private var categories: [TerminologyCategory]
@@ -111,6 +111,7 @@ struct UserSettingsView: View {
                 }
             }
         }
+        .modelContainer(dataServices.modelContainer) // Needed for @Query properties
         .onAppear {
             loadCurrentSettings()
         }
@@ -154,7 +155,7 @@ struct UserSettingsView: View {
     // MARK: - Helper Methods
     
     private func loadCurrentSettings() {
-        userProfile = dataManager.getOrCreateDefaultUserProfile()
+        userProfile = dataServices.getOrCreateDefaultUserProfile()
         
         if let profile = userProfile {
             selectedBeltLevelId = profile.currentBeltLevel.id
@@ -173,7 +174,7 @@ struct UserSettingsView: View {
         profile.updatedAt = Date()
         
         do {
-            try dataManager.modelContainer.mainContext.save()
+            try dataServices.modelContainer.mainContext.save()
             dismiss()
         } catch {
             print("Failed to save settings: \(error)")
@@ -191,6 +192,6 @@ struct UserSettingsView: View {
 struct UserSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         UserSettingsView()
-            .withDataContext()
+            
     }
 }

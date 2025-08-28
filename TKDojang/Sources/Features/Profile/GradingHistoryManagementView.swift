@@ -16,7 +16,7 @@ import SwiftData
 
 struct GradingHistoryManagementView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.dataManager) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     
     let profile: UserProfile
     
@@ -112,7 +112,7 @@ struct GradingHistoryManagementView: View {
                 sortBy: [SortDescriptor(\.gradingDate, order: .reverse)]
             )
             
-            gradingRecords = try dataManager.modelContext.fetch(descriptor)
+            gradingRecords = try dataServices.modelContext.fetch(descriptor)
             isLoading = false
         } catch {
             print("❌ Failed to load grading records: \(error)")
@@ -121,10 +121,10 @@ struct GradingHistoryManagementView: View {
     }
     
     private func deleteGrading(_ grading: GradingRecord) {
-        dataManager.modelContext.delete(grading)
+        dataServices.modelContext.delete(grading)
         
         do {
-            try dataManager.modelContext.save()
+            try dataServices.modelContext.save()
             gradingRecords.removeAll { $0.id == grading.id }
             Task {
                 await refreshProgressCache()
@@ -135,7 +135,7 @@ struct GradingHistoryManagementView: View {
     }
     
     private func refreshProgressCache() async {
-        await dataManager.progressCacheService.refreshCache(for: profile.id)
+        await dataServices.progressCacheService.refreshCache(for: profile.id)
     }
 }
 
@@ -275,7 +275,7 @@ struct GradingHistoryRow: View {
 
 struct GradingEntryView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.dataManager) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     
     let profile: UserProfile
     let existingGrading: GradingRecord?
@@ -395,7 +395,7 @@ struct GradingEntryView: View {
             let descriptor = FetchDescriptor<BeltLevel>(
                 sortBy: [SortDescriptor(\.sortOrder)]
             )
-            availableBelts = try dataManager.modelContext.fetch(descriptor)
+            availableBelts = try dataServices.modelContext.fetch(descriptor)
             
             // Set default selections if not editing
             if !isEditing {
@@ -444,7 +444,7 @@ struct GradingEntryView: View {
             existing.updatedAt = Date()
             
             do {
-                try dataManager.modelContext.save()
+                try dataServices.modelContext.save()
                 onSave(existing)
                 dismiss()
             } catch {
@@ -466,10 +466,10 @@ struct GradingEntryView: View {
                 passed: passed
             )
             
-            dataManager.modelContext.insert(newGrading)
+            dataServices.modelContext.insert(newGrading)
             
             do {
-                try dataManager.modelContext.save()
+                try dataServices.modelContext.save()
                 onSave(newGrading)
                 dismiss()
             } catch {

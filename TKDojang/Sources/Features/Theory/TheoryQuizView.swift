@@ -18,7 +18,7 @@ struct TheoryQuizView: View {
     let sectionTitle: String
     
     @Environment(\.dismiss) private var dismiss
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var currentQuestionIndex = 0
     @State private var showingAnswer = false
     @State private var correctAnswers = 0
@@ -272,7 +272,7 @@ struct TheoryQuizView: View {
     
     private func recordTheorySession() {
         do {
-            try dataManager.profileService.recordStudySession(
+            try dataServices.profileService.recordStudySession(
                 sessionType: .mixed, // Theory could be considered mixed learning
                 itemsStudied: questions.count,
                 correctAnswers: correctAnswers,

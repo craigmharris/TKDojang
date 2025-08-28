@@ -12,7 +12,7 @@ import SwiftUI
  * - Profile-aware progress tracking
  */
 struct ProgressViewStub: View {
-    @Environment(\.dataManager) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var progressData: ProgressSnapshot?
     @State private var isLoading = false
     @State private var selectedTimeRange: TimeRange = .week
@@ -36,7 +36,7 @@ struct ProgressViewStub: View {
             .refreshable {
                 await refreshProgressData()
             }
-            .onChange(of: dataManager.profileService.activeProfile) {
+            .onChange(of: dataServices.profileService.activeProfile) {
                 Task {
                     await refreshProgressData()
                 }
@@ -45,20 +45,20 @@ struct ProgressViewStub: View {
     }
     
     private func loadProgressData() async {
-        guard let activeProfile = dataManager.profileService.getActiveProfile() else { return }
+        guard let activeProfile = dataServices.profileService.getActiveProfile() else { return }
         
         isLoading = true
         defer { isLoading = false }
         
-        progressData = await dataManager.progressCacheService.getProgressData(for: activeProfile.id)
+        progressData = await dataServices.progressCacheService.getProgressData(for: activeProfile.id)
     }
     
     private func refreshProgressData() async {
-        guard let activeProfile = dataManager.profileService.getActiveProfile() else { return }
+        guard let activeProfile = dataServices.profileService.getActiveProfile() else { return }
         
         // Force cache refresh when refreshing progress data
-        await dataManager.progressCacheService.refreshCache(for: activeProfile.id)
-        progressData = await dataManager.progressCacheService.getProgressData(for: activeProfile.id)
+        await dataServices.progressCacheService.refreshCache(for: activeProfile.id)
+        progressData = await dataServices.progressCacheService.getProgressData(for: activeProfile.id)
     }
 }
 
@@ -656,7 +656,7 @@ struct BeltVisualIndicator: View {
 // MARK: - Belt Mismatch Warning
 
 struct BeltMismatchWarning: View {
-    @Environment(\.dataManager) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     let message: String
     @State private var showingProfileSettings = false
     
@@ -696,7 +696,7 @@ struct BeltMismatchWarning: View {
                 )
         )
         .sheet(isPresented: $showingProfileSettings) {
-            if let activeProfile = dataManager.profileService.getActiveProfile() {
+            if let activeProfile = dataServices.profileService.getActiveProfile() {
                 ProfileEditView(profile: activeProfile)
             }
         }
@@ -846,7 +846,7 @@ struct BeltStatItem: View {
 
 struct BeltTimelineCard: View {
     let beltJourneyData: BeltJourneyStats
-    @Environment(\.dataManager) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var showingGradingManagement = false
     
     var body: some View {
@@ -887,7 +887,7 @@ struct BeltTimelineCard: View {
                 .fill(Color(UIColor.secondarySystemBackground))
         )
         .sheet(isPresented: $showingGradingManagement) {
-            if let activeProfile = dataManager.profileService.getActiveProfile() {
+            if let activeProfile = dataServices.profileService.getActiveProfile() {
                 GradingHistoryManagementView(profile: activeProfile)
             }
         }
@@ -942,7 +942,7 @@ struct TimelineItem: View {
 }
 
 struct EmptyTimelineView: View {
-    @Environment(\.dataManager) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var showingGradingManagement = false
     
     var body: some View {
@@ -975,7 +975,7 @@ struct EmptyTimelineView: View {
                 .fill(Color(UIColor.tertiarySystemBackground))
         )
         .sheet(isPresented: $showingGradingManagement) {
-            if let activeProfile = dataManager.profileService.getActiveProfile() {
+            if let activeProfile = dataServices.profileService.getActiveProfile() {
                 GradingHistoryManagementView(profile: activeProfile)
             }
         }

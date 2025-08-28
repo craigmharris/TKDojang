@@ -20,7 +20,7 @@ import SwiftData
  */
 
 struct ProfileSwitcher: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     
     @State private var profiles: [UserProfile] = []
     @State private var activeProfile: UserProfile?
@@ -83,9 +83,8 @@ struct ProfileSwitcher: View {
         .onAppear {
             loadProfiles()
         }
-        .onChange(of: dataManager.profileService.activeProfile) {
-            loadProfiles()
-        }
+        // Note: onChange listener removed to prevent early DataManager initialization
+        // Profile changes will be handled through manual refresh when needed
         .sheet(isPresented: $showingProfileManagement) {
             ProfileManagementView()
                 .onDisappear {
@@ -103,8 +102,8 @@ struct ProfileSwitcher: View {
     
     private func loadProfiles() {
         do {
-            profiles = try dataManager.profileService.getAllProfiles()
-            activeProfile = dataManager.profileService.getActiveProfile()
+            profiles = try dataServices.profileService.getAllProfiles()
+            activeProfile = dataServices.profileService.getActiveProfile()
         } catch {
             errorMessage = "Failed to load profiles: \(error.localizedDescription)"
             showingError = true
@@ -113,7 +112,7 @@ struct ProfileSwitcher: View {
     
     private func switchToProfile(_ profile: UserProfile) {
         do {
-            try dataManager.profileService.activateProfile(profile)
+            try dataServices.profileService.activateProfile(profile)
             loadProfiles()
         } catch {
             errorMessage = "Failed to switch profile: \(error.localizedDescription)"
@@ -236,5 +235,4 @@ struct CompactProfileCard: View {
                 }
         }
     }
-    .withDataContext()
 }
