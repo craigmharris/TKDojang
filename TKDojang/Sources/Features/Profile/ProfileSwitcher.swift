@@ -29,20 +29,26 @@ struct ProfileSwitcher: View {
     @State private var showingError = false
     
     var body: some View {
+        let _ = print("🔄 ProfileSwitcher: Rendering menu with \(profiles.count) profiles, active: \(activeProfile?.name ?? "none")")
+        
         Menu {
             // All Profiles with Current Selection Indicator
             Section("Family Profiles") {
                 ForEach(profiles) { profile in
-                    Button {
-                        if !profile.isActive {
+                    Button(action: {
+                        let isCurrentlyActive = (activeProfile?.id == profile.id)
+                        print("🔍 ProfileSwitcher: Tapped profile \(profile.name), isCurrentlyActive: \(isCurrentlyActive)")
+                        if !isCurrentlyActive {
                             switchToProfile(profile)
+                        } else {
+                            print("⚠️ ProfileSwitcher: Profile \(profile.name) is already active, ignoring tap")
                         }
-                    } label: {
+                    }) {
                         HStack {
                             Label {
                                 VStack(alignment: .leading) {
                                     Text(profile.name)
-                                        .fontWeight(profile.isActive ? .semibold : .regular)
+                                        .fontWeight((activeProfile?.id == profile.id) ? .semibold : .regular)
                                     Text(profile.currentBeltLevel.shortName)
                                         .font(.caption)
                                         .foregroundColor(.secondary)
@@ -55,14 +61,13 @@ struct ProfileSwitcher: View {
                             Spacer()
                             
                             // Current selection indicator
-                            if profile.isActive {
+                            if activeProfile?.id == profile.id {
                                 Image(systemName: "checkmark.circle.fill")
                                     .foregroundColor(.green)
                                     .font(.system(size: 16))
                             }
                         }
                     }
-                    .disabled(profile.isActive) // Disable tapping on current profile
                 }
             }
             
@@ -83,8 +88,9 @@ struct ProfileSwitcher: View {
         .onAppear {
             loadProfiles()
         }
-        // Note: onChange listener removed to prevent early DataManager initialization
-        // Profile changes will be handled through manual refresh when needed
+        .onReceive(dataServices.objectWillChange) { _ in
+            loadProfiles()
+        }
         .sheet(isPresented: $showingProfileManagement) {
             ProfileManagementView()
                 .onDisappear {
@@ -104,6 +110,7 @@ struct ProfileSwitcher: View {
         do {
             profiles = try dataServices.profileService.getAllProfiles()
             activeProfile = dataServices.profileService.getActiveProfile()
+            print("🔄 ProfileSwitcher: Loaded \(profiles.count) profiles, active: \(activeProfile?.name ?? "none")")
         } catch {
             errorMessage = "Failed to load profiles: \(error.localizedDescription)"
             showingError = true
@@ -112,9 +119,17 @@ struct ProfileSwitcher: View {
     
     private func switchToProfile(_ profile: UserProfile) {
         do {
+            print("🔄 ProfileSwitcher: Switching to profile: \(profile.name)")
             try dataServices.profileService.activateProfile(profile)
+            
+            // Immediately update local state
             loadProfiles()
+            
+            // Notify other views
+            dataServices.objectWillChange.send()
+            print("✅ ProfileSwitcher: Profile switch completed")
         } catch {
+            print("❌ ProfileSwitcher: Failed to switch profile: \(error)")
             errorMessage = "Failed to switch profile: \(error.localizedDescription)"
             showingError = true
         }

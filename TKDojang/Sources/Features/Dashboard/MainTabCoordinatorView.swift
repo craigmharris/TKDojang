@@ -105,8 +105,10 @@ struct DashboardView: View {
             }
             .onAppear {
                 loadUserProfile()
-                // Note: onChange listeners removed to prevent early DataManager initialization
-                // Profile changes will be handled through manual refresh or navigation patterns
+            }
+            .onReceive(dataServices.objectWillChange) { _ in
+                // Refresh profile when DataServices changes (e.g., profile switch)
+                loadUserProfile()
             }
         }
     }
@@ -1630,7 +1632,7 @@ struct ProfileView: View {
                                 .foregroundColor(.secondary)
                         }
                         
-                        ProfileGridView(profiles: allProfiles, currentProfile: userProfile)
+                        ProfileGridView(profiles: allProfiles, currentProfile: userProfile, onProfileSwitch: switchToProfile)
                         
                         if allProfiles.count < 6 {
                             Button("Add New Profile") {
@@ -1668,7 +1670,10 @@ struct ProfileView: View {
             .navigationBarTitleDisplayMode(.large)
             .onAppear {
                 loadProfiles()
-                // Note: onChange listener removed to prevent early DataManager initialization
+            }
+            .onReceive(dataServices.objectWillChange) { _ in
+                // Refresh profiles when DataServices changes (e.g., profile switch)
+                loadProfiles()
             }
             .sheet(isPresented: $showingProfileManagement) {
                 ProfileManagementView()
@@ -1690,6 +1695,23 @@ struct ProfileView: View {
         } catch {
             print("❌ Failed to load profiles: \(error)")
             allProfiles = []
+        }
+    }
+    
+    private func switchToProfile(_ profile: UserProfile) {
+        do {
+            print("🔄 ProfileGridView: Switching to profile: \(profile.name)")
+            try dataServices.profileService.activateProfile(profile)
+            
+            // Immediately refresh the parent view's data
+            loadProfiles()
+            
+            // Notify other views of the change
+            dataServices.objectWillChange.send()
+            
+            print("✅ ProfileGridView: Profile switch completed, UI should update")
+        } catch {
+            print("❌ Failed to switch profile: \(error)")
         }
     }
 }
@@ -1755,6 +1777,7 @@ struct ProfileHeaderCard: View {
 struct ProfileGridView: View {
     let profiles: [UserProfile]
     let currentProfile: UserProfile?
+    let onProfileSwitch: (UserProfile) -> Void
     @EnvironmentObject private var dataServices: DataServices
     
     var body: some View {
@@ -1763,17 +1786,9 @@ struct ProfileGridView: View {
                 ProfileGridCard(
                     profile: profile,
                     isActive: profile.id == currentProfile?.id,
-                    onTap: { switchToProfile(profile) }
+                    onTap: { onProfileSwitch(profile) }
                 )
             }
-        }
-    }
-    
-    private func switchToProfile(_ profile: UserProfile) {
-        do {
-            try dataServices.profileService.activateProfile(profile)
-        } catch {
-            print("❌ Failed to switch profile: \(error)")
         }
     }
 }

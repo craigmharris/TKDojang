@@ -63,6 +63,10 @@ class DataServices: ObservableObject {
         return dataManager.progressCacheService
     }
     
+    var profileExportService: ProfileExportService {
+        return dataManager.profileExportService
+    }
+    
     // MARK: - DataManager Methods
     
     func getOrCreateDefaultUserProfile() -> UserProfile {

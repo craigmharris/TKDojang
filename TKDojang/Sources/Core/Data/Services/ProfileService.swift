@@ -27,7 +27,11 @@ class ProfileService {
     private let maxProfiles = 6
     
     // Current active profile (cached for performance)
-    private(set) var activeProfile: UserProfile?
+    // Made internal to ensure proper @Observable triggering
+    var activeProfile: UserProfile?
+    
+    // Export service for automatic backups
+    var exportService: ProfileExportService?
     
     // Progress cache service for automatic cache updates
     weak var progressCacheService: ProgressCacheService?
@@ -85,6 +89,9 @@ class ProfileService {
         modelContext.insert(profile)
         try modelContext.save()
         
+        // TEMPORARILY DISABLED: Auto-backup to prevent SwiftData crashes during testing
+        // exportService?.autoBackupProfile(profile)
+        
         // Activate if this is the first profile or if requested
         if existingProfiles.isEmpty {
             try activateProfile(profile)
@@ -134,6 +141,9 @@ class ProfileService {
         if let newLearningMode = learningMode { profile.learningMode = newLearningMode }
         
         try modelContext.save()
+        
+        // TEMPORARILY DISABLED: Auto-backup to prevent SwiftData crashes during testing
+        // exportService?.autoBackupProfile(profile)
         
         print("✅ Updated profile: \(profile.name)")
     }
@@ -188,6 +198,15 @@ class ProfileService {
         activeProfile = profile
         
         try modelContext.save()
+        
+        // Trigger change notifications for UI updates
+        Task { @MainActor in
+            // Update progress cache if profile changed
+            await progressCacheService?.refreshCache(for: profile.id)
+        }
+        
+        // TEMPORARILY DISABLED: Auto-backup to prevent SwiftData crashes during testing
+        // exportService?.autoBackupProfile(profile)
         
         print("🔄 Activated profile: \(profile.name)")
     }
@@ -279,6 +298,10 @@ class ProfileService {
         active.recordActivity(studyTime: session.duration)
         
         try modelContext.save()
+        
+        // TEMPORARILY DISABLED: Auto-backup after study session to prevent SwiftData crashes
+        // TODO: Re-enable once SwiftData relationship invalidation issues are resolved
+        // exportService?.autoBackupProfile(active)
         
         // Trigger progress cache update for the active profile
         Task {

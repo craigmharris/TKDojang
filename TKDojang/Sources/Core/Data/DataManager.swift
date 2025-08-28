@@ -30,6 +30,7 @@ class DataManager {
     private(set) var profileService: ProfileService
     private(set) var stepSparringService: StepSparringDataService
     private(set) var progressCacheService: ProgressCacheService
+    private(set) var profileExportService: ProfileExportService
     
     // Track database reset state to trigger UI refresh
     private(set) var databaseResetId = UUID()
@@ -85,9 +86,13 @@ class DataManager {
             self.progressCacheService = ProgressCacheService(modelContext: container.mainContext)
             self.profileService = ProfileService(modelContext: container.mainContext)
             self.stepSparringService = StepSparringDataService(modelContext: container.mainContext)
+            self.profileExportService = ProfileExportService(modelContext: container.mainContext)
             
             // Connect ProfileService to ProgressCacheService for cache updates
             self.profileService.progressCacheService = self.progressCacheService
+            
+            // Connect ProfileService to ProfileExportService for automatic backups
+            self.profileService.exportService = self.profileExportService
             
             // Note: Initial data setup will be handled by AppCoordinator
             print("✅ DataManager initialization complete - \(Date())")

@@ -115,6 +115,10 @@ struct UserSettingsView: View {
         .onAppear {
             loadCurrentSettings()
         }
+        .onReceive(dataServices.objectWillChange) { _ in
+            // Refresh when the data services change (e.g., profile switch)
+            loadCurrentSettings()
+        }
     }
     
     // MARK: - Computed Properties
@@ -155,7 +159,13 @@ struct UserSettingsView: View {
     // MARK: - Helper Methods
     
     private func loadCurrentSettings() {
-        userProfile = dataServices.getOrCreateDefaultUserProfile()
+        // Use ProfileService to get the active profile instead of cached method
+        userProfile = dataServices.profileService.getActiveProfile()
+        
+        // If no active profile, create one using the DataManager method
+        if userProfile == nil {
+            userProfile = dataServices.getOrCreateDefaultUserProfile()
+        }
         
         if let profile = userProfile {
             selectedBeltLevelId = profile.currentBeltLevel.id
