@@ -19,11 +19,11 @@ struct PatternPracticeView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var currentMoveIndex = 0
-    @State private var isPracticing = false
     @State private var userProfile: UserProfile?
     @State private var practiceStartTime = Date()
     @State private var showingCompleteDialog = false
     @State private var practiceAccuracy: Double = 0.0
+    @State private var userProgress: UserPatternProgress?
     
     private var currentMove: PatternMove? {
         guard currentMoveIndex < pattern.orderedMoves.count else { return nil }
@@ -39,23 +39,22 @@ struct PatternPracticeView: View {
             // Progress header
             progressHeader
             
-            // Main content
+            // Main content - optimized for single screen viewing
             if let move = currentMove {
-                ScrollView {
-                    VStack(spacing: 24) {
-                        // Move overview card
-                        moveOverviewCard(move: move)
-                        
-                        // Move image (if available)
-                        moveImageSection(move: move)
-                        
-                        // Detailed instructions
+                VStack(spacing: 12) {
+                    // Move overview card
+                    moveOverviewCard(move: move)
+                        .padding(.horizontal)
+                    
+                    // Detailed instructions in compact scrollable layout
+                    ScrollView {
                         moveInstructionsSection(move: move)
-                        
-                        // Navigation and practice controls
-                        practiceControls
+                            .padding(.horizontal)
                     }
-                    .padding()
+                    
+                    // Navigation controls - fixed at bottom
+                    practiceControls
+                        .padding(.bottom, 8)
                 }
             } else {
                 // Completion state
@@ -99,9 +98,9 @@ struct PatternPracticeView: View {
                 
                 Spacer()
                 
-                if isPracticing {
+                if false { // Practice mode removed
                     Button("Pause") {
-                        isPracticing = false
+                        // Practice mode removed
                     }
                     .font(.subheadline)
                     .padding(.horizontal, 16)
@@ -191,77 +190,33 @@ struct PatternPracticeView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
     
-    // MARK: - Move Image Section
-    
-    private func moveImageSection(move: PatternMove) -> some View {
-        Group {
-            if let imageURL = move.imageURL, !imageURL.isEmpty {
-                AsyncImage(url: URL(string: imageURL)) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                } placeholder: {
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.2))
-                        .frame(height: 200)
-                        .overlay(
-                            VStack {
-                                Image(systemName: "photo")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.gray)
-                                Text("Loading move image...")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                            }
-                        )
-                }
-                .frame(maxHeight: 250)
-                .cornerRadius(12)
-            } else {
-                Rectangle()
-                    .fill(Color.gray.opacity(0.1))
-                    .frame(height: 200)
-                    .overlay(
-                        VStack {
-                            Image(systemName: "figure.martial.arts")
-                                .font(.largeTitle)
-                                .foregroundColor(.gray)
-                            Text("Move Image Coming Soon")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                        }
-                    )
-                    .cornerRadius(12)
-            }
-        }
-    }
     
     // MARK: - Move Instructions Section
     
     private func moveInstructionsSection(move: PatternMove) -> some View {
-        VStack(alignment: .leading, spacing: 20) {
-            // Key points
-            instructionCard(
+        VStack(alignment: .leading, spacing: 12) {
+            // Key points - always shown, compact
+            compactInstructionCard(
                 title: "Key Points",
                 content: move.keyPoints,
                 icon: "target",
                 color: .blue
             )
             
-            // Common mistakes (if available)
+            // Common mistakes (if available) - compact
             if let mistakes = move.commonMistakes, !mistakes.isEmpty {
-                instructionCard(
-                    title: "Common Mistakes",
+                compactInstructionCard(
+                    title: "Avoid",
                     content: mistakes,
                     icon: "exclamationmark.triangle",
                     color: .orange
                 )
             }
             
-            // Execution notes (if available)
+            // Execution notes (if available) - compact
             if let notes = move.executionNotes, !notes.isEmpty {
-                instructionCard(
-                    title: "Execution Notes",
+                compactInstructionCard(
+                    title: "Tips",
                     content: notes,
                     icon: "lightbulb",
                     color: .green
@@ -270,71 +225,60 @@ struct PatternPracticeView: View {
         }
     }
     
-    private func instructionCard(title: String, content: String, icon: String, color: Color) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
+    private func compactInstructionCard(title: String, content: String, icon: String, color: Color) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(spacing: 6) {
                 Image(systemName: icon)
+                    .font(.caption)
                     .foregroundColor(color)
                 Text(title)
-                    .font(.headline)
+                    .font(.subheadline)
                     .fontWeight(.semibold)
                 Spacer()
             }
             
             Text(content)
-                .font(.body)
+                .font(.subheadline)
                 .fixedSize(horizontal: false, vertical: true)
+                .lineLimit(4)
+                .minimumScaleFactor(0.9)
         }
-        .padding()
+        .padding(8)
         .background(Color(.systemBackground))
-        .cornerRadius(12)
+        .cornerRadius(6)
         .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(color.opacity(0.3), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 6)
+                .stroke(color.opacity(0.2), lineWidth: 0.5)
         )
     }
     
     // MARK: - Practice Controls
     
     private var practiceControls: some View {
-        VStack(spacing: 16) {
-            // Primary action button
-            if !isPracticing {
-                Button("Start Practice") {
-                    startPractice()
-                }
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.green)
-                .cornerRadius(12)
+        HStack(spacing: 16) {
+            Button("Previous Move") {
+                previousMove()
             }
+            .disabled(currentMoveIndex == 0)
+            .buttonStyle(.bordered)
+            .frame(maxWidth: .infinity)
             
-            // Navigation buttons
-            HStack(spacing: 16) {
-                Button("Previous Move") {
-                    previousMove()
+            if isLastMove {
+                Button("Complete Pattern") {
+                    completePattern()
                 }
-                .disabled(currentMoveIndex == 0)
-                .buttonStyle(.bordered)
+                .buttonStyle(.borderedProminent)
+                .tint(.green)
                 .frame(maxWidth: .infinity)
-                
-                if isLastMove {
-                    Button("Complete Pattern") {
-                        completePattern()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-                } else {
-                    Button("Next Move") {
-                        nextMove()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
+            } else {
+                Button("Next Move") {
+                    nextMove()
                 }
+                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: .infinity)
             }
         }
+        .padding(.horizontal)
     }
     
     // MARK: - Completion View
@@ -379,17 +323,23 @@ struct PatternPracticeView: View {
     
     private func loadUserProfile() {
         userProfile = dataServices.getOrCreateDefaultUserProfile()
+        if let profile = userProfile {
+            // Load or create pattern progress
+            userProgress = dataServices.patternService.getUserProgress(for: pattern, userProfile: profile)
+            // Set current move index to last practiced position (0-based vs 1-based)
+            if let progress = userProgress, progress.currentMove > 1 {
+                currentMoveIndex = max(0, progress.currentMove - 1)
+            }
+        }
     }
     
-    private func startPractice() {
-        isPracticing = true
-        practiceStartTime = Date()
-    }
     
     private func nextMove() {
         if currentMoveIndex < pattern.orderedMoves.count - 1 {
             withAnimation(.easeInOut(duration: 0.3)) {
                 currentMoveIndex += 1
+                // Update pattern progress in database
+                updatePatternProgress()
             }
         }
     }
@@ -398,6 +348,8 @@ struct PatternPracticeView: View {
         if currentMoveIndex > 0 {
             withAnimation(.easeInOut(duration: 0.3)) {
                 currentMoveIndex -= 1
+                // Update pattern progress in database
+                updatePatternProgress()
             }
         }
     }
@@ -408,29 +360,59 @@ struct PatternPracticeView: View {
     
     private func restartPractice() {
         currentMoveIndex = 0
-        isPracticing = false
+        // Practice mode removed
         practiceStartTime = Date()
         showingCompleteDialog = false
     }
     
     private func endPractice() {
+        // Save current progress before leaving
+        updatePatternProgress()
         dismiss()
     }
     
-    private func recordPracticeSession() {
-        let practiceTime = Date().timeIntervalSince(practiceStartTime)
-        let movesCompleted = currentMoveIndex + 1
-        let totalMoves = pattern.orderedMoves.count
+    private func updatePatternProgress() {
+        guard let progress = userProgress else { return }
         
+        // Update to current move (1-based indexing in database)
+        progress.currentMove = currentMoveIndex + 1
+        progress.lastPracticedAt = Date()
+        
+        // Note: Progress is automatically tracked via SwiftData model changes
+    }
+    
+    private func recordPracticeSession() {
+        guard let profile = userProfile else { return }
+        
+        let practiceTime = Date().timeIntervalSince(practiceStartTime)
+        let totalMoves = pattern.orderedMoves.count
+        let completionAccuracy = 1.0 // Assume 100% for completing the pattern
+        
+        // Record in pattern service with proper accuracy and completion
+        dataServices.patternService.recordPracticeSession(
+            pattern: pattern,
+            userProfile: profile,
+            accuracy: completionAccuracy,
+            practiceTime: practiceTime
+        )
+        
+        // Update pattern progress to show full completion
+        if let progress = userProgress {
+            progress.currentMove = totalMoves // Mark as fully completed
+            
+            // Note: Pattern completion is tracked automatically
+        }
+        
+        // Also record in general study session tracking
         do {
             try dataServices.profileService.recordStudySession(
                 sessionType: .patterns,
                 itemsStudied: totalMoves,
-                correctAnswers: movesCompleted,
+                correctAnswers: totalMoves, // Full pattern completed
                 focusAreas: [pattern.name]
             )
         } catch {
-            print("❌ Failed to record pattern practice session: \(error)")
+            print("❌ Failed to record pattern study session: \(error)")
         }
     }
 }
