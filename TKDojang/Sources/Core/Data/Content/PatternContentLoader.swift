@@ -35,6 +35,8 @@ struct PatternContentLoader {
         loadPatternContent(filename: "3rd_keup_patterns")
         loadPatternContent(filename: "2nd_keup_patterns")
         loadPatternContent(filename: "1st_keup_patterns")
+        loadPatternContent(filename: "1st_dan_patterns")
+        loadPatternContent(filename: "2nd_dan_patterns")
     }
     
     /**
@@ -116,9 +118,12 @@ struct PatternContentLoader {
             
             // Create patterns from JSON data
             for patternData in contentData.patterns {
+                print("🔍 DEBUG: Creating pattern '\(patternData.name)' with \(patternData.moves.count) moves from JSON")
                 let pattern = createPattern(from: patternData, beltLevelDict: beltLevelDict)
+                print("🔍 DEBUG: Pattern object created: '\(pattern.name)' has \(pattern.moves.count) moves")
                 // Use the service method instead of direct modelContext access
                 savePattern(pattern)
+                print("🔍 DEBUG: Pattern saved: '\(pattern.name)' - final move count: \(pattern.moves.count)")
             }
             print("✅ Successfully loaded \(contentData.patterns.count) patterns from \(filename)")
             

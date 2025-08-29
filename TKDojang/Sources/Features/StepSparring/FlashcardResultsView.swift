@@ -64,7 +64,7 @@ struct FlashcardResultsView: View {
                     VStack(spacing: 12) {
                         // Review incorrect terms (if any)
                         if !incorrectTerms.isEmpty {
-                            NavigationLink(destination: FlashcardView(specificTerms: incorrectTerms)) {
+                            NavigationLink(destination: FlashcardConfigurationView(specificTerms: incorrectTerms)) {
                                 HStack {
                                     Image(systemName: "arrow.clockwise")
                                     Text("Review Missed Terms (\(incorrectTerms.count))")
@@ -115,7 +115,7 @@ struct FlashcardResultsView: View {
                 }
             }
             .navigationDestination(isPresented: $showingNewSession) {
-                FlashcardView()
+                FlashcardConfigurationView(specificTerms: nil)
             }
         }
     }

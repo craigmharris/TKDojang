@@ -145,32 +145,25 @@ class AppCoordinator: ObservableObject {
         
         let dataManager = DataManager.shared
         
-        // Check if we need to seed initial data
+        // Always ensure content is synchronized with JSON files
         do {
             let descriptor = FetchDescriptor<BeltLevel>()
             let existingBeltLevels = try DataManager.shared.modelContainer.mainContext.fetch(descriptor)
             
             if existingBeltLevels.isEmpty {
-                print("🗃️ Database is empty, loading initial content...")
+                print("🗃️ Database is empty, loading all initial content from JSON...")
                 
                 // Load terminology and belt data
                 let modularLoader = ModularContentLoader(dataService: DataManager.shared.terminologyService)
                 modularLoader.loadCompleteSystem()
                 print("✅ Terminology and belt data loaded")
-                
-                // Load patterns (must be on main thread for SwiftData)
-                let allBelts = try DataManager.shared.modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
-                print("🥋 Loading patterns for \(allBelts.count) belt levels...")
-                DataManager.shared.patternService.seedInitialPatterns(beltLevels: allBelts)
-                
-                // Load step sparring
-                print("🥊 Loading step sparring sequences...")
-                DataManager.shared.stepSparringService.seedInitialSequences()
-                
-                print("✅ Initial data loading complete")
             } else {
-                print("✅ Database already has \(existingBeltLevels.count) belt levels, skipping initialization - \(Date())")
+                print("✅ Database already has \(existingBeltLevels.count) belt levels, running content synchronization...")
             }
+            
+            // Always ensure content is synchronized
+            await DataManager.shared.setupInitialData()
+            print("✅ Content synchronization complete")
         } catch {
             print("❌ Failed to initialize app data: \(error)")
             // Continue anyway - app can still function with empty database

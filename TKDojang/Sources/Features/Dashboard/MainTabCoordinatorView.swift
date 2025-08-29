@@ -446,7 +446,7 @@ struct LearnView: View {
                 Spacer()
                 
                 VStack(spacing: 16) {
-                    NavigationLink(destination: FlashcardView()) {
+                    NavigationLink(destination: FlashcardConfigurationView(specificTerms: nil)) {
                         HStack {
                             Image(systemName: "rectangle.on.rectangle")
                                 .frame(width: 24)

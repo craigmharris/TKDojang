@@ -380,6 +380,27 @@ class PatternDataService {
     }
     
     /**
+     * Clears all patterns and reloads from JSON
+     */
+    func clearAndReloadPatterns() {
+        // Delete all existing patterns
+        do {
+            try modelContext.delete(model: Pattern.self)
+            try modelContext.delete(model: PatternMove.self)
+            try modelContext.save()
+            print("🔄 Cleared all patterns from database")
+            
+            // Reload patterns from JSON
+            let loader = PatternContentLoader(patternService: self)
+            loader.loadAllContent()
+            print("🔄 Reloaded patterns from JSON")
+            
+        } catch {
+            print("❌ Failed to clear and reload patterns: \(error)")
+        }
+    }
+    
+    /**
      * Gets all belt levels for pattern association
      */
     func getAllBeltLevels() -> [BeltLevel] {

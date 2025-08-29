@@ -67,6 +67,10 @@ class DataServices: ObservableObject {
         return dataManager.profileExportService
     }
     
+    var leitnerService: LeitnerService {
+        return dataManager.leitnerService
+    }
+    
     // MARK: - DataManager Methods
     
     func getOrCreateDefaultUserProfile() -> UserProfile {
