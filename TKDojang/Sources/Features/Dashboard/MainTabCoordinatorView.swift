@@ -1206,7 +1206,7 @@ struct PatternCard: View {
                 
                 // Progress indicator if user has started this pattern
                 if let progress = userProgress {
-                    PatternProgressIndicator(progress: progress)
+                    PatternProgressIndicator(progress: progress, pattern: pattern)
                 }
                 
                 // Belt level indicator
@@ -1255,8 +1255,17 @@ struct PatternCard: View {
 
 // MARK: - Pattern Progress Indicator
 
+/**
+ * PatternProgressIndicator: Belt-themed progress display for pattern list
+ * 
+ * FEATURES:
+ * - Shows "Completed" in green when pattern reaches 100% progress
+ * - Uses BeltProgressBar with proper belt colors and tag belt striping
+ * - Consistent visual design with PatternPracticeView progress display
+ */
 struct PatternProgressIndicator: View {
     let progress: UserPatternProgress
+    let pattern: Pattern
     
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -1267,24 +1276,17 @@ struct PatternProgressIndicator: View {
                 
                 Spacer()
                 
-                Text(progress.masteryLevel.displayName)
+                Text(progress.progressPercentage >= 100.0 ? "Completed" : progress.masteryLevel.displayName)
                     .font(.caption)
                     .fontWeight(.medium)
-                    .foregroundColor(colorForMastery(progress.masteryLevel))
+                    .foregroundColor(progress.progressPercentage >= 100.0 ? .green : colorForMastery(progress.masteryLevel))
             }
             
-            GeometryReader { geometry in
-                ZStack(alignment: .leading) {
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(height: 4)
-                    
-                    Rectangle()
-                        .fill(colorForMastery(progress.masteryLevel))
-                        .frame(width: geometry.size.width * (progress.progressPercentage / 100.0), height: 4)
-                }
-            }
-            .frame(height: 4)
+            BeltProgressBar(
+                progress: progress.progressPercentage / 100.0,
+                theme: BeltTheme(from: pattern.primaryBeltLevel ?? pattern.beltLevels.first!)
+            )
+            .frame(height: 6)
         }
     }
     

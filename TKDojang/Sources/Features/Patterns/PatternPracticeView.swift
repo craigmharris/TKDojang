@@ -6,11 +6,17 @@ import SwiftUI
  * PURPOSE: Interactive pattern practice interface with step-by-step guidance
  * 
  * FEATURES:
- * - Step-by-step move navigation
- * - Move descriptions and key points
- * - Progress tracking through the pattern
+ * - Step-by-step move navigation with optimized single-screen layout
+ * - Move descriptions and key points in compact instruction cards
+ * - Belt-themed progress tracking with BeltProgressBar
  * - Visual feedback for current position
  * - Integration with user progress system
+ * - Complete Pattern navigation: "Record Progress" returns to list, "Practice Again" restarts
+ * 
+ * RECENT ENHANCEMENTS:
+ * - Replaced plain progress bar with belt-themed design showing proper tag belt colors
+ * - Streamlined navigation controls with proper completion dialog behavior
+ * - Optimized layout to fit pattern practice on single screen without scrolling
  */
 
 struct PatternPracticeView: View {
@@ -111,18 +117,11 @@ struct PatternPracticeView: View {
                 }
             }
             
-            // Visual progress
-            GeometryReader { geometry in
-                ZStack(alignment: .leading) {
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(height: 6)
-                    
-                    Rectangle()
-                        .fill(Color.blue)
-                        .frame(width: geometry.size.width * progressPercentage, height: 6)
-                }
-            }
+            // Visual progress - belt-themed design
+            BeltProgressBar(
+                progress: progressPercentage,
+                theme: BeltTheme(from: pattern.primaryBeltLevel ?? pattern.beltLevels.first!)
+            )
             .frame(height: 6)
         }
         .padding()
@@ -359,10 +358,13 @@ struct PatternPracticeView: View {
     }
     
     private func restartPractice() {
+        // Reset to first move (move 1)
         currentMoveIndex = 0
-        // Practice mode removed
         practiceStartTime = Date()
         showingCompleteDialog = false
+        
+        // Update pattern progress to reflect restart at move 1
+        updatePatternProgress()
     }
     
     private func endPractice() {
@@ -414,6 +416,9 @@ struct PatternPracticeView: View {
         } catch {
             print("❌ Failed to record pattern study session: \(error)")
         }
+        
+        // Return to pattern list after recording progress
+        dismiss()
     }
 }
 
