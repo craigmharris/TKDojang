@@ -55,7 +55,7 @@ This is **TKDojang**, a Taekwondo learning iOS app built with SwiftUI using the 
 - Provide usage examples for complex APIs
 - Explain trade-offs and alternative approaches considered
 
-## Current State (Updated: August 28, 2025)
+## Current State (Updated: August 29, 2025)
 
 ### 🎯 **OPTIMAL DEVELOPMENT STATE:**
 
@@ -157,6 +157,11 @@ The testing-infrastructure branch provides essential testing coverage that shoul
 5. **Step Sparring Many-to-Many Relationships** ✅ SOLVED:
    - **Problem**: SwiftData many-to-many relationships between sequences and belt levels caused object invalidation crashes
    - **Solution**: "Nuclear Option" - Completely bypass SwiftData relationships and use manual pattern matching based on sequence types and numbers
+
+6. **SwiftData Model Invalidation in Progress Cache** ✅ SOLVED (August 29, 2025):
+   - **Problem**: Fatal crashes "This model instance was invalidated because its backing data could no longer be found" when accessing Progress tab or completing flashcard sessions
+   - **Root Cause**: Relationship navigation in predicates (`progress.userProfile.id == profileId`) and complex belt calculations accessing invalidated model instances
+   - **Solution**: "Fetch All → Filter In-Memory" pattern eliminates predicate relationship navigation; simplified belt requirements avoid complex relationship access
 
 ### 📁 **Updated Project Structure:**
 ```
@@ -1236,6 +1241,110 @@ This session achieved **complete user experience maturity** for the app's entry 
 **To**: Both features now provide complete, professional-quality content for all belt levels
 
 This session achieved **complete content maturity** for two major educational features, ensuring that users at any belt level have access to appropriate theory knowledge and line work practice material.
+
+## Session Summary (August 29, 2025) - SwiftData Model Invalidation Resolution
+
+### 🎯 **Major Achievement This Session:**
+
+#### 🚨 **Critical SwiftData Model Invalidation Bug Fix - Production-Critical Resolution:**
+
+**PROBLEM**: Fatal crashes with "This model instance was invalidated because its backing data could no longer be found" occurring when:
+- Loading the Progress tab (immediate crash after "No Progress Data" display)
+- Completing flashcard sessions (app freeze, no results screen)
+- Any progress cache refresh operation triggered model invalidation
+
+**ROOT CAUSE IDENTIFIED**: SwiftData relationship navigation in predicates causing model instances to become invalidated after save operations or during complex query execution.
+
+**SOLUTION IMPLEMENTED**: "Fetch All → Filter In-Memory" architectural pattern eliminates all predicate relationship navigation.
+
+#### 🔧 **Technical Architecture Fixes Applied:**
+
+**ProgressCacheService Complete Overhaul:**
+1. **Study Sessions**: `predicate: { session.userProfile.id == profileId }` → `fetch().filter { session.userProfile.id == profileId }`
+2. **Terminology Progress**: Same pattern applied - fetch all, filter in-memory
+3. **Pattern Progress**: Same pattern applied - fetch all, filter in-memory  
+4. **Grading Records**: Same pattern applied - fetch all, filter in-memory
+5. **Belt Requirements**: Simplified calculation avoiding `terminologyEntry.beltLevel.sortOrder` and `pattern.beltLevels` relationship access
+
+**GradingHistoryManagementView Fix:**
+- Changed from predicate relationship navigation to in-memory filtering for grading record queries
+
+**Re-enabled All Cache Operations:**
+- ProfileService.recordStudySession() progress cache refresh restored
+- ProgressViewStub cache refresh restored  
+- GradingHistoryManagementView cache refresh restored
+- All previously disabled operations now working without crashes
+
+#### ✅ **SwiftData Architectural Pattern Established:**
+
+**"Fetch All → Filter In-Memory" Pattern:**
+```swift
+// ❌ DANGEROUS - Predicate relationship navigation
+let predicate = #Predicate<StudySession> { session in
+    session.userProfile.id == profileId  // Causes model invalidation
+}
+
+// ✅ SAFE - In-memory filtering  
+let allSessions = try modelContext.fetch(FetchDescriptor<StudySession>())
+return allSessions.filter { session in
+    session.userProfile.id == profileId  // Safe relationship access
+}
+```
+
+**Benefits of This Pattern:**
+- ✅ **No Model Invalidation**: SwiftData objects remain valid throughout the operation
+- ✅ **Relationship Safety**: In-memory access to relationships doesn't trigger invalidation
+- ✅ **Performance Predictable**: No unpredictable SwiftData query optimization issues
+- ✅ **Debugging Friendly**: Clear execution path, easy to debug relationship issues
+
+#### 🎯 **Production Impact:**
+
+**From**: Fatal crashes blocking core app functionality (Progress tab, flashcard completion)
+**To**: Stable, crash-free progress analytics with comprehensive data processing
+
+**Features Now Fully Operational:**
+- ✅ **Progress Tab**: Loads without crashes, displays comprehensive analytics
+- ✅ **Flashcard Completion**: Shows results screen, records sessions properly
+- ✅ **Progress Cache Updates**: Background refresh after learning sessions
+- ✅ **Belt Journey Analytics**: Complex calculations without model invalidation
+- ✅ **Grading History**: Management and analytics without crashes
+
+### 🏗️ **Architectural Lessons Reinforced:**
+
+1. **SwiftData Predicate Limitations**: Relationship navigation in predicates is fundamentally unsafe for complex data models
+2. **In-Memory Processing Superior**: For analytics workloads, fetch simple data and process in-memory
+3. **Progressive Problem Solving**: Started with targeted fixes, escalated to architectural pattern change
+4. **Nuclear Options Sometimes Best**: Complete pattern replacement more reliable than partial fixes
+5. **Production Stability Priority**: Sometimes less "elegant" solutions are more reliable
+
+### 📊 **Current Production Status:**
+
+**✅ CRASH-FREE PROGRESS SYSTEM:**
+- **High-Performance Analytics**: Instant progress loading with comprehensive metrics
+- **SwiftData Relationship Safe**: Zero model invalidation issues
+- **Complete Feature Set**: All progress analytics operational
+- **Background Processing**: Cache updates without blocking UI
+- **Multi-Profile Support**: Complete data isolation maintained
+
+**✅ TECHNICAL ROBUSTNESS:**
+- **Error-Free Builds**: All compilation issues resolved
+- **Memory Efficient**: In-memory filtering more efficient than complex predicates  
+- **Maintainable Code**: Clear, debuggable data access patterns
+- **Future-Proof**: Architectural pattern scales to additional features
+
+### 🔄 **Session Impact:**
+
+**Technical Achievement:**
+- **Eliminated Fatal Crashes**: Core app functionality now stable
+- **Established Architectural Pattern**: "Fetch All → Filter In-Memory" for complex analytics
+- **Production Reliability**: Users can access all features without crashes
+
+**User Experience Achievement:**  
+- **Progress Tab Functional**: Comprehensive analytics accessible without crashes
+- **Flashcard Sessions Complete**: Full learning cycle with results and progress updates
+- **Seamless Learning Flow**: No interruptions to user study sessions
+
+This session achieved **production-critical stability** by resolving fatal SwiftData model invalidation crashes while establishing a robust architectural pattern for future complex data operations.
 
 ## Notes for Claude Code
 

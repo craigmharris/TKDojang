@@ -31,6 +31,7 @@ class DataManager {
     private(set) var stepSparringService: StepSparringDataService
     private(set) var progressCacheService: ProgressCacheService
     private(set) var profileExportService: ProfileExportService
+    private(set) var leitnerService: LeitnerService
     
     // Track database reset state to trigger UI refresh
     private(set) var databaseResetId = UUID()
@@ -87,6 +88,7 @@ class DataManager {
             self.profileService = ProfileService(modelContext: container.mainContext)
             self.stepSparringService = StepSparringDataService(modelContext: container.mainContext)
             self.profileExportService = ProfileExportService(modelContext: container.mainContext)
+            self.leitnerService = LeitnerService(modelContext: container.mainContext)
             
             // Connect ProfileService to ProgressCacheService for cache updates
             self.profileService.progressCacheService = self.progressCacheService
@@ -104,11 +106,11 @@ class DataManager {
     }
     
     /**
-     * Sets up initial data if the database is empty
+     * Sets up initial data and ensures content is synchronized with JSON files
      * 
-     * PURPOSE: Ensures the app has content to work with on first launch
+     * PURPOSE: Ensures the app has up-to-date content from JSON files
      */
-    private func setupInitialData() async {
+    func setupInitialData() async {
         print("🔍 DEBUG: setupInitialData() called")
         // Check if we need to seed initial data
         let descriptor = FetchDescriptor<BeltLevel>()
@@ -117,22 +119,23 @@ class DataManager {
             let existingBeltLevels = try modelContainer.mainContext.fetch(descriptor)
             
             if existingBeltLevels.isEmpty {
-                print("🗃️ Database is empty, loading modular TAGB content...")
+                print("🗃️ Database is empty, loading all content from JSON...")
+                
+                // Load belt levels and terminology
                 let modularLoader = ModularContentLoader(dataService: terminologyService)
                 modularLoader.loadCompleteSystem()
                 
-                // Load initial patterns after belt levels are created
-                let allBelts = try modelContainer.mainContext.fetch(FetchDescriptor<BeltLevel>())
-                patternService.seedInitialPatterns(beltLevels: allBelts)
+                // Load patterns from JSON
+                print("🥋 Loading patterns from JSON...")
+                let patternLoader = PatternContentLoader(patternService: patternService)
+                patternLoader.loadAllContent()
                 
-                // Load initial step sparring sequences
-                print("🥊 Loading initial step sparring sequences...")
-                stepSparringService.seedInitialSequences()
+                // Load step sparring from JSON  
+                print("🥊 Loading step sparring from JSON...")
+                let stepSparringLoader = StepSparringContentLoader(stepSparringService: stepSparringService)
+                stepSparringLoader.loadAllContent()
                 
-                // Verify sequences were created
-                let stepSparringDescriptor = FetchDescriptor<StepSparringSequence>()
-                let newSequences = try modelContainer.mainContext.fetch(stepSparringDescriptor)
-                print("✅ Loaded \(newSequences.count) step sparring sequences on initial setup")
+                print("✅ All JSON content loaded successfully")
             } else {
                 print("✅ Database already contains \(existingBeltLevels.count) belt levels")
                 // Debug: Check if belt levels have colors
@@ -151,52 +154,79 @@ class DataManager {
                     modularLoader.loadCompleteSystem()
                 }
                 
-                // Check if patterns exist, load if needed
-                let patternDescriptor = FetchDescriptor<Pattern>()
-                let existingPatterns = try modelContainer.mainContext.fetch(patternDescriptor)
-                if existingPatterns.isEmpty {
-                    print("🥋 No patterns found - loading initial patterns...")
-                    patternService.seedInitialPatterns(beltLevels: existingBeltLevels)
-                } else {
-                    print("✅ Database contains \(existingPatterns.count) patterns")
-                }
+            }
+            
+            // ALWAYS ensure patterns and step sparring are synchronized, regardless of belt level existence
+            print("🥋 Ensuring patterns are synchronized with JSON content...")
+            await ensurePatternsAreSynchronized()
+            
+            print("🥊 Ensuring step sparring is synchronized with JSON content...")
+            await ensureStepSparringIsSynchronized()
+        } catch {
+            print("❌ Failed to check existing data: \\(error)")
+        }
+    }
+    
+    /**
+     * Ensures patterns are properly synchronized with JSON content
+     */
+    private func ensurePatternsAreSynchronized() async {
+        let patternDescriptor = FetchDescriptor<Pattern>()
+        
+        do {
+            let existingPatterns = try modelContainer.mainContext.fetch(patternDescriptor)
+            
+            // Check if patterns exist but have no moves (indicating old hardcoded patterns)
+            let patternsWithoutMoves = existingPatterns.filter { $0.moves.isEmpty }
+            
+            if existingPatterns.isEmpty {
+                print("📚 No patterns found - loading from JSON...")
+                let loader = PatternContentLoader(patternService: patternService)
+                loader.loadAllContent()
+            } else if !patternsWithoutMoves.isEmpty {
+                print("⚠️ Found \(patternsWithoutMoves.count) patterns without moves - reloading from JSON...")
+                print("   Patterns without moves: \(patternsWithoutMoves.map { $0.name })")
                 
-                print("🔍 DEBUG: About to check step sparring sequences...")
+                // Clear all patterns and reload from JSON to ensure proper structure
+                patternService.clearAndReloadPatterns()
+            } else {
+                print("✅ Patterns are properly structured (\(existingPatterns.count) patterns with moves)")
                 
-                // Check if step sparring sequences exist, load if needed
-                let stepSparringDescriptor = FetchDescriptor<StepSparringSequence>()
-                let existingSequences = try modelContainer.mainContext.fetch(stepSparringDescriptor)
-                
-                print("🔍 DEBUG: DataManager found \(existingSequences.count) existing step sparring sequences in database")
-                
-                // TEMPORARY: Force reload to debug belt matching issue
-                if !existingSequences.isEmpty {
-                    print("🔄 TEMP DEBUG: Deleting existing sequences to force fresh load with debug logging")
-                    for sequence in existingSequences {
-                        modelContainer.mainContext.delete(sequence)
-                    }
-                    try modelContainer.mainContext.save()
-                }
-                
-                if existingSequences.isEmpty || true { // Force reload
-                    print("🥊 DEBUG: No step sparring sequences found - calling stepSparringService.seedInitialSequences()...")
-                    stepSparringService.seedInitialSequences()
-                    
-                    // Verify sequences were created
-                    let newSequences = try modelContainer.mainContext.fetch(stepSparringDescriptor)
-                    print("✅ DEBUG: DataManager reports \(newSequences.count) step sparring sequences after seeding")
-                } else {
-                    print("✅ DEBUG: DataManager reports database contains \(existingSequences.count) step sparring sequences")
-                    
-                    // Debug: Check belt level associations of existing sequences
-                    for sequence in existingSequences {
-                        let beltNames = sequence.beltLevels.map { $0.shortName }
-                        print("🔍 DEBUG: Sequence '\(sequence.name)' (#\(sequence.sequenceNumber)) has \(sequence.beltLevels.count) belts: \(beltNames)")
-                    }
+                // Verify a few patterns have moves
+                let sampledPatterns = existingPatterns.prefix(3)
+                for pattern in sampledPatterns {
+                    print("   \(pattern.name): \(pattern.moves.count) moves")
                 }
             }
         } catch {
-            print("❌ Failed to check existing data: \\(error)")
+            print("❌ Failed to check pattern synchronization: \(error)")
+        }
+    }
+    
+    /**
+     * Ensures step sparring sequences are properly synchronized with JSON content
+     */
+    private func ensureStepSparringIsSynchronized() async {
+        let stepSparringDescriptor = FetchDescriptor<StepSparringSequence>()
+        
+        do {
+            let existingSequences = try modelContainer.mainContext.fetch(stepSparringDescriptor)
+            
+            if existingSequences.isEmpty {
+                print("🥊 No step sparring sequences found - loading from JSON...")
+                let loader = StepSparringContentLoader(stepSparringService: stepSparringService)
+                loader.loadAllContent()
+            } else {
+                print("✅ Step sparring sequences exist (\(existingSequences.count) sequences)")
+                
+                // Verify a few sequences have proper data
+                let sampledSequences = existingSequences.prefix(3)
+                for sequence in sampledSequences {
+                    print("   \(sequence.name): \(sequence.steps.count) steps, \(sequence.beltLevels.count) belt levels")
+                }
+            }
+        } catch {
+            print("❌ Failed to check step sparring synchronization: \(error)")
         }
     }
     

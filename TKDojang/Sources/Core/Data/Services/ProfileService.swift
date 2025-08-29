@@ -303,7 +303,7 @@ class ProfileService {
         // TODO: Re-enable once SwiftData relationship invalidation issues are resolved
         // exportService?.autoBackupProfile(active)
         
-        // Trigger progress cache update for the active profile
+        // FIXED: Re-enabled progress cache refresh after fixing predicate relationship navigation
         Task {
             await progressCacheService?.refreshCache(for: active.id)
         }

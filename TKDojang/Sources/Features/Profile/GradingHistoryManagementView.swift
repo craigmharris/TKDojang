@@ -102,17 +102,15 @@ struct GradingHistoryManagementView: View {
     
     private func loadGradingRecords() async {
         do {
-            let profileId = profile.id
-            let predicate = #Predicate<GradingRecord> { record in
-                record.userProfile.id == profileId
-            }
-            
+            // FIXED: Fetch all records and filter in-memory to avoid predicate relationship navigation
             let descriptor = FetchDescriptor<GradingRecord>(
-                predicate: predicate,
                 sortBy: [SortDescriptor(\.gradingDate, order: .reverse)]
             )
             
-            gradingRecords = try dataServices.modelContext.fetch(descriptor)
+            let allRecords = try dataServices.modelContext.fetch(descriptor)
+            gradingRecords = allRecords.filter { record in
+                record.userProfile.id == profile.id
+            }
             isLoading = false
         } catch {
             print("❌ Failed to load grading records: \(error)")
@@ -135,6 +133,7 @@ struct GradingHistoryManagementView: View {
     }
     
     private func refreshProgressCache() async {
+        // FIXED: Re-enabled cache refresh after fixing predicate relationship navigation
         await dataServices.progressCacheService.refreshCache(for: profile.id)
     }
 }

@@ -230,21 +230,6 @@ final class UserTerminologyProgress {
         }
     }
     
-    private func calculateNextReviewDate() -> Date {
-        let calendar = Calendar.current
-        let days: Int
-        
-        switch currentBox {
-        case 1: days = 1      // Review tomorrow
-        case 2: days = 3      // Review in 3 days
-        case 3: days = 7      // Review in 1 week
-        case 4: days = 14     // Review in 2 weeks
-        case 5: days = 30     // Review in 1 month
-        default: days = 1
-        }
-        
-        return calendar.date(byAdding: .day, value: days, to: Date()) ?? Date()
-    }
 }
 
 /**

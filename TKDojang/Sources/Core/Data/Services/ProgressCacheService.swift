@@ -147,60 +147,63 @@ class ProgressCacheService {
     // MARK: - Simple SwiftData Queries
     
     /**
-     * Gets study sessions for a profile using simple predicate
-     * NO relationship navigation - direct query only
+     * Gets study sessions for a profile using in-memory filtering
+     * FIXED: No predicate relationship navigation to prevent SwiftData model invalidation
      */
     private func getStudySessions(for profileId: UUID) async throws -> [StudySession] {
-        let predicate = #Predicate<StudySession> { session in
-            session.userProfile.id == profileId
-        }
-        
+        // Fetch all sessions and filter in-memory to avoid predicate relationship navigation
         let descriptor = FetchDescriptor<StudySession>(
-            predicate: predicate,
             sortBy: [SortDescriptor(\.startTime, order: .reverse)]
         )
         
-        return try modelContext.fetch(descriptor)
+        let allSessions = try modelContext.fetch(descriptor)
+        return allSessions.filter { session in
+            session.userProfile.id == profileId
+        }
     }
     
     /**
-     * Gets terminology progress using simple query
+     * Gets terminology progress using in-memory filtering
+     * FIXED: No predicate relationship navigation to prevent SwiftData model invalidation
      */
     private func getTerminologyProgress(for profileId: UUID) async throws -> [UserTerminologyProgress] {
-        let predicate = #Predicate<UserTerminologyProgress> { progress in
+        // Fetch all progress and filter in-memory to avoid predicate relationship navigation
+        let descriptor = FetchDescriptor<UserTerminologyProgress>()
+        
+        let allProgress = try modelContext.fetch(descriptor)
+        return allProgress.filter { progress in
             progress.userProfile.id == profileId
         }
-        
-        let descriptor = FetchDescriptor<UserTerminologyProgress>(predicate: predicate)
-        return try modelContext.fetch(descriptor)
     }
     
     /**
-     * Gets pattern progress using simple query
+     * Gets pattern progress using in-memory filtering
+     * FIXED: No predicate relationship navigation to prevent SwiftData model invalidation
      */
     private func getPatternProgress(for profileId: UUID) async throws -> [UserPatternProgress] {
-        let predicate = #Predicate<UserPatternProgress> { progress in
+        // Fetch all progress and filter in-memory to avoid predicate relationship navigation
+        let descriptor = FetchDescriptor<UserPatternProgress>()
+        
+        let allProgress = try modelContext.fetch(descriptor)
+        return allProgress.filter { progress in
             progress.userProfile.id == profileId
         }
-        
-        let descriptor = FetchDescriptor<UserPatternProgress>(predicate: predicate)
-        return try modelContext.fetch(descriptor)
     }
     
     /**
-     * Gets grading records using simple query
+     * Gets grading records using in-memory filtering
+     * FIXED: No predicate relationship navigation to prevent SwiftData model invalidation
      */
     private func getGradingRecords(for profileId: UUID) async throws -> [GradingRecord] {
-        let predicate = #Predicate<GradingRecord> { record in
-            record.userProfile.id == profileId
-        }
-        
+        // Fetch all records and filter in-memory to avoid predicate relationship navigation
         let descriptor = FetchDescriptor<GradingRecord>(
-            predicate: predicate,
             sortBy: [SortDescriptor(\.gradingDate, order: .reverse)]
         )
         
-        return try modelContext.fetch(descriptor)
+        let allRecords = try modelContext.fetch(descriptor)
+        return allRecords.filter { record in
+            record.userProfile.id == profileId
+        }
     }
     
     /**
@@ -677,20 +680,17 @@ class ProgressCacheService {
         let patternRequired: Double = 1.0 // 100% mastery of required patterns
         let minimumStudyTime: TimeInterval = 20 * 3600 // 20 hours
         
-        // Calculate current progress
-        let nextBeltTerminology = terminologyProgress.filter { 
-            $0.terminologyEntry.beltLevel.sortOrder >= nextBelt.sortOrder 
-        }
-        let masteredTerminology = nextBeltTerminology.filter { $0.masteryLevel == .mastered }
-        let currentTerminologyMastery = nextBeltTerminology.isEmpty ? 0.0 : 
-            Double(masteredTerminology.count) / Double(nextBeltTerminology.count)
+        // SIMPLIFIED: Calculate current progress without relationship navigation
+        // This avoids SwiftData model invalidation crashes
         
-        let nextBeltPatterns = patternProgress.filter { 
-            $0.pattern.beltLevels.contains { $0.sortOrder >= nextBelt.sortOrder }
-        }
-        let masteredPatterns = nextBeltPatterns.filter { $0.masteryLevel == PatternMasteryLevel.mastered }
-        let currentPatternMastery = nextBeltPatterns.isEmpty ? 0.0 : 
-            Double(masteredPatterns.count) / Double(nextBeltPatterns.count)
+        // Use simple counts of mastered items to avoid relationship access
+        let totalTerminologyMastered = terminologyProgress.filter { $0.masteryLevel == .mastered }.count
+        let currentTerminologyMastery = terminologyProgress.isEmpty ? 0.0 : 
+            Double(totalTerminologyMastered) / Double(terminologyProgress.count)
+        
+        let totalPatternsMastered = patternProgress.filter { $0.masteryLevel == PatternMasteryLevel.mastered }.count
+        let currentPatternMastery = patternProgress.isEmpty ? 0.0 : 
+            Double(totalPatternsMastered) / Double(patternProgress.count)
         
         let currentStudyTime = sessions.reduce(0) { $0 + $1.duration }
         

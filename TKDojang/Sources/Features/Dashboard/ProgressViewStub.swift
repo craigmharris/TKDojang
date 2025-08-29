@@ -56,8 +56,9 @@ struct ProgressViewStub: View {
     private func refreshProgressData() async {
         guard let activeProfile = dataServices.profileService.getActiveProfile() else { return }
         
-        // Force cache refresh when refreshing progress data
+        // FIXED: Re-enabled cache refresh after fixing predicate relationship navigation
         await dataServices.progressCacheService.refreshCache(for: activeProfile.id)
+        
         progressData = await dataServices.progressCacheService.getProgressData(for: activeProfile.id)
     }
 }
