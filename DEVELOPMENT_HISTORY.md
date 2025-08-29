@@ -2,6 +2,157 @@
 
 This file contains detailed session summaries and development milestones for historical reference.
 
+## Session Summary (August 29, 2025 - Part 4) - Theory System Learning Mode & Visual Enhancements
+
+### 🎯 **Session Focus:**
+Fixed critical learning mode functionality and implemented comprehensive visual enhancements for the theory knowledge base system.
+
+#### 🔧 **Core Learning Mode Fix:**
+**Problem**: Theory system only showed current belt content regardless of learning mode setting
+**Solution**: Implemented proper mastery mode filtering to show all prior belt content
+
+**Before**: 
+- Progression mode: Current belt only ✓
+- Mastery mode: Current belt only ❌
+
+**After**:
+- Progression mode: Current belt only ✓  
+- Mastery mode: All belts up to current level ✅
+
+#### ✨ **Visual & UX Enhancements:**
+
+**1. Belt-Themed Content Icons:**
+- Added colorful belt icons to each theory tile showing proper TAGB belt colors
+- Icons display belt-specific colors with center stripes for tag belts
+- Visual consistency with existing BeltTheme system
+
+**2. Content Sorting by Belt Level:**
+- Theory content now sorted by belt level in descending order (highest belt first)
+- Provides logical progression from advanced to foundational content
+- Helps users see their learning journey progression
+
+**3. Dynamic Category Filtering:**
+- Filter buttons now dynamically generated based on available content types
+- No longer shows empty categories when content isn't available
+- Categories update automatically when learning mode or profile changes
+
+#### 🔧 **Technical Implementation:**
+
+**TheoryView.swift Major Restructure:**
+
+```swift
+// New helper structure for belt-aware content
+private struct TheorySectionWithBelt: Identifiable {
+    let section: TheorySection
+    let beltLevel: String
+    let beltSortOrder: Int
+}
+
+// Learning mode aware content filtering
+private func getRelevantTheorySections(for profile: UserProfile) -> [TheorySectionWithBelt] {
+    let currentBeltSortOrder = profile.currentBeltLevel.sortOrder
+    
+    switch profile.learningMode {
+    case .progression:
+        shouldInclude = beltSortOrder == currentBeltSortOrder  // Current only
+    case .mastery:
+        shouldInclude = beltSortOrder <= currentBeltSortOrder  // All up to current
+    }
+}
+
+// Belt level descending sort + category filtering
+private func filteredAndSortedSections(_ sections: [TheorySectionWithBelt]) -> [TheorySectionWithBelt] {
+    var filtered = sections
+    
+    // Apply category filter
+    if let selectedCategory = selectedCategory {
+        filtered = filtered.filter { $0.section.category == selectedCategory }
+    }
+    
+    // Sort by belt level descending (highest belt first)
+    filtered.sort { $0.beltSortOrder > $1.beltSortOrder }
+    
+    return filtered
+}
+
+// Dynamic category generation
+private func updateAvailableCategories(from sections: [TheorySectionWithBelt]) {
+    let categories = Set(sections.map { $0.section.category })
+    availableCategories = Array(categories).sorted()
+}
+```
+
+**Enhanced TheorySectionCard with Belt Icon:**
+```swift
+struct TheorySectionCard: View {
+    let section: TheorySection
+    let beltLevel: String  // Now receives belt level for icon display
+    
+    var body: some View {
+        HStack {
+            // Belt icon with proper coloring
+            if let beltLevelObj = getBeltLevelObject(from: beltLevel) {
+                BeltIcon(beltLevel: beltLevelObj)
+                    .frame(width: 24, height: 24)
+            }
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(section.title)
+                
+                HStack(spacing: 8) {
+                    Text(section.category)  // Category pill
+                    Text(beltLevel)         // Belt level indicator
+                        .foregroundColor(.secondary)
+                }
+            }
+        }
+    }
+}
+```
+
+**New BeltIcon Component:**
+```swift
+struct BeltIcon: View {
+    let beltLevel: BeltLevel
+    
+    var body: some View {
+        let theme = BeltTheme(from: beltLevel)
+        
+        ZStack {
+            Circle()
+                .fill(theme.primaryColor)
+                .overlay(Circle().stroke(Color.gray.opacity(0.3), lineWidth: 1))
+            
+            // Center stripe for tag belts
+            if theme.secondaryColor != theme.primaryColor {
+                Circle()
+                    .fill(theme.secondaryColor)
+                    .scaleEffect(0.6)
+            }
+        }
+    }
+}
+```
+
+#### 🎨 **User Experience Improvements:**
+- **Clear Learning Mode Distinction**: Users can now see the difference between progression and mastery modes
+- **Visual Belt Progression**: Belt icons provide immediate visual context for content difficulty
+- **Intelligent Filtering**: Category filters adapt to available content, reducing confusion
+- **Logical Content Order**: Highest belt content appears first, providing clear learning pathway
+
+#### 🔄 **Reactive Updates:**
+- Categories update automatically when learning mode changes
+- Content refreshes when active profile switches
+- Maintains filter selections across profile changes where applicable
+
+#### 🧪 **Integration & Compatibility:**
+- Maintains existing TheoryDetailView navigation
+- Compatible with ProfileSwitcher component
+- Leverages existing BeltTheme system for consistency
+- Follows established MVVM-C architecture patterns
+
+---
+
 ## Session Summary (August 29, 2025 - Part 3) - Pattern System Visual Enhancements
 
 ### 🎯 **Session Focus:**
