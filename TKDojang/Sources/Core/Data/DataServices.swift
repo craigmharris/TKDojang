@@ -71,6 +71,10 @@ class DataServices: ObservableObject {
         return dataManager.leitnerService
     }
     
+    var techniquesService: TechniquesDataService {
+        return dataManager.techniquesService
+    }
+    
     // MARK: - DataManager Methods
     
     func getOrCreateDefaultUserProfile() -> UserProfile {

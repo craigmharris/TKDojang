@@ -402,7 +402,7 @@ struct ActivityRow: View {
     }
 }
 
-struct TechniquesView: View {
+struct TechniquesPlaceholderView: View {
     var body: some View {
         NavigationStack {
             VStack {
@@ -551,13 +551,7 @@ struct PracticeView: View {
                         destination: AnyView(LineWorkView())
                     )
                     
-                    PracticeMenuCard(
-                        title: "Technique How-To",
-                        description: "Detailed breakdowns of every technique",
-                        icon: "magnifyingglass.circle.fill",
-                        color: .purple,
-                        destination: AnyView(TechniqueGuideView())
-                    )
+                    TechniqueNavigationCard()
                 }
                 .padding(.horizontal)
                 
@@ -1866,6 +1860,42 @@ struct StatBadge: View {
                 .foregroundColor(.secondary)
         }
         .frame(minWidth: 40)
+    }
+}
+
+// MARK: - Technique Navigation Card
+
+struct TechniqueNavigationCard: View {
+    @EnvironmentObject private var dataServices: DataServices
+    
+    var body: some View {
+        NavigationLink(destination: TechniquesView().environmentObject(dataServices)) {
+            VStack(spacing: 12) {
+                Image(systemName: "books.vertical.fill")
+                    .font(.system(size: 32))
+                    .foregroundColor(.purple)
+                
+                Text("Techniques")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.primary)
+                
+                Text("Comprehensive technique reference")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, minHeight: 120)
+            .background(Color(.secondarySystemBackground))
+            .cornerRadius(16)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.purple.opacity(0.3), lineWidth: 1)
+            )
+        }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

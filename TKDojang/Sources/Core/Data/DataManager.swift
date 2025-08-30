@@ -32,6 +32,7 @@ class DataManager {
     private(set) var progressCacheService: ProgressCacheService
     private(set) var profileExportService: ProfileExportService
     private(set) var leitnerService: LeitnerService
+    private(set) var techniquesService: TechniquesDataService
     
     // Track database reset state to trigger UI refresh
     private(set) var databaseResetId = UUID()
@@ -89,6 +90,7 @@ class DataManager {
             self.stepSparringService = StepSparringDataService(modelContext: container.mainContext)
             self.profileExportService = ProfileExportService(modelContext: container.mainContext)
             self.leitnerService = LeitnerService(modelContext: container.mainContext)
+            self.techniquesService = TechniquesDataService()
             
             // Connect ProfileService to ProgressCacheService for cache updates
             self.profileService.progressCacheService = self.progressCacheService

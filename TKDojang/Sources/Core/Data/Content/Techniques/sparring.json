@@ -1,0 +1,187 @@
+{
+  "version": "1.0",
+  "category": "sparring",
+  "description": "Comprehensive database of Taekwondo sparring techniques and applications",
+  "techniques": [
+    {
+      "id": "sambo_matsoki",
+      "names": {
+        "korean": "삼보맞서기",
+        "korean_romanized": "Sambo Matsoki",
+        "english": "3-step Sparring",
+        "phonetic": "/sam.bo.mat.sʌ.ɡi/"
+      },
+      "description": "Controlled sparring exercise with three predetermined movements where the attacker advances with three steps and attacks, while the defender blocks and counter-attacks.",
+      "execution": {
+        "setup": "Partners face each other in ready stance",
+        "attack_sequence": "Attacker steps forward three times with punches",
+        "defense_sequence": "Defender blocks each attack and counter-attacks"
+      },
+      "sparring_type": "structured",
+      "participants": 2,
+      "attack_pattern": "linear_advance_three_steps",
+      "defense_pattern": "block_and_counter",
+      "belt_levels": ["8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
+      "difficulty": "basic",
+      "tags": ["three_step", "structured", "beginner", "timing"],
+      "variations": ["sambo_matsoki_variations"],
+      "skills_developed": ["timing", "distance", "blocking", "counter_attacking"],
+      "images": [
+        "sambo_matsoki_setup.jpg",
+        "sambo_matsoki_sequence.jpg",
+        "sambo_matsoki_counter.jpg"
+      ],
+      "common_mistakes": ["Poor timing", "Wrong distance", "Weak blocks"]
+    },
+    {
+      "id": "ibo_matsoki",
+      "names": {
+        "korean": "이보맞서기",
+        "korean_romanized": "Ibo Matsoki", 
+        "english": "2-step Sparring",
+        "phonetic": "/i.bo.mat.sʌ.ɡi/"
+      },
+      "description": "Controlled sparring practice with two predetermined attacks, requiring faster reactions and more fluid movement than three step sparring.",
+      "execution": {
+        "setup": "Partners in ready stance, closer distance than three step",
+        "attack_sequence": "Attacker advances with two steps and attacks",
+        "defense_sequence": "Defender blocks and counter-attacks with combinations"
+      },
+      "sparring_type": "structured",
+      "participants": 2,
+      "attack_pattern": "two_step_advance",
+      "defense_pattern": "block_counter_combination",
+      "belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan"],
+      "difficulty": "intermediate",
+      "tags": ["two_step", "faster", "combinations", "intermediate"],
+      "variations": ["ibo_jayu_matsoki"],
+      "skills_developed": ["faster_reactions", "combinations", "fluid_movement"],
+      "images": [
+        "ibo_matsoki_setup.jpg",
+        "ibo_matsoki_advance.jpg",
+        "ibo_matsoki_combination.jpg"
+      ],
+      "common_mistakes": ["Too slow reactions", "Poor combinations", "Wrong distance management"]
+    },
+    {
+      "id": "ilbo_matsoki",
+      "names": {
+        "korean": "일보맞서기",
+        "korean_romanized": "Ilbo Matsoki",
+        "english": "1-step Sparring", 
+        "phonetic": "/il.bo.mat.sʌ.ɡi/"
+      },
+      "description": "Controlled sparring practice with one predetermined attack, requiring quick reflexes and sophisticated counter-attack combinations.",
+      "execution": {
+        "setup": "Partners close distance, ready for immediate engagement",
+        "attack_sequence": "Single step with powerful attack",
+        "defense_sequence": "Immediate block and multiple counter-attacks"
+      },
+      "sparring_type": "structured",
+      "participants": 2,
+      "attack_pattern": "single_step_power",
+      "defense_pattern": "immediate_multiple_counter",
+      "belt_levels": ["2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "advanced",
+      "tags": ["one_step", "quick", "advanced", "multiple_counters"],
+      "variations": ["ilbo_jayu_matsoki"],
+      "skills_developed": ["quick_reflexes", "multiple_counters", "close_range"],
+      "images": [
+        "ilbo_matsoki_close_range.jpg",
+        "ilbo_matsoki_quick_block.jpg",
+        "ilbo_matsoki_multiple_counter.jpg"
+      ],
+      "common_mistakes": ["Slow reactions", "Single counter only", "Poor distance"]
+    },
+    {
+      "id": "jayoo_matsoki",
+      "names": {
+        "korean": "자유맞서기",
+        "korean_romanized": "Jayoo Matsoki",
+        "english": "Free Sparring",
+        "phonetic": "/tʃa.ju.mat.sʌ.ɡi/"
+      },
+      "description": "Uncontrolled sparring where participants can freely attack and defend, applying all learned techniques in a dynamic environment.",
+      "execution": {
+        "setup": "Partners in fighting stance, protective gear worn",
+        "engagement": "Continuous movement, attacks, and defenses",
+        "control": "Controlled contact, focus on technique over power"
+      },
+      "sparring_type": "free",
+      "participants": 2,
+      "attack_pattern": "unlimited",
+      "defense_pattern": "reactive_adaptive",
+      "belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "advanced",
+      "tags": ["free", "unstructured", "dynamic", "application"],
+      "variations": ["ban_jayoo_matsoki"],
+      "skills_developed": ["application", "adaptation", "timing", "strategy"],
+      "images": [
+        "jayoo_matsoki_engagement.jpg",
+        "jayoo_matsoki_movement.jpg",
+        "jayoo_matsoki_technique.jpg"
+      ],
+      "common_mistakes": ["Too much power", "Poor control", "Limited technique variety"]
+    },
+    {
+      "id": "ban_jayoo_matsoki",
+      "names": {
+        "korean": "반자유맞서기",
+        "korean_romanized": "Ban Jayoo Matsoki",
+        "english": "3-step Semi-Free Sparring",
+        "phonetic": "/pan.dʑa.ju.mat.sʌ.ɡi/"
+      },
+      "description": "Controlled sparring exercise with three predetermined attacks, bridging the gap between structured and free sparring formats.",
+      "execution": {
+        "setup": "One designated attacker, one defender",
+        "attack_sequence": "Three attacks with more freedom than regular 3-step",
+        "defense_sequence": "Defender responds with practiced combinations"
+      },
+      "sparring_type": "semi_structured",
+      "participants": 2,
+      "attack_pattern": "three_attacks_semi_free",
+      "defense_pattern": "structured_response",
+      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["semi_free", "mixed", "three_step", "transitional"],
+      "variations": ["ho_sin_sul_semi_free"],
+      "skills_developed": ["adaptation", "role_switching", "controlled_response"],
+      "images": [
+        "ban_jayoo_setup.jpg",
+        "ban_jayoo_attack.jpg",
+        "ban_jayoo_defense.jpg"
+      ],
+      "common_mistakes": ["Too much freedom", "Poor control", "Confusion about rules"]
+    },
+    {
+      "id": "jap_tasol_tae",
+      "names": {
+        "korean": "잡탈솔태",
+        "korean_romanized": "Jap Tasol Tae",
+        "english": "Release Move",
+        "phonetic": "/tʃap.tʰal.sol.tʰe/"
+      },
+      "description": "Technique to escape from grabs or holds, using leverage and body mechanics to break free from an opponent's grasp.",
+      "execution": {
+        "assessment": "Identify type and strength of grab",
+        "escape": "Apply appropriate leverage or striking technique",
+        "follow_up": "Create distance or apply control technique"
+      },
+      "sparring_type": "self_defense",
+      "participants": 2,
+      "attack_pattern": "grabbing_attempts",
+      "defense_pattern": "escape_and_control",
+      "belt_levels": ["7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["escape", "grab_defense", "leverage", "practical"],
+      "variations": ["wrist_escape", "clothing_grab_escape"],
+      "skills_developed": ["escape_techniques", "leverage_use", "practical_application"],
+      "images": [
+        "jap_tasol_grab.jpg",
+        "jap_tasol_leverage.jpg",
+        "jap_tasol_escape.jpg"
+      ],
+      "common_mistakes": ["Using too much force", "Wrong leverage point", "Poor timing"]
+    }
+  ]
+}
