@@ -425,8 +425,7 @@ struct StepSparringSequenceDisplayCard: View {
     @State private var progress: UserStepSparringProgress?
     
     var body: some View {
-        // For now, disable navigation to practice view to avoid more SwiftData issues
-        // NavigationLink(destination: StepSparringPracticeView(sequence: sequence)) {
+        NavigationLink(destination: StepSparringPracticeView(sequence: getSequenceFromDisplay())) {
         VStack(alignment: .leading, spacing: 12) {
             // Header
             HStack {
@@ -477,7 +476,7 @@ struct StepSparringSequenceDisplayCard: View {
                 
                 Spacer()
                 
-                Text("Tap to practice (coming soon)")
+                Text("Tap to practice")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
@@ -489,11 +488,34 @@ struct StepSparringSequenceDisplayCard: View {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(typeColor.opacity(0.2), lineWidth: 1)
         )
-        // }
+        }
         .task {
             // Skip progress loading for now to avoid more SwiftData issues
             // loadProgress()
         }
+    }
+    
+    /**
+     * Helper to get the full StepSparringSequence object for navigation
+     * Converts from display data back to SwiftData object
+     */
+    private func getSequenceFromDisplay() -> StepSparringSequence {
+        // Fetch the sequence by ID to get the full SwiftData object
+        if let sequence = dataServices.stepSparringService.getSequence(id: sequenceDisplay.id) {
+            return sequence
+        }
+        
+        // Fallback: create a minimal sequence for navigation (shouldn't happen)
+        print("⚠️ Could not find sequence \(sequenceDisplay.id), creating fallback")
+        let fallback = StepSparringSequence(
+            name: sequenceDisplay.name,
+            type: sequenceDisplay.type,
+            sequenceNumber: 0,
+            sequenceDescription: sequenceDisplay.sequenceDescription,
+            difficulty: sequenceDisplay.difficulty,
+            keyLearningPoints: ""
+        )
+        return fallback
     }
     
     private var typeColor: Color {

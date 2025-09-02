@@ -21,85 +21,83 @@ struct StepSparringContentLoader {
     }
     
     /**
-     * Loads all step sparring content from JSON files
+     * Loads all step sparring content from JSON files - DYNAMIC SCANNING
+     * Scans StepSparring directory and loads all JSON files based on their content type
      */
     func loadAllContent() {
-        // Load three-step sparring sequences
-        loadThreeStepContent(filename: "8th_keup_three_step")
-        loadThreeStepContent(filename: "7th_keup_three_step")
-        loadThreeStepContent(filename: "6th_keup_three_step")
+        // Dynamically scan for all step sparring JSON files
+        let stepSparringFiles = getStepSparringJsonFiles()
         
-        // Load two-step sparring sequences
-        loadTwoStepContent(filename: "5th_keup_two_step")
-        loadTwoStepContent(filename: "4th_keup_two_step")
+        print("DEBUG: 🔍 Found \(stepSparringFiles.count) step sparring JSON files to load: \(stepSparringFiles)")
         
+        for filename in stepSparringFiles {
+            loadContentFromFile(filename: filename)
+        }
     }
     
     /**
-     * Loads three-step sparring content from specified filename
+     * Dynamically scans all step sparring JSON files in bundle
      */
-    private func loadThreeStepContent(filename: String) {
-        loadContentFromFile(filename: filename, type: .threeStep)
+    private func getStepSparringJsonFiles() -> [String] {
+        var foundFiles: [String] = []
+        
+        // Check bundle root for step sparring files (Xcode copies them to root, not subdirectory)
+        guard let bundlePath = Bundle.main.resourcePath else {
+            print("❌ Could not get bundle resource path")
+            return []
+        }
+        
+        let fileManager = FileManager.default
+        
+        do {
+            let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
+            let stepSparringFiles = contents.filter { 
+                $0.hasSuffix(".json") && ($0.contains("step") || $0.contains("sparring"))
+            }
+            foundFiles = stepSparringFiles.map { $0.replacingOccurrences(of: ".json", with: "") }
+            print("DEBUG: 📁 Found \(stepSparringFiles.count) step sparring JSON files in bundle root: \(stepSparringFiles)")
+        } catch {
+            print("❌ Failed to scan bundle root for step sparring files: \(error)")
+        }
+        
+        return foundFiles.sorted()
     }
     
     /**
-     * Loads two-step sparring content from specified filename
+     * Maps JSON type string to StepSparringType enum
      */
-    private func loadTwoStepContent(filename: String) {
-        loadContentFromFile(filename: filename, type: .twoStep)
+    private func getStepSparringType(from jsonType: String) -> StepSparringType {
+        switch jsonType {
+        case "three_step":
+            return .threeStep
+        case "two_step":
+            return .twoStep
+        case "one_step":
+            return .oneStep
+        case "semi_free":
+            return .semiFree
+        default:
+            print("⚠️ Unknown step sparring type '\(jsonType)' - defaulting to three_step")
+            return .threeStep
+        }
     }
     
     /**
      * Generic method to load content from any step sparring JSON file
+     * Automatically detects type from JSON content
      */
-    private func loadContentFromFile(filename: String, type: StepSparringType) {
+    private func loadContentFromFile(filename: String) {
         // Use the same pattern as ModularContentLoader for consistency
         var url: URL?
         
-        print("🔍 Searching for \(filename).json...")
+        print("DEBUG: 🔍 Searching for \(filename).json...")
         
-        // First try: StepSparring subdirectory (matches terminology pattern exactly)
-        url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "StepSparring")
+        // Try main bundle root first (where Xcode copies the files)
+        url = Bundle.main.url(forResource: filename, withExtension: "json")
         if url != nil {
-            print("✅ Found \(filename).json in StepSparring subdirectory")
+            print("DEBUG: ✅ Found \(filename).json in main bundle root")
         } else {
-            print("❌ Not found in StepSparring subdirectory")
-            
-            // Debug: List what IS in the StepSparring subdirectory
-            if let bundlePath = Bundle.main.resourcePath {
-                let stepSparringPath = "\(bundlePath)/StepSparring"
-                let fileManager = FileManager.default
-                if fileManager.fileExists(atPath: stepSparringPath) {
-                    do {
-                        let contents = try fileManager.contentsOfDirectory(atPath: stepSparringPath)
-                        print("📁 StepSparring directory contents: \(contents)")
-                    } catch {
-                        print("❌ Failed to list StepSparring contents: \(error)")
-                    }
-                } else {
-                    print("❌ StepSparring directory doesn't exist in bundle")
-                }
-            }
-        }
-        
-        // Fallback: try main bundle root
-        if url == nil {
-            url = Bundle.main.url(forResource: filename, withExtension: "json")
-            if url != nil {
-                print("✅ Found \(filename).json in main bundle root")
-            } else {
-                print("❌ Not found in main bundle root")
-            }
-        }
-        
-        // Fallback: try Core/Data/Content/StepSparring path
-        if url == nil {
-            url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Core/Data/Content/StepSparring")
-            if url != nil {
-                print("✅ Found \(filename).json in Core/Data/Content/StepSparring")
-            } else {
-                print("❌ Not found in Core/Data/Content/StepSparring")
-            }
+            print("DEBUG: ❌ Not found in main bundle root")
         }
         
         guard let fileUrl = url else {
@@ -111,25 +109,28 @@ struct StepSparringContentLoader {
             let data = try Data(contentsOf: fileUrl)
             let contentData = try JSONDecoder().decode(StepSparringContentData.self, from: data)
             
-            print("📚 Loading \(contentData.sequences.count) \(type.displayName) sparring sequences from \(filename)")
+            // Detect type from JSON content
+            let sparringType = getStepSparringType(from: contentData.type)
+            
+            print("DEBUG: 📚 Loading \(contentData.sequences.count) \(sparringType.displayName) sparring sequences from \(filename)")
             
             // Create sequences from JSON data
             for sequenceData in contentData.sequences {
-                let sequence = createSequence(from: sequenceData, type: type)
+                let sequence = createSequence(from: sequenceData, type: sparringType)
                 stepSparringService.modelContext.insert(sequence)
                 
                 // Save immediately after each sequence to prevent relationship corruption
                 do {
                     try stepSparringService.modelContext.save()
-                    print("✅ Saved sequence #\(sequenceData.sequenceNumber)")
+                    print("DEBUG: ✅ Saved sequence #\(sequenceData.sequenceNumber)")
                 } catch {
-                    print("❌ Failed to save sequence #\(sequenceData.sequenceNumber): \(error)")
+                    print("DEBUG: ❌ Failed to save sequence #\(sequenceData.sequenceNumber): \(error)")
                 }
             }
-            print("✅ Successfully loaded \(contentData.sequences.count) \(type.displayName) sparring sequences from \(filename)")
+            print("DEBUG: ✅ Successfully loaded \(contentData.sequences.count) \(sparringType.displayName) sparring sequences from \(filename)")
             
         } catch {
-            print("❌ Failed to load \(type.displayName) sparring content from \(filename): \(error)")
+            print("❌ Failed to load sparring content from \(filename): \(error)")
         }
     }
     
@@ -146,12 +147,13 @@ struct StepSparringContentLoader {
             keyLearningPoints: data.keyLearningPoints
         )
         
-        // DO NOT SET BELT RELATIONSHIPS - we bypass them entirely with manual checking
-        // sequence.beltLevels = [] // Leave empty
+        // Store JSON belt level data without SwiftData relationships
+        sequence.applicableBeltLevelIds = data.applicableBeltLevels
+        // sequence.beltLevels = [] // Leave empty to avoid relationship crashes
         
         print("🔍 BELT DEBUG: Sequence #\(data.sequenceNumber) '\(data.name)':")
         print("   JSON belt IDs: \(data.applicableBeltLevels)")
-        print("   NO SwiftData belt relationships - using manual checking")
+        print("   Stored in applicableBeltLevelIds: \(sequence.applicableBeltLevelIds)")
         
         // Create steps and sort by step number to ensure correct order
         sequence.steps = data.steps

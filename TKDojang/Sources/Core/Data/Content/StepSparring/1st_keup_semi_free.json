@@ -1,0 +1,48 @@
+{
+  "belt_level": "1st_keup",
+  "category": "step_sparring",
+  "type": "semi_free",
+  "description": "Semi-free sparring sequences for 1st keup and black belt students",
+  "sequences": [
+    {
+      "name": "Semi-Free Sparring #1",
+      "sequence_number": 1,
+      "description": "Guided sparring with flexible attack and defense patterns",
+      "difficulty": 3,
+      "key_learning_points": "Adaptive techniques, distance management, combination flows",
+      "applicable_belt_levels": ["1st_keup", "1st_dan", "2nd_dan"],
+      "steps": [
+        {
+          "step_number": 1,
+          "timing": "Flexible timing based on situation",
+          "key_points": "Read opponent's movement, adapt technique selection, maintain control",
+          "common_mistakes": "Fixed patterns, poor distance, overly aggressive",
+          "attack": {
+            "technique": "Variable attack",
+            "korean_name": "Gahpyeon gonggyeok",
+            "stance": "fighting stance",
+            "target": "variable section",
+            "hand": "either",
+            "description": "Select appropriate attack based on opening and distance"
+          },
+          "defense": {
+            "technique": "Adaptive defense",
+            "korean_name": "Gahpyeon bangeo",
+            "stance": "fighting stance",
+            "target": "variable section",
+            "hand": "either",
+            "description": "Choose defense technique appropriate to incoming attack"
+          },
+          "counter": {
+            "technique": "Situational counter",
+            "korean_name": "Sanghwang banggyeok",
+            "stance": "fighting stance",
+            "target": "variable section",
+            "hand": "either",
+            "description": "Execute counter-attack based on opening created by defense"
+          }
+        }
+      ]
+    }
+  ]
+}

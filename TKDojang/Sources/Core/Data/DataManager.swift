@@ -111,7 +111,7 @@ class DataManager {
      * PURPOSE: Ensures the app has up-to-date content from JSON files
      */
     func setupInitialData() async {
-        print("🔍 DEBUG: setupInitialData() called")
+        print("DEBUG: 🔍 setupInitialData() called - \(Date())")
         // Check if we need to seed initial data
         let descriptor = FetchDescriptor<BeltLevel>()
         
@@ -157,13 +157,15 @@ class DataManager {
             }
             
             // ALWAYS ensure patterns and step sparring are synchronized, regardless of belt level existence
-            print("🥋 Ensuring patterns are synchronized with JSON content...")
+            print("DEBUG: 🥋 Starting pattern synchronization...")
             await ensurePatternsAreSynchronized()
             
-            print("🥊 Ensuring step sparring is synchronized with JSON content...")
+            print("DEBUG: 🥊 Starting step sparring synchronization...")
             await ensureStepSparringIsSynchronized()
+            
+            print("DEBUG: ✅ setupInitialData() completed successfully - \(Date())")
         } catch {
-            print("❌ Failed to check existing data: \\(error)")
+            print("DEBUG: ❌ setupInitialData() failed: \\(error) - \(Date())")
         }
     }
     
@@ -248,6 +250,55 @@ class DataManager {
     }
     
     /**
+     * Dynamically scans all step sparring JSON files to get expected sequence identifiers
+     */
+    private func getExpectedStepSparringSequences() -> Set<String> {
+        var expectedSequences = Set<String>()
+        
+        // Scan bundle for step sparring JSON files (they're copied to bundle root, not subdirectory)
+        guard let bundlePath = Bundle.main.resourcePath else {
+            print("❌ Could not get bundle resource path for step sparring")
+            return expectedSequences
+        }
+        
+        let fileManager = FileManager.default
+        
+        do {
+            let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
+            let stepSparringFiles = contents.filter { 
+                $0.hasSuffix(".json") && ($0.contains("step") || $0.contains("sparring"))
+            }
+            
+            print("DEBUG: 📁 Found step sparring JSON files in bundle root: \(stepSparringFiles)")
+            
+            for jsonFile in stepSparringFiles {
+                let filename = jsonFile.replacingOccurrences(of: ".json", with: "")
+                
+                // Try to load and parse each JSON file from bundle root
+                if let url = Bundle.main.url(forResource: filename, withExtension: "json") {
+                    do {
+                        let data = try Data(contentsOf: url)
+                        let contentData = try JSONDecoder().decode(StepSparringContentData.self, from: data)
+                        
+                        // Add all sequence identifiers from this file
+                        for sequence in contentData.sequences {
+                            let sequenceId = "\(contentData.type)_\(sequence.sequenceNumber)"
+                            expectedSequences.insert(sequenceId)
+                        }
+                    } catch {
+                        print("⚠️ Failed to read step sparring sequences from \(filename): \(error)")
+                    }
+                }
+            }
+        } catch {
+            print("❌ Failed to scan StepSparring directory: \(error)")
+        }
+        
+        print("DEBUG: 📋 Expected step sparring sequences from JSON: \(expectedSequences.sorted())")
+        return expectedSequences
+    }
+    
+    /**
      * Ensures step sparring sequences are properly synchronized with JSON content
      */
     private func ensureStepSparringIsSynchronized() async {
@@ -256,17 +307,43 @@ class DataManager {
         do {
             let existingSequences = try modelContainer.mainContext.fetch(stepSparringDescriptor)
             
-            if existingSequences.isEmpty {
-                print("🥊 No step sparring sequences found - loading from JSON...")
-                let loader = StepSparringContentLoader(stepSparringService: stepSparringService)
-                loader.loadAllContent()
-            } else {
-                print("✅ Step sparring sequences exist (\(existingSequences.count) sequences)")
+            // Dynamically scan JSON files to determine what sequences should exist
+            let jsonSequenceIds = getExpectedStepSparringSequences()
+            let expectedSequenceCount = jsonSequenceIds.count
+            
+            // Check if we need to reload sequences
+            let existingIds = Set(existingSequences.map { "\($0.type.rawValue)_\($0.sequenceNumber)" })
+            let missingSequences = jsonSequenceIds.subtracting(existingIds)
+            let extraSequences = existingIds.subtracting(jsonSequenceIds)
+            
+            // Also check if existing sequences have proper JSON belt level data
+            let sequencesWithBeltData = existingSequences.filter { !$0.applicableBeltLevelIds.isEmpty }
+            let missingBeltData = sequencesWithBeltData.count != existingSequences.count
+            
+            print("DEBUG: 🔍 Step sparring sync check - existing: \(existingSequences.count), expected: \(expectedSequenceCount), missing belt data: \(missingBeltData)")
+            print("DEBUG: 🔍 Missing sequences: \(missingSequences), Extra sequences: \(extraSequences)")
+            
+            if existingSequences.count != expectedSequenceCount || !missingSequences.isEmpty || !extraSequences.isEmpty || missingBeltData {
+                if !missingSequences.isEmpty {
+                    print("DEBUG: 🥊 Missing step sparring sequences: \(missingSequences.sorted()) - reloading from JSON...")
+                }
+                if !extraSequences.isEmpty {
+                    print("DEBUG: 🥊 Extra step sparring sequences: \(extraSequences.sorted()) - reloading from JSON...")
+                }
+                if existingSequences.count != expectedSequenceCount {
+                    print("DEBUG: 🥊 Step sparring count mismatch: \(existingSequences.count) vs \(expectedSequenceCount) expected - reloading...")
+                }
+                if missingBeltData {
+                    print("DEBUG: 🥊 Step sparring sequences missing JSON belt level data - reloading...")
+                }
                 
-                // Verify a few sequences have proper data
-                let sampledSequences = existingSequences.prefix(3)
-                for sequence in sampledSequences {
-                    print("   \(sequence.name): \(sequence.steps.count) steps, \(sequence.beltLevels.count) belt levels")
+                print("DEBUG: 🔄 Triggering step sparring reload...")
+                stepSparringService.clearAndReloadStepSparring()
+                print("DEBUG: ✅ Step sparring reload completed")
+            } else {
+                print("DEBUG: ✅ Complete step sparring set synchronized (\(existingSequences.count) sequences)")
+                for sequence in existingSequences.prefix(3) {
+                    print("DEBUG:    \(sequence.name): \(sequence.steps.count) steps, JSON belts: \(sequence.applicableBeltLevelIds)")
                 }
             }
         } catch {
