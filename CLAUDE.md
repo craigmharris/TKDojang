@@ -91,7 +91,14 @@ TKDojang/
 
 ## Next Development Priorities
 
-### 🔄 **IMMEDIATE: Testing Infrastructure Integration**
+### ✅ **RESOLVED: DataServices Lifecycle Management**
+**Issue**: ProfileSwitcher instantiation during loading phase causing SwiftData crashes
+**Solution**: DataServices singleton pattern with top-level environment object injection
+- Single DataServices instance prevents view cycling issues
+- Lazy DataManager initialization only when actually needed
+- SwiftUI compilation requirements satisfied without premature access
+
+### 🔄 **NEXT: Testing Infrastructure Integration**
 1. Merge comprehensive test suite from feature/testing-infrastructure branch
 2. Validate tests pass with current multi-profile and progress features
 3. Expand pattern content with remaining move breakdowns

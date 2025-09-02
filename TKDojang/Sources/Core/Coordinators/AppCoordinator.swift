@@ -30,7 +30,11 @@ class AppCoordinator: ObservableObject {
     /**
      * Current application flow state
      */
-    @Published var currentFlow: AppFlow = .loading
+    @Published var currentFlow: AppFlow = .loading {
+        didSet {
+            print("🔀 AppCoordinator: currentFlow changed from \(oldValue) to \(currentFlow) - \(Date())")
+        }
+    }
     
     /**
      * Global loading state for operations that affect the entire app

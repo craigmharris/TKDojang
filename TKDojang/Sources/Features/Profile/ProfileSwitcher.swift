@@ -28,9 +28,10 @@ struct ProfileSwitcher: View {
     @State private var errorMessage: String?
     @State private var showingError = false
     
+    // Instance identifier for debugging
+    private let instanceId = UUID().uuidString.prefix(8)
+    
     var body: some View {
-        let _ = print("🔄 ProfileSwitcher: Rendering menu with \(profiles.count) profiles, active: \(activeProfile?.name ?? "none")")
-        
         Menu {
             // All Profiles with Current Selection Indicator
             Section("Family Profiles") {
@@ -86,14 +87,19 @@ struct ProfileSwitcher: View {
             ProfileSwitcherButton(activeProfile: activeProfile)
         }
         .onAppear {
+            print("🎬 ProfileSwitcher: onAppear triggered [Instance: \(instanceId)]")
+            print("🔄 ProfileSwitcher: Rendering menu with \(profiles.count) profiles, active: \(activeProfile?.name ?? "none") [Instance: \(instanceId)]")
             loadProfiles()
         }
         .onReceive(dataServices.objectWillChange) { _ in
+            print("📡 ProfileSwitcher: dataServices.objectWillChange received [Instance: \(instanceId)]")
             loadProfiles()
         }
+        
         .sheet(isPresented: $showingProfileManagement) {
             ProfileManagementView()
                 .onDisappear {
+                    print("👋 ProfileSwitcher: ProfileManagementView disappeared, reloading [Instance: \(instanceId)]")
                     loadProfiles()
                 }
         }
@@ -107,11 +113,13 @@ struct ProfileSwitcher: View {
     }
     
     private func loadProfiles() {
+        print("🔍 ProfileSwitcher: loadProfiles() called [Instance: \(instanceId)]")
         do {
             profiles = try dataServices.profileService.getAllProfiles()
             activeProfile = dataServices.profileService.getActiveProfile()
-            print("🔄 ProfileSwitcher: Loaded \(profiles.count) profiles, active: \(activeProfile?.name ?? "none")")
+            print("🔄 ProfileSwitcher: Loaded \(profiles.count) profiles, active: \(activeProfile?.name ?? "none") [Instance: \(instanceId)]")
         } catch {
+            print("❌ ProfileSwitcher: Error loading profiles [Instance: \(instanceId)]: \(error)")
             errorMessage = "Failed to load profiles: \(error.localizedDescription)"
             showingError = true
         }
@@ -123,11 +131,9 @@ struct ProfileSwitcher: View {
             try dataServices.profileService.activateProfile(profile)
             
             // Immediately update local state
+            print("🔄 ProfileSwitcher: Calling loadProfiles() after profile switch [Instance: \(instanceId)]")
             loadProfiles()
-            
-            // Notify other views
-            dataServices.objectWillChange.send()
-            print("✅ ProfileSwitcher: Profile switch completed")
+            print("✅ ProfileSwitcher: Profile switch completed [Instance: \(instanceId)]")
         } catch {
             print("❌ ProfileSwitcher: Failed to switch profile: \(error)")
             errorMessage = "Failed to switch profile: \(error.localizedDescription)"
@@ -250,4 +256,5 @@ struct CompactProfileCard: View {
                 }
         }
     }
+    .environmentObject(DataServices.shared)
 }

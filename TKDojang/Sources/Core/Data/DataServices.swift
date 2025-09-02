@@ -17,8 +17,23 @@ import SwiftData
  */
 @MainActor
 class DataServices: ObservableObject {
+    private static var _shared: DataServices?
+    
+    static var shared: DataServices {
+        if let instance = _shared {
+            return instance
+        }
+        print("🔑 DataServices.shared: Creating singleton instance for first time - \(Date())")
+        let instance = DataServices()
+        _shared = instance
+        return instance
+    }
+    
     private var _dataManager: DataManager?
     
+    private init() { 
+        print("🔑 DataServices.init(): Private initializer called - \(Date())")
+    }
     
     private var dataManager: DataManager {
         if let dm = _dataManager {
@@ -101,14 +116,9 @@ class DataServices: ObservableObject {
 // MARK: - View Modifier
 
 struct DataServicesModifier: ViewModifier {
-    // Lazy initialization - DataServices is only created when body is evaluated
-    @MainActor private var dataServices: DataServices {
-        DataServices()
-    }
-    
     func body(content: Content) -> some View {
         content
-            .environmentObject(dataServices)
+            .environmentObject(DataServices.shared)
             // Note: modelContainer is accessed through dataServices when views need it
             // This avoids triggering DataManager initialization during view setup
     }

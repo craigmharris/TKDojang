@@ -36,12 +36,6 @@ struct TKDojangApp: App {
         return AppCoordinator()
     }()
     
-    /**
-     * DataServices with truly lazy initialization
-     * This exists at app level to satisfy SwiftUI's pre-processing, but DataManager
-     * is only created when a view actually accesses it
-     */
-    @StateObject private var dataServices = DataServices()
     
     /**
      * User settings that persist across app launches
@@ -55,12 +49,10 @@ struct TKDojangApp: App {
     // MARK: - Body
     
     var body: some Scene {
-        print("🏗️ Building WindowGroup scene... - \(Date())")
-        return WindowGroup {
-            print("🖼️ Creating AppInitializationView... - \(Date())")
-            return AppInitializationView()
+        WindowGroup {
+            AppInitializationView()
                 .environmentObject(appCoordinator)
-                .environmentObject(dataServices) // Provide DataServices but it won't initialize DataManager until accessed
+                .environmentObject(DataServices.shared)
         }
     }
     
