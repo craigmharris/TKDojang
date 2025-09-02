@@ -34,44 +34,6 @@ class TerminologyDataService {
     
     // MARK: - Belt Level Operations
     
-    /**
-     * Creates and returns all TAGB belt levels
-     * 
-     * PURPOSE: Initialize the belt level hierarchy
-     * CALL THIS ONCE: During app first launch to populate belt levels
-     */
-    func createBeltLevels() -> [BeltLevel] {
-        let beltLevels = [
-            // Kyup (Colored Belt) Levels - Descending order
-            BeltLevel(name: "10th Keup (White Belt)", shortName: "10th Keup", colorName: "White", sortOrder: 15, isKyup: true),
-            BeltLevel(name: "9th Keup (White Belt - Yellow Tag)", shortName: "9th Keup", colorName: "White/Yellow", sortOrder: 14, isKyup: true),
-            BeltLevel(name: "8th Keup (Yellow Belt)", shortName: "8th Keup", colorName: "Yellow", sortOrder: 13, isKyup: true),
-            BeltLevel(name: "7th Keup (Yellow Belt - Green Tag)", shortName: "7th Keup", colorName: "Yellow/Green", sortOrder: 12, isKyup: true),
-            BeltLevel(name: "6th Keup (Green Belt)", shortName: "6th Keup", colorName: "Green", sortOrder: 11, isKyup: true),
-            BeltLevel(name: "5th Keup (Green Belt - Blue Tag)", shortName: "5th Keup", colorName: "Green/Blue", sortOrder: 10, isKyup: true),
-            BeltLevel(name: "4th Keup (Blue Belt)", shortName: "4th Keup", colorName: "Blue", sortOrder: 9, isKyup: true),
-            BeltLevel(name: "3rd Keup (Blue Belt - Red Tag)", shortName: "3rd Keup", colorName: "Blue/Red", sortOrder: 8, isKyup: true),
-            BeltLevel(name: "2nd Keup (Red Belt)", shortName: "2nd Keup", colorName: "Red", sortOrder: 7, isKyup: true),
-            BeltLevel(name: "1st Keup (Red Belt - Black Tag)", shortName: "1st Keup", colorName: "Red/Black", sortOrder: 6, isKyup: true),
-            
-            // Dan (Black Belt) Levels - Ascending order
-            BeltLevel(name: "1st Dan (Black Belt)", shortName: "1st Dan", colorName: "Black", sortOrder: 5, isKyup: false),
-            BeltLevel(name: "2nd Dan (Black Belt)", shortName: "2nd Dan", colorName: "Black", sortOrder: 4, isKyup: false),
-            BeltLevel(name: "3rd Dan (Black Belt)", shortName: "3rd Dan", colorName: "Black", sortOrder: 3, isKyup: false),
-            BeltLevel(name: "4th Dan (Black Belt)", shortName: "4th Dan", colorName: "Black", sortOrder: 2, isKyup: false),
-            BeltLevel(name: "5th Dan (Black Belt)", shortName: "5th Dan", colorName: "Black", sortOrder: 1, isKyup: false)
-        ]
-        
-        beltLevels.forEach { modelContext.insert($0) }
-        
-        do {
-            try modelContext.save()
-        } catch {
-            print("Failed to save belt levels: \\(error)")
-        }
-        
-        return beltLevels
-    }
     
     /**
      * Creates and returns all terminology categories
