@@ -467,6 +467,7 @@ enum StudySessionType: String, CaseIterable, Codable {
     case flashcards = "flashcards"
     case testing = "testing"
     case patterns = "patterns"
+    case step_sparring = "step_sparring"
     case mixed = "mixed"
     
     var displayName: String {
@@ -474,6 +475,7 @@ enum StudySessionType: String, CaseIterable, Codable {
         case .flashcards: return "Flashcard Study"
         case .testing: return "Knowledge Testing"
         case .patterns: return "Pattern Practice"
+        case .step_sparring: return "Step Sparring"
         case .mixed: return "Mixed Study"
         }
     }
@@ -483,6 +485,7 @@ enum StudySessionType: String, CaseIterable, Codable {
         case .flashcards: return "rectangle.on.rectangle"
         case .testing: return "checkmark.circle"
         case .patterns: return "square.grid.3x3"
+        case .step_sparring: return "figure.boxing"
         case .mixed: return "star"
         }
     }

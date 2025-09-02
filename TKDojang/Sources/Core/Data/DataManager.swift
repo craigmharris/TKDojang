@@ -176,31 +176,75 @@ class DataManager {
         do {
             let existingPatterns = try modelContainer.mainContext.fetch(patternDescriptor)
             
-            // Check if patterns exist but have no moves (indicating old hardcoded patterns)
-            let patternsWithoutMoves = existingPatterns.filter { $0.moves.isEmpty }
+            // Dynamically scan JSON files to determine what patterns should exist
+            let jsonPatternNames = getExpectedPatternNames()
+            let expectedPatternCount = jsonPatternNames.count
             
-            if existingPatterns.isEmpty {
-                print("📚 No patterns found - loading from JSON...")
-                let loader = PatternContentLoader(patternService: patternService)
-                loader.loadAllContent()
-            } else if !patternsWithoutMoves.isEmpty {
-                print("⚠️ Found \(patternsWithoutMoves.count) patterns without moves - reloading from JSON...")
-                print("   Patterns without moves: \(patternsWithoutMoves.map { $0.name })")
+            // Check if we need to reload patterns
+            let existingNames = Set(existingPatterns.map { $0.name })
+            let missingPatterns = jsonPatternNames.subtracting(existingNames)
+            let extraPatterns = existingNames.subtracting(jsonPatternNames)
+            
+            if existingPatterns.count != expectedPatternCount || !missingPatterns.isEmpty || !extraPatterns.isEmpty {
+                if !missingPatterns.isEmpty {
+                    print("📚 Missing patterns: \(missingPatterns.sorted()) - reloading from JSON...")
+                }
+                if !extraPatterns.isEmpty {
+                    print("📚 Extra patterns: \(extraPatterns.sorted()) - reloading from JSON...")
+                }
+                if existingPatterns.count != expectedPatternCount {
+                    print("📚 Pattern count mismatch: \(existingPatterns.count) vs \(expectedPatternCount) expected - reloading...")
+                }
                 
-                // Clear all patterns and reload from JSON to ensure proper structure
                 patternService.clearAndReloadPatterns()
             } else {
-                print("✅ Patterns are properly structured (\(existingPatterns.count) patterns with moves)")
-                
-                // Verify a few patterns have moves
-                let sampledPatterns = existingPatterns.prefix(3)
-                for pattern in sampledPatterns {
+                print("✅ Complete pattern set synchronized (\(existingPatterns.count) patterns)")
+                for pattern in existingPatterns.prefix(3) {
                     print("   \(pattern.name): \(pattern.moves.count) moves")
                 }
             }
         } catch {
             print("❌ Failed to check pattern synchronization: \(error)")
         }
+    }
+    
+    /**
+     * Dynamically scans all pattern JSON files to get expected pattern names
+     */
+    private func getExpectedPatternNames() -> Set<String> {
+        var expectedNames = Set<String>()
+        
+        // List of all pattern JSON files to scan
+        let patternFiles = [
+            "9th_keup_patterns", "8th_keup_patterns", "7th_keup_patterns", "6th_keup_patterns", 
+            "5th_keup_patterns", "4th_keup_patterns", "3rd_keup_patterns", "2nd_keup_patterns", 
+            "1st_keup_patterns", "1st_dan_patterns", "2nd_dan_patterns"
+        ]
+        
+        for filename in patternFiles {
+            // Try multiple bundle locations (same as PatternContentLoader)
+            if let url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Patterns") ??
+                         Bundle.main.url(forResource: filename, withExtension: "json") ??
+                         Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Core/Data/Content/Patterns") {
+                
+                do {
+                    let data = try Data(contentsOf: url)
+                    let contentData = try JSONDecoder().decode(PatternContentData.self, from: data)
+                    
+                    // Add all pattern names from this file
+                    for pattern in contentData.patterns {
+                        expectedNames.insert(pattern.name)
+                    }
+                } catch {
+                    print("⚠️ Failed to read pattern names from \(filename): \(error)")
+                }
+            } else {
+                print("⚠️ Could not find \(filename).json in bundle")
+            }
+        }
+        
+        print("📋 Expected patterns from JSON: \(expectedNames.sorted())")
+        return expectedNames
     }
     
     /**

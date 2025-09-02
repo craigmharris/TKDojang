@@ -956,6 +956,7 @@ struct StudySessionRow: View {
         case .flashcards: return .blue
         case .testing: return .green
         case .patterns: return .purple
+        case .step_sparring: return .red
         case .mixed: return .orange
         }
     }
