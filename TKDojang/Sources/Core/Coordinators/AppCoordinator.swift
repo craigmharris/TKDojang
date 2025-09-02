@@ -63,8 +63,6 @@ class AppCoordinator: ObservableObject {
         }
     }
     
-    // Authentication flow removed - app uses device-local profiles
-    
     /**
      * Navigate to main app flow
      */
@@ -73,8 +71,6 @@ class AppCoordinator: ObservableObject {
             currentFlow = .main
         }
     }
-    
-    // Logout removed - app uses device-local profiles without authentication
     
     // MARK: - Private Methods
     

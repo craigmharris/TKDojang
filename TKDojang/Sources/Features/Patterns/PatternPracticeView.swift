@@ -103,18 +103,6 @@ struct PatternPracticeView: View {
                     .fontWeight(.semibold)
                 
                 Spacer()
-                
-                if false { // Practice mode removed
-                    Button("Pause") {
-                        // Practice mode removed
-                    }
-                    .font(.subheadline)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 8)
-                    .background(Color.orange)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-                }
             }
             
             // Visual progress - belt-themed design
