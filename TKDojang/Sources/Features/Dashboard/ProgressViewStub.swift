@@ -290,6 +290,14 @@ struct LearningBreakdownCard: View {
                     icon: "square.grid.3x3",
                     color: .purple
                 )
+                
+                LearningRow(
+                    title: "Step Sparring",
+                    value: "\(progressData.stepSparringStats.totalSequencesLearned)",
+                    subtitle: "\(progressData.stepSparringStats.practiceSessionsCompleted) sessions",
+                    icon: "figure.boxing",
+                    color: .red
+                )
             }
         }
         .padding()
@@ -355,6 +363,12 @@ struct BeltProgressCard: View {
                     title: "Patterns",
                     progress: progressData.beltProgressStats.patternMastery,
                     color: .green
+                )
+                
+                ProgressBar(
+                    title: "Step Sparring",
+                    progress: progressData.beltProgressStats.stepSparringMastery,
+                    color: .red
                 )
                 
                 ProgressBar(

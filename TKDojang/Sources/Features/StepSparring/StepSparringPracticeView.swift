@@ -389,7 +389,7 @@ struct StepSparringPracticeView: View {
         
         do {
             try dataServices.profileService.recordStudySession(
-                sessionType: .mixed, // Step sparring combines various techniques
+                sessionType: .step_sparring,
                 itemsStudied: totalSteps,
                 correctAnswers: stepsCompleted,
                 focusAreas: [sequence.name]

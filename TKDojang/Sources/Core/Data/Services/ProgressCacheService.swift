@@ -119,10 +119,17 @@ class ProgressCacheService {
         let currentProfile = try await getProfile(for: profileId)
         
         // Compute all statistics in memory from simple data
+        // Get step sparring progress using in-memory filtering  
+        let allStepSparringProgress = try await getStepSparringProgress()
+        let stepSparringProgress = allStepSparringProgress.filter { progress in
+            progress.userProfile.id == profileId
+        }
+        
         let stats = computeProgressStats(
             sessions: studySessions,
             terminologyProgress: terminologyProgress,
             patternProgress: patternProgress,
+            stepSparringProgress: stepSparringProgress,
             gradingRecords: gradingRecords,
             allBeltLevels: allBeltLevels,
             currentProfile: currentProfile
@@ -135,6 +142,7 @@ class ProgressCacheService {
             flashcardStats: stats.flashcard,
             testingStats: stats.testing,
             patternStats: stats.pattern,
+            stepSparringStats: stats.stepSparring,
             streakStats: stats.streak,
             beltProgressStats: stats.beltProgress,
             recentActivity: stats.recentActivity,
@@ -188,6 +196,12 @@ class ProgressCacheService {
         return allProgress.filter { progress in
             progress.userProfile.id == profileId
         }
+    }
+    
+    private func getStepSparringProgress() async throws -> [UserStepSparringProgress] {
+        // Fetch all step sparring progress - no filtering needed for now since we filter by profile later
+        let descriptor = FetchDescriptor<UserStepSparringProgress>()
+        return try modelContext.fetch(descriptor)
     }
     
     /**
@@ -251,6 +265,7 @@ class ProgressCacheService {
         sessions: [StudySession],
         terminologyProgress: [UserTerminologyProgress],
         patternProgress: [UserPatternProgress],
+        stepSparringProgress: [UserStepSparringProgress],
         gradingRecords: [GradingRecord],
         allBeltLevels: [BeltLevel],
         currentProfile: UserProfile?
@@ -273,8 +288,9 @@ class ProgressCacheService {
             flashcard: computeFlashcardStats(sessions: sessions),
             testing: computeTestingStats(sessions: sessions),
             pattern: computePatternStats(sessions: sessions, patternProgress: patternProgress),
+            stepSparring: computeStepSparringStats(sessions: sessions),
             streak: computeStreakStats(sessions: sessions),
-            beltProgress: computeBeltProgressStats(terminologyProgress: terminologyProgress, patternProgress: patternProgress),
+            beltProgress: computeBeltProgressStats(terminologyProgress: terminologyProgress, patternProgress: patternProgress, stepSparringProgress: stepSparringProgress),
             recentActivity: computeRecentActivityStats(recentSessions: recentSessions),
             beltJourney: computeBeltJourneyStats(
                 gradingRecords: gradingRecords,
@@ -342,6 +358,22 @@ class ProgressCacheService {
         )
     }
     
+    private func computeStepSparringStats(sessions: [StudySession]) -> StepSparringProgressStats {
+        let stepSparringSessions = sessions.filter { $0.sessionType == .step_sparring }
+        
+        // Count unique sequences practiced (from focus areas)
+        let uniqueSequences = Set(stepSparringSessions.flatMap { session in
+            session.focusAreasArray // Get sequence names from focus areas
+        }).count
+        
+        return StepSparringProgressStats(
+            totalSequencesLearned: uniqueSequences,
+            practiceSessionsCompleted: stepSparringSessions.count,
+            averagePracticeTime: stepSparringSessions.isEmpty ? 0.0 :
+                stepSparringSessions.reduce(0) { $0 + $1.duration } / Double(stepSparringSessions.count)
+        )
+    }
+    
     private func computeStreakStats(sessions: [StudySession]) -> StreakProgressStats {
         // Calculate current streak from session dates
         let calendar = Calendar.current
@@ -375,19 +407,23 @@ class ProgressCacheService {
         )
     }
     
-    private func computeBeltProgressStats(terminologyProgress: [UserTerminologyProgress], patternProgress: [UserPatternProgress]) -> BeltProgressStats {
+    private func computeBeltProgressStats(terminologyProgress: [UserTerminologyProgress], patternProgress: [UserPatternProgress], stepSparringProgress: [UserStepSparringProgress]) -> BeltProgressStats {
         let masteredTerminology = terminologyProgress.filter { $0.masteryLevel == .mastered }.count
         let totalTerminology = terminologyProgress.count
         
         let masteredPatterns = patternProgress.filter { $0.masteryLevel == .mastered }.count
         let totalPatterns = patternProgress.count
         
-        let overallMastery = (totalTerminology + totalPatterns) > 0 ? 
-            Double(masteredTerminology + masteredPatterns) / Double(totalTerminology + totalPatterns) : 0.0
+        let masteredStepSparring = stepSparringProgress.filter { $0.masteryLevel == .mastered }.count
+        let totalStepSparring = stepSparringProgress.count
+        
+        let overallMastery = (totalTerminology + totalPatterns + totalStepSparring) > 0 ? 
+            Double(masteredTerminology + masteredPatterns + masteredStepSparring) / Double(totalTerminology + totalPatterns + totalStepSparring) : 0.0
         
         return BeltProgressStats(
             terminologyMastery: totalTerminology > 0 ? Double(masteredTerminology) / Double(totalTerminology) : 0.0,
             patternMastery: totalPatterns > 0 ? Double(masteredPatterns) / Double(totalPatterns) : 0.0,
+            stepSparringMastery: totalStepSparring > 0 ? Double(masteredStepSparring) / Double(totalStepSparring) : 0.0,
             overallMastery: overallMastery
         )
     }
@@ -817,6 +853,7 @@ struct ProgressSnapshot: Codable {
     let flashcardStats: FlashcardProgressStats
     let testingStats: TestingProgressStats
     let patternStats: PatternProgressStats
+    let stepSparringStats: StepSparringProgressStats
     let streakStats: StreakProgressStats
     let beltProgressStats: BeltProgressStats
     let recentActivity: RecentActivityStats
@@ -837,6 +874,7 @@ private struct ProgressStatsCollection {
     let flashcard: FlashcardProgressStats
     let testing: TestingProgressStats
     let pattern: PatternProgressStats
+    let stepSparring: StepSparringProgressStats
     let streak: StreakProgressStats
     let beltProgress: BeltProgressStats
     let recentActivity: RecentActivityStats
@@ -907,6 +945,17 @@ struct PatternProgressStats: Codable {
     }
 }
 
+struct StepSparringProgressStats: Codable {
+    let totalSequencesLearned: Int
+    let practiceSessionsCompleted: Int
+    let averagePracticeTime: TimeInterval
+    
+    var formattedAveragePracticeTime: String {
+        let minutes = Int(averagePracticeTime / 60)
+        return "\(minutes)m"
+    }
+}
+
 struct StreakProgressStats: Codable {
     let currentStreak: Int
     let longestStreak: Int
@@ -916,6 +965,7 @@ struct StreakProgressStats: Codable {
 struct BeltProgressStats: Codable {
     let terminologyMastery: Double
     let patternMastery: Double
+    let stepSparringMastery: Double
     let overallMastery: Double
     
     var terminologyPercentage: Int {
@@ -924,6 +974,10 @@ struct BeltProgressStats: Codable {
     
     var patternPercentage: Int {
         return Int(patternMastery * 100)
+    }
+    
+    var stepSparringPercentage: Int {
+        return Int(stepSparringMastery * 100)
     }
     
     var overallPercentage: Int {

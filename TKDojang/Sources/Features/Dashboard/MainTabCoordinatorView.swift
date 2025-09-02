@@ -551,7 +551,13 @@ struct PracticeView: View {
                         destination: AnyView(LineWorkView())
                     )
                     
-                    TechniqueNavigationCard()
+                    PracticeMenuCard(
+                        title: "Techniques",
+                        description: "Comprehensive technique reference",
+                        icon: "books.vertical.fill",
+                        color: .purple,
+                        destination: AnyView(TechniquesView())
+                    )
                 }
                 .padding(.horizontal)
                 
@@ -1863,41 +1869,6 @@ struct StatBadge: View {
     }
 }
 
-// MARK: - Technique Navigation Card
-
-struct TechniqueNavigationCard: View {
-    @EnvironmentObject private var dataServices: DataServices
-    
-    var body: some View {
-        NavigationLink(destination: TechniquesView().environmentObject(dataServices)) {
-            VStack(spacing: 12) {
-                Image(systemName: "books.vertical.fill")
-                    .font(.system(size: 32))
-                    .foregroundColor(.purple)
-                
-                Text("Techniques")
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.primary)
-                
-                Text("Comprehensive technique reference")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-            }
-            .padding()
-            .frame(maxWidth: .infinity, minHeight: 120)
-            .background(Color(.secondarySystemBackground))
-            .cornerRadius(16)
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.purple.opacity(0.3), lineWidth: 1)
-            )
-        }
-        .buttonStyle(PlainButtonStyle())
-    }
-}
 
 struct MainTabCoordinatorView_Previews: PreviewProvider {
     static var previews: some View {
