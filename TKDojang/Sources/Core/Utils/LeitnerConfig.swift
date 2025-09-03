@@ -64,7 +64,6 @@ struct LeitnerSettings: Codable {
 
 // MARK: - Configuration Loader
 
-@MainActor
 class LeitnerConfigManager {
     static let shared = LeitnerConfigManager()
     

@@ -22,14 +22,16 @@ import SwiftData
 struct ProfileSwitcher: View {
     @EnvironmentObject private var dataServices: DataServices
     
-    @State private var profiles: [UserProfile] = []
-    @State private var activeProfile: UserProfile?
     @State private var showingProfileManagement = false
     @State private var errorMessage: String?
     @State private var showingError = false
     
     // Instance identifier for debugging
     private let instanceId = UUID().uuidString.prefix(8)
+    
+    // Use shared published state instead of local state
+    private var profiles: [UserProfile] { dataServices.allProfiles }
+    private var activeProfile: UserProfile? { dataServices.activeProfile }
     
     var body: some View {
         Menu {
@@ -89,18 +91,16 @@ struct ProfileSwitcher: View {
         .onAppear {
             print("🎬 ProfileSwitcher: onAppear triggered [Instance: \(instanceId)]")
             print("🔄 ProfileSwitcher: Rendering menu with \(profiles.count) profiles, active: \(activeProfile?.name ?? "none") [Instance: \(instanceId)]")
-            loadProfiles()
-        }
-        .onReceive(dataServices.objectWillChange) { _ in
-            print("📡 ProfileSwitcher: dataServices.objectWillChange received [Instance: \(instanceId)]")
-            loadProfiles()
+            
+            // Load shared profile state only once across all instances
+            dataServices.loadSharedProfileState()
         }
         
         .sheet(isPresented: $showingProfileManagement) {
             ProfileManagementView()
                 .onDisappear {
-                    print("👋 ProfileSwitcher: ProfileManagementView disappeared, reloading [Instance: \(instanceId)]")
-                    loadProfiles()
+                    print("👋 ProfileSwitcher: ProfileManagementView disappeared, refreshing shared state [Instance: \(instanceId)]")
+                    dataServices.refreshSharedProfileState()
                 }
         }
         .alert("Error", isPresented: $showingError) {
@@ -112,27 +112,13 @@ struct ProfileSwitcher: View {
         }
     }
     
-    private func loadProfiles() {
-        print("🔍 ProfileSwitcher: loadProfiles() called [Instance: \(instanceId)]")
-        do {
-            profiles = try dataServices.profileService.getAllProfiles()
-            activeProfile = dataServices.profileService.getActiveProfile()
-            print("🔄 ProfileSwitcher: Loaded \(profiles.count) profiles, active: \(activeProfile?.name ?? "none") [Instance: \(instanceId)]")
-        } catch {
-            print("❌ ProfileSwitcher: Error loading profiles [Instance: \(instanceId)]: \(error)")
-            errorMessage = "Failed to load profiles: \(error.localizedDescription)"
-            showingError = true
-        }
-    }
-    
     private func switchToProfile(_ profile: UserProfile) {
         do {
-            print("🔄 ProfileSwitcher: Switching to profile: \(profile.name)")
-            try dataServices.profileService.activateProfile(profile)
+            print("🔄 ProfileSwitcher: Switching to profile: \(profile.name) [Instance: \(instanceId)]")
             
-            // Immediately update local state
-            print("🔄 ProfileSwitcher: Calling loadProfiles() after profile switch [Instance: \(instanceId)]")
-            loadProfiles()
+            // Use shared DataServices method for profile switching
+            try dataServices.switchToProfile(profile)
+            
             print("✅ ProfileSwitcher: Profile switch completed [Instance: \(instanceId)]")
         } catch {
             print("❌ ProfileSwitcher: Failed to switch profile: \(error)")

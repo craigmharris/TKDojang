@@ -19,6 +19,12 @@ import SwiftData
 class DataServices: ObservableObject {
     private static var _shared: DataServices?
     
+    // MARK: - Published Profile State (for ProfileSwitcher optimization)
+    
+    @Published var allProfiles: [UserProfile] = []
+    @Published var activeProfile: UserProfile?
+    private var hasLoadedProfiles = false
+    
     static var shared: DataServices {
         if let instance = _shared {
             return instance
@@ -110,6 +116,58 @@ class DataServices: ObservableObject {
     
     var databaseResetId: UUID {
         dataManager.databaseResetId
+    }
+    
+    // MARK: - Shared Profile State Management
+    
+    /**
+     * Loads profile data into shared published properties (called once, not per ProfileSwitcher instance)
+     */
+    func loadSharedProfileState() {
+        guard !hasLoadedProfiles else { 
+            print("🔄 DataServices: Profile state already loaded, skipping duplicate load")
+            return 
+        }
+        
+        print("🔄 DataServices: Loading shared profile state (first time)")
+        
+        do {
+            allProfiles = try profileService.getAllProfiles()
+            activeProfile = profileService.getActiveProfile()
+            hasLoadedProfiles = true
+            
+            print("✅ DataServices: Loaded shared profile state - \(allProfiles.count) profiles, active: \(activeProfile?.name ?? "none")")
+        } catch {
+            print("❌ DataServices: Failed to load shared profile state: \(error)")
+            allProfiles = []
+            activeProfile = nil
+        }
+    }
+    
+    /**
+     * Updates shared profile state after profile operations
+     */
+    func refreshSharedProfileState() {
+        print("🔄 DataServices: Refreshing shared profile state")
+        
+        do {
+            allProfiles = try profileService.getAllProfiles()
+            activeProfile = profileService.getActiveProfile()
+            
+            print("✅ DataServices: Refreshed shared profile state - \(allProfiles.count) profiles, active: \(activeProfile?.name ?? "none")")
+        } catch {
+            print("❌ DataServices: Failed to refresh shared profile state: \(error)")
+        }
+    }
+    
+    /**
+     * Switches to profile and updates shared state
+     */
+    func switchToProfile(_ profile: UserProfile) throws {
+        print("🔄 DataServices: Switching to profile: \(profile.name)")
+        try profileService.activateProfile(profile)
+        refreshSharedProfileState()
+        print("✅ DataServices: Profile switch completed")
     }
 }
 

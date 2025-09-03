@@ -2,6 +2,65 @@
 
 This file contains detailed session summaries and development milestones for historical reference.
 
+## Session Summary (September 3, 2025) - ProfileSwitcher Performance Optimization & Technical Debt Resolution
+
+### 🎯 **Session Focus:**
+Optimized ProfileSwitcher startup performance by eliminating redundant database queries and resolved critical @MainActor threading issues.
+
+#### 🚀 **ProfileSwitcher Performance Optimization:**
+**Problem**: Debug logs showed ProfileSwitcher creating 8 instances during startup, each making separate database queries (16 total database operations causing performance bottleneck).
+
+**Root Cause**: Each ProfileSwitcher instance was independently loading profile data via separate `loadProfiles()` calls in `onAppear`.
+
+**Solution Implemented**:
+- **Shared State Pattern**: Added `@Published var allProfiles` and `@Published var activeProfile` to DataServices singleton
+- **Single Load Logic**: `loadSharedProfileState()` method with `hasLoadedProfiles` guard to prevent duplicate loads
+- **Instance Coordination**: All ProfileSwitcher instances now use computed properties from shared state
+- **AppCoordinator Integration**: Profile state loaded once during app initialization
+
+**Performance Impact**:
+- **Before**: 8 ProfileSwitcher instances × 2 database queries each = 16 database operations
+- **After**: 1 initial database load shared across all instances = 2 database operations
+- **87.5% reduction** in database queries during startup
+
+#### 🔧 **@MainActor Threading Fix:**
+**Problem**: Build error in LeitnerService.swift line 383 - `LeitnerConfigManager.shared.getIntervalDays()` marked as @MainActor but called from non-MainActor context.
+
+**Root Cause**: `LeitnerConfigManager` unnecessarily marked as @MainActor when it only reads JSON configuration data.
+
+**Solution**: Removed @MainActor annotation from `LeitnerConfigManager` class since JSON reading doesn't require main thread isolation.
+
+**Technical Impact**: Resolved Swift concurrency compilation error, enabling proper async access to Leitner configuration from background contexts.
+
+#### 📝 **Technical Debt Resolution (Continued from September 2):**
+**Completed Tasks**:
+- **Belt Progression Fix**: Implemented actual belt progression logic replacing "Next Belt Level" placeholder text
+- **Configurable Leitner Intervals**: Created `leitner_config.json` with multiple learning presets (beginner/standard/advanced/intensive)
+- **JSON-First Architecture**: Removed 350+ lines of hardcoded pattern methods, replaced with centralized BeltUtils.swift
+- **LeitnerConfig Service**: Created `LeitnerConfig.swift` for managing configurable review intervals with fallback patterns
+
+#### 🧪 **Testing & Validation:**
+**Build Verification**: Successfully compiled main app target with resolved @MainActor issues.
+
+**ProfileSwitcher Testing**: Debug logs confirmed:
+- Single profile state load: "🔄 DataServices: Loading shared profile state (first time)"
+- All subsequent instances: "🔄 DataServices: Profile state already loaded, skipping duplicate load"
+- Shared state working: All instances showing "6 profiles, active: Cath"
+
+#### 🎯 **Key Technical Patterns Established:**
+- **Shared State Optimization**: Pattern for preventing redundant database queries across multiple SwiftUI view instances
+- **@MainActor Best Practices**: Only apply to classes that truly need main thread isolation
+- **JSON-First Configuration**: Configurable learning systems using JSON with runtime fallbacks
+- **Performance Monitoring**: Debug logging patterns for identifying and measuring optimization impacts
+
+#### 📊 **Session Metrics:**
+- **Performance Improvement**: 87.5% reduction in ProfileSwitcher database queries
+- **Code Cleanup**: 350+ lines of hardcoded technical debt removed
+- **Build Status**: ✅ All compilation errors resolved
+- **Architecture**: Maintained clean separation between UI and data layers
+
+**Next Priority**: Continue with remaining UI optimizations (Theory view ForEach ID duplicates, lazy loading) and JSON data validation fixes.
+
 ## Session Summary (September 2, 2025) - Technique Library Recovery & Step Sparring Progress Integration
 
 ### 🎯 **Session Focus:**

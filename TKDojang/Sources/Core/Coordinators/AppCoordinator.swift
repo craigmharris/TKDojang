@@ -164,6 +164,10 @@ class AppCoordinator: ObservableObject {
             // Always ensure content is synchronized
             await DataManager.shared.setupInitialData()
             print("✅ Content synchronization complete")
+            
+            // Load shared profile state for ProfileSwitcher optimization
+            DataServices.shared.loadSharedProfileState()
+            print("✅ Shared profile state loaded for ProfileSwitcher optimization")
         } catch {
             print("❌ Failed to initialize app data: \(error)")
             // Continue anyway - app can still function with empty database
