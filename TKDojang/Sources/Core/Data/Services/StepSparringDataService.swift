@@ -107,12 +107,12 @@ final class StepSparringDataService {
         // Use JSON belt level data instead of hardcoded patterns
         let expectedBelts = sequence.applicableBeltLevelIds
         
-        print("DEBUG: 🔍 Checking sequence '\(sequence.name)' for user belt '\(userBelt.shortName)'")
-        print("DEBUG:    JSON applicable belts: \(expectedBelts)")
+        DebugLogger.data("🔍 Checking sequence '\(sequence.name)' for user belt '\(userBelt.shortName)'")
+        DebugLogger.data("   JSON applicable belts: \(expectedBelts)")
         
         // If no belt levels defined in JSON, sequence is not available
         guard !expectedBelts.isEmpty else {
-            print("DEBUG: ❌ No applicable belt levels found for \(sequence.name)")
+            DebugLogger.data("❌ No applicable belt levels found for \(sequence.name)")
             return false
         }
         
@@ -122,18 +122,18 @@ final class StepSparringDataService {
                 .replacingOccurrences(of: "keup", with: "Keup")
                 .replacingOccurrences(of: "dan", with: "Dan")
             
-            print("DEBUG:    Checking '\(expectedBelt)' -> '\(normalizedBelt)' vs user '\(userBelt.shortName)'")
+            DebugLogger.data("   Checking '\(expectedBelt)' -> '\(normalizedBelt)' vs user '\(userBelt.shortName)'")
             
             // Check if user's belt matches any expected belt
             // User can access sequences for their current belt and all previous belts (higher sort order)
             if normalizedBelt == userBelt.shortName || 
                (getBeltSortOrder(for: normalizedBelt) >= userBelt.sortOrder) {
-                print("DEBUG: ✅ Belt match found - sequence available")
+                DebugLogger.data("✅ Belt match found - sequence available")
                 return true
             }
         }
         
-        print("DEBUG: ❌ No belt match found - sequence not available")
+        DebugLogger.data("❌ No belt match found - sequence not available")
         return false
     }
     

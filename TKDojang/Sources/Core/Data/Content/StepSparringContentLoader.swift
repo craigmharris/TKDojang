@@ -28,7 +28,7 @@ struct StepSparringContentLoader {
         // Dynamically scan for all step sparring JSON files
         let stepSparringFiles = getStepSparringJsonFiles()
         
-        print("DEBUG: 🔍 Found \(stepSparringFiles.count) step sparring JSON files to load: \(stepSparringFiles)")
+        DebugLogger.data("🔍 Found \(stepSparringFiles.count) step sparring JSON files to load: \(stepSparringFiles)")
         
         for filename in stepSparringFiles {
             loadContentFromFile(filename: filename)
@@ -57,13 +57,13 @@ struct StepSparringContentLoader {
         for filename in expectedStepSparringFiles {
             if Bundle.main.url(forResource: filename, withExtension: "json") != nil {
                 foundFiles.append(filename)
-                print("DEBUG: ✅ Found step sparring file: \(filename).json")
+                DebugLogger.data("✅ Found step sparring file: \(filename).json")
             } else {
-                print("DEBUG: ⚠️ Expected step sparring file not found: \(filename).json")
+                DebugLogger.data("⚠️ Expected step sparring file not found: \(filename).json")
             }
         }
         
-        print("DEBUG: 📁 Found \(foundFiles.count) step sparring JSON files: \(foundFiles)")
+        DebugLogger.data("📁 Found \(foundFiles.count) step sparring JSON files: \(foundFiles)")
         return foundFiles.sorted()
     }
     
@@ -94,14 +94,14 @@ struct StepSparringContentLoader {
         // Use the same pattern as ModularContentLoader for consistency
         var url: URL?
         
-        print("DEBUG: 🔍 Searching for \(filename).json...")
+        DebugLogger.data("🔍 Searching for \(filename).json...")
         
         // Try main bundle root first (where Xcode copies the files)
         url = Bundle.main.url(forResource: filename, withExtension: "json")
         if url != nil {
-            print("DEBUG: ✅ Found \(filename).json in main bundle root")
+            DebugLogger.data("✅ Found \(filename).json in main bundle root")
         } else {
-            print("DEBUG: ❌ Not found in main bundle root")
+            DebugLogger.data("❌ Not found in main bundle root")
         }
         
         guard let fileUrl = url else {
@@ -116,7 +116,7 @@ struct StepSparringContentLoader {
             // Detect type from JSON content
             let sparringType = getStepSparringType(from: contentData.type)
             
-            print("DEBUG: 📚 Loading \(contentData.sequences.count) \(sparringType.displayName) sparring sequences from \(filename)")
+            DebugLogger.data("📚 Loading \(contentData.sequences.count) \(sparringType.displayName) sparring sequences from \(filename)")
             
             // Create sequences from JSON data
             for sequenceData in contentData.sequences {
@@ -126,12 +126,12 @@ struct StepSparringContentLoader {
                 // Save immediately after each sequence to prevent relationship corruption
                 do {
                     try stepSparringService.modelContext.save()
-                    print("DEBUG: ✅ Saved sequence #\(sequenceData.sequenceNumber)")
+                    DebugLogger.data("✅ Saved sequence #\(sequenceData.sequenceNumber)")
                 } catch {
-                    print("DEBUG: ❌ Failed to save sequence #\(sequenceData.sequenceNumber): \(error)")
+                    DebugLogger.data("❌ Failed to save sequence #\(sequenceData.sequenceNumber): \(error)")
                 }
             }
-            print("DEBUG: ✅ Successfully loaded \(contentData.sequences.count) \(sparringType.displayName) sparring sequences from \(filename)")
+            DebugLogger.data("✅ Successfully loaded \(contentData.sequences.count) \(sparringType.displayName) sparring sequences from \(filename)")
             
         } catch {
             print("❌ Failed to load sparring content from \(filename): \(error)")

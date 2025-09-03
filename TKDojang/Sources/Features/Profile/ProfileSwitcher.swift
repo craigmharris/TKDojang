@@ -90,8 +90,8 @@ struct ProfileSwitcher: View {
         }
         .id("ProfileSwitcher-\(activeProfile?.id.uuidString ?? "none")")
         .onAppear {
-            print("🎬 ProfileSwitcher: onAppear triggered [Instance: \(instanceId)]")
-            print("🔄 ProfileSwitcher: Rendering menu with \(profiles.count) profiles, active: \(activeProfile?.name ?? "none") [Instance: \(instanceId)]")
+            DebugLogger.ui("🎬 ProfileSwitcher: onAppear triggered [Instance: \(instanceId)]")
+            DebugLogger.ui("🔄 ProfileSwitcher: Rendering menu with \(profiles.count) profiles, active: \(activeProfile?.name ?? "none") [Instance: \(instanceId)]")
             
             // Load shared profile state only once across all instances
             dataServices.loadSharedProfileState()
