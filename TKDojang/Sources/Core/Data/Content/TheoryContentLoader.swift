@@ -161,11 +161,11 @@ class TheoryContentLoader: ObservableObject {
             if let content = await loadTheoryContent(for: beltId) {
                 theoryContent[beltId] = content
             } else {
-                print("⚠️ Failed to load theory content for \(beltId)")
+                DebugLogger.data("⚠️ Failed to load theory content for \(beltId)")
             }
         }
         
-        print("✅ Loaded theory content for \(theoryContent.count) belt levels")
+        DebugLogger.data("✅ Loaded theory content for \(theoryContent.count) belt levels")
         return theoryContent
     }
     
@@ -177,7 +177,7 @@ class TheoryContentLoader: ObservableObject {
      */
     static func loadTheoryContent(for beltId: String) async -> TheoryContent? {
         guard let url = Bundle.main.url(forResource: "\(beltId)_theory", withExtension: "json") else {
-            print("⚠️ Theory file not found: \(beltId)_theory.json")
+            DebugLogger.data("⚠️ Theory file not found: \(beltId)_theory.json")
             return nil
         }
         
@@ -186,11 +186,11 @@ class TheoryContentLoader: ObservableObject {
             let decoder = JSONDecoder()
             let theoryContent = try decoder.decode(TheoryContent.self, from: data)
             
-            print("✅ Loaded theory content for \(theoryContent.beltLevel): \(theoryContent.theorySections.count) sections")
+            DebugLogger.data("✅ Loaded theory content for \(theoryContent.beltLevel): \(theoryContent.theorySections.count) sections")
             return theoryContent
             
         } catch {
-            print("❌ Failed to load theory content for \(beltId): \(error)")
+            DebugLogger.data("❌ Failed to load theory content for \(beltId): \(error)")
             return nil
         }
     }

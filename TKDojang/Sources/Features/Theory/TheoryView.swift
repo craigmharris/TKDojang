@@ -32,6 +32,8 @@ struct TheoryView: View {
     @State private var isLoading = true
     @State private var selectedCategory: String? = nil
     @State private var availableCategories: [String] = []
+    @State private var selectedBeltFilter: String? = nil
+    @State private var showingFilters = false
     
     var body: some View {
         NavigationStack {
@@ -51,6 +53,13 @@ struct TheoryView: View {
             .navigationTitle("Theory")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: { showingFilters = true }) {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                            .font(.title3)
+                    }
+                }
+                
                 ToolbarItem(placement: .topBarTrailing) {
                     ProfileSwitcher()
                 }
@@ -65,6 +74,14 @@ struct TheoryView: View {
                 let relevantSections = getRelevantTheorySections(for: activeProfile)
                 updateAvailableCategories(from: relevantSections)
             }
+        }
+        .sheet(isPresented: $showingFilters) {
+            TheoryFiltersView(
+                availableBelts: getAvailableBeltLevels(),
+                availableCategories: availableCategories,
+                selectedBeltFilter: $selectedBeltFilter,
+                selectedCategory: $selectedCategory
+            )
         }
     }
     
@@ -145,7 +162,7 @@ struct TheoryView: View {
         let beltLevel: String
         let beltSortOrder: Int
         
-        var id: String { section.id }
+        var id: String { "\(beltLevel)-\(section.id)" }
     }
     
     /**
@@ -167,7 +184,7 @@ struct TheoryView: View {
                 case .progression:
                     shouldInclude = beltSortOrder == currentBeltSortOrder
                 case .mastery:
-                    shouldInclude = beltSortOrder <= currentBeltSortOrder
+                    shouldInclude = beltSortOrder >= currentBeltSortOrder
                 }
                 
                 if shouldInclude {
@@ -186,7 +203,7 @@ struct TheoryView: View {
     }
     
     /**
-     * Filter by selected category and sort by belt level (descending)
+     * Filter by selected category and belt, then sort by belt level (descending)
      */
     private func filteredAndSortedSections(_ sections: [TheorySectionWithBelt]) -> [TheorySectionWithBelt] {
         var filtered = sections
@@ -194,6 +211,12 @@ struct TheoryView: View {
         // Apply category filter
         if let selectedCategory = selectedCategory {
             filtered = filtered.filter { $0.section.category == selectedCategory }
+        }
+        
+        // Apply belt filter
+        if let selectedBeltFilter = selectedBeltFilter {
+            let targetBeltLevel = BeltUtils.fileIdToBeltLevel(selectedBeltFilter)
+            filtered = filtered.filter { $0.beltLevel == targetBeltLevel }
         }
         
         // Sort by belt level descending (highest belt first)
@@ -217,7 +240,9 @@ struct TheoryView: View {
      */
     private func getBeltLevelsToLoad(for profile: UserProfile) -> [String] {
         let beltIdMapping = BeltUtils.getBeltIdMapping(from: dataServices.modelContext)
-        let currentBeltId = BeltUtils.beltLevelToFileId(profile.currentBeltLevel.name)
+        let currentBeltId = BeltUtils.beltLevelToFileId(profile.currentBeltLevel.shortName)
+        DebugLogger.data("🗺️ Theory: Belt mapping keys: \(Array(beltIdMapping.keys).sorted())")
+        DebugLogger.data("🎯 Theory: Current belt ID: \(currentBeltId), sort order: \(profile.currentBeltLevel.sortOrder)")
         
         switch profile.learningMode {
         case .progression:
@@ -256,6 +281,7 @@ struct TheoryView: View {
         
         // Determine which belt levels to load based on learning mode
         let beltLevelsToLoad = getBeltLevelsToLoad(for: activeProfile)
+        DebugLogger.data("🎯 Theory: Loading belt IDs: \(beltLevelsToLoad) for profile \(activeProfile.name)")
         var loadedContent: [String: TheoryContent] = [:]
         
         for beltId in beltLevelsToLoad {
@@ -276,6 +302,17 @@ struct TheoryView: View {
     
     private func mapBeltLevelToId(_ beltLevel: String) -> String? {
         return BeltUtils.beltLevelToFileId(beltLevel)
+    }
+    
+    /**
+     * Get available belt levels for filtering based on loaded theory content
+     */
+    private func getAvailableBeltLevels() -> [String] {
+        return Array(theoryContent.keys).sorted { belt1, belt2 in
+            let order1 = BeltUtils.getSortOrder(for: belt1, from: dataServices.modelContext)
+            let order2 = BeltUtils.getSortOrder(for: belt2, from: dataServices.modelContext)
+            return order1 < order2 // Lower sort order = higher belt
+        }
     }
 }
 
@@ -449,6 +486,88 @@ struct TheoryCategoryFilterChip: View {
                 .foregroundColor(isSelected ? .white : .primary)
                 .clipShape(Capsule())
         }
+    }
+}
+
+// MARK: - Theory Filters View
+
+struct TheoryFiltersView: View {
+    let availableBelts: [String]
+    let availableCategories: [String]
+    @Binding var selectedBeltFilter: String?
+    @Binding var selectedCategory: String?
+    
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
+                    
+                    // Belt Level Filter
+                    FilterSection(title: "Belt Level", icon: "medal.fill") {
+                        LazyVGrid(columns: [
+                            GridItem(.flexible(), spacing: 8),
+                            GridItem(.flexible(), spacing: 8),
+                            GridItem(.flexible(), spacing: 8)
+                        ], spacing: 8) {
+                            ForEach(availableBelts, id: \.self) { beltLevel in
+                                BeltFilterChip(
+                                    beltLevel: beltLevel,
+                                    isSelected: selectedBeltFilter == beltLevel,
+                                    action: {
+                                        selectedBeltFilter = selectedBeltFilter == beltLevel ? nil : beltLevel
+                                    }
+                                )
+                            }
+                        }
+                    }
+                    
+                    // Category Filter
+                    FilterSection(title: "Theory Category", icon: "book.fill") {
+                        LazyVGrid(columns: [
+                            GridItem(.flexible(), spacing: 8),
+                            GridItem(.flexible(), spacing: 8)
+                        ], spacing: 8) {
+                            ForEach(availableCategories, id: \.self) { category in
+                                TheoryCategoryFilterChip(
+                                    title: category,
+                                    isSelected: selectedCategory == category,
+                                    action: {
+                                        selectedCategory = selectedCategory == category ? nil : category
+                                    }
+                                )
+                            }
+                        }
+                    }
+                    
+                    Spacer(minLength: 20)
+                }
+                .padding()
+            }
+            .navigationTitle("Filter Theory")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Clear All") {
+                        clearAllFilters()
+                    }
+                    .foregroundColor(.red)
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                    .fontWeight(.semibold)
+                }
+            }
+        }
+    }
+    
+    private func clearAllFilters() {
+        selectedBeltFilter = nil
+        selectedCategory = nil
     }
 }
 

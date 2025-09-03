@@ -95,7 +95,7 @@ final class BeltUtils {
         var mapping: [String: Int] = [:]
         
         for belt in allBelts {
-            let beltId = beltLevelToFileId(belt.name)
+            let beltId = beltLevelToFileId(belt.shortName)
             mapping[beltId] = belt.sortOrder
         }
         

@@ -38,7 +38,7 @@ struct DebugLogger {
      */
     static func data(_ message: String) {
         #if DEBUG
-        print("DEBUG: \(message)")
+        print("\(message)")
         #endif
     }
     
@@ -47,7 +47,7 @@ struct DebugLogger {
      */
     static func profile(_ message: String) {
         #if DEBUG
-        print("DEBUG: \(message)")
+        print("\(message)")
         #endif
     }
     
