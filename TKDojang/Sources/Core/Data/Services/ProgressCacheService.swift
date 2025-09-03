@@ -594,8 +594,8 @@ class ProgressCacheService {
     }
     
     private func createEmptyBeltJourney(allBeltLevels: [BeltLevel]) -> BeltJourneyStats {
-        // Find white belt (10th keup) as default
-        let whiteBelt = allBeltLevels.first { $0.shortName.contains("10th Keup") } ?? allBeltLevels.last!
+        // Find starting belt as default
+        let whiteBelt = BeltLevel.findStartingBelt(from: allBeltLevels) ?? allBeltLevels.last!
         let currentBelt = createBeltInfo(from: whiteBelt)
         let nextBelt = findNextBelt(currentBelt: whiteBelt, allBeltLevels: allBeltLevels)
         

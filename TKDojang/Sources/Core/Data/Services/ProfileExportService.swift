@@ -865,6 +865,19 @@ class ProfileExportService: ObservableObject {
     }
     
     private func createDefaultBeltLevel() -> BeltLevel {
+        // Try to fetch existing belt levels from database
+        let descriptor = FetchDescriptor<BeltLevel>()
+        
+        do {
+            let allBelts = try modelContext.fetch(descriptor)
+            if let startingBelt = BeltLevel.findStartingBelt(from: allBelts) {
+                return startingBelt
+            }
+        } catch {
+            print("❌ ProfileExportService: Failed to fetch belt levels: \(error)")
+        }
+        
+        // Fallback to creating a basic white belt if no belts exist
         return BeltLevel(name: "10th Keup (White Belt)", shortName: "10th Keup", colorName: "White", sortOrder: 15, isKyup: true)
     }
     

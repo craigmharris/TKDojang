@@ -169,38 +169,11 @@ struct BeltFilterChip: View {
     }
     
     private func getBeltColors(for beltLevel: String) -> [Color] {
-        switch beltLevel {
-        case "10th_keup": return [.white]
-        case "9th_keup": return [.white, .yellow]
-        case "8th_keup": return [.yellow]
-        case "7th_keup": return [.yellow, .green]
-        case "6th_keup": return [.green]
-        case "5th_keup": return [.green, .blue]
-        case "4th_keup": return [.blue]
-        case "3rd_keup": return [.blue, .red]
-        case "2nd_keup": return [.red]
-        case "1st_keup": return [.red, .black]
-        case "1st_dan", "2nd_dan": return [.black]
-        default: return [.gray]
-        }
+        return BeltUtils.getBeltColorsLegacy(for: beltLevel)
     }
     
     private func beltDisplayName(for beltLevel: String) -> String {
-        switch beltLevel {
-        case "10th_keup": return "10th Keup"
-        case "9th_keup": return "9th Keup"
-        case "8th_keup": return "8th Keup"
-        case "7th_keup": return "7th Keup"
-        case "6th_keup": return "6th Keup"
-        case "5th_keup": return "5th Keup"
-        case "4th_keup": return "4th Keup"
-        case "3rd_keup": return "3rd Keup"
-        case "2nd_keup": return "2nd Keup"
-        case "1st_keup": return "1st Keup"
-        case "1st_dan": return "1st Dan"
-        case "2nd_dan": return "2nd Dan"
-        default: return beltLevel
-        }
+        return BeltUtils.fileIdToBeltLevel(beltLevel)
     }
 }
 

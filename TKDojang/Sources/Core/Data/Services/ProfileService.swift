@@ -329,7 +329,7 @@ class ProfileService {
      * Creates default profiles for quick setup
      */
     func createDefaultProfiles(beltLevels: [BeltLevel]) throws {
-        guard let whiteBelt = beltLevels.first(where: { $0.shortName.contains("10th Keup") }) else {
+        guard let whiteBelt = BeltLevel.findStartingBelt(from: beltLevels) else {
             throw ProfileError.invalidBeltLevel
         }
         

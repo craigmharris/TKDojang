@@ -241,19 +241,7 @@ struct TheoryView: View {
     }
     
     private func mapBeltLevelToId(_ beltLevel: String) -> String? {
-        let mapping = [
-            "10th Keup": "10th_keup",
-            "9th Keup": "9th_keup", 
-            "8th Keup": "8th_keup",
-            "7th Keup": "7th_keup",
-            "6th Keup": "6th_keup",
-            "5th Keup": "5th_keup",
-            "4th Keup": "4th_keup",
-            "3rd Keup": "3rd_keup",
-            "2nd Keup": "2nd_keup",
-            "1st Keup": "1st_keup"
-        ]
-        return mapping[beltLevel]
+        return BeltUtils.beltLevelToFileId(beltLevel)
     }
 }
 
