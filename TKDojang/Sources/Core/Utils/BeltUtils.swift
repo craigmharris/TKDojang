@@ -85,6 +85,23 @@ final class BeltUtils {
         return BeltLevel.findNextBelt(after: currentBelt, in: allBelts)
     }
     
+    // MARK: - Belt ID Mapping
+    
+    /**
+     * Gets belt ID to sort order mapping from actual belt system data
+     */
+    static func getBeltIdMapping(from modelContext: ModelContext) -> [String: Int] {
+        let allBelts = fetchAllBeltLevels(from: modelContext)
+        var mapping: [String: Int] = [:]
+        
+        for belt in allBelts {
+            let beltId = beltLevelToFileId(belt.name)
+            mapping[beltId] = belt.sortOrder
+        }
+        
+        return mapping
+    }
+    
     // MARK: - Belt Color Utilities
     
     /**

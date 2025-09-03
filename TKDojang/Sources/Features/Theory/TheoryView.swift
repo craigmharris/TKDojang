@@ -211,31 +211,65 @@ struct TheoryView: View {
     }
     
     /**
+     * Get belt levels to load based on user's learning mode
+     * - Progression: Only current belt
+     * - Mastery: Current belt and all lower belts
+     */
+    private func getBeltLevelsToLoad(for profile: UserProfile) -> [String] {
+        let beltIdMapping = BeltUtils.getBeltIdMapping(from: dataServices.modelContext)
+        let currentBeltId = BeltUtils.beltLevelToFileId(profile.currentBeltLevel.name)
+        
+        switch profile.learningMode {
+        case .progression:
+            return [currentBeltId]
+        case .mastery:
+            // Load current belt and all lower belts
+            let currentSortOrder = profile.currentBeltLevel.sortOrder
+            return beltIdMapping.keys.filter { beltId in
+                if let sortOrder = beltIdMapping[beltId] {
+                    return sortOrder >= currentSortOrder
+                }
+                return false
+            }
+        }
+    }
+    
+    /**
      * Create mapping from belt ID to sort order for proper sorting
      */
     private func createBeltMapping() -> [String: Int] {
-        return [
-            "10th_keup": 10,
-            "9th_keup": 9,
-            "8th_keup": 8,
-            "7th_keup": 7,
-            "6th_keup": 6,
-            "5th_keup": 5,
-            "4th_keup": 4,
-            "3rd_keup": 3,
-            "2nd_keup": 2,
-            "1st_keup": 1
-        ]
+        return BeltUtils.getBeltIdMapping(from: dataServices.modelContext)
     }
     
+    /**
+     * Load only relevant theory content based on active profile's learning mode
+     * Lazy loading approach - only loads content that will actually be displayed
+     */
     private func loadTheoryContent() async {
-        theoryContent = await TheoryContentLoader.loadAllTheoryContent()
+        guard let activeProfile = dataServices.profileService.activeProfile else {
+            print("⚠️ No active profile for theory content loading")
+            isLoading = false
+            return
+        }
+        
+        print("🔄 Loading theory content for profile: \(activeProfile.name), belt: \(activeProfile.currentBeltLevel.name), mode: \(activeProfile.learningMode)")
+        
+        // Determine which belt levels to load based on learning mode
+        let beltLevelsToLoad = getBeltLevelsToLoad(for: activeProfile)
+        var loadedContent: [String: TheoryContent] = [:]
+        
+        for beltId in beltLevelsToLoad {
+            if let content = await TheoryContentLoader.loadTheoryContent(for: beltId) {
+                loadedContent[beltId] = content
+            }
+        }
+        
+        theoryContent = loadedContent
+        print("✅ Loaded theory content for \(loadedContent.count) belt levels (lazy loading)")
         
         // Update available categories based on loaded content
-        if let activeProfile = dataServices.profileService.activeProfile {
-            let relevantSections = getRelevantTheorySections(for: activeProfile)
-            updateAvailableCategories(from: relevantSections)
-        }
+        let relevantSections = getRelevantTheorySections(for: activeProfile)
+        updateAvailableCategories(from: relevantSections)
         
         isLoading = false
     }

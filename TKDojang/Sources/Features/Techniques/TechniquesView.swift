@@ -104,25 +104,7 @@ struct TechniquesView: View {
             // Category and Filter Chips
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
-                    // Categories
-                    CategoryChip(
-                        title: "All Categories",
-                        isSelected: selectedCategory == nil,
-                        action: { selectedCategory = nil }
-                    )
-                    
-                    ForEach(viewModel.categories, id: \.id) { category in
-                        CategoryChip(
-                            title: category.name,
-                            isSelected: selectedCategory == category.id,
-                            action: { selectedCategory = category.id }
-                        )
-                    }
-                    
-                    Divider()
-                        .frame(height: 20)
-                    
-                    // Filter Button
+                    // Filter Button (moved to start for immediate visibility)
                     Button(action: { showingFilters = true }) {
                         HStack(spacing: 4) {
                             Image(systemName: "line.3.horizontal.decrease.circle")
@@ -139,6 +121,24 @@ struct TechniquesView: View {
                         .background(hasActiveFilters ? Color.blue : Color(.quaternarySystemFill))
                         .foregroundColor(hasActiveFilters ? .white : .primary)
                         .cornerRadius(20)
+                    }
+                    
+                    Divider()
+                        .frame(height: 20)
+                    
+                    // Categories
+                    CategoryChip(
+                        title: "All Categories",
+                        isSelected: selectedCategory == nil,
+                        action: { selectedCategory = nil }
+                    )
+                    
+                    ForEach(viewModel.categories, id: \.id) { category in
+                        CategoryChip(
+                            title: category.name,
+                            isSelected: selectedCategory == category.id,
+                            action: { selectedCategory = category.id }
+                        )
                     }
                 }
                 .padding(.horizontal)

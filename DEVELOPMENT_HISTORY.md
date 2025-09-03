@@ -59,7 +59,43 @@ Optimized ProfileSwitcher startup performance by eliminating redundant database 
 - **Build Status**: ✅ All compilation errors resolved
 - **Architecture**: Maintained clean separation between UI and data layers
 
-**Next Priority**: Continue with remaining UI optimizations (Theory view ForEach ID duplicates, lazy loading) and JSON data validation fixes.
+**Next Priority**: Continue with remaining JSON data validation fixes (sparring.json belt_level key).
+
+#### 🚀 **Theory View Lazy Loading Optimization:**
+**Problem**: Theory content loader was loading all 10 belt levels at startup regardless of user's actual belt level or learning mode, causing unnecessary resource usage.
+
+**Solution Implemented**:
+- **Lazy Loading Strategy**: Modified `loadTheoryContent()` to only load belt levels relevant to active profile
+- **Learning Mode Awareness**: 
+  - **Progression mode**: Loads only current belt content (1 belt level)
+  - **Mastery mode**: Loads current belt + all lower belts (1-10 belt levels based on user's level)
+- **Dynamic Belt System Integration**: Replaced hardcoded belt mappings with `BeltUtils.getBeltIdMapping(from: modelContext)` using actual SwiftData belt system
+- **Performance Logging**: Added detailed logging for theory loading operations
+
+**Performance Impact**:
+- **Before**: Always loaded 10 belt levels regardless of need
+- **After**: Loads 1-10 belt levels based on user's actual requirements
+- **Benefit**: Significant reduction in unnecessary content loading, especially for beginner users
+
+#### 🎨 **Techniques Filter UX Enhancement:**
+**Problem**: "Filters" button with comprehensive filtering options was located at the far right end of category chips, requiring horizontal scrolling to access.
+
+**Solution**: Moved "Filters" button to the start of the horizontal filter panel for immediate visibility.
+
+**UX Impact**:
+- **Before**: Users had to scroll right past all category chips to find comprehensive filters
+- **After**: "Filters" button immediately visible, separated by divider from category shortcuts
+- **Result**: Improved discoverability of advanced filtering capabilities
+
+#### 🏗️ **Architecture Improvements:**
+- **Eliminated Hardcoded Mappings**: Replaced static belt ID mappings with dynamic queries from SwiftData belt system
+- **JSON-First Consistency**: Theory loading now follows same pattern as Pattern and StepSparring content loaders
+- **Centralized Belt Management**: All belt system operations consolidated through BeltUtils.swift
+
+#### 🧪 **Build Validation:**
+- All changes compile successfully with resolved warnings
+- Theory lazy loading tested with multiple learning modes
+- Filter button repositioning verified in UI layout
 
 ## Session Summary (September 2, 2025) - Technique Library Recovery & Step Sparring Progress Integration
 
