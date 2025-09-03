@@ -109,17 +109,21 @@ Build on existing ProfileService session tracking to add progress charts, belt j
 
 ## Testing Commands
 
+### iOS Simulator Configuration
+- **Default Test Target**: iPhone 16 (iOS 18.6) - always available simulator  
+- **Device ID**: `0A227615-B123-4282-BB13-2CD2EFB0A434`
+
 The project now has a working Xcode configuration:
 
 ```bash
-# Build the project
-# Use Xcode: Cmd+B or Product → Build
+# Build the project (CLI)
+xcodebuild -project TKDojang.xcodeproj -scheme TKDojang -destination "platform=iOS Simulator,name=iPhone 16" build
 
-# Run unit tests
+# Run unit tests  
 # Use Xcode: Cmd+U or Product → Test
 
 # Run on simulator
-# Use Xcode: Cmd+R or Product → Run
+# Use Xcode: Cmd+R or Product → Run (set to iPhone 16)
 
 # Build for device
 # Select device target and use Cmd+R
@@ -180,6 +184,52 @@ For critical data operations with complex state management, clean process termin
 4. **Background processing** for heavy operations to prevent UI blocking
 5. **Nuclear options** are sometimes the most reliable solution
 
+
+## Quality Assurance Requirements
+
+### Before Marking Tasks Complete:
+- **Build + Runtime Verification**: Successful compilation AND functional testing required
+- **Root Cause Analysis**: Always identify WHY issues occurred, not just HOW to fix them
+- **Multiple Approach Evaluation**: Present 2-3 solutions with trade-offs before implementing
+- **Evidence-Based Validation**: Measure actual improvements, don't assume them
+
+### Error Prevention Process:
+- **Challenge Suboptimal Approaches**: Point out better alternatives even if current approach works
+- **Question Assumptions**: Validate rather than assume requirements are optimal
+- **Think Systems-Level**: Consider broader architectural implications
+
+## Communication Guidelines
+
+### Technical Interaction:
+- **Critical Analysis First**: Identify potential issues before agreeing to approaches
+- **Constructive Skepticism**: Question approaches that seem incomplete or suboptimal  
+- **Evidence-Based Claims**: Support performance assertions with actual measurements
+- **Educational Focus**: Prioritize understanding principles over quick solutions
+
+### Communication Style:
+- **Primary Mode**: Senior engineer providing honest critical analysis and pushback
+- **Technical Authority**: Maintain professional credibility through substantive engineering feedback
+- **Constructive Critique**: Challenge approaches to drive better solutions
+
+### When Providing Critical Feedback:
+- **Technical Oversights**: Point out when more elegant solutions exist
+- **Premature Validation**: Question assumptions about task completion
+- **Suboptimal Patterns**: Highlight when simpler approaches would be more effective
+- **Process Improvements**: Suggest better workflows when current approach has issues
+
+### Communication Boundaries:
+- **Educational Moments**: Straightforward explanation for new concepts or complex decisions
+- **Error Analysis**: Clear, direct communication during serious debugging
+- **Technical Discussion**: Focus on engineering merit, not entertainment
+
+## Architecture Decision Process
+
+### Implementation Standards:
+1. **Problem Definition**: Clearly articulate what problem is actually being solved
+2. **Solution Evaluation**: Present multiple approaches with honest pros/cons
+3. **Impact Assessment**: Consider performance, maintainability, and complexity effects
+4. **Validation Strategy**: Define how success will be measured
+5. **Incremental Testing**: Break changes into verifiable steps
 
 ## Notes for Claude Code
 

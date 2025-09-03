@@ -267,8 +267,11 @@ class DataManager {
         
         do {
             let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
-            let stepSparringFiles = contents.filter { 
-                $0.hasSuffix(".json") && ($0.contains("step") || $0.contains("sparring"))
+            let stepSparringFiles = contents.filter { filename in
+                // Only include JSON files that exist in StepSparring subdirectory
+                guard filename.hasSuffix(".json") else { return false }
+                let filenameWithoutExtension = filename.replacingOccurrences(of: ".json", with: "")
+                return Bundle.main.url(forResource: filenameWithoutExtension, withExtension: "json", subdirectory: "StepSparring") != nil
             }
             
             print("DEBUG: 📁 Found step sparring JSON files in bundle root: \(stepSparringFiles)")
