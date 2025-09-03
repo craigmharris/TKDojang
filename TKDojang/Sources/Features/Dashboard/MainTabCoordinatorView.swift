@@ -907,9 +907,15 @@ struct ProgressView: View {
     }
     
     private func getNextBeltName(currentBelt: BeltLevel) -> String {
-        // This is a simplified approach - in a real app you'd query for the next belt
-        // based on sortOrder being currentBelt.sortOrder - 1
-        return "Next Belt Level" // Placeholder
+        // Query for the next belt using our safe belt lookup utilities
+        let allBelts = BeltUtils.fetchAllBeltLevels(from: dataServices.modelContext)
+        
+        if let nextBelt = BeltLevel.findNextBelt(after: currentBelt, in: allBelts) {
+            return nextBelt.shortName
+        }
+        
+        // If no next belt (already at highest level), show completion message
+        return "Maximum Level Achieved"
     }
 }
 

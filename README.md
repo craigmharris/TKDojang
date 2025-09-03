@@ -494,6 +494,7 @@ Building on proven ProfileService session tracking:
 - [ ] **Complete Pattern System**: Add remaining 7 patterns beyond current 9
 - [ ] **Enhanced Testing Modes**: Time challenges, adaptive difficulty, custom test creation
 - [ ] **Advanced Learning Features**: Weak area focus, personalized study plans
+- [ ] **Personalized Learning Preferences**: User-configurable Leitner box intervals (beginner/standard/advanced/intensive presets available in `leitner_config.json`)
 - [ ] **Community Features**: Family challenges, shared achievements
 
 ### 🔧 **Phase 5: Production Polish**
