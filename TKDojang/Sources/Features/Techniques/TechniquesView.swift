@@ -587,8 +587,9 @@ class TechniquesViewModel: ObservableObject {
         
         // Sort by minimum belt level (advanced to basic) then by name
         filtered.sort { lhs, rhs in
-            let lhsBelt = beltLevelSortOrder(lhs.minimumBeltLevel ?? "10th_keup")
-            let rhsBelt = beltLevelSortOrder(rhs.minimumBeltLevel ?? "10th_keup")
+            let defaultBelt = BeltUtils.beltLevelToFileId("10th Keup")
+            let lhsBelt = BeltUtils.getLegacySortOrder(for: lhs.minimumBeltLevel ?? defaultBelt)
+            let rhsBelt = BeltUtils.getLegacySortOrder(for: rhs.minimumBeltLevel ?? defaultBelt)
             
             if lhsBelt != rhsBelt {
                 return lhsBelt < rhsBelt // Lower sort order = higher belt level
@@ -598,15 +599,6 @@ class TechniquesViewModel: ObservableObject {
         }
         
         filteredTechniques = filtered
-    }
-    
-    private func beltLevelSortOrder(_ beltLevel: String) -> Int {
-        let beltOrder = [
-            "2nd_dan": 1, "1st_dan": 2,
-            "1st_keup": 3, "2nd_keup": 4, "3rd_keup": 5, "4th_keup": 6, "5th_keup": 7,
-            "6th_keup": 8, "7th_keup": 9, "8th_keup": 10, "9th_keup": 11, "10th_keup": 12
-        ]
-        return beltOrder[beltLevel] ?? 999
     }
 }
 

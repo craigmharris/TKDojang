@@ -136,6 +136,31 @@ final class BeltUtils {
     }
     
     /**
+     * Gets sort order for belt ID string (for content sorting)
+     * Returns actual sort order from database, fallback to high number for unknown belts
+     */
+    static func getSortOrder(for beltId: String, from modelContext: ModelContext) -> Int {
+        if let beltLevel = findBelt(byId: beltId, from: modelContext) {
+            return beltLevel.sortOrder
+        }
+        
+        // Fallback to legacy hardcoded sort order for compatibility
+        return getLegacySortOrder(for: beltId)
+    }
+    
+    /**
+     * Legacy hardcoded sort order as fallback (public for view compatibility)
+     */
+    static func getLegacySortOrder(for beltId: String) -> Int {
+        let beltOrder = [
+            "2nd_dan": 1, "1st_dan": 2,
+            "1st_keup": 3, "2nd_keup": 4, "3rd_keup": 5, "4th_keup": 6, "5th_keup": 7,
+            "6th_keup": 8, "7th_keup": 9, "8th_keup": 10, "9th_keup": 11, "10th_keup": 12
+        ]
+        return beltOrder[beltId] ?? 999
+    }
+    
+    /**
      * Determines if belt level matches a JSON file pattern
      */
     static func beltMatchesFilePattern(_ beltLevel: BeltLevel, pattern: String) -> Bool {

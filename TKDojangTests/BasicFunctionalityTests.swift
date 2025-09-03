@@ -60,23 +60,22 @@ final class BasicFunctionalityTests: XCTestCase {
     // MARK: - Model Creation Tests
     
     func testBeltLevelCreation() throws {
-        let belt = BeltLevel(
-            name: "10th Keup (White Belt)",
-            shortName: "10th Keup", 
-            colorName: "White",
-            sortOrder: 15,
-            isKyup: true
-        )
+        // Use JSON-based belt data instead of hardcoded values
+        let belt = try JSONTestHelpers.getStartingBeltFromJSON()
         
         testContext.insert(belt)
         try testContext.save()
         
-        // Verify creation
+        // Verify creation with JSON data
         XCTAssertFalse(belt.name.isEmpty, "Belt should have a name")
         XCTAssertFalse(belt.shortName.isEmpty, "Belt should have a short name")
         XCTAssertFalse(belt.colorName.isEmpty, "Belt should have a color name")
         XCTAssertGreaterThan(belt.sortOrder, 0, "Belt should have valid sort order")
-        XCTAssertTrue(belt.isKyup, "This should be a kyup grade")
+        XCTAssertTrue(belt.isKyup, "Starting belt should be a kyup grade")
+        
+        // Verify JSON-loaded properties
+        XCTAssertNotNil(belt.primaryColor, "Belt should have primary color from JSON")
+        XCTAssertNotNil(belt.requirements, "Belt should have requirements from JSON")
     }
     
     func testTerminologyCategoryCreation() throws {
@@ -96,21 +95,13 @@ final class BasicFunctionalityTests: XCTestCase {
     }
     
     func testTerminologyEntryCreation() throws {
-        // Create dependencies first
-        let belt = BeltLevel(
-            name: "10th Keup (White Belt)",
-            shortName: "10th Keup",
-            colorName: "White", 
-            sortOrder: 15,
-            isKyup: true
-        )
+        // Use JSON-based belt data instead of hardcoded values
+        let belt = try JSONTestHelpers.getStartingBeltFromJSON()
         testContext.insert(belt)
         
-        let category = TerminologyCategory(
-            name: "techniques",
-            displayName: "Basic Techniques",
-            sortOrder: 1
-        )
+        // Use standard test categories
+        let categories = JSONTestHelpers.createTestCategories()
+        let category = categories.first { $0.name == "techniques" }!
         testContext.insert(category)
         
         // Create terminology entry

@@ -59,14 +59,23 @@ final class MultiProfileSystemTests: XCTestCase {
     }
     
     private func setupTestData() {
-        // Create basic belt levels for testing
-        let whiteBelt = BeltLevel(name: "10th Keup (White Belt)", shortName: "10th Keup", colorName: "White", sortOrder: 15, isKyup: true)
-        let yellowBelt = BeltLevel(name: "9th Keup (Yellow Belt)", shortName: "9th Keup", colorName: "Yellow", sortOrder: 14, isKyup: true)
-        
-        testContext.insert(whiteBelt)
-        testContext.insert(yellowBelt)
-        
-        try! testContext.save()
+        // Use JSON-based belt data instead of hardcoded values
+        do {
+            let allBelts = try JSONTestHelpers.loadBeltLevelsFromJSON()
+            // Insert first few belts for testing
+            let testBelts = Array(allBelts.sorted { $0.sortOrder > $1.sortOrder }.prefix(3))
+            
+            for belt in testBelts {
+                testContext.insert(belt)
+            }
+            
+            try testContext.save()
+        } catch {
+            // Fallback to minimal test data if JSON loading fails
+            let whiteBelt = BeltLevel(name: "10th Keup (White Belt)", shortName: "10th Keup", colorName: "White", sortOrder: 15, isKyup: true)
+            testContext.insert(whiteBelt)
+            try! testContext.save()
+        }
     }
     
     // MARK: - Profile Creation Tests
