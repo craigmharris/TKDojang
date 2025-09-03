@@ -88,6 +88,7 @@ struct ProfileSwitcher: View {
         } label: {
             ProfileSwitcherButton(activeProfile: activeProfile)
         }
+        .id("ProfileSwitcher-\(activeProfile?.id.uuidString ?? "none")")
         .onAppear {
             print("🎬 ProfileSwitcher: onAppear triggered [Instance: \(instanceId)]")
             print("🔄 ProfileSwitcher: Rendering menu with \(profiles.count) profiles, active: \(activeProfile?.name ?? "none") [Instance: \(instanceId)]")
