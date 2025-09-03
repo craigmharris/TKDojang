@@ -36,30 +36,34 @@ struct StepSparringContentLoader {
     }
     
     /**
-     * Dynamically scans all step sparring JSON files in bundle
+     * Get list of step sparring JSON files from StepSparring directory
+     * Uses explicit file list to avoid conflicts with other JSON files like sparring.json from Techniques
      */
     private func getStepSparringJsonFiles() -> [String] {
+        // Explicit list of step sparring files that should be in the StepSparring directory
+        let expectedStepSparringFiles = [
+            "8th_keup_three_step",
+            "7th_keup_three_step", 
+            "6th_keup_three_step",
+            "5th_keup_two_step",
+            "4th_keup_two_step",
+            "3rd_keup_one_step",
+            "1st_keup_semi_free"
+        ]
+        
         var foundFiles: [String] = []
         
-        // Check bundle root for step sparring files (Xcode copies them to root, not subdirectory)
-        guard let bundlePath = Bundle.main.resourcePath else {
-            print("❌ Could not get bundle resource path")
-            return []
-        }
-        
-        let fileManager = FileManager.default
-        
-        do {
-            let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
-            let stepSparringFiles = contents.filter { 
-                $0.hasSuffix(".json") && ($0.contains("step") || $0.contains("sparring"))
+        // Verify each expected file exists in the bundle
+        for filename in expectedStepSparringFiles {
+            if Bundle.main.url(forResource: filename, withExtension: "json") != nil {
+                foundFiles.append(filename)
+                print("DEBUG: ✅ Found step sparring file: \(filename).json")
+            } else {
+                print("DEBUG: ⚠️ Expected step sparring file not found: \(filename).json")
             }
-            foundFiles = stepSparringFiles.map { $0.replacingOccurrences(of: ".json", with: "") }
-            print("DEBUG: 📁 Found \(stepSparringFiles.count) step sparring JSON files in bundle root: \(stepSparringFiles)")
-        } catch {
-            print("❌ Failed to scan bundle root for step sparring files: \(error)")
         }
         
+        print("DEBUG: 📁 Found \(foundFiles.count) step sparring JSON files: \(foundFiles)")
         return foundFiles.sorted()
     }
     

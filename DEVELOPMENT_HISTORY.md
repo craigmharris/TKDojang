@@ -59,7 +59,30 @@ Optimized ProfileSwitcher startup performance by eliminating redundant database 
 - **Build Status**: ✅ All compilation errors resolved
 - **Architecture**: Maintained clean separation between UI and data layers
 
-**Next Priority**: Continue with remaining JSON data validation fixes (sparring.json belt_level key).
+#### 🔧 **JSON Content Loading Architecture Fix:**
+**Problem**: StepSparringContentLoader was incorrectly trying to parse `sparring.json` (a techniques reference file) as a step sparring sequences file, causing `keyNotFound` error for missing `belt_level` key.
+
+**Root Cause Analysis**:
+- `sparring.json` is located in `/Techniques/` directory and contains general sparring technique references
+- Step sparring files are located in `/StepSparring/` directory and contain sequence-specific data with `belt_level` keys
+- Loader was using pattern matching (`filename.contains("sparring")`) which incorrectly included the techniques file
+
+**Solution Implemented**:
+- **Explicit File List**: Replaced dynamic filename filtering with explicit list of expected step sparring files
+- **Directory-Based Architecture**: Enforced separation between `/Techniques/` and `/StepSparring/` content
+- **Eliminated Pattern Matching**: Removed unreliable `contains("step") || contains("sparring")` logic
+- **Specific File Validation**: Only attempts to load actual step sparring sequence files
+
+**Technical Implementation**:
+```swift
+let expectedStepSparringFiles = [
+    "8th_keup_three_step", "7th_keup_three_step", "6th_keup_three_step",
+    "5th_keup_two_step", "4th_keup_two_step", 
+    "3rd_keup_one_step", "1st_keup_semi_free"
+]
+```
+
+**Result**: Eliminated JSON parsing errors and established robust content loading architecture that respects directory boundaries.
 
 #### 🚀 **Theory View Lazy Loading Optimization:**
 **Problem**: Theory content loader was loading all 10 belt levels at startup regardless of user's actual belt level or learning mode, causing unnecessary resource usage.
