@@ -21,8 +21,9 @@
       "starting_stance": "Parallel ready stance",
       "difficulty": 4,
       "applicable_belt_levels": ["4th_keup"],
-      "video_url": "https://example.com/patterns/joong-gun.mp4",
-      "diagram_image_url": "https://example.com/diagrams/joong-gun-diagram.jpg",
+      "video_url": "joong-gun-video",
+      "diagram_image_url": "joong-gun-diagram",
+      "starting_move_image_url": "joong-gun-starting",
       "moves": [
         {
           "move_number": 1,
@@ -34,7 +35,9 @@
           "key_points": "Strong L-stance foundation",
           "common_mistakes": "Poor weight distribution",
           "execution_notes": "Turn 90 degrees right from ready stance into L-stance",
-          "image_url": "https://example.com/moves/joong-gun-1.jpg"
+          "imageURL": "joong-gun-1",
+          "image2URL": "joong-gun-1-technique",
+          "image3URL": "joong-gun-1-progress"
         },
         {
           "move_number": 2,
@@ -46,7 +49,9 @@
           "key_points": "Sharp knife hand technique",
           "common_mistakes": "Weak hand formation",
           "execution_notes": "Step forward with reverse knife hand strike",
-          "image_url": "https://example.com/moves/joong-gun-2.jpg"
+          "imageURL": "joong-gun-2",
+          "image2URL": "joong-gun-2-technique",
+          "image3URL": "joong-gun-2-progress"
         },
         {
           "move_number": 3,
@@ -58,7 +63,9 @@
           "key_points": "Mirror of opening move",
           "common_mistakes": "Inconsistent L-stance form",
           "execution_notes": "180-degree turn into L-stance",
-          "image_url": "https://example.com/moves/joong-gun-3.jpg"
+          "imageURL": "joong-gun-3",
+          "image2URL": "joong-gun-3-technique",
+          "image3URL": "joong-gun-3-progress"
         },
         {
           "move_number": 4,
@@ -70,7 +77,9 @@
           "key_points": "Bilateral technique consistency",
           "common_mistakes": "Weaker off-side execution",
           "execution_notes": "Step forward with reverse knife hand strike",
-          "image_url": "https://example.com/moves/joong-gun-4.jpg"
+          "imageURL": "joong-gun-4",
+          "image2URL": "joong-gun-4-technique",
+          "image3URL": "joong-gun-4-progress"
         },
         {
           "move_number": 5,
@@ -82,7 +91,9 @@
           "key_points": "Strong northward advance",
           "common_mistakes": "Poor turn execution",
           "execution_notes": "90-degree turn to face north",
-          "image_url": "https://example.com/moves/joong-gun-5.jpg"
+          "imageURL": "joong-gun-5",
+          "image2URL": "joong-gun-5-technique",
+          "image3URL": "joong-gun-5-progress"
         },
         {
           "move_number": 6,
@@ -94,7 +105,9 @@
           "key_points": "Continue northern advance",
           "common_mistakes": "Breaking momentum",
           "execution_notes": "Step forward maintaining power",
-          "image_url": "https://example.com/moves/joong-gun-6.jpg"
+          "imageURL": "joong-gun-6",
+          "image2URL": "joong-gun-6-technique",
+          "image3URL": "joong-gun-6-progress"
         },
         {
           "move_number": 7,
@@ -106,7 +119,9 @@
           "key_points": "Build rhythm and power",
           "common_mistakes": "Technique deterioration",
           "execution_notes": "Maintain consistent form",
-          "image_url": "https://example.com/moves/joong-gun-7.jpg"
+          "imageURL": "joong-gun-7",
+          "image2URL": "joong-gun-7-technique",
+          "image3URL": "joong-gun-7-progress"
         },
         {
           "move_number": 8,
@@ -118,7 +133,9 @@
           "key_points": "Transition to defensive technique",
           "common_mistakes": "Poor stance transition",
           "execution_notes": "Step back into L-stance with block",
-          "image_url": "https://example.com/moves/joong-gun-8.jpg"
+          "imageURL": "joong-gun-8",
+          "image2URL": "joong-gun-8-technique",
+          "image3URL": "joong-gun-8-progress"
         },
         {
           "move_number": 9,
@@ -130,7 +147,9 @@
           "key_points": "Immediate counter-attack",
           "common_mistakes": "Slow counter timing",
           "execution_notes": "Quick step forward with punch",
-          "image_url": "https://example.com/moves/joong-gun-9.jpg"
+          "imageURL": "joong-gun-9",
+          "image2URL": "joong-gun-9-technique",
+          "image3URL": "joong-gun-9-progress"
         },
         {
           "move_number": 10,
@@ -142,7 +161,9 @@
           "key_points": "Defensive pattern continuation",
           "common_mistakes": "Inconsistent blocking form",
           "execution_notes": "Step back into L-stance with block",
-          "image_url": "https://example.com/moves/joong-gun-10.jpg"
+          "imageURL": "joong-gun-10",
+          "image2URL": "joong-gun-10-technique",
+          "image3URL": "joong-gun-10-progress"
         },
         {
           "move_number": 11,
@@ -154,7 +175,9 @@
           "key_points": "Alternating attack pattern",
           "common_mistakes": "Breaking attack rhythm",
           "execution_notes": "Quick step forward with punch",
-          "image_url": "https://example.com/moves/joong-gun-11.jpg"
+          "imageURL": "joong-gun-11",
+          "image2URL": "joong-gun-11-technique",
+          "image3URL": "joong-gun-11-progress"
         },
         {
           "move_number": 12,
@@ -166,7 +189,9 @@
           "key_points": "Strong twin arm blocking",
           "common_mistakes": "Uneven arm positioning",
           "execution_notes": "Step forward with both arms blocking",
-          "image_url": "https://example.com/moves/joong-gun-12.jpg"
+          "imageURL": "joong-gun-12",
+          "image2URL": "joong-gun-12-technique",
+          "image3URL": "joong-gun-12-progress"
         },
         {
           "move_number": 13,
@@ -178,7 +203,9 @@
           "key_points": "180-degree turn precision",
           "common_mistakes": "Poor turn balance",
           "execution_notes": "Sharp pivot to face south",
-          "image_url": "https://example.com/moves/joong-gun-13.jpg"
+          "imageURL": "joong-gun-13",
+          "image2URL": "joong-gun-13-technique",
+          "image3URL": "joong-gun-13-progress"
         },
         {
           "move_number": 14,
@@ -190,7 +217,9 @@
           "key_points": "Begin southern sequence",
           "common_mistakes": "Inconsistent with north",
           "execution_notes": "Step forward with high punch",
-          "image_url": "https://example.com/moves/joong-gun-14.jpg"
+          "imageURL": "joong-gun-14",
+          "image2URL": "joong-gun-14-technique",
+          "image3URL": "joong-gun-14-progress"
         },
         {
           "move_number": 15,
@@ -202,7 +231,9 @@
           "key_points": "Mirror northern sequence",
           "common_mistakes": "Declining power",
           "execution_notes": "Continue forward advance",
-          "image_url": "https://example.com/moves/joong-gun-15.jpg"
+          "imageURL": "joong-gun-15",
+          "image2URL": "joong-gun-15-technique",
+          "image3URL": "joong-gun-15-progress"
         },
         {
           "move_number": 16,
@@ -214,7 +245,9 @@
           "key_points": "Defensive transition",
           "common_mistakes": "Poor L-stance form",
           "execution_notes": "Step back into L-stance with block",
-          "image_url": "https://example.com/moves/joong-gun-16.jpg"
+          "imageURL": "joong-gun-16",
+          "image2URL": "joong-gun-16-technique",
+          "image3URL": "joong-gun-16-progress"
         },
         {
           "move_number": 17,
@@ -226,7 +259,9 @@
           "key_points": "Counter-attack pattern",
           "common_mistakes": "Weak counter timing",
           "execution_notes": "Quick step forward with punch",
-          "image_url": "https://example.com/moves/joong-gun-17.jpg"
+          "imageURL": "joong-gun-17",
+          "image2URL": "joong-gun-17-technique",
+          "image3URL": "joong-gun-17-progress"
         },
         {
           "move_number": 18,
@@ -238,7 +273,9 @@
           "key_points": "Continue defensive pattern",
           "common_mistakes": "Inconsistent blocking",
           "execution_notes": "Step back into L-stance with block",
-          "image_url": "https://example.com/moves/joong-gun-18.jpg"
+          "imageURL": "joong-gun-18",
+          "image2URL": "joong-gun-18-technique",
+          "image3URL": "joong-gun-18-progress"
         },
         {
           "move_number": 19,
@@ -250,7 +287,9 @@
           "key_points": "Alternating attack pattern",
           "common_mistakes": "Breaking symmetry",
           "execution_notes": "Quick step forward with punch",
-          "image_url": "https://example.com/moves/joong-gun-19.jpg"
+          "imageURL": "joong-gun-19",
+          "image2URL": "joong-gun-19-technique",
+          "image3URL": "joong-gun-19-progress"
         },
         {
           "move_number": 20,
@@ -262,7 +301,9 @@
           "key_points": "Strong twin arm blocking",
           "common_mistakes": "Uneven arm coordination",
           "execution_notes": "Step forward with both arms blocking",
-          "image_url": "https://example.com/moves/joong-gun-20.jpg"
+          "imageURL": "joong-gun-20",
+          "image2URL": "joong-gun-20-technique",
+          "image3URL": "joong-gun-20-progress"
         },
         {
           "move_number": 21,
@@ -274,7 +315,9 @@
           "key_points": "Introduction of elbow techniques",
           "common_mistakes": "Poor fixed stance",
           "execution_notes": "90-degree turn into fixed stance",
-          "image_url": "https://example.com/moves/joong-gun-21.jpg"
+          "imageURL": "joong-gun-21",
+          "image2URL": "joong-gun-21-technique",
+          "image3URL": "joong-gun-21-progress"
         },
         {
           "move_number": 22,
@@ -286,7 +329,9 @@
           "key_points": "Mirror elbow technique",
           "common_mistakes": "Inconsistent elbow form",
           "execution_notes": "180-degree turn into fixed stance",
-          "image_url": "https://example.com/moves/joong-gun-22.jpg"
+          "imageURL": "joong-gun-22",
+          "image2URL": "joong-gun-22-technique",
+          "image3URL": "joong-gun-22-progress"
         },
         {
           "move_number": 23,
@@ -298,7 +343,9 @@
           "key_points": "Return to fundamental blocking",
           "common_mistakes": "Relaxing technique standards",
           "execution_notes": "90-degree turn to face north",
-          "image_url": "https://example.com/moves/joong-gun-23.jpg"
+          "imageURL": "joong-gun-23",
+          "image2URL": "joong-gun-23-technique",
+          "image3URL": "joong-gun-23-progress"
         },
         {
           "move_number": 24,
@@ -310,7 +357,9 @@
           "key_points": "Return to basic combination",
           "common_mistakes": "Inconsistent form",
           "execution_notes": "Step forward with high punch",
-          "image_url": "https://example.com/moves/joong-gun-24.jpg"
+          "imageURL": "joong-gun-24",
+          "image2URL": "joong-gun-24-technique",
+          "image3URL": "joong-gun-24-progress"
         },
         {
           "move_number": 25,
@@ -322,7 +371,9 @@
           "key_points": "Mirror basic combination",
           "common_mistakes": "Poor turn execution",
           "execution_notes": "180-degree turn with low block",
-          "image_url": "https://example.com/moves/joong-gun-25.jpg"
+          "imageURL": "joong-gun-25",
+          "image2URL": "joong-gun-25-technique",
+          "image3URL": "joong-gun-25-progress"
         },
         {
           "move_number": 26,
@@ -334,7 +385,9 @@
           "key_points": "Southern basic sequence",
           "common_mistakes": "Weak finishing sequence",
           "execution_notes": "Step forward with high punch",
-          "image_url": "https://example.com/moves/joong-gun-26.jpg"
+          "imageURL": "joong-gun-26",
+          "image2URL": "joong-gun-26-technique",
+          "image3URL": "joong-gun-26-progress"
         },
         {
           "move_number": 27,
@@ -346,7 +399,9 @@
           "key_points": "Return to opening technique",
           "common_mistakes": "Inconsistent with opening",
           "execution_notes": "90-degree turn into L-stance",
-          "image_url": "https://example.com/moves/joong-gun-27.jpg"
+          "imageURL": "joong-gun-27",
+          "image2URL": "joong-gun-27-technique",
+          "image3URL": "joong-gun-27-progress"
         },
         {
           "move_number": 28,
@@ -358,7 +413,9 @@
           "key_points": "Mirror opening combination",
           "common_mistakes": "Weak finishing knife hand",
           "execution_notes": "Step forward with reverse knife hand strike",
-          "image_url": "https://example.com/moves/joong-gun-28.jpg"
+          "imageURL": "joong-gun-28",
+          "image2URL": "joong-gun-28-technique",
+          "image3URL": "joong-gun-28-progress"
         },
         {
           "move_number": 29,
@@ -370,7 +427,9 @@
           "key_points": "Final L-stance technique",
           "common_mistakes": "Anticipating pattern end",
           "execution_notes": "180-degree turn into L-stance",
-          "image_url": "https://example.com/moves/joong-gun-29.jpg"
+          "imageURL": "joong-gun-29",
+          "image2URL": "joong-gun-29-technique",
+          "image3URL": "joong-gun-29-progress"
         },
         {
           "move_number": 30,
@@ -382,7 +441,9 @@
           "key_points": "Final knife hand technique",
           "common_mistakes": "Sloppy final technique",
           "execution_notes": "Step forward with reverse knife hand strike",
-          "image_url": "https://example.com/moves/joong-gun-30.jpg"
+          "imageURL": "joong-gun-30",
+          "image2URL": "joong-gun-30-technique",
+          "image3URL": "joong-gun-30-progress"
         },
         {
           "move_number": 31,
@@ -394,7 +455,9 @@
           "key_points": "Penultimate technique",
           "common_mistakes": "Rushing to finish",
           "execution_notes": "90-degree turn with final punch",
-          "image_url": "https://example.com/moves/joong-gun-31.jpg"
+          "imageURL": "joong-gun-31",
+          "image2URL": "joong-gun-31-technique",
+          "image3URL": "joong-gun-31-progress"
         },
         {
           "move_number": 32,
@@ -406,7 +469,9 @@
           "key_points": "Sharp return to attention",
           "common_mistakes": "Sloppy conclusion",
           "execution_notes": "Crisp, respectful return to starting position",
-          "image_url": "https://example.com/moves/joong-gun-32.jpg"
+          "imageURL": "joong-gun-32",
+          "image2URL": "joong-gun-32-technique",
+          "image3URL": "joong-gun-32-progress"
         }
       ]
     }

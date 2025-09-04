@@ -12,11 +12,13 @@ import SwiftUI
  * - Visual feedback for current position
  * - Integration with user progress system
  * - Complete Pattern navigation: "Record Progress" returns to list, "Practice Again" restarts
+ * - Image carousel for move visualization with 3 image types per move
  * 
  * RECENT ENHANCEMENTS:
  * - Replaced plain progress bar with belt-themed design showing proper tag belt colors
  * - Streamlined navigation controls with proper completion dialog behavior
  * - Optimized layout to fit pattern practice on single screen without scrolling
+ * - Added image carousel supporting Position, Technique, and Progress images
  */
 
 struct PatternPracticeView: View {
@@ -30,6 +32,7 @@ struct PatternPracticeView: View {
     @State private var showingCompleteDialog = false
     @State private var practiceAccuracy: Double = 0.0
     @State private var userProgress: UserPatternProgress?
+    @State private var selectedImageIndex = 0
     
     private var currentMove: PatternMove? {
         guard currentMoveIndex < pattern.orderedMoves.count else { return nil }
@@ -51,6 +54,12 @@ struct PatternPracticeView: View {
                     // Move overview card
                     moveOverviewCard(move: move)
                         .padding(.horizontal)
+                    
+                    // Image carousel for move visualization (vertically centered)
+                    if move.hasMedia {
+                        moveImageCarousel(move: move)
+                            .padding(.horizontal)
+                    }
                     
                     // Detailed instructions in compact scrollable layout
                     ScrollView {
@@ -177,6 +186,64 @@ struct PatternPracticeView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
     
+    // MARK: - Image Carousel
+    
+    private func moveImageCarousel(move: PatternMove) -> some View {
+        VStack(spacing: 8) {
+            // Carousel container
+            TabView(selection: $selectedImageIndex) {
+                ForEach(Array(move.availableImages.enumerated()), id: \.offset) { index, imageName in
+                    ZStack {
+                        // Load image directly, SwiftUI will handle missing images gracefully
+                        Image(imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .onAppear {
+                                DebugLogger.ui("🖼️ Loading pattern image: '\(imageName)' for move \(move.moveNumber)")
+                            }
+                    }
+                    .frame(height: 200)
+                    .background(Color(.systemBackground))
+                    .cornerRadius(12)
+                    .tag(index)
+                }
+            }
+            .tabViewStyle(.page(indexDisplayMode: .automatic))
+            .frame(height: 220)
+            
+            // Image type indicators
+            if move.availableImages.count > 1 {
+                HStack(spacing: 16) {
+                    ForEach(Array(move.availableImages.enumerated()), id: \.offset) { index, _ in
+                        Button {
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                selectedImageIndex = index
+                            }
+                        } label: {
+                            Text(imageTypeLabel(for: index))
+                                .font(.caption)
+                                .foregroundColor(selectedImageIndex == index ? .primary : .secondary)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(selectedImageIndex == index ? Color.blue.opacity(0.2) : Color.clear)
+                                )
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func imageTypeLabel(for index: Int) -> String {
+        switch index {
+        case 0: return "Position"
+        case 1: return "Technique"
+        case 2: return "Progress"
+        default: return "View \(index + 1)"
+        }
+    }
     
     // MARK: - Move Instructions Section
     
@@ -320,11 +387,11 @@ struct PatternPracticeView: View {
         }
     }
     
-    
     private func nextMove() {
         if currentMoveIndex < pattern.orderedMoves.count - 1 {
             withAnimation(.easeInOut(duration: 0.3)) {
                 currentMoveIndex += 1
+                selectedImageIndex = 0 // Reset to first image for new move
                 // Update pattern progress in database
                 updatePatternProgress()
             }
@@ -335,6 +402,7 @@ struct PatternPracticeView: View {
         if currentMoveIndex > 0 {
             withAnimation(.easeInOut(duration: 0.3)) {
                 currentMoveIndex -= 1
+                selectedImageIndex = 0 // Reset to first image for new move
                 // Update pattern progress in database
                 updatePatternProgress()
             }
@@ -402,7 +470,7 @@ struct PatternPracticeView: View {
                 focusAreas: [pattern.name]
             )
         } catch {
-            print("❌ Failed to record pattern study session: \(error)")
+            DebugLogger.data("❌ Failed to record pattern study session: \(error)")
         }
         
         // Return to pattern list after recording progress

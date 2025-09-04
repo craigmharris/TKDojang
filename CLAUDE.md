@@ -21,6 +21,7 @@ This is **TKDojang**, a Taekwondo learning iOS app built with SwiftUI using the 
 - **Descriptive Naming**: Use clear, self-documenting variable and function names
 - **Single Responsibility**: Each file/class should have one clear purpose
 - **No Magic Numbers**: Use constants from `AppConstants.swift`
+- **Debug Logging**: Always use `DebugLogger` instead of `print()` for debug output - provides conditional compilation and zero release overhead
 
 ### File Organization
 - Features are organized in `/Sources/Features/[FeatureName]/`
@@ -42,6 +43,7 @@ This is **TKDojang**, a Taekwondo learning iOS app built with SwiftUI using the 
 3. Follow the established pattern of separating views, view models, and models
 4. Add comprehensive unit tests
 5. Update documentation
+6. Use `DebugLogger.ui()`, `DebugLogger.data()`, or `DebugLogger.profile()` for debug output instead of `print()`
 
 ### When Modifying Architecture
 1. Explain the reasoning behind architectural changes

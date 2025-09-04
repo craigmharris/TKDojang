@@ -21,8 +21,9 @@
       "starting_stance": "Parallel ready stance",
       "difficulty": 4,
       "applicable_belt_levels": ["5th_keup"],
-      "video_url": "https://example.com/patterns/yul-gok.mp4",
-      "diagram_image_url": "https://example.com/diagrams/yul-gok-diagram.jpg",
+      "video_url": "yul-gok-video",
+      "diagram_image_url": "yul-gok-diagram",
+      "starting_move_image_url": "yul-gok-starting",
       "moves": [
         {
           "move_number": 1,
@@ -34,7 +35,9 @@
           "key_points": "Strong foundation technique",
           "common_mistakes": "Weak stance",
           "execution_notes": "Turn 90 degrees left from ready stance",
-          "image_url": "https://example.com/moves/yul-gok-1.jpg"
+          "imageURL": "yul-gok-1",
+          "image2URL": "yul-gok-1-technique",
+          "image3URL": "yul-gok-1-progress"
         },
         {
           "move_number": 2,
@@ -46,7 +49,9 @@
           "key_points": "Full hip rotation",
           "common_mistakes": "Incomplete stepping",
           "execution_notes": "Step forward with conviction",
-          "image_url": "https://example.com/moves/yul-gok-2.jpg"
+          "imageURL": "yul-gok-2",
+          "image2URL": "yul-gok-2-technique",
+          "image3URL": "yul-gok-2-progress"
         },
         {
           "move_number": 3,
@@ -58,7 +63,9 @@
           "key_points": "180-degree turn control",
           "common_mistakes": "Loss of balance",
           "execution_notes": "Sharp pivot maintaining stance",
-          "image_url": "https://example.com/moves/yul-gok-3.jpg"
+          "imageURL": "yul-gok-3",
+          "image2URL": "yul-gok-3-technique",
+          "image3URL": "yul-gok-3-progress"
         },
         {
           "move_number": 4,
@@ -70,7 +77,9 @@
           "key_points": "Equal power both sides",
           "common_mistakes": "Weaker off-side",
           "execution_notes": "Bilateral technique consistency",
-          "image_url": "https://example.com/moves/yul-gok-4.jpg"
+          "imageURL": "yul-gok-4",
+          "image2URL": "yul-gok-4-technique",
+          "image3URL": "yul-gok-4-progress"
         },
         {
           "move_number": 5,
@@ -82,7 +91,9 @@
           "key_points": "Synchronized arm movement",
           "common_mistakes": "Uneven arm position",
           "execution_notes": "90-degree turn to face north",
-          "image_url": "https://example.com/moves/yul-gok-5.jpg"
+          "imageURL": "yul-gok-5",
+          "image2URL": "yul-gok-5-technique",
+          "image3URL": "yul-gok-5-progress"
         },
         {
           "move_number": 6,
@@ -94,7 +105,9 @@
           "key_points": "Sharp kicking motion",
           "common_mistakes": "Poor balance",
           "execution_notes": "Step forward with front kick",
-          "image_url": "https://example.com/moves/yul-gok-6.jpg"
+          "imageURL": "yul-gok-6",
+          "image2URL": "yul-gok-6-technique",
+          "image3URL": "yul-gok-6-progress"
         },
         {
           "move_number": 7,
@@ -106,7 +119,9 @@
           "key_points": "Transition from kick to punch",
           "common_mistakes": "Poor timing",
           "execution_notes": "Land from kick into punch",
-          "image_url": "https://example.com/moves/yul-gok-7.jpg"
+          "imageURL": "yul-gok-7",
+          "image2URL": "yul-gok-7-technique",
+          "image3URL": "yul-gok-7-progress"
         },
         {
           "move_number": 8,
@@ -118,7 +133,9 @@
           "key_points": "180-degree turn control",
           "common_mistakes": "Losing balance on turn",
           "execution_notes": "Sharp pivot to face south",
-          "image_url": "https://example.com/moves/yul-gok-8.jpg"
+          "imageURL": "yul-gok-8",
+          "image2URL": "yul-gok-8-technique",
+          "image3URL": "yul-gok-8-progress"
         },
         {
           "move_number": 9,
@@ -130,7 +147,9 @@
           "key_points": "Mirror of move 6",
           "common_mistakes": "Inconsistent kicking form",
           "execution_notes": "Step forward with front kick",
-          "image_url": "https://example.com/moves/yul-gok-9.jpg"
+          "imageURL": "yul-gok-9",
+          "image2URL": "yul-gok-9-technique",
+          "image3URL": "yul-gok-9-progress"
         },
         {
           "move_number": 10,
@@ -142,7 +161,9 @@
           "key_points": "Land punch from kick",
           "common_mistakes": "Poor kick-punch transition",
           "execution_notes": "Smooth transition from kick to punch",
-          "image_url": "https://example.com/moves/yul-gok-10.jpg"
+          "imageURL": "yul-gok-10",
+          "image2URL": "yul-gok-10-technique",
+          "image3URL": "yul-gok-10-progress"
         },
         {
           "move_number": 11,
@@ -154,7 +175,9 @@
           "key_points": "Introduction of L-stance",
           "common_mistakes": "Improper weight distribution",
           "execution_notes": "90-degree turn into L-stance",
-          "image_url": "https://example.com/moves/yul-gok-11.jpg"
+          "imageURL": "yul-gok-11",
+          "image2URL": "yul-gok-11-technique",
+          "image3URL": "yul-gok-11-progress"
         },
         {
           "move_number": 12,
@@ -166,7 +189,9 @@
           "key_points": "Precise finger formation",
           "common_mistakes": "Weak finger position",
           "execution_notes": "Step forward with spear finger",
-          "image_url": "https://example.com/moves/yul-gok-12.jpg"
+          "imageURL": "yul-gok-12",
+          "image2URL": "yul-gok-12-technique",
+          "image3URL": "yul-gok-12-progress"
         },
         {
           "move_number": 13,
@@ -178,7 +203,9 @@
           "key_points": "Mirror of move 11",
           "common_mistakes": "Inconsistent L-stance form",
           "execution_notes": "180-degree turn into L-stance",
-          "image_url": "https://example.com/moves/yul-gok-13.jpg"
+          "imageURL": "yul-gok-13",
+          "image2URL": "yul-gok-13-technique",
+          "image3URL": "yul-gok-13-progress"
         },
         {
           "move_number": 14,
@@ -190,7 +217,9 @@
           "key_points": "Bilateral technique consistency",
           "common_mistakes": "Weaker off-side execution",
           "execution_notes": "Step forward with spear finger",
-          "image_url": "https://example.com/moves/yul-gok-14.jpg"
+          "imageURL": "yul-gok-14",
+          "image2URL": "yul-gok-14-technique",
+          "image3URL": "yul-gok-14-progress"
         },
         {
           "move_number": 15,
@@ -202,7 +231,9 @@
           "key_points": "Return to basic techniques",
           "common_mistakes": "Relaxing form",
           "execution_notes": "90-degree turn to face north",
-          "image_url": "https://example.com/moves/yul-gok-15.jpg"
+          "imageURL": "yul-gok-15",
+          "image2URL": "yul-gok-15-technique",
+          "image3URL": "yul-gok-15-progress"
         },
         {
           "move_number": 16,
@@ -214,7 +245,9 @@
           "key_points": "Strong northward advance",
           "common_mistakes": "Inconsistent power",
           "execution_notes": "Step forward with conviction",
-          "image_url": "https://example.com/moves/yul-gok-16.jpg"
+          "imageURL": "yul-gok-16",
+          "image2URL": "yul-gok-16-technique",
+          "image3URL": "yul-gok-16-progress"
         },
         {
           "move_number": 17,
@@ -226,7 +259,9 @@
           "key_points": "Alternating block-punch pattern",
           "common_mistakes": "Breaking rhythm",
           "execution_notes": "Continue forward with low block",
-          "image_url": "https://example.com/moves/yul-gok-17.jpg"
+          "imageURL": "yul-gok-17",
+          "image2URL": "yul-gok-17-technique",
+          "image3URL": "yul-gok-17-progress"
         },
         {
           "move_number": 18,
@@ -238,7 +273,9 @@
           "key_points": "Maintain alternating pattern",
           "common_mistakes": "Technique deterioration",
           "execution_notes": "Continue consistent pattern",
-          "image_url": "https://example.com/moves/yul-gok-18.jpg"
+          "imageURL": "yul-gok-18",
+          "image2URL": "yul-gok-18-technique",
+          "image3URL": "yul-gok-18-progress"
         },
         {
           "move_number": 19,
@@ -250,7 +287,9 @@
           "key_points": "Peak of northern sequence",
           "common_mistakes": "Mental fatigue",
           "execution_notes": "Maintain peak performance",
-          "image_url": "https://example.com/moves/yul-gok-19.jpg"
+          "imageURL": "yul-gok-19",
+          "image2URL": "yul-gok-19-technique",
+          "image3URL": "yul-gok-19-progress"
         },
         {
           "move_number": 20,
@@ -262,7 +301,9 @@
           "key_points": "Climax of northern advance",
           "common_mistakes": "Rushing finish",
           "execution_notes": "Maximum power in sequence",
-          "image_url": "https://example.com/moves/yul-gok-20.jpg"
+          "imageURL": "yul-gok-20",
+          "image2URL": "yul-gok-20-technique",
+          "image3URL": "yul-gok-20-progress"
         },
         {
           "move_number": 21,
@@ -274,7 +315,9 @@
           "key_points": "180-degree turn precision",
           "common_mistakes": "Poor turn execution",
           "execution_notes": "Sharp pivot to face south",
-          "image_url": "https://example.com/moves/yul-gok-21.jpg"
+          "imageURL": "yul-gok-21",
+          "image2URL": "yul-gok-21-technique",
+          "image3URL": "yul-gok-21-progress"
         },
         {
           "move_number": 22,
@@ -286,7 +329,9 @@
           "key_points": "Begin southern sequence",
           "common_mistakes": "Inconsistent with north",
           "execution_notes": "Mirror northern sequence",
-          "image_url": "https://example.com/moves/yul-gok-22.jpg"
+          "imageURL": "yul-gok-22",
+          "image2URL": "yul-gok-22-technique",
+          "image3URL": "yul-gok-22-progress"
         },
         {
           "move_number": 23,
@@ -298,7 +343,9 @@
           "key_points": "Continue alternating pattern",
           "common_mistakes": "Breaking bilateral symmetry",
           "execution_notes": "Maintain consistent pattern",
-          "image_url": "https://example.com/moves/yul-gok-23.jpg"
+          "imageURL": "yul-gok-23",
+          "image2URL": "yul-gok-23-technique",
+          "image3URL": "yul-gok-23-progress"
         },
         {
           "move_number": 24,
@@ -310,7 +357,9 @@
           "key_points": "Southern sequence building",
           "common_mistakes": "Declining intensity",
           "execution_notes": "Equal power to northern side",
-          "image_url": "https://example.com/moves/yul-gok-24.jpg"
+          "imageURL": "yul-gok-24",
+          "image2URL": "yul-gok-24-technique",
+          "image3URL": "yul-gok-24-progress"
         },
         {
           "move_number": 25,
@@ -322,7 +371,9 @@
           "key_points": "Sustained excellence",
           "common_mistakes": "Premature relaxation",
           "execution_notes": "Continue strong execution",
-          "image_url": "https://example.com/moves/yul-gok-25.jpg"
+          "imageURL": "yul-gok-25",
+          "image2URL": "yul-gok-25-technique",
+          "image3URL": "yul-gok-25-progress"
         },
         {
           "move_number": 26,
@@ -334,7 +385,9 @@
           "key_points": "Peak southern power",
           "common_mistakes": "Uneven bilateral strength",
           "execution_notes": "Maximum southern sequence power",
-          "image_url": "https://example.com/moves/yul-gok-26.jpg"
+          "imageURL": "yul-gok-26",
+          "image2URL": "yul-gok-26-technique",
+          "image3URL": "yul-gok-26-progress"
         },
         {
           "move_number": 27,
@@ -346,7 +399,9 @@
           "key_points": "Return to L-stance techniques",
           "common_mistakes": "Inconsistent stance form",
           "execution_notes": "90-degree turn into L-stance",
-          "image_url": "https://example.com/moves/yul-gok-27.jpg"
+          "imageURL": "yul-gok-27",
+          "image2URL": "yul-gok-27-technique",
+          "image3URL": "yul-gok-27-progress"
         },
         {
           "move_number": 28,
@@ -358,7 +413,9 @@
           "key_points": "Return to spear finger",
           "common_mistakes": "Weak finger formation",
           "execution_notes": "Step forward with spear finger",
-          "image_url": "https://example.com/moves/yul-gok-28.jpg"
+          "imageURL": "yul-gok-28",
+          "image2URL": "yul-gok-28-technique",
+          "image3URL": "yul-gok-28-progress"
         },
         {
           "move_number": 29,
@@ -370,7 +427,9 @@
           "key_points": "Final L-stance sequence",
           "common_mistakes": "Anticipating pattern end",
           "execution_notes": "180-degree turn into L-stance",
-          "image_url": "https://example.com/moves/yul-gok-29.jpg"
+          "imageURL": "yul-gok-29",
+          "image2URL": "yul-gok-29-technique",
+          "image3URL": "yul-gok-29-progress"
         },
         {
           "move_number": 30,
@@ -382,7 +441,9 @@
           "key_points": "Final spear finger technique",
           "common_mistakes": "Weak conclusion",
           "execution_notes": "Step forward with full commitment",
-          "image_url": "https://example.com/moves/yul-gok-30.jpg"
+          "imageURL": "yul-gok-30",
+          "image2URL": "yul-gok-30-technique",
+          "image3URL": "yul-gok-30-progress"
         },
         {
           "move_number": 31,
@@ -394,7 +455,9 @@
           "key_points": "Return to foundational techniques",
           "common_mistakes": "Relaxing too early",
           "execution_notes": "90-degree turn back to west",
-          "image_url": "https://example.com/moves/yul-gok-31.jpg"
+          "imageURL": "yul-gok-31",
+          "image2URL": "yul-gok-31-technique",
+          "image3URL": "yul-gok-31-progress"
         },
         {
           "move_number": 32,
@@ -406,7 +469,9 @@
           "key_points": "Return to opening combination",
           "common_mistakes": "Inconsistent with opening",
           "execution_notes": "Mirror opening sequence",
-          "image_url": "https://example.com/moves/yul-gok-32.jpg"
+          "imageURL": "yul-gok-32",
+          "image2URL": "yul-gok-32-technique",
+          "image3URL": "yul-gok-32-progress"
         },
         {
           "move_number": 33,
@@ -418,7 +483,9 @@
           "key_points": "Penultimate direction change",
           "common_mistakes": "Rushing to conclusion",
           "execution_notes": "180-degree turn with control",
-          "image_url": "https://example.com/moves/yul-gok-33.jpg"
+          "imageURL": "yul-gok-33",
+          "image2URL": "yul-gok-33-technique",
+          "image3URL": "yul-gok-33-progress"
         },
         {
           "move_number": 34,
@@ -430,7 +497,9 @@
           "key_points": "Mirror western sequence",
           "common_mistakes": "Uneven power distribution",
           "execution_notes": "Equal power on both sides",
-          "image_url": "https://example.com/moves/yul-gok-34.jpg"
+          "imageURL": "yul-gok-34",
+          "image2URL": "yul-gok-34-technique",
+          "image3URL": "yul-gok-34-progress"
         },
         {
           "move_number": 35,
@@ -442,7 +511,9 @@
           "key_points": "Return to twin forearm block",
           "common_mistakes": "Poor arm synchronization",
           "execution_notes": "90-degree turn to face north",
-          "image_url": "https://example.com/moves/yul-gok-35.jpg"
+          "imageURL": "yul-gok-35",
+          "image2URL": "yul-gok-35-technique",
+          "image3URL": "yul-gok-35-progress"
         },
         {
           "move_number": 36,
@@ -454,7 +525,9 @@
           "key_points": "Return to kicking techniques",
           "common_mistakes": "Weak kick execution",
           "execution_notes": "Step forward with front kick",
-          "image_url": "https://example.com/moves/yul-gok-36.jpg"
+          "imageURL": "yul-gok-36",
+          "image2URL": "yul-gok-36-technique",
+          "image3URL": "yul-gok-36-progress"
         },
         {
           "move_number": 37,
@@ -466,7 +539,9 @@
           "key_points": "Final technique before return",
           "common_mistakes": "Weak finishing technique",
           "execution_notes": "Land from kick with final punch",
-          "image_url": "https://example.com/moves/yul-gok-37.jpg"
+          "imageURL": "yul-gok-37",
+          "image2URL": "yul-gok-37-technique",
+          "image3URL": "yul-gok-37-progress"
         },
         {
           "move_number": 38,
@@ -478,7 +553,9 @@
           "key_points": "Sharp return to attention",
           "common_mistakes": "Sloppy conclusion",
           "execution_notes": "Crisp, respectful return to starting position",
-          "image_url": "https://example.com/moves/yul-gok-38.jpg"
+          "imageURL": "yul-gok-38",
+          "image2URL": "yul-gok-38-technique",
+          "image3URL": "yul-gok-38-progress"
         }
       ]
     }

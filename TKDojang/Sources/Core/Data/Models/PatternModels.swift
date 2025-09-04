@@ -31,9 +31,10 @@ final class Pattern {
     var diagramDescription: String
     var startingStance: String
     
-    // Media URLs (optional - will be dummy URLs initially)
+    // Media URLs (internal asset references)
     var videoURL: String?
-    var diagramImageURL: String?
+    var diagramImageURL: String? // Pattern diagram for list thumbnail
+    var startingMoveImageURL: String? // Starting move image for practice
     
     // Relationships
     var beltLevels: [BeltLevel] = []
@@ -52,7 +53,8 @@ final class Pattern {
         diagramDescription: String,
         startingStance: String,
         videoURL: String? = nil,
-        diagramImageURL: String? = nil
+        diagramImageURL: String? = nil,
+        startingMoveImageURL: String? = nil
     ) {
         self.id = UUID()
         self.name = name
@@ -64,6 +66,7 @@ final class Pattern {
         self.startingStance = startingStance
         self.videoURL = videoURL
         self.diagramImageURL = diagramImageURL
+        self.startingMoveImageURL = startingMoveImageURL
         self.createdAt = Date()
         self.updatedAt = Date()
     }
@@ -87,8 +90,10 @@ final class PatternMove {
     var commonMistakes: String?
     var executionNotes: String?
     
-    // Media URL (optional - will be dummy URL initially)
-    var imageURL: String?
+    // Media URLs (internal asset references - all optional)
+    var imageURL: String?      // Position image
+    var image2URL: String?     // Technique demonstration image  
+    var image3URL: String?     // Overall progress image
     
     // Relationships
     var pattern: Pattern?
@@ -117,7 +122,9 @@ final class PatternMove {
         keyPoints: String,
         commonMistakes: String? = nil,
         executionNotes: String? = nil,
-        imageURL: String? = nil
+        imageURL: String? = nil,
+        image2URL: String? = nil,
+        image3URL: String? = nil
     ) {
         self.id = UUID()
         self.moveNumber = moveNumber
@@ -129,6 +136,8 @@ final class PatternMove {
         self.commonMistakes = commonMistakes
         self.executionNotes = executionNotes
         self.imageURL = imageURL
+        self.image2URL = image2URL
+        self.image3URL = image3URL
         self.createdAt = Date()
         self.updatedAt = Date()
     }
@@ -361,10 +370,21 @@ extension PatternMove {
     }
     
     /**
-     * Returns true if this move has media content available
+     * Returns available images for carousel display
+     */
+    var availableImages: [String] {
+        var images: [String] = []
+        if let url = imageURL, !url.isEmpty { images.append(url) }
+        if let url = image2URL, !url.isEmpty { images.append(url) }
+        if let url = image3URL, !url.isEmpty { images.append(url) }
+        return images
+    }
+    
+    /**
+     * Returns true if this move has any media content available
      */
     var hasMedia: Bool {
-        return imageURL != nil && !(imageURL?.isEmpty ?? true)
+        return !availableImages.isEmpty
     }
 }
 

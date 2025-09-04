@@ -21,8 +21,9 @@
       "starting_stance": "Parallel ready stance",
       "difficulty": 5,
       "applicable_belt_levels": ["1st_keup"],
-      "video_url": "https://example.com/patterns/chung-mu.mp4",
-      "diagram_image_url": "https://example.com/diagrams/chung-mu-diagram.jpg",
+      "video_url": "chung-mu-video",
+      "diagram_image_url": "chung-mu-diagram",
+      "starting_move_image_url": "chung-mu-starting",
       "moves": [
         {
           "move_number": 1,
@@ -34,7 +35,9 @@
           "key_points": "Strong L-stance foundation with both hands",
           "common_mistakes": "Uneven hand positioning",
           "execution_notes": "Turn 90 degrees right from ready stance into L-stance",
-          "image_url": "https://example.com/moves/chung-mu-1.jpg"
+          "imageURL": "chung-mu-1",
+          "image2URL": "chung-mu-1-technique",
+          "image3URL": "chung-mu-1-progress"
         },
         {
           "move_number": 2,
@@ -46,7 +49,9 @@
           "key_points": "Powerful stepping punch",
           "common_mistakes": "Weak stepping motion",
           "execution_notes": "Step forward with high punch",
-          "image_url": "https://example.com/moves/chung-mu-2.jpg"
+          "imageURL": "chung-mu-2",
+          "image2URL": "chung-mu-2-technique",
+          "image3URL": "chung-mu-2-progress"
         },
         {
           "move_number": 3,
@@ -58,7 +63,9 @@
           "key_points": "Mirror opening technique",
           "common_mistakes": "Inconsistent twin hand form",
           "execution_notes": "180-degree turn into L-stance",
-          "image_url": "https://example.com/moves/chung-mu-3.jpg"
+          "imageURL": "chung-mu-3",
+          "image2URL": "chung-mu-3-technique",
+          "image3URL": "chung-mu-3-progress"
         },
         {
           "move_number": 4,
@@ -70,7 +77,9 @@
           "key_points": "Bilateral technique consistency",
           "common_mistakes": "Weaker off-side power",
           "execution_notes": "Step forward with high punch",
-          "image_url": "https://example.com/moves/chung-mu-4.jpg"
+          "imageURL": "chung-mu-4",
+          "image2URL": "chung-mu-4-technique",
+          "image3URL": "chung-mu-4-progress"
         },
         {
           "move_number": 5,
@@ -82,7 +91,9 @@
           "key_points": "Introduction of slow motion technique",
           "common_mistakes": "Not maintaining slow controlled speed",
           "execution_notes": "90-degree turn with slow deliberate punch",
-          "image_url": "https://example.com/moves/chung-mu-5.jpg"
+          "imageURL": "chung-mu-5",
+          "image2URL": "chung-mu-5-technique",
+          "image3URL": "chung-mu-5-progress"
         },
         {
           "move_number": 6,
@@ -94,7 +105,9 @@
           "key_points": "Return to normal speed",
           "common_mistakes": "Poor speed transition",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/chung-mu-6.jpg"
+          "imageURL": "chung-mu-6",
+          "image2URL": "chung-mu-6-technique",
+          "image3URL": "chung-mu-6-progress"
         },
         {
           "move_number": 7,
@@ -106,7 +119,9 @@
           "key_points": "Quick counter-attack",
           "common_mistakes": "Slow punch timing",
           "execution_notes": "Immediate punch following block",
-          "image_url": "https://example.com/moves/chung-mu-7.jpg"
+          "imageURL": "chung-mu-7",
+          "image2URL": "chung-mu-7-technique",
+          "image3URL": "chung-mu-7-progress"
         },
         {
           "move_number": 8,
@@ -118,7 +133,9 @@
           "key_points": "Alternating block-punch pattern",
           "common_mistakes": "Breaking rhythm",
           "execution_notes": "Continue forward with high block",
-          "image_url": "https://example.com/moves/chung-mu-8.jpg"
+          "imageURL": "chung-mu-8",
+          "image2URL": "chung-mu-8-technique",
+          "image3URL": "chung-mu-8-progress"
         },
         {
           "move_number": 9,
@@ -130,7 +147,9 @@
           "key_points": "Maintain alternating pattern",
           "common_mistakes": "Inconsistent technique",
           "execution_notes": "Immediate punch following block",
-          "image_url": "https://example.com/moves/chung-mu-9.jpg"
+          "imageURL": "chung-mu-9",
+          "image2URL": "chung-mu-9-technique",
+          "image3URL": "chung-mu-9-progress"
         },
         {
           "move_number": 10,
@@ -142,7 +161,9 @@
           "key_points": "Peak of northern sequence",
           "common_mistakes": "Declining intensity",
           "execution_notes": "Continue strong block-punch pattern",
-          "image_url": "https://example.com/moves/chung-mu-10.jpg"
+          "imageURL": "chung-mu-10",
+          "image2URL": "chung-mu-10-technique",
+          "image3URL": "chung-mu-10-progress"
         },
         {
           "move_number": 11,
@@ -154,7 +175,9 @@
           "key_points": "Climax of northern advance",
           "common_mistakes": "Rushing the sequence",
           "execution_notes": "Maximum power in sequence",
-          "image_url": "https://example.com/moves/chung-mu-11.jpg"
+          "imageURL": "chung-mu-11",
+          "image2URL": "chung-mu-11-technique",
+          "image3URL": "chung-mu-11-progress"
         },
         {
           "move_number": 12,
@@ -166,7 +189,9 @@
           "key_points": "Return to slow motion technique",
           "common_mistakes": "Poor speed control",
           "execution_notes": "180-degree turn with slow deliberate punch",
-          "image_url": "https://example.com/moves/chung-mu-12.jpg"
+          "imageURL": "chung-mu-12",
+          "image2URL": "chung-mu-12-technique",
+          "image3URL": "chung-mu-12-progress"
         },
         {
           "move_number": 13,
@@ -178,7 +203,9 @@
           "key_points": "Begin southern sequence",
           "common_mistakes": "Inconsistent with north",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/chung-mu-13.jpg"
+          "imageURL": "chung-mu-13",
+          "image2URL": "chung-mu-13-technique",
+          "image3URL": "chung-mu-13-progress"
         },
         {
           "move_number": 14,
@@ -190,7 +217,9 @@
           "key_points": "Mirror northern pattern",
           "common_mistakes": "Weak counter-attack",
           "execution_notes": "Immediate punch following block",
-          "image_url": "https://example.com/moves/chung-mu-14.jpg"
+          "imageURL": "chung-mu-14",
+          "image2URL": "chung-mu-14-technique",
+          "image3URL": "chung-mu-14-progress"
         },
         {
           "move_number": 15,
@@ -202,7 +231,9 @@
           "key_points": "Continue alternating pattern",
           "common_mistakes": "Breaking bilateral symmetry",
           "execution_notes": "Maintain consistent form",
-          "image_url": "https://example.com/moves/chung-mu-15.jpg"
+          "imageURL": "chung-mu-15",
+          "image2URL": "chung-mu-15-technique",
+          "image3URL": "chung-mu-15-progress"
         },
         {
           "move_number": 16,
@@ -214,7 +245,9 @@
           "key_points": "Southern sequence building",
           "common_mistakes": "Declining power",
           "execution_notes": "Equal power to northern side",
-          "image_url": "https://example.com/moves/chung-mu-16.jpg"
+          "imageURL": "chung-mu-16",
+          "image2URL": "chung-mu-16-technique",
+          "image3URL": "chung-mu-16-progress"
         },
         {
           "move_number": 17,
@@ -226,7 +259,9 @@
           "key_points": "Peak southern intensity",
           "common_mistakes": "Premature relaxation",
           "execution_notes": "Sustained excellence",
-          "image_url": "https://example.com/moves/chung-mu-17.jpg"
+          "imageURL": "chung-mu-17",
+          "image2URL": "chung-mu-17-technique",
+          "image3URL": "chung-mu-17-progress"
         },
         {
           "move_number": 18,
@@ -238,7 +273,9 @@
           "key_points": "Climax of southern sequence",
           "common_mistakes": "Weak finishing",
           "execution_notes": "Maximum southern power",
-          "image_url": "https://example.com/moves/chung-mu-18.jpg"
+          "imageURL": "chung-mu-18",
+          "image2URL": "chung-mu-18-technique",
+          "image3URL": "chung-mu-18-progress"
         },
         {
           "move_number": 19,
@@ -250,7 +287,9 @@
           "key_points": "90-degree turn to fundamentals",
           "common_mistakes": "Poor turn execution",
           "execution_notes": "90-degree turn to face west",
-          "image_url": "https://example.com/moves/chung-mu-19.jpg"
+          "imageURL": "chung-mu-19",
+          "image2URL": "chung-mu-19-technique",
+          "image3URL": "chung-mu-19-progress"
         },
         {
           "move_number": 20,
@@ -262,7 +301,9 @@
           "key_points": "Mirror western technique",
           "common_mistakes": "Inconsistent blocking form",
           "execution_notes": "180-degree turn with low block",
-          "image_url": "https://example.com/moves/chung-mu-20.jpg"
+          "imageURL": "chung-mu-20",
+          "image2URL": "chung-mu-20-technique",
+          "image3URL": "chung-mu-20-progress"
         },
         {
           "move_number": 21,
@@ -274,7 +315,9 @@
           "key_points": "Return to north direction",
           "common_mistakes": "Poor directional change",
           "execution_notes": "90-degree turn to face north",
-          "image_url": "https://example.com/moves/chung-mu-21.jpg"
+          "imageURL": "chung-mu-21",
+          "image2URL": "chung-mu-21-technique",
+          "image3URL": "chung-mu-21-progress"
         },
         {
           "move_number": 22,
@@ -286,7 +329,9 @@
           "key_points": "Introduction of X-block technique",
           "common_mistakes": "Improper X formation",
           "execution_notes": "Step forward with crossed arms block",
-          "image_url": "https://example.com/moves/chung-mu-22.jpg"
+          "imageURL": "chung-mu-22",
+          "image2URL": "chung-mu-22-technique",
+          "image3URL": "chung-mu-22-progress"
         },
         {
           "move_number": 23,
@@ -298,7 +343,9 @@
           "key_points": "Kick following X-block",
           "common_mistakes": "Poor block-to-kick transition",
           "execution_notes": "Front kick immediately after X-block",
-          "image_url": "https://example.com/moves/chung-mu-23.jpg"
+          "imageURL": "chung-mu-23",
+          "image2URL": "chung-mu-23-technique",
+          "image3URL": "chung-mu-23-progress"
         },
         {
           "move_number": 24,
@@ -310,7 +357,9 @@
           "key_points": "Land from kick with punch",
           "common_mistakes": "Poor kick-punch transition",
           "execution_notes": "Land from kick into high punch",
-          "image_url": "https://example.com/moves/chung-mu-24.jpg"
+          "imageURL": "chung-mu-24",
+          "image2URL": "chung-mu-24-technique",
+          "image3URL": "chung-mu-24-progress"
         },
         {
           "move_number": 25,
@@ -322,7 +371,9 @@
           "key_points": "Mirror X-block technique",
           "common_mistakes": "Inconsistent X formation",
           "execution_notes": "180-degree turn with crossed arms block",
-          "image_url": "https://example.com/moves/chung-mu-25.jpg"
+          "imageURL": "chung-mu-25",
+          "image2URL": "chung-mu-25-technique",
+          "image3URL": "chung-mu-25-progress"
         },
         {
           "move_number": 26,
@@ -334,7 +385,9 @@
           "key_points": "Bilateral kick consistency",
           "common_mistakes": "Weaker off-side kicking",
           "execution_notes": "Front kick immediately after X-block",
-          "image_url": "https://example.com/moves/chung-mu-26.jpg"
+          "imageURL": "chung-mu-26",
+          "image2URL": "chung-mu-26-technique",
+          "image3URL": "chung-mu-26-progress"
         },
         {
           "move_number": 27,
@@ -346,7 +399,9 @@
           "key_points": "Final kick-punch combination",
           "common_mistakes": "Weak final sequence",
           "execution_notes": "Land from kick into high punch",
-          "image_url": "https://example.com/moves/chung-mu-27.jpg"
+          "imageURL": "chung-mu-27",
+          "image2URL": "chung-mu-27-technique",
+          "image3URL": "chung-mu-27-progress"
         },
         {
           "move_number": 28,
@@ -358,7 +413,9 @@
           "key_points": "Return to opening technique",
           "common_mistakes": "Inconsistent with opening",
           "execution_notes": "90-degree turn into L-stance",
-          "image_url": "https://example.com/moves/chung-mu-28.jpg"
+          "imageURL": "chung-mu-28",
+          "image2URL": "chung-mu-28-technique",
+          "image3URL": "chung-mu-28-progress"
         },
         {
           "move_number": 29,
@@ -370,7 +427,9 @@
           "key_points": "Penultimate technique",
           "common_mistakes": "Rushing to conclusion",
           "execution_notes": "180-degree turn into L-stance",
-          "image_url": "https://example.com/moves/chung-mu-29.jpg"
+          "imageURL": "chung-mu-29",
+          "image2URL": "chung-mu-29-technique",
+          "image3URL": "chung-mu-29-progress"
         },
         {
           "move_number": 30,
@@ -382,7 +441,9 @@
           "key_points": "Final left-hand attack symbolizing Admiral Yi's death",
           "common_mistakes": "Weak finishing technique",
           "execution_notes": "90-degree turn with final left knife hand strike - pattern ends facing ready position but with left hand attack",
-          "image_url": "https://example.com/moves/chung-mu-30.jpg"
+          "imageURL": "chung-mu-30",
+          "image2URL": "chung-mu-30-technique",
+          "image3URL": "chung-mu-30-progress"
         }
       ]
     }

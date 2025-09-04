@@ -884,7 +884,7 @@ struct ProgressView: View {
             }
             
         } catch {
-            print("❌ Failed to load progress data: \(error)")
+            DebugLogger.data("❌ Failed to load progress data: \(error)")
             errorMessage = "Failed to load progress data: \(error.localizedDescription)"
         }
         
@@ -1143,6 +1143,18 @@ struct PatternsView: View {
         .navigationTitle("Patterns")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                #if DEBUG
+                Button("🔄") {
+                    DebugLogger.data("🔄 User triggered pattern reload")
+                    dataServices.patternService.clearAndReloadPatterns()
+                    Task {
+                        await loadPatterns()
+                    }
+                }
+                #endif
+            }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 ProfileSwitcher()
             }
@@ -1167,7 +1179,7 @@ struct PatternsView: View {
         
         if let profile = userProfile {
             patterns = dataServices.patternService.getPatternsForUser(userProfile: profile)
-            print("🥋 Loaded \(patterns.count) patterns for user \(profile.name)")
+            DebugLogger.data("🥋 Loaded \(patterns.count) patterns for user \(profile.name)")
         }
         
         isLoading = false
@@ -1702,14 +1714,14 @@ struct ProfileView: View {
         do {
             allProfiles = try dataServices.profileService.getAllProfiles()
         } catch {
-            print("❌ Failed to load profiles: \(error)")
+            DebugLogger.data("❌ Failed to load profiles: \(error)")
             allProfiles = []
         }
     }
     
     private func switchToProfile(_ profile: UserProfile) {
         do {
-            print("🔄 ProfileGridView: Switching to profile: \(profile.name)")
+            DebugLogger.profile("🔄 ProfileGridView: Switching to profile: \(profile.name)")
             try dataServices.profileService.activateProfile(profile)
             
             // Immediately refresh the parent view's data
@@ -1718,9 +1730,9 @@ struct ProfileView: View {
             // Notify other views of the change
             dataServices.objectWillChange.send()
             
-            print("✅ ProfileGridView: Profile switch completed, UI should update")
+            DebugLogger.profile("✅ ProfileGridView: Profile switch completed, UI should update")
         } catch {
-            print("❌ Failed to switch profile: \(error)")
+            DebugLogger.data("❌ Failed to switch profile: \(error)")
         }
     }
 }
