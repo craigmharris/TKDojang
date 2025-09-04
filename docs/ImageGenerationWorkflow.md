@@ -104,7 +104,7 @@ Professional Taekwondo martial arts photography, high-quality studio lighting, c
 **Target: 125 additional pattern images**
 
 #### Remaining Pattern Diagrams (8 images)
-Generate diagrams for: Dan-Gun, Do-San, Won-Hyo, Yul-Gok, Joong-Gun, Toi-Gye, Hwa-Rang, Chung-Mu
+Generate diagrams for: Dan-Gun, Do-San, Won-Hyo, Yul-Gok, Joong-Gun, Toi-Gye, Hwa-Rang, Choong-Moo
 
 #### High-Priority Pattern Moves (117 images)
 - **Dan-Gun**: 21 moves (8th Keup - high usage)
@@ -126,7 +126,7 @@ Generate diagrams for: Dan-Gun, Do-San, Won-Hyo, Yul-Gok, Joong-Gun, Toi-Gye, Hw
 - Joong-Gun: 32 moves (4th Keup)
 - Toi-Gye: 37 moves (3rd Keup)
 - Hwa-Rang: 29 moves (2nd Keup)
-- Chung-Mu: 30 moves (1st Keup)
+- Choong-Moo: 30 moves (1st Keup)
 
 #### Step Sparring Complete (54 images)
 - 3-Step Sparring: 30 images (10 sequences × 3 actions)
@@ -266,7 +266,7 @@ Studio lighting setup: professional martial arts photography, soft box lighting,
 - **4th Keup (Joong-Gun)**: "brown belt" or "red belt with black stripe"
 - **3rd Keup (Toi-Gye)**: "red belt with black stripe"  
 - **2nd Keup (Hwa-Rang)**: "red belt with black stripe"
-- **1st Keup (Chung-Mu)**: "red belt with two black stripes"
+- **1st Keup (Choong-Moo)**: "red belt with two black stripes"
 
 ---
 

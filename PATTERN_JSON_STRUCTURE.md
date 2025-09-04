@@ -18,7 +18,7 @@ TKDojang/Sources/Core/Data/Content/Patterns/
 ├── 4th_keup_patterns.json    # Joong-Gun
 ├── 3rd_keup_patterns.json    # Toi-Gye
 ├── 2nd_keup_patterns.json    # Hwa-Rang
-└── 1st_keup_patterns.json    # Chung-Mu
+└── 1st_keup_patterns.json    # Choong-Moo
 ```
 
 ## JSON Schema
@@ -118,7 +118,7 @@ TKDojang/Sources/Core/Data/Content/Patterns/
 - **Yul-Gok (5th Keup)**: Partial implementation (7 moves), easily expandable
 
 ### Framework Ready
-- **Joong-Gun through Chung-Mu**: Pattern metadata complete, ready for move expansion
+- **Joong-Gun through Choong-Moo**: Pattern metadata complete, ready for move expansion
 - **Consistent Structure**: All files follow identical schema
 - **Build Integration**: All JSON files properly bundled in app
 

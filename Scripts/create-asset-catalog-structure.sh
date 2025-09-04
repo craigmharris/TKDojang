@@ -20,7 +20,7 @@ PATTERNS=(
     "joong-gun"
     "toi-gye"
     "hwa-rang"
-    "chung-mu"
+    "choong-moo"
 )
 
 # Pattern move counts (from JSON analysis)
@@ -35,7 +35,7 @@ get_move_count() {
         "joong-gun") echo 32 ;;
         "toi-gye") echo 37 ;;
         "hwa-rang") echo 29 ;;
-        "chung-mu") echo 30 ;;
+        "choong-moo") echo 30 ;;
         *) echo 0 ;;
     esac
 }
