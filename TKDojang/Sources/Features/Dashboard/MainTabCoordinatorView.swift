@@ -1223,6 +1223,24 @@ struct PatternCard: View {
                         .cornerRadius(8)
                 }
                 
+                // Pattern diagram thumbnail - prominent and centered
+                if let diagramURL = pattern.diagramImageURL, !diagramURL.isEmpty {
+                    HStack {
+                        Spacer()
+                        Image(diagramURL)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 120, height: 80)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(8)
+                            .clipped()
+                            .onAppear {
+                                DebugLogger.ui("🖼️ Loading pattern diagram: '\(diagramURL)' for pattern \(pattern.name)")
+                            }
+                        Spacer()
+                    }
+                }
+                
                 // Progress indicator if user has started this pattern
                 if let progress = userProgress {
                     PatternProgressIndicator(progress: progress, pattern: pattern)
@@ -1372,54 +1390,22 @@ struct PatternDetailView: View {
                     }
                 }
                 
-                // Diagram section
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Pattern Diagram")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                    
-                    Text(pattern.diagramDescription)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    
-                    // Diagram image if available
-                    if let diagramURL = pattern.diagramImageURL, !diagramURL.isEmpty {
-                        AsyncImage(url: URL(string: diagramURL)) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        } placeholder: {
-                            Rectangle()
-                                .fill(Color.gray.opacity(0.2))
-                                .frame(height: 200)
-                                .overlay(
-                                    VStack {
-                                        Image(systemName: "photo")
-                                            .font(.largeTitle)
-                                            .foregroundColor(.gray)
-                                        Text("Diagram Loading...")
-                                            .font(.caption)
-                                            .foregroundColor(.gray)
-                                    }
-                                )
-                        }
-                        .frame(maxHeight: 300)
-                        .cornerRadius(12)
-                    } else {
-                        Rectangle()
-                            .fill(Color.gray.opacity(0.1))
-                            .frame(height: 200)
-                            .overlay(
-                                VStack {
-                                    Image(systemName: "square.grid.3x3")
-                                        .font(.largeTitle)
-                                        .foregroundColor(.gray)
-                                    Text("Diagram Coming Soon")
-                                        .font(.caption)
-                                        .foregroundColor(.gray)
-                                }
-                            )
+                // Starting Move section
+                if let startingMoveURL = pattern.startingMoveImageURL, !startingMoveURL.isEmpty {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Starting Move")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                        
+                        Image(startingMoveURL)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxHeight: 200)
+                            .background(Color(.systemGray6))
                             .cornerRadius(12)
+                            .onAppear {
+                                DebugLogger.ui("🖼️ Loading starting move image: '\(startingMoveURL)' for pattern \(pattern.name)")
+                            }
                     }
                 }
                 

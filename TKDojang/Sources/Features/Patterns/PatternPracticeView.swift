@@ -193,19 +193,11 @@ struct PatternPracticeView: View {
             // Carousel container
             TabView(selection: $selectedImageIndex) {
                 ForEach(Array(move.availableImages.enumerated()), id: \.offset) { index, imageName in
-                    ZStack {
-                        // Load image directly, SwiftUI will handle missing images gracefully
-                        Image(imageName)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .onAppear {
-                                DebugLogger.ui("🖼️ Loading pattern image: '\(imageName)' for move \(move.moveNumber)")
-                            }
-                    }
-                    .frame(height: 200)
-                    .background(Color(.systemBackground))
-                    .cornerRadius(12)
-                    .tag(index)
+                    PatternImageView(imageName: imageName, moveNumber: move.moveNumber)
+                        .frame(height: 200)
+                        .background(Color(.systemBackground))
+                        .cornerRadius(12)
+                        .tag(index)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .automatic))
@@ -475,6 +467,61 @@ struct PatternPracticeView: View {
         
         // Return to pattern list after recording progress
         dismiss()
+    }
+}
+
+// MARK: - Helper Views
+
+/**
+ * PatternImageView: Handles image loading with fallback for missing assets
+ * 
+ * PURPOSE: SwiftUI's Image() fails silently when assets don't exist, showing black.
+ * This view provides a proper placeholder fallback for missing pattern images.
+ */
+struct PatternImageView: View {
+    let imageName: String
+    let moveNumber: Int
+    @State private var imageExists = true
+    
+    var body: some View {
+        ZStack {
+            if imageExists {
+                Image(imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .onAppear {
+                        DebugLogger.ui("🖼️ Loading pattern image: '\(imageName)' for move \(moveNumber)")
+                        checkImageExists()
+                    }
+            } else {
+                // Placeholder for missing images
+                Rectangle()
+                    .fill(Color.gray.opacity(0.1))
+                    .overlay(
+                        VStack(spacing: 8) {
+                            Image(systemName: "photo")
+                                .font(.system(size: 40))
+                                .foregroundColor(.gray)
+                            Text("Image Coming Soon")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                            Text("Move \(moveNumber)")
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                        }
+                    )
+                    .onAppear {
+                        DebugLogger.ui("🖼️ Missing pattern image: '\(imageName)' for move \(moveNumber) - showing placeholder")
+                    }
+            }
+        }
+    }
+    
+    private func checkImageExists() {
+        // Check if the image exists in the bundle
+        if UIImage(named: imageName) == nil {
+            imageExists = false
+        }
     }
 }
 

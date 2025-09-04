@@ -57,7 +57,7 @@ This is **TKDojang**, a Taekwondo learning iOS app built with SwiftUI using the 
 - Provide usage examples for complex APIs
 - Explain trade-offs and alternative approaches considered
 
-## Current State (Updated: August 29, 2025)
+## Current State (Updated: September 4, 2025)
 
 ### 🎯 **Production-Ready Features:**
 
@@ -65,7 +65,8 @@ All major SwiftData relationship crashes resolved. Core functionality is stable 
 
 #### **Complete Learning System**
 - **Multi-Profile System**: 6 device-local profiles with data isolation, avatars, color themes, activity tracking
-- **9 Traditional Patterns**: JSON-based pattern definitions with progress tracking and belt filtering
+- **9 Traditional Patterns**: JSON-based pattern definitions with comprehensive 3-image system and belt filtering
+- **Complete Pattern Imagery**: Multi-image carousel system (Position/Technique/Progress), diagram thumbnails, starting move guides
 - **Comprehensive Content**: Terminology (88+ entries), Theory, Line Work, Step Sparring (18 sequences)
 - **Profile-Aware Learning**: Flashcards, testing, and session tracking with personalized home screen
 - **Progress Analytics**: Instant-loading progress cache system with charts and visualizations
@@ -73,8 +74,9 @@ All major SwiftData relationship crashes resolved. Core functionality is stable 
 #### **Technical Architecture**
 - **MVVM-C Pattern**: Full coordinator-based navigation with ProfileService layer
 - **SwiftData Integration**: Optimized queries using proven "Fetch All → Filter In-Memory" patterns
-- **JSON Content Pipeline**: Scalable content management across all learning features
+- **JSON Content Pipeline**: Scalable content management with internal asset catalogue integration
 - **Service Layer**: Clean separation preventing direct SwiftData model access in views
+- **Debug Infrastructure**: Conditional DebugLogger system with zero-overhead release builds
 
 #### **Testing Infrastructure (Ready for Merge)**
 - **Comprehensive Test Suite**: BasicFunctionalityTests, MultiProfileSystemTests, FlashcardSystemTests, PerformanceTests
@@ -93,17 +95,20 @@ TKDojang/
 
 ## Next Development Priorities
 
-### ✅ **RESOLVED: DataServices Lifecycle Management**
-**Issue**: ProfileSwitcher instantiation during loading phase causing SwiftData crashes
-**Solution**: DataServices singleton pattern with top-level environment object injection
-- Single DataServices instance prevents view cycling issues
-- Lazy DataManager initialization only when actually needed
-- SwiftUI compilation requirements satisfied without premature access
+### ✅ **RESOLVED: Complete Pattern Imagery System**
+**Achievement**: Full migration from external URLs to internal asset catalogue with comprehensive image support
+**Implementation**: 
+- 3-image system per move (Position/Technique/Progress) with TabView carousel
+- Pattern diagram thumbnails in list view with prominent 120x80 sizing
+- Starting move images in detail view (diagram redundancy removed)
+- Debug reload button for pattern refresh without profile data loss
+- Graceful fallback for missing images using UIImage(named:) detection
+- Complete DebugLogger migration for zero-overhead release builds
 
 ### 🔄 **NEXT: Testing Infrastructure Integration**
 1. Merge comprehensive test suite from feature/testing-infrastructure branch
-2. Validate tests pass with current multi-profile and progress features
-3. Expand pattern content with remaining move breakdowns
+2. Validate tests pass with current pattern imagery system
+3. Expand pattern content with remaining move image assets
 
 ### 📊 **Enhanced Analytics** 
 Build on existing ProfileService session tracking to add progress charts, belt journey visualization, and achievement system.
