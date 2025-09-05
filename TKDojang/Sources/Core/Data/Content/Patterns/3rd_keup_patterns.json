@@ -20,7 +20,9 @@
       "diagram_description": "Scholar symbol",
       "starting_stance": "Parallel ready stance",
       "difficulty": 4,
-      "applicable_belt_levels": ["3rd_keup"],
+      "applicable_belt_levels": [
+        "3rd_keup"
+      ],
       "video_url": "toi-gye-video",
       "diagram_image_url": "toi-gye-diagram",
       "starting_move_image_url": "toi-gye-starting",
@@ -37,7 +39,9 @@
           "execution_notes": "Turn 90 degrees right from ready stance into L-stance",
           "imageURL": "toi-gye-1",
           "image2URL": "toi-gye-1-technique",
-          "image3URL": "toi-gye-1-progress"
+          "image3URL": "toi-gye-1-progress",
+          "execution_speed": "normal",
+          "movement": "Left 180°"
         },
         {
           "move_number": 2,
@@ -51,7 +55,9 @@
           "execution_notes": "180-degree turn into L-stance",
           "imageURL": "toi-gye-2",
           "image2URL": "toi-gye-2-technique",
-          "image3URL": "toi-gye-2-progress"
+          "image3URL": "toi-gye-2-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 3,
@@ -65,7 +71,9 @@
           "execution_notes": "90-degree turn to face north",
           "imageURL": "toi-gye-3",
           "image2URL": "toi-gye-3-technique",
-          "image3URL": "toi-gye-3-progress"
+          "image3URL": "toi-gye-3-progress",
+          "execution_speed": "normal",
+          "movement": "Right 180°"
         },
         {
           "move_number": 4,
@@ -79,7 +87,9 @@
           "execution_notes": "Step forward with high block",
           "imageURL": "toi-gye-4",
           "image2URL": "toi-gye-4-technique",
-          "image3URL": "toi-gye-4-progress"
+          "image3URL": "toi-gye-4-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 5,
@@ -93,7 +103,9 @@
           "execution_notes": "Immediate punch following block",
           "imageURL": "toi-gye-5",
           "image2URL": "toi-gye-5-technique",
-          "image3URL": "toi-gye-5-progress"
+          "image3URL": "toi-gye-5-progress",
+          "execution_speed": "normal",
+          "movement": "Right 45°"
         },
         {
           "move_number": 6,
@@ -107,7 +119,9 @@
           "execution_notes": "Continue forward with block",
           "imageURL": "toi-gye-6",
           "image2URL": "toi-gye-6-technique",
-          "image3URL": "toi-gye-6-progress"
+          "image3URL": "toi-gye-6-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 7,
@@ -121,7 +135,9 @@
           "execution_notes": "Immediate punch following block",
           "imageURL": "toi-gye-7",
           "image2URL": "toi-gye-7-technique",
-          "image3URL": "toi-gye-7-progress"
+          "image3URL": "toi-gye-7-progress",
+          "execution_speed": "normal",
+          "movement": "Right 45°"
         },
         {
           "move_number": 8,
@@ -135,7 +151,9 @@
           "execution_notes": "Continue strong block-punch pattern",
           "imageURL": "toi-gye-8",
           "image2URL": "toi-gye-8-technique",
-          "image3URL": "toi-gye-8-progress"
+          "image3URL": "toi-gye-8-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 9,
@@ -149,7 +167,9 @@
           "execution_notes": "Maximum power in sequence",
           "imageURL": "toi-gye-9",
           "image2URL": "toi-gye-9-technique",
-          "image3URL": "toi-gye-9-progress"
+          "image3URL": "toi-gye-9-progress",
+          "execution_speed": "normal",
+          "movement": "Left 135°"
         },
         {
           "move_number": 10,
@@ -163,7 +183,9 @@
           "execution_notes": "Sharp pivot to face south",
           "imageURL": "toi-gye-10",
           "image2URL": "toi-gye-10-technique",
-          "image3URL": "toi-gye-10-progress"
+          "image3URL": "toi-gye-10-progress",
+          "execution_speed": "normal",
+          "movement": "Left 135°"
         },
         {
           "move_number": 11,
@@ -177,7 +199,9 @@
           "execution_notes": "Step forward with high block",
           "imageURL": "toi-gye-11",
           "image2URL": "toi-gye-11-technique",
-          "image3URL": "toi-gye-11-progress"
+          "image3URL": "toi-gye-11-progress",
+          "execution_speed": "normal",
+          "movement": "Left 270°"
         },
         {
           "move_number": 12,
@@ -191,7 +215,9 @@
           "execution_notes": "Immediate punch following block",
           "imageURL": "toi-gye-12",
           "image2URL": "toi-gye-12-technique",
-          "image3URL": "toi-gye-12-progress"
+          "image3URL": "toi-gye-12-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 13,
@@ -205,7 +231,9 @@
           "execution_notes": "Maintain consistent form",
           "imageURL": "toi-gye-13",
           "image2URL": "toi-gye-13-technique",
-          "image3URL": "toi-gye-13-progress"
+          "image3URL": "toi-gye-13-progress",
+          "execution_speed": "normal",
+          "movement": "Right 45°"
         },
         {
           "move_number": 14,
@@ -219,7 +247,9 @@
           "execution_notes": "Equal power to northern side",
           "imageURL": "toi-gye-14",
           "image2URL": "toi-gye-14-technique",
-          "image3URL": "toi-gye-14-progress"
+          "image3URL": "toi-gye-14-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 15,
@@ -233,7 +263,9 @@
           "execution_notes": "Sustained excellence",
           "imageURL": "toi-gye-15",
           "image2URL": "toi-gye-15-technique",
-          "image3URL": "toi-gye-15-progress"
+          "image3URL": "toi-gye-15-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 16,
@@ -247,7 +279,9 @@
           "execution_notes": "Maximum southern power",
           "imageURL": "toi-gye-16",
           "image2URL": "toi-gye-16-technique",
-          "image3URL": "toi-gye-16-progress"
+          "image3URL": "toi-gye-16-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 17,
@@ -261,7 +295,9 @@
           "execution_notes": "90-degree turn into fixed stance",
           "imageURL": "toi-gye-17",
           "image2URL": "toi-gye-17-technique",
-          "image3URL": "toi-gye-17-progress"
+          "image3URL": "toi-gye-17-progress",
+          "execution_speed": "normal",
+          "movement": "Left 45°"
         },
         {
           "move_number": 18,
@@ -275,7 +311,9 @@
           "execution_notes": "180-degree turn into fixed stance",
           "imageURL": "toi-gye-18",
           "image2URL": "toi-gye-18-technique",
-          "image3URL": "toi-gye-18-progress"
+          "image3URL": "toi-gye-18-progress",
+          "execution_speed": "normal",
+          "movement": "Right 45°"
         },
         {
           "move_number": 19,
@@ -289,7 +327,9 @@
           "execution_notes": "90-degree turn with hooking block",
           "imageURL": "toi-gye-19",
           "image2URL": "toi-gye-19-technique",
-          "image3URL": "toi-gye-19-progress"
+          "image3URL": "toi-gye-19-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 20,
@@ -303,7 +343,9 @@
           "execution_notes": "Step forward with upset punch",
           "imageURL": "toi-gye-20",
           "image2URL": "toi-gye-20-technique",
-          "image3URL": "toi-gye-20-progress"
+          "image3URL": "toi-gye-20-progress",
+          "execution_speed": "normal",
+          "movement": "Left 90°"
         },
         {
           "move_number": 21,
@@ -317,7 +359,9 @@
           "execution_notes": "180-degree turn with hooking block",
           "imageURL": "toi-gye-21",
           "image2URL": "toi-gye-21-technique",
-          "image3URL": "toi-gye-21-progress"
+          "image3URL": "toi-gye-21-progress",
+          "execution_speed": "normal",
+          "movement": "Left 90°"
         },
         {
           "move_number": 22,
@@ -331,7 +375,9 @@
           "execution_notes": "Step forward with upset punch",
           "imageURL": "toi-gye-22",
           "image2URL": "toi-gye-22-technique",
-          "image3URL": "toi-gye-22-progress"
+          "image3URL": "toi-gye-22-progress",
+          "execution_speed": "normal",
+          "movement": "Left 90°"
         },
         {
           "move_number": 23,
@@ -345,7 +391,9 @@
           "execution_notes": "90-degree turn into bending ready stance",
           "imageURL": "toi-gye-23",
           "image2URL": "toi-gye-23-technique",
-          "image3URL": "toi-gye-23-progress"
+          "image3URL": "toi-gye-23-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 24,
@@ -359,7 +407,9 @@
           "execution_notes": "180-degree turn into bending ready stance",
           "imageURL": "toi-gye-24",
           "image2URL": "toi-gye-24-technique",
-          "image3URL": "toi-gye-24-progress"
+          "image3URL": "toi-gye-24-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 25,
@@ -373,7 +423,9 @@
           "execution_notes": "90-degree turn into sitting stance",
           "imageURL": "toi-gye-25",
           "image2URL": "toi-gye-25-technique",
-          "image3URL": "toi-gye-25-progress"
+          "image3URL": "toi-gye-25-progress",
+          "execution_speed": "normal",
+          "movement": "Left 135°"
         },
         {
           "move_number": 26,
@@ -387,7 +439,9 @@
           "execution_notes": "Punch to opposite direction maintaining stance",
           "imageURL": "toi-gye-26",
           "image2URL": "toi-gye-26-technique",
-          "image3URL": "toi-gye-26-progress"
+          "image3URL": "toi-gye-26-progress",
+          "execution_speed": "normal",
+          "movement": "Right 90°"
         },
         {
           "move_number": 27,
@@ -401,7 +455,9 @@
           "execution_notes": "Rise into L-stance with high block",
           "imageURL": "toi-gye-27",
           "image2URL": "toi-gye-27-technique",
-          "image3URL": "toi-gye-27-progress"
+          "image3URL": "toi-gye-27-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 28,
@@ -415,7 +471,9 @@
           "execution_notes": "180-degree turn into L-stance",
           "imageURL": "toi-gye-28",
           "image2URL": "toi-gye-28-technique",
-          "image3URL": "toi-gye-28-progress"
+          "image3URL": "toi-gye-28-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 29,
@@ -429,7 +487,9 @@
           "execution_notes": "90-degree turn with both fists vertical",
           "imageURL": "toi-gye-29",
           "image2URL": "toi-gye-29-technique",
-          "image3URL": "toi-gye-29-progress"
+          "image3URL": "toi-gye-29-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 30,
@@ -443,7 +503,9 @@
           "execution_notes": "Step forward with high block",
           "imageURL": "toi-gye-30",
           "image2URL": "toi-gye-30-technique",
-          "image3URL": "toi-gye-30-progress"
+          "image3URL": "toi-gye-30-progress",
+          "execution_speed": "normal",
+          "movement": "Right 180°"
         },
         {
           "move_number": 31,
@@ -457,7 +519,9 @@
           "execution_notes": "Immediate punch following block",
           "imageURL": "toi-gye-31",
           "image2URL": "toi-gye-31-technique",
-          "image3URL": "toi-gye-31-progress"
+          "image3URL": "toi-gye-31-progress",
+          "execution_speed": "normal",
+          "movement": "Right 270°"
         },
         {
           "move_number": 32,
@@ -471,7 +535,9 @@
           "execution_notes": "Maintain form through pattern end",
           "imageURL": "toi-gye-32",
           "image2URL": "toi-gye-32-technique",
-          "image3URL": "toi-gye-32-progress"
+          "image3URL": "toi-gye-32-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 33,
@@ -485,7 +551,9 @@
           "execution_notes": "Maintain power through conclusion",
           "imageURL": "toi-gye-33",
           "image2URL": "toi-gye-33-technique",
-          "image3URL": "toi-gye-33-progress"
+          "image3URL": "toi-gye-33-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 34,
@@ -499,7 +567,9 @@
           "execution_notes": "90-degree turn into L-stance",
           "imageURL": "toi-gye-34",
           "image2URL": "toi-gye-34-technique",
-          "image3URL": "toi-gye-34-progress"
+          "image3URL": "toi-gye-34-progress",
+          "execution_speed": "normal",
+          "movement": "Right 180°"
         },
         {
           "move_number": 35,
@@ -513,7 +583,9 @@
           "execution_notes": "180-degree turn into L-stance",
           "imageURL": "toi-gye-35",
           "image2URL": "toi-gye-35-technique",
-          "image3URL": "toi-gye-35-progress"
+          "image3URL": "toi-gye-35-progress",
+          "execution_speed": "normal",
+          "movement": "Right 180°"
         },
         {
           "move_number": 36,
@@ -527,7 +599,9 @@
           "execution_notes": "90-degree turn with final punch",
           "imageURL": "toi-gye-36",
           "image2URL": "toi-gye-36-technique",
-          "image3URL": "toi-gye-36-progress"
+          "image3URL": "toi-gye-36-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 37,
@@ -541,7 +615,9 @@
           "execution_notes": "Crisp, respectful return to starting position",
           "imageURL": "toi-gye-37",
           "image2URL": "toi-gye-37-technique",
-          "image3URL": "toi-gye-37-progress"
+          "image3URL": "toi-gye-37-progress",
+          "execution_speed": "normal",
+          "movement": "Left 180°"
         }
       ]
     }

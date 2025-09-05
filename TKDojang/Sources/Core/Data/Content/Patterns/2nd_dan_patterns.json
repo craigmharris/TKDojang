@@ -20,7 +20,9 @@
       "diagram_description": "I-shaped pattern with variations",
       "starting_stance": "Parallel ready stance",
       "difficulty": 6,
-      "applicable_belt_levels": ["2nd_dan"],
+      "applicable_belt_levels": [
+        "2nd_dan"
+      ],
       "video_url": "https://example.com/patterns/ge-baek.mp4",
       "diagram_image_url": "https://example.com/diagrams/ge-baek-diagram.jpg",
       "moves": [
@@ -34,7 +36,9 @@
           "key_points": "Strong L-stance foundation",
           "common_mistakes": "Poor weight distribution in L-stance",
           "execution_notes": "Turn 90 degrees left from ready stance into L-stance",
-          "image_url": "https://example.com/moves/ge-baek-1.jpg"
+          "image_url": "https://example.com/moves/ge-baek-1.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 2,
@@ -46,7 +50,9 @@
           "key_points": "Precise finger formation",
           "common_mistakes": "Weak finger position",
           "execution_notes": "Step forward with spear finger thrust",
-          "image_url": "https://example.com/moves/ge-baek-2.jpg"
+          "image_url": "https://example.com/moves/ge-baek-2.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 3,
@@ -58,7 +64,9 @@
           "key_points": "Mirror opening technique",
           "common_mistakes": "Inconsistent L-stance form",
           "execution_notes": "180-degree turn into L-stance",
-          "image_url": "https://example.com/moves/ge-baek-3.jpg"
+          "image_url": "https://example.com/moves/ge-baek-3.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 4,
@@ -70,7 +78,9 @@
           "key_points": "Bilateral technique consistency",
           "common_mistakes": "Weaker off-side execution",
           "execution_notes": "Step forward with spear finger thrust",
-          "image_url": "https://example.com/moves/ge-baek-4.jpg"
+          "image_url": "https://example.com/moves/ge-baek-4.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 5,
@@ -82,7 +92,9 @@
           "key_points": "Introduction of pressing block",
           "common_mistakes": "Improper pressing motion",
           "execution_notes": "90-degree turn with pressing block",
-          "image_url": "https://example.com/moves/ge-baek-5.jpg"
+          "image_url": "https://example.com/moves/ge-baek-5.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 6,
@@ -94,7 +106,9 @@
           "key_points": "Continue pressing sequence",
           "common_mistakes": "Inconsistent pressing form",
           "execution_notes": "Step forward with pressing block",
-          "image_url": "https://example.com/moves/ge-baek-6.jpg"
+          "image_url": "https://example.com/moves/ge-baek-6.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 7,
@@ -106,7 +120,9 @@
           "key_points": "Peak of northern pressing",
           "common_mistakes": "Declining intensity",
           "execution_notes": "Step forward with pressing block",
-          "image_url": "https://example.com/moves/ge-baek-7.jpg"
+          "image_url": "https://example.com/moves/ge-baek-7.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 8,
@@ -118,7 +134,9 @@
           "key_points": "Mirror northern pressing",
           "common_mistakes": "Poor turn execution",
           "execution_notes": "180-degree turn with pressing block",
-          "image_url": "https://example.com/moves/ge-baek-8.jpg"
+          "image_url": "https://example.com/moves/ge-baek-8.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 9,
@@ -130,7 +148,9 @@
           "key_points": "Continue southern pressing",
           "common_mistakes": "Breaking bilateral symmetry",
           "execution_notes": "Step forward with pressing block",
-          "image_url": "https://example.com/moves/ge-baek-9.jpg"
+          "image_url": "https://example.com/moves/ge-baek-9.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 10,
@@ -142,7 +162,9 @@
           "key_points": "Peak southern pressing",
           "common_mistakes": "Premature relaxation",
           "execution_notes": "Step forward with pressing block",
-          "image_url": "https://example.com/moves/ge-baek-10.jpg"
+          "image_url": "https://example.com/moves/ge-baek-10.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 11,
@@ -154,7 +176,9 @@
           "key_points": "Upward fingertip technique",
           "common_mistakes": "Poor fingertip formation",
           "execution_notes": "90-degree turn with upset fingertip",
-          "image_url": "https://example.com/moves/ge-baek-11.jpg"
+          "image_url": "https://example.com/moves/ge-baek-11.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 12,
@@ -166,7 +190,9 @@
           "key_points": "Mirror fingertip technique",
           "common_mistakes": "Inconsistent fingertip form",
           "execution_notes": "180-degree turn with upset fingertip",
-          "image_url": "https://example.com/moves/ge-baek-12.jpg"
+          "image_url": "https://example.com/moves/ge-baek-12.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 13,
@@ -178,7 +204,9 @@
           "key_points": "Inner forearm blocking technique",
           "common_mistakes": "Wrong forearm surface",
           "execution_notes": "90-degree turn with inner forearm block",
-          "image_url": "https://example.com/moves/ge-baek-13.jpg"
+          "image_url": "https://example.com/moves/ge-baek-13.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 14,
@@ -190,7 +218,9 @@
           "key_points": "Continue inner forearm sequence",
           "common_mistakes": "Inconsistent blocking surface",
           "execution_notes": "Step forward with inner forearm block",
-          "image_url": "https://example.com/moves/ge-baek-14.jpg"
+          "image_url": "https://example.com/moves/ge-baek-14.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 15,
@@ -202,7 +232,9 @@
           "key_points": "Peak northern inner forearm",
           "common_mistakes": "Declining technique quality",
           "execution_notes": "Step forward with inner forearm block",
-          "image_url": "https://example.com/moves/ge-baek-15.jpg"
+          "image_url": "https://example.com/moves/ge-baek-15.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 16,
@@ -214,7 +246,9 @@
           "key_points": "Mirror northern sequence",
           "common_mistakes": "Poor turn with technique",
           "execution_notes": "180-degree turn with inner forearm block",
-          "image_url": "https://example.com/moves/ge-baek-16.jpg"
+          "image_url": "https://example.com/moves/ge-baek-16.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 17,
@@ -226,7 +260,9 @@
           "key_points": "Continue southern sequence",
           "common_mistakes": "Breaking bilateral symmetry",
           "execution_notes": "Step forward with inner forearm block",
-          "image_url": "https://example.com/moves/ge-baek-17.jpg"
+          "image_url": "https://example.com/moves/ge-baek-17.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 18,
@@ -238,7 +274,9 @@
           "key_points": "Peak southern inner forearm",
           "common_mistakes": "Weak finishing sequence",
           "execution_notes": "Step forward with inner forearm block",
-          "image_url": "https://example.com/moves/ge-baek-18.jpg"
+          "image_url": "https://example.com/moves/ge-baek-18.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 19,
@@ -250,7 +288,9 @@
           "key_points": "Introduction of bending ready with palm push",
           "common_mistakes": "Improper stance depth",
           "execution_notes": "90-degree turn into bending ready stance",
-          "image_url": "https://example.com/moves/ge-baek-19.jpg"
+          "image_url": "https://example.com/moves/ge-baek-19.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 20,
@@ -262,7 +302,9 @@
           "key_points": "Mirror bending ready with palm push",
           "common_mistakes": "Inconsistent stance form",
           "execution_notes": "180-degree turn into bending ready stance",
-          "image_url": "https://example.com/moves/ge-baek-20.jpg"
+          "image_url": "https://example.com/moves/ge-baek-20.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 21,
@@ -274,7 +316,9 @@
           "key_points": "Introduction of circular blocking",
           "common_mistakes": "Poor circular motion",
           "execution_notes": "90-degree turn with circular block",
-          "image_url": "https://example.com/moves/ge-baek-21.jpg"
+          "image_url": "https://example.com/moves/ge-baek-21.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 22,
@@ -286,7 +330,9 @@
           "key_points": "Powerful reverse punching technique",
           "common_mistakes": "Weak reverse motion",
           "execution_notes": "Step forward with reverse punch",
-          "image_url": "https://example.com/moves/ge-baek-22.jpg"
+          "image_url": "https://example.com/moves/ge-baek-22.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 23,
@@ -298,7 +344,9 @@
           "key_points": "Mirror circular blocking",
           "common_mistakes": "Inconsistent circular form",
           "execution_notes": "180-degree turn with circular block",
-          "image_url": "https://example.com/moves/ge-baek-23.jpg"
+          "image_url": "https://example.com/moves/ge-baek-23.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 24,
@@ -310,7 +358,9 @@
           "key_points": "Mirror reverse punching",
           "common_mistakes": "Weaker off-side power",
           "execution_notes": "Step forward with reverse punch",
-          "image_url": "https://example.com/moves/ge-baek-24.jpg"
+          "image_url": "https://example.com/moves/ge-baek-24.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 25,
@@ -322,7 +372,9 @@
           "key_points": "Sitting stance with side elbow",
           "common_mistakes": "Rising out of sitting stance",
           "execution_notes": "90-degree turn into sitting stance",
-          "image_url": "https://example.com/moves/ge-baek-25.jpg"
+          "image_url": "https://example.com/moves/ge-baek-25.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 26,
@@ -334,7 +386,9 @@
           "key_points": "Maintain sitting stance",
           "common_mistakes": "Poor elbow direction",
           "execution_notes": "Elbow thrust to opposite direction",
-          "image_url": "https://example.com/moves/ge-baek-26.jpg"
+          "image_url": "https://example.com/moves/ge-baek-26.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 27,
@@ -346,7 +400,9 @@
           "key_points": "Advanced W-shape blocking technique",
           "common_mistakes": "Improper W formation",
           "execution_notes": "Rise into walking stance with W-shape block",
-          "image_url": "https://example.com/moves/ge-baek-27.jpg"
+          "image_url": "https://example.com/moves/ge-baek-27.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 28,
@@ -358,7 +414,9 @@
           "key_points": "Continue W-shape sequence",
           "common_mistakes": "Inconsistent W formation",
           "execution_notes": "Step forward with W-shape block",
-          "image_url": "https://example.com/moves/ge-baek-28.jpg"
+          "image_url": "https://example.com/moves/ge-baek-28.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 29,
@@ -370,7 +428,9 @@
           "key_points": "Peak northern W-shape",
           "common_mistakes": "Declining form quality",
           "execution_notes": "Step forward with W-shape block",
-          "image_url": "https://example.com/moves/ge-baek-29.jpg"
+          "image_url": "https://example.com/moves/ge-baek-29.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 30,
@@ -382,7 +442,9 @@
           "key_points": "Mirror northern W-shape",
           "common_mistakes": "Poor turn execution",
           "execution_notes": "180-degree turn with W-shape block",
-          "image_url": "https://example.com/moves/ge-baek-30.jpg"
+          "image_url": "https://example.com/moves/ge-baek-30.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 31,
@@ -394,7 +456,9 @@
           "key_points": "Continue southern W-shape",
           "common_mistakes": "Breaking bilateral symmetry",
           "execution_notes": "Step forward with W-shape block",
-          "image_url": "https://example.com/moves/ge-baek-31.jpg"
+          "image_url": "https://example.com/moves/ge-baek-31.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 32,
@@ -406,7 +470,9 @@
           "key_points": "Peak southern W-shape",
           "common_mistakes": "Weak finishing sequence",
           "execution_notes": "Step forward with W-shape block",
-          "image_url": "https://example.com/moves/ge-baek-32.jpg"
+          "image_url": "https://example.com/moves/ge-baek-32.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 33,
@@ -418,7 +484,9 @@
           "key_points": "Advanced twin elbow technique",
           "common_mistakes": "Uneven elbow positioning",
           "execution_notes": "90-degree turn with twin elbow thrust",
-          "image_url": "https://example.com/moves/ge-baek-33.jpg"
+          "image_url": "https://example.com/moves/ge-baek-33.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 34,
@@ -430,7 +498,9 @@
           "key_points": "Mirror twin elbow technique",
           "common_mistakes": "Inconsistent elbow form",
           "execution_notes": "180-degree turn with twin elbow thrust",
-          "image_url": "https://example.com/moves/ge-baek-34.jpg"
+          "image_url": "https://example.com/moves/ge-baek-34.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 35,
@@ -442,7 +512,9 @@
           "key_points": "Advanced double arc-hand technique",
           "common_mistakes": "Poor arc formation",
           "execution_notes": "90-degree turn with double arc-hand block",
-          "image_url": "https://example.com/moves/ge-baek-35.jpg"
+          "image_url": "https://example.com/moves/ge-baek-35.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 36,
@@ -454,7 +526,9 @@
           "key_points": "Continue arc-hand sequence",
           "common_mistakes": "Inconsistent arc formation",
           "execution_notes": "Step forward with double arc-hand block",
-          "image_url": "https://example.com/moves/ge-baek-36.jpg"
+          "image_url": "https://example.com/moves/ge-baek-36.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 37,
@@ -466,7 +540,9 @@
           "key_points": "Peak arc-hand technique",
           "common_mistakes": "Declining form quality",
           "execution_notes": "Step forward with double arc-hand block",
-          "image_url": "https://example.com/moves/ge-baek-37.jpg"
+          "image_url": "https://example.com/moves/ge-baek-37.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 38,
@@ -478,7 +554,9 @@
           "key_points": "Return to opening technique",
           "common_mistakes": "Inconsistent with opening",
           "execution_notes": "90-degree turn into L-stance",
-          "image_url": "https://example.com/moves/ge-baek-38.jpg"
+          "image_url": "https://example.com/moves/ge-baek-38.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 39,
@@ -490,7 +568,9 @@
           "key_points": "Mirror opening combination",
           "common_mistakes": "Weak finishing spear finger",
           "execution_notes": "Step forward with spear finger thrust",
-          "image_url": "https://example.com/moves/ge-baek-39.jpg"
+          "image_url": "https://example.com/moves/ge-baek-39.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 40,
@@ -502,7 +582,9 @@
           "key_points": "Final L-stance technique",
           "common_mistakes": "Anticipating pattern end",
           "execution_notes": "180-degree turn into L-stance",
-          "image_url": "https://example.com/moves/ge-baek-40.jpg"
+          "image_url": "https://example.com/moves/ge-baek-40.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 41,
@@ -514,7 +596,9 @@
           "key_points": "Final spear finger technique",
           "common_mistakes": "Sloppy final technique",
           "execution_notes": "Step forward with spear finger thrust",
-          "image_url": "https://example.com/moves/ge-baek-41.jpg"
+          "image_url": "https://example.com/moves/ge-baek-41.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 42,
@@ -526,7 +610,9 @@
           "key_points": "Return to advanced technique",
           "common_mistakes": "Rushing to conclusion",
           "execution_notes": "90-degree turn with double arc-hand block",
-          "image_url": "https://example.com/moves/ge-baek-42.jpg"
+          "image_url": "https://example.com/moves/ge-baek-42.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 43,
@@ -538,7 +624,9 @@
           "key_points": "Penultimate technique",
           "common_mistakes": "Weak final arc-hand",
           "execution_notes": "Step forward with double arc-hand block",
-          "image_url": "https://example.com/moves/ge-baek-43.jpg"
+          "image_url": "https://example.com/moves/ge-baek-43.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 44,
@@ -550,7 +638,9 @@
           "key_points": "Sharp return to attention",
           "common_mistakes": "Sloppy conclusion",
           "execution_notes": "Crisp, respectful return to starting position",
-          "image_url": "https://example.com/moves/ge-baek-44.jpg"
+          "image_url": "https://example.com/moves/ge-baek-44.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         }
       ]
     }

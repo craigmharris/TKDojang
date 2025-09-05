@@ -20,7 +20,9 @@
       "diagram_description": "I-shaped pattern",
       "starting_stance": "Parallel ready stance",
       "difficulty": 3,
-      "applicable_belt_levels": ["6th_keup"],
+      "applicable_belt_levels": [
+        "6th_keup"
+      ],
       "video_url": "won-hyo-video",
       "diagram_image_url": "won-hyo-diagram",
       "starting_move_image_url": "won-hyo-starting",
@@ -37,7 +39,9 @@
           "execution_notes": "Turn 90 degrees left from ready stance",
           "imageURL": "won-hyo-1",
           "image2URL": "won-hyo-1-technique",
-          "image3URL": "won-hyo-1-progress"
+          "image3URL": "won-hyo-1-progress",
+          "execution_speed": "normal",
+          "movement": "Left 90°"
         },
         {
           "move_number": 2,
@@ -51,7 +55,9 @@
           "execution_notes": "Step forward into strong punch",
           "imageURL": "won-hyo-2",
           "image2URL": "won-hyo-2-technique",
-          "image3URL": "won-hyo-2-progress"
+          "image3URL": "won-hyo-2-progress",
+          "execution_speed": "normal",
+          "movement": "Left 135°"
         },
         {
           "move_number": 3,
@@ -65,7 +71,9 @@
           "execution_notes": "Sharp pivot to face opposite direction",
           "imageURL": "won-hyo-3",
           "image2URL": "won-hyo-3-technique",
-          "image3URL": "won-hyo-3-progress"
+          "image3URL": "won-hyo-3-progress",
+          "execution_speed": "normal",
+          "movement": "Left 180°"
         },
         {
           "move_number": 4,
@@ -79,7 +87,9 @@
           "execution_notes": "Equal power on both sides",
           "imageURL": "won-hyo-4",
           "image2URL": "won-hyo-4-technique",
-          "image3URL": "won-hyo-4-progress"
+          "image3URL": "won-hyo-4-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 5,
@@ -93,7 +103,9 @@
           "execution_notes": "90-degree turn to face north",
           "imageURL": "won-hyo-5",
           "image2URL": "won-hyo-5-technique",
-          "image3URL": "won-hyo-5-progress"
+          "image3URL": "won-hyo-5-progress",
+          "execution_speed": "normal",
+          "movement": "Left 45°"
         },
         {
           "move_number": 6,
@@ -107,7 +119,9 @@
           "execution_notes": "Step forward with high punch",
           "imageURL": "won-hyo-6",
           "image2URL": "won-hyo-6-technique",
-          "image3URL": "won-hyo-6-progress"
+          "image3URL": "won-hyo-6-progress",
+          "execution_speed": "normal",
+          "movement": "Right 135°"
         },
         {
           "move_number": 7,
@@ -121,7 +135,9 @@
           "execution_notes": "Continue alternating pattern",
           "imageURL": "won-hyo-7",
           "image2URL": "won-hyo-7-technique",
-          "image3URL": "won-hyo-7-progress"
+          "image3URL": "won-hyo-7-progress",
+          "execution_speed": "normal",
+          "movement": "Right 90°"
         },
         {
           "move_number": 8,
@@ -135,7 +151,9 @@
           "execution_notes": "Build momentum in sequence",
           "imageURL": "won-hyo-8",
           "image2URL": "won-hyo-8-technique",
-          "image3URL": "won-hyo-8-progress"
+          "image3URL": "won-hyo-8-progress",
+          "execution_speed": "normal",
+          "movement": "Left 180°"
         },
         {
           "move_number": 9,
@@ -149,7 +167,9 @@
           "execution_notes": "Maintain power through repetition",
           "imageURL": "won-hyo-9",
           "image2URL": "won-hyo-9-technique",
-          "image3URL": "won-hyo-9-progress"
+          "image3URL": "won-hyo-9-progress",
+          "execution_speed": "normal",
+          "movement": "Right 270°"
         },
         {
           "move_number": 10,
@@ -163,7 +183,9 @@
           "execution_notes": "Climax of northern sequence",
           "imageURL": "won-hyo-10",
           "image2URL": "won-hyo-10-technique",
-          "image3URL": "won-hyo-10-progress"
+          "image3URL": "won-hyo-10-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 11,
@@ -177,7 +199,9 @@
           "execution_notes": "Continue with full commitment",
           "imageURL": "won-hyo-11",
           "image2URL": "won-hyo-11-technique",
-          "image3URL": "won-hyo-11-progress"
+          "image3URL": "won-hyo-11-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 12,
@@ -191,7 +215,9 @@
           "execution_notes": "Focus on perfect technique",
           "imageURL": "won-hyo-12",
           "image2URL": "won-hyo-12-technique",
-          "image3URL": "won-hyo-12-progress"
+          "image3URL": "won-hyo-12-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 13,
@@ -205,7 +231,9 @@
           "execution_notes": "Stay focused on current technique",
           "imageURL": "won-hyo-13",
           "image2URL": "won-hyo-13-technique",
-          "image3URL": "won-hyo-13-progress"
+          "image3URL": "won-hyo-13-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 14,
@@ -219,7 +247,9 @@
           "execution_notes": "Complete northern sequence strongly",
           "imageURL": "won-hyo-14",
           "image2URL": "won-hyo-14-technique",
-          "image3URL": "won-hyo-14-progress"
+          "image3URL": "won-hyo-14-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 15,
@@ -233,7 +263,9 @@
           "execution_notes": "Sharp pivot to face south",
           "imageURL": "won-hyo-15",
           "image2URL": "won-hyo-15-technique",
-          "image3URL": "won-hyo-15-progress"
+          "image3URL": "won-hyo-15-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 16,
@@ -247,7 +279,9 @@
           "execution_notes": "Begin southern mirror sequence",
           "imageURL": "won-hyo-16",
           "image2URL": "won-hyo-16-technique",
-          "image3URL": "won-hyo-16-progress"
+          "image3URL": "won-hyo-16-progress",
+          "execution_speed": "normal",
+          "movement": "Left 45°"
         },
         {
           "move_number": 17,
@@ -261,7 +295,9 @@
           "execution_notes": "Equal intensity on both directions",
           "imageURL": "won-hyo-17",
           "image2URL": "won-hyo-17-technique",
-          "image3URL": "won-hyo-17-progress"
+          "image3URL": "won-hyo-17-progress",
+          "execution_speed": "normal",
+          "movement": "Left 135°"
         },
         {
           "move_number": 18,
@@ -275,7 +311,9 @@
           "execution_notes": "Mirror the northern footwork",
           "imageURL": "won-hyo-18",
           "image2URL": "won-hyo-18-technique",
-          "image3URL": "won-hyo-18-progress"
+          "image3URL": "won-hyo-18-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 19,
@@ -289,7 +327,9 @@
           "execution_notes": "Gradual increase in power",
           "imageURL": "won-hyo-19",
           "image2URL": "won-hyo-19-technique",
-          "image3URL": "won-hyo-19-progress"
+          "image3URL": "won-hyo-19-progress",
+          "execution_speed": "normal",
+          "movement": "Right 90°"
         },
         {
           "move_number": 20,
@@ -303,7 +343,9 @@
           "execution_notes": "Peak power matching northern side",
           "imageURL": "won-hyo-20",
           "image2URL": "won-hyo-20-technique",
-          "image3URL": "won-hyo-20-progress"
+          "image3URL": "won-hyo-20-progress",
+          "execution_speed": "normal",
+          "movement": "Right 45°"
         },
         {
           "move_number": 21,
@@ -317,7 +359,9 @@
           "execution_notes": "Maintain peak performance",
           "imageURL": "won-hyo-21",
           "image2URL": "won-hyo-21-technique",
-          "image3URL": "won-hyo-21-progress"
+          "image3URL": "won-hyo-21-progress",
+          "execution_speed": "normal",
+          "movement": "Left 270°"
         },
         {
           "move_number": 22,
@@ -331,7 +375,9 @@
           "execution_notes": "Setting up the final movements",
           "imageURL": "won-hyo-22",
           "image2URL": "won-hyo-22-technique",
-          "image3URL": "won-hyo-22-progress"
+          "image3URL": "won-hyo-22-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 23,
@@ -345,7 +391,9 @@
           "execution_notes": "Second-to-last block requires focus",
           "imageURL": "won-hyo-23",
           "image2URL": "won-hyo-23-technique",
-          "image3URL": "won-hyo-23-progress"
+          "image3URL": "won-hyo-23-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 24,
@@ -359,7 +407,9 @@
           "execution_notes": "Complete southern sequence strongly",
           "imageURL": "won-hyo-24",
           "image2URL": "won-hyo-24-technique",
-          "image3URL": "won-hyo-24-progress"
+          "image3URL": "won-hyo-24-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 25,
@@ -373,7 +423,9 @@
           "execution_notes": "90-degree turn back to west",
           "imageURL": "won-hyo-25",
           "image2URL": "won-hyo-25-technique",
-          "image3URL": "won-hyo-25-progress"
+          "image3URL": "won-hyo-25-progress",
+          "execution_speed": "normal",
+          "movement": "Right 180°"
         },
         {
           "move_number": 26,
@@ -387,7 +439,9 @@
           "execution_notes": "Mirror the opening sequence",
           "imageURL": "won-hyo-26",
           "image2URL": "won-hyo-26-technique",
-          "image3URL": "won-hyo-26-progress"
+          "image3URL": "won-hyo-26-progress",
+          "execution_speed": "normal",
+          "movement": "Left 45°"
         },
         {
           "move_number": 27,
@@ -401,7 +455,9 @@
           "execution_notes": "Stay focused through final turn",
           "imageURL": "won-hyo-27",
           "image2URL": "won-hyo-27-technique",
-          "image3URL": "won-hyo-27-progress"
+          "image3URL": "won-hyo-27-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 28,
@@ -415,7 +471,9 @@
           "execution_notes": "Crisp return to starting position",
           "imageURL": "won-hyo-28",
           "image2URL": "won-hyo-28-technique",
-          "image3URL": "won-hyo-28-progress"
+          "image3URL": "won-hyo-28-progress",
+          "execution_speed": "normal",
+          "movement": "Left 270°"
         }
       ]
     }

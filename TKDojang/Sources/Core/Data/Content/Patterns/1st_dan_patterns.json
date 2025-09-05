@@ -20,7 +20,9 @@
       "diagram_description": "Plus sign (+)",
       "starting_stance": "Parallel ready stance",
       "difficulty": 5,
-      "applicable_belt_levels": ["1st_dan"],
+      "applicable_belt_levels": [
+        "1st_dan"
+      ],
       "video_url": "https://example.com/patterns/kwang-gae.mp4",
       "diagram_image_url": "https://example.com/diagrams/kwang-gae-diagram.jpg",
       "moves": [
@@ -34,7 +36,9 @@
           "key_points": "Strong L-stance foundation with synchronized hand movement",
           "common_mistakes": "Uneven hand positioning",
           "execution_notes": "Turn 90 degrees left from ready stance into L-stance",
-          "image_url": "https://example.com/moves/kwang-gae-1.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-1.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 2,
@@ -46,7 +50,9 @@
           "key_points": "Mirror opening technique",
           "common_mistakes": "Inconsistent twin hand form",
           "execution_notes": "180-degree turn into L-stance",
-          "image_url": "https://example.com/moves/kwang-gae-2.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-2.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 3,
@@ -58,7 +64,9 @@
           "key_points": "Vertical fist orientation",
           "common_mistakes": "Horizontal fist position",
           "execution_notes": "90-degree turn to face north",
-          "image_url": "https://example.com/moves/kwang-gae-3.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-3.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 4,
@@ -70,7 +78,9 @@
           "key_points": "Continue vertical punching",
           "common_mistakes": "Inconsistent fist orientation",
           "execution_notes": "Step forward with vertical punch",
-          "image_url": "https://example.com/moves/kwang-gae-4.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-4.jpg",
+          "execution_speed": "normal",
+          "movement": "Left 135°"
         },
         {
           "move_number": 5,
@@ -82,7 +92,9 @@
           "key_points": "180-degree turn precision",
           "common_mistakes": "Poor turn execution",
           "execution_notes": "Sharp pivot to face south",
-          "image_url": "https://example.com/moves/kwang-gae-5.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-5.jpg",
+          "execution_speed": "normal",
+          "movement": "Left 45°"
         },
         {
           "move_number": 6,
@@ -94,7 +106,9 @@
           "key_points": "Mirror northern sequence",
           "common_mistakes": "Declining power",
           "execution_notes": "Step forward with vertical punch",
-          "image_url": "https://example.com/moves/kwang-gae-6.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-6.jpg",
+          "execution_speed": "normal",
+          "movement": "Left 270°"
         },
         {
           "move_number": 7,
@@ -106,7 +120,9 @@
           "key_points": "Introduction of side piercing kick",
           "common_mistakes": "Poor kicking form",
           "execution_notes": "90-degree turn with side kick",
-          "image_url": "https://example.com/moves/kwang-gae-7.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-7.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 8,
@@ -118,7 +134,9 @@
           "key_points": "Land from kick with knife hand",
           "common_mistakes": "Poor kick-to-strike transition",
           "execution_notes": "Land from side kick into knife hand strike",
-          "image_url": "https://example.com/moves/kwang-gae-8.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-8.jpg",
+          "execution_speed": "normal",
+          "movement": "Left 270°"
         },
         {
           "move_number": 9,
@@ -130,7 +148,9 @@
           "key_points": "Mirror side piercing kick",
           "common_mistakes": "Inconsistent kicking technique",
           "execution_notes": "180-degree turn with side kick",
-          "image_url": "https://example.com/moves/kwang-gae-9.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-9.jpg",
+          "execution_speed": "normal",
+          "movement": "Right 135°"
         },
         {
           "move_number": 10,
@@ -142,7 +162,9 @@
           "key_points": "Bilateral kick-strike consistency",
           "common_mistakes": "Weaker off-side execution",
           "execution_notes": "Land from side kick into knife hand strike",
-          "image_url": "https://example.com/moves/kwang-gae-10.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-10.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 11,
@@ -154,7 +176,9 @@
           "key_points": "Both fists vertical simultaneously",
           "common_mistakes": "Uneven punch delivery",
           "execution_notes": "90-degree turn with twin vertical punch",
-          "image_url": "https://example.com/moves/kwang-gae-11.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-11.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 12,
@@ -166,7 +190,9 @@
           "key_points": "Transition to defensive technique",
           "common_mistakes": "Weak blocking position",
           "execution_notes": "Continue forward with high block",
-          "image_url": "https://example.com/moves/kwang-gae-12.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-12.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 13,
@@ -178,7 +204,9 @@
           "key_points": "Continue blocking sequence",
           "common_mistakes": "Breaking defensive rhythm",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/kwang-gae-13.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-13.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 14,
@@ -190,7 +218,9 @@
           "key_points": "Peak of northern blocking",
           "common_mistakes": "Declining intensity",
           "execution_notes": "Continue strong blocking pattern",
-          "image_url": "https://example.com/moves/kwang-gae-14.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-14.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 15,
@@ -202,7 +232,9 @@
           "key_points": "Mirror northern twin punch",
           "common_mistakes": "Inconsistent twin technique",
           "execution_notes": "180-degree turn with twin vertical punch",
-          "image_url": "https://example.com/moves/kwang-gae-15.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-15.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 16,
@@ -214,7 +246,9 @@
           "key_points": "Begin southern blocking",
           "common_mistakes": "Inconsistent with north",
           "execution_notes": "Continue forward with high block",
-          "image_url": "https://example.com/moves/kwang-gae-16.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-16.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 17,
@@ -226,7 +260,9 @@
           "key_points": "Continue southern blocking",
           "common_mistakes": "Breaking bilateral symmetry",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/kwang-gae-17.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-17.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 18,
@@ -238,7 +274,9 @@
           "key_points": "Peak southern blocking",
           "common_mistakes": "Premature relaxation",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/kwang-gae-18.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-18.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 19,
@@ -250,7 +288,9 @@
           "key_points": "Introduction of fixed stance elbow",
           "common_mistakes": "Poor fixed stance form",
           "execution_notes": "90-degree turn into fixed stance",
-          "image_url": "https://example.com/moves/kwang-gae-19.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-19.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 20,
@@ -262,7 +302,9 @@
           "key_points": "Mirror elbow technique",
           "common_mistakes": "Inconsistent elbow form",
           "execution_notes": "180-degree turn into fixed stance",
-          "image_url": "https://example.com/moves/kwang-gae-20.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-20.jpg",
+          "execution_speed": "normal",
+          "movement": "Left 270°"
         },
         {
           "move_number": 21,
@@ -274,7 +316,9 @@
           "key_points": "Powerful uppercut technique",
           "common_mistakes": "Weak upward motion",
           "execution_notes": "90-degree turn with upset punch",
-          "image_url": "https://example.com/moves/kwang-gae-21.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-21.jpg",
+          "execution_speed": "normal",
+          "movement": "Right 45°"
         },
         {
           "move_number": 22,
@@ -286,7 +330,9 @@
           "key_points": "Continue uppercut sequence",
           "common_mistakes": "Inconsistent uppercut form",
           "execution_notes": "Step forward with upset punch",
-          "image_url": "https://example.com/moves/kwang-gae-22.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-22.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 23,
@@ -298,7 +344,9 @@
           "key_points": "Mirror northern uppercuts",
           "common_mistakes": "Poor turn execution",
           "execution_notes": "180-degree turn with upset punch",
-          "image_url": "https://example.com/moves/kwang-gae-23.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-23.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 24,
@@ -310,7 +358,9 @@
           "key_points": "Southern uppercut sequence",
           "common_mistakes": "Weaker off-side power",
           "execution_notes": "Step forward with upset punch",
-          "image_url": "https://example.com/moves/kwang-gae-24.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-24.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 25,
@@ -322,7 +372,9 @@
           "key_points": "Low X-block technique",
           "common_mistakes": "Improper X formation",
           "execution_notes": "90-degree turn with low X-block",
-          "image_url": "https://example.com/moves/kwang-gae-25.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-25.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 26,
@@ -334,7 +386,9 @@
           "key_points": "Mirror X-block technique",
           "common_mistakes": "Inconsistent X formation",
           "execution_notes": "180-degree turn with low X-block",
-          "image_url": "https://example.com/moves/kwang-gae-26.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-26.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 27,
@@ -346,7 +400,9 @@
           "key_points": "Return to fundamental punching",
           "common_mistakes": "Relaxing technique standards",
           "execution_notes": "90-degree turn with middle punch",
-          "image_url": "https://example.com/moves/kwang-gae-27.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-27.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 28,
@@ -358,7 +414,9 @@
           "key_points": "Return to fundamental blocking",
           "common_mistakes": "Poor block-punch transition",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/kwang-gae-28.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-28.jpg",
+          "execution_speed": "normal",
+          "movement": "Right 90°"
         },
         {
           "move_number": 29,
@@ -370,7 +428,9 @@
           "key_points": "Continue fundamental blocking",
           "common_mistakes": "Anticipating pattern end",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/kwang-gae-29.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-29.jpg",
+          "execution_speed": "normal",
+          "movement": "Left 180°"
         },
         {
           "move_number": 30,
@@ -382,7 +442,9 @@
           "key_points": "Peak fundamental blocking",
           "common_mistakes": "Weak finishing sequence",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/kwang-gae-30.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-30.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 31,
@@ -394,7 +456,9 @@
           "key_points": "Southern fundamental sequence",
           "common_mistakes": "Inconsistent with north",
           "execution_notes": "180-degree turn with middle punch",
-          "image_url": "https://example.com/moves/kwang-gae-31.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-31.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 32,
@@ -406,7 +470,9 @@
           "key_points": "Mirror northern fundamentals",
           "common_mistakes": "Breaking bilateral symmetry",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/kwang-gae-32.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-32.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 33,
@@ -418,7 +484,9 @@
           "key_points": "Continue southern fundamentals",
           "common_mistakes": "Declining intensity",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/kwang-gae-33.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-33.jpg",
+          "execution_speed": "normal",
+          "movement": "Right 45°"
         },
         {
           "move_number": 34,
@@ -430,7 +498,9 @@
           "key_points": "Peak southern fundamentals",
           "common_mistakes": "Premature relaxation",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/kwang-gae-34.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-34.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 35,
@@ -442,7 +512,9 @@
           "key_points": "Return to opening technique",
           "common_mistakes": "Inconsistent with opening",
           "execution_notes": "90-degree turn into L-stance",
-          "image_url": "https://example.com/moves/kwang-gae-35.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-35.jpg",
+          "execution_speed": "normal",
+          "movement": "Right 270°"
         },
         {
           "move_number": 36,
@@ -454,7 +526,9 @@
           "key_points": "Mirror opening sequence",
           "common_mistakes": "Rushing to conclusion",
           "execution_notes": "180-degree turn into L-stance",
-          "image_url": "https://example.com/moves/kwang-gae-36.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-36.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 37,
@@ -466,7 +540,9 @@
           "key_points": "Return to vertical punching",
           "common_mistakes": "Horizontal fist position",
           "execution_notes": "90-degree turn with vertical punch",
-          "image_url": "https://example.com/moves/kwang-gae-37.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-37.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 38,
@@ -478,7 +554,9 @@
           "key_points": "Penultimate technique",
           "common_mistakes": "Weak final punches",
           "execution_notes": "Step forward with vertical punch",
-          "image_url": "https://example.com/moves/kwang-gae-38.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-38.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 39,
@@ -490,7 +568,9 @@
           "key_points": "Sharp return to attention",
           "common_mistakes": "Sloppy conclusion",
           "execution_notes": "Crisp, respectful return to starting position",
-          "image_url": "https://example.com/moves/kwang-gae-39.jpg"
+          "image_url": "https://example.com/moves/kwang-gae-39.jpg",
+          "execution_speed": "normal",
+          "movement": "Right 270°"
         }
       ]
     },
@@ -505,7 +585,9 @@
       "diagram_description": "I-shaped pattern",
       "starting_stance": "Parallel ready stance",
       "difficulty": 5,
-      "applicable_belt_levels": ["1st_dan"],
+      "applicable_belt_levels": [
+        "1st_dan"
+      ],
       "video_url": "https://example.com/patterns/po-eun.mp4",
       "diagram_image_url": "https://example.com/diagrams/po-eun-diagram.jpg",
       "moves": [
@@ -519,7 +601,9 @@
           "key_points": "Strong opening defensive technique",
           "common_mistakes": "Weak blocking position",
           "execution_notes": "Turn 90 degrees right from ready stance",
-          "image_url": "https://example.com/moves/po-eun-1.jpg"
+          "image_url": "https://example.com/moves/po-eun-1.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 2,
@@ -531,7 +615,9 @@
           "key_points": "Immediate counter-attack",
           "common_mistakes": "Slow punch timing",
           "execution_notes": "Punch immediately following block",
-          "image_url": "https://example.com/moves/po-eun-2.jpg"
+          "image_url": "https://example.com/moves/po-eun-2.jpg",
+          "execution_speed": "normal",
+          "movement": "Left 270°"
         },
         {
           "move_number": 3,
@@ -543,7 +629,9 @@
           "key_points": "Mirror opening combination",
           "common_mistakes": "Inconsistent blocking form",
           "execution_notes": "180-degree turn with high block",
-          "image_url": "https://example.com/moves/po-eun-3.jpg"
+          "image_url": "https://example.com/moves/po-eun-3.jpg",
+          "execution_speed": "normal",
+          "movement": "Left 135°"
         },
         {
           "move_number": 4,
@@ -555,7 +643,9 @@
           "key_points": "Bilateral technique consistency",
           "common_mistakes": "Weaker off-side power",
           "execution_notes": "Punch immediately following block",
-          "image_url": "https://example.com/moves/po-eun-4.jpg"
+          "image_url": "https://example.com/moves/po-eun-4.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 5,
@@ -567,7 +657,9 @@
           "key_points": "Introduction of rising block technique",
           "common_mistakes": "Improper rising motion",
           "execution_notes": "90-degree turn with rising block",
-          "image_url": "https://example.com/moves/po-eun-5.jpg"
+          "image_url": "https://example.com/moves/po-eun-5.jpg",
+          "execution_speed": "normal",
+          "movement": "Right 135°"
         },
         {
           "move_number": 6,
@@ -579,7 +671,9 @@
           "key_points": "Continue rising block sequence",
           "common_mistakes": "Inconsistent rising motion",
           "execution_notes": "Step forward with rising block",
-          "image_url": "https://example.com/moves/po-eun-6.jpg"
+          "image_url": "https://example.com/moves/po-eun-6.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 7,
@@ -591,7 +685,9 @@
           "key_points": "Peak of northern rising blocks",
           "common_mistakes": "Declining intensity",
           "execution_notes": "Step forward with rising block",
-          "image_url": "https://example.com/moves/po-eun-7.jpg"
+          "image_url": "https://example.com/moves/po-eun-7.jpg",
+          "execution_speed": "normal",
+          "movement": "Right 180°"
         },
         {
           "move_number": 8,
@@ -603,7 +699,9 @@
           "key_points": "Mirror northern rising blocks",
           "common_mistakes": "Poor turn execution",
           "execution_notes": "180-degree turn with rising block",
-          "image_url": "https://example.com/moves/po-eun-8.jpg"
+          "image_url": "https://example.com/moves/po-eun-8.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 9,
@@ -615,7 +713,9 @@
           "key_points": "Continue southern rising blocks",
           "common_mistakes": "Breaking bilateral symmetry",
           "execution_notes": "Step forward with rising block",
-          "image_url": "https://example.com/moves/po-eun-9.jpg"
+          "image_url": "https://example.com/moves/po-eun-9.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 10,
@@ -627,7 +727,9 @@
           "key_points": "Peak southern rising blocks",
           "common_mistakes": "Premature relaxation",
           "execution_notes": "Step forward with rising block",
-          "image_url": "https://example.com/moves/po-eun-10.jpg"
+          "image_url": "https://example.com/moves/po-eun-10.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 11,
@@ -639,7 +741,9 @@
           "key_points": "90-degree turn to offensive",
           "common_mistakes": "Poor turn execution",
           "execution_notes": "90-degree turn with middle punch",
-          "image_url": "https://example.com/moves/po-eun-11.jpg"
+          "image_url": "https://example.com/moves/po-eun-11.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 12,
@@ -651,7 +755,9 @@
           "key_points": "Mirror western technique",
           "common_mistakes": "Inconsistent power",
           "execution_notes": "180-degree turn with middle punch",
-          "image_url": "https://example.com/moves/po-eun-12.jpg"
+          "image_url": "https://example.com/moves/po-eun-12.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 13,
@@ -663,7 +769,9 @@
           "key_points": "Introduction of slow motion technique",
           "common_mistakes": "Not maintaining slow controlled speed",
           "execution_notes": "90-degree turn with slow deliberate rising block",
-          "image_url": "https://example.com/moves/po-eun-13.jpg"
+          "image_url": "https://example.com/moves/po-eun-13.jpg",
+          "execution_speed": "normal",
+          "movement": "Right 90°"
         },
         {
           "move_number": 14,
@@ -675,7 +783,9 @@
           "key_points": "Continue slow motion sequence",
           "common_mistakes": "Poor speed control",
           "execution_notes": "Step forward with slow deliberate rising block",
-          "image_url": "https://example.com/moves/po-eun-14.jpg"
+          "image_url": "https://example.com/moves/po-eun-14.jpg",
+          "execution_speed": "normal",
+          "movement": "Left 135°"
         },
         {
           "move_number": 15,
@@ -687,7 +797,9 @@
           "key_points": "Peak slow motion technique",
           "common_mistakes": "Inconsistent slow speed",
           "execution_notes": "Step forward with slow deliberate rising block",
-          "image_url": "https://example.com/moves/po-eun-15.jpg"
+          "image_url": "https://example.com/moves/po-eun-15.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 16,
@@ -699,7 +811,9 @@
           "key_points": "Mirror slow northern sequence",
           "common_mistakes": "Poor speed transition",
           "execution_notes": "180-degree turn with slow deliberate rising block",
-          "image_url": "https://example.com/moves/po-eun-16.jpg"
+          "image_url": "https://example.com/moves/po-eun-16.jpg",
+          "execution_speed": "normal",
+          "movement": "Right 270°"
         },
         {
           "move_number": 17,
@@ -711,7 +825,9 @@
           "key_points": "Continue southern slow sequence",
           "common_mistakes": "Breaking slow motion rhythm",
           "execution_notes": "Step forward with slow deliberate rising block",
-          "image_url": "https://example.com/moves/po-eun-17.jpg"
+          "image_url": "https://example.com/moves/po-eun-17.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 18,
@@ -723,7 +839,9 @@
           "key_points": "Peak southern slow technique",
           "common_mistakes": "Rushing to normal speed",
           "execution_notes": "Step forward with slow deliberate rising block",
-          "image_url": "https://example.com/moves/po-eun-18.jpg"
+          "image_url": "https://example.com/moves/po-eun-18.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 19,
@@ -735,7 +853,9 @@
           "key_points": "Introduction of hooking technique",
           "common_mistakes": "Poor hooking motion",
           "execution_notes": "90-degree turn with hooking block",
-          "image_url": "https://example.com/moves/po-eun-19.jpg"
+          "image_url": "https://example.com/moves/po-eun-19.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 20,
@@ -747,7 +867,9 @@
           "key_points": "Mirror hooking technique",
           "common_mistakes": "Inconsistent hooking form",
           "execution_notes": "180-degree turn with hooking block",
-          "image_url": "https://example.com/moves/po-eun-20.jpg"
+          "image_url": "https://example.com/moves/po-eun-20.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 21,
@@ -759,7 +881,9 @@
           "key_points": "Advanced twin punching technique",
           "common_mistakes": "Uneven punch delivery",
           "execution_notes": "90-degree turn with both fists vertical",
-          "image_url": "https://example.com/moves/po-eun-21.jpg"
+          "image_url": "https://example.com/moves/po-eun-21.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 22,
@@ -771,7 +895,9 @@
           "key_points": "Return to fundamental blocking",
           "common_mistakes": "Relaxing technique standards",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/po-eun-22.jpg"
+          "image_url": "https://example.com/moves/po-eun-22.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 23,
@@ -783,7 +909,9 @@
           "key_points": "Return to block-punch combination",
           "common_mistakes": "Poor combination timing",
           "execution_notes": "Punch immediately following block",
-          "image_url": "https://example.com/moves/po-eun-23.jpg"
+          "image_url": "https://example.com/moves/po-eun-23.jpg",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 24,
@@ -795,7 +923,9 @@
           "key_points": "Continue fundamental sequence",
           "common_mistakes": "Anticipating pattern end",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/po-eun-24.jpg"
+          "image_url": "https://example.com/moves/po-eun-24.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 25,
@@ -807,7 +937,9 @@
           "key_points": "Sustained excellence",
           "common_mistakes": "Weak finishing sequence",
           "execution_notes": "Punch immediately following block",
-          "image_url": "https://example.com/moves/po-eun-25.jpg"
+          "image_url": "https://example.com/moves/po-eun-25.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 26,
@@ -819,7 +951,9 @@
           "key_points": "Mirror northern twin punch",
           "common_mistakes": "Inconsistent twin technique",
           "execution_notes": "180-degree turn with both fists vertical",
-          "image_url": "https://example.com/moves/po-eun-26.jpg"
+          "image_url": "https://example.com/moves/po-eun-26.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 27,
@@ -831,7 +965,9 @@
           "key_points": "Mirror northern fundamentals",
           "common_mistakes": "Breaking bilateral symmetry",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/po-eun-27.jpg"
+          "image_url": "https://example.com/moves/po-eun-27.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 28,
@@ -843,7 +979,9 @@
           "key_points": "Southern block-punch combination",
           "common_mistakes": "Declining intensity",
           "execution_notes": "Punch immediately following block",
-          "image_url": "https://example.com/moves/po-eun-28.jpg"
+          "image_url": "https://example.com/moves/po-eun-28.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 29,
@@ -855,7 +993,9 @@
           "key_points": "Continue southern fundamentals",
           "common_mistakes": "Premature relaxation",
           "execution_notes": "Step forward with high block",
-          "image_url": "https://example.com/moves/po-eun-29.jpg"
+          "image_url": "https://example.com/moves/po-eun-29.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 30,
@@ -867,7 +1007,9 @@
           "key_points": "Peak southern fundamentals",
           "common_mistakes": "Weak conclusion",
           "execution_notes": "Punch immediately following block",
-          "image_url": "https://example.com/moves/po-eun-30.jpg"
+          "image_url": "https://example.com/moves/po-eun-30.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 31,
@@ -879,7 +1021,9 @@
           "key_points": "Return to opening technique",
           "common_mistakes": "Inconsistent with opening",
           "execution_notes": "90-degree turn with high block",
-          "image_url": "https://example.com/moves/po-eun-31.jpg"
+          "image_url": "https://example.com/moves/po-eun-31.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 32,
@@ -891,7 +1035,9 @@
           "key_points": "Mirror opening combination",
           "common_mistakes": "Rushing to conclusion",
           "execution_notes": "Punch immediately following block",
-          "image_url": "https://example.com/moves/po-eun-32.jpg"
+          "image_url": "https://example.com/moves/po-eun-32.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 33,
@@ -903,7 +1049,9 @@
           "key_points": "Final directional sequence",
           "common_mistakes": "Anticipating finish",
           "execution_notes": "180-degree turn with high block",
-          "image_url": "https://example.com/moves/po-eun-33.jpg"
+          "image_url": "https://example.com/moves/po-eun-33.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 34,
@@ -915,7 +1063,9 @@
           "key_points": "Final block-punch combination",
           "common_mistakes": "Weak final sequence",
           "execution_notes": "Punch immediately following block",
-          "image_url": "https://example.com/moves/po-eun-34.jpg"
+          "image_url": "https://example.com/moves/po-eun-34.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 35,
@@ -927,7 +1077,9 @@
           "key_points": "Penultimate technique",
           "common_mistakes": "Weak final punch",
           "execution_notes": "90-degree turn with final punch",
-          "image_url": "https://example.com/moves/po-eun-35.jpg"
+          "image_url": "https://example.com/moves/po-eun-35.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 36,
@@ -939,7 +1091,9 @@
           "key_points": "Sharp return to attention",
           "common_mistakes": "Sloppy conclusion",
           "execution_notes": "Crisp, respectful return to starting position",
-          "image_url": "https://example.com/moves/po-eun-36.jpg"
+          "image_url": "https://example.com/moves/po-eun-36.jpg",
+          "execution_speed": "normal",
+          "movement": "-"
         }
       ]
     }

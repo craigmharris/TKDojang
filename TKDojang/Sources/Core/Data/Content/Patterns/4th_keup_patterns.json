@@ -20,7 +20,9 @@
       "diagram_description": "I-shaped pattern",
       "starting_stance": "Parallel ready stance",
       "difficulty": 4,
-      "applicable_belt_levels": ["4th_keup"],
+      "applicable_belt_levels": [
+        "4th_keup"
+      ],
       "video_url": "joong-gun-video",
       "diagram_image_url": "joong-gun-diagram",
       "starting_move_image_url": "joong-gun-starting",
@@ -37,7 +39,9 @@
           "execution_notes": "Turn 90 degrees right from ready stance into L-stance",
           "imageURL": "joong-gun-1",
           "image2URL": "joong-gun-1-technique",
-          "image3URL": "joong-gun-1-progress"
+          "image3URL": "joong-gun-1-progress",
+          "execution_speed": "normal",
+          "movement": "Right 180°"
         },
         {
           "move_number": 2,
@@ -51,7 +55,9 @@
           "execution_notes": "Step forward with reverse knife hand strike",
           "imageURL": "joong-gun-2",
           "image2URL": "joong-gun-2-technique",
-          "image3URL": "joong-gun-2-progress"
+          "image3URL": "joong-gun-2-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 3,
@@ -65,7 +71,9 @@
           "execution_notes": "180-degree turn into L-stance",
           "imageURL": "joong-gun-3",
           "image2URL": "joong-gun-3-technique",
-          "image3URL": "joong-gun-3-progress"
+          "image3URL": "joong-gun-3-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 4,
@@ -79,7 +87,9 @@
           "execution_notes": "Step forward with reverse knife hand strike",
           "imageURL": "joong-gun-4",
           "image2URL": "joong-gun-4-technique",
-          "image3URL": "joong-gun-4-progress"
+          "image3URL": "joong-gun-4-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 5,
@@ -93,7 +103,9 @@
           "execution_notes": "90-degree turn to face north",
           "imageURL": "joong-gun-5",
           "image2URL": "joong-gun-5-technique",
-          "image3URL": "joong-gun-5-progress"
+          "image3URL": "joong-gun-5-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 6,
@@ -107,7 +119,9 @@
           "execution_notes": "Step forward maintaining power",
           "imageURL": "joong-gun-6",
           "image2URL": "joong-gun-6-technique",
-          "image3URL": "joong-gun-6-progress"
+          "image3URL": "joong-gun-6-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 7,
@@ -121,7 +135,9 @@
           "execution_notes": "Maintain consistent form",
           "imageURL": "joong-gun-7",
           "image2URL": "joong-gun-7-technique",
-          "image3URL": "joong-gun-7-progress"
+          "image3URL": "joong-gun-7-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 8,
@@ -135,7 +151,9 @@
           "execution_notes": "Step back into L-stance with block",
           "imageURL": "joong-gun-8",
           "image2URL": "joong-gun-8-technique",
-          "image3URL": "joong-gun-8-progress"
+          "image3URL": "joong-gun-8-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 9,
@@ -149,7 +167,9 @@
           "execution_notes": "Quick step forward with punch",
           "imageURL": "joong-gun-9",
           "image2URL": "joong-gun-9-technique",
-          "image3URL": "joong-gun-9-progress"
+          "image3URL": "joong-gun-9-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 10,
@@ -163,7 +183,9 @@
           "execution_notes": "Step back into L-stance with block",
           "imageURL": "joong-gun-10",
           "image2URL": "joong-gun-10-technique",
-          "image3URL": "joong-gun-10-progress"
+          "image3URL": "joong-gun-10-progress",
+          "execution_speed": "normal",
+          "movement": "Right 135°"
         },
         {
           "move_number": 11,
@@ -177,7 +199,9 @@
           "execution_notes": "Quick step forward with punch",
           "imageURL": "joong-gun-11",
           "image2URL": "joong-gun-11-technique",
-          "image3URL": "joong-gun-11-progress"
+          "image3URL": "joong-gun-11-progress",
+          "execution_speed": "normal",
+          "movement": "Right 90°"
         },
         {
           "move_number": 12,
@@ -191,7 +215,9 @@
           "execution_notes": "Step forward with both arms blocking",
           "imageURL": "joong-gun-12",
           "image2URL": "joong-gun-12-technique",
-          "image3URL": "joong-gun-12-progress"
+          "image3URL": "joong-gun-12-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 13,
@@ -205,7 +231,9 @@
           "execution_notes": "Sharp pivot to face south",
           "imageURL": "joong-gun-13",
           "image2URL": "joong-gun-13-technique",
-          "image3URL": "joong-gun-13-progress"
+          "image3URL": "joong-gun-13-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 14,
@@ -219,7 +247,9 @@
           "execution_notes": "Step forward with high punch",
           "imageURL": "joong-gun-14",
           "image2URL": "joong-gun-14-technique",
-          "image3URL": "joong-gun-14-progress"
+          "image3URL": "joong-gun-14-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 15,
@@ -233,7 +263,9 @@
           "execution_notes": "Continue forward advance",
           "imageURL": "joong-gun-15",
           "image2URL": "joong-gun-15-technique",
-          "image3URL": "joong-gun-15-progress"
+          "image3URL": "joong-gun-15-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 16,
@@ -247,7 +279,9 @@
           "execution_notes": "Step back into L-stance with block",
           "imageURL": "joong-gun-16",
           "image2URL": "joong-gun-16-technique",
-          "image3URL": "joong-gun-16-progress"
+          "image3URL": "joong-gun-16-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 17,
@@ -261,7 +295,9 @@
           "execution_notes": "Quick step forward with punch",
           "imageURL": "joong-gun-17",
           "image2URL": "joong-gun-17-technique",
-          "image3URL": "joong-gun-17-progress"
+          "image3URL": "joong-gun-17-progress",
+          "execution_speed": "normal",
+          "movement": "Right 90°"
         },
         {
           "move_number": 18,
@@ -275,7 +311,9 @@
           "execution_notes": "Step back into L-stance with block",
           "imageURL": "joong-gun-18",
           "image2URL": "joong-gun-18-technique",
-          "image3URL": "joong-gun-18-progress"
+          "image3URL": "joong-gun-18-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 19,
@@ -289,7 +327,9 @@
           "execution_notes": "Quick step forward with punch",
           "imageURL": "joong-gun-19",
           "image2URL": "joong-gun-19-technique",
-          "image3URL": "joong-gun-19-progress"
+          "image3URL": "joong-gun-19-progress",
+          "execution_speed": "normal",
+          "movement": "Right 180°"
         },
         {
           "move_number": 20,
@@ -303,7 +343,9 @@
           "execution_notes": "Step forward with both arms blocking",
           "imageURL": "joong-gun-20",
           "image2URL": "joong-gun-20-technique",
-          "image3URL": "joong-gun-20-progress"
+          "image3URL": "joong-gun-20-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 21,
@@ -317,7 +359,9 @@
           "execution_notes": "90-degree turn into fixed stance",
           "imageURL": "joong-gun-21",
           "image2URL": "joong-gun-21-technique",
-          "image3URL": "joong-gun-21-progress"
+          "image3URL": "joong-gun-21-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 22,
@@ -331,7 +375,9 @@
           "execution_notes": "180-degree turn into fixed stance",
           "imageURL": "joong-gun-22",
           "image2URL": "joong-gun-22-technique",
-          "image3URL": "joong-gun-22-progress"
+          "image3URL": "joong-gun-22-progress",
+          "execution_speed": "normal",
+          "movement": "Left 180°"
         },
         {
           "move_number": 23,
@@ -345,7 +391,9 @@
           "execution_notes": "90-degree turn to face north",
           "imageURL": "joong-gun-23",
           "image2URL": "joong-gun-23-technique",
-          "image3URL": "joong-gun-23-progress"
+          "image3URL": "joong-gun-23-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 24,
@@ -359,7 +407,9 @@
           "execution_notes": "Step forward with high punch",
           "imageURL": "joong-gun-24",
           "image2URL": "joong-gun-24-technique",
-          "image3URL": "joong-gun-24-progress"
+          "image3URL": "joong-gun-24-progress",
+          "execution_speed": "normal",
+          "movement": "Left 180°"
         },
         {
           "move_number": 25,
@@ -373,7 +423,9 @@
           "execution_notes": "180-degree turn with low block",
           "imageURL": "joong-gun-25",
           "image2URL": "joong-gun-25-technique",
-          "image3URL": "joong-gun-25-progress"
+          "image3URL": "joong-gun-25-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 26,
@@ -387,7 +439,9 @@
           "execution_notes": "Step forward with high punch",
           "imageURL": "joong-gun-26",
           "image2URL": "joong-gun-26-technique",
-          "image3URL": "joong-gun-26-progress"
+          "image3URL": "joong-gun-26-progress",
+          "execution_speed": "normal",
+          "movement": "Right 270°"
         },
         {
           "move_number": 27,
@@ -401,7 +455,9 @@
           "execution_notes": "90-degree turn into L-stance",
           "imageURL": "joong-gun-27",
           "image2URL": "joong-gun-27-technique",
-          "image3URL": "joong-gun-27-progress"
+          "image3URL": "joong-gun-27-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 28,
@@ -415,7 +471,9 @@
           "execution_notes": "Step forward with reverse knife hand strike",
           "imageURL": "joong-gun-28",
           "image2URL": "joong-gun-28-technique",
-          "image3URL": "joong-gun-28-progress"
+          "image3URL": "joong-gun-28-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 29,
@@ -429,7 +487,9 @@
           "execution_notes": "180-degree turn into L-stance",
           "imageURL": "joong-gun-29",
           "image2URL": "joong-gun-29-technique",
-          "image3URL": "joong-gun-29-progress"
+          "image3URL": "joong-gun-29-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 30,
@@ -443,7 +503,9 @@
           "execution_notes": "Step forward with reverse knife hand strike",
           "imageURL": "joong-gun-30",
           "image2URL": "joong-gun-30-technique",
-          "image3URL": "joong-gun-30-progress"
+          "image3URL": "joong-gun-30-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 31,
@@ -457,7 +519,9 @@
           "execution_notes": "90-degree turn with final punch",
           "imageURL": "joong-gun-31",
           "image2URL": "joong-gun-31-technique",
-          "image3URL": "joong-gun-31-progress"
+          "image3URL": "joong-gun-31-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 32,
@@ -471,7 +535,9 @@
           "execution_notes": "Crisp, respectful return to starting position",
           "imageURL": "joong-gun-32",
           "image2URL": "joong-gun-32-technique",
-          "image3URL": "joong-gun-32-progress"
+          "image3URL": "joong-gun-32-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         }
       ]
     }

@@ -20,9 +20,11 @@
       "diagram_description": "Plus sign (+)",
       "starting_stance": "Parallel ready stance",
       "difficulty": 1,
-      "applicable_belt_levels": ["9th_keup"],
+      "applicable_belt_levels": [
+        "9th_keup"
+      ],
       "video_url": "chon-ji-video",
-      "diagram_image_url": "chon-ji-diagram", 
+      "diagram_image_url": "chon-ji-diagram",
       "starting_move_image_url": "chon-ji-starting",
       "moves": [
         {
@@ -36,8 +38,10 @@
           "common_mistakes": "Lifting block too high",
           "execution_notes": "Ensure proper weight distribution in walking stance",
           "imageURL": "chon-ji-1",
-          "image2URL": "chon-ji-1-technique", 
-          "image3URL": "chon-ji-1-progress"
+          "image2URL": "chon-ji-1-technique",
+          "image3URL": "chon-ji-1-progress",
+          "execution_speed": "normal",
+          "movement": "Left 180°"
         },
         {
           "move_number": 2,
@@ -51,7 +55,9 @@
           "execution_notes": "Step forward with power and conviction",
           "imageURL": "chon-ji-2",
           "image2URL": "chon-ji-2-technique",
-          "image3URL": "chon-ji-2-progress"
+          "image3URL": "chon-ji-2-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 3,
@@ -65,7 +71,9 @@
           "execution_notes": "Complete 180-degree turn with control",
           "imageURL": "chon-ji-3",
           "image2URL": "chon-ji-3-technique",
-          "image3URL": "chon-ji-3-progress"
+          "image3URL": "chon-ji-3-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 4,
@@ -79,7 +87,9 @@
           "execution_notes": "Maintain consistent power through the sequence",
           "imageURL": "chon-ji-4",
           "image2URL": "chon-ji-4-technique",
-          "image3URL": "chon-ji-4-progress"
+          "image3URL": "chon-ji-4-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 5,
@@ -93,7 +103,9 @@
           "execution_notes": "Slow, controlled turn maintaining stance integrity",
           "imageURL": "chon-ji-5",
           "image2URL": "chon-ji-5-technique",
-          "image3URL": "chon-ji-5-progress"
+          "image3URL": "chon-ji-5-progress",
+          "execution_speed": "normal",
+          "movement": "Left 180°"
         },
         {
           "move_number": 6,
@@ -107,7 +119,9 @@
           "execution_notes": "Coordinate stepping and punching timing",
           "imageURL": "chon-ji-6",
           "image2URL": "chon-ji-6-technique",
-          "image3URL": "chon-ji-6-progress"
+          "image3URL": "chon-ji-6-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 7,
@@ -121,7 +135,9 @@
           "execution_notes": "Maintain rhythm and power through sequence",
           "imageURL": "chon-ji-7",
           "image2URL": "chon-ji-7-technique",
-          "image3URL": "chon-ji-7-progress"
+          "image3URL": "chon-ji-7-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 8,
@@ -135,7 +151,9 @@
           "execution_notes": "Smooth transition between stances",
           "imageURL": "chon-ji-8",
           "image2URL": "chon-ji-8-technique",
-          "image3URL": "chon-ji-8-progress"
+          "image3URL": "chon-ji-8-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 9,
@@ -149,7 +167,9 @@
           "execution_notes": "Complete the northern sequence with authority",
           "imageURL": "chon-ji-9",
           "image2URL": "chon-ji-9-technique",
-          "image3URL": "chon-ji-9-progress"
+          "image3URL": "chon-ji-9-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         },
         {
           "move_number": 10,
@@ -163,7 +183,9 @@
           "execution_notes": "Sharp, precise 180-degree pivot",
           "imageURL": "chon-ji-10",
           "image2URL": "chon-ji-10-technique",
-          "image3URL": "chon-ji-10-progress"
+          "image3URL": "chon-ji-10-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 11,
@@ -177,7 +199,9 @@
           "execution_notes": "Mirror the northern sequence exactly",
           "imageURL": "chon-ji-11",
           "image2URL": "chon-ji-11-technique",
-          "image3URL": "chon-ji-11-progress"
+          "image3URL": "chon-ji-11-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 12,
@@ -191,7 +215,9 @@
           "execution_notes": "Don't let technique deteriorate as pattern progresses",
           "imageURL": "chon-ji-12",
           "image2URL": "chon-ji-12-technique",
-          "image3URL": "chon-ji-12-progress"
+          "image3URL": "chon-ji-12-progress",
+          "execution_speed": "normal",
+          "movement": "Left 270°"
         },
         {
           "move_number": 13,
@@ -205,7 +231,9 @@
           "execution_notes": "Maintain proper posture throughout",
           "imageURL": "chon-ji-13",
           "image2URL": "chon-ji-13-technique",
-          "image3URL": "chon-ji-13-progress"
+          "image3URL": "chon-ji-13-progress",
+          "execution_speed": "normal",
+          "movement": "Left 90°"
         },
         {
           "move_number": 14,
@@ -219,7 +247,9 @@
           "execution_notes": "Build power toward the pattern's conclusion",
           "imageURL": "chon-ji-14",
           "image2URL": "chon-ji-14-technique",
-          "image3URL": "chon-ji-14-progress"
+          "image3URL": "chon-ji-14-progress",
+          "execution_speed": "normal",
+          "movement": "Right 135°"
         },
         {
           "move_number": 15,
@@ -233,7 +263,9 @@
           "execution_notes": "Controlled turn back to the western line",
           "imageURL": "chon-ji-15",
           "image2URL": "chon-ji-15-technique",
-          "image3URL": "chon-ji-15-progress"
+          "image3URL": "chon-ji-15-progress",
+          "execution_speed": "normal",
+          "movement": "Right 135°"
         },
         {
           "move_number": 16,
@@ -247,7 +279,9 @@
           "execution_notes": "Return to opening sequence techniques",
           "imageURL": "chon-ji-16",
           "image2URL": "chon-ji-16-technique",
-          "image3URL": "chon-ji-16-progress"
+          "image3URL": "chon-ji-16-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 17,
@@ -261,7 +295,9 @@
           "execution_notes": "Stay focused through the final movements",
           "imageURL": "chon-ji-17",
           "image2URL": "chon-ji-17-technique",
-          "image3URL": "chon-ji-17-progress"
+          "image3URL": "chon-ji-17-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 18,
@@ -275,7 +311,9 @@
           "execution_notes": "Final technique should be as strong as the first",
           "imageURL": "chon-ji-18",
           "image2URL": "chon-ji-18-technique",
-          "image3URL": "chon-ji-18-progress"
+          "image3URL": "chon-ji-18-progress",
+          "execution_speed": "normal",
+          "movement": "Forward"
         },
         {
           "move_number": 19,
@@ -289,7 +327,9 @@
           "execution_notes": "Crisp, respectful return to starting position",
           "imageURL": "chon-ji-19",
           "image2URL": "chon-ji-19-technique",
-          "image3URL": "chon-ji-19-progress"
+          "image3URL": "chon-ji-19-progress",
+          "execution_speed": "normal",
+          "movement": "-"
         }
       ]
     }
