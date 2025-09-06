@@ -29,11 +29,11 @@
       "moves": [
         {
           "move_number": 1,
-          "stance": "Left walking stance",
-          "technique": "High block",
+          "stance": "Left L Stance",
+          "technique": "Knife Hand Guarding Block",
           "korean_technique": "Nopunde makgi",
-          "direction": "West",
-          "target": "Upper section",
+          "direction": "B",
+          "target": "Middle section",
           "key_points": "Keep elbows in correct position",
           "common_mistakes": "Block too low",
           "execution_notes": "Strong upward blocking motion",
@@ -41,14 +41,14 @@
           "image2URL": "dan-gun-1-technique",
           "image3URL": "dan-gun-1-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Left 90°"
         },
         {
           "move_number": 2,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Right Walking Stance",
+          "technique": "High Obverse Punch",
           "korean_technique": "Nopunde jirugi",
-          "direction": "West",
+          "direction": "B",
           "target": "Head level",
           "key_points": "Full hip rotation",
           "common_mistakes": "Weak follow-through",
@@ -57,14 +57,14 @@
           "image2URL": "dan-gun-2-technique",
           "image3URL": "dan-gun-2-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "Forward"
         },
         {
           "move_number": 3,
-          "stance": "Right walking stance",
-          "technique": "High block",
+          "stance": "Right L Stance",
+          "technique": "Knife Hand Guarding Block",
           "korean_technique": "Nopunde makgi",
-          "direction": "East",
+          "direction": "C",
           "target": "Upper section",
           "key_points": "Mirror first movement",
           "common_mistakes": "Inconsistent form",
@@ -73,14 +73,14 @@
           "image2URL": "dan-gun-3-technique",
           "image3URL": "dan-gun-3-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Right 180°"
         },
         {
           "move_number": 4,
-          "stance": "Left walking stance",
-          "technique": "High punch",
+          "stance": "Left Walking Stance",
+          "technique": "High Observe Punch",
           "korean_technique": "Nopunde jirugi",
-          "direction": "East",
+          "direction": "C",
           "target": "Head level",
           "key_points": "Maintain power",
           "common_mistakes": "Dropping guard",
@@ -89,14 +89,14 @@
           "image2URL": "dan-gun-4-technique",
           "image3URL": "dan-gun-4-progress",
           "execution_speed": "normal",
-          "movement": "Right 90°"
+          "movement": "Forward"
         },
         {
           "move_number": 5,
-          "stance": "Left walking stance",
-          "technique": "Twin forearm block",
+          "stance": "Left Walking Stance",
+          "technique": "Low Outer Forearm Block",
           "korean_technique": "Sang palmok makgi",
-          "direction": "North",
+          "direction": "D",
           "target": "Middle section",
           "key_points": "Both arms move together",
           "common_mistakes": "Uneven arm position",
@@ -105,14 +105,14 @@
           "image2URL": "dan-gun-5-technique",
           "image3URL": "dan-gun-5-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "Left 90°"
         },
         {
           "move_number": 6,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Right Walking Stance",
+          "technique": "High Obverse Punch",
           "korean_technique": "Nopunde jirugi",
-          "direction": "North",
+          "direction": "D",
           "target": "Head level",
           "key_points": "Step with conviction",
           "common_mistakes": "Hesitant movement",
@@ -125,10 +125,10 @@
         },
         {
           "move_number": 7,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Left Walking Stance",
+          "technique": "High Obverse Punch",
           "korean_technique": "Nopunde jirugi",
-          "direction": "North",
+          "direction": "D",
           "target": "Head level",
           "key_points": "Continue momentum",
           "common_mistakes": "Breaking rhythm",
@@ -137,14 +137,14 @@
           "image2URL": "dan-gun-7-technique",
           "image3URL": "dan-gun-7-progress",
           "execution_speed": "normal",
-          "movement": "Right 135°"
+          "movement": "Forward"
         },
         {
           "move_number": 8,
-          "stance": "Left walking stance",
-          "technique": "High punch",
+          "stance": "Right Walking Stance",
+          "technique": "High Obverse Punch",
           "korean_technique": "Nopunde jirugi",
-          "direction": "North",
+          "direction": "D",
           "target": "Head level",
           "key_points": "Consistent technique",
           "common_mistakes": "Rushing moves",
@@ -153,14 +153,14 @@
           "image2URL": "dan-gun-8-technique",
           "image3URL": "dan-gun-8-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Forward"
         },
         {
           "move_number": 9,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Right L Stance",
+          "technique": "Twin Outer Forearm Block",
           "korean_technique": "Nopunde jirugi",
-          "direction": "North",
+          "direction": "E",
           "target": "Head level",
           "key_points": "Strong finish",
           "common_mistakes": "Weak ending",
@@ -169,14 +169,14 @@
           "image2URL": "dan-gun-9-technique",
           "image3URL": "dan-gun-9-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "Left 270°"
         },
         {
           "move_number": 10,
-          "stance": "Left walking stance",
-          "technique": "Twin forearm block",
+          "stance": "Left Walking Stance",
+          "technique": "High Obverse Block",
           "korean_technique": "Sang palmok makgi",
-          "direction": "South",
+          "direction": "E",
           "target": "Middle section",
           "key_points": "Turn with control",
           "common_mistakes": "Sloppy turn",
@@ -185,14 +185,14 @@
           "image2URL": "dan-gun-10-technique",
           "image3URL": "dan-gun-10-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Forward"
         },
         {
           "move_number": 11,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Right L Stance",
+          "technique": "Twin Outer Forearm Bloack",
           "korean_technique": "Nopunde jirugi",
-          "direction": "South",
+          "direction": "F",
           "target": "Head level",
           "key_points": "Reset technique",
           "common_mistakes": "Inconsistent power",
@@ -201,14 +201,14 @@
           "image2URL": "dan-gun-11-technique",
           "image3URL": "dan-gun-11-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "Right 180°"
         },
         {
           "move_number": 12,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Left Walking Stance",
+          "technique": "High Obverse Punch",
           "korean_technique": "Nopunde jirugi",
-          "direction": "South",
+          "direction": "F",
           "target": "Head level",
           "key_points": "Maintain form",
           "common_mistakes": "Technique breakdown",
@@ -221,10 +221,10 @@
         },
         {
           "move_number": 13,
-          "stance": "Left walking stance",
-          "technique": "High punch",
+          "stance": "Left Walking Stance",
+          "technique": "Low Outer Forearm Block",
           "korean_technique": "Nopunde jirugi",
-          "direction": "South",
+          "direction": "A",
           "target": "Head level",
           "key_points": "Keep shoulders level",
           "common_mistakes": "Uneven stance",
@@ -233,14 +233,14 @@
           "image2URL": "dan-gun-13-technique",
           "image3URL": "dan-gun-13-progress",
           "execution_speed": "normal",
-          "movement": "Right 45°"
+          "movement": "Forward"
         },
         {
           "move_number": 14,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Left Walking Stance",
+          "technique": "Rising Block",
           "korean_technique": "Nopunde jirugi",
-          "direction": "South",
+          "direction": "A",
           "target": "Head level",
           "key_points": "Finish strong",
           "common_mistakes": "Premature relaxation",
@@ -249,14 +249,14 @@
           "image2URL": "dan-gun-14-technique",
           "image3URL": "dan-gun-14-progress",
           "execution_speed": "normal",
-          "movement": "Left 45°"
+          "movement": "Forward"
         },
         {
           "move_number": 15,
-          "stance": "Left walking stance",
-          "technique": "High block",
+          "stance": "Right Walking Stance",
+          "technique": "Rising Block",
           "korean_technique": "Nopunde makgi",
-          "direction": "West",
+          "direction": "A",
           "target": "Upper section",
           "key_points": "Return to blocking",
           "common_mistakes": "Wrong technique",
@@ -269,10 +269,10 @@
         },
         {
           "move_number": 16,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Left Walking Stance",
+          "technique": "Rising Block",
           "korean_technique": "Nopunde jirugi",
-          "direction": "West",
+          "direction": "A",
           "target": "Head level",
           "key_points": "Coordinate movement",
           "common_mistakes": "Poor timing",
@@ -285,10 +285,10 @@
         },
         {
           "move_number": 17,
-          "stance": "Right walking stance",
-          "technique": "High block",
+          "stance": "Right Walking Stance",
+          "technique": "Rising Block",
           "korean_technique": "Nopunde makgi",
-          "direction": "East",
+          "direction": "A",
           "target": "Upper section",
           "key_points": "Final direction change",
           "common_mistakes": "Anticipating end",
@@ -301,10 +301,10 @@
         },
         {
           "move_number": 18,
-          "stance": "Left walking stance",
-          "technique": "High punch",
+          "stance": "Left Walking Stance",
+          "technique": "Knife Hand Strike",
           "korean_technique": "Nopunde jirugi",
-          "direction": "East",
+          "direction": "B",
           "target": "Head level",
           "key_points": "Finish with power",
           "common_mistakes": "Weak conclusion",
@@ -313,14 +313,14 @@
           "image2URL": "dan-gun-18-technique",
           "image3URL": "dan-gun-18-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Left 270°"
         },
         {
           "move_number": 19,
-          "stance": "Left walking stance",
-          "technique": "High block",
+          "stance": "Left Walking Stance",
+          "technique": "High Obverse Punch",
           "korean_technique": "Nopunde makgi",
-          "direction": "North",
+          "direction": "B",
           "target": "Upper section",
           "key_points": "Prepare for close",
           "common_mistakes": "Losing focus",
@@ -329,14 +329,14 @@
           "image2URL": "dan-gun-19-technique",
           "image3URL": "dan-gun-19-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "Forward"
         },
         {
           "move_number": 20,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Right L Stance",
+          "technique": "Knife Hand Strike",
           "korean_technique": "Nopunde jirugi",
-          "direction": "North",
+          "direction": "C",
           "target": "Head level",
           "key_points": "Penultimate move",
           "common_mistakes": "Rushing to finish",
@@ -345,14 +345,14 @@
           "image2URL": "dan-gun-20-technique",
           "image3URL": "dan-gun-20-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Right 180°"
         },
         {
           "move_number": 21,
-          "stance": "Parallel ready stance",
-          "technique": "Return to ready",
+          "stance": "Left Walking Stance",
+          "technique": "High Obverse Punch",
           "korean_technique": "Junbi",
-          "direction": "North",
+          "direction": "C",
           "target": null,
           "key_points": "Sharp return to attention",
           "common_mistakes": "Sloppy conclusion",
@@ -361,7 +361,7 @@
           "image2URL": "dan-gun-21-technique",
           "image3URL": "dan-gun-21-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "Forward"
         }
       ]
     }

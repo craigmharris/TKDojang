@@ -42,7 +42,7 @@
         },
         {
           "move_number": 2,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Spear finger thrust",
           "korean_technique": "Sonkut tulgi",
           "direction": "West",
@@ -70,7 +70,7 @@
         },
         {
           "move_number": 4,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Spear finger thrust",
           "korean_technique": "Sonkut tulgi",
           "direction": "East",
@@ -84,7 +84,7 @@
         },
         {
           "move_number": 5,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Pressing block",
           "korean_technique": "Noollo makgi",
           "direction": "North",
@@ -98,7 +98,7 @@
         },
         {
           "move_number": 6,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Pressing block",
           "korean_technique": "Noollo makgi",
           "direction": "North",
@@ -112,7 +112,7 @@
         },
         {
           "move_number": 7,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Pressing block",
           "korean_technique": "Noollo makgi",
           "direction": "North",
@@ -126,7 +126,7 @@
         },
         {
           "move_number": 8,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Pressing block",
           "korean_technique": "Noollo makgi",
           "direction": "South",
@@ -140,7 +140,7 @@
         },
         {
           "move_number": 9,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Pressing block",
           "korean_technique": "Noollo makgi",
           "direction": "South",
@@ -154,7 +154,7 @@
         },
         {
           "move_number": 10,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Pressing block",
           "korean_technique": "Noollo makgi",
           "direction": "South",
@@ -168,7 +168,7 @@
         },
         {
           "move_number": 11,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Upset fingertip thrust",
           "korean_technique": "Dwijibo sonkut tulgi",
           "direction": "West",
@@ -182,7 +182,7 @@
         },
         {
           "move_number": 12,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Upset fingertip thrust",
           "korean_technique": "Dwijibo sonkut tulgi",
           "direction": "East",
@@ -196,7 +196,7 @@
         },
         {
           "move_number": 13,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Inner forearm block",
           "korean_technique": "An palmok makgi",
           "direction": "North",
@@ -210,7 +210,7 @@
         },
         {
           "move_number": 14,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Inner forearm block",
           "korean_technique": "An palmok makgi",
           "direction": "North",
@@ -224,7 +224,7 @@
         },
         {
           "move_number": 15,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Inner forearm block",
           "korean_technique": "An palmok makgi",
           "direction": "North",
@@ -238,7 +238,7 @@
         },
         {
           "move_number": 16,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Inner forearm block",
           "korean_technique": "An palmok makgi",
           "direction": "South",
@@ -252,7 +252,7 @@
         },
         {
           "move_number": 17,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Inner forearm block",
           "korean_technique": "An palmok makgi",
           "direction": "South",
@@ -266,7 +266,7 @@
         },
         {
           "move_number": 18,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Inner forearm block",
           "korean_technique": "An palmok makgi",
           "direction": "South",
@@ -308,7 +308,7 @@
         },
         {
           "move_number": 21,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Circular block",
           "korean_technique": "Dollimyo makgi",
           "direction": "North",
@@ -322,7 +322,7 @@
         },
         {
           "move_number": 22,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Reverse punch",
           "korean_technique": "Bandae jirugi",
           "direction": "North",
@@ -336,7 +336,7 @@
         },
         {
           "move_number": 23,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Circular block",
           "korean_technique": "Dollimyo makgi",
           "direction": "South",
@@ -350,7 +350,7 @@
         },
         {
           "move_number": 24,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Reverse punch",
           "korean_technique": "Bandae jirugi",
           "direction": "South",
@@ -392,7 +392,7 @@
         },
         {
           "move_number": 27,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "W-shape block",
           "korean_technique": "San makgi",
           "direction": "North",
@@ -406,7 +406,7 @@
         },
         {
           "move_number": 28,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "W-shape block",
           "korean_technique": "San makgi",
           "direction": "North",
@@ -420,7 +420,7 @@
         },
         {
           "move_number": 29,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "W-shape block",
           "korean_technique": "San makgi",
           "direction": "North",
@@ -434,7 +434,7 @@
         },
         {
           "move_number": 30,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "W-shape block",
           "korean_technique": "San makgi",
           "direction": "South",
@@ -448,7 +448,7 @@
         },
         {
           "move_number": 31,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "W-shape block",
           "korean_technique": "San makgi",
           "direction": "South",
@@ -462,7 +462,7 @@
         },
         {
           "move_number": 32,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "W-shape block",
           "korean_technique": "San makgi",
           "direction": "South",
@@ -476,7 +476,7 @@
         },
         {
           "move_number": 33,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Twin elbow thrust",
           "korean_technique": "Sang palkup taerigi",
           "direction": "West",
@@ -490,7 +490,7 @@
         },
         {
           "move_number": 34,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Twin elbow thrust",
           "korean_technique": "Sang palkup taerigi",
           "direction": "East",
@@ -504,7 +504,7 @@
         },
         {
           "move_number": 35,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Double arc-hand block",
           "korean_technique": "Sang bandalson makgi",
           "direction": "North",
@@ -518,7 +518,7 @@
         },
         {
           "move_number": 36,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Double arc-hand block",
           "korean_technique": "Sang bandalson makgi",
           "direction": "North",
@@ -532,7 +532,7 @@
         },
         {
           "move_number": 37,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Double arc-hand block",
           "korean_technique": "Sang bandalson makgi",
           "direction": "North",
@@ -560,7 +560,7 @@
         },
         {
           "move_number": 39,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Spear finger thrust",
           "korean_technique": "Sonkut tulgi",
           "direction": "West",
@@ -588,7 +588,7 @@
         },
         {
           "move_number": 41,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Spear finger thrust",
           "korean_technique": "Sonkut tulgi",
           "direction": "East",
@@ -602,7 +602,7 @@
         },
         {
           "move_number": 42,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Double arc-hand block",
           "korean_technique": "Sang bandalson makgi",
           "direction": "North",
@@ -616,7 +616,7 @@
         },
         {
           "move_number": 43,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Double arc-hand block",
           "korean_technique": "Sang bandalson makgi",
           "direction": "North",

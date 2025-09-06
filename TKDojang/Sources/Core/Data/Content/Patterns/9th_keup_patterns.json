@@ -29,26 +29,26 @@
       "moves": [
         {
           "move_number": 1,
-          "stance": "Left walking stance",
-          "technique": "Low block",
+          "stance": "Left Walking Stance",
+          "technique": "Low Outer Forearm Block",
           "korean_technique": "Najunde makgi",
-          "direction": "West",
+          "direction": "B",
           "target": "Lower section",
           "key_points": "Keep shoulders square, bend knees properly",
           "common_mistakes": "Lifting block too high",
-          "execution_notes": "Ensure proper weight distribution in walking stance",
+          "execution_notes": "Ensure proper weight distribution in Walking Stance",
           "imageURL": "chon-ji-1",
           "image2URL": "chon-ji-1-technique",
           "image3URL": "chon-ji-1-progress",
           "execution_speed": "normal",
-          "movement": "Left 180°"
+          "movement": "Left 90°"
         },
         {
           "move_number": 2,
-          "stance": "Right walking stance",
-          "technique": "Middle punch",
+          "stance": "Right Walking Stance",
+          "technique": "Middle Obverse Punch",
           "korean_technique": "Kaunde jirugi",
-          "direction": "West",
+          "direction": "B",
           "target": "Solar plexus",
           "key_points": "Twist fist on impact, keep elbow close",
           "common_mistakes": "Punching with bent wrist",
@@ -57,14 +57,14 @@
           "image2URL": "chon-ji-2-technique",
           "image3URL": "chon-ji-2-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "Forward"
         },
         {
           "move_number": 3,
-          "stance": "Right walking stance",
-          "technique": "Low block",
+          "stance": "Right Walking Stance",
+          "technique": "Low Outer Forearm Block",
           "korean_technique": "Najunde makgi",
-          "direction": "East",
+          "direction": "C",
           "target": "Lower section",
           "key_points": "Mirror image of move 1",
           "common_mistakes": "Not turning body fully",
@@ -73,14 +73,14 @@
           "image2URL": "chon-ji-3-technique",
           "image3URL": "chon-ji-3-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Right 180°"
         },
         {
           "move_number": 4,
-          "stance": "Left walking stance",
-          "technique": "Middle punch",
+          "stance": "Left Walking Stance",
+          "technique": "Middle Obverse Punch",
           "korean_technique": "Kaunde jirugi",
-          "direction": "East",
+          "direction": "C",
           "target": "Solar plexus",
           "key_points": "Same technique as move 2",
           "common_mistakes": "Incomplete hip rotation",
@@ -89,14 +89,14 @@
           "image2URL": "chon-ji-4-technique",
           "image3URL": "chon-ji-4-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "Forward"
         },
         {
           "move_number": 5,
-          "stance": "Left walking stance",
-          "technique": "Low block",
+          "stance": "Left Walking Stance",
+          "technique": "Low Outer Forearm Block",
           "korean_technique": "Najunde makgi",
-          "direction": "North",
+          "direction": "A",
           "target": "Lower section",
           "key_points": "Turn 90 degrees left",
           "common_mistakes": "Rushing the turn",
@@ -105,14 +105,14 @@
           "image2URL": "chon-ji-5-technique",
           "image3URL": "chon-ji-5-progress",
           "execution_speed": "normal",
-          "movement": "Left 180°"
+          "movement": "Left 90°"
         },
         {
           "move_number": 6,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Right Walking Stance",
+          "technique": "Middle Obverse Punch",
           "korean_technique": "Nopunde jirugi",
-          "direction": "North",
+          "direction": "A",
           "target": "Head level",
           "key_points": "Step forward with power",
           "common_mistakes": "Punching without stepping",
@@ -121,14 +121,14 @@
           "image2URL": "chon-ji-6-technique",
           "image3URL": "chon-ji-6-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "Forward"
         },
         {
           "move_number": 7,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Right Walking Stance",
+          "technique": "Low Outer Forearm Block",
           "korean_technique": "Nopunde jirugi",
-          "direction": "North",
+          "direction": "D",
           "target": "Head level",
           "key_points": "Continue forward momentum",
           "common_mistakes": "Weak follow-through",
@@ -137,14 +137,14 @@
           "image2URL": "chon-ji-7-technique",
           "image3URL": "chon-ji-7-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Right 180°"
         },
         {
           "move_number": 8,
-          "stance": "Left walking stance",
-          "technique": "High punch",
+          "stance": "Left Walking Stance",
+          "technique": "Middle Obverse Punch",
           "korean_technique": "Nopunde jirugi",
-          "direction": "North",
+          "direction": "D",
           "target": "Head level",
           "key_points": "Maintain steady rhythm",
           "common_mistakes": "Breaking timing",
@@ -153,14 +153,14 @@
           "image2URL": "chon-ji-8-technique",
           "image3URL": "chon-ji-8-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "Forward"
         },
         {
           "move_number": 9,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Left L Stance",
+          "technique": "Middle Inner Forearm Block",
           "korean_technique": "Nopunde jirugi",
-          "direction": "North",
+          "direction": "C",
           "target": "Head level",
           "key_points": "Full extension on punch",
           "common_mistakes": "Partial extension",
@@ -169,14 +169,14 @@
           "image2URL": "chon-ji-9-technique",
           "image3URL": "chon-ji-9-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "Left 90°"
         },
         {
           "move_number": 10,
-          "stance": "Left walking stance",
-          "technique": "Low block",
+          "stance": "Right Walking Stance",
+          "technique": "Middle Obverse Punch",
           "korean_technique": "Najunde makgi",
-          "direction": "South",
+          "direction": "C",
           "target": "Lower section",
           "key_points": "Turn 180 degrees",
           "common_mistakes": "Incomplete turn",
@@ -189,10 +189,10 @@
         },
         {
           "move_number": 11,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Right L Stance",
+          "technique": "Middle Inner Forearm Block",
           "korean_technique": "Nopunde jirugi",
-          "direction": "South",
+          "direction": "B",
           "target": "Head level",
           "key_points": "Same as northern sequence",
           "common_mistakes": "Inconsistent technique",
@@ -201,14 +201,14 @@
           "image2URL": "chon-ji-11-technique",
           "image3URL": "chon-ji-11-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Right 180°"
         },
         {
           "move_number": 12,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Left Walking Stance",
+          "technique": "Middle Obverse Punch",
           "korean_technique": "Nopunde jirugi",
-          "direction": "South",
+          "direction": "B",
           "target": "Head level",
           "key_points": "Maintain form under fatigue",
           "common_mistakes": "Sloppy technique",
@@ -217,14 +217,14 @@
           "image2URL": "chon-ji-12-technique",
           "image3URL": "chon-ji-12-progress",
           "execution_speed": "normal",
-          "movement": "Left 270°"
+          "movement": "Forward"
         },
         {
           "move_number": 13,
-          "stance": "Left walking stance",
-          "technique": "High punch",
+          "stance": "Left L Stance",
+          "technique": "Middle Inner Forearm Block",
           "korean_technique": "Nopunde jirugi",
-          "direction": "South",
+          "direction": "D",
           "target": "Head level",
           "key_points": "Keep shoulders level",
           "common_mistakes": "Dropping guard",
@@ -237,10 +237,10 @@
         },
         {
           "move_number": 14,
-          "stance": "Right walking stance",
-          "technique": "High punch",
+          "stance": "Right Walking Stance",
+          "technique": "Middle Obverse Punch",
           "korean_technique": "Nopunde jirugi",
-          "direction": "South",
+          "direction": "D",
           "target": "Head level",
           "key_points": "Strong finishing sequence",
           "common_mistakes": "Weak ending",
@@ -249,14 +249,14 @@
           "image2URL": "chon-ji-14-technique",
           "image3URL": "chon-ji-14-progress",
           "execution_speed": "normal",
-          "movement": "Right 135°"
+          "movement": "Forward"
         },
         {
           "move_number": 15,
-          "stance": "Left walking stance",
-          "technique": "Low block",
+          "stance": "Right L Stance",
+          "technique": "Middle Inner Forearm Block",
           "korean_technique": "Najunde makgi",
-          "direction": "West",
+          "direction": "A",
           "target": "Lower section",
           "key_points": "Turn 90 degrees right",
           "common_mistakes": "Losing balance on turn",
@@ -265,14 +265,14 @@
           "image2URL": "chon-ji-15-technique",
           "image3URL": "chon-ji-15-progress",
           "execution_speed": "normal",
-          "movement": "Right 135°"
+          "movement": "Right 180°"
         },
         {
           "move_number": 16,
-          "stance": "Right walking stance",
-          "technique": "Middle punch",
+          "stance": "Left Walking Stance",
+          "technique": "Middle Obverse Punch",
           "korean_technique": "Kaunde jirugi",
-          "direction": "West",
+          "direction": "A",
           "target": "Solar plexus",
           "key_points": "Return to middle level",
           "common_mistakes": "Wrong target level",
@@ -285,10 +285,10 @@
         },
         {
           "move_number": 17,
-          "stance": "Right walking stance",
-          "technique": "Low block",
+          "stance": "Right Walking Stance",
+          "technique": "Middle Obverse Punch",
           "korean_technique": "Najunde makgi",
-          "direction": "East",
+          "direction": "A",
           "target": "Lower section",
           "key_points": "Final direction change",
           "common_mistakes": "Anticipating finish",
@@ -301,10 +301,10 @@
         },
         {
           "move_number": 18,
-          "stance": "Left walking stance",
-          "technique": "Middle punch",
+          "stance": "Left Walking Stance",
+          "technique": "Middle Obverse Punch",
           "korean_technique": "Kaunde jirugi",
-          "direction": "East",
+          "direction": "A",
           "target": "Solar plexus",
           "key_points": "Maintain power to end",
           "common_mistakes": "Relaxing too early",
@@ -313,14 +313,14 @@
           "image2URL": "chon-ji-18-technique",
           "image3URL": "chon-ji-18-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Backward"
         },
         {
           "move_number": 19,
-          "stance": "Parallel ready stance",
-          "technique": "Return to ready",
+          "stance": "Right Walking Stance",
+          "technique": "Middle Obverse Punch",
           "korean_technique": "Junbi",
-          "direction": "North",
+          "direction": "A",
           "target": null,
           "key_points": "Sharp return to attention",
           "common_mistakes": "Sloppy return",
@@ -329,7 +329,7 @@
           "image2URL": "chon-ji-19-technique",
           "image3URL": "chon-ji-19-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "Backward"
         }
       ]
     }

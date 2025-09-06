@@ -284,11 +284,35 @@ struct PatternTestView: View {
                 .foregroundColor(.secondary)
                 .frame(width: 30, alignment: .leading)
             
-            Text("?")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
+            VStack(alignment: .leading, spacing: 2) {
+                // Show user's selected answers if available for future moves
+                if let userResponse = responses.first(where: { $0.moveNumber == moveNumber }) {
+                    // User has already answered this future move - show their selections
+                    Text("\(userResponse.selectedStance ?? "?") → \(userResponse.selectedTechnique ?? "?")")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .foregroundColor(userResponse.isStanceCorrect && userResponse.isTechniqueCorrect ? .primary : .orange)
+                    
+                    Text(userResponse.selectedMovement ?? "?")
+                        .font(.caption)
+                        .foregroundColor(userResponse.isMovementCorrect ? .secondary : .orange)
+                } else {
+                    // No user response yet - show placeholder
+                    Text("?")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+            }
             
             Spacer()
+            
+            // Show completion indicator for future moves if they have responses
+            if let userResponse = responses.first(where: { $0.moveNumber == moveNumber }) {
+                Image(systemName: userResponse.isCompletelyCorrect ? "checkmark.circle.fill" : "exclamationmark.triangle.fill")
+                    .font(.caption)
+                    .foregroundColor(userResponse.isCompletelyCorrect ? .green : .orange)
+                    .padding(.trailing, 8)
+            }
         }
         .padding(.vertical, 4)
     }
@@ -301,14 +325,14 @@ struct PatternTestView: View {
     
     private var answerSelectionSection: some View {
         VStack(spacing: 12) {
-            // Stance selection
+            // Movement selection - move in the direction first
+            answerCategory("Movement", selectedValue: $selectedMovement, options: movementOptions)
+            
+            // Stance selection - establish stance after moving
             answerCategory("Stance", selectedValue: $selectedStance, options: stanceOptions)
             
-            // Technique selection
+            // Technique selection - execute technique from stance
             answerCategory("Technique", selectedValue: $selectedTechnique, options: techniqueOptions)
-            
-            // Movement selection
-            answerCategory("Movement", selectedValue: $selectedMovement, options: movementOptions)
         }
     }
     

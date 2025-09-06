@@ -56,7 +56,7 @@
         },
         {
           "move_number": 3,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High vertical punch",
           "korean_technique": "Nopunde sewo jirugi",
           "direction": "North",
@@ -70,7 +70,7 @@
         },
         {
           "move_number": 4,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High vertical punch",
           "korean_technique": "Nopunde sewo jirugi",
           "direction": "North",
@@ -84,7 +84,7 @@
         },
         {
           "move_number": 5,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High vertical punch",
           "korean_technique": "Nopunde sewo jirugi",
           "direction": "South",
@@ -98,7 +98,7 @@
         },
         {
           "move_number": 6,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High vertical punch",
           "korean_technique": "Nopunde sewo jirugi",
           "direction": "South",
@@ -112,7 +112,7 @@
         },
         {
           "move_number": 7,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Side piercing kick",
           "korean_technique": "Yop cha jirugi",
           "direction": "West",
@@ -126,7 +126,7 @@
         },
         {
           "move_number": 8,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Knife hand strike",
           "korean_technique": "Sonkal taerigi",
           "direction": "West",
@@ -140,7 +140,7 @@
         },
         {
           "move_number": 9,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Side piercing kick",
           "korean_technique": "Yop cha jirugi",
           "direction": "East",
@@ -154,7 +154,7 @@
         },
         {
           "move_number": 10,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Knife hand strike",
           "korean_technique": "Sonkal taerigi",
           "direction": "East",
@@ -168,7 +168,7 @@
         },
         {
           "move_number": 11,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Twin vertical punch",
           "korean_technique": "Sang sewo jirugi",
           "direction": "North",
@@ -182,7 +182,7 @@
         },
         {
           "move_number": 12,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "North",
@@ -196,7 +196,7 @@
         },
         {
           "move_number": 13,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "North",
@@ -210,7 +210,7 @@
         },
         {
           "move_number": 14,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "North",
@@ -224,7 +224,7 @@
         },
         {
           "move_number": 15,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Twin vertical punch",
           "korean_technique": "Sang sewo jirugi",
           "direction": "South",
@@ -238,7 +238,7 @@
         },
         {
           "move_number": 16,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "South",
@@ -252,7 +252,7 @@
         },
         {
           "move_number": 17,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "South",
@@ -266,7 +266,7 @@
         },
         {
           "move_number": 18,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "South",
@@ -308,7 +308,7 @@
         },
         {
           "move_number": 21,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Upset punch",
           "korean_technique": "Dwijibo jirugi",
           "direction": "North",
@@ -322,7 +322,7 @@
         },
         {
           "move_number": 22,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Upset punch",
           "korean_technique": "Dwijibo jirugi",
           "direction": "North",
@@ -336,7 +336,7 @@
         },
         {
           "move_number": 23,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Upset punch",
           "korean_technique": "Dwijibo jirugi",
           "direction": "South",
@@ -350,7 +350,7 @@
         },
         {
           "move_number": 24,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Upset punch",
           "korean_technique": "Dwijibo jirugi",
           "direction": "South",
@@ -364,7 +364,7 @@
         },
         {
           "move_number": 25,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "X-block",
           "korean_technique": "Kyocha makgi",
           "direction": "West",
@@ -378,7 +378,7 @@
         },
         {
           "move_number": 26,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "X-block",
           "korean_technique": "Kyocha makgi",
           "direction": "East",
@@ -392,7 +392,7 @@
         },
         {
           "move_number": 27,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Middle punch",
           "korean_technique": "Kaunde jirugi",
           "direction": "North",
@@ -406,7 +406,7 @@
         },
         {
           "move_number": 28,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "North",
@@ -420,7 +420,7 @@
         },
         {
           "move_number": 29,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "North",
@@ -434,7 +434,7 @@
         },
         {
           "move_number": 30,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "North",
@@ -448,7 +448,7 @@
         },
         {
           "move_number": 31,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Middle punch",
           "korean_technique": "Kaunde jirugi",
           "direction": "South",
@@ -462,7 +462,7 @@
         },
         {
           "move_number": 32,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "South",
@@ -476,7 +476,7 @@
         },
         {
           "move_number": 33,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "South",
@@ -490,7 +490,7 @@
         },
         {
           "move_number": 34,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "South",
@@ -532,7 +532,7 @@
         },
         {
           "move_number": 37,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High vertical punch",
           "korean_technique": "Nopunde sewo jirugi",
           "direction": "North",
@@ -546,7 +546,7 @@
         },
         {
           "move_number": 38,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High vertical punch",
           "korean_technique": "Nopunde sewo jirugi",
           "direction": "North",
@@ -593,7 +593,7 @@
       "moves": [
         {
           "move_number": 1,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "West",
@@ -607,7 +607,7 @@
         },
         {
           "move_number": 2,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High punch",
           "korean_technique": "Nopunde jirugi",
           "direction": "West",
@@ -621,7 +621,7 @@
         },
         {
           "move_number": 3,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "East",
@@ -635,7 +635,7 @@
         },
         {
           "move_number": 4,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High punch",
           "korean_technique": "Nopunde jirugi",
           "direction": "East",
@@ -649,7 +649,7 @@
         },
         {
           "move_number": 5,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Rising block",
           "korean_technique": "Chookyo makgi",
           "direction": "North",
@@ -663,7 +663,7 @@
         },
         {
           "move_number": 6,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Rising block",
           "korean_technique": "Chookyo makgi",
           "direction": "North",
@@ -677,7 +677,7 @@
         },
         {
           "move_number": 7,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Rising block",
           "korean_technique": "Chookyo makgi",
           "direction": "North",
@@ -691,7 +691,7 @@
         },
         {
           "move_number": 8,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Rising block",
           "korean_technique": "Chookyo makgi",
           "direction": "South",
@@ -705,7 +705,7 @@
         },
         {
           "move_number": 9,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Rising block",
           "korean_technique": "Chookyo makgi",
           "direction": "South",
@@ -719,7 +719,7 @@
         },
         {
           "move_number": 10,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Rising block",
           "korean_technique": "Chookyo makgi",
           "direction": "South",
@@ -733,7 +733,7 @@
         },
         {
           "move_number": 11,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Middle punch",
           "korean_technique": "Kaunde jirugi",
           "direction": "West",
@@ -747,7 +747,7 @@
         },
         {
           "move_number": 12,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Middle punch",
           "korean_technique": "Kaunde jirugi",
           "direction": "East",
@@ -761,7 +761,7 @@
         },
         {
           "move_number": 13,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Slow motion rising block",
           "korean_technique": "Chookyo makgi (neurin dongjak)",
           "direction": "North",
@@ -775,7 +775,7 @@
         },
         {
           "move_number": 14,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Slow motion rising block",
           "korean_technique": "Chookyo makgi (neurin dongjak)",
           "direction": "North",
@@ -789,7 +789,7 @@
         },
         {
           "move_number": 15,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Slow motion rising block",
           "korean_technique": "Chookyo makgi (neurin dongjak)",
           "direction": "North",
@@ -803,7 +803,7 @@
         },
         {
           "move_number": 16,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Slow motion rising block",
           "korean_technique": "Chookyo makgi (neurin dongjak)",
           "direction": "South",
@@ -817,7 +817,7 @@
         },
         {
           "move_number": 17,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Slow motion rising block",
           "korean_technique": "Chookyo makgi (neurin dongjak)",
           "direction": "South",
@@ -831,7 +831,7 @@
         },
         {
           "move_number": 18,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Slow motion rising block",
           "korean_technique": "Chookyo makgi (neurin dongjak)",
           "direction": "South",
@@ -845,7 +845,7 @@
         },
         {
           "move_number": 19,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Hooking block",
           "korean_technique": "Golcho makgi",
           "direction": "West",
@@ -859,7 +859,7 @@
         },
         {
           "move_number": 20,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Hooking block",
           "korean_technique": "Golcho makgi",
           "direction": "East",
@@ -873,7 +873,7 @@
         },
         {
           "move_number": 21,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Twin vertical punch",
           "korean_technique": "Sang sewo jirugi",
           "direction": "North",
@@ -887,7 +887,7 @@
         },
         {
           "move_number": 22,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "North",
@@ -901,7 +901,7 @@
         },
         {
           "move_number": 23,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High punch",
           "korean_technique": "Nopunde jirugi",
           "direction": "North",
@@ -915,7 +915,7 @@
         },
         {
           "move_number": 24,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "North",
@@ -929,7 +929,7 @@
         },
         {
           "move_number": 25,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High punch",
           "korean_technique": "Nopunde jirugi",
           "direction": "North",
@@ -943,7 +943,7 @@
         },
         {
           "move_number": 26,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "Twin vertical punch",
           "korean_technique": "Sang sewo jirugi",
           "direction": "South",
@@ -957,7 +957,7 @@
         },
         {
           "move_number": 27,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "South",
@@ -971,7 +971,7 @@
         },
         {
           "move_number": 28,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High punch",
           "korean_technique": "Nopunde jirugi",
           "direction": "South",
@@ -985,7 +985,7 @@
         },
         {
           "move_number": 29,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "South",
@@ -999,7 +999,7 @@
         },
         {
           "move_number": 30,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High punch",
           "korean_technique": "Nopunde jirugi",
           "direction": "South",
@@ -1013,7 +1013,7 @@
         },
         {
           "move_number": 31,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "West",
@@ -1027,7 +1027,7 @@
         },
         {
           "move_number": 32,
-          "stance": "Right walking stance",
+          "stance": "Right Walking Stance",
           "technique": "High punch",
           "korean_technique": "Nopunde jirugi",
           "direction": "West",
@@ -1041,7 +1041,7 @@
         },
         {
           "move_number": 33,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High block",
           "korean_technique": "Nopunde makgi",
           "direction": "East",
@@ -1055,7 +1055,7 @@
         },
         {
           "move_number": 34,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "High punch",
           "korean_technique": "Nopunde jirugi",
           "direction": "East",
@@ -1069,7 +1069,7 @@
         },
         {
           "move_number": 35,
-          "stance": "Left walking stance",
+          "stance": "Left Walking Stance",
           "technique": "Middle punch",
           "korean_technique": "Kaunde jirugi",
           "direction": "North",
