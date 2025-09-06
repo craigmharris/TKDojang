@@ -58,6 +58,7 @@ struct PatternPracticeView: View {
                     // Image carousel for move visualization (vertically centered)
                     if move.hasMedia {
                         moveImageCarousel(move: move)
+          
                             .padding(.horizontal)
                     }
                     

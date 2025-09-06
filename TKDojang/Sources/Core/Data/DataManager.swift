@@ -62,6 +62,7 @@ class DataManager {
                 Pattern.self,
                 PatternMove.self,
                 UserPatternProgress.self,
+                PatternTestResult.self,
                 StudySession.self,
                 StepSparringSequence.self,
                 StepSparringStep.self,

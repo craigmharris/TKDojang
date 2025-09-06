@@ -89,6 +89,8 @@ final class PatternMove {
     var keyPoints: String
     var commonMistakes: String?
     var executionNotes: String?
+    var movement: String? // Movement direction for pattern testing
+    var executionSpeed: String? // Speed variation (normal, slow, etc.)
     
     // Media URLs (internal asset references - all optional)
     var imageURL: String?      // Position image
@@ -122,6 +124,8 @@ final class PatternMove {
         keyPoints: String,
         commonMistakes: String? = nil,
         executionNotes: String? = nil,
+        movement: String? = nil,
+        executionSpeed: String? = nil,
         imageURL: String? = nil,
         image2URL: String? = nil,
         image3URL: String? = nil
@@ -135,6 +139,8 @@ final class PatternMove {
         self.keyPoints = keyPoints
         self.commonMistakes = commonMistakes
         self.executionNotes = executionNotes
+        self.movement = movement
+        self.executionSpeed = executionSpeed
         self.imageURL = imageURL
         self.image2URL = image2URL
         self.image3URL = image3URL

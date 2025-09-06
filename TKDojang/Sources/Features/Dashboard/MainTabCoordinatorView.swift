@@ -1445,6 +1445,42 @@ struct PatternDetailView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 
+                // Test Interface Button
+                NavigationLink(destination: PatternTestView(pattern: pattern)) {
+                    HStack {
+                        Image(systemName: "questionmark.circle.fill")
+                            .font(.title2)
+                            .foregroundColor(.white)
+                        
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Test Knowledge")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                            
+                            Text("Test sequence and technique memory")
+                                .font(.subheadline)
+                                .foregroundColor(.white.opacity(0.9))
+                        }
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.white.opacity(0.7))
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(
+                        LinearGradient(
+                            gradient: Gradient(colors: [Color.orange, Color.orange.opacity(0.8)]),
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .cornerRadius(12)
+                }
+                .buttonStyle(PlainButtonStyle())
+                
                 Spacer()
             }
             .padding()

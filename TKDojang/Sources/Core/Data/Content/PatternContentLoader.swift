@@ -186,6 +186,8 @@ struct PatternContentLoader {
             keyPoints: data.keyPoints,
             commonMistakes: data.commonMistakes,
             executionNotes: data.executionNotes,
+            movement: data.movement,
+            executionSpeed: data.executionSpeed,
             imageURL: data.imageURL,
             image2URL: data.image2URL,
             image3URL: data.image3URL
@@ -344,6 +346,8 @@ struct PatternMoveJSONData: Codable {
     let keyPoints: String
     let commonMistakes: String?
     let executionNotes: String?
+    let movement: String?
+    let executionSpeed: String?
     let imageURL: String?
     let image2URL: String?
     let image3URL: String?
@@ -358,6 +362,8 @@ struct PatternMoveJSONData: Codable {
         case keyPoints = "key_points"
         case commonMistakes = "common_mistakes"
         case executionNotes = "execution_notes"
+        case movement = "movement"
+        case executionSpeed = "execution_speed"
         case imageURL = "imageURL"
         case image2URL = "image2URL"
         case image3URL = "image3URL"
