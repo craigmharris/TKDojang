@@ -1,0 +1,219 @@
+﻿Pattern,Move,Direction,Movement,Stance,Technique,Target
+Do San,1,B,Left 90,Walking Stance,Outer Forearm Block,High Section
+Do San,2,B,-,Walking Stance,Reverse Punch,Middle Section
+Do San,3,A,Right 180,Walking Stance,Outer Forearm Block,High Section
+Do San,4,A,-,Walking Stance,Reverse Punch,Middle Section
+Do San,5,C,Left 90,L Stance,Knife Hand Guarding Block,Middle Section
+Do San,6,C,Forward,Walking Stance,Straight Fingertip Thrust,Middle Section
+Do San,7,C,Left 360,Walking Stance,Release & Back Fist Side Strike,High Section
+Do San,8,C,Forward,Walking Stance,Back Fist Side Strike,High Section
+Do San,9,D,Left 270,Walking Stance,Outer Forearm Block,High Section
+Do San,10,D,-,Walking Stance,Reverse Punch,Middle Section
+Do San,11,C,Right 180,Walking Stance,Outer Forearm Block,High Section
+Do San,12,C,-,Walking Stance,Reverse Punch,Middle Section
+Do San,13,A,Left 135,Walking Stance,Wedging Block,High Section
+Do San,14,A,Forward,-,Front Snap Kick,Middle Section
+Do San,15,A,-,Walking Stance,Obverse Punch,Middle Section
+Do San,16,A,-,Walking Stance,Reverse Punch,Middle Section
+Do San,17,A,Right 90,Walking Stance,Wedging Block,High Section
+Do San,18,A,Forward,-,Front Snap Kick,Middle Section
+Do San,19,A,-,Walking Stance,Obverse Punch,Middle Section
+Do San,20,A,-,Walking Stance,Reverse Punch,Middle Section
+Do San,21,A,Left 45,Walking Stance,Rising Block,High Section
+Do San,22,A,Forward,Walking Stance,Rising Block,High Section
+Do San,23,B,Left 270,Sitting Stance,Knife Hand Strike,Middle Section
+Do San,24,A,Foot to Fot (Right),Sitting Stance,Knife Hand Strike,Middle Section
+Won Hyo,1,A,Left 90,L Stance,Twin Forearm Block,High Section
+Won Hyo,2,A,-,L Stance,Inward Knife Hand Strike,High Section
+Won Hyo,3,A,Slip Left Foot Forward,Fixed Stance,Side Punch,Middle Section
+Won Hyo,4,A,Foot to Foot (Right 180),L Stance,Twin Forearm Block,High Section
+Won Hyo,5,A,-,L Stance,Inward Knife Hand Strike,High Section
+Won Hyo,6,A,Slip Right Foot Forward,Fixed Stance,Side Punch,Middle Section
+Won Hyo,7,A,Left 90,Bending Ready Stance,Forearm Guarding Block,Middle Section
+Won Hyo,8,A,Forward,-,Side Piercing Kick,Middle Section
+Won Hyo,9,A,-,L Stance,Knife Hand Guarding Block,Middle Section
+Won Hyo,10,A,Forward,L Stance,Knife Hand Guarding Block,Middle Section
+Won Hyo,11,A,Forward,L Stance,Knife Hand Guarding Block,Middle Section
+Won Hyo,12,A,Forward,Walking Stance,Straight Fingertip Thrust,Middle Section
+Won Hyo,13,A,Left 270,L Stance,Twin Forearm Block,High Section
+Won Hyo,14,A,-,L Stance,Inward Knife Hand Strike,High Section
+Won Hyo,15,A,Slip Left Foot Forward,Fixed Stance,Side Punch,Middle Section
+Won Hyo,16,A,Foot to Foot (Right 180),L Stance,Twin Forearm Block,High Section
+Won Hyo,17,A,-,L Stance,Inward Knife Hand Strike,High Section
+Won Hyo,18,A,Slip Right Foot Forward,Fixed Stance,Side Punch,Middle Section
+Won Hyo,19,A,Forward,Walking Stance,Circular Block,Middle Section
+Won Hyo,20,A,Forward,-,Front Snap Kick,Low Section
+Won Hyo,21,A,-,Walking Stance,Reverse Punch,Middle Section
+Won Hyo,22,A,-,Walking Stance,Circular Block,Middle Section
+Won Hyo,23,A,Forward,-,Front Snap Kick,Low Section
+Won Hyo,24,A,-,Walking Stance,Reverse Punch,Middle Section
+Won Hyo,25,A,Forward,Bending Ready Stance,Forearm Guarding Block,Middle Section
+Won Hyo,26,A,-,-,Side Piercing Kick,Middle Section
+Won Hyo,27,A,Left 270,L Stance,Forearm Guarding Block,Middle Section
+Won Hyo,28,A,Foot to Foot (Right 180),L Stance,Forearm Guarding Block,Middle Section
+Yul Gok,1,A,Left Slide,Sitting Stance,Left Hand Measure,Middle Section
+Yul Gok,2,A,-,Sitting Stance,Right Punch,Middle Section
+Yul Gok,3,A,-,Sitting Stance,Left Punch,Middle Section
+Yul Gok,4,A,Right Slide,Sitting Stance,Right Hand Measure,Middle Section
+Yul Gok,5,A,-,Sitting Stance,Left Punch,Middle Section
+Yul Gok,6,A,-,Sitting Stance,Right Punch,Middle Section
+Yul Gok,7,A,Right 45,Walking Stance,Inner Forearm Block,High Section
+Yul Gok,8,A,Forward,-,Front Snap Kick,Low Section
+Yul Gok,9,A,-,Walking Stance,Obverse Punch,Middle Section
+Yul Gok,10,A,-,Walking Stance,Reverse Punch,Middle Section
+Yul Gok,11,A,Left 90,Walking Stance,Inner Forearm Block,High Section
+Yul Gok,12,A,Forward,-,Front Snap Kick,Low Section
+Yul Gok,13,A,-,Walking Stance,Obverse Punch,Middle Section
+Yul Gok,14,A,-,Walking Stance,Reverse Punch,Middle Section
+Yul Gok,15,A,Right 45,Walking Stance,Obverse Hooking Block,High Section
+Yul Gok,16,A,-,Walking Stance,Reverse Hooking Block,High Section
+Yul Gok,17,A,-,Walking Stance,Obverse Punch,Middle Section
+Yul Gok,18,A,Forward,Walking Stance,Obverse Hooking Block,High Section
+Yul Gok,19,A,-,Walking Stance,Reverse Hooking Block,High Section
+Yul Gok,20,A,-,Walking Stance,Obverse Punch,Middle Section
+Yul Gok,21,A,Forward,Walking Stance,Obverse Punch,Middle Section
+Yul Gok,22,A,Forward,Bending Ready Stance,Forearm Guarding Block,Middle Section
+Yul Gok,23,A,Forward,-,Side Piercing Kick,Middle Section
+Yul Gok,24,A,-,Walking Stance,Elbow Front Strike,Middle Section
+Yul Gok,25,A,Right 180,Bending Ready Stance,Forearm Guarding Block,Middle Section
+Yul Gok,26,A,Forward,-,Side Piercing Kick,Middle Section
+Yul Gok,27,A,-,Walking Stance,Elbow Front Strike,Middle Section
+Yul Gok,28,A,Left 90,L Stance,Twin Knife Hand Block,Middle Section
+Yul Gok,29,A,Forward,Walking Stance,Straight Fingertip Thrust,Middle Section
+Yul Gok,30,A,Right 180,L Stance,Twin Knife Hand Block,Middle Section
+Yul Gok,31,A,Forward ,Walking Stance,Straight Fingertip Thrust,Middle Section
+Yul Gok,32,A,Left 90,Walking Stance,Outer Forearm Block,High Section
+Yul Gok,33,A,-,Walking Stance,Reverse Punch,Middle Section
+Yul Gok,34,A,Forward,Walking Stance,Outer Forearm Block,High Section
+Yul Gok,35,A,-,Walking Stance,Reverse Punch,Middle Section
+Yul Gok,36,A,Forward,X Stance,Back Fist Strike,High Section
+Yul Gok,37,A,Right 270,Walking Stance,Double Forearm Block,High Section
+Yul Gok,38,A,Left 180,Walking Stance,Double Forearm Block,High Section
+Joong Gun,1,A,Left 90,L Stance,Reverse Knife Hand Block,Middle Section
+Joong Gun,2,A,-,-,Front Snap Kick,Low Section
+Joong Gun,3,A,Forward,Right Foot Stance,Palm Upward Block,Middle Section
+Joong Gun,4,A,Right 180,L Stance,Reverse Knife Hand Block,Middle Section
+Joong Gun,5,A,-,-,Front Snap Kick,Low Section
+Joong Gun,6,A,Forward,Right Foot Stance,Palm Upward Block,Middle Section
+Joong Gun,7,A,Left 90,L Stance,Knife Hand Guarding Block,Middle Section
+Joong Gun,8,A,-,Walking Stance,Upward Elbow Strike,High Section
+Joong Gun,9,A,Forward,L Stance,Knife Hand Guarding Block,Middle Section
+Joong Gun,10,A,-,Walking Stance,Upward Elbow Strike,High Section
+Joong Gun,11,A,Forward,Walking Stance,Twin Vertical Punch,High Section
+Joong Gun,12,A,Forward,Walking Stance,Twin Upset Punch,Middle Section
+Joong Gun,13,A,Left 180,Walking Stance,X-fist Rising Block,High Section
+Joong Gun,14,A,Left 90,L Stance,Back Fist Side Strike,High Section
+Joong Gun,15,A,-,Walking Stance,Release Move,Middle Section
+Joong Gun,16,A,-,Walking Stance,Reverse Punch,High Section
+Joong Gun,17,A,Right 180,L Stance,Back Fist Side Strike,High Section
+Joong Gun,18,A,-,Walking Stance,Release Move,Middle Section
+Joong Gun,19,A,-,Walking Stance,Reverse Punch,High Section
+Joong Gun,20,A,Left 90,Walking Stance,Double Forearm Block,High Section
+Joong Gun,21,A,-,L Stance,Side Punch,Middle Section
+Joong Gun,22,A,Forward,-,Side Piercing Kick,Middle Section
+Joong Gun,23,A,-,Walking Stance,Double Forearm Block,High Section
+Joong Gun,24,A,-,L Stance,Side Punch,Middle Section
+Joong Gun,25,A,Forward,-,Side Piercing Kick,Middle Section
+Joong Gun,26,A,-,L Stance,Forearm Guarding Block,Middle Section
+Joong Gun,27,A,Forward,Low Stance,Palm Pressing Block,Middle Section
+Joong Gun,28,A,Forward,L Stance,Forearm Guarding Block,Middle Section
+Joong Gun,29,A,Forward,Low Stance,Palm Pressing Block,Middle Section
+Joong Gun,30,A,Left 90,Closed Stance,Turning Punch,Middle Section
+Joong Gun,31,A,Forward,Fixed Stance,U-shape Block,Middle Section
+Joong Gun,32,A,Foot to Foot (Left 180),Fixed Stance,U-shape Block,Middle Section
+Toi Gye,1,A,Left 90,L Stance,Inner Forearm Block,Middle Section
+Toi Gye,2,A,-,Walking Stance,Upset Fingertip Thrust,Low Section
+Toi Gye,3,A,Right 90,Closed Stance,Back Fist Strike/Outer Forearm Low Block,High Section
+Toi Gye,4,A,Right 90,Closed Stance,Inner Forearm Block,Middle Section
+Toi Gye,5,A,-,L Stance,Upset Fingertip Thrust,Low Section
+Toi Gye,6,A,Left 90,Walking Stance,Back Fist Strike/Outer Forearm Low Block,High Section
+Toi Gye,7,A,Forward,Closed Stance,X-Fist Pressing Block,Low Section
+Toi Gye,8,A,-,Closed Stance,Twin Vertical Punch,High Section
+Toi Gye,9,A,Forward,Walking Stance,Front Kick,Middle Section
+Toi Gye,10,A,-,Walking Stance,Obverse Punch,Middle Section
+Toi Gye,11,A,-,-,Reverse Punch,Middle Section
+Toi Gye,12,A,Left 90,Walking Stance,Posture Move,- Section
+Toi Gye,13,A,Left 90,Walking Stance,W Shaped Block,High Section
+Toi Gye,14,A,Right 180,Closed Stance,W Shaped Block,High Section
+Toi Gye,15,A,Right 180,Sitting Stance,W Shaped Block,High Section
+Toi Gye,16,A,Left 180,Sitting Stance,W Shaped Block,High Section
+Toi Gye,17,A,Right 180,Sitting Stance,W Shaped Block,High Section
+Toi Gye,18,A,Right 180,Sitting Stance,W Shaped Block,High Section
+Toi Gye,19,A,Forward,L Stance,Double Forearm Pushing Block,Low Section
+Toi Gye,20,A,-,Walking Stance,Grab to Shoulders,High Section
+Toi Gye,21,A,-,-,Knee Kick,Middle Section
+Toi Gye,22,A,Left 180,L Stance,Knife Hand Guarding Block,Middle Section
+Toi Gye,23,A,-,-,Front Snap Kick,Low Section
+Toi Gye,24,A,-,Walking Stance,Flat Fingertip Thrust,High Section
+Toi Gye,25,A,Forward,L Stance,Knife Hand Guarding Block,Middle Section
+Toi Gye,26,A,-,-,Front Snap Kick,Low Section
+Toi Gye,27,A,-,Walking Stance,Flat Fingertip Thrust,High Section
+Toi Gye,28,A,Backward,L Stance,Back Fist Strike/Outer Forearm Low Block,High Section
+Toi Gye,29,A,Jump Forward/Left 90,X Stance,X-Fist Pressing Block,High Section
+Toi Gye,30,A,Right 90,Walking Stance,Double Forearm Block,High Section
+Toi Gye,31,A,Left 270,L Stance,Knife Hand Guarding Block,Low Section
+Toi Gye,32,A,-,Walking Stance,Inner Forearm Circular Block,Middle Section
+Toi Gye,33,A,Right 180,L Stance,Knife Hand Guarding Block,Low Section
+Toi Gye,34,A,-,Walking Stance,Inner Forearm Circular Block,Middle Section
+Toi Gye,35,A,-,Walking Stance,Inner Forearm Circular Block,Middle Section
+Toi Gye,36,A,-,Walking Stance,Inner Forearm Circular Block,Middle Section
+Toi Gye,37,A,Left 90,Sitting Stance,Right Punch,Middle Section
+Hwa Rang,1,A,Left Slide,Sitting Stance,Palm Pushing Block,Middle Section
+Hwa Rang,2,A,-,Sitting Stance,Double Punch,Middle Section
+Hwa Rang,3,A,Right 90,L Stance,Twin Outer Forearm Block,High Section
+Hwa Rang,4,A,-,L Stance,Upward Punch,High Section
+Hwa Rang,5,A,Right Slide,Fixed Stance,Sliding Side Punch,Middle Section
+Hwa Rang,6,A,-,Vertical Stance,Knife Hand Downward Strike,High Section
+Hwa Rang,7,A,Forward,Walking Stance,Obverse Punch,Middle Section
+Hwa Rang,8,A,Left 90,Walking Stance,Outer Forearm Block,Low Section
+Hwa Rang,9,A,Forward,Walking Stance,Obverse Punch,Middle Section
+Hwa Rang,10,A,-,Walking Stance,Release Move,Middle Section
+Hwa Rang,11,A,Forward,-,Side Piercing Kick,Middle Section
+Hwa Rang,12,A,-,L Stance,Knife Hand Strike,Middle Section
+Hwa Rang,13,A,Forward,Walking Stance,Obverse Punch,Middle Section
+Hwa Rang,14,A,Forward,Walking Stance,Obverse Punch,Middle Section
+Hwa Rang,15,A,Left 270,L Stance,Knife Hand Guarding Block,Middle Section
+Hwa Rang,16,A,Forward,Walking Stance,Straight Fingertip Thrust,Middle Section
+Hwa Rang,17,A,Left 180,L Stance,Knife Hand Guarding Block,Middle Section
+Hwa Rang,18,A,Forward,-,Turning Kick,High Section
+Hwa Rang,19,A,Forward,-,Turning Kick,High Section
+Hwa Rang,20,A,Left 90,Walking Stance,Outer Forearm Block,Low Section
+Hwa Rang,21,A,-,L Stance,Obverse Punch,Middle Section
+Hwa Rang,22,A,Forward,L Stance,Obverse Punch,Middle Section
+Hwa Rang,23,A,Forward,L Stance,Obverse Punch,Middle Section
+Hwa Rang,24,A,-,Walking Stance,X-Fist Pressing Block,Low Section
+Hwa Rang,25,A,Forward,L Stance,Side Elbow Thrust,Middle Section
+Hwa Rang,26,A,Left 90,Closed Stance,Inner Forearm Block / Outer Forearm Block,Middle Section
+Hwa Rang,27,A,-,Closed Stance,Inner Forearm Block / Outer Forearm Block,Middle Section
+Hwa Rang,28,A,Forward,L Stance,Knife Hand Guarding Block,Middle Section
+Hwa Rang,29,A,Right 180,L Stance,Knife Hand Guarding Block,Middle Section
+Choong Moo,1,A,Left 90,L Stance,Twin Knife Hand Block,High Section
+Choong Moo,2,A,Forward,Walking Stance,Inward Knife Hand Strike,High Section
+Choong Moo,3,A,Right 180,L Stance,Knife Hand Guarding Block,Middle Section
+Choong Moo,4,A,Forward,Walking Stance,Flat Fingertip Thrust,High Section
+Choong Moo,5,A,Left 90,L Stance,Knife Hand Guarding Block,Middle Section
+Choong Moo,6,A,Right 180,Bending Ready Stance,Forearm Guarding Block,- Section
+Choong Moo,7,A,Forward,-,Side Piercing Kick to Rear,Middle Section
+Choong Moo,8,A,Left 180,L Stance,Knife Hand Guarding Block,Middle Section
+Choong Moo,9,A,Forward,L Stance,Flying Side Piercing Kick / Knife Hand Guarding Block,High Section
+Choong Moo,10,A,Left 270,L Stance,Outer Forearm Block,Low Section
+Choong Moo,11,A,Forward,Walking Stance,Grab (Opponent's Head),High Section
+Choong Moo,12,A,-,-,Knee Kick,Middle Section
+Choong Moo,13,A,Left180,Walking Stance,Reverse Knife Hand Strike,High Section
+Choong Moo,14,A,Forward,-,Turning Kick,High Section
+Choong Moo,15,A,Backward,-,Reverse Side Kick,Middle Section
+Choong Moo,16,A,Right 180,L Stance,Forearm Guarding Block,Middle Section
+Choong Moo,17,A,To 45,-,Turning Kick,Middle Section
+Choong Moo,18,A,Right 135,Fixed Stance,U-shape Block,High Section
+Choong Moo,19,A,Left 360,L Stance,Jump 360 to Knife Hand Guarding Block,Middle Section
+Choong Moo,20,A,Forward,Walking Stance,Upset Fingertip Thrust,Low Section
+Choong Moo,21,A,Backward,L Stance,Back Fist Strike / Outer Forearm Low Block,High Section
+Choong Moo,22,A,Forward,Walking Stance,Straight Fingertip Thrust,Middle Section
+Choong Moo,23,A,Left 270,Walking Stance,Doule Forearm Block,High Section
+Choong Moo,24,A,Left 90,Sitting Stance,Front Outer Forearm Block / Back Fist Side Strike,Middle Section
+Choong Moo,25,A,Left 90,-,Side Piercing Kick,Middle Section
+Choong Moo,26,A,Forward,-,Side Piercing Kick,Middle Section
+Choong Moo,27,A,Right 135,L Stance,X Knife Hand Checking Block,Middle Section
+Choong Moo,28,A,Forward,Walking Stance,Twin Upward Palm Block,Middle Section
+Choong Moo,29,A,Right 180,Walking Stance,Forearm Rising Block,High Section
+Choong Moo,30,A,-,Walking Stance,Reverse Punch,Middle Section
