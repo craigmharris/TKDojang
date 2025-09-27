@@ -60,13 +60,14 @@ final class BasicFunctionalityTests: XCTestCase {
     // MARK: - Model Creation Tests
     
     func testBeltLevelCreation() throws {
-        // Use JSON-based belt data instead of hardcoded values
-        let belt = try JSONTestHelpers.getStartingBeltFromJSON()
+        // Use TestDataFactory instead of JSONTestHelpers temporarily
+        let testDataFactory = TestDataFactory()
+        let belt = testDataFactory.createBasicBeltLevels().first!
         
         testContext.insert(belt)
         try testContext.save()
         
-        // Verify creation with JSON data
+        // Verify creation with test data
         XCTAssertFalse(belt.name.isEmpty, "Belt should have a name")
         XCTAssertFalse(belt.shortName.isEmpty, "Belt should have a short name")
         XCTAssertFalse(belt.colorName.isEmpty, "Belt should have a color name")
@@ -95,12 +96,13 @@ final class BasicFunctionalityTests: XCTestCase {
     }
     
     func testTerminologyEntryCreation() throws {
-        // Use JSON-based belt data instead of hardcoded values
-        let belt = try JSONTestHelpers.getStartingBeltFromJSON()
+        // Use TestDataFactory instead of JSONTestHelpers temporarily
+        let testDataFactory = TestDataFactory()
+        let belt = testDataFactory.createBasicBeltLevels().first!
         testContext.insert(belt)
         
         // Use standard test categories
-        let categories = JSONTestHelpers.createTestCategories()
+        let categories = testDataFactory.createBasicCategories()
         let category = categories.first { $0.name == "techniques" }!
         testContext.insert(category)
         

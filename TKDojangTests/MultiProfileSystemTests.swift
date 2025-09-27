@@ -59,9 +59,10 @@ final class MultiProfileSystemTests: XCTestCase {
     }
     
     private func setupTestData() {
-        // Use JSON-based belt data instead of hardcoded values
+        // Use TestDataFactory instead of JSONTestHelpers temporarily
         do {
-            let allBelts = try JSONTestHelpers.loadBeltLevelsFromJSON()
+            let testDataFactory = TestDataFactory()
+            let allBelts = testDataFactory.createBasicBeltLevels()
             // Insert first few belts for testing
             let testBelts = Array(allBelts.sorted { $0.sortOrder > $1.sortOrder }.prefix(3))
             
