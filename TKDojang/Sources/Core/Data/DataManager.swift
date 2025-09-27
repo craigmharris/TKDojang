@@ -214,24 +214,28 @@ class DataManager {
     }
     
     /**
-     * Dynamically scans all pattern JSON files to get expected pattern names
+     * Dynamically discovers pattern names from pattern JSON files
      */
     private func getExpectedPatternNames() -> Set<String> {
         var expectedNames = Set<String>()
         
-        // List of all pattern JSON files to scan
-        let patternFiles = [
-            "9th_keup_patterns", "8th_keup_patterns", "7th_keup_patterns", "6th_keup_patterns", 
-            "5th_keup_patterns", "4th_keup_patterns", "3rd_keup_patterns", "2nd_keup_patterns", 
-            "1st_keup_patterns", "1st_dan_patterns", "2nd_dan_patterns"
-        ]
+        // Dynamic discovery of pattern files (consistent with PatternContentLoader)
+        let patternFiles = discoverPatternFiles()
+        
+        print("📁 Dynamically discovered \(patternFiles.count) pattern JSON files: \(patternFiles)")
         
         for filename in patternFiles {
-            // Try multiple bundle locations (same as PatternContentLoader)
-            if let url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Patterns") ??
-                         Bundle.main.url(forResource: filename, withExtension: "json") ??
-                         Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Core/Data/Content/Patterns") {
-                
+            // Try subdirectory first, then fallback to bundle root
+            var url: URL?
+            url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Patterns")
+            if url == nil {
+                url = Bundle.main.url(forResource: filename, withExtension: "json")
+            }
+            if url == nil {
+                url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Core/Data/Content/Patterns")
+            }
+            
+            if let url = url {
                 do {
                     let data = try Data(contentsOf: url)
                     let contentData = try JSONDecoder().decode(PatternContentData.self, from: data)
@@ -253,55 +257,142 @@ class DataManager {
     }
     
     /**
-     * Dynamically scans all step sparring JSON files to get expected sequence identifiers
+     * Dynamically discovers pattern files from Patterns subdirectory
+     */
+    private func discoverPatternFiles() -> [String] {
+        var foundFiles: [String] = []
+        
+        // First try: Scan Patterns subdirectory for any JSON files ending with "_patterns"
+        if let patternsPath = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "Patterns") {
+            do {
+                let fileManager = FileManager.default
+                let contents = try fileManager.contentsOfDirectory(atPath: patternsPath)
+                let patternFiles = contents.filter { filename in
+                    filename.hasSuffix(".json") && filename.contains("_patterns")
+                }
+                
+                for jsonFile in patternFiles {
+                    let filename = jsonFile.replacingOccurrences(of: ".json", with: "")
+                    foundFiles.append(filename)
+                }
+            } catch {
+                print("⚠️ Failed to scan Patterns subdirectory: \(error)")
+            }
+        }
+        
+        // Fallback: Try bundle root for files containing pattern patterns
+        if foundFiles.isEmpty, let bundlePath = Bundle.main.resourcePath {
+            do {
+                let fileManager = FileManager.default
+                let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
+                let patternFiles = contents.filter { filename in
+                    guard filename.hasSuffix(".json") else { return false }
+                    // Look for files that match pattern naming conventions
+                    return filename.contains("_patterns")
+                }
+                
+                for jsonFile in patternFiles {
+                    let filename = jsonFile.replacingOccurrences(of: ".json", with: "")
+                    foundFiles.append(filename)
+                }
+            } catch {
+                print("⚠️ Failed to scan bundle root: \(error)")
+            }
+        }
+        
+        return foundFiles.sorted()
+    }
+    
+    /**
+     * Dynamically discovers step sparring sequence identifiers from StepSparring subdirectory
      */
     private func getExpectedStepSparringSequences() -> Set<String> {
         var expectedSequences = Set<String>()
         
-        // Scan bundle for step sparring JSON files (they're copied to bundle root, not subdirectory)
-        guard let bundlePath = Bundle.main.resourcePath else {
-            print("❌ Could not get bundle resource path for step sparring")
-            return expectedSequences
-        }
+        // Dynamic discovery of step sparring files (consistent with StepSparringContentLoader)
+        let stepSparringFiles = discoverStepSparringFiles()
         
-        let fileManager = FileManager.default
+        DebugLogger.data("📁 Dynamically discovered \(stepSparringFiles.count) step sparring JSON files: \(stepSparringFiles)")
         
-        do {
-            let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
-            let stepSparringFiles = contents.filter { filename in
-                // Only include JSON files that exist in StepSparring subdirectory
-                guard filename.hasSuffix(".json") else { return false }
-                let filenameWithoutExtension = filename.replacingOccurrences(of: ".json", with: "")
-                return Bundle.main.url(forResource: filenameWithoutExtension, withExtension: "json", subdirectory: "StepSparring") != nil
+        for filename in stepSparringFiles {
+            // Try subdirectory first, then fallback to bundle root
+            var url: URL?
+            url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "StepSparring")
+            if url == nil {
+                url = Bundle.main.url(forResource: filename, withExtension: "json")
             }
             
-            DebugLogger.data("📁 Found step sparring JSON files in bundle root: \(stepSparringFiles)")
-            
-            for jsonFile in stepSparringFiles {
-                let filename = jsonFile.replacingOccurrences(of: ".json", with: "")
-                
-                // Try to load and parse each JSON file from bundle root
-                if let url = Bundle.main.url(forResource: filename, withExtension: "json") {
-                    do {
-                        let data = try Data(contentsOf: url)
-                        let contentData = try JSONDecoder().decode(StepSparringContentData.self, from: data)
-                        
-                        // Add all sequence identifiers from this file
-                        for sequence in contentData.sequences {
-                            let sequenceId = "\(contentData.type)_\(sequence.sequenceNumber)"
-                            expectedSequences.insert(sequenceId)
-                        }
-                    } catch {
-                        print("⚠️ Failed to read step sparring sequences from \(filename): \(error)")
+            if let url = url {
+                do {
+                    let data = try Data(contentsOf: url)
+                    let contentData = try JSONDecoder().decode(StepSparringContentData.self, from: data)
+                    
+                    DebugLogger.data("✅ Found step sparring file: \(filename).json with \(contentData.sequences.count) sequences")
+                    
+                    // Add all sequence identifiers from this file
+                    for sequence in contentData.sequences {
+                        let sequenceId = "\(contentData.type)_\(sequence.sequenceNumber)"
+                        expectedSequences.insert(sequenceId)
                     }
+                } catch {
+                    DebugLogger.data("⚠️ Failed to read step sparring sequences from \(filename): \(error)")
                 }
+            } else {
+                DebugLogger.data("⚠️ Step sparring file not found: \(filename).json")
             }
-        } catch {
-            print("❌ Failed to scan StepSparring directory: \(error)")
         }
         
         DebugLogger.data("📋 Expected step sparring sequences from JSON: \(expectedSequences.sorted())")
         return expectedSequences
+    }
+    
+    /**
+     * Dynamically discovers step sparring files from StepSparring subdirectory
+     */
+    private func discoverStepSparringFiles() -> [String] {
+        var foundFiles: [String] = []
+        
+        // First try: Scan StepSparring subdirectory for any JSON files
+        if let stepSparringPath = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "StepSparring") {
+            DebugLogger.data("📁 Scanning StepSparring subdirectory: \(stepSparringPath)")
+            
+            do {
+                let fileManager = FileManager.default
+                let contents = try fileManager.contentsOfDirectory(atPath: stepSparringPath)
+                let jsonFiles = contents.filter { $0.hasSuffix(".json") }
+                
+                for jsonFile in jsonFiles {
+                    let filename = jsonFile.replacingOccurrences(of: ".json", with: "")
+                    foundFiles.append(filename)
+                }
+            } catch {
+                DebugLogger.data("⚠️ Failed to scan StepSparring subdirectory: \(error)")
+            }
+        }
+        
+        // Fallback: Try bundle root for files containing step sparring patterns
+        if foundFiles.isEmpty, let bundlePath = Bundle.main.resourcePath {
+            DebugLogger.data("📁 StepSparring subdirectory not found, scanning bundle root for step sparring files...")
+            
+            do {
+                let fileManager = FileManager.default
+                let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
+                let stepSparringFiles = contents.filter { filename in
+                    guard filename.hasSuffix(".json") else { return false }
+                    // Look for files that match step sparring patterns
+                    return filename.contains("_step") || filename.contains("semi_free")
+                }
+                
+                for jsonFile in stepSparringFiles {
+                    let filename = jsonFile.replacingOccurrences(of: ".json", with: "")
+                    foundFiles.append(filename)
+                }
+            } catch {
+                DebugLogger.data("⚠️ Failed to scan bundle root: \(error)")
+            }
+        }
+        
+        return foundFiles.sorted()
     }
     
     /**

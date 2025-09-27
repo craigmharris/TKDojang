@@ -21,22 +21,19 @@ struct PatternContentLoader {
     }
     
     /**
-     * Loads all pattern content from JSON files
+     * Dynamically loads all pattern content from JSON files discovered in Patterns subdirectory
      */
     @MainActor
     func loadAllContent() {
-        // Load patterns for each belt level
-        loadPatternContent(filename: "9th_keup_patterns")
-        loadPatternContent(filename: "8th_keup_patterns")
-        loadPatternContent(filename: "7th_keup_patterns")
-        loadPatternContent(filename: "6th_keup_patterns")
-        loadPatternContent(filename: "5th_keup_patterns")
-        loadPatternContent(filename: "4th_keup_patterns")
-        loadPatternContent(filename: "3rd_keup_patterns")
-        loadPatternContent(filename: "2nd_keup_patterns")
-        loadPatternContent(filename: "1st_keup_patterns")
-        loadPatternContent(filename: "1st_dan_patterns")
-        loadPatternContent(filename: "2nd_dan_patterns")
+        // Dynamically discover pattern files
+        let patternFiles = discoverPatternFiles()
+        
+        DebugLogger.data("📁 Dynamically discovered \(patternFiles.count) pattern JSON files: \(patternFiles)")
+        
+        // Load patterns for each discovered file
+        for filename in patternFiles {
+            loadPatternContent(filename: filename)
+        }
     }
     
     /**
@@ -57,47 +54,27 @@ struct PatternContentLoader {
         
         DebugLogger.data("🔍 Searching for \(filename).json...")
         
-        // First try: Patterns subdirectory (matches terminology pattern exactly)
+        // First try: Patterns subdirectory (consistent with architectural pattern)
         url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Patterns")
         if url != nil {
             DebugLogger.data("✅ Found \(filename).json in Patterns subdirectory")
         } else {
             DebugLogger.data("❌ Not found in Patterns subdirectory")
             
-            // Debug: List what IS in the Patterns subdirectory
-            if let bundlePath = Bundle.main.resourcePath {
-                let patternsPath = "\(bundlePath)/Patterns"
-                let fileManager = FileManager.default
-                if fileManager.fileExists(atPath: patternsPath) {
-                    do {
-                        let contents = try fileManager.contentsOfDirectory(atPath: patternsPath)
-                        DebugLogger.data("📁 Patterns directory contents: \(contents)")
-                    } catch {
-                        DebugLogger.data("❌ Failed to list Patterns contents: \(error)")
-                    }
-                } else {
-                    DebugLogger.data("❌ Patterns directory doesn't exist in bundle")
-                }
-            }
-        }
-        
-        // Fallback: try main bundle root
-        if url == nil {
+            // Fallback: try main bundle root for deployment flexibility
             url = Bundle.main.url(forResource: filename, withExtension: "json")
             if url != nil {
-                DebugLogger.data("✅ Found \(filename).json in main bundle root")
+                DebugLogger.data("✅ Found \(filename).json in main bundle root (fallback)")
             } else {
                 DebugLogger.data("❌ Not found in main bundle root")
-            }
-        }
-        
-        // Fallback: try Core/Data/Content/Patterns path
-        if url == nil {
-            url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Core/Data/Content/Patterns")
-            if url != nil {
-                DebugLogger.data("✅ Found \(filename).json in Core/Data/Content/Patterns")
-            } else {
-                DebugLogger.data("❌ Not found in Core/Data/Content/Patterns")
+                
+                // Fallback: try Core/Data/Content/Patterns path
+                url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Core/Data/Content/Patterns")
+                if url != nil {
+                    DebugLogger.data("✅ Found \(filename).json in Core/Data/Content/Patterns (fallback)")
+                } else {
+                    DebugLogger.data("❌ Not found in Core/Data/Content/Patterns")
+                }
             }
         }
         
@@ -130,6 +107,57 @@ struct PatternContentLoader {
         } catch {
             DebugLogger.data("❌ Failed to load pattern content from \(filename): \(error)")
         }
+    }
+    
+    /**
+     * Dynamically discovers pattern files from Patterns subdirectory
+     */
+    private func discoverPatternFiles() -> [String] {
+        var foundFiles: [String] = []
+        
+        // First try: Scan Patterns subdirectory for any JSON files ending with "_patterns"
+        if let patternsPath = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "Patterns") {
+            DebugLogger.data("📁 Scanning Patterns subdirectory: \(patternsPath)")
+            
+            do {
+                let fileManager = FileManager.default
+                let contents = try fileManager.contentsOfDirectory(atPath: patternsPath)
+                let patternFiles = contents.filter { filename in
+                    filename.hasSuffix(".json") && filename.contains("_patterns")
+                }
+                
+                for jsonFile in patternFiles {
+                    let filename = jsonFile.replacingOccurrences(of: ".json", with: "")
+                    foundFiles.append(filename)
+                }
+            } catch {
+                DebugLogger.data("⚠️ Failed to scan Patterns subdirectory: \(error)")
+            }
+        }
+        
+        // Fallback: Try bundle root for files containing pattern patterns
+        if foundFiles.isEmpty, let bundlePath = Bundle.main.resourcePath {
+            DebugLogger.data("📁 Patterns subdirectory not found, scanning bundle root for pattern files...")
+            
+            do {
+                let fileManager = FileManager.default
+                let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
+                let patternFiles = contents.filter { filename in
+                    guard filename.hasSuffix(".json") else { return false }
+                    // Look for files that match pattern naming conventions
+                    return filename.contains("_patterns")
+                }
+                
+                for jsonFile in patternFiles {
+                    let filename = jsonFile.replacingOccurrences(of: ".json", with: "")
+                    foundFiles.append(filename)
+                }
+            } catch {
+                DebugLogger.data("⚠️ Failed to scan bundle root: \(error)")
+            }
+        }
+        
+        return foundFiles.sorted()
     }
     
     /**

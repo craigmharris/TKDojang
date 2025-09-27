@@ -255,18 +255,57 @@ class TechniquesDataService: ObservableObject {
     private var targetAreasCache: [TargetArea] = []
     private var allTechniques: [Technique] = []
     
-    private let techniqueFiles = [
-        "kicks.json",
-        "strikes.json", 
-        "blocks.json",
-        "stances.json",
-        "hand_techniques.json",
-        "footwork.json",
-        "sparring.json",
-        "combinations.json",
-        "fundamentals.json",
-        "belt_requirements.json"
-    ]
+    /**
+     * Dynamically discovers technique files from Techniques subdirectory
+     */
+    private func discoverTechniqueFiles() -> [String] {
+        var foundFiles: [String] = []
+        
+        // First try: Scan Techniques subdirectory for any JSON files
+        if let techniquesPath = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "Techniques") {
+            print("📁 Scanning Techniques subdirectory: \(techniquesPath)")
+            
+            do {
+                let fileManager = FileManager.default
+                let contents = try fileManager.contentsOfDirectory(atPath: techniquesPath)
+                let jsonFiles = contents.filter { filename in
+                    guard filename.hasSuffix(".json") else { return false }
+                    // Skip special files that have different structure
+                    return !["target_areas.json", "techniques_index.json"].contains(filename)
+                }
+                
+                for jsonFile in jsonFiles {
+                    foundFiles.append(jsonFile)
+                }
+            } catch {
+                print("⚠️ Failed to scan Techniques subdirectory: \(error)")
+            }
+        }
+        
+        // Fallback: Try bundle root for technique files
+        if foundFiles.isEmpty, let bundlePath = Bundle.main.resourcePath {
+            print("📁 Techniques subdirectory not found, scanning bundle root for technique files...")
+            
+            do {
+                let fileManager = FileManager.default
+                let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
+                let techniqueFiles = contents.filter { filename in
+                    guard filename.hasSuffix(".json") else { return false }
+                    // Look for common technique file patterns, excluding special files
+                    return ["kicks.json", "strikes.json", "blocks.json", "stances.json", 
+                           "hand_techniques.json", "footwork.json", "sparring.json", 
+                           "combinations.json", "fundamentals.json", "belt_requirements.json"].contains(filename)
+                }
+                
+                foundFiles = techniqueFiles
+            } catch {
+                print("⚠️ Failed to scan bundle root: \(error)")
+            }
+        }
+        
+        print("📁 Found \(foundFiles.count) technique JSON files: \(foundFiles.sorted())")
+        return foundFiles.sorted()
+    }
     
     // MARK: - Public Methods
     
@@ -282,7 +321,10 @@ class TechniquesDataService: ObservableObject {
         do {
             print("🗃️ TechniquesDataService: Loading all technique data...")
             
-            // Load all technique files
+            // Dynamically discover and load technique files
+            let techniqueFiles = discoverTechniqueFiles()
+            print("🔍 TechniquesDataService: Discovered \(techniqueFiles.count) technique files: \(techniqueFiles)")
+            
             for file in techniqueFiles {
                 await loadTechniqueFile(file)
             }
@@ -410,14 +452,16 @@ class TechniquesDataService: ObservableObject {
         do {
             var url: URL?
             
-            // Try multiple bundle paths like other content loaders
+            // First try: Techniques subdirectory (consistent with architectural pattern)
             url = Bundle.main.url(forResource: category, withExtension: "json", subdirectory: "Techniques")
             
             if url == nil {
+                // Fallback: try main bundle root for deployment flexibility
                 url = Bundle.main.url(forResource: category, withExtension: "json")
             }
             
             if url == nil {
+                // Fallback: try Core/Data/Content/Techniques path
                 url = Bundle.main.url(forResource: category, withExtension: "json", subdirectory: "Core/Data/Content/Techniques")
             }
             
@@ -510,13 +554,16 @@ class TechniquesDataService: ObservableObject {
         do {
             var url: URL?
             
+            // First try: Techniques subdirectory (consistent with architectural pattern)
             url = Bundle.main.url(forResource: "techniques_index", withExtension: "json", subdirectory: "Techniques")
             
             if url == nil {
+                // Fallback: try main bundle root for deployment flexibility
                 url = Bundle.main.url(forResource: "techniques_index", withExtension: "json")
             }
             
             if url == nil {
+                // Fallback: try Core/Data/Content/Techniques path
                 url = Bundle.main.url(forResource: "techniques_index", withExtension: "json", subdirectory: "Core/Data/Content/Techniques")
             }
             
@@ -538,13 +585,16 @@ class TechniquesDataService: ObservableObject {
         do {
             var url: URL?
             
+            // First try: Techniques subdirectory (consistent with architectural pattern)
             url = Bundle.main.url(forResource: "target_areas", withExtension: "json", subdirectory: "Techniques")
             
             if url == nil {
+                // Fallback: try main bundle root for deployment flexibility
                 url = Bundle.main.url(forResource: "target_areas", withExtension: "json")
             }
             
             if url == nil {
+                // Fallback: try Core/Data/Content/Techniques path
                 url = Bundle.main.url(forResource: "target_areas", withExtension: "json", subdirectory: "Core/Data/Content/Techniques")
             }
             

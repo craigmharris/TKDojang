@@ -36,34 +36,59 @@ struct StepSparringContentLoader {
     }
     
     /**
-     * Get list of step sparring JSON files from StepSparring directory
-     * Uses explicit file list to avoid conflicts with other JSON files like sparring.json from Techniques
+     * Dynamically discovers step sparring JSON files from StepSparring subdirectory
+     * Uses subdirectory-aware scanning to avoid conflicts with other JSON files like sparring.json from Techniques
      */
     private func getStepSparringJsonFiles() -> [String] {
-        // Explicit list of step sparring files that should be in the StepSparring directory
-        let expectedStepSparringFiles = [
-            "8th_keup_three_step",
-            "7th_keup_three_step", 
-            "6th_keup_three_step",
-            "5th_keup_two_step",
-            "4th_keup_two_step",
-            "3rd_keup_one_step",
-            "1st_keup_semi_free"
-        ]
-        
         var foundFiles: [String] = []
         
-        // Verify each expected file exists in the bundle
-        for filename in expectedStepSparringFiles {
-            if Bundle.main.url(forResource: filename, withExtension: "json") != nil {
-                foundFiles.append(filename)
-                DebugLogger.data("✅ Found step sparring file: \(filename).json")
-            } else {
-                DebugLogger.data("⚠️ Expected step sparring file not found: \(filename).json")
+        // First try: Scan StepSparring subdirectory for any JSON files
+        if let bundlePath = Bundle.main.resourcePath,
+           let stepSparringPath = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "StepSparring") {
+            
+            DebugLogger.data("📁 Scanning StepSparring subdirectory: \(stepSparringPath)")
+            
+            do {
+                let fileManager = FileManager.default
+                let contents = try fileManager.contentsOfDirectory(atPath: stepSparringPath)
+                let jsonFiles = contents.filter { $0.hasSuffix(".json") }
+                
+                for jsonFile in jsonFiles {
+                    let filename = jsonFile.replacingOccurrences(of: ".json", with: "")
+                    foundFiles.append(filename)
+                    DebugLogger.data("✅ Found step sparring file: \(filename).json in StepSparring subdirectory")
+                }
+            } catch {
+                DebugLogger.data("⚠️ Failed to scan StepSparring subdirectory: \(error)")
             }
         }
         
-        DebugLogger.data("📁 Found \(foundFiles.count) step sparring JSON files: \(foundFiles)")
+        // Fallback: Try bundle root for files containing step sparring patterns
+        if foundFiles.isEmpty {
+            DebugLogger.data("📁 StepSparring subdirectory not found, scanning bundle root for step sparring files...")
+            
+            if let bundlePath = Bundle.main.resourcePath {
+                do {
+                    let fileManager = FileManager.default
+                    let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
+                    let stepSparringFiles = contents.filter { filename in
+                        guard filename.hasSuffix(".json") else { return false }
+                        // Look for files that match step sparring patterns
+                        return filename.contains("_step") || filename.contains("semi_free")
+                    }
+                    
+                    for jsonFile in stepSparringFiles {
+                        let filename = jsonFile.replacingOccurrences(of: ".json", with: "")
+                        foundFiles.append(filename)
+                        DebugLogger.data("✅ Found step sparring file: \(filename).json in bundle root")
+                    }
+                } catch {
+                    DebugLogger.data("⚠️ Failed to scan bundle root: \(error)")
+                }
+            }
+        }
+        
+        DebugLogger.data("📁 Found \(foundFiles.count) step sparring JSON files: \(foundFiles.sorted())")
         return foundFiles.sorted()
     }
     
@@ -96,12 +121,20 @@ struct StepSparringContentLoader {
         
         DebugLogger.data("🔍 Searching for \(filename).json...")
         
-        // Try main bundle root first (where Xcode copies the files)
-        url = Bundle.main.url(forResource: filename, withExtension: "json")
+        // First try: StepSparring subdirectory (consistent with architectural pattern)
+        url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "StepSparring")
         if url != nil {
-            DebugLogger.data("✅ Found \(filename).json in main bundle root")
+            DebugLogger.data("✅ Found \(filename).json in StepSparring subdirectory")
         } else {
-            DebugLogger.data("❌ Not found in main bundle root")
+            DebugLogger.data("❌ Not found in StepSparring subdirectory")
+            
+            // Fallback: try main bundle root for deployment flexibility
+            url = Bundle.main.url(forResource: filename, withExtension: "json")
+            if url != nil {
+                DebugLogger.data("✅ Found \(filename).json in main bundle root (fallback)")
+            } else {
+                DebugLogger.data("❌ Not found in main bundle root either")
+            }
         }
         
         guard let fileUrl = url else {
