@@ -1,180 +1,355 @@
 {
   "belt_level": "6th Keup",
-  "belt_id": "6th_keup", 
-  "line_work_sets": [
+  "belt_id": "6th_keup",
+  "belt_color": "green",
+  "line_work_exercises": [
     {
-      "id": "intermediate_stances",
-      "title": "Intermediate Stances",
-      "category": "Stances",
-      "description": "Stances required for 6th keup grading with movement",
+      "id": "fwd_bwd_twin_knife_hand_block",
+      "movement_type": "FWD & BWD",
+      "order": 1,
+      "name": "L stance, twin knife hand block",
       "techniques": [
-        {
-          "id": "walking_stance_adv",
-          "name": "Walking Stance (Advanced)",
-          "korean": "Gunnun Sogi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 6,
-              "description": "Step forward maintaining perfect walking stance balance and posture"
-            },
-            {
-              "direction": "backward", 
-              "count": 6,
-              "description": "Step backward maintaining walking stance, focus on consistent distance"
-            }
-          ],
-          "key_points": [
-            "Maintain shoulder width throughout",
-            "Keep weight evenly distributed",
-            "Front foot pointing forward, back foot 15° outward",
-            "Consistent stepping distance"
-          ],
-          "common_mistakes": [
-            "Varying stance width between steps",
-            "Leaning too far forward or backward",
-            "Inconsistent step length"
-          ]
-        },
         {
           "id": "l_stance",
-          "name": "L-Stance",
-          "korean": "Niunja Sogi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 4,
-              "description": "Step forward into L-stance, 70% weight on back leg"
-            },
-            {
-              "direction": "backward",
-              "count": 4, 
-              "description": "Step backward into L-stance, maintain proper weight distribution"
-            }
-          ],
-          "key_points": [
-            "70% weight on back leg, 30% on front",
-            "Front foot pointing forward",
-            "Back foot perpendicular to front foot",
-            "Shoulder width apart sideways"
-          ],
-          "common_mistakes": [
-            "Equal weight distribution on both legs",
-            "Front foot not pointing forward",
-            "Stance too wide or narrow"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "intermediate_blocks",
-      "title": "Intermediate Blocks", 
-      "category": "Blocking",
-      "description": "Advanced blocking techniques for 6th keup level",
-      "techniques": [
-        {
-          "id": "high_block",
-          "name": "High Block",
-          "korean": "Nopunde Bakat Palmok Makgi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 6,
-              "description": "Step forward in walking stance, execute high block with opposite arm"
-            },
-            {
-              "direction": "backward",
-              "count": 6,
-              "description": "Step backward in walking stance, execute high block with opposite arm"
-            }
-          ],
-          "key_points": [
-            "Block finishes above forehead level",
-            "Outer forearm as blocking surface",
-            "Strong upward motion",
-            "Opposite hand pulls to hip"
-          ],
-          "common_mistakes": [
-            "Block too low - should protect head",
-            "Using inner forearm instead of outer",
-            "Weak upward trajectory"
-          ]
+          "english": "L Stance",
+          "romanised": "Niunja Sogi",
+          "hangul": "ㄴ자서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "L-shaped stance with 70% weight on back leg, 30% on front"
         },
         {
-          "id": "inner_forearm_block",
-          "name": "Inner Forearm Block",
-          "korean": "An Palmok Makgi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 4,
-              "description": "Step forward, execute inner forearm block with opposite arm"
-            },
-            {
-              "direction": "backward",
-              "count": 4,
-              "description": "Step backward, execute inner forearm block with opposite arm"
-            }
-          ],
-          "key_points": [
-            "Inner forearm makes contact",
-            "Block across the body",
-            "Elbow stays close to ribs",
-            "Strong inward motion"
-          ],
-          "common_mistakes": [
-            "Elbow moving away from body",
-            "Using wrong part of forearm",
-            "Insufficient inward power"
-          ]
+          "id": "twin_knife_hand_block",
+          "english": "Twin Knife Hand Block",
+          "romanised": "Sang Sonkal Makgi",
+          "hangul": "쌍손칼막기",
+          "category": "Blocking",
+          "target_area": "Middle section",
+          "description": "Double knife hand block using both hands simultaneously"
         }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 1,
+        "movement_pattern": "Step forward into L-stance, execute twin knife hand block. Repeat stepping backward.",
+        "key_points": [
+          "Stable L-stance foundation",
+          "Both knife hands coordinated",
+          "Proper blocking angles"
+        ],
+        "common_mistakes": [
+          "Poor L-stance balance",
+          "Uncoordinated hands",
+          "Wrong angles"
+        ],
+        "execution_tips": [
+          "Settle weight in L-stance",
+          "Coordinate both hands",
+          "Block at proper angles"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Blocking"
       ]
     },
     {
-      "id": "intermediate_kicks",
-      "title": "Basic Kicks",
-      "category": "Kicking", 
-      "description": "Fundamental kicking techniques introduced at 6th keup",
+      "id": "fwd_back_piercing_kick",
+      "movement_type": "FWD",
+      "order": 2,
+      "name": "Back piercing kick forward",
       "techniques": [
         {
-          "id": "front_snap_kick",
-          "name": "Front Snap Kick",
-          "korean": "Ap Cha Busigi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 4,
-              "description": "Step forward, execute front snap kick with rear leg"
-            },
-            {
-              "direction": "backward",
-              "count": 4,
-              "description": "Step backward, execute front snap kick with rear leg"
-            }
-          ],
-          "key_points": [
-            "Knee comes up first",
-            "Snap kick with ball of foot",
-            "Quick return to chamber position",
-            "Maintain balance throughout"
-          ],
-          "common_mistakes": [
-            "Pushing instead of snapping",
-            "Poor balance on standing leg",
-            "Not chambering properly"
-          ]
+          "id": "back_piercing_kick",
+          "english": "Back Piercing Kick",
+          "romanised": "Dwit Cha Jirugi",
+          "hangul": "뒤차지르기",
+          "category": "Kicking",
+          "target_area": "Middle section",
+          "description": "Backward linear kick executed by turning and thrusting with the heel"
         }
+      ],
+      "execution": {
+        "direction": "forward",
+        "repetitions": 1,
+        "movement_pattern": "Turn and execute back piercing kick moving forward, land in walking stance",
+        "key_points": [
+          "Complete body turn",
+          "Heel contact surface",
+          "Linear thrusting motion"
+        ],
+        "common_mistakes": [
+          "Incomplete turn",
+          "Wrong striking surface",
+          "Poor balance"
+        ],
+        "execution_tips": [
+          "Turn completely around",
+          "Strike with heel",
+          "Control the landing"
+        ]
+      },
+      "categories": [
+        "Kicking"
+      ]
+    },
+    {
+      "id": "bwd_reverse_knife_hand_strike",
+      "movement_type": "BWD",
+      "order": 3,
+      "name": "L stance, reverse knife hand strike",
+      "techniques": [
+        {
+          "id": "l_stance",
+          "english": "L Stance",
+          "romanised": "Niunja Sogi",
+          "hangul": "ㄴ자서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "L-shaped stance with proper weight distribution"
+        },
+        {
+          "id": "reverse_knife_hand_strike",
+          "english": "Reverse Knife Hand Strike",
+          "romanised": "Bandae Sonkal Taerigi",
+          "hangul": "반대손칼때리기",
+          "category": "Striking",
+          "target_area": "Middle section",
+          "description": "Knife hand strike using the rear hand, opposite to traditional knife hand"
+        }
+      ],
+      "execution": {
+        "direction": "backward",
+        "repetitions": 1,
+        "movement_pattern": "Step backward into L-stance, execute reverse knife hand strike",
+        "key_points": [
+          "Stable L-stance positioning",
+          "Rear hand striking motion",
+          "Sharp knife hand technique"
+        ],
+        "common_mistakes": [
+          "Wrong hand usage",
+          "Poor L-stance",
+          "Weak striking motion"
+        ],
+        "execution_tips": [
+          "Use rear hand",
+          "Maintain L-stance stability",
+          "Strike with conviction"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Striking"
+      ]
+    },
+    {
+      "id": "fwd_hook_kick",
+      "movement_type": "FWD",
+      "order": 4,
+      "name": "Hook kick forward",
+      "techniques": [
+        {
+          "id": "hook_kick",
+          "english": "Hook Kick",
+          "romanised": "Golcho Chagi",
+          "hangul": "걸쳐차기",
+          "category": "Kicking",
+          "target_area": "Head level",
+          "description": "Hooking kick that travels in an arc, striking with the heel or foot sword"
+        }
+      ],
+      "execution": {
+        "direction": "forward",
+        "repetitions": 1,
+        "movement_pattern": "Execute hook kick moving forward, land in walking stance",
+        "key_points": [
+          "Arcing kick trajectory",
+          "Proper hooking motion",
+          "Controlled execution"
+        ],
+        "common_mistakes": [
+          "Linear kick path",
+          "Poor hooking motion",
+          "Loss of balance"
+        ],
+        "execution_tips": [
+          "Create hooking arc",
+          "Control the motion",
+          "Land with balance"
+        ]
+      },
+      "categories": [
+        "Kicking"
+      ]
+    },
+    {
+      "id": "alternating_upward_palm_block",
+      "movement_type": "ALTERNATING",
+      "order": 5,
+      "name": "Horse stance, alternating upward palm blocks",
+      "techniques": [
+        {
+          "id": "horse_stance",
+          "english": "Horse Stance",
+          "romanised": "Juchum Sogi",
+          "hangul": "주춤서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Wide stance with feet parallel, strong foundation"
+        },
+        {
+          "id": "upward_palm_block",
+          "english": "Upward Palm Block",
+          "romanised": "Chookyo Sonbadak Makgi",
+          "hangul": "추켜손바닥막기",
+          "category": "Blocking",
+          "target_area": "Head level",
+          "description": "Rising block using the palm to deflect attacks upward"
+        }
+      ],
+      "execution": {
+        "direction": "alternating",
+        "repetitions": 6,
+        "movement_pattern": "In horse stance, alternate left and right upward palm blocks",
+        "key_points": [
+          "Maintain deep horse stance",
+          "Proper palm blocking surface",
+          "Smooth alternating rhythm"
+        ],
+        "common_mistakes": [
+          "Rising from stance",
+          "Using fist instead of palm",
+          "Poor rhythm"
+        ],
+        "execution_tips": [
+          "Stay low in stance",
+          "Use palm surface",
+          "Keep steady rhythm"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Blocking"
+      ]
+    },
+    {
+      "id": "fwd_bwd_vertical_punch",
+      "movement_type": "FWD & BWD",
+      "order": 6,
+      "name": "Walking stance, vertical punch",
+      "techniques": [
+        {
+          "id": "walking_stance",
+          "english": "Walking Stance",
+          "romanised": "Gunnun Sogi",
+          "hangul": "걷는서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Natural forward walking stance with weight evenly distributed"
+        },
+        {
+          "id": "vertical_punch",
+          "english": "Vertical Punch",
+          "romanised": "Sewo Jirugi",
+          "hangul": "세워지르기",
+          "category": "Striking",
+          "target_area": "Middle section",
+          "description": "Punch delivered with the fist in vertical position, thumb on top"
+        }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 1,
+        "movement_pattern": "Step forward into walking stance, execute vertical punch. Repeat stepping backward.",
+        "key_points": [
+          "Strong walking stance foundation",
+          "Vertical fist orientation",
+          "Proper punching mechanics"
+        ],
+        "common_mistakes": [
+          "Horizontal fist position",
+          "Poor stance",
+          "Weak punching motion"
+        ],
+        "execution_tips": [
+          "Keep fist vertical",
+          "Drive from hips",
+          "Maintain balance"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Striking"
+      ]
+    },
+    {
+      "id": "static_complex_sequence",
+      "movement_type": "STATIC",
+      "order": 7,
+      "name": "L stance, middle knife hand strike, front leg front kick",
+      "techniques": [
+        {
+          "id": "l_stance",
+          "english": "L Stance",
+          "romanised": "Niunja Sogi",
+          "hangul": "ㄴ자서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "L-shaped stance providing stable platform for combination"
+        },
+        {
+          "id": "middle_knife_hand_strike",
+          "english": "Middle Knife Hand Strike",
+          "romanised": "Kaunde Sonkal Taerigi",
+          "hangul": "가운데손칼때리기",
+          "category": "Striking",
+          "target_area": "Middle section",
+          "description": "Knife hand strike targeting the middle section"
+        },
+        {
+          "id": "front_leg_front_kick",
+          "english": "Front Leg Front Kick",
+          "romanised": "Ap Bal Ap Chagi",
+          "hangul": "앞발앞차기",
+          "category": "Kicking",
+          "target_area": "Middle section",
+          "description": "Front kick executed with the front leg from current stance"
+        }
+      ],
+      "execution": {
+        "direction": "static",
+        "repetitions": 1,
+        "movement_pattern": "From L-stance, execute middle knife hand strike, then front leg front kick without changing base position",
+        "sequence_notes": "Complex combination demonstrating hand-foot coordination from static position",
+        "key_points": [
+          "Maintain L-stance stability",
+          "Clean knife hand technique",
+          "Front leg kick without stance change"
+        ],
+        "common_mistakes": [
+          "Stance instability",
+          "Poor hand-foot coordination",
+          "Moving supporting leg"
+        ],
+        "execution_tips": [
+          "Stay grounded in stance",
+          "Coordinate hand and foot",
+          "Keep supporting leg stable"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Striking",
+        "Kicking"
       ]
     }
   ],
-  "practice_notes": {
-    "warmup": "Complete thorough warmup including joint rotations and dynamic stretching, especially for hip flexibility needed for kicks",
-    "focus_areas": [
-      "Maintain consistent stance dimensions",
-      "Coordinate blocks with proper stepping", 
-      "Develop kicking balance and control",
-      "Practice smooth transitions between techniques"
-    ],
-    "progression": "Start with slow, controlled movements focusing on correct form before increasing speed"
-  }
+  "total_exercises": 7,
+  "skill_focus": [
+    "L-stance mastery and stability",
+    "Advanced kicking techniques",
+    "Hand-foot coordination",
+    "Complex static combinations"
+  ]
 }
