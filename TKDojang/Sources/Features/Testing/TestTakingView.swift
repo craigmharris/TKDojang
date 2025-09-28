@@ -16,7 +16,7 @@ import SwiftUI
 struct TestTakingView: View {
     let testSession: TestSession
     @Environment(\.dismiss) private var dismiss
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @State private var testingService: TestingService?
     @State private var currentQuestionIndex = 0
     @State private var selectedAnswer: Int?
@@ -171,21 +171,21 @@ struct TestTakingView: View {
         .onAppear {
             if testingService == nil {
                 testingService = TestingService(
-                    modelContext: dataManager.modelContext,
-                    terminologyService: dataManager.terminologyService
+                    modelContext: dataServices.modelContext,
+                    terminologyService: dataServices.terminologyService
                 )
             }
             
             // Load the active profile
-            userProfile = dataManager.profileService.getActiveProfile()
+            userProfile = dataServices.profileService.getActiveProfile()
             
             // Mark first question as presented
             if let firstQuestion = currentQuestion {
                 firstQuestion.markAsPresented()
             }
         }
-        .onChange(of: dataManager.profileService.activeProfile) {
-            userProfile = dataManager.profileService.getActiveProfile()
+        .onChange(of: dataServices.profileService.activeProfile) {
+            userProfile = dataServices.profileService.getActiveProfile()
         }
         .navigationDestination(isPresented: $showingResults) {
             if let result = testSession.result {
@@ -233,9 +233,29 @@ struct TestTakingView: View {
             let result = try service.completeTest(session: testSession, for: userProfile)
             // Ensure the result is set on the session for navigation
             testSession.result = result
+            
+            // Record study session for analytics
+            recordTestSession(result: result)
+            
             showingResults = true
         } catch {
             print("Failed to complete test: \(error)")
+        }
+    }
+    
+    private func recordTestSession(result: TestResult) {
+        let totalQuestions = testSession.questions.count
+        let correctAnswers = testSession.questions.filter { $0.isCorrect }.count
+        
+        do {
+            try dataServices.profileService.recordStudySession(
+                sessionType: .testing,
+                itemsStudied: totalQuestions,
+                correctAnswers: correctAnswers,
+                focusAreas: [testSession.testType.displayName]
+            )
+        } catch {
+            print("❌ Failed to record test session: \(error)")
         }
     }
 }

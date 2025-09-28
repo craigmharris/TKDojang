@@ -1,190 +1,319 @@
 {
   "belt_level": "9th Keup",
-  "belt_id": "9th_keup", 
-  "line_work_sets": [
+  "belt_id": "9th_keup",
+  "belt_color": "yellow",
+  "line_work_exercises": [
     {
-      "id": "basic_stances_extended",
-      "title": "Extended Basic Stances",
-      "category": "Stances",
-      "description": "Refined stance work building on 10th keup fundamentals",
+      "id": "sitting_stance_double_punch",
+      "movement_type": "STATIC",
+      "order": 1,
+      "name": "Sitting stance, double punch",
       "techniques": [
         {
-          "id": "attention_stance_extended",
-          "name": "Attention Stance (Extended Practice)",
-          "korean": "Charyeot Sogi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 8,
-              "description": "Step forward maintaining perfect attention stance posture"
-            },
-            {
-              "direction": "backward", 
-              "count": 8,
-              "description": "Step backward in attention stance, focus on heel alignment"
-            }
-          ],
-          "key_points": [
-            "Heels together, toes 30° apart",
-            "Body weight evenly distributed",
-            "Shoulders back, chest out",
-            "Eyes looking straight ahead",
-            "Arms hanging naturally at sides"
-          ],
-          "common_mistakes": [
-            "Feet too far apart",
-            "Slouching posture",
-            "Looking down instead of ahead",
-            "Tense shoulders"
-          ]
+          "id": "sitting_stance",
+          "english": "Sitting Stance",
+          "romanised": "Annun Sogi",
+          "hangul": "걷는서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Natural forward walking stance with weight evenly distributed"
         },
         {
-          "id": "ready_stance_extended",
-          "name": "Ready Stance (Extended Practice)",
-          "korean": "Junbi Sogi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 6,
-              "description": "Step forward into ready stance with consistent foot positioning"
-            },
-            {
-              "direction": "backward",
-              "count": 6,
-              "description": "Step backward into ready stance, maintain shoulder width"
-            }
-          ],
-          "key_points": [
-            "Feet shoulder width apart",
-            "Parallel foot positioning",
-            "Slight bend in knees",
-            "Weight evenly distributed",
-            "Relaxed but alert posture"
-          ],
-          "common_mistakes": [
-            "Feet too close or too wide",
-            "One foot turned outward",
-            "Locked knees",
-            "Leaning forward or backward"
-          ]
+          "id": "double_punch",
+          "english": "Double Punch",
+          "romanised": "Doo Jirugi",
+          "hangul": "바깥팔목막기",
+          "category": "Blocking",
+          "target_area": "Middle section",
+          "description": "Outward blocking technique using the outer edge of the forearm"
         }
+      ],
+      "execution": {
+        "direction": "static",
+        "repetitions": 10,
+        "movement_pattern": "Execute an obverse punch immediately followed by a reverse punch.",
+        "key_points": [
+          "Stable sitting stance",
+          "Middle section targetting the solar plexus",
+          "Proper hip twists on each punch"
+        ],
+        "common_mistakes": [
+          "Not returning inactive hand to reaction position",
+          "Weak stance"
+        ],
+        "execution_tips": [
+          "Use reverse punch from prior execution as the focus point for the next obverse punch",
+          "Use hip rotation"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Sriking"
       ]
     },
     {
-      "id": "basic_blocks_extended",
-      "title": "Extended Basic Blocks", 
-      "category": "Blocking",
-      "description": "Building on fundamental blocks with enhanced form and power",
+      "id": "static_walking_ready_front_snap_kick",
+      "movement_type": "STATIC",
+      "order": 2,
+      "name": "Walking ready stance, front snap kick",
       "techniques": [
         {
-          "id": "low_block_extended",
-          "name": "Low Block (Extended)",
-          "korean": "Najunde Bakat Palmok Makgi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 8,
-              "description": "Step forward in walking stance, execute low block with opposite arm"
-            },
-            {
-              "direction": "backward",
-              "count": 8,
-              "description": "Step backward in walking stance, execute low block with opposite arm"
-            }
-          ],
-          "key_points": [
-            "Block finishes at groin level",
-            "Outer forearm as blocking surface",
-            "Strong downward motion",
-            "Opposite hand pulls to hip",
-            "Hip rotation for power"
-          ],
-          "common_mistakes": [
-            "Block too high - should protect low targets",
-            "Using inner forearm instead of outer",
-            "Insufficient downward force",
-            "No hip involvement"
-          ]
+          "id": "walking_stance",
+          "english": "Walking Ready Stance",
+          "romanised": "Gunnun Junbi Sogi",
+          "hangul": "걷는서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Natural forward walking stance for stable kicking platform"
         },
         {
-          "id": "middle_block_extended",
-          "name": "Middle Block (Extended)",
-          "korean": "Kaunde Bakat Palmok Makgi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 6,
-              "description": "Step forward in walking stance, execute middle block with opposite arm"
-            },
-            {
-              "direction": "backward",
-              "count": 6,
-              "description": "Step backward in walking stance, execute middle block with opposite arm"
-            }
-          ],
-          "key_points": [
-            "Block finishes at solar plexus level",
-            "Outer forearm as blocking surface",
-            "Strong circular motion",
-            "Elbow close to ribs",
-            "Coordinate with stepping"
-          ],
-          "common_mistakes": [
-            "Block too high or low for middle section",
-            "Elbow moving away from body",
-            "Weak circular motion",
-            "Poor timing with footwork"
-          ]
+          "id": "front_snap_kick",
+          "english": "Front Snap Kick",
+          "romanised": "Ap Cha Busigi",
+          "hangul": "앞차기",
+          "category": "Kicking",
+          "target_area": "Middle section",
+          "description": "Forward thrusting kick using the ball of the foot"
         }
+      ],
+      "execution": {
+        "direction": "static",
+        "repetitions": 10,
+        "movement_pattern": "From walking ready stance, execute front snap kick, return to stance.",
+        "key_points": [
+          "Balanced standing leg",
+          "Knee up into chamber position first, then extend",
+          "Ball of foot contact"
+        ],
+        "common_mistakes": [
+          "Kicking with toes",
+          "Poor balance",
+          "No knee chamber"
+        ],
+        "execution_tips": [
+          "Chamber knee first",
+          "Keep hips square",
+          "Quick retraction"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Kicking"
       ]
     },
     {
-      "id": "basic_strikes_extended",
-      "title": "Extended Basic Strikes",
-      "category": "Striking", 
-      "description": "Fundamental striking techniques with improved power and accuracy",
+      "id": "walking_double_punch",
+      "movement_type": "FWD & BWD",
+      "order": 3,
+      "name": "Walking stance, double punch",
       "techniques": [
         {
-          "id": "straight_punch_extended",
-          "name": "Straight Punch (Extended)",
-          "korean": "Baro Jireugi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 8,
-              "description": "Step forward in walking stance, execute straight punch with opposite arm"
-            },
-            {
-              "direction": "backward",
-              "count": 8,
-              "description": "Step backward in walking stance, execute straight punch with opposite arm"
-            }
-          ],
-          "key_points": [
-            "Punch with two top knuckles",
-            "Straight line to target",
-            "Rotate fist on impact",
-            "Opposite hand pulls to hip",
-            "Use hip rotation for power"
-          ],
-          "common_mistakes": [
-            "Punching with wrong knuckles",
-            "Curved punch path",
-            "No fist rotation",
-            "Telegraphing the punch"
-          ]
+          "id": "walking_stance",
+          "english": "Walking Stance",
+          "romanised": "Gunnun Sogi",
+          "hangul": "걷는서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Natural forward walking stance with weight evenly distributed"
+        },
+        {
+          "id": "double_punch",
+          "english": "Double Punch",
+          "romanised": "Doo Jirugi",
+          "hangul": "손칼때리기",
+          "category": "Striking",
+          "target_area": "Middle section",
+          "description": "Chopping strike using the outer edge of the hand"
         }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 5,
+        "movement_pattern": "Step forward into walking stance, execute double punch. Repeat stepping backward.",
+        "key_points": [
+          "Strong walking stance foundation",
+          "Sharp chopping motion",
+          "Proper hand position"
+        ],
+        "common_mistakes": [
+          "Reverse punch before obverse punch",
+          "Weak stance",
+          "Incorrect targeting"
+        ],
+        "execution_tips": [
+          "Keep hand rigid",
+          "Use hip rotation",
+          "Strike through target"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Striking"
+      ]
+    },
+    {
+      "id": "l_stance_middle_block",
+      "movement_type": "FWD & BWD",
+      "order": 4,
+      "name": "L stance, middle block",
+      "techniques": [
+        {
+          "id": "l_stance",
+          "english": "L Stance",
+          "romanised": "Niunja Sogi",
+          "hangul": "걷는서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Natural L stance with weight distributed 70/30 on the rear leg"
+        },
+        {
+          "id": "middle_block",
+          "english": "Middle Inner Forearm Block",
+          "romanised": "Kaunde An Palmok Makgi",
+          "hangul": "반대지르기",
+          "category": "Blocking",
+          "target_area": "Middle section",
+          "description": "Block using the inner forearm, on to the forward leg"
+        }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 5,
+        "movement_pattern": "Step forward into L stance, execute middle inner forearm block. Repeat stepping backward.",
+        "key_points": [
+          "Stable L stance",
+          "Block with forward arm",
+          "Hip rotation for power"
+        ],
+        "common_mistakes": [
+          "Improper weight distribution",
+          "No hip involvement",
+          "Feed distance incorrect"
+        ],
+        "execution_tips": [
+          "Rotate hips strongly",
+          "Keep opposite hand chambered"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Blocking"
+      ]
+    },
+    {
+      "id": "l_stance_knife_hand_strike",
+      "movement_type": "FWD & BWD",
+      "order": 5,
+      "name": "Walking stance, knife hand strike",
+      "techniques": [
+        {
+          "id": "l_stance",
+          "english": "L Stance",
+          "romanised": "Niunja Sogi",
+          "hangul": "걷는서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Natural forward walking stance maintained throughout alternating sequence"
+        },
+        {
+          "id": "knife_hand_strike",
+          "english": "Knife Hand Strike",
+          "romanised": "Sonkal Taerigi",
+          "hangul": "높은데지르기",
+          "category": "Striking",
+          "target_area": "Middle section",
+          "description": "Straight punch targeting the head level"
+        }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 5,
+        "movement_pattern": "In L stance, alternate left and right knife hand strikes to middle section",
+        "key_points": [
+          "Maintain stable stance",
+          "Cross arms during stance change",
+          "Land in block"
+        ],
+        "common_mistakes": [
+          "Moving stance",
+          "Knife hand strike too low",
+          "Poor rhythm"
+        ],
+        "execution_tips": [
+          "Stay grounded",
+          "Keep rhythm consistent",
+          "Full extension on each strike"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Striking"
+      ]
+    },
+    {
+      "id": "walking_low_block_rising_block",
+      "movement_type": "STATIC",
+      "order": 6,
+      "name": "Walking stance, low block and rising block",
+      "techniques": [
+        {
+          "id": "hwalking_stance",
+          "english": "Walking Stance",
+          "romanised": "Gunnun Sogi",
+          "hangul": "주춤서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Wide stance with feet parallel, thighs parallel to ground"
+        },
+        {
+          "id": "outer_forearm_block",
+          "english": "Outer Forearm Block",
+          "romanised": "Bakat Palmok Makgi",
+          "hangul": "안팔목막기",
+          "category": "Blocking",
+          "target_area": "Low section",
+          "description": "Outward sweeping block using the outer forearm"
+        },
+        {
+          "id": "rising_block",
+          "english": "Rising Block",
+          "romanised": "Chookyu Makgi",
+          "hangul": "안팔목막기",
+          "category": "Blocking",
+          "target_area": "High section",
+          "description": "Upward sweeping block using the outer forearm"
+        }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 1,
+        "movement_pattern": "Step forward/backward into walking stance, executing a low outer forearm block immediately followed by a rising block",
+        "key_points": [
+          "Chamber both blocks",
+          "Strong discernable hip twist between blocks",
+          "Maintain stance stability"
+        ],
+        "common_mistakes": [
+          "Stance too narrow",
+          "Rising block below head",
+          "Loss of balance"
+        ],
+        "execution_tips": [
+          "Return to arms crossed and chabered before each block",
+          "Correctly cross arms (watch face to watch face)"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Blocking"
       ]
     }
   ],
-  "practice_notes": {
-    "warmup": "Complete basic warmup with emphasis on stance transitions and arm swings for blocking motions",
-    "focus_areas": [
-      "Improve stance consistency and balance",
-      "Develop stronger blocking techniques with proper body mechanics", 
-      "Enhance punching power through hip rotation",
-      "Practice smooth transitions between techniques"
-    ],
-    "progression": "Focus on form refinement and building muscle memory for consistent technique execution"
-  }
+  "total_exercises": 6,
+  "skill_focus": [
+    "Introduction to basic kicks",
+    "Knife hand techniques",
+    "Alternating combinations",
+    "Horse stance development"
+  ]
 }

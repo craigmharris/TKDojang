@@ -1,88 +1,220 @@
 import Foundation
 
 /**
- * PURPOSE: Content loader for line work technique data
- * 
- * Loads belt-specific line work requirements from JSON files including:
- * - Stance work moving forward/backward
- * - Blocking techniques in line formation
- * - Striking techniques with footwork
- * - Practice patterns and sequences
- * 
- * Follows the established pattern used by PatternContentLoader and StepSparringContentLoader
- * for consistency in content loading architecture.
+ * PURPOSE: Exercise-based LineWork content loader for traditional Taekwondo training
+ *
+ * Loads belt-specific line work requirements structured as complete exercise sequences
+ * rather than isolated techniques. This matches actual syllabus methodology where
+ * students practice flowing combinations of techniques with specific movement patterns.
+ *
+ * Key features:
+ * - Exercise-based training sequences
+ * - Movement type classification (STATIC/FWD/BWD/FWD & BWD/ALTERNATING)
+ * - Multi-technique combinations with execution details
+ * - Progressive skill development tracking
  */
 
-// MARK: - Line Work Content Models
+// MARK: - LineWork Content Models
 
 struct LineWorkContent: Codable {
     let beltLevel: String
     let beltId: String
-    let lineWorkSets: [LineWorkSet]
-    let practiceNotes: PracticeNotes
+    let beltColor: String
+    let lineWorkExercises: [LineWorkExercise]
+    let totalExercises: Int
+    let skillFocus: [String]
     
     enum CodingKeys: String, CodingKey {
         case beltLevel = "belt_level"
         case beltId = "belt_id"
-        case lineWorkSets = "line_work_sets"
-        case practiceNotes = "practice_notes"
+        case beltColor = "belt_color"
+        case lineWorkExercises = "line_work_exercises"
+        case totalExercises = "total_exercises"
+        case skillFocus = "skill_focus"
     }
 }
 
-struct LineWorkSet: Codable, Identifiable {
+struct LineWorkExercise: Codable, Identifiable {
     let id: String
-    let title: String
-    let category: String
-    let description: String
-    let techniques: [LineWorkTechnique]
-}
-
-struct LineWorkTechnique: Codable, Identifiable {
-    let id: String
+    let movementType: MovementType
+    let order: Int
     let name: String
-    let korean: String
-    let directionPattern: [DirectionSequence]
-    let keyPoints: [String]
-    let commonMistakes: [String]
+    let techniques: [LineWorkTechniqueDetail]
+    let execution: ExerciseExecution
+    let categories: [String]
     
     enum CodingKeys: String, CodingKey {
-        case id, name, korean
-        case directionPattern = "direction_pattern"
+        case id
+        case movementType = "movement_type"
+        case order, name, techniques, execution, categories
+    }
+}
+
+struct LineWorkTechniqueDetail: Codable, Identifiable {
+    let id: String
+    let english: String
+    let romanised: String
+    let hangul: String
+    let category: String
+    let targetArea: String?
+    let description: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id, english, romanised, hangul, category, description
+        case targetArea = "target_area"
+    }
+}
+
+enum MovementType: String, Codable, CaseIterable {
+    case staticMovement = "STATIC"
+    case forward = "FWD"
+    case backward = "BWD"
+    case forwardAndBackward = "FWD & BWD"
+    case alternating = "ALTERNATING"
+    
+    var displayName: String {
+        switch self {
+        case .staticMovement:
+            return "Static"
+        case .forward:
+            return "Forward"
+        case .backward:
+            return "Backward"
+        case .forwardAndBackward:
+            return "Forward & Backward"
+        case .alternating:
+            return "Alternating"
+        }
+    }
+    
+    var icon: String {
+        switch self {
+        case .staticMovement:
+            return "figure.stand"
+        case .forward:
+            return "arrow.up"
+        case .backward:
+            return "arrow.down"
+        case .forwardAndBackward:
+            return "arrow.up.arrow.down"
+        case .alternating:
+            return "arrow.triangle.2.circlepath"
+        }
+    }
+}
+
+struct ExerciseExecution: Codable {
+    let direction: String
+    let repetitions: Int
+    let movementPattern: String
+    let sequenceNotes: String?
+    let alternatingPattern: String?
+    let keyPoints: [String]
+    let commonMistakes: [String]?
+    let executionTips: [String]?
+    
+    enum CodingKeys: String, CodingKey {
+        case direction, repetitions
+        case movementPattern = "movement_pattern"
+        case sequenceNotes = "sequence_notes"
+        case alternatingPattern = "alternating_pattern"
         case keyPoints = "key_points"
         case commonMistakes = "common_mistakes"
+        case executionTips = "execution_tips"
     }
 }
 
-struct DirectionSequence: Codable, Identifiable, Equatable {
-    let direction: String // "forward" or "backward"
-    let count: Int
-    let description: String
-    
-    var id: String { "\(direction)_\(count)" }
-}
 
-struct PracticeNotes: Codable {
-    let warmup: String
-    let focusAreas: [String]
-    let progression: String
+// MARK: - LineWork Category Classification
+
+enum LineWorkCategory: String, CaseIterable {
+    case stances = "Stances"
+    case blocking = "Blocking"
+    case striking = "Striking"
+    case kicking = "Kicking"
     
-    enum CodingKeys: String, CodingKey {
-        case warmup
-        case focusAreas = "focus_areas"
-        case progression
+    var icon: String {
+        switch self {
+        case .stances:
+            return "figure.stand"
+        case .blocking:
+            return "shield"
+        case .striking:
+            return "hand.raised"
+        case .kicking:
+            return "figure.kickboxing"
+        }
+    }
+    
+    var color: String {
+        switch self {
+        case .stances:
+            return "blue"
+        case .blocking:
+            return "green"
+        case .striking:
+            return "red"
+        case .kicking:
+            return "orange"
+        }
     }
 }
 
-// MARK: - Line Work Content Loader
+// MARK: - Display Models for UI
+
+struct LineWorkExerciseDisplay {
+    let id: String
+    let name: String
+    let movementType: MovementType
+    let categories: [String]
+    let repetitions: Int
+    let techniqueCount: Int
+    let isComplex: Bool
+    
+    init(from exercise: LineWorkExercise) {
+        self.id = exercise.id
+        self.name = exercise.name
+        self.movementType = exercise.movementType
+        self.categories = exercise.categories
+        self.repetitions = exercise.execution.repetitions
+        self.techniqueCount = exercise.techniques.count
+        self.isComplex = exercise.techniques.count > 2 || exercise.execution.repetitions > 10
+    }
+}
+
+struct LineWorkBeltDisplay {
+    let beltLevel: String
+    let beltId: String
+    let beltColor: String
+    let exerciseCount: Int
+    let movementTypes: Set<MovementType>
+    let skillFocus: [String]
+    let hasComplexExercises: Bool
+    
+    init(from content: LineWorkContent) {
+        self.beltLevel = content.beltLevel
+        self.beltId = content.beltId
+        self.beltColor = content.beltColor
+        self.exerciseCount = content.lineWorkExercises.count
+        self.movementTypes = Set(content.lineWorkExercises.map { $0.movementType })
+        self.skillFocus = content.skillFocus
+        self.hasComplexExercises = content.lineWorkExercises.contains { exercise in
+            exercise.techniques.count > 3 || exercise.execution.repetitions > 20
+        }
+    }
+}
+
+// MARK: - LineWork Content Loader
 
 @MainActor
 class LineWorkContentLoader: ObservableObject {
     
     /**
-     * PURPOSE: Load line work content for all belt levels
-     * 
-     * Returns dictionary mapping belt IDs to their line work requirements.
-     * Uses the established pattern of loading JSON files from the app bundle.
+     * PURPOSE: Load exercise-based line work content for all belt levels
+     *
+     * Returns dictionary mapping belt IDs to their complete exercise requirements.
+     * Loads from new exercise-based JSON structure that matches traditional
+     * Taekwondo training methodology.
      */
     static func loadAllLineWorkContent() async -> [String: LineWorkContent] {
         let beltIds = [
@@ -96,23 +228,23 @@ class LineWorkContentLoader: ObservableObject {
             if let content = await loadLineWorkContent(for: beltId) {
                 lineWorkContent[beltId] = content
             } else {
-                print("⚠️ Failed to load line work content for \(beltId)")
+                DebugLogger.data("⚠️ Failed to load line work content for \(beltId)")
             }
         }
         
-        print("✅ Loaded line work content for \(lineWorkContent.count) belt levels")
+        DebugLogger.data("✅ Loaded line work content for \(lineWorkContent.count) belt levels")
         return lineWorkContent
     }
     
     /**
      * PURPOSE: Load line work content for a specific belt level
-     * 
-     * Loads and parses JSON file containing line work sets, techniques,
-     * and practice requirements for the specified belt level.
+     *
+     * Loads and parses JSON file containing exercise sequences, movement patterns,
+     * and skill requirements for the specified belt level.
      */
     static func loadLineWorkContent(for beltId: String) async -> LineWorkContent? {
         guard let url = Bundle.main.url(forResource: "\(beltId)_linework", withExtension: "json") else {
-            print("⚠️ Line work file not found: \(beltId)_linework.json")
+            DebugLogger.data("⚠️ Line work file not found: \(beltId)_linework.json")
             return nil
         }
         
@@ -121,53 +253,77 @@ class LineWorkContentLoader: ObservableObject {
             let decoder = JSONDecoder()
             let lineWorkContent = try decoder.decode(LineWorkContent.self, from: data)
             
-            let techniqueCount = lineWorkContent.lineWorkSets.reduce(0) { $0 + $1.techniques.count }
-            print("✅ Loaded line work content for \(lineWorkContent.beltLevel): \(techniqueCount) techniques")
+            DebugLogger.data("✅ Loaded line work content for \(lineWorkContent.beltLevel): \(lineWorkContent.totalExercises) exercises")
             return lineWorkContent
             
         } catch {
-            print("❌ Failed to load line work content for \(beltId): \(error)")
+            DebugLogger.data("❌ Failed to load line work content for \(beltId): \(error)")
             return nil
         }
     }
     
     /**
-     * PURPOSE: Get all techniques from line work content
-     * 
-     * Flattens all techniques across all line work sets for a belt level,
-     * useful for practice session creation and progress tracking.
+     * PURPOSE: Filter exercises by movement type
+     *
+     * Returns exercises matching specific movement patterns for
+     * focused practice sessions (e.g., only forward movements).
      */
-    static func extractTechniques(from lineWorkContent: LineWorkContent) -> [LineWorkTechnique] {
-        return lineWorkContent.lineWorkSets.flatMap { $0.techniques }
+    static func filterExercises(from content: LineWorkContent, byMovementType movementType: MovementType) -> [LineWorkExercise] {
+        return content.lineWorkExercises.filter { $0.movementType == movementType }
     }
     
     /**
-     * PURPOSE: Filter line work sets by category
-     * 
-     * Returns line work sets matching specific categories like
-     * "Stances", "Blocking", "Striking", "Kicking"
+     * PURPOSE: Filter exercises by category
+     *
+     * Returns exercises containing specific technique categories
+     * like "Stances", "Blocking", "Striking", "Kicking".
      */
-    static func filterSets(from lineWorkContent: LineWorkContent, byCategory category: String) -> [LineWorkSet] {
-        return lineWorkContent.lineWorkSets.filter { $0.category == category }
+    static func filterExercises(from content: LineWorkContent, byCategory category: String) -> [LineWorkExercise] {
+        return content.lineWorkExercises.filter { $0.categories.contains(category) }
     }
     
     /**
-     * PURPOSE: Calculate total technique count for belt level
-     * 
-     * Returns the total number of individual techniques that need to be
-     * practiced for the specified belt level's grading requirements.
+     * PURPOSE: Get exercises sorted by complexity
+     *
+     * Returns exercises ordered by complexity (technique count + repetitions)
+     * for progressive training sessions.
      */
-    static func getTechniqueCount(from lineWorkContent: LineWorkContent) -> Int {
-        return lineWorkContent.lineWorkSets.reduce(0) { $0 + $1.techniques.count }
+    static func getExercisesByComplexity(from content: LineWorkContent) -> [LineWorkExercise] {
+        return content.lineWorkExercises.sorted { exercise1, exercise2 in
+            let complexity1 = exercise1.techniques.count + (exercise1.execution.repetitions / 10)
+            let complexity2 = exercise2.techniques.count + (exercise2.execution.repetitions / 10)
+            return complexity1 < complexity2
+        }
     }
     
     /**
-     * PURPOSE: Get practice sequence for a technique
-     * 
-     * Returns the complete forward/backward sequence pattern for practicing
-     * a specific technique, including repetition counts and descriptions.
+     * PURPOSE: Extract all unique techniques from exercises
+     *
+     * Returns list of all individual techniques mentioned across
+     * all exercises for vocabulary and reference purposes.
      */
-    static func getPracticeSequence(for technique: LineWorkTechnique) -> [DirectionSequence] {
-        return technique.directionPattern
+    static func extractUniqueTechniques(from content: LineWorkContent) -> [String] {
+        let allTechniques = content.lineWorkExercises.flatMap { $0.techniques }
+        return Array(Set(allTechniques.map { $0.english })).sorted()
+    }
+    
+    /**
+     * PURPOSE: Calculate total repetition count for belt level
+     *
+     * Sums all exercise repetitions to provide training volume
+     * metrics for the belt level requirements.
+     */
+    static func getTotalRepetitions(from content: LineWorkContent) -> Int {
+        return content.lineWorkExercises.reduce(0) { $0 + $1.execution.repetitions }
+    }
+    
+    /**
+     * PURPOSE: Get practice sequence details for an exercise
+     *
+     * Returns complete execution details including movement pattern,
+     * key points, and sequence notes for guided practice.
+     */
+    static func getPracticeDetails(for exercise: LineWorkExercise) -> ExerciseExecution {
+        return exercise.execution
     }
 }

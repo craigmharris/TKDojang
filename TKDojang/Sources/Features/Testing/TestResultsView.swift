@@ -80,7 +80,7 @@ struct TestResultsView: View {
                     
                     // Action Buttons
                     VStack(spacing: 12) {
-                        NavigationLink(destination: FlashcardView(specificTerms: incorrectTerms)) {
+                        NavigationLink(destination: FlashcardConfigurationView(specificTerms: incorrectTerms)) {
                             HStack {
                                 Image(systemName: "rectangle.on.rectangle")
                                 Text("Review with Flashcards")

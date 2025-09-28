@@ -16,6 +16,10 @@ import SwiftUI
  */
 struct ContentView: View {
     
+    init() {
+        print("📄 ContentView.init() - ContentView being created - \(Date())")
+    }
+    
     /**
      * App coordinator that determines which view to show
      * 
@@ -24,43 +28,30 @@ struct ContentView: View {
      */
     @EnvironmentObject var appCoordinator: AppCoordinator
     
-    /**
-     * Data manager for tracking database resets
-     * Forces complete UI refresh when database is recreated
-     */
-    @Environment(DataManager.self) private var dataManager
+    // DataManager is intentionally not accessed here to prevent blocking during initial app launch
+    // It will be added via  only when needed (e.g., main flow)
     
     var body: some View {
-        Group {
-            if dataManager.isResettingDatabase {
-                // Show loading screen during database reset to prevent any profile access
-                VStack(spacing: 20) {
-                    ProgressView()
-                        .scaleEffect(2.0)
-                    Text("Resetting Database...")
-                        .font(.headline)
-                        .foregroundColor(.secondary)
-                }
-                .transition(.opacity)
-            } else {
-                switch appCoordinator.currentFlow {
-                case .loading:
-                    LoadingView()
-                        .transition(.opacity)
-                    
-                case .onboarding:
-                    OnboardingCoordinatorView()
-                        .transition(.move(edge: .trailing))
-                    
-                case .main:
-                    MainTabCoordinatorView()
-                        .transition(.move(edge: .bottom))
-                }
+        print("🔄 ContentView.body - Flow is: \(appCoordinator.currentFlow) - \(Date())")
+        // NOTE: No DataManager access in this view to prevent blocking during app launch
+        return Group {
+            switch appCoordinator.currentFlow {
+            case .loading:
+                print("⏳ Creating LoadingView...")
+                return AnyView(LoadingView()
+                    .transition(.opacity))
+                
+            case .onboarding:
+                print("🎯 Creating OnboardingCoordinatorView...")
+                return AnyView(OnboardingCoordinatorView()
+                    .transition(.move(edge: .trailing)))
+                
+            case .main:
+                print("🏠 Creating MainTabCoordinatorView with DataServices... - \(Date())")
+                return AnyView(MainTabCoordinatorView()
+                    .transition(.move(edge: .bottom)))
             }
         }
-        .animation(.easeInOut(duration: 0.3), value: appCoordinator.currentFlow)
-        .animation(.easeInOut(duration: 0.3), value: dataManager.isResettingDatabase)
-        .id(dataManager.databaseResetId) // Force complete refresh when database is reset
     }
 }
 

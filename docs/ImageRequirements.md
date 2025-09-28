@@ -55,7 +55,7 @@ Pattern diagrams show the floor pattern/footwork path for each Taekwondo form.
 6. **Joong-Gun** (4th Keup) - I-shape pattern
 7. **Toi-Gye** (3rd Keup) - Complex pattern
 8. **Hwa-Rang** (2nd Keup) - I-shape pattern
-9. **Chung-Mu** (1st Keup) - I-shape pattern
+9. **Choong-Moo** (1st Keup) - I-shape pattern
 
 ### Technical Specifications:
 | Property | Specification |
@@ -97,7 +97,7 @@ Individual move demonstrations for each pattern technique.
 | Joong-Gun | 32 moves | `joong-gun-{1-32}.png` |
 | Toi-Gye | 37 moves | `toi-gye-{1-37}.png` |
 | Hwa-Rang | 29 moves | `hwa-rang-{1-29}.png` |
-| Chung-Mu | 30 moves | `chung-mu-{1-30}.png` |
+| Choong-Moo | 30 moves | `choong-moo-{1-30}.png` |
 
 **Total Pattern Moves: 258 illustrations**
 

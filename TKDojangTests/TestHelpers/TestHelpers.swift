@@ -219,24 +219,24 @@ class TestDataFactory {
         var profiles: [UserProfile] = []
         
         // Beginner profile
-        let beginnerProfile = UserProfile(currentBeltLevel: belts[0], learningMode: .mastery)
+        let beginnerProfile = UserProfile(name: "Beginner User", currentBeltLevel: belts[0], learningMode: .mastery)
         beginnerProfile.dailyStudyGoal = 15
-        beginnerProfile.preferredCategories = ["techniques", "basics"]
+        // Note: preferredCategories not implemented in current model
         profiles.append(beginnerProfile)
         
         // Intermediate profile
         if belts.count > 1 {
-            let intermediateProfile = UserProfile(currentBeltLevel: belts[1], learningMode: .progression)
+            let intermediateProfile = UserProfile(name: "Intermediate User", currentBeltLevel: belts[1], learningMode: .progression)
             intermediateProfile.dailyStudyGoal = 25
-            intermediateProfile.preferredCategories = ["techniques", "commands", "stances"]
+            // Note: preferredCategories not implemented in current model
             profiles.append(intermediateProfile)
         }
         
         // Advanced profile
         if belts.count > 2 {
-            let advancedProfile = UserProfile(currentBeltLevel: belts[2], learningMode: .mastery)
+            let advancedProfile = UserProfile(name: "Advanced User", currentBeltLevel: belts[2], learningMode: .mastery)
             advancedProfile.dailyStudyGoal = 40
-            advancedProfile.preferredCategories = ["techniques", "commands", "strikes", "blocks"]
+            // Note: preferredCategories not implemented in current model
             profiles.append(advancedProfile)
         }
         

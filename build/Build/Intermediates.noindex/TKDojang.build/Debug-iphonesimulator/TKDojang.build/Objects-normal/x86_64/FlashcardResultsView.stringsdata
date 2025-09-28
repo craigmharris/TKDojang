@@ -1,0 +1,104 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/FlashcardResultsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Flashcard Results",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 108
+        }
+      },
+      {
+        "comment": "",
+        "key": "Session Complete!",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 34
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld/%lld",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 40
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%% Accuracy",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "New Flashcard Session",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 85
+        }
+      },
+      {
+        "comment": "",
+        "key": "Return to Learn",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 96
+        }
+      },
+      {
+        "comment": "",
+        "key": "Review Missed Terms (%lld)",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "Done",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 112
+        }
+      },
+      {
+        "comment": "",
+        "key": "Study Recommendations",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 183
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 192
+        }
+      },
+      {
+        "comment": "",
+        "key": "Session Details",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 229
+        }
+      },
+      {
+        "comment": "",
+        "key": "FlashcardResultsView Preview",
+        "location": {
+          "startingColumn": 14,
+          "startingLine": 317
+        }
+      }
+    ]
+  },
+  "version": 1
+}

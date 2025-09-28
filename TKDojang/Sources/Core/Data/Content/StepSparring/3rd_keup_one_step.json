@@ -1,0 +1,48 @@
+{
+  "belt_level": "3rd_keup",
+  "category": "step_sparring",
+  "type": "one_step",
+  "description": "One-step sparring sequences for 3rd keup students",
+  "sequences": [
+    {
+      "name": "1-Step Sparring #1",
+      "sequence_number": 1,
+      "description": "Basic attack with immediate defense and counter",
+      "difficulty": 2,
+      "key_learning_points": "Quick reaction, timing, distance control",
+      "applicable_belt_levels": ["3rd_keup", "2nd_keup", "1st_keup"],
+      "steps": [
+        {
+          "step_number": 1,
+          "timing": "Immediate block and counter",
+          "key_points": "React quickly, maintain distance, strong counter",
+          "common_mistakes": "Slow reaction, backing away, weak counter",
+          "attack": {
+            "technique": "Obverse punch",
+            "korean_name": "Baro jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Step forward with right foot into walking stance, execute obverse punch to middle section"
+          },
+          "defense": {
+            "technique": "Inner forearm block",
+            "korean_name": "An palmok makgi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "left",
+            "description": "Block with left inner forearm while stepping back"
+          },
+          "counter": {
+            "technique": "Reverse punch",
+            "korean_name": "Bandae jirugi",
+            "stance": "walking stance",
+            "target": "middle section",
+            "hand": "right",
+            "description": "Immediately counter with right reverse punch"
+          }
+        }
+      ]
+    }
+  ]
+}

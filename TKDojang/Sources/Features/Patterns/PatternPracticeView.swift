@@ -6,24 +6,33 @@ import SwiftUI
  * PURPOSE: Interactive pattern practice interface with step-by-step guidance
  * 
  * FEATURES:
- * - Step-by-step move navigation
- * - Move descriptions and key points
- * - Progress tracking through the pattern
+ * - Step-by-step move navigation with optimized single-screen layout
+ * - Move descriptions and key points in compact instruction cards
+ * - Belt-themed progress tracking with BeltProgressBar
  * - Visual feedback for current position
  * - Integration with user progress system
+ * - Complete Pattern navigation: "Record Progress" returns to list, "Practice Again" restarts
+ * - Image carousel for move visualization with 3 image types per move
+ * 
+ * RECENT ENHANCEMENTS:
+ * - Replaced plain progress bar with belt-themed design showing proper tag belt colors
+ * - Streamlined navigation controls with proper completion dialog behavior
+ * - Optimized layout to fit pattern practice on single screen without scrolling
+ * - Added image carousel supporting Position, Technique, and Progress images
  */
 
 struct PatternPracticeView: View {
     let pattern: Pattern
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @Environment(\.dismiss) private var dismiss
     
     @State private var currentMoveIndex = 0
-    @State private var isPracticing = false
     @State private var userProfile: UserProfile?
     @State private var practiceStartTime = Date()
     @State private var showingCompleteDialog = false
     @State private var practiceAccuracy: Double = 0.0
+    @State private var userProgress: UserPatternProgress?
+    @State private var selectedImageIndex = 0
     
     private var currentMove: PatternMove? {
         guard currentMoveIndex < pattern.orderedMoves.count else { return nil }
@@ -39,23 +48,29 @@ struct PatternPracticeView: View {
             // Progress header
             progressHeader
             
-            // Main content
+            // Main content - optimized for single screen viewing
             if let move = currentMove {
-                ScrollView {
-                    VStack(spacing: 24) {
-                        // Move overview card
-                        moveOverviewCard(move: move)
-                        
-                        // Move image (if available)
-                        moveImageSection(move: move)
-                        
-                        // Detailed instructions
-                        moveInstructionsSection(move: move)
-                        
-                        // Navigation and practice controls
-                        practiceControls
+                VStack(spacing: 12) {
+                    // Move overview card
+                    moveOverviewCard(move: move)
+                        .padding(.horizontal)
+                    
+                    // Image carousel for move visualization (vertically centered)
+                    if move.hasMedia {
+                        moveImageCarousel(move: move)
+          
+                            .padding(.horizontal)
                     }
-                    .padding()
+                    
+                    // Detailed instructions in compact scrollable layout
+                    ScrollView {
+                        moveInstructionsSection(move: move)
+                            .padding(.horizontal)
+                    }
+                    
+                    // Navigation controls - fixed at bottom
+                    practiceControls
+                        .padding(.bottom, 8)
                 }
             } else {
                 // Completion state
@@ -98,32 +113,13 @@ struct PatternPracticeView: View {
                     .fontWeight(.semibold)
                 
                 Spacer()
-                
-                if isPracticing {
-                    Button("Pause") {
-                        isPracticing = false
-                    }
-                    .font(.subheadline)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 8)
-                    .background(Color.orange)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-                }
             }
             
-            // Visual progress
-            GeometryReader { geometry in
-                ZStack(alignment: .leading) {
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(height: 6)
-                    
-                    Rectangle()
-                        .fill(Color.blue)
-                        .frame(width: geometry.size.width * progressPercentage, height: 6)
-                }
-            }
+            // Visual progress - belt-themed design
+            BeltProgressBar(
+                progress: progressPercentage,
+                theme: BeltTheme(from: pattern.primaryBeltLevel ?? pattern.beltLevels.first!)
+            )
             .frame(height: 6)
         }
         .padding()
@@ -191,77 +187,83 @@ struct PatternPracticeView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
     
-    // MARK: - Move Image Section
+    // MARK: - Image Carousel
     
-    private func moveImageSection(move: PatternMove) -> some View {
-        Group {
-            if let imageURL = move.imageURL, !imageURL.isEmpty {
-                AsyncImage(url: URL(string: imageURL)) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                } placeholder: {
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.2))
+    private func moveImageCarousel(move: PatternMove) -> some View {
+        VStack(spacing: 8) {
+            // Carousel container
+            TabView(selection: $selectedImageIndex) {
+                ForEach(Array(move.availableImages.enumerated()), id: \.offset) { index, imageName in
+                    PatternImageView(imageName: imageName, moveNumber: move.moveNumber)
                         .frame(height: 200)
-                        .overlay(
-                            VStack {
-                                Image(systemName: "photo")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.gray)
-                                Text("Loading move image...")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                            }
-                        )
+                        .background(Color(.systemBackground))
+                        .cornerRadius(12)
+                        .tag(index)
                 }
-                .frame(maxHeight: 250)
-                .cornerRadius(12)
-            } else {
-                Rectangle()
-                    .fill(Color.gray.opacity(0.1))
-                    .frame(height: 200)
-                    .overlay(
-                        VStack {
-                            Image(systemName: "figure.martial.arts")
-                                .font(.largeTitle)
-                                .foregroundColor(.gray)
-                            Text("Move Image Coming Soon")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                        }
-                    )
-                    .cornerRadius(12)
             }
+            .tabViewStyle(.page(indexDisplayMode: .automatic))
+            .frame(height: 220)
+            
+            // Image type indicators
+            if move.availableImages.count > 1 {
+                HStack(spacing: 16) {
+                    ForEach(Array(move.availableImages.enumerated()), id: \.offset) { index, _ in
+                        Button {
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                selectedImageIndex = index
+                            }
+                        } label: {
+                            Text(imageTypeLabel(for: index))
+                                .font(.caption)
+                                .foregroundColor(selectedImageIndex == index ? .primary : .secondary)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(selectedImageIndex == index ? Color.blue.opacity(0.2) : Color.clear)
+                                )
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func imageTypeLabel(for index: Int) -> String {
+        switch index {
+        case 0: return "Position"
+        case 1: return "Technique"
+        case 2: return "Progress"
+        default: return "View \(index + 1)"
         }
     }
     
     // MARK: - Move Instructions Section
     
     private func moveInstructionsSection(move: PatternMove) -> some View {
-        VStack(alignment: .leading, spacing: 20) {
-            // Key points
-            instructionCard(
+        VStack(alignment: .leading, spacing: 12) {
+            // Key points - always shown, compact
+            compactInstructionCard(
                 title: "Key Points",
                 content: move.keyPoints,
                 icon: "target",
                 color: .blue
             )
             
-            // Common mistakes (if available)
+            // Common mistakes (if available) - compact
             if let mistakes = move.commonMistakes, !mistakes.isEmpty {
-                instructionCard(
-                    title: "Common Mistakes",
+                compactInstructionCard(
+                    title: "Avoid",
                     content: mistakes,
                     icon: "exclamationmark.triangle",
                     color: .orange
                 )
             }
             
-            // Execution notes (if available)
+            // Execution notes (if available) - compact
             if let notes = move.executionNotes, !notes.isEmpty {
-                instructionCard(
-                    title: "Execution Notes",
+                compactInstructionCard(
+                    title: "Tips",
                     content: notes,
                     icon: "lightbulb",
                     color: .green
@@ -270,71 +272,60 @@ struct PatternPracticeView: View {
         }
     }
     
-    private func instructionCard(title: String, content: String, icon: String, color: Color) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
+    private func compactInstructionCard(title: String, content: String, icon: String, color: Color) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(spacing: 6) {
                 Image(systemName: icon)
+                    .font(.caption)
                     .foregroundColor(color)
                 Text(title)
-                    .font(.headline)
+                    .font(.subheadline)
                     .fontWeight(.semibold)
                 Spacer()
             }
             
             Text(content)
-                .font(.body)
+                .font(.subheadline)
                 .fixedSize(horizontal: false, vertical: true)
+                .lineLimit(4)
+                .minimumScaleFactor(0.9)
         }
-        .padding()
+        .padding(8)
         .background(Color(.systemBackground))
-        .cornerRadius(12)
+        .cornerRadius(6)
         .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(color.opacity(0.3), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 6)
+                .stroke(color.opacity(0.2), lineWidth: 0.5)
         )
     }
     
     // MARK: - Practice Controls
     
     private var practiceControls: some View {
-        VStack(spacing: 16) {
-            // Primary action button
-            if !isPracticing {
-                Button("Start Practice") {
-                    startPractice()
-                }
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.green)
-                .cornerRadius(12)
+        HStack(spacing: 16) {
+            Button("Previous Move") {
+                previousMove()
             }
+            .disabled(currentMoveIndex == 0)
+            .buttonStyle(.bordered)
+            .frame(maxWidth: .infinity)
             
-            // Navigation buttons
-            HStack(spacing: 16) {
-                Button("Previous Move") {
-                    previousMove()
+            if isLastMove {
+                Button("Complete Pattern") {
+                    completePattern()
                 }
-                .disabled(currentMoveIndex == 0)
-                .buttonStyle(.bordered)
+                .buttonStyle(.borderedProminent)
+                .tint(.green)
                 .frame(maxWidth: .infinity)
-                
-                if isLastMove {
-                    Button("Complete Pattern") {
-                        completePattern()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-                } else {
-                    Button("Next Move") {
-                        nextMove()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
+            } else {
+                Button("Next Move") {
+                    nextMove()
                 }
+                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: .infinity)
             }
         }
+        .padding(.horizontal)
     }
     
     // MARK: - Completion View
@@ -378,18 +369,24 @@ struct PatternPracticeView: View {
     // MARK: - Actions
     
     private func loadUserProfile() {
-        userProfile = dataManager.getOrCreateDefaultUserProfile()
-    }
-    
-    private func startPractice() {
-        isPracticing = true
-        practiceStartTime = Date()
+        userProfile = dataServices.getOrCreateDefaultUserProfile()
+        if let profile = userProfile {
+            // Load or create pattern progress
+            userProgress = dataServices.patternService.getUserProgress(for: pattern, userProfile: profile)
+            // Set current move index to last practiced position (0-based vs 1-based)
+            if let progress = userProgress, progress.currentMove > 1 {
+                currentMoveIndex = max(0, progress.currentMove - 1)
+            }
+        }
     }
     
     private func nextMove() {
         if currentMoveIndex < pattern.orderedMoves.count - 1 {
             withAnimation(.easeInOut(duration: 0.3)) {
                 currentMoveIndex += 1
+                selectedImageIndex = 0 // Reset to first image for new move
+                // Update pattern progress in database
+                updatePatternProgress()
             }
         }
     }
@@ -398,6 +395,9 @@ struct PatternPracticeView: View {
         if currentMoveIndex > 0 {
             withAnimation(.easeInOut(duration: 0.3)) {
                 currentMoveIndex -= 1
+                selectedImageIndex = 0 // Reset to first image for new move
+                // Update pattern progress in database
+                updatePatternProgress()
             }
         }
     }
@@ -407,30 +407,122 @@ struct PatternPracticeView: View {
     }
     
     private func restartPractice() {
+        // Reset to first move (move 1)
         currentMoveIndex = 0
-        isPracticing = false
         practiceStartTime = Date()
         showingCompleteDialog = false
+        
+        // Update pattern progress to reflect restart at move 1
+        updatePatternProgress()
     }
     
     private func endPractice() {
+        // Save current progress before leaving
+        updatePatternProgress()
         dismiss()
+    }
+    
+    private func updatePatternProgress() {
+        guard let progress = userProgress else { return }
+        
+        // Update to current move (1-based indexing in database)
+        progress.currentMove = currentMoveIndex + 1
+        progress.lastPracticedAt = Date()
+        
+        // Note: Progress is automatically tracked via SwiftData model changes
     }
     
     private func recordPracticeSession() {
         guard let profile = userProfile else { return }
         
         let practiceTime = Date().timeIntervalSince(practiceStartTime)
-        let accuracy = 0.85 // Placeholder - could be calculated based on user feedback
+        let totalMoves = pattern.orderedMoves.count
+        let completionAccuracy = 1.0 // Assume 100% for completing the pattern
         
-        dataManager.patternService.recordPracticeSession(
+        // Record in pattern service with proper accuracy and completion
+        dataServices.patternService.recordPracticeSession(
             pattern: pattern,
             userProfile: profile,
-            accuracy: accuracy,
+            accuracy: completionAccuracy,
             practiceTime: practiceTime
         )
         
+        // Update pattern progress to show full completion
+        if let progress = userProgress {
+            progress.currentMove = totalMoves // Mark as fully completed
+            
+            // Note: Pattern completion is tracked automatically
+        }
+        
+        // Also record in general study session tracking
+        do {
+            try dataServices.profileService.recordStudySession(
+                sessionType: .patterns,
+                itemsStudied: totalMoves,
+                correctAnswers: totalMoves, // Full pattern completed
+                focusAreas: [pattern.name]
+            )
+        } catch {
+            DebugLogger.data("❌ Failed to record pattern study session: \(error)")
+        }
+        
+        // Return to pattern list after recording progress
         dismiss()
+    }
+}
+
+// MARK: - Helper Views
+
+/**
+ * PatternImageView: Handles image loading with fallback for missing assets
+ * 
+ * PURPOSE: SwiftUI's Image() fails silently when assets don't exist, showing black.
+ * This view provides a proper placeholder fallback for missing pattern images.
+ */
+struct PatternImageView: View {
+    let imageName: String
+    let moveNumber: Int
+    @State private var imageExists = true
+    
+    var body: some View {
+        ZStack {
+            if imageExists {
+                Image(imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .onAppear {
+                        DebugLogger.ui("🖼️ Loading pattern image: '\(imageName)' for move \(moveNumber)")
+                        checkImageExists()
+                    }
+            } else {
+                // Placeholder for missing images
+                Rectangle()
+                    .fill(Color.gray.opacity(0.1))
+                    .overlay(
+                        VStack(spacing: 8) {
+                            Image(systemName: "photo")
+                                .font(.system(size: 40))
+                                .foregroundColor(.gray)
+                            Text("Image Coming Soon")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                            Text("Move \(moveNumber)")
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                        }
+                    )
+                    .onAppear {
+                        DebugLogger.ui("🖼️ Missing pattern image: '\(imageName)' for move \(moveNumber) - showing placeholder")
+                    }
+            }
+        }
+    }
+    
+    private func checkImageExists() {
+        // Check if the image exists in the bundle
+        if UIImage(named: imageName) == nil {
+            imageExists = false
+        }
     }
 }
 

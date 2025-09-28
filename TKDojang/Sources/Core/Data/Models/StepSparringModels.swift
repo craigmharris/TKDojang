@@ -35,6 +35,9 @@ final class StepSparringSequence {
     var videoURL: String?
     var imageURL: String?
     
+    // JSON-based belt level associations (avoiding SwiftData relationships)
+    var applicableBeltLevelIds: [String] = []
+    
     // Relationships
     var beltLevels: [BeltLevel] = []
     var steps: [StepSparringStep] = []

@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import UniformTypeIdentifiers
 
 /**
  * ProfileManagementView.swift
@@ -21,7 +22,7 @@ import SwiftData
  */
 
 struct ProfileManagementView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @Environment(\.dismiss) private var dismiss
     
     @State private var profiles: [UserProfile] = []
@@ -31,6 +32,14 @@ struct ProfileManagementView: View {
     @State private var showingDeleteAlert = false
     @State private var errorMessage: String?
     @State private var showingError = false
+    
+    // Export/Import state
+    @State private var showingExportOptions = false
+    @State private var showingImportPicker = false
+    @State private var showingShareSheet = false
+    @State private var fileToShare: URL?
+    @State private var importResult: ImportResult?
+    @State private var showingImportResult = false
     
     var body: some View {
         NavigationStack {
@@ -66,6 +75,43 @@ struct ProfileManagementView: View {
             .navigationTitle("Family Profiles")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Menu {
+                        Button(action: { showingImportPicker = true }) {
+                            Label("Import Profiles", systemImage: "square.and.arrow.down")
+                        }
+                        
+                        Button(action: { showingExportOptions = true }) {
+                            Label("Export Profiles", systemImage: "square.and.arrow.up")
+                        }
+                        
+                        // iCloud features - hidden when feature flag is disabled
+                        if FeatureFlags.isiCloudEnabled {
+                            Divider()
+                            
+                            Button(action: { exportToiCloud() }) {
+                                Label("Backup to iCloud", systemImage: "icloud.and.arrow.up")
+                            }
+                            
+                            Button(action: { showAvailableiCloudBackups() }) {
+                                Label("Restore from iCloud", systemImage: "icloud.and.arrow.down")
+                            }
+                        }
+                        
+                    } label: {
+                        HStack(spacing: 6) {
+                            Image(systemName: "square.and.arrow.up")
+                            Text("Export/Import")
+                        }
+                        .font(.subheadline)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                    }
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
                         dismiss()
@@ -75,7 +121,7 @@ struct ProfileManagementView: View {
             .onAppear {
                 loadProfiles()
             }
-            .onChange(of: dataManager.profileService.activeProfile) {
+            .onChange(of: dataServices.profileService.activeProfile) {
                 loadProfiles()
             }
             .sheet(isPresented: $showingCreateProfile) {
@@ -111,6 +157,37 @@ struct ProfileManagementView: View {
                     Text(errorMessage)
                 }
             }
+            // Export/Import Sheets
+            .confirmationDialog("Export Profiles", isPresented: $showingExportOptions) {
+                Button("Export All Profiles") {
+                    exportAllProfiles()
+                }
+                Button("Export Active Profile Only") {
+                    if let activeProfile = dataServices.profileService.activeProfile {
+                        exportSingleProfile(activeProfile)
+                    }
+                }
+                Button("Cancel", role: .cancel) { }
+            }
+            .fileImporter(
+                isPresented: $showingImportPicker,
+                allowedContentTypes: [UTType(filenameExtension: "tkdprofile")!, UTType(filenameExtension: "tkdbackup")!],
+                allowsMultipleSelection: false
+            ) { result in
+                handleFileImport(result)
+            }
+            .sheet(isPresented: $showingShareSheet) {
+                if let fileToShare = fileToShare {
+                    ShareSheet(items: [fileToShare])
+                }
+            }
+            .alert("Import Results", isPresented: $showingImportResult) {
+                Button("OK") { }
+            } message: {
+                if let result = importResult {
+                    Text(result.summary)
+                }
+            }
         }
     }
     
@@ -123,7 +200,7 @@ struct ProfileManagementView: View {
     
     private func loadProfiles() {
         do {
-            profiles = try dataManager.profileService.getAllProfiles()
+            profiles = try dataServices.profileService.getAllProfiles()
         } catch {
             errorMessage = "Failed to load profiles: \(error.localizedDescription)"
             showingError = true
@@ -132,7 +209,7 @@ struct ProfileManagementView: View {
     
     private func activateProfile(_ profile: UserProfile) {
         do {
-            try dataManager.profileService.activateProfile(profile)
+            try dataServices.profileService.activateProfile(profile)
             loadProfiles() // Refresh to show active state
             
             // Dismiss after a short delay to show selection feedback
@@ -145,9 +222,128 @@ struct ProfileManagementView: View {
         }
     }
     
+    // MARK: - Export/Import Functions
+    
+    private func exportAllProfiles() {
+        Task {
+            do {
+                let fileURL = try dataServices.profileExportService.saveAllProfilesToFile()
+                print("✅ All profiles exported successfully to: \(fileURL.path)")
+                print("📱 File ready for sharing - simulator file sharing may show errors but file creation succeeded")
+                await MainActor.run {
+                    self.fileToShare = fileURL
+                    self.showingShareSheet = true
+                }
+            } catch {
+                await MainActor.run {
+                    self.errorMessage = "Failed to export profiles: \(error.localizedDescription)"
+                    self.showingError = true
+                }
+            }
+        }
+    }
+    
+    private func exportSingleProfile(_ profile: UserProfile) {
+        Task {
+            do {
+                let fileURL = try dataServices.profileExportService.saveProfileToFile(profile)
+                print("✅ Single profile exported successfully to: \(fileURL.path)")
+                print("📱 File ready for sharing - simulator file sharing may show errors but file creation succeeded")
+                await MainActor.run {
+                    self.fileToShare = fileURL
+                    self.showingShareSheet = true
+                }
+            } catch {
+                await MainActor.run {
+                    self.errorMessage = "Failed to export profile: \(error.localizedDescription)"
+                    self.showingError = true
+                }
+            }
+        }
+    }
+    
+    private func handleFileImport(_ result: Result<[URL], Error>) {
+        Task {
+            switch result {
+            case .success(let urls):
+                guard let fileURL = urls.first else { return }
+                
+                do {
+                    let result = try dataServices.profileExportService.importProfileFromFile(fileURL, replaceExisting: false)
+                    await MainActor.run {
+                        self.importResult = result
+                        self.showingImportResult = true
+                        self.loadProfiles() // Refresh the profile list
+                    }
+                } catch {
+                    await MainActor.run {
+                        self.errorMessage = "Failed to import profiles: \(error.localizedDescription)"
+                        self.showingError = true
+                    }
+                }
+                
+            case .failure(let error):
+                await MainActor.run {
+                    self.errorMessage = "Failed to select file: \(error.localizedDescription)"
+                    self.showingError = true
+                }
+            }
+        }
+    }
+    
+    private func exportToiCloud() {
+        Task {
+            do {
+                _ = try dataServices.profileExportService.saveAllToiCloud()
+                await MainActor.run {
+                    // Show success message
+                    self.errorMessage = "Successfully backed up all profiles to iCloud!"
+                    self.showingError = true // Reusing error alert for success message
+                }
+            } catch {
+                await MainActor.run {
+                    if error is ProfileImportError && error.localizedDescription.contains("iCloud") {
+                        self.errorMessage = "iCloud backup requires setup in Xcode project settings. See console for instructions."
+                    } else {
+                        self.errorMessage = "Failed to backup to iCloud: \(error.localizedDescription)"
+                    }
+                    self.showingError = true
+                }
+            }
+        }
+    }
+    
+    private func showAvailableiCloudBackups() {
+        Task {
+            do {
+                let backups = try dataServices.profileExportService.listiCloudBackups()
+                if backups.isEmpty {
+                    await MainActor.run {
+                        self.errorMessage = "No backups found in iCloud."
+                        self.showingError = true
+                    }
+                } else {
+                    // For now, restore the most recent backup
+                    let mostRecentBackup = backups[0]
+                    let result = try dataServices.profileExportService.importProfileFromFile(mostRecentBackup, replaceExisting: false)
+                    await MainActor.run {
+                        self.importResult = result
+                        self.showingImportResult = true
+                        self.loadProfiles()
+                    }
+                }
+            } catch {
+                await MainActor.run {
+                    self.errorMessage = "Failed to access iCloud backups: \(error.localizedDescription)"
+                    self.showingError = true
+                }
+            }
+        }
+    }
+    
     private func deleteProfile(_ profile: UserProfile) {
         do {
-            try dataManager.profileService.deleteProfile(profile)
+            try dataServices.profileService.deleteProfile(profile)
             loadProfiles()
         } catch {
             errorMessage = "Failed to delete profile: \(error.localizedDescription)"
@@ -187,7 +383,7 @@ struct ProfileCard: View {
                             Image(systemName: "checkmark.circle.fill")
                                 .font(.system(size: 20))
                                 .foregroundColor(.green)
-                                .background(Color.white.clipShape(Circle()))
+                                .background(Color(UIColor.systemBackground).clipShape(Circle()))
                         }
                     }
                 }
@@ -328,7 +524,34 @@ struct StatItem: View {
     }
 }
 
+// MARK: - ShareSheet Component
+
+struct ShareSheet: UIViewControllerRepresentable {
+    let items: [Any]
+    
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        
+        // Handle iOS Simulator limitations gracefully
+        #if targetEnvironment(simulator)
+        controller.completionWithItemsHandler = { activityType, completed, returnedItems, error in
+            if let error = error {
+                print("⚠️ Simulator sharing error (expected): \(error.localizedDescription)")
+            } else {
+                print("✅ Export file created successfully - Simulator sharing limitations are normal")
+            }
+        }
+        #endif
+        
+        return controller
+    }
+    
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
+        // No updates needed
+    }
+}
+
 #Preview {
     ProfileManagementView()
-        .withDataContext()
+        
 }

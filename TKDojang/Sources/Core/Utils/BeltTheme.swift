@@ -171,9 +171,9 @@ struct BeltCardBackground: View {
             // Belt design: Primary-Secondary-Primary in thirds with grey stroke
             BeltBorder(theme: theme, cornerRadius: cornerRadius, borderWidth: borderWidth)
             
-            // White card background (positioned inside belt border)
+            // Adaptive card background (positioned inside belt border)
             RoundedRectangle(cornerRadius: max(2, cornerRadius - borderWidth))
-                .fill(Color.white)
+                .fill(Color(UIColor.systemBackground))
                 .padding(borderWidth)
             
             // Belt knot decoration at bottom center

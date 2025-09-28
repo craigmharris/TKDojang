@@ -46,6 +46,36 @@ final class BeltLevel {
         self.sortOrder = sortOrder
         self.isKyup = isKyup
     }
+    
+    // MARK: - Safe Belt Lookup Utilities
+    
+    /**
+     * Finds the starting belt (highest sort order, typically 10th Keup)
+     */
+    static func findStartingBelt(from beltLevels: [BeltLevel]) -> BeltLevel? {
+        return beltLevels.max(by: { $0.sortOrder < $1.sortOrder })
+    }
+    
+    /**
+     * Finds the next belt level in progression (lower sort order)
+     */
+    static func findNextBelt(after currentBelt: BeltLevel, in beltLevels: [BeltLevel]) -> BeltLevel? {
+        return beltLevels
+            .filter { $0.sortOrder < currentBelt.sortOrder }
+            .max(by: { $0.sortOrder < $1.sortOrder })
+    }
+    
+    /**
+     * Finds belt level by ID (preferred method for JSON-based lookups)
+     */
+    static func findBelt(byId beltId: String, in beltLevels: [BeltLevel]) -> BeltLevel? {
+        return beltLevels.first { belt in
+            // Check both the actual belt ID properties and common ID formats
+            return belt.shortName.lowercased().replacingOccurrences(of: " ", with: "_") == beltId ||
+                   belt.shortName.lowercased() == beltId.replacingOccurrences(of: "_", with: " ") ||
+                   belt.name.lowercased().contains(beltId.replacingOccurrences(of: "_", with: " "))
+        }
+    }
 }
 
 // MARK: - Content Category Definition
@@ -230,21 +260,6 @@ final class UserTerminologyProgress {
         }
     }
     
-    private func calculateNextReviewDate() -> Date {
-        let calendar = Calendar.current
-        let days: Int
-        
-        switch currentBox {
-        case 1: days = 1      // Review tomorrow
-        case 2: days = 3      // Review in 3 days
-        case 3: days = 7      // Review in 1 week
-        case 4: days = 14     // Review in 2 weeks
-        case 5: days = 30     // Review in 1 month
-        default: days = 1
-        }
-        
-        return calendar.date(byAdding: .day, value: days, to: Date()) ?? Date()
-    }
 }
 
 /**

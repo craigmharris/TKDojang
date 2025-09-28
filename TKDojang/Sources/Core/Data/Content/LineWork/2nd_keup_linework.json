@@ -1,288 +1,376 @@
 {
   "belt_level": "2nd Keup",
-  "belt_id": "2nd_keup", 
-  "line_work_sets": [
+  "belt_id": "2nd_keup",
+  "belt_color": "red",
+  "line_work_exercises": [
     {
-      "id": "master_level_stances",
-      "title": "Master Level Stances",
-      "category": "Stances",
-      "description": "Near-master level stance work with perfect execution",
+      "id": "fwd_bwd_close_stance_punch",
+      "movement_type": "FWD & BWD",
+      "order": 1,
+      "name": "Close stance, middle punch",
       "techniques": [
         {
-          "id": "close_ready_stance",
-          "name": "Close Ready Stance",
-          "korean": "Moa Junbi Sogi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 8,
-              "description": "Step forward into close ready stance with precise foot positioning"
-            },
-            {
-              "direction": "backward", 
-              "count": 8,
-              "description": "Step backward into close ready stance, maintain perfect alignment"
-            }
-          ],
-          "key_points": [
-            "Feet close together, parallel",
-            "Weight evenly distributed",
-            "Natural upright posture",
-            "Relaxed but ready position",
-            "Perfect balance maintenance"
-          ],
-          "common_mistakes": [
-            "Feet not parallel",
-            "Uneven weight distribution",
-            "Tense posture",
-            "Poor balance"
-          ]
+          "id": "close_stance",
+          "english": "Close Stance",
+          "romanised": "Moa Sogi",
+          "hangul": "모아서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Narrow stance with feet close together, emphasizing speed and agility"
         },
         {
-          "id": "x_stance",
-          "name": "X-Stance",
-          "korean": "Gyocha Sogi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 6,
-              "description": "Step forward into X-stance with legs crossing"
-            },
-            {
-              "direction": "backward",
-              "count": 6,
-              "description": "Step backward into X-stance, maintain crossing position"
-            }
-          ],
-          "key_points": [
-            "Legs cross at knee level",
-            "Weight on front leg primarily",
-            "Maintain balance despite crossing",
-            "Natural upper body position",
-            "Smooth transition execution"
-          ],
-          "common_mistakes": [
-            "Crossing too high or low",
-            "Poor weight distribution",
-            "Balance instability",
-            "Awkward transitions"
-          ]
+          "id": "middle_punch",
+          "english": "Middle Punch",
+          "romanised": "Kaunde Jirugi",
+          "hangul": "가운데지르기",
+          "category": "Striking",
+          "target_area": "Middle section",
+          "description": "Straight punch targeting the middle section of the body"
         }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 1,
+        "movement_pattern": "Step forward into close stance, execute middle punch. Repeat stepping backward.",
+        "key_points": [
+          "Narrow close stance positioning",
+          "Quick punching technique",
+          "Agility-focused movement"
+        ],
+        "common_mistakes": [
+          "Stance too wide",
+          "Slow technique",
+          "Poor balance"
+        ],
+        "execution_tips": [
+          "Keep feet close",
+          "Emphasize speed",
+          "Maintain balance"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Striking"
       ]
     },
     {
-      "id": "master_blocks",
-      "title": "Master Level Blocks", 
-      "category": "Blocking",
-      "description": "Expert-level blocking techniques with perfect timing and power",
+      "id": "fwd_flying_back_piercing_kick",
+      "movement_type": "FWD",
+      "order": 2,
+      "name": "Flying back piercing kick forward",
       "techniques": [
         {
-          "id": "palm_block",
-          "name": "Palm Block",
-          "korean": "Sonbadak Makgi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 6,
-              "description": "Step forward, execute palm block with palm surface"
-            },
-            {
-              "direction": "backward",
-              "count": 6,
-              "description": "Step backward, execute palm block maintaining effectiveness"
-            }
-          ],
-          "key_points": [
-            "Block with palm surface",
-            "Strong circular motion",
-            "Fingers pointing upward",
-            "Coordinated hip rotation",
-            "Sharp finishing position"
-          ],
-          "common_mistakes": [
-            "Using wrong hand surface",
-            "Poor circular motion",
-            "Incorrect finger position",
-            "Weak hip coordination"
-          ]
-        },
-        {
-          "id": "twin_forearm_block_advanced",
-          "name": "Twin Forearm Block (Advanced)",
-          "korean": "Sang Palmok Makgi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 4,
-              "description": "Step forward, execute twin forearm block with maximum power"
-            },
-            {
-              "direction": "backward",
-              "count": 4,
-              "description": "Step backward, execute twin forearm block with perfect coordination"
-            }
-          ],
-          "key_points": [
-            "Perfect simultaneous action",
-            "Maximum power in both arms",
-            "Precise parallel positioning",
-            "Strong outward motion",
-            "Complete body coordination"
-          ],
-          "common_mistakes": [
-            "Slight timing differences",
-            "Unequal power distribution",
-            "Poor parallel alignment",
-            "Insufficient outward force"
-          ]
+          "id": "flying_back_piercing_kick",
+          "english": "Flying Back Piercing Kick",
+          "romanised": "Twimyo Dwit Cha Jirugi",
+          "hangul": "뛰며뒤차지르기",
+          "category": "Kicking",
+          "target_area": "Middle section",
+          "description": "Jumping back kick with flight time, delivering piercing motion with heel"
         }
+      ],
+      "execution": {
+        "direction": "forward",
+        "repetitions": 1,
+        "movement_pattern": "Execute flying back piercing kick moving forward, land in walking stance",
+        "key_points": [
+          "Aerial back kick technique",
+          "Heel piercing contact",
+          "Controlled flight and landing"
+        ],
+        "common_mistakes": [
+          "Poor aerial control",
+          "Wrong striking surface",
+          "Hard landing"
+        ],
+        "execution_tips": [
+          "Control jump and turn",
+          "Pierce with heel",
+          "Land softly"
+        ]
+      },
+      "categories": [
+        "Kicking"
       ]
     },
     {
-      "id": "expert_strikes",
-      "title": "Expert Strikes",
-      "category": "Striking", 
-      "description": "Master-level striking techniques with devastating effectiveness",
+      "id": "bwd_reverse_circular_block",
+      "movement_type": "BWD",
+      "order": 3,
+      "name": "L stance, reverse circular block",
       "techniques": [
         {
-          "id": "ridge_hand_strike",
-          "name": "Ridge Hand Strike",
-          "korean": "Sonnal Deung Taerigi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 6,
-              "description": "Step forward, execute ridge hand strike with precision"
-            },
-            {
-              "direction": "backward",
-              "count": 6,
-              "description": "Step backward, execute ridge hand strike maintaining power"
-            }
-          ],
-          "key_points": [
-            "Strike with ridge of hand",
-            "Circular motion to target",
-            "Target at temple or neck",
-            "Sharp snapping action",
-            "Full body coordination"
-          ],
-          "common_mistakes": [
-            "Using wrong hand surface",
-            "Poor circular technique",
-            "Incorrect target level",
-            "Weak snapping finish"
-          ]
+          "id": "l_stance",
+          "english": "L Stance",
+          "romanised": "Niunja Sogi",
+          "hangul": "ㄴ자서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "L-shaped stance with proper weight distribution"
         },
         {
-          "id": "arc_hand_strike",
-          "name": "Arc Hand Strike",
-          "korean": "Bandalson Taerigi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 4,
-              "description": "Step forward, execute arc hand strike with curved motion"
-            },
-            {
-              "direction": "backward",
-              "count": 4,
-              "description": "Step backward, execute arc hand strike maintaining technique"
-            }
-          ],
-          "key_points": [
-            "Strike with fingertips",
-            "Arc motion to target",
-            "Target at face or throat",
-            "Quick snap and return",
-            "Precise finger positioning"
-          ],
-          "common_mistakes": [
-            "Incorrect finger formation",
-            "Poor arc motion",
-            "Wrong target selection",
-            "Slow return action"
-          ]
+          "id": "reverse_circular_block",
+          "english": "Reverse Circular Block",
+          "romanised": "Bandae Dollimyo Makgi",
+          "hangul": "반대돌리며막기",
+          "category": "Blocking",
+          "target_area": "Middle section",
+          "description": "Circular block executed in reverse direction, highly advanced technique"
         }
+      ],
+      "execution": {
+        "direction": "backward",
+        "repetitions": 1,
+        "movement_pattern": "Step backward into L-stance, execute reverse circular block",
+        "key_points": [
+          "Stable L-stance foundation",
+          "Reverse circular motion",
+          "Advanced blocking technique"
+        ],
+        "common_mistakes": [
+          "Poor L-stance",
+          "Wrong circular direction",
+          "Incomplete technique"
+        ],
+        "execution_tips": [
+          "Maintain stance stability",
+          "Execute reverse circular motion",
+          "Complete full technique"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Blocking"
       ]
     },
     {
-      "id": "expert_kicks",
-      "title": "Expert Kicks",
-      "category": "Kicking", 
-      "description": "High-level kicking techniques requiring exceptional balance and power",
+      "id": "fwd_expert_combination",
+      "movement_type": "FWD",
+      "order": 4,
+      "name": "Flying front kick, land close stance, twin vertical punch",
       "techniques": [
         {
-          "id": "side_piercing_kick_advanced",
-          "name": "Side Piercing Kick (Advanced)",
-          "korean": "Yop Cha Jirugi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 4,
-              "description": "Step forward, execute side piercing kick with master-level technique"
-            },
-            {
-              "direction": "backward",
-              "count": 4,
-              "description": "Step backward, execute side piercing kick with perfect balance"
-            }
-          ],
-          "key_points": [
-            "Perfect chamber position",
-            "Maximum thrust power",
-            "Knife foot edge contact",
-            "Exceptional balance control",
-            "Rapid chamber return"
-          ],
-          "common_mistakes": [
-            "Any chamber imperfection",
-            "Insufficient thrust power",
-            "Wrong contact surface",
-            "Balance instability"
-          ]
+          "id": "flying_front_kick",
+          "english": "Flying Front Kick",
+          "romanised": "Twimyo Ap Chagi",
+          "hangul": "뛰며앞차기",
+          "category": "Kicking",
+          "target_area": "Middle section",
+          "description": "Jumping front kick with airborne delivery using ball of foot"
         },
         {
-          "id": "back_piercing_kick",
-          "name": "Back Piercing Kick",
-          "korean": "Dwit Cha Jirugi",
-          "direction_pattern": [
-            {
-              "direction": "forward",
-              "count": 3,
-              "description": "Step forward, turn and execute back piercing kick"
-            },
-            {
-              "direction": "backward",
-              "count": 3,
-              "description": "Step backward, turn and execute back piercing kick"
-            }
-          ],
-          "key_points": [
-            "Complete 180° turn",
-            "Look over shoulder to target",
-            "Kick with bottom of foot",
-            "Straight thrust backward",
-            "Maintain perfect balance"
-          ],
-          "common_mistakes": [
-            "Incomplete turn",
-            "Not looking at target",
-            "Wrong foot surface",
-            "Poor balance during turn"
-          ]
+          "id": "close_stance",
+          "english": "Close Stance",
+          "romanised": "Moa Sogi",
+          "hangul": "모아서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Narrow stance for quick transition after aerial technique"
+        },
+        {
+          "id": "twin_vertical_punch",
+          "english": "Twin Vertical Punch",
+          "romanised": "Sang Sewo Jirugi",
+          "hangul": "쌍세워지르기",
+          "category": "Striking",
+          "target_area": "Middle section",
+          "description": "Double punch with both fists in vertical position simultaneously"
         }
+      ],
+      "execution": {
+        "direction": "forward",
+        "repetitions": 1,
+        "movement_pattern": "Execute flying front kick, land in close stance, immediately perform twin vertical punch",
+        "sequence_notes": "Expert-level combination requiring aerial control, precise landing, and immediate striking",
+        "key_points": [
+          "Controlled flying front kick",
+          "Quick landing in close stance",
+          "Simultaneous twin vertical punching"
+        ],
+        "common_mistakes": [
+          "Poor aerial technique",
+          "Unstable landing",
+          "Uncoordinated punching"
+        ],
+        "execution_tips": [
+          "Control flight completely",
+          "Land quickly in close stance",
+          "Coordinate both punches"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Kicking",
+        "Striking"
+      ]
+    },
+    {
+      "id": "alternating_angle_punch",
+      "movement_type": "ALTERNATING",
+      "order": 5,
+      "name": "Horse stance, alternating angle punches with pivot",
+      "techniques": [
+        {
+          "id": "horse_stance",
+          "english": "Horse Stance",
+          "romanised": "Juchum Sogi",
+          "hangul": "주춤서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Wide stance with feet parallel, maintained during pivot motion"
+        },
+        {
+          "id": "angle_punch",
+          "english": "Angle Punch",
+          "romanised": "Giulgyo Jirugi",
+          "hangul": "기울어지르기",
+          "category": "Striking",
+          "target_area": "Middle section",
+          "description": "Punch delivered at an angle with body pivot for increased power"
+        }
+      ],
+      "execution": {
+        "direction": "alternating",
+        "repetitions": 10,
+        "movement_pattern": "In horse stance, alternate angle punches left and right with body pivot",
+        "key_points": [
+          "Maintain horse stance base",
+          "Body pivot with each punch",
+          "Angled punching delivery"
+        ],
+        "common_mistakes": [
+          "Stance movement",
+          "No body pivot",
+          "Straight punching"
+        ],
+        "execution_tips": [
+          "Lock lower body in stance",
+          "Pivot upper body",
+          "Punch at angle"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Striking"
+      ]
+    },
+    {
+      "id": "fwd_bwd_mountain_block",
+      "movement_type": "FWD & BWD",
+      "order": 6,
+      "name": "Walking stance, mountain block",
+      "techniques": [
+        {
+          "id": "walking_stance",
+          "english": "Walking Stance",
+          "romanised": "Gunnun Sogi",
+          "hangul": "걷는서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Natural forward walking stance with weight evenly distributed"
+        },
+        {
+          "id": "mountain_block",
+          "english": "Mountain Block",
+          "romanised": "San Makgi",
+          "hangul": "산막기",
+          "category": "Blocking",
+          "target_area": "Multiple levels",
+          "description": "High-level block that protects multiple target areas simultaneously like a mountain"
+        }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 1,
+        "movement_pattern": "Step forward into walking stance, execute mountain block. Repeat stepping backward.",
+        "key_points": [
+          "Stable walking stance",
+          "Multi-level protection",
+          "Mountain-like blocking coverage"
+        ],
+        "common_mistakes": [
+          "Poor stance",
+          "Single-level blocking",
+          "Incomplete coverage"
+        ],
+        "execution_tips": [
+          "Maintain strong stance",
+          "Block multiple levels",
+          "Provide complete protection"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Blocking"
+      ]
+    },
+    {
+      "id": "static_master_expert_combo",
+      "movement_type": "STATIC",
+      "order": 7,
+      "name": "Close stance, twin upset punch, flying hook kick, land same position",
+      "techniques": [
+        {
+          "id": "close_stance",
+          "english": "Close Stance",
+          "romanised": "Moa Sogi",
+          "hangul": "모아서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Narrow stance maintained throughout expert combination"
+        },
+        {
+          "id": "twin_upset_punch",
+          "english": "Twin Upset Punch",
+          "romanised": "Sang Dwijibo Jirugi",
+          "hangul": "쌍뒤집어지르기",
+          "category": "Striking",
+          "target_area": "Middle section",
+          "description": "Double uppercut-style punches delivered simultaneously in upset motion"
+        },
+        {
+          "id": "flying_hook_kick",
+          "english": "Flying Hook Kick",
+          "romanised": "Twimyo Golcho Chagi",
+          "hangul": "뛰며걸쳐차기",
+          "category": "Kicking",
+          "target_area": "Head level",
+          "description": "Jumping hook kick with aerial hooking motion and controlled landing"
+        }
+      ],
+      "execution": {
+        "direction": "static",
+        "repetitions": 1,
+        "movement_pattern": "From close stance, execute twin upset punch, then flying hook kick, return to exact same close stance position",
+        "sequence_notes": "Master-expert level combination demonstrating ultimate precision and control",
+        "key_points": [
+          "Maintain close stance throughout",
+          "Coordinated twin upset punching",
+          "Controlled aerial hook kick"
+        ],
+        "common_mistakes": [
+          "Stance deviation",
+          "Uncoordinated punching",
+          "Poor aerial control"
+        ],
+        "execution_tips": [
+          "Lock stance position",
+          "Coordinate both punches perfectly",
+          "Control aerial technique completely"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Striking",
+        "Kicking"
       ]
     }
   ],
-  "practice_notes": {
-    "warmup": "Master-level warmup including advanced flexibility, balance, and coordination exercises",
-    "focus_areas": [
-      "Achieve near-perfect technical execution",
-      "Master complex stance transitions", 
-      "Develop exceptional kicking balance and power",
-      "Integrate all techniques with master-level precision"
-    ],
-    "progression": "Emphasize flawless execution with maximum power and competition-ready performance"
-  }
+  "total_exercises": 7,
+  "skill_focus": [
+    "Close stance agility and speed",
+    "Advanced aerial techniques",
+    "Expert-level combinations",
+    "Precision and complete control"
+  ]
 }

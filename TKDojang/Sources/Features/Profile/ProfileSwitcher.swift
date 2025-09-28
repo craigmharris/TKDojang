@@ -20,29 +20,38 @@ import SwiftData
  */
 
 struct ProfileSwitcher: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     
-    @State private var profiles: [UserProfile] = []
-    @State private var activeProfile: UserProfile?
     @State private var showingProfileManagement = false
     @State private var errorMessage: String?
     @State private var showingError = false
+    
+    // Instance identifier for debugging
+    private let instanceId = UUID().uuidString.prefix(8)
+    
+    // Use shared published state instead of local state
+    private var profiles: [UserProfile] { dataServices.allProfiles }
+    private var activeProfile: UserProfile? { dataServices.activeProfile }
     
     var body: some View {
         Menu {
             // All Profiles with Current Selection Indicator
             Section("Family Profiles") {
                 ForEach(profiles) { profile in
-                    Button {
-                        if !profile.isActive {
+                    Button(action: {
+                        let isCurrentlyActive = (activeProfile?.id == profile.id)
+                        print("🔍 ProfileSwitcher: Tapped profile \(profile.name), isCurrentlyActive: \(isCurrentlyActive)")
+                        if !isCurrentlyActive {
                             switchToProfile(profile)
+                        } else {
+                            print("⚠️ ProfileSwitcher: Profile \(profile.name) is already active, ignoring tap")
                         }
-                    } label: {
+                    }) {
                         HStack {
                             Label {
                                 VStack(alignment: .leading) {
                                     Text(profile.name)
-                                        .fontWeight(profile.isActive ? .semibold : .regular)
+                                        .fontWeight((activeProfile?.id == profile.id) ? .semibold : .regular)
                                     Text(profile.currentBeltLevel.shortName)
                                         .font(.caption)
                                         .foregroundColor(.secondary)
@@ -55,14 +64,13 @@ struct ProfileSwitcher: View {
                             Spacer()
                             
                             // Current selection indicator
-                            if profile.isActive {
+                            if activeProfile?.id == profile.id {
                                 Image(systemName: "checkmark.circle.fill")
                                     .foregroundColor(.green)
                                     .font(.system(size: 16))
                             }
                         }
                     }
-                    .disabled(profile.isActive) // Disable tapping on current profile
                 }
             }
             
@@ -80,16 +88,20 @@ struct ProfileSwitcher: View {
         } label: {
             ProfileSwitcherButton(activeProfile: activeProfile)
         }
+        .id("ProfileSwitcher-\(activeProfile?.id.uuidString ?? "none")")
         .onAppear {
-            loadProfiles()
+            DebugLogger.ui("🎬 ProfileSwitcher: onAppear triggered [Instance: \(instanceId)]")
+            DebugLogger.ui("🔄 ProfileSwitcher: Rendering menu with \(profiles.count) profiles, active: \(activeProfile?.name ?? "none") [Instance: \(instanceId)]")
+            
+            // Load shared profile state only once across all instances
+            dataServices.loadSharedProfileState()
         }
-        .onChange(of: dataManager.profileService.activeProfile) {
-            loadProfiles()
-        }
+        
         .sheet(isPresented: $showingProfileManagement) {
             ProfileManagementView()
                 .onDisappear {
-                    loadProfiles()
+                    print("👋 ProfileSwitcher: ProfileManagementView disappeared, refreshing shared state [Instance: \(instanceId)]")
+                    dataServices.refreshSharedProfileState()
                 }
         }
         .alert("Error", isPresented: $showingError) {
@@ -101,21 +113,16 @@ struct ProfileSwitcher: View {
         }
     }
     
-    private func loadProfiles() {
-        do {
-            profiles = try dataManager.profileService.getAllProfiles()
-            activeProfile = dataManager.profileService.getActiveProfile()
-        } catch {
-            errorMessage = "Failed to load profiles: \(error.localizedDescription)"
-            showingError = true
-        }
-    }
-    
     private func switchToProfile(_ profile: UserProfile) {
         do {
-            try dataManager.profileService.activateProfile(profile)
-            loadProfiles()
+            print("🔄 ProfileSwitcher: Switching to profile: \(profile.name) [Instance: \(instanceId)]")
+            
+            // Use shared DataServices method for profile switching
+            try dataServices.switchToProfile(profile)
+            
+            print("✅ ProfileSwitcher: Profile switch completed [Instance: \(instanceId)]")
         } catch {
+            print("❌ ProfileSwitcher: Failed to switch profile: \(error)")
             errorMessage = "Failed to switch profile: \(error.localizedDescription)"
             showingError = true
         }
@@ -236,5 +243,5 @@ struct CompactProfileCard: View {
                 }
         }
     }
-    .withDataContext()
+    .environmentObject(DataServices.shared)
 }

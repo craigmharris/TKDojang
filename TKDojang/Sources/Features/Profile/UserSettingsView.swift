@@ -8,19 +8,28 @@ import SwiftData
  */
 
 struct UserSettingsView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @Environment(\.dismiss) private var dismiss
-    @Query private var beltLevels: [BeltLevel]
-    @Query private var categories: [TerminologyCategory]
+    @Query(sort: \BeltLevel.sortOrder, order: .reverse) private var beltLevels: [BeltLevel]
+    @Query(sort: \TerminologyCategory.sortOrder) private var categories: [TerminologyCategory]
     
     @State private var userProfile: UserProfile?
     @State private var selectedBeltLevelId: UUID?
     @State private var selectedLearningMode: LearningMode = .progression
     @State private var dailyStudyGoal: Int = 20
+    @State private var isRefreshing = false
     
     var body: some View {
         NavigationStack {
-            Form {
+            if isRefreshing {
+                VStack {
+                    ProgressView()
+                    Text("Loading settings...")
+                        .padding(.top, 8)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                Form {
                 Section("Current Level") {
                     Picker("Your Belt Level", selection: $selectedBeltLevelId) {
                         ForEach(sortedBeltLevels, id: \.id) { belt in
@@ -55,6 +64,73 @@ struct UserSettingsView: View {
                 
                 Section("Study Preferences") {
                     Stepper("Daily Goal: \(dailyStudyGoal) terms", value: $dailyStudyGoal, in: 5...50, step: 5)
+                }
+                
+                Section {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Toggle("Leitner Box Spaced Repetition", isOn: Binding(
+                            get: { dataServices.leitnerService.isLeitnerModeEnabled },
+                            set: { newValue in 
+                                dataServices.leitnerService.isLeitnerModeEnabled = newValue
+                                if newValue, let profile = userProfile {
+                                    dataServices.leitnerService.migrateToLeitnerMode(userProfile: profile)
+                                }
+                            }
+                        ))
+                        
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(dataServices.leitnerService.currentModeDisplayName)
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .foregroundColor(.primary)
+                            
+                            Text(dataServices.leitnerService.currentModeDescription)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                        if dataServices.leitnerService.isLeitnerModeEnabled, let profile = userProfile {
+                            VStack(alignment: .leading, spacing: 8) {
+                                HStack {
+                                    Text("Learning Statistics:")
+                                        .font(.caption)
+                                        .fontWeight(.medium)
+                                        .foregroundColor(.secondary)
+                                    Spacer()
+                                }
+                                
+                                HStack {
+                                    Text("Terms Due for Review:")
+                                    Spacer()
+                                    Text("\(dataServices.leitnerService.getTermsDueCount(userProfile: profile))")
+                                        .foregroundColor(.blue)
+                                }
+                                .font(.caption)
+                                
+                                Text("Box Distribution:")
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.secondary)
+                                
+                                let distribution = dataServices.leitnerService.getBoxDistribution(userProfile: profile)
+                                ForEach(1...5, id: \.self) { box in
+                                    HStack {
+                                        Text("Box \(box):")
+                                        Spacer()
+                                        Text("\(distribution[box] ?? 0) terms")
+                                            .foregroundColor(.secondary)
+                                    }
+                                    .font(.caption2)
+                                    .padding(.leading, 8)
+                                }
+                            }
+                            .padding(.top, 4)
+                        }
+                    }
+                } header: {
+                    Text("Advanced Features")
+                } footer: {
+                    Text("Leitner Box uses spaced repetition to optimize learning. Terms are scheduled for review based on how well you know them.")
                 }
                 
                 Section("Data Management") {
@@ -111,7 +187,13 @@ struct UserSettingsView: View {
                 }
             }
         }
+        }
+        .modelContainer(dataServices.modelContainer) // Needed for @Query properties
         .onAppear {
+            loadCurrentSettings()
+        }
+        .onReceive(dataServices.objectWillChange) { _ in
+            // Refresh when the data services change (e.g., profile switch)
             loadCurrentSettings()
         }
     }
@@ -119,12 +201,30 @@ struct UserSettingsView: View {
     // MARK: - Computed Properties
     
     private var sortedBeltLevels: [BeltLevel] {
-        beltLevels.sorted { $0.sortOrder > $1.sortOrder } // Higher sortOrder first (10th Keup -> 1st Dan)
+        // Use @Query first, but fall back to service if empty
+        if !beltLevels.isEmpty {
+            let sorted = beltLevels.sorted { $0.sortOrder > $1.sortOrder } // Higher sortOrder first (10th Keup -> 1st Dan)
+            print("🔧 DEBUG: sortedBeltLevels from @Query count: \(sorted.count)")
+            return sorted
+        } else {
+            // Fallback: Load belt levels directly from service
+            let serviceBelts = dataServices.patternService.getAllBeltLevels()
+            let sorted = serviceBelts.sorted { $0.sortOrder > $1.sortOrder }
+            print("🔧 DEBUG: sortedBeltLevels from service count: \(sorted.count)")
+            return sorted
+        }
     }
     
     private var selectedBeltLevel: BeltLevel? {
         guard let id = selectedBeltLevelId else { return nil }
-        return beltLevels.first { $0.id == id }
+        
+        // Try @Query results first, then fallback to service
+        if let belt = beltLevels.first(where: { $0.id == id }) {
+            return belt
+        } else {
+            // Fallback: Search in service results
+            return sortedBeltLevels.first { $0.id == id }
+        }
     }
     
     private var learningModeExplanation: String {
@@ -154,13 +254,29 @@ struct UserSettingsView: View {
     // MARK: - Helper Methods
     
     private func loadCurrentSettings() {
-        userProfile = dataManager.getOrCreateDefaultUserProfile()
+        print("🔧 DEBUG: UserSettingsView loading current settings")
+        isRefreshing = true
+        
+        // Use ProfileService to get the active profile instead of cached method
+        userProfile = dataServices.profileService.getActiveProfile()
+        print("🔧 DEBUG: Active profile from service: \(userProfile?.name ?? "nil")")
+        
+        // If no active profile, create one using the DataManager method
+        if userProfile == nil {
+            print("🔧 DEBUG: No active profile, creating default")
+            userProfile = dataServices.getOrCreateDefaultUserProfile()
+        }
         
         if let profile = userProfile {
+            print("🔧 DEBUG: Profile loaded: \(profile.name), belt: \(profile.currentBeltLevel.shortName)")
             selectedBeltLevelId = profile.currentBeltLevel.id
             selectedLearningMode = profile.learningMode
             dailyStudyGoal = profile.dailyStudyGoal
+        } else {
+            print("🔧 DEBUG: Still no profile after attempting creation")
         }
+        
+        isRefreshing = false
     }
     
     private func saveSettings() {
@@ -173,7 +289,7 @@ struct UserSettingsView: View {
         profile.updatedAt = Date()
         
         do {
-            try dataManager.modelContainer.mainContext.save()
+            try dataServices.modelContainer.mainContext.save()
             dismiss()
         } catch {
             print("Failed to save settings: \(error)")
@@ -191,6 +307,6 @@ struct UserSettingsView: View {
 struct UserSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         UserSettingsView()
-            .withDataContext()
+            
     }
 }

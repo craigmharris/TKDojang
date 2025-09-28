@@ -17,7 +17,7 @@ import SwiftData
 struct StepSparringPracticeView: View {
     let sequence: StepSparringSequence
     
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @Environment(\.dismiss) private var dismiss
     
     @State private var currentStepIndex = 0
@@ -86,7 +86,7 @@ struct StepSparringPracticeView: View {
         )
         
         do {
-            let results = try dataManager.modelContext.fetch(descriptor)
+            let results = try dataServices.modelContext.fetch(descriptor)
             return results.first
         } catch {
             print("❌ Failed to fetch belt level for \(normalizedBelt): \(error)")
@@ -368,14 +368,14 @@ struct StepSparringPracticeView: View {
         userProfile = nil
         progress = nil
         
-        userProfile = dataManager.profileService.getActiveProfile()
+        userProfile = dataServices.profileService.getActiveProfile()
         if userProfile == nil {
-            userProfile = dataManager.getOrCreateDefaultUserProfile()
+            userProfile = dataServices.getOrCreateDefaultUserProfile()
         }
         
         if let profile = userProfile {
             do {
-                progress = dataManager.stepSparringService.getUserProgress(for: sequence, userProfile: profile)
+                progress = dataServices.stepSparringService.getUserProgress(for: sequence, userProfile: profile)
             } catch {
                 print("❌ Failed to load user progress: \(error)")
                 progress = nil
@@ -384,17 +384,19 @@ struct StepSparringPracticeView: View {
     }
     
     private func recordPracticeSession() {
-        guard let profile = userProfile else { return }
+        let totalSteps = sortedSteps.count
+        let stepsCompleted = sessionCompleted ? totalSteps : currentStepIndex
         
-        let duration = Date().timeIntervalSince(practiceStartTime)
-        let stepsCompleted = sessionCompleted ? sortedSteps.count : currentStepIndex
-        
-        dataManager.stepSparringService.recordPracticeSession(
-            sequence: sequence,
-            userProfile: profile,
-            duration: duration,
-            stepsCompleted: stepsCompleted
-        )
+        do {
+            try dataServices.profileService.recordStudySession(
+                sessionType: .step_sparring,
+                itemsStudied: totalSteps,
+                correctAnswers: stepsCompleted,
+                focusAreas: [sequence.name]
+            )
+        } catch {
+            print("❌ Failed to record step sparring session: \(error)")
+        }
     }
     
     private func formatPracticeTime() -> String {

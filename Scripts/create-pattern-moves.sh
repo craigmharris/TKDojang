@@ -88,10 +88,10 @@ for i in {1..29}; do
     create_move_imageset "hwa-rang" $i
 done
 
-# Chung-Mu (30 moves)
-echo "  📋 Creating Chung-Mu moves (30)"
+# Choong-Moo (30 moves)
+echo "  📋 Creating Choong-Moo moves (30)"
 for i in {1..30}; do
-    create_move_imageset "chung-mu" $i
+    create_move_imageset "choong-moo" $i
 done
 
 echo ""

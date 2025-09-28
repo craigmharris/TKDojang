@@ -88,7 +88,7 @@ final class FlashcardSystemTests: XCTestCase {
         testContext.insert(testEntry)
         
         // Create test user profile
-        testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        testProfile = UserProfile(name: "Test User", currentBeltLevel: testBelt, learningMode: .mastery)
         testContext.insert(testProfile)
         
         try! testContext.save()
@@ -326,8 +326,8 @@ final class FlashcardSystemTests: XCTestCase {
         let yellowBelt = BeltLevel(name: "9th Keup (Yellow Belt)", shortName: "9th Keup", colorName: "Yellow", sortOrder: 14, isKyup: true)
         testContext.insert(yellowBelt)
         
-        let progressionProfile = UserProfile(currentBeltLevel: yellowBelt, learningMode: .progression)
-        let masteryProfile = UserProfile(currentBeltLevel: yellowBelt, learningMode: .mastery)
+        let progressionProfile = UserProfile(name: "Progression User", currentBeltLevel: yellowBelt, learningMode: .progression)
+        let masteryProfile = UserProfile(name: "Mastery User", currentBeltLevel: yellowBelt, learningMode: .mastery)
         
         testContext.insert(progressionProfile)
         testContext.insert(masteryProfile)

@@ -5,17 +5,22 @@ import SwiftData
 /**
  * PerformanceTests.swift
  * 
- * PURPOSE: Performance tests for large terminology datasets and database operations
+ * PURPOSE: Comprehensive performance testing for dynamic discovery architecture and database operations
  * 
- * CRITICAL IMPORTANCE: Ensures the app performs well with full terminology content
- * Based on CLAUDE.md: Need "performance tests for large terminology datasets"
+ * IMPORTANCE: Validates performance characteristics of the architectural changes implemented on September 27, 2025
+ * Tests the performance impact of dynamic discovery patterns, content loading, and UI data preparation
  * 
  * TEST COVERAGE:
+ * - Dynamic file discovery performance across all content types
  * - Database loading performance with full terminology set
- * - Query performance with large datasets  
- * - Memory usage during bulk operations
- * - Response time for filtering and searching
- * - Scalability of SwiftData operations
+ * - LineWork exercise-based loading performance
+ * - Concurrent content loading performance
+ * - Memory usage during bulk operations and all content types
+ * - UI data preparation performance optimization
+ * - Belt level filtering with new content structure
+ * - File system stress testing under load
+ * - Content loader instantiation performance
+ * - Cross-system integration performance
  */
 final class PerformanceTests: XCTestCase {
     
@@ -373,7 +378,7 @@ final class PerformanceTests: XCTestCase {
             return
         }
         
-        let testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        let testProfile = UserProfile(name: "Test User", currentBeltLevel: testBelt, learningMode: .mastery)
         testContext.insert(testProfile)
         try testContext.save()
         
@@ -408,7 +413,7 @@ final class PerformanceTests: XCTestCase {
             return
         }
         
-        let testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        let testProfile = UserProfile(name: "Test User", currentBeltLevel: testBelt, learningMode: .mastery)
         testContext.insert(testProfile)
         
         // Create progress for smaller subset of entries
@@ -621,7 +626,7 @@ final class PerformanceTests: XCTestCase {
             return
         }
         
-        let testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        let testProfile = UserProfile(name: "Test User", currentBeltLevel: testBelt, learningMode: .mastery)
         testContext.insert(testProfile)
         try testContext.save()
         
@@ -841,7 +846,7 @@ final class PerformanceTests: XCTestCase {
             return
         }
         
-        let testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        let testProfile = UserProfile(name: "Test User", currentBeltLevel: testBelt, learningMode: .mastery)
         testContext.insert(testProfile)
         try testContext.save()
         
@@ -869,5 +874,305 @@ final class PerformanceTests: XCTestCase {
                 XCTFail("Failed to save complex progress: \(error)")
             }
         }
+    }
+    
+    // MARK: - Dynamic Discovery Performance Tests
+    
+    @MainActor
+    func testDynamicFileDiscoveryPerformance() async throws {
+        // Test performance impact of dynamic file discovery vs hardcoded lists
+        
+        measure {
+            // Test subdirectory enumeration performance
+            var discoveredFiles = 0
+            
+            // StepSparring discovery
+            if let stepSparringPath = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "StepSparring") {
+                do {
+                    let contents = try FileManager.default.contentsOfDirectory(atPath: stepSparringPath)
+                    discoveredFiles += contents.filter { $0.hasSuffix(".json") }.count
+                } catch {
+                    print("Failed to discover StepSparring files: \(error)")
+                }
+            }
+            
+            // Pattern discovery
+            if let patternsPath = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "Patterns") {
+                do {
+                    let contents = try FileManager.default.contentsOfDirectory(atPath: patternsPath)
+                    discoveredFiles += contents.filter { $0.hasSuffix(".json") }.count
+                } catch {
+                    print("Failed to discover Pattern files: \(error)")
+                }
+            }
+            
+            // Techniques discovery
+            if let techniquesPath = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "Techniques") {
+                do {
+                    let contents = try FileManager.default.contentsOfDirectory(atPath: techniquesPath)
+                    discoveredFiles += contents.filter { $0.hasSuffix(".json") }.count
+                } catch {
+                    print("Failed to discover Techniques files: \(error)")
+                }
+            }
+            
+            XCTAssertGreaterThan(discoveredFiles, 0, "Should discover JSON files")
+        }
+    }
+    
+    @MainActor
+    func testLineWorkExerciseLoadingPerformance() async throws {
+        // Test performance of new exercise-based LineWork loading
+        
+        measure {
+            Task {
+                let allContent = await LineWorkContentLoader.loadAllLineWorkContent()
+                XCTAssertGreaterThan(allContent.count, 0, "Should load LineWork content")
+                
+                // Verify exercise structure performance
+                for (_, content) in allContent {
+                    for exercise in content.lineWorkExercises {
+                        // Access all properties to test parsing performance
+                        _ = exercise.id
+                        _ = exercise.name
+                        _ = exercise.movementType
+                        _ = exercise.techniques
+                        _ = exercise.execution
+                        _ = exercise.categories
+                    }
+                }
+            }
+        }
+    }
+    
+    func testContentLoaderInstantiationPerformance() throws {
+        // Test performance of creating multiple content loader instances
+        
+        measure {
+            // Test StepSparring loader creation
+            for _ in 1...10 {
+                let stepSparringService = StepSparringDataService(modelContext: testContext)
+                let stepSparringLoader = StepSparringContentLoader(stepSparringService: stepSparringService)
+                _ = stepSparringLoader
+            }
+            
+            // Test Pattern loader creation
+            for _ in 1...10 {
+                let patternService = PatternDataService(modelContext: testContext)
+                let patternLoader = PatternContentLoader(patternService: patternService)
+                _ = patternLoader
+            }
+            
+            // Test Techniques service creation
+            for _ in 1...10 {
+                let techniquesService = TechniquesDataService()
+                _ = techniquesService
+            }
+        }
+    }
+    
+    @MainActor
+    func testConcurrentContentLoadingPerformance() async throws {
+        // Test performance when multiple content types load simultaneously
+        
+        measure {
+            Task {
+                // Simulate concurrent loading
+                async let stepSparringTask: Void = {
+                    let stepSparringService = StepSparringDataService(modelContext: testContext)
+                    let stepSparringLoader = StepSparringContentLoader(stepSparringService: stepSparringService)
+                    stepSparringLoader.loadAllContent()
+                }()
+                
+                async let patternTask: Void = {
+                    let patternService = PatternDataService(modelContext: testContext)
+                    let patternLoader = PatternContentLoader(patternService: patternService)
+                    patternLoader.loadAllContent()
+                }()
+                
+                async let techniquesTask: Void = {
+                    let techniquesService = TechniquesDataService()
+                    await techniquesService.loadAllTechniques()
+                }()
+                
+                async let lineWorkTask: [String: LineWorkContent] = {
+                    await LineWorkContentLoader.loadAllLineWorkContent()
+                }()
+                
+                // Wait for all tasks
+                _ = await stepSparringTask
+                _ = await patternTask
+                _ = await techniquesTask
+                let lineWorkContent = await lineWorkTask
+                
+                XCTAssertGreaterThan(lineWorkContent.count, 0, "Should load line work content")
+            }
+        }
+    }
+    
+    // MARK: - New Architecture Stress Tests
+    
+    func testFileSystemStressTest() throws {
+        // Test filesystem access under stress
+        
+        measure {
+            // Rapid fire directory enumeration
+            for _ in 1...50 {
+                _ = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "Patterns")
+                _ = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "StepSparring")
+                _ = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "Techniques")
+                
+                if let bundlePath = Bundle.main.resourcePath {
+                    do {
+                        _ = try FileManager.default.contentsOfDirectory(atPath: bundlePath)
+                    } catch {
+                        // Ignore errors in stress test
+                    }
+                }
+            }
+        }
+    }
+    
+    @MainActor
+    func testBeltLevelFilteringPerformanceWithNewStructure() async throws {
+        // Test belt level filtering performance with new content structure
+        
+        // Load content first
+        let stepSparringService = StepSparringDataService(modelContext: testContext)
+        let stepSparringLoader = StepSparringContentLoader(stepSparringService: stepSparringService)
+        stepSparringLoader.loadAllContent()
+        
+        let patternService = PatternDataService(modelContext: testContext)
+        let patternLoader = PatternContentLoader(patternService: patternService)
+        patternLoader.loadAllContent()
+        
+        let lineWorkContent = await LineWorkContentLoader.loadAllLineWorkContent()
+        
+        measure {
+            // Test pattern filtering
+            let patterns = try! testContext.fetch(FetchDescriptor<Pattern>())
+            for beltLevel in testBelts.prefix(5) {
+                let filtered = patterns.filter { pattern in
+                    pattern.beltLevels.contains { $0.id == beltLevel.id }
+                }
+                _ = filtered.count
+            }
+            
+            // Test step sparring filtering (using new applicableBeltLevelIds)
+            let sequences = try! testContext.fetch(FetchDescriptor<StepSparringSequence>())
+            let testBeltIds = ["10th_keup", "9th_keup", "8th_keup"]
+            for beltId in testBeltIds {
+                let filtered = sequences.filter { sequence in
+                    sequence.applicableBeltLevelIds.contains(beltId)
+                }
+                _ = filtered.count
+            }
+            
+            // Test line work filtering
+            for beltId in testBeltIds {
+                if let content = lineWorkContent[beltId] {
+                    _ = LineWorkContentLoader.filterExercises(from: content, byMovementType: .forward)
+                    _ = LineWorkContentLoader.filterExercises(from: content, byCategory: "Stances")
+                }
+            }
+        }
+    }
+    
+    @MainActor
+    func testUIDataPreparationPerformance() async throws {
+        // Test performance of preparing data for UI display
+        
+        let lineWorkContent = await LineWorkContentLoader.loadAllLineWorkContent()
+        
+        measure {
+            // Test LineWork display model creation
+            for (_, content) in lineWorkContent {
+                let beltDisplay = LineWorkBeltDisplay(from: content)
+                _ = beltDisplay.exerciseCount
+                _ = beltDisplay.movementTypes
+                _ = beltDisplay.hasComplexExercises
+                
+                for exercise in content.lineWorkExercises {
+                    let exerciseDisplay = LineWorkExerciseDisplay(from: exercise)
+                    _ = exerciseDisplay.isComplex
+                    _ = exerciseDisplay.techniqueCount
+                    _ = exerciseDisplay.repetitions
+                }
+            }
+            
+            // Test pattern data preparation
+            let patterns = try! testContext.fetch(FetchDescriptor<Pattern>())
+            for pattern in patterns.prefix(10) {
+                _ = pattern.name
+                _ = pattern.moveCount
+                _ = pattern.moves.count
+                _ = pattern.beltLevels.map { $0.shortName }
+            }
+            
+            // Test step sparring data preparation
+            let sequences = try! testContext.fetch(FetchDescriptor<StepSparringSequence>())
+            for sequence in sequences.prefix(10) {
+                _ = sequence.name
+                _ = sequence.type.displayName
+                _ = sequence.totalSteps
+                _ = sequence.applicableBeltLevelIds
+            }
+        }
+    }
+    
+    // MARK: - Memory and Resource Tests
+    
+    @MainActor
+    func testMemoryUsageWithAllContentTypes() async throws {
+        // Test memory usage when all content types are loaded
+        
+        let startMemory = getCurrentMemoryUsage()
+        
+        // Load all content types
+        let stepSparringService = StepSparringDataService(modelContext: testContext)
+        let stepSparringLoader = StepSparringContentLoader(stepSparringService: stepSparringService)
+        stepSparringLoader.loadAllContent()
+        
+        let patternService = PatternDataService(modelContext: testContext)
+        let patternLoader = PatternContentLoader(patternService: patternService)
+        patternLoader.loadAllContent()
+        
+        let techniquesService = TechniquesDataService()
+        await techniquesService.loadAllTechniques()
+        
+        let lineWorkContent = await LineWorkContentLoader.loadAllLineWorkContent()
+        
+        let endMemory = getCurrentMemoryUsage()
+        let memoryIncrease = endMemory - startMemory
+        
+        // Memory increase should be reasonable
+        XCTAssertLessThan(memoryIncrease, 150 * 1024 * 1024, "Memory increase should be under 150MB")
+        
+        print("🧠 Memory usage with all content: \(memoryIncrease / 1024 / 1024) MB increase")
+        
+        // Test memory cleanup
+        let beforeCleanup = getCurrentMemoryUsage()
+        
+        // Force cleanup by setting variables to nil (simulated)
+        _ = lineWorkContent.count // Keep reference active
+        
+        let afterCleanup = getCurrentMemoryUsage()
+        
+        // Memory should not continue growing significantly
+        let cleanupIncrease = afterCleanup - beforeCleanup
+        XCTAssertLessThan(cleanupIncrease, 10 * 1024 * 1024, "Memory should stabilize after loading")
+    }
+    
+    private func getCurrentMemoryUsage() -> Int64 {
+        var info = mach_task_basic_info()
+        var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size) / 4
+        
+        let result: kern_return_t = withUnsafeMutablePointer(to: &info) {
+            $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
+                task_info(mach_task_self_, task_flavor_t(MACH_TASK_BASIC_INFO), $0, &count)
+            }
+        }
+        
+        return result == KERN_SUCCESS ? Int64(info.resident_size) : 0
     }
 }

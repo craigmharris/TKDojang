@@ -1,0 +1,96 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/LineWork/LineWorkSetDetailView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Practice",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld techniques to master",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "Techniques",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 79
+        }
+      },
+      {
+        "comment": "",
+        "key": "Practice Guidance",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 99
+        }
+      },
+      {
+        "comment": "",
+        "key": "Movement Pattern",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 178
+        }
+      },
+      {
+        "comment": "",
+        "key": "x%lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 198
+        }
+      },
+      {
+        "comment": "",
+        "key": "Key Points",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 227
+        }
+      },
+      {
+        "comment": "",
+        "key": "Common Mistakes",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 253
+        }
+      },
+      {
+        "comment": "",
+        "key": "Important Guidelines",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 282
+        }
+      },
+      {
+        "comment": "",
+        "key": "Warmup Required",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 295
+        }
+      },
+      {
+        "comment": "",
+        "key": "Progression",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 312
+        }
+      }
+    ]
+  },
+  "version": 1
+}

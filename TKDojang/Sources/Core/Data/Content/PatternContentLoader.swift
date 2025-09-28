@@ -21,20 +21,19 @@ struct PatternContentLoader {
     }
     
     /**
-     * Loads all pattern content from JSON files
+     * Dynamically loads all pattern content from JSON files discovered in Patterns subdirectory
      */
     @MainActor
     func loadAllContent() {
-        // Load patterns for each belt level
-        loadPatternContent(filename: "9th_keup_patterns")
-        loadPatternContent(filename: "8th_keup_patterns")
-        loadPatternContent(filename: "7th_keup_patterns")
-        loadPatternContent(filename: "6th_keup_patterns")
-        loadPatternContent(filename: "5th_keup_patterns")
-        loadPatternContent(filename: "4th_keup_patterns")
-        loadPatternContent(filename: "3rd_keup_patterns")
-        loadPatternContent(filename: "2nd_keup_patterns")
-        loadPatternContent(filename: "1st_keup_patterns")
+        // Dynamically discover pattern files
+        let patternFiles = discoverPatternFiles()
+        
+        DebugLogger.data("📁 Dynamically discovered \(patternFiles.count) pattern JSON files: \(patternFiles)")
+        
+        // Load patterns for each discovered file
+        for filename in patternFiles {
+            loadPatternContent(filename: filename)
+        }
     }
     
     /**
@@ -53,54 +52,34 @@ struct PatternContentLoader {
         // Use the same pattern as StepSparringContentLoader for consistency
         var url: URL?
         
-        print("🔍 Searching for \(filename).json...")
+        DebugLogger.data("🔍 Searching for \(filename).json...")
         
-        // First try: Patterns subdirectory (matches terminology pattern exactly)
+        // First try: Patterns subdirectory (consistent with architectural pattern)
         url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Patterns")
         if url != nil {
-            print("✅ Found \(filename).json in Patterns subdirectory")
+            DebugLogger.data("✅ Found \(filename).json in Patterns subdirectory")
         } else {
-            print("❌ Not found in Patterns subdirectory")
+            DebugLogger.data("❌ Not found in Patterns subdirectory")
             
-            // Debug: List what IS in the Patterns subdirectory
-            if let bundlePath = Bundle.main.resourcePath {
-                let patternsPath = "\(bundlePath)/Patterns"
-                let fileManager = FileManager.default
-                if fileManager.fileExists(atPath: patternsPath) {
-                    do {
-                        let contents = try fileManager.contentsOfDirectory(atPath: patternsPath)
-                        print("📁 Patterns directory contents: \(contents)")
-                    } catch {
-                        print("❌ Failed to list Patterns contents: \(error)")
-                    }
+            // Fallback: try main bundle root for deployment flexibility
+            url = Bundle.main.url(forResource: filename, withExtension: "json")
+            if url != nil {
+                DebugLogger.data("✅ Found \(filename).json in main bundle root (fallback)")
+            } else {
+                DebugLogger.data("❌ Not found in main bundle root")
+                
+                // Fallback: try Core/Data/Content/Patterns path
+                url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Core/Data/Content/Patterns")
+                if url != nil {
+                    DebugLogger.data("✅ Found \(filename).json in Core/Data/Content/Patterns (fallback)")
                 } else {
-                    print("❌ Patterns directory doesn't exist in bundle")
+                    DebugLogger.data("❌ Not found in Core/Data/Content/Patterns")
                 }
             }
         }
         
-        // Fallback: try main bundle root
-        if url == nil {
-            url = Bundle.main.url(forResource: filename, withExtension: "json")
-            if url != nil {
-                print("✅ Found \(filename).json in main bundle root")
-            } else {
-                print("❌ Not found in main bundle root")
-            }
-        }
-        
-        // Fallback: try Core/Data/Content/Patterns path
-        if url == nil {
-            url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Core/Data/Content/Patterns")
-            if url != nil {
-                print("✅ Found \(filename).json in Core/Data/Content/Patterns")
-            } else {
-                print("❌ Not found in Core/Data/Content/Patterns")
-            }
-        }
-        
         guard let fileUrl = url else {
-            print("❌ Could not find \(filename).json in any location")
+            DebugLogger.data("❌ Could not find \(filename).json in any location")
             return
         }
         
@@ -108,7 +87,7 @@ struct PatternContentLoader {
             let data = try Data(contentsOf: fileUrl)
             let contentData = try JSONDecoder().decode(PatternContentData.self, from: data)
             
-            print("📚 Loading \(contentData.patterns.count) patterns from \(filename)")
+            DebugLogger.data("📚 Loading \(contentData.patterns.count) patterns from \(filename)")
             
             // Get belt levels for association
             let beltLevels = getBeltLevels()
@@ -116,15 +95,69 @@ struct PatternContentLoader {
             
             // Create patterns from JSON data
             for patternData in contentData.patterns {
+                DebugLogger.data("🔍 DEBUG: Creating pattern '\(patternData.name)' with \(patternData.moves.count) moves from JSON")
                 let pattern = createPattern(from: patternData, beltLevelDict: beltLevelDict)
+                DebugLogger.data("🔍 DEBUG: Pattern object created: '\(pattern.name)' has \(pattern.moves.count) moves")
                 // Use the service method instead of direct modelContext access
                 savePattern(pattern)
+                DebugLogger.data("🔍 DEBUG: Pattern saved: '\(pattern.name)' - final move count: \(pattern.moves.count)")
             }
-            print("✅ Successfully loaded \(contentData.patterns.count) patterns from \(filename)")
+            DebugLogger.data("✅ Successfully loaded \(contentData.patterns.count) patterns from \(filename)")
             
         } catch {
-            print("❌ Failed to load pattern content from \(filename): \(error)")
+            DebugLogger.data("❌ Failed to load pattern content from \(filename): \(error)")
         }
+    }
+    
+    /**
+     * Dynamically discovers pattern files from Patterns subdirectory
+     */
+    private func discoverPatternFiles() -> [String] {
+        var foundFiles: [String] = []
+        
+        // First try: Scan Patterns subdirectory for any JSON files ending with "_patterns"
+        if let patternsPath = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "Patterns") {
+            DebugLogger.data("📁 Scanning Patterns subdirectory: \(patternsPath)")
+            
+            do {
+                let fileManager = FileManager.default
+                let contents = try fileManager.contentsOfDirectory(atPath: patternsPath)
+                let patternFiles = contents.filter { filename in
+                    filename.hasSuffix(".json") && filename.contains("_patterns")
+                }
+                
+                for jsonFile in patternFiles {
+                    let filename = jsonFile.replacingOccurrences(of: ".json", with: "")
+                    foundFiles.append(filename)
+                }
+            } catch {
+                DebugLogger.data("⚠️ Failed to scan Patterns subdirectory: \(error)")
+            }
+        }
+        
+        // Fallback: Try bundle root for files containing pattern patterns
+        if foundFiles.isEmpty, let bundlePath = Bundle.main.resourcePath {
+            DebugLogger.data("📁 Patterns subdirectory not found, scanning bundle root for pattern files...")
+            
+            do {
+                let fileManager = FileManager.default
+                let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
+                let patternFiles = contents.filter { filename in
+                    guard filename.hasSuffix(".json") else { return false }
+                    // Look for files that match pattern naming conventions
+                    return filename.contains("_patterns")
+                }
+                
+                for jsonFile in patternFiles {
+                    let filename = jsonFile.replacingOccurrences(of: ".json", with: "")
+                    foundFiles.append(filename)
+                }
+            } catch {
+                DebugLogger.data("⚠️ Failed to scan bundle root: \(error)")
+            }
+        }
+        
+        return foundFiles.sorted()
     }
     
     /**
@@ -140,7 +173,8 @@ struct PatternContentLoader {
             diagramDescription: data.diagramDescription,
             startingStance: data.startingStance,
             videoURL: data.videoUrl,
-            diagramImageURL: data.diagramImageUrl
+            diagramImageURL: data.diagramImageUrl,
+            startingMoveImageURL: data.startingMoveImageUrl
         )
         
         // Associate with belt levels using mapping function
@@ -148,13 +182,13 @@ struct PatternContentLoader {
             mapJSONIdToBeltLevel(jsonId: beltId, beltLevelDict: beltLevelDict)
         }
         
-        print("🔍 BELT DEBUG: Pattern '\(data.name)':")
-        print("   JSON belt IDs: \(data.applicableBeltLevels)")
-        print("   Available belt levels: \(Array(beltLevelDict.keys).sorted())")
-        print("   Found belt levels: \(pattern.beltLevels.map { "\($0.id) (\($0.shortName))" })")
+        DebugLogger.data("🔍 BELT DEBUG: Pattern '\(data.name)':")
+        DebugLogger.data("   JSON belt IDs: \(data.applicableBeltLevels)")
+        DebugLogger.data("   Available belt levels: \(Array(beltLevelDict.keys).sorted())")
+        DebugLogger.data("   Found belt levels: \(pattern.beltLevels.map { "\($0.id) (\($0.shortName))" })")
         
         if pattern.beltLevels.isEmpty {
-            print("⚠️ WARNING: Pattern '\(data.name)' has no associated belt levels!")
+            DebugLogger.data("⚠️ WARNING: Pattern '\(data.name)' has no associated belt levels!")
         }
         
         // Create moves and sort by move number to ensure correct order
@@ -180,7 +214,11 @@ struct PatternContentLoader {
             keyPoints: data.keyPoints,
             commonMistakes: data.commonMistakes,
             executionNotes: data.executionNotes,
-            imageURL: data.imageUrl
+            movement: data.movement,
+            executionSpeed: data.executionSpeed,
+            imageURL: data.imageURL,
+            image2URL: data.image2URL,
+            image3URL: data.image3URL
         )
         
         move.pattern = pattern
@@ -216,9 +254,9 @@ struct PatternContentLoader {
     private func saveToDatabase(_ patternName: String) {
         do {
             try patternService.saveContext()
-            print("✅ Saved pattern '\(patternName)'")
+            DebugLogger.data("✅ Saved pattern '\(patternName)'")
         } catch {
-            print("❌ Failed to save pattern '\(patternName)': \(error)")
+            DebugLogger.data("❌ Failed to save pattern '\(patternName)': \(error)")
         }
     }
     
@@ -253,7 +291,7 @@ struct PatternContentLoader {
             return beltLevel
         }
         
-        print("⚠️ WARNING: Could not map JSON belt ID '\(jsonId)' to BeltLevel (tried '\(shortName)' and '\(capitalizedShortName)')")
+        DebugLogger.data("⚠️ WARNING: Could not map JSON belt ID '\(jsonId)' to BeltLevel (tried '\(shortName)' and '\(capitalizedShortName)')")
         return nil
     }
 }
@@ -304,6 +342,7 @@ struct PatternJSONData: Codable {
     let applicableBeltLevels: [String]
     let videoUrl: String?
     let diagramImageUrl: String?
+    let startingMoveImageUrl: String?
     let moves: [PatternMoveJSONData]
     
     enum CodingKeys: String, CodingKey {
@@ -320,6 +359,7 @@ struct PatternJSONData: Codable {
         case applicableBeltLevels = "applicable_belt_levels"
         case videoUrl = "video_url"
         case diagramImageUrl = "diagram_image_url"
+        case startingMoveImageUrl = "starting_move_image_url"
         case moves
     }
 }
@@ -334,7 +374,11 @@ struct PatternMoveJSONData: Codable {
     let keyPoints: String
     let commonMistakes: String?
     let executionNotes: String?
-    let imageUrl: String?
+    let movement: String?
+    let executionSpeed: String?
+    let imageURL: String?
+    let image2URL: String?
+    let image3URL: String?
     
     enum CodingKeys: String, CodingKey {
         case moveNumber = "move_number"
@@ -346,6 +390,10 @@ struct PatternMoveJSONData: Codable {
         case keyPoints = "key_points"
         case commonMistakes = "common_mistakes"
         case executionNotes = "execution_notes"
-        case imageUrl = "image_url"
+        case movement = "movement"
+        case executionSpeed = "execution_speed"
+        case imageURL = "imageURL"
+        case image2URL = "image2URL"
+        case image3URL = "image3URL"
     }
 }

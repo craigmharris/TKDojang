@@ -22,7 +22,7 @@ import SwiftData
  */
 
 struct ProfileEditView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @Environment(\.dismiss) private var dismiss
     
     let profile: UserProfile
@@ -242,7 +242,7 @@ struct ProfileEditView: View {
         )
         
         do {
-            availableBeltLevels = try dataManager.modelContext.fetch(descriptor)
+            availableBeltLevels = try dataServices.modelContext.fetch(descriptor)
         } catch {
             errorMessage = "Failed to load belt levels: \(error.localizedDescription)"
             showingError = true
@@ -253,7 +253,7 @@ struct ProfileEditView: View {
         isSaving = true
         
         do {
-            try dataManager.profileService.updateProfile(
+            try dataServices.profileService.updateProfile(
                 profile,
                 name: name.trimmingCharacters(in: .whitespaces),
                 avatar: selectedAvatar,
@@ -264,7 +264,7 @@ struct ProfileEditView: View {
             
             // Update daily study goal directly
             profile.dailyStudyGoal = Int(dailyStudyGoal)
-            try dataManager.modelContext.save()
+            try dataServices.modelContext.save()
             
             dismiss()
         } catch {
@@ -394,6 +394,6 @@ struct StatCard: View {
         learningMode: .mastery
     )
     
-    return ProfileEditView(profile: profile)
-        .withDataContext()
+    ProfileEditView(profile: profile)
+        
 }

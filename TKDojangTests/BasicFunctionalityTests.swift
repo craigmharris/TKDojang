@@ -60,23 +60,23 @@ final class BasicFunctionalityTests: XCTestCase {
     // MARK: - Model Creation Tests
     
     func testBeltLevelCreation() throws {
-        let belt = BeltLevel(
-            name: "10th Keup (White Belt)",
-            shortName: "10th Keup", 
-            colorName: "White",
-            sortOrder: 15,
-            isKyup: true
-        )
+        // Use TestDataFactory instead of JSONTestHelpers temporarily
+        let testDataFactory = TestDataFactory()
+        let belt = testDataFactory.createBasicBeltLevels().first!
         
         testContext.insert(belt)
         try testContext.save()
         
-        // Verify creation
+        // Verify creation with test data
         XCTAssertFalse(belt.name.isEmpty, "Belt should have a name")
         XCTAssertFalse(belt.shortName.isEmpty, "Belt should have a short name")
         XCTAssertFalse(belt.colorName.isEmpty, "Belt should have a color name")
         XCTAssertGreaterThan(belt.sortOrder, 0, "Belt should have valid sort order")
-        XCTAssertTrue(belt.isKyup, "This should be a kyup grade")
+        XCTAssertTrue(belt.isKyup, "Starting belt should be a kyup grade")
+        
+        // Verify JSON-loaded properties
+        XCTAssertNotNil(belt.primaryColor, "Belt should have primary color from JSON")
+        XCTAssertNotNil(belt.requirements, "Belt should have requirements from JSON")
     }
     
     func testTerminologyCategoryCreation() throws {
@@ -96,21 +96,14 @@ final class BasicFunctionalityTests: XCTestCase {
     }
     
     func testTerminologyEntryCreation() throws {
-        // Create dependencies first
-        let belt = BeltLevel(
-            name: "10th Keup (White Belt)",
-            shortName: "10th Keup",
-            colorName: "White", 
-            sortOrder: 15,
-            isKyup: true
-        )
+        // Use TestDataFactory instead of JSONTestHelpers temporarily
+        let testDataFactory = TestDataFactory()
+        let belt = testDataFactory.createBasicBeltLevels().first!
         testContext.insert(belt)
         
-        let category = TerminologyCategory(
-            name: "techniques",
-            displayName: "Basic Techniques",
-            sortOrder: 1
-        )
+        // Use standard test categories
+        let categories = testDataFactory.createBasicCategories()
+        let category = categories.first { $0.name == "techniques" }!
         testContext.insert(category)
         
         // Create terminology entry
@@ -147,6 +140,7 @@ final class BasicFunctionalityTests: XCTestCase {
         
         // Create user profile
         let profile = UserProfile(
+            name: "Test User",
             currentBeltLevel: belt,
             learningMode: .mastery
         )

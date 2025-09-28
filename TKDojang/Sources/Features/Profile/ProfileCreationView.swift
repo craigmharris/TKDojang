@@ -22,7 +22,7 @@ import SwiftData
  */
 
 struct ProfileCreationView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @Environment(\.dismiss) private var dismiss
     
     @State private var name = ""
@@ -152,7 +152,7 @@ struct ProfileCreationView: View {
         )
         
         do {
-            availableBeltLevels = try dataManager.modelContext.fetch(descriptor)
+            availableBeltLevels = try dataServices.modelContext.fetch(descriptor)
             // Default to white belt (10th Keup) - should now be first in the list
             selectedBeltLevel = availableBeltLevels.first { $0.shortName.contains("10th Keup") } ?? availableBeltLevels.first
         } catch {
@@ -171,7 +171,7 @@ struct ProfileCreationView: View {
         isCreating = true
         
         do {
-            _ = try dataManager.profileService.createProfile(
+            _ = try dataServices.profileService.createProfile(
                 name: name.trimmingCharacters(in: .whitespaces),
                 avatar: selectedAvatar,
                 colorTheme: selectedColorTheme,
@@ -435,5 +435,5 @@ struct BeltLevelOption: View {
 
 #Preview {
     ProfileCreationView()
-        .withDataContext()
+        
 }

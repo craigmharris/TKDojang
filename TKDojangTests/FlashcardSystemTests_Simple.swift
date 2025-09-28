@@ -81,7 +81,7 @@ final class FlashcardSystemTests_Simple: XCTestCase {
         testContext.insert(testEntry)
         
         // Create test user profile
-        testProfile = UserProfile(currentBeltLevel: testBelt, learningMode: .mastery)
+        testProfile = UserProfile(name: "Test User", currentBeltLevel: testBelt, learningMode: .mastery)
         testContext.insert(testProfile)
         
         do {

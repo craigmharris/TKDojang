@@ -1,4 +1,0 @@
-Target dependency graph (2 targets)
-Target 'TKDojangTests' in project 'TKDojang'
-➜ Explicit dependency on target 'TKDojang' in project 'TKDojang'
-Target 'TKDojang' in project 'TKDojang' (no dependencies)

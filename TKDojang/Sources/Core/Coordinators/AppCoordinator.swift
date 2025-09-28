@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import SwiftData
 
 /**
  * AppCoordinator.swift
@@ -29,7 +30,11 @@ class AppCoordinator: ObservableObject {
     /**
      * Current application flow state
      */
-    @Published var currentFlow: AppFlow = .loading
+    @Published var currentFlow: AppFlow = .loading {
+        didSet {
+            print("🔀 AppCoordinator: currentFlow changed from \(oldValue) to \(currentFlow) - \(Date())")
+        }
+    }
     
     /**
      * Global loading state for operations that affect the entire app
@@ -62,8 +67,6 @@ class AppCoordinator: ObservableObject {
         }
     }
     
-    // Authentication flow removed - app uses device-local profiles
-    
     /**
      * Navigate to main app flow
      */
@@ -73,23 +76,101 @@ class AppCoordinator: ObservableObject {
         }
     }
     
-    // Logout removed - app uses device-local profiles without authentication
-    
     // MARK: - Private Methods
     
     /**
      * Determine the initial flow when app starts
+     * SIMPLE APPROACH: Always start with loading screen first
      */
     private func determineInitialFlow() {
-        // Check if user has completed onboarding
-        let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
+        print("🔍 AppCoordinator: Starting with loading screen... - \(Date())")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            if hasCompletedOnboarding {
-                self.showMainFlow()
-            } else {
-                self.showOnboarding()
+        // ALWAYS start with loading screen to show Korean animation
+        currentFlow = .loading
+        
+        // After a short delay, determine and transition to appropriate flow
+        Task {
+            // Show loading screen for minimum 1 second for smooth UX
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            
+            // Initialize data while still showing loading screen
+            print("🔍 Starting background data initialization... - \(Date())")
+            await initializeAppData()
+            print("✅ Background data initialization complete - \(Date())")
+            
+            // Now determine the appropriate flow
+            await MainActor.run {
+                let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
+                
+                if hasCompletedOnboarding {
+                    print("✅ User has completed onboarding, showing main flow - \(Date())")
+                    self.showMainFlow()
+                } else {
+                    print("🎯 User needs onboarding, showing onboarding flow")
+                    self.showOnboarding()
+                }
             }
+        }
+    }
+    
+    /**
+     * Helper to run async operations with timeout
+     */
+    private func withTimeout<T>(seconds: Double, operation: @escaping () async throws -> T) async throws -> T {
+        try await withThrowingTaskGroup(of: T.self) { group in
+            group.addTask {
+                try await operation()
+            }
+            
+            group.addTask {
+                try await Task.sleep(nanoseconds: UInt64(seconds * 1_000_000_000))
+                throw TimeoutError()
+            }
+            
+            guard let result = try await group.next() else {
+                throw TimeoutError()
+            }
+            
+            group.cancelAll()
+            return result
+        }
+    }
+    
+    /**
+     * Initialize app data if needed
+     */
+    @MainActor
+    private func initializeAppData() async {
+        print("🔍 AppCoordinator: Initializing app data... - \(Date())")
+        
+        let dataManager = DataManager.shared
+        
+        // Always ensure content is synchronized with JSON files
+        do {
+            let descriptor = FetchDescriptor<BeltLevel>()
+            let existingBeltLevels = try DataManager.shared.modelContainer.mainContext.fetch(descriptor)
+            
+            if existingBeltLevels.isEmpty {
+                print("🗃️ Database is empty, loading all initial content from JSON...")
+                
+                // Load terminology and belt data
+                let modularLoader = ModularContentLoader(dataService: DataManager.shared.terminologyService)
+                modularLoader.loadCompleteSystem()
+                print("✅ Terminology and belt data loaded")
+            } else {
+                print("✅ Database already has \(existingBeltLevels.count) belt levels, running content synchronization...")
+            }
+            
+            // Always ensure content is synchronized
+            await DataManager.shared.setupInitialData()
+            print("✅ Content synchronization complete")
+            
+            // Load shared profile state for ProfileSwitcher optimization
+            DataServices.shared.loadSharedProfileState()
+            print("✅ Shared profile state loaded for ProfileSwitcher optimization")
+        } catch {
+            print("❌ Failed to initialize app data: \(error)")
+            // Continue anyway - app can still function with empty database
         }
     }
 }
@@ -132,4 +213,15 @@ extension AppCoordinator {
  */
 enum AppError: Error {
     case unknown
+}
+
+/**
+ * Error thrown when operations exceed timeout
+ */
+struct TimeoutError: Error {
+    let message: String
+    
+    init(_ message: String = "Operation timed out") {
+        self.message = message
+    }
 }

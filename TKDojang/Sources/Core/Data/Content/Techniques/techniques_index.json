@@ -1,0 +1,286 @@
+{
+  "version": "1.0",
+  "name": "TAGB Taekwondo Techniques Database",
+  "description": "Comprehensive catalog of Taekwondo techniques for the TKDojang learning app",
+  "categories": [
+    {
+      "id": "kicks",
+      "name": "Kicks",
+      "korean": "차기",
+      "korean_romanized": "Chagi",
+      "phonetic": "/tʃʰa.ɡi/",
+      "description": "All kicking techniques using various parts of the foot",
+      "file": "kicks.json",
+      "icon": "🦵",
+      "technique_count": 8,
+      "subcategories": [
+        {
+          "name": "Linear Kicks",
+          "techniques": ["ap_chagi", "dwit_chagi"]
+        },
+        {
+          "name": "Circular Kicks", 
+          "techniques": ["dollyo_chagi", "bandae_dollyo_chagi"]
+        },
+        {
+          "name": "Crescent Kicks",
+          "techniques": ["bandal_chagi", "anuro_bandal_chagi", "bakuro_bandal_chagi"]
+        },
+        {
+          "name": "Specialty Kicks",
+          "techniques": ["naeryo_chagi", "golcha_chagi", "twimyo_chagi", "moorup_chagi"]
+        }
+      ]
+    },
+    {
+      "id": "strikes",
+      "name": "Strikes & Punches",
+      "korean": "치기와지르기",
+      "korean_romanized": "Chigi Wa Jireugi", 
+      "phonetic": "/tʃʰi.ɡi.wa.tʃi.ɾɯ.ɡi/",
+      "description": "Hand striking techniques including punches and open hand strikes",
+      "file": "strikes.json",
+      "icon": "👊",
+      "technique_count": 7,
+      "subcategories": [
+        {
+          "name": "Closed Fist Techniques",
+          "techniques": ["jireugi", "dung_joomok_chigi", "guligi_chigi", "me_joomok_chigi"]
+        },
+        {
+          "name": "Open Hand Techniques",
+          "techniques": ["sonnal_chigi", "batangson_chigi", "sonkkeut_chigi"]
+        }
+      ]
+    },
+    {
+      "id": "blocks",
+      "name": "Blocks & Defense",
+      "korean": "막기",
+      "korean_romanized": "Makgi",
+      "phonetic": "/mak.ɡi/", 
+      "description": "Defensive techniques for blocking and deflecting attacks",
+      "file": "blocks.json",
+      "icon": "🛡️",
+      "technique_count": 7,
+      "subcategories": [
+        {
+          "name": "Basic Blocks",
+          "techniques": ["arae_makgi", "momtong_makgi", "olgul_makgi"]
+        },
+        {
+          "name": "Specialized Blocks",
+          "techniques": ["sonnal_makgi", "yeot_pero_makgi", "hecho_makgi", "bitureo_makgi"]
+        }
+      ]
+    },
+    {
+      "id": "stances",
+      "name": "Stances & Positions",
+      "korean": "서기",
+      "korean_romanized": "Seogi",
+      "phonetic": "/sʌ.ɡi/",
+      "description": "Body positions and stances for stability, mobility, and technique execution",
+      "file": "stances.json", 
+      "icon": "🧍",
+      "technique_count": 7,
+      "subcategories": [
+        {
+          "name": "Basic Stances",
+          "techniques": ["joonbi_seogi", "ap_seogi", "naranhi_seogi", "moa_seogi"]
+        },
+        {
+          "name": "Combat Stances",
+          "techniques": ["ap_koobi_seogi", "dwit_koobi_seogi", "gojong_seogi"]
+        }
+      ]
+    },
+    {
+      "id": "hand_techniques",
+      "name": "Advanced Hand Techniques",
+      "korean": "고급손기술",
+      "korean_romanized": "Gogeup Son Gisul",
+      "phonetic": "/ko.ɡɯp.son.ɡi.sul/",
+      "description": "Advanced hand and arm techniques beyond basic strikes",
+      "file": "hand_techniques.json",
+      "icon": "✋",
+      "technique_count": 4,
+      "subcategories": [
+        {
+          "name": "Forearm Techniques",
+          "techniques": ["an_palmok_chigi", "bakkat_palmok_chigi"]
+        },
+        {
+          "name": "Specialized Hand Techniques", 
+          "techniques": ["jipge_son_chigi", "dugum_ji_chigi"]
+        }
+      ]
+    },
+    {
+      "id": "footwork",
+      "name": "Footwork & Movement",
+      "korean": "발동작",
+      "korean_romanized": "Bal Dongjak",
+      "phonetic": "/pal.doŋ.dʑak/",
+      "description": "Movement techniques, footwork patterns, and foot striking variations",
+      "file": "footwork.json",
+      "icon": "👣",
+      "technique_count": 5,
+      "subcategories": [
+        {
+          "name": "Quick Techniques",
+          "techniques": ["ap_bal_chagi"]
+        },
+        {
+          "name": "Movement Patterns",
+          "techniques": ["stepping_combinations", "distance_control", "angle_creation"]
+        },
+        {
+          "name": "Foot Strikes",
+          "techniques": ["bal_badak_chigi", "baldeung_chigi", "balkkeut_chigi"]
+        }
+      ]
+    },
+    {
+      "id": "sparring",
+      "name": "Sparring & Applications",
+      "korean": "맞서기",
+      "korean_romanized": "Matsogi",
+      "phonetic": "/mat.sʌ.ɡi/",
+      "description": "Sparring formats and self-defense applications",
+      "file": "sparring.json",
+      "icon": "🥋",
+      "technique_count": 7,
+      "subcategories": [
+        {
+          "name": "Structured Sparring",
+          "techniques": ["sam_bo_matsogi", "ee_bo_matsogi", "il_bo_matsogi"]
+        },
+        {
+          "name": "Free Sparring",
+          "techniques": ["jayu_matsogi", "ban_jayu_matsogi"]
+        },
+        {
+          "name": "Applications",
+          "techniques": ["ho_sin_sul", "gyeokpa", "daeryeon"]
+        }
+      ]
+    },
+    {
+      "id": "fundamentals",
+      "name": "Fundamentals & Drills",
+      "korean": "기본기",
+      "korean_romanized": "Gibongi",
+      "phonetic": "/ki.pon.ɡi/",
+      "description": "Core fundamental exercises and essential skills",
+      "file": "fundamentals.json",
+      "icon": "📚", 
+      "technique_count": 4,
+      "subcategories": [
+        {
+          "name": "Basic Drills",
+          "techniques": ["saju_jirugi", "breathing_exercises"]
+        },
+        {
+          "name": "Combat Skills",
+          "techniques": ["distance_control", "angle_creation"]
+        },
+        {
+          "name": "Mental Aspects",
+          "techniques": ["kihap"]
+        }
+      ]
+    }
+  ],
+  "belt_progression": {
+    "10th_keup": {
+      "name": "White Belt",
+      "korean": "흰띠",
+      "primary_focus": ["fundamentals", "basic_stances", "saju_jirugi"],
+      "new_techniques": 8
+    },
+    "9th_keup": {
+      "name": "White Belt with Yellow Stripe", 
+      "korean": "흰띠노란줄",
+      "primary_focus": ["basic_blocks", "walking_stance", "pattern_dan_gun"],
+      "new_techniques": 6
+    },
+    "8th_keup": {
+      "name": "Yellow Belt",
+      "korean": "노란띠", 
+      "primary_focus": ["front_kick", "knifehand_block", "L_stance"],
+      "new_techniques": 8
+    },
+    "7th_keup": {
+      "name": "Yellow Belt with Green Stripe",
+      "korean": "노란띠초록줄",
+      "primary_focus": ["turning_kick", "three_step_sparring", "pattern_do_san"],
+      "new_techniques": 7
+    },
+    "6th_keup": {
+      "name": "Green Belt",
+      "korean": "초록띠",
+      "primary_focus": ["side_kick", "crescent_kicks", "advanced_blocks"],
+      "new_techniques": 9
+    },
+    "5th_keup": {
+      "name": "Green Belt with Blue Stripe",
+      "korean": "초록띠파란줄",
+      "primary_focus": ["back_kick", "hook_punch", "two_step_sparring"],
+      "new_techniques": 8
+    },
+    "4th_keup": {
+      "name": "Blue Belt", 
+      "korean": "파란띠",
+      "primary_focus": ["hooking_kick", "advanced_hand_techniques", "one_step_sparring"],
+      "new_techniques": 10
+    },
+    "3rd_keup": {
+      "name": "Blue Belt with Red Stripe",
+      "korean": "파란띠빨간줄",
+      "primary_focus": ["jumping_kicks", "free_sparring", "self_defense"],
+      "new_techniques": 8
+    },
+    "2nd_keup": {
+      "name": "Red Belt",
+      "korean": "빨간띠",
+      "primary_focus": ["advanced_combinations", "breaking", "competition"],
+      "new_techniques": 6
+    },
+    "1st_keup": {
+      "name": "Red Belt with Black Stripe",
+      "korean": "빨간띠검은줄", 
+      "primary_focus": ["mastery_preparation", "teaching_preparation", "advanced_sparring"],
+      "new_techniques": 4
+    },
+    "1st_dan": {
+      "name": "1st Degree Black Belt",
+      "korean": "일단",
+      "primary_focus": ["teaching", "advanced_applications", "leadership"],
+      "new_techniques": 5
+    },
+    "2nd_dan": {
+      "name": "2nd Degree Black Belt", 
+      "korean": "이단",
+      "primary_focus": ["mastery", "advanced_breaking", "competition"],
+      "new_techniques": 3
+    }
+  },
+  "search_filters": {
+    "belt_level": ["10th_keup", "9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+    "difficulty": ["basic", "intermediate", "advanced", "expert"],
+    "category": ["kicks", "strikes", "blocks", "stances", "hand_techniques", "footwork", "sparring", "fundamentals"],
+    "striking_tool": ["apkumchi", "balkal", "dwitchook", "joomok", "sonnal", "batangson", "palttuk"],
+    "target_area": ["head", "neck", "chest", "abdomen", "groin", "ribs", "solar_plexus", "temple", "jaw"],
+    "stance_compatibility": ["ap_seogi", "ap_koobi_seogi", "dwit_koobi_seogi", "joonbi_seogi", "naranhi_seogi"]
+  },
+  "metadata": {
+    "total_techniques": 43,
+    "created_date": "2025-08-30",
+    "last_updated": "2025-08-30",
+    "content_source": "TAGB curriculum research",
+    "language_support": ["korean", "english", "phonetic"],
+    "image_support": true,
+    "progression_tracking": true
+  }
+}

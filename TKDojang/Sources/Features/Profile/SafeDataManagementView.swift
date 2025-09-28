@@ -15,7 +15,7 @@ import SwiftData
  */
 
 struct SafeDataManagementView: View {
-    @Environment(DataManager.self) private var dataManager
+    @EnvironmentObject private var dataServices: DataServices
     @Environment(\.dismiss) private var dismiss
     
     @State private var profiles: [UserProfile] = []
@@ -152,7 +152,7 @@ struct SafeDataManagementView: View {
             let descriptor = FetchDescriptor<UserProfile>(
                 sortBy: [SortDescriptor(\.name)]
             )
-            profiles = try dataManager.modelContext.fetch(descriptor)
+            profiles = try dataServices.modelContext.fetch(descriptor)
         } catch {
             print("❌ Failed to load profiles: \(error)")
         }
@@ -163,14 +163,14 @@ struct SafeDataManagementView: View {
               profiles.count > 1 else { return }
         
         do {
-            dataManager.modelContext.delete(profile)
-            try dataManager.modelContext.save()
+            dataServices.modelContext.delete(profile)
+            try dataServices.modelContext.save()
             
             // If we deleted the active profile, set another as active
-            if dataManager.profileService.getActiveProfile()?.id == profile.id {
+            if dataServices.profileService.getActiveProfile()?.id == profile.id {
                 let remainingProfiles = profiles.filter { $0.id != profile.id }
                 if let newActiveProfile = remainingProfiles.first {
-                    try? dataManager.profileService.activateProfile(newActiveProfile)
+                    try? dataServices.profileService.activateProfile(newActiveProfile)
                 }
             }
             
@@ -201,7 +201,7 @@ struct SafeDataManagementView: View {
                 resetTestResults(for: profile)
             }
             
-            try dataManager.modelContext.save()
+            try dataServices.modelContext.save()
             print("✅ Progress reset successfully")
         } catch {
             print("❌ Failed to reset progress: \(error)")
@@ -228,19 +228,19 @@ struct SafeDataManagementView: View {
     
     private func resetTerminologyProgress(for profile: UserProfile) {
         profile.terminologyProgress.forEach { progress in
-            dataManager.modelContext.delete(progress)
+            dataServices.modelContext.delete(progress)
         }
     }
     
     private func resetPatternProgress(for profile: UserProfile) {
         profile.patternProgress.forEach { progress in
-            dataManager.modelContext.delete(progress)
+            dataServices.modelContext.delete(progress)
         }
     }
     
     private func resetStepSparringProgress(for profile: UserProfile) {
         profile.stepSparringProgress.forEach { progress in
-            dataManager.modelContext.delete(progress)
+            dataServices.modelContext.delete(progress)
         }
     }
     
@@ -267,7 +267,7 @@ struct SafeDataManagementView: View {
         // Start database reset immediately - the isResettingDatabase flag will
         // trigger the loading screen in ContentView to prevent any profile access
         Task {
-            await dataManager.resetAndReloadDatabase()
+            await dataServices.resetAndReloadDatabase()
         }
     }
 }

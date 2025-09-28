@@ -19,7 +19,8 @@ import SwiftUI
 struct TKDojangApp: App {
     
     init() {
-        print("🚀 TKDojang App Starting...")
+        print("🏁 TKDojangApp.init() - App struct being created - \(Date())")
+        print("🚀 TKDojang App Starting... - \(Date())")
     }
     
     // MARK: - Properties
@@ -30,7 +31,11 @@ struct TKDojangApp: App {
      * WHY: Coordinator pattern separates navigation logic from view controllers,
      * making the app more testable and navigation flow easier to modify
      */
-    @StateObject private var appCoordinator = AppCoordinator()
+    @StateObject private var appCoordinator = {
+        print("📋 Creating AppCoordinator... - \(Date())")
+        return AppCoordinator()
+    }()
+    
     
     /**
      * User settings that persist across app launches
@@ -45,12 +50,9 @@ struct TKDojangApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppInitializationView()
                 .environmentObject(appCoordinator)
-                .withDataContext()
-                .onAppear {
-                    setupInitialState()
-                }
+                .environmentObject(DataServices.shared)
         }
     }
     

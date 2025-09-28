@@ -18,6 +18,7 @@ struct TheoryQuizView: View {
     let sectionTitle: String
     
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var dataServices: DataServices
     @State private var currentQuestionIndex = 0
     @State private var showingAnswer = false
     @State private var correctAnswers = 0
@@ -252,6 +253,7 @@ struct TheoryQuizView: View {
                 userAnswered = false
             }
         } else {
+            recordTheorySession()
             withAnimation(.easeInOut(duration: 0.5)) {
                 showingResults = true
             }
@@ -265,6 +267,19 @@ struct TheoryQuizView: View {
             correctAnswers = 0
             showingResults = false
             userAnswered = false
+        }
+    }
+    
+    private func recordTheorySession() {
+        do {
+            try dataServices.profileService.recordStudySession(
+                sessionType: .mixed, // Theory could be considered mixed learning
+                itemsStudied: questions.count,
+                correctAnswers: correctAnswers,
+                focusAreas: [sectionTitle]
+            )
+        } catch {
+            print("❌ Failed to record theory session: \(error)")
         }
     }
 }

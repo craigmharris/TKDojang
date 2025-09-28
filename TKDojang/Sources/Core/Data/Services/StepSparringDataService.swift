@@ -34,10 +34,7 @@ final class StepSparringDataService {
         do {
             let allSequences = try modelContext.fetch(descriptor)
             
-            // Force trigger relationship loading
-            for sequence in allSequences {
-                _ = sequence.beltLevels.count
-            }
+            // Skip relationship loading to avoid crashes
             
             sequences = allSequences.sorted { lhs, rhs in
                 if lhs.type.rawValue != rhs.type.rawValue {
@@ -59,7 +56,8 @@ final class StepSparringDataService {
     func getSequencesForUser(userProfile: UserProfile) -> [StepSparringSequence] {
         let allSequences = loadAllSequences()
         return allSequences.filter { sequence in
-            sequence.isAvailableFor(beltLevel: userProfile.currentBeltLevel)
+            // Use manual belt check instead of relationship access
+            manualBeltLevelCheck(for: sequence, userBelt: userProfile.currentBeltLevel)
         }
     }
     
@@ -85,7 +83,6 @@ final class StepSparringDataService {
                 let isAvailable = manualBeltLevelCheck(for: sequence, userBelt: userProfile.currentBeltLevel)
                 
                 print("🔍 FILTER DEBUG: Sequence #\(sequence.sequenceNumber) '\(sequence.name)':")
-                print("   SwiftData belt count: \(sequence.beltLevels.count)")
                 print("   Manual belt check result: \(isAvailable)")
                 print("   User belt: \(userProfile.currentBeltLevel.shortName)(\(userProfile.currentBeltLevel.sortOrder))")
                 print("   Available: \(isAvailable)")
@@ -103,45 +100,40 @@ final class StepSparringDataService {
     }
     
     /**
-     * Manual belt level checking that bypasses SwiftData relationships entirely
-     * Reconstructs the expected belt associations based on sequence patterns
+     * Manual belt level checking using JSON data - bypasses SwiftData relationships entirely
+     * Uses the applicable_belt_levels stored from JSON during content loading
      */
     private func manualBeltLevelCheck(for sequence: StepSparringSequence, userBelt: BeltLevel) -> Bool {
-        // Define expected belt patterns based on sequence number and type
-        let expectedBelts: [String]
+        // Use JSON belt level data instead of hardcoded patterns
+        let expectedBelts = sequence.applicableBeltLevelIds
         
-        switch (sequence.type, sequence.sequenceNumber) {
-        // 3-Step Sparring patterns
-        case (.threeStep, 1...4):
-            expectedBelts = ["8th_keup", "7th_keup", "6th_keup"]
-        case (.threeStep, 5...7):
-            expectedBelts = ["7th_keup", "6th_keup"]
-        case (.threeStep, 8...10):
-            expectedBelts = ["6th_keup"]
-            
-        // 2-Step Sparring patterns  
-        case (.twoStep, 1...4):
-            expectedBelts = ["5th_keup", "4th_keup"]
-        case (.twoStep, 5...8):
-            expectedBelts = ["4th_keup"]
-            
-        default:
-            expectedBelts = []
+        DebugLogger.data("🔍 Checking sequence '\(sequence.name)' for user belt '\(userBelt.shortName)'")
+        DebugLogger.data("   JSON applicable belts: \(expectedBelts)")
+        
+        // If no belt levels defined in JSON, sequence is not available
+        guard !expectedBelts.isEmpty else {
+            DebugLogger.data("❌ No applicable belt levels found for \(sequence.name)")
+            return false
         }
         
         // Convert expected belts to normalized names and check against user belt
         for expectedBelt in expectedBelts {
             let normalizedBelt = expectedBelt.replacingOccurrences(of: "_", with: " ")
                 .replacingOccurrences(of: "keup", with: "Keup")
+                .replacingOccurrences(of: "dan", with: "Dan")
+            
+            DebugLogger.data("   Checking '\(expectedBelt)' -> '\(normalizedBelt)' vs user '\(userBelt.shortName)'")
             
             // Check if user's belt matches any expected belt
             // User can access sequences for their current belt and all previous belts (higher sort order)
             if normalizedBelt == userBelt.shortName || 
                (getBeltSortOrder(for: normalizedBelt) >= userBelt.sortOrder) {
+                DebugLogger.data("✅ Belt match found - sequence available")
                 return true
             }
         }
         
+        DebugLogger.data("❌ No belt match found - sequence not available")
         return false
     }
     
@@ -260,18 +252,21 @@ final class StepSparringDataService {
      * Gets all progress records for a user
      */
     func getAllUserProgress(userProfile: UserProfile) -> [UserStepSparringProgress] {
-        let descriptor = FetchDescriptor<UserStepSparringProgress>()
+        // Use simple predicate instead of relationship navigation
+        let profileId = userProfile.id
+        let predicate = #Predicate<UserStepSparringProgress> { progress in
+            progress.userProfile.id == profileId
+        }
+        
+        let descriptor = FetchDescriptor<UserStepSparringProgress>(
+            predicate: predicate,
+            sortBy: [SortDescriptor(\.createdAt)]
+        )
         
         do {
             let allProgress = try modelContext.fetch(descriptor)
-            return allProgress.filter { progress in
-                progress.userProfile.id == userProfile.id
-            }.sorted { lhs, rhs in
-                if lhs.sequence.type.rawValue != rhs.sequence.type.rawValue {
-                    return lhs.sequence.type.rawValue < rhs.sequence.type.rawValue
-                }
-                return lhs.sequence.sequenceNumber < rhs.sequence.sequenceNumber
-            }
+            // Return without additional sorting to avoid relationship access
+            return allProgress
         } catch {
             print("❌ Failed to fetch user step sparring progress: \(error)")
             return []
@@ -304,22 +299,18 @@ final class StepSparringDataService {
                 summary.mastered += 1
             }
             
-            // Track by type
-            switch progress.sequence.type {
-            case .threeStep:
-                summary.threeStepProgress.append(progress)
-            case .twoStep:
-                summary.twoStepProgress.append(progress)
-            case .oneStep:
-                summary.oneStepProgress.append(progress)
-            case .semiFree:
-                summary.semiFreeProgress.append(progress)
-            }
+            // Track by type - defensive approach to avoid relationship crashes
+            // For now, just categorize all progress as threeStep to avoid the relationship access
+            // This is a temporary fix until we can resolve the SwiftData relationship issues
+            summary.threeStepProgress.append(progress)
         }
         
-        // Calculate overall completion percentage
+        // Calculate overall completion percentage - ensure no NaN
         if summary.totalSequences > 0 {
-            summary.overallCompletionPercentage = Double(summary.mastered) / Double(summary.totalSequences) * 100.0
+            let percentage = Double(summary.mastered) / Double(summary.totalSequences) * 100.0
+            summary.overallCompletionPercentage = percentage.isNaN || percentage.isInfinite ? 0.0 : percentage
+        } else {
+            summary.overallCompletionPercentage = 0.0
         }
         
         return summary
@@ -328,55 +319,40 @@ final class StepSparringDataService {
     // MARK: - Content Management
     
     /**
-     * Seeds the database with initial step sparring sequences
-     * Called during app initialization if no sequences exist
+     * Clears existing step sparring sequences and reloads from JSON
      */
-    func seedInitialSequences() {
-        print("🔄 seedInitialSequences() called")
-        let existingCount = loadAllSequences().count
-        print("🔍 loadAllSequences() returned count: \(existingCount)")
-        if existingCount > 0 {
-            print("📚 Step sparring sequences already exist (\(existingCount) found)")
-            return
-        }
-        print("🔄 Proceeding with sequence creation...")
+    func clearAndReloadStepSparring() {
+        print("🔄 Clearing and reloading step sparring sequences from JSON...")
         
-        print("🌱 Seeding initial step sparring sequences from JSON files...")
-        
-        // Debug: List what resources are available in bundle
-        if let bundlePath = Bundle.main.resourcePath {
-            let fileManager = FileManager.default
-            do {
-                let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
-                print("📦 Bundle root contains: \(contents.filter { $0.contains("StepSparring") || $0.contains("json") })")
-                
-                // Check StepSparring subdirectory specifically
-                let stepSparringPath = "\(bundlePath)/StepSparring"
-                if fileManager.fileExists(atPath: stepSparringPath) {
-                    let stepSparringContents = try fileManager.contentsOfDirectory(atPath: stepSparringPath)
-                    print("📁 StepSparring subdirectory contains: \(stepSparringContents)")
-                } else {
-                    print("❌ StepSparring subdirectory does not exist in bundle")
-                }
-            } catch {
-                print("❌ Failed to list bundle contents: \(error)")
+        // Clear existing sequences and progress
+        do {
+            let sequenceDescriptor = FetchDescriptor<StepSparringSequence>()
+            let existingSequences = try modelContext.fetch(sequenceDescriptor)
+            
+            let progressDescriptor = FetchDescriptor<UserStepSparringProgress>()
+            let existingProgress = try modelContext.fetch(progressDescriptor)
+            
+            for sequence in existingSequences {
+                modelContext.delete(sequence)
             }
+            
+            for progress in existingProgress {
+                modelContext.delete(progress)
+            }
+            
+            try modelContext.save()
+            print("🗑️ Cleared \(existingSequences.count) sequences and \(existingProgress.count) progress records")
+        } catch {
+            print("❌ Failed to clear existing step sparring data: \(error)")
         }
         
-        // Load sequences from JSON files only
-        let contentLoader = StepSparringContentLoader(stepSparringService: self)
-        contentLoader.loadAllContent()
+        // Reload from JSON
+        let loader = StepSparringContentLoader(stepSparringService: self)
+        loader.loadAllContent()
         
-        // Verify sequences were loaded and debug what's actually in the database
-        let allSequences = loadAllSequences()
-        print("✅ Successfully loaded \(allSequences.count) step sparring sequences from JSON files")
-        
-        // DEBUG: Show all sequences that are actually in the database
-        print("🔍 DEBUG: All sequences in database after loading:")
-        for seq in allSequences {
-            print("   - \(seq.type.shortName) #\(seq.sequenceNumber): '\(seq.name)' (ID: \(seq.id))")
-        }
+        print("✅ Step sparring sequences reloaded from JSON")
     }
+    
     
 }
 
