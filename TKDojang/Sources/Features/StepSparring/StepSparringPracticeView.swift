@@ -374,12 +374,7 @@ struct StepSparringPracticeView: View {
         }
         
         if let profile = userProfile {
-            do {
-                progress = dataServices.stepSparringService.getUserProgress(for: sequence, userProfile: profile)
-            } catch {
-                print("❌ Failed to load user progress: \(error)")
-                progress = nil
-            }
+            progress = dataServices.stepSparringService.getUserProgress(for: sequence, userProfile: profile)
         }
     }
     

@@ -43,8 +43,7 @@ struct StepSparringContentLoader {
         var foundFiles: [String] = []
         
         // First try: Scan StepSparring subdirectory for any JSON files
-        if let bundlePath = Bundle.main.resourcePath,
-           let stepSparringPath = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "StepSparring") {
+        if let stepSparringPath = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "StepSparring") {
             
             DebugLogger.data("📁 Scanning StepSparring subdirectory: \(stepSparringPath)")
             

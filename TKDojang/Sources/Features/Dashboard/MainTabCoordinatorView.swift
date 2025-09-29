@@ -1699,6 +1699,13 @@ struct ProfileView: View {
                         .controlSize(.large)
                         .frame(maxWidth: .infinity)
                         
+                        NavigationLink("About TKDojang") {
+                            AboutView()
+                        }
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        .frame(maxWidth: .infinity)
+                        
                         Button("Manage All Profiles") {
                             showingProfileManagement = true
                         }

@@ -312,8 +312,7 @@ struct FlashcardSessionDetailRow: View {
 
 struct FlashcardResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        let mockStats = SessionStats()
-        // Can't directly set properties due to private setters, so create a test view
+        // Can't directly create mock SessionStats due to private setters, so create a test view
         Text("FlashcardResultsView Preview")
     }
 }

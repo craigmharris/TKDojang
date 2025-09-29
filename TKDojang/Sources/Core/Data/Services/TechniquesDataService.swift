@@ -318,32 +318,26 @@ class TechniquesDataService: ObservableObject {
         isLoading = true
         loadingError = nil
         
-        do {
-            print("🗃️ TechniquesDataService: Loading all technique data...")
-            
-            // Dynamically discover and load technique files
-            let techniqueFiles = discoverTechniqueFiles()
-            print("🔍 TechniquesDataService: Discovered \(techniqueFiles.count) technique files: \(techniqueFiles)")
-            
-            for file in techniqueFiles {
-                await loadTechniqueFile(file)
-            }
-            
-            // Load categories index
-            await loadCategoriesIndex()
-            
-            // Load target areas
-            await loadTargetAreas()
-            
-            // Build master list of all techniques
-            allTechniques = techniquesCache.values.flatMap { $0 }
-            
-            print("✅ TechniquesDataService: Loaded \(allTechniques.count) techniques across \(techniquesCache.count) categories")
-            
-        } catch {
-            print("❌ TechniquesDataService: Failed to load techniques: \(error)")
-            loadingError = error
+        print("🗃️ TechniquesDataService: Loading all technique data...")
+        
+        // Dynamically discover and load technique files
+        let techniqueFiles = discoverTechniqueFiles()
+        print("🔍 TechniquesDataService: Discovered \(techniqueFiles.count) technique files: \(techniqueFiles)")
+        
+        for file in techniqueFiles {
+            await loadTechniqueFile(file)
         }
+        
+        // Load categories index
+        await loadCategoriesIndex()
+        
+        // Load target areas
+        await loadTargetAreas()
+        
+        // Build master list of all techniques
+        allTechniques = techniquesCache.values.flatMap { $0 }
+        
+        print("✅ TechniquesDataService: Loaded \(allTechniques.count) techniques across \(techniquesCache.count) categories")
         
         isLoading = false
     }

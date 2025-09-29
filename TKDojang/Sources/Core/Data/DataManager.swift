@@ -512,71 +512,45 @@ class DataManager {
      * CRITICAL: This deletes the database file and exits the app for maximum safety
      */
     func resetAndReloadDatabase() async {
-        do {
-            // Set resetting flag to prevent any profile access
-            isResettingDatabase = true
+        // Set resetting flag to prevent any profile access
+        isResettingDatabase = true
+        
+        print("🔄 Starting database reset - will exit app for clean restart...")
+        
+        // CRITICAL: Clear ProfileService active profile reference
+        profileService.clearActiveProfileForReset()
+        
+        // Delete the database files completely
+        let appSupportDir = URL.applicationSupportDirectory
+        let dbURL = appSupportDir.appending(path: "Model.sqlite")
+        let dbSHMURL = appSupportDir.appending(path: "Model.sqlite-shm")
+        let dbWALURL = appSupportDir.appending(path: "Model.sqlite-wal")
+        
+        try? FileManager.default.removeItem(at: dbURL)
+        try? FileManager.default.removeItem(at: dbSHMURL)
+        try? FileManager.default.removeItem(at: dbWALURL)
+        
+        print("🗑️ Database files deleted - app will exit for clean restart")
+        
+        // Show final message to user
+        await MainActor.run {
+            // Show alert then exit
+            let alert = UIAlertController(
+                title: "Database Reset Complete", 
+                message: "The app will now restart with a fresh database. Please reopen the app.",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                exit(0) // Clean app exit
+            })
             
-            print("🔄 Starting database reset - will exit app for clean restart...")
-            
-            // CRITICAL: Clear ProfileService active profile reference
-            profileService.clearActiveProfileForReset()
-            
-            // Delete the database files completely
-            let appSupportDir = URL.applicationSupportDirectory
-            let dbURL = appSupportDir.appending(path: "Model.sqlite")
-            let dbSHMURL = appSupportDir.appending(path: "Model.sqlite-shm")
-            let dbWALURL = appSupportDir.appending(path: "Model.sqlite-wal")
-            
-            try? FileManager.default.removeItem(at: dbURL)
-            try? FileManager.default.removeItem(at: dbSHMURL)
-            try? FileManager.default.removeItem(at: dbWALURL)
-            
-            print("🗑️ Database files deleted - app will exit for clean restart")
-            
-            // Show final message to user
-            await MainActor.run {
-                // Show alert then exit
-                let alert = UIAlertController(
-                    title: "Database Reset Complete", 
-                    message: "The app will now restart with a fresh database. Please reopen the app.",
-                    preferredStyle: .alert
-                )
-                alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-                    exit(0) // Clean app exit
-                })
-                
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                   let window = windowScene.windows.first,
-                   let rootVC = window.rootViewController {
-                    rootVC.present(alert, animated: true)
-                } else {
-                    // Fallback: exit immediately if we can't show alert
-                    exit(0)
-                }
-            }
-        } catch {
-            print("❌ Failed to reset database: \\(error)")
-            // Clear resetting flag on error
-            isResettingDatabase = false
-            
-            // On error, still show message and exit to prevent crashes
-            await MainActor.run {
-                let alert = UIAlertController(
-                    title: "Reset Error", 
-                    message: "Database reset failed. App will exit to prevent crashes. Please restart manually.",
-                    preferredStyle: .alert
-                )
-                alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-                    exit(1) // Exit with error code
-                })
-                
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                   let window = windowScene.windows.first,
-                   let rootVC = window.rootViewController {
-                    rootVC.present(alert, animated: true)
-                } else {
-                    exit(1)
-                }
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first,
+               let rootVC = window.rootViewController {
+                rootVC.present(alert, animated: true)
+            } else {
+                // Fallback: exit immediately if we can't show alert
+                exit(0)
             }
         }
     }

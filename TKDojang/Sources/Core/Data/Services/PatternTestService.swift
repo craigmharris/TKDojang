@@ -192,26 +192,12 @@ final class PatternTestService: ObservableObject {
             responses: responses
         )
         
-        // Store result in SwiftData
-        let testResult = PatternTestResult(
-            patternId: pattern.id,
-            overallAccuracy: result.overallAccuracy,
-            stanceAccuracy: result.stanceAccuracy,
-            techniqueAccuracy: result.techniqueAccuracy,
-            movementAccuracy: result.movementAccuracy,
-            userProfile: userProfile
-        )
-        
-        do {
-            // Use public methods instead of accessing modelContext directly
-            // Note: PatternDataService doesn't have insertTestResult, so we'll use DataServices
-            // For now, we'll need to add this to PatternDataService or use the main context
-            // Let's add the pattern manually since we don't have a proper method yet
-            print("⚠️ TODO: Need to add test result insertion method to PatternDataService")
-            print("📊 Test completed with \(result.overallAccuracy * 100)% accuracy")
-        } catch {
-            print("❌ Failed to save test result: \(error)")
-        }
+        // TODO: Store result in SwiftData when proper insertion method is available
+        // Use public methods instead of accessing modelContext directly
+        // Note: PatternDataService doesn't have insertTestResult, so we'll use DataServices
+        // For now, we'll need to add this to PatternDataService or use the main context
+        print("⚠️ TODO: Need to add test result insertion method to PatternDataService")
+        print("📊 Test completed with \(result.overallAccuracy * 100)% accuracy")
         
         return result
     }

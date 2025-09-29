@@ -470,30 +470,25 @@ class ProfileExportService: ObservableObject {
         let sessionsArray = try modelContext.fetch(request)
         
         return sessionsArray.compactMap { session in
-            do {
-                // Extract primitive data immediately to prevent invalidation
-                let sessionId = session.id
-                let sessionTypeRawValue = session.sessionType.rawValue
-                let sessionDuration = session.duration
-                let sessionStartTime = session.startTime
-                let sessionEndTime = session.endTime
-                let sessionItemsStudied = session.itemsStudied
-                let sessionAccuracy = session.accuracy
-                
-                return ExportableStudySession(
-                    id: sessionId,
-                    sessionType: sessionTypeRawValue,
-                    duration: sessionDuration,
-                    startTime: sessionStartTime,
-                    endTime: sessionEndTime,
-                    itemsStudied: sessionItemsStudied,
-                    accuracy: sessionAccuracy,
-                    notes: nil
-                )
-            } catch {
-                print("⚠️ Skipping invalidated study session: \(error)")
-                return nil
-            }
+            // Extract primitive data immediately to prevent invalidation
+            let sessionId = session.id
+            let sessionTypeRawValue = session.sessionType.rawValue
+            let sessionDuration = session.duration
+            let sessionStartTime = session.startTime
+            let sessionEndTime = session.endTime
+            let sessionItemsStudied = session.itemsStudied
+            let sessionAccuracy = session.accuracy
+            
+            return ExportableStudySession(
+                id: sessionId,
+                sessionType: sessionTypeRawValue,
+                duration: sessionDuration,
+                startTime: sessionStartTime,
+                endTime: sessionEndTime,
+                itemsStudied: sessionItemsStudied,
+                accuracy: sessionAccuracy,
+                notes: nil
+            )
         }
     }
     
@@ -509,39 +504,34 @@ class ProfileExportService: ObservableObject {
         let recordsArray = try modelContext.fetch(request)
         
         return recordsArray.compactMap { record in
-            do {
-                // Extract primitive data immediately to prevent invalidation
-                let recordId = record.id
-                let beltTestedShortName = record.beltTested.shortName
-                let beltAchievedShortName = record.beltAchieved.shortName
-                let recordGradingDate = record.gradingDate
-                let gradingTypeRawValue = record.gradingType.rawValue
-                let passGradeRawValue = record.passGrade.rawValue
-                let recordExaminer = record.examiner
-                let recordClub = record.club
-                let recordNotes = record.notes
-                let recordPreparationTime = record.preparationTime
-                let recordPassed = record.passed
-                let recordCreatedAt = record.createdAt
-                
-                return ExportableGradingRecord(
-                    id: recordId,
-                    beltTested: beltTestedShortName,
-                    beltAchieved: beltAchievedShortName,
-                    gradingDate: recordGradingDate,
-                    gradingType: gradingTypeRawValue,
-                    passGrade: passGradeRawValue,
-                    examiner: recordExaminer,
-                    club: recordClub,
-                    notes: recordNotes,
-                    preparationTime: recordPreparationTime,
-                    passed: recordPassed,
-                    createdAt: recordCreatedAt
-                )
-            } catch {
-                print("⚠️ Skipping invalidated grading record: \(error)")
-                return nil
-            }
+            // Extract primitive data immediately to prevent invalidation
+            let recordId = record.id
+            let beltTestedShortName = record.beltTested.shortName
+            let beltAchievedShortName = record.beltAchieved.shortName
+            let recordGradingDate = record.gradingDate
+            let gradingTypeRawValue = record.gradingType.rawValue
+            let passGradeRawValue = record.passGrade.rawValue
+            let recordExaminer = record.examiner
+            let recordClub = record.club
+            let recordNotes = record.notes
+            let recordPreparationTime = record.preparationTime
+            let recordPassed = record.passed
+            let recordCreatedAt = record.createdAt
+            
+            return ExportableGradingRecord(
+                id: recordId,
+                beltTested: beltTestedShortName,
+                beltAchieved: beltAchievedShortName,
+                gradingDate: recordGradingDate,
+                gradingType: gradingTypeRawValue,
+                passGrade: passGradeRawValue,
+                examiner: recordExaminer,
+                club: recordClub,
+                notes: recordNotes,
+                preparationTime: recordPreparationTime,
+                passed: recordPassed,
+                createdAt: recordCreatedAt
+            )
         }
     }
     
@@ -565,12 +555,7 @@ class ProfileExportService: ObservableObject {
     
     private func convertToExportableTerminology(_ progress: UserTerminologyProgress) throws -> ExportableTerminologyProgress {
         // Safely extract terminology entry ID
-        let entryID: UUID
-        do {
-            entryID = progress.terminologyEntry.id
-        } catch {
-            throw error
-        }
+        let entryID = progress.terminologyEntry.id
         
         return ExportableTerminologyProgress(
             id: progress.id,
@@ -604,12 +589,7 @@ class ProfileExportService: ObservableObject {
     
     private func convertToExportablePattern(_ progress: UserPatternProgress) throws -> ExportablePatternProgress {
         // Safely extract pattern name
-        let patternName: String
-        do {
-            patternName = progress.pattern.name
-        } catch {
-            throw error
-        }
+        let patternName = progress.pattern.name
         
         return ExportablePatternProgress(
             id: progress.id,
@@ -657,16 +637,8 @@ class ProfileExportService: ObservableObject {
     
     private func convertToExportableStepSparring(_ progress: UserStepSparringProgress) throws -> ExportableStepSparringProgress {
         // CRITICAL: Extract primitive data immediately to avoid SwiftData invalidation
-        let sequenceTypeRaw: String
-        let sequenceNum: Int
-        
-        do {
-            sequenceTypeRaw = progress.sequence.type.rawValue  
-            sequenceNum = progress.sequence.sequenceNumber
-        } catch {
-            // If sequence access fails, skip this progress entry
-            throw error
-        }
+        let sequenceTypeRaw = progress.sequence.type.rawValue  
+        let sequenceNum = progress.sequence.sequenceNumber
         
         return ExportableStepSparringProgress(
             id: progress.id,

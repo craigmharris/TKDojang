@@ -200,8 +200,6 @@ class ModularContentLoader {
         }
         
         // Handle both old and new format
-        var termsCount = 0
-        
         if let newTerms = content.terminology {
             // New format (from CSV tool)
             for term in newTerms {
@@ -217,7 +215,6 @@ class ModularContentLoader {
                     notes: nil
                 )
             }
-            termsCount = newTerms.count
             
         } else if let oldTerms = content.terms {
             // Old format (existing files)
@@ -234,7 +231,6 @@ class ModularContentLoader {
                     notes: term.notes
                 )
             }
-            termsCount = oldTerms.count
         }
         
         // Successfully loaded terms
