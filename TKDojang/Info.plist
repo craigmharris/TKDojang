@@ -2,70 +2,55 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <!-- App Display Name -->
-    <key>CFBundleDisplayName</key>
-    <string>TKDojang</string>
-    
-    <!-- Supported Interface Orientations -->
-    <key>UISupportedInterfaceOrientations</key>
-    <array>
-        <string>UIInterfaceOrientationPortrait</string>
-        <string>UIInterfaceOrientationLandscapeLeft</string>
-        <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    
-    <!-- iPad Orientations -->
-    <key>UISupportedInterfaceOrientations~ipad</key>
-    <array>
-        <string>UIInterfaceOrientationPortrait</string>
-        <string>UIInterfaceOrientationPortraitUpsideDown</string>
-        <string>UIInterfaceOrientationLandscapeLeft</string>
-        <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    
-    <!-- App Transport Security -->
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <false/>
-        <key>NSExceptionDomains</key>
-        <dict>
-            <!-- Add your API domains here -->
-        </dict>
-    </dict>
-    
-    <!-- Privacy Usage Descriptions -->
-    <key>NSCameraUsageDescription</key>
-    <string>Camera access is needed for motion tracking and technique analysis.</string>
-    
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Microphone access is needed for audio feedback during training.</string>
-    
-    <key>NSLocalNetworkUsageDescription</key>
-    <string>Local network access is needed to connect to training devices.</string>
-    
-    <!-- Background Modes -->
-    <key>UIBackgroundModes</key>
-    <array>
-        <string>background-processing</string>
-        <string>background-fetch</string>
-    </array>
-    
-    <!-- Launch Screen -->
-    <key>UILaunchScreen</key>
-    <dict>
-        <key>UIImageName</key>
-        <string>LaunchImage</string>
-        <key>UIColorName</key>
-        <string>LaunchBackgroundColor</string>
-    </dict>
-    
-    <!-- Supported Languages -->
-    <key>CFBundleLocalizations</key>
-    <array>
-        <string>en</string>
-        <string>ko</string>
-        <string>es</string>
-    </array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NanumBrushScript-Regular.ttf</string>
+	</array>
+	<key>CFBundleDisplayName</key>
+	<string>TKDojang</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+		<key>NSExceptionDomains</key>
+		<dict/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera access is needed for motion tracking and technique analysis.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone access is needed for audio feedback during training.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Local network access is needed to connect to training devices.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>background-processing</string>
+		<string>background-fetch</string>
+	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>LaunchImage</string>
+		<key>UIColorName</key>
+		<string>LaunchBackgroundColor</string>
+	</dict>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>ko</string>
+		<string>es</string>
+	</array>
 </dict>
 </plist>

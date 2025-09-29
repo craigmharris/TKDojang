@@ -51,8 +51,8 @@ struct AppInitializationView: View {
         print("🔧 Starting DataServices initialization in background... - \(Date())")
         
         Task {
-            // Ensure minimum loading time for smooth UX
-            try? await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
+            // Ensure minimum loading time for belt progression animation
+            try? await Task.sleep(nanoseconds: 4_400_000_000) // 4.4 seconds for belt animation (11 belts × 0.4s)
             
             print("✅ DataServices initialization ready, transitioning to main app - \(Date())")
             
