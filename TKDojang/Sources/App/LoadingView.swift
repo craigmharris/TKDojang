@@ -111,22 +111,22 @@ struct LoadingView: View {
                             Text("태")
                                 .font(customKoreanFont(size: 140))
                                 .foregroundColor(brushScriptColor)
-                                .opacity(fontIsReady && scrollProgress > 0.2 ? 1.0 : 0.0)
+                                .opacity(fontIsReady && scrollProgress > 0.0 ? 1.0 : 0.0)
                                 .animation(.easeInOut(duration: 0.8), value: scrollProgress)
                                 .animation(.easeInOut(duration: 0.3), value: brushScriptColor)
                             
                             Text("권")
                                 .font(customKoreanFont(size: 140))
                                 .foregroundColor(brushScriptColor)
-                                .opacity(fontIsReady && scrollProgress > 0.5 ? 1.0 : 0.0)
-                                .animation(.easeInOut(duration: 0.8).delay(0.3), value: scrollProgress)
+                                .opacity(fontIsReady && scrollProgress > 0.33 ? 1.0 : 0.0)
+                                .animation(.easeInOut(duration: 0.8).delay(1.5), value: scrollProgress)
                                 .animation(.easeInOut(duration: 0.3), value: brushScriptColor)
                             
                             Text("도")
                                 .font(customKoreanFont(size: 140))
                                 .foregroundColor(brushScriptColor)
-                                .opacity(fontIsReady && scrollProgress > 0.8 ? 1.0 : 0.0)
-                                .animation(.easeInOut(duration: 0.8).delay(0.6), value: scrollProgress)
+                                .opacity(fontIsReady && scrollProgress > 0.66 ? 1.0 : 0.0)
+                                .animation(.easeInOut(duration: 0.8).delay(3.0), value: scrollProgress)
                                 .animation(.easeInOut(duration: 0.3), value: brushScriptColor)
                         }
                         
@@ -141,8 +141,8 @@ struct LoadingView: View {
                             Text("TKDojang")
                                 .font(.system(size: 32, weight: .heavy, design: .default))
                                 .foregroundColor(Color(red: 0.4, green: 0.2, blue: 0.1))
-                                .opacity(scrollProgress > 0.7 ? 1.0 : 0.0)
-                                .animation(.easeInOut(duration: 0.6).delay(0.8), value: scrollProgress)
+                                .opacity(scrollProgress > 0.99 ? 1.0 : 0.0)
+                                .animation(.easeInOut(duration: 0.6).delay(4.0), value: scrollProgress)
                             
                         }
                     }
@@ -230,11 +230,12 @@ struct LoadingView: View {
     }
     
     private func startScrollAnimation() {
-        withAnimation(.easeInOut(duration: 1.5)) {
+        // Start scroll progress animation over full duration to sync with belts
+        withAnimation(.easeInOut(duration: 4.4)) {
             scrollProgress = 1.0
         }
         
-        // Start belt progression animation - 0.4 seconds per belt
+        // Start belt progression animation concurrently - 0.4 seconds per belt
         var currentBelt = 0
         Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true) { timer in
             withAnimation(.easeInOut(duration: 0.2)) {
