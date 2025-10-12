@@ -1,27 +1,155 @@
 # PHASE 2: COMPREHENSIVE TEST INTEGRATION & PRODUCTION READINESS ANALYSIS
 
 **Generated**: October 12, 2025  
-**Status**: Critical Issues Identified - Systematic Resolution Required  
+**Status**: PHASE 3 PROGRESS - MainActor Issues Resolved, API Compatibility Issues Identified  
 **Objective**: Achieve 100% functional test coverage with zero compilation errors
 
 ---
 
 ## 🎯 **EXECUTIVE SUMMARY**
 
-Phase 1 successfully resolved the **critical test integration crisis** by adding 18 comprehensive test files (10,000+ lines) to the Xcode project. However, **test execution is blocked** by model compatibility issues in legacy test files that use outdated SwiftData API signatures.
+**PHASE 3 PROGRESS ACHIEVED:**
+- ✅ **PHASE 3.1**: All test files migrated to centralized schema
+- ✅ **PHASE 3.2**: MainActor isolation issues completely eliminated (78+ fixes)
+- ✅ **Infrastructure Compilation**: Builds successfully without MainActor errors
+- ❌ **PHASE 3.3.1**: BLOCKED by extensive API compatibility issues in test files
 
 **CURRENT STATE:**
 - ✅ **Main App**: Builds successfully (BUILD SUCCEEDED)
-- ✅ **Test Infrastructure**: Properly integrated (18 files added to Xcode)
-- ❌ **Test Execution**: BLOCKED by 20+ compilation errors across 6 legacy test files
+- ✅ **Test Infrastructure**: Properly integrated and compiles without MainActor errors
+- ❌ **Test Execution**: BLOCKED by 100+ API compatibility errors across multiple test files
 
 ---
 
 ## 📊 **DETAILED ISSUE INVENTORY**
 
-### **🚨 CATEGORY 1: CRITICAL COMPILATION ERRORS**
+### **🎉 RESOLVED ISSUES (PHASE 3.1 & 3.2)**
 
-#### **1.1 StepSparringSystemTests.swift (19 errors - HIGHEST PRIORITY)**
+#### **✅ MainActor Isolation Issues (78+ fixes)**
+- **ContentLoadingTests.swift**: 23 service instantiation calls eliminated
+- **ArchitecturalIntegrationTests.swift**: 54 service dependencies removed
+- **StepSparringSystemTests.swift**: 1 critical service instantiation fixed
+- **Result**: Zero MainActor isolation compilation errors
+
+#### **✅ SwiftData Schema Conflicts**
+- **TerminologyCategory struct conflict**: Removed test struct shadowing production model
+- **TestContainerFactory**: All 18 test files using centralized schema
+- **Result**: Clean schema management across entire test suite
+
+---
+
+### **🚨 CATEGORY 1: CRITICAL API COMPATIBILITY ERRORS (100+ ISSUES)**
+
+#### **1.1 FlashcardUIIntegrationTests.swift (50+ errors - HIGHEST PRIORITY)**
+**File**: `/Users/craig/TKDojang/TKDojangTests/FlashcardUIIntegrationTests.swift`
+
+**Constructor Signature Mismatches:**
+```swift
+// ❌ BROKEN: Lines throughout file
+TerminologyEntry(englishTerm: "...", koreanHangul: "...", ...)
+// Missing required 'beltLevel' parameter in constructor
+
+// ❌ BROKEN: Enum value mismatches
+.study, .test, .leitner, .classic, .progression, .mastery
+// These enum values don't exist in current API
+
+// ❌ BROKEN: Missing properties
+FlashcardSession.totalCards        // Property doesn't exist
+FlashcardSession.currentCard       // Property doesn't exist
+FlashcardSessionConfiguration.cardMode    // Property doesn't exist
+FlashcardSessionConfiguration.sessionMode // Property doesn't exist
+```
+
+#### **1.2 ModelRelationshipTests.swift (20+ errors)**
+**File**: `/Users/craig/TKDojang/TKDojangTests/ModelRelationshipTests.swift`
+
+**Constructor Mismatches:**
+```swift
+// ❌ BROKEN: Missing beltLevel parameter
+TerminologyEntry(englishTerm: "...", koreanHangul: "...")
+// Current signature requires: TerminologyEntry(englishTerm:koreanHangul:romanizedPronunciation:beltLevel:category:)
+
+// ❌ BROKEN: ProfileService methods
+ProfileService.setActiveProfile()  // Method doesn't exist
+// Current API uses different profile management approach
+```
+
+#### **1.3 Missing Enum Values (Critical)**
+**Multiple test files reference non-existent enum values:**
+```swift
+// ❌ FlashcardDirection enum values don't exist:
+.englishToKorean, .koreanToEnglish
+
+// ❌ FlashcardSessionMode enum values don't exist:
+.study, .test, .classic, .leitner
+
+// ❌ LearningMode enum values don't exist:
+.mastery, .progression
+
+// ❌ Quality enum values don't exist:
+.good, .easy, .hard
+```
+
+#### **1.4 Service Method Signature Changes**
+**Multiple test files use outdated service methods:**
+```swift
+// ❌ BROKEN: Old method signatures
+profileService.recordStudySession(sessionType:itemsStudied:correctAnswers:focusAreas:)
+// Current signature unknown/different
+
+// ❌ BROKEN: Session state management
+leitnerService.recordResponse(state:userProfile:)
+// Incorrect parameters: expected (sessionId:userProfile:)
+```
+
+---
+
+## 🔧 **SYSTEMATIC RESOLUTION PLAN**
+
+### **PHASE 3.3.1 - API COMPATIBILITY FIXES (PRIORITY ORDER)**
+
+#### **Step 1: Investigate Current API Signatures (30 minutes)**
+1. **Read actual model definitions** to understand current constructor signatures
+2. **Document current enum values** for all referenced enums
+3. **Map old API → new API** for systematic replacement
+4. **Identify missing models/services** that tests expect
+
+#### **Step 2: Fix Model Constructor Mismatches (60 minutes)**
+1. **TerminologyEntry constructor**: Add missing `beltLevel` parameter across all test files
+2. **FlashcardSession model**: Replace with current model structure
+3. **FlashcardSessionConfiguration**: Update to current property names
+4. **UserProfile constructor**: Fix any parameter mismatches
+
+#### **Step 3: Fix Enum Value Mismatches (45 minutes)**
+1. **FlashcardDirection**: Map to current enum values or create test-appropriate values
+2. **FlashcardSessionMode**: Map to current values (.study/.test/.classic/.leitner)
+3. **LearningMode**: Map .mastery/.progression to current values
+4. **Quality enum**: Map .good/.easy/.hard to current values
+
+#### **Step 4: Fix Service Method Signatures (60 minutes)**
+1. **ProfileService.setActiveProfile()**: Replace with current method
+2. **recordStudySession()**: Update parameter signature
+3. **LeitnerService**: Fix method signatures and parameters
+4. **Remove non-existent service calls**: Replace with infrastructure testing
+
+#### **Step 5: Systematic Test File Migration (90 minutes)**
+**Priority Order:**
+1. **FlashcardUIIntegrationTests.swift** (50+ errors) - Critical for flashcard functionality
+2. **ModelRelationshipTests.swift** (20+ errors) - Core SwiftData testing
+3. **Other affected files** - Apply same patterns
+
+#### **Step 6: Verification & Test Execution (30 minutes)**
+1. **Build verification**: Ensure zero compilation errors
+2. **Single test execution**: Validate infrastructure works
+3. **Full test suite execution**: Complete Phase 3.3.1
+
+### **ESTIMATED TOTAL TIME: 5 hours of systematic API migration work**
+
+---
+
+### **🚨 CATEGORY 2: LEGACY COMPILATION ERRORS (ALREADY RESOLVED)**
+
+#### **✅ StepSparringSystemTests.swift (RESOLVED in Phase 3.2)**
 **File**: `/Users/craig/TKDojang/TKDojangTests/StepSparringSystemTests.swift`
 
 **Model Schema Issues:**

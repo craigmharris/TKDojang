@@ -23,16 +23,17 @@ final class FlashcardUIIntegrationTests: XCTestCase {
     var testContainer: ModelContainer!
     var testContext: ModelContext!
     
-    override func setUp() {
-        super.setUp()
-        testContainer = TestContainerFactory.createTestContainer()
+    @MainActor
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        testContainer = try TestContainerFactory.createTestContainer()
         testContext = testContainer.mainContext
     }
     
-    override func tearDown() {
+    override func tearDownWithError() throws {
         testContainer = nil
         testContext = nil
-        super.tearDown()
+        try super.tearDownWithError()
     }
     
     // MARK: - Infrastructure Tests
@@ -54,7 +55,8 @@ final class FlashcardUIIntegrationTests: XCTestCase {
     
     func testBasicDataLoading() throws {
         // Test basic data can be loaded without errors
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         // Verify data exists
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
@@ -68,7 +70,8 @@ final class FlashcardUIIntegrationTests: XCTestCase {
     
     func testFlashcardDataStructure() throws {
         // Test flashcard-specific data requirements
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let terminology = try testContext.fetch(FetchDescriptor<TerminologyEntry>())
         XCTAssertGreaterThan(terminology.count, 0)
@@ -84,7 +87,8 @@ final class FlashcardUIIntegrationTests: XCTestCase {
     
     func testProfileCreationForFlashcards() throws {
         // Test profile creation for flashcard sessions
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
@@ -108,7 +112,8 @@ final class FlashcardUIIntegrationTests: XCTestCase {
     
     func testTerminologyFiltering() throws {
         // Test terminology can be filtered by belt level
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let allTerminology = try testContext.fetch(FetchDescriptor<TerminologyEntry>())
@@ -135,7 +140,8 @@ final class FlashcardUIIntegrationTests: XCTestCase {
     
     func testFlashcardSessionData() throws {
         // Test data structures needed for flashcard sessions
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let terminology = try testContext.fetch(FetchDescriptor<TerminologyEntry>())
         let profiles = try testContext.fetch(FetchDescriptor<UserProfile>())
@@ -170,7 +176,8 @@ final class FlashcardUIIntegrationTests: XCTestCase {
     
     func testFlashcardProgressTracking() throws {
         // Test progress tracking data structures
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let terminology = try testContext.fetch(FetchDescriptor<TerminologyEntry>())
         let profiles = try testContext.fetch(FetchDescriptor<UserProfile>())
@@ -214,7 +221,8 @@ final class FlashcardUIIntegrationTests: XCTestCase {
     
     func testMultipleProfileFlashcardSupport() throws {
         // Test that multiple profiles can have separate flashcard progress
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let terminology = try testContext.fetch(FetchDescriptor<TerminologyEntry>())
@@ -262,7 +270,8 @@ final class FlashcardUIIntegrationTests: XCTestCase {
     
     func testFlashcardCategoryFiltering() throws {
         // Test filtering flashcards by category
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let categories = try testContext.fetch(FetchDescriptor<TerminologyCategory>())
         let terminology = try testContext.fetch(FetchDescriptor<TerminologyEntry>())
@@ -286,7 +295,8 @@ final class FlashcardUIIntegrationTests: XCTestCase {
     
     func testFlashcardPerformanceData() throws {
         // Test performance tracking capabilities
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let terminology = try testContext.fetch(FetchDescriptor<TerminologyEntry>())
@@ -296,7 +306,7 @@ final class FlashcardUIIntegrationTests: XCTestCase {
         let testBelt = beltLevels.first!
         let profile = UserProfile(
             name: "Performance Tester",
-            avatar: .student3,
+            avatar: .ninja,
             colorTheme: .purple,
             currentBeltLevel: testBelt,
             learningMode: .mastery
@@ -319,6 +329,6 @@ final class FlashcardUIIntegrationTests: XCTestCase {
         XCTAssertEqual(savedSession.sessionType, .flashcards)
         XCTAssertEqual(savedSession.itemsStudied, 10)
         XCTAssertEqual(savedSession.correctAnswers, 8)
-        XCTAssertTrue(savedSession.isCompleted)
+        XCTAssertNotNil(savedSession.endTime)
     }
 }

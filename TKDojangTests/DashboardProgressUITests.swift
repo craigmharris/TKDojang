@@ -23,16 +23,17 @@ final class DashboardProgressUITests: XCTestCase {
     var testContainer: ModelContainer!
     var testContext: ModelContext!
     
-    override func setUp() {
-        super.setUp()
-        testContainer = TestContainerFactory.createTestContainer()
+    @MainActor
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        testContainer = try TestContainerFactory.createTestContainer()
         testContext = testContainer.mainContext
     }
     
-    override func tearDown() {
+    override func tearDownWithError() throws {
         testContainer = nil
         testContext = nil
-        super.tearDown()
+        try super.tearDownWithError()
     }
     
     // MARK: - Infrastructure Tests
@@ -54,7 +55,8 @@ final class DashboardProgressUITests: XCTestCase {
     
     func testDashboardDataLoading() throws {
         // Test basic dashboard data can be loaded
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         // Verify core data exists
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
@@ -83,7 +85,8 @@ final class DashboardProgressUITests: XCTestCase {
     
     func testProgressTrackingInfrastructure() throws {
         // Test progress tracking data structures
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
@@ -127,7 +130,8 @@ final class DashboardProgressUITests: XCTestCase {
     
     func testMultipleProfileDashboard() throws {
         // Test dashboard supports multiple profiles
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
@@ -177,14 +181,15 @@ final class DashboardProgressUITests: XCTestCase {
     
     func testStudySessionTypes() throws {
         // Test different study session types for dashboard
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
         
         let profile = UserProfile(
             name: "Session Tester",
-            avatar: .student3,
+            avatar: .ninja,
             colorTheme: .purple,
             currentBeltLevel: testBelt,
             learningMode: .mastery
@@ -200,7 +205,7 @@ final class DashboardProgressUITests: XCTestCase {
         let patternSession = StudySession(userProfile: profile, sessionType: .patterns)
         patternSession.complete(itemsStudied: 3, correctAnswers: 3, focusAreas: ["Taeguk"])
         
-        let stepSparringSession = StudySession(userProfile: profile, sessionType: .stepSparring)
+        let stepSparringSession = StudySession(userProfile: profile, sessionType: .step_sparring)
         stepSparringSession.complete(itemsStudied: 6, correctAnswers: 5, focusAreas: ["Step Sparring"])
         
         testContext.insert(flashcardSession)
@@ -215,12 +220,13 @@ final class DashboardProgressUITests: XCTestCase {
         let sessionTypes = Set(sessions.map { $0.sessionType })
         XCTAssertTrue(sessionTypes.contains(.flashcards))
         XCTAssertTrue(sessionTypes.contains(.patterns))
-        XCTAssertTrue(sessionTypes.contains(.stepSparring))
+        XCTAssertTrue(sessionTypes.contains(.step_sparring))
     }
     
     func testProgressCalculation() throws {
         // Test progress calculation infrastructure
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
@@ -252,7 +258,8 @@ final class DashboardProgressUITests: XCTestCase {
     
     func testDashboardPerformanceData() throws {
         // Test performance tracking for dashboard
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
@@ -298,14 +305,15 @@ final class DashboardProgressUITests: XCTestCase {
     
     func testActivityStreakTracking() throws {
         // Test activity streak infrastructure
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
         
         let profile = UserProfile(
             name: "Streak Tracker",
-            avatar: .student3,
+            avatar: .ninja,
             colorTheme: .red,
             currentBeltLevel: testBelt,
             learningMode: .mastery
@@ -329,7 +337,8 @@ final class DashboardProgressUITests: XCTestCase {
     
     func testDashboardDataConsistency() throws {
         // Test data consistency for dashboard display
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let terminology = try testContext.fetch(FetchDescriptor<TerminologyEntry>())
@@ -360,7 +369,8 @@ final class DashboardProgressUITests: XCTestCase {
     
     func testDashboardQuickActions() throws {
         // Test quick action data availability
-        TestDataFactory.createBasicTestData(in: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
         
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let terminology = try testContext.fetch(FetchDescriptor<TerminologyEntry>())
