@@ -1,0 +1,176 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/ProfileManagementView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Family Profiles",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "Delete Profile",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 141
+        }
+      },
+      {
+        "comment": "",
+        "key": "Error",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 153
+        }
+      },
+      {
+        "comment": "",
+        "key": "Export Profiles",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 161
+        }
+      },
+      {
+        "comment": "",
+        "key": "Import Results",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 184
+        }
+      },
+      {
+        "comment": "",
+        "key": "Import Profiles",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 81
+        }
+      },
+      {
+        "comment": "",
+        "key": "Export Profiles",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 85
+        }
+      },
+      {
+        "comment": "",
+        "key": "Backup to iCloud",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "Restore from iCloud",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "Export/Import",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 104
+        }
+      },
+      {
+        "comment": "",
+        "key": "Done",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 142
+        }
+      },
+      {
+        "comment": "",
+        "key": "Delete",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 143
+        }
+      },
+      {
+        "comment": "",
+        "key": "Are you sure you want to delete '%@'? This action cannot be undone and will remove all progress data.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 150
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 154
+        }
+      },
+      {
+        "comment": "",
+        "key": "Export All Profiles",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 162
+        }
+      },
+      {
+        "comment": "",
+        "key": "Export Active Profile Only",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 165
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 170
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 185
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add Profile",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 484
+        }
+      },
+      {
+        "comment": "",
+        "key": "Up to 6 profiles",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 488
+        }
+      }
+    ]
+  },
+  "version": 1
+}

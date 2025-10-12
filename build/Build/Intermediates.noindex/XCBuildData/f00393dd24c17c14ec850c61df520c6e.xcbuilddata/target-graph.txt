@@ -1,2 +1,0 @@
-Target dependency graph (1 target)
-Target 'TKDojang' in project 'TKDojang' (no dependencies)

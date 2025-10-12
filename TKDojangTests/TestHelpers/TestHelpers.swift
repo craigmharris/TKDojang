@@ -33,11 +33,25 @@ class TestContainerFactory {
      */
     static func createTestContainer() throws -> ModelContainer {
         let schema = Schema([
+            // Core Models
             BeltLevel.self,
             TerminologyCategory.self,
             TerminologyEntry.self,
             UserProfile.self,
-            UserTerminologyProgress.self
+            UserTerminologyProgress.self,
+            StudySession.self,
+            GradingRecord.self,
+            
+            // Pattern Models
+            Pattern.self,
+            PatternMove.self,
+            UserPatternProgress.self,
+            
+            // Step Sparring Models
+            StepSparringSequence.self,
+            StepSparringStep.self,
+            StepSparringAction.self,
+            UserStepSparringProgress.self
         ])
         
         let configuration = ModelConfiguration(

@@ -1,0 +1,48 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/App/LoadingView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "태",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 111
+        }
+      },
+      {
+        "comment": "",
+        "key": "권",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 118
+        }
+      },
+      {
+        "comment": "",
+        "key": "도",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 125
+        }
+      },
+      {
+        "comment": "",
+        "key": "TKDojang",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 141
+        }
+      },
+      {
+        "comment": "",
+        "key": "Beginning your journey...",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 154
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,77 @@
+{
+  "belt_level" : "1st_keup",
+  "category" : "techniques",
+  "metadata" : {
+    "created_at" : "2025-08-17T09:28:54Z",
+    "source" : "CSV Import Tool",
+    "total_count" : 6
+  },
+  "terminology" : [
+    {
+      "belt_level" : "1st_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Rear striking technique using back of fist",
+      "difficulty" : 1,
+      "english_term" : "Back Fist Rear Strike",
+      "korean_hangul" : "등주멩뒤차타어리기",
+      "phonetic_pronunciation" : "/dɯŋ.tʃu.mʌk.twi.tʃʰa.tʰa.ʌ.ɾi.ɡi/",
+      "romanized_pronunciation" : "Dung Joomuk Dwutcha Taerigi"
+    },
+    {
+      "belt_level" : "1st_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Front blocking technique using outer forearm",
+      "difficulty" : 1,
+      "english_term" : "Outer Forearm Front Block",
+      "korean_hangul" : "바깥팔목앞막기",
+      "phonetic_pronunciation" : "/pa.k͈at.pʰal.mok.ap.mak.ɡi/",
+      "romanized_pronunciation" : "Bakat Palmok Ap Makgi"
+    },
+    {
+      "belt_level" : "1st_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Middle-level inward block using outer forearm",
+      "difficulty" : 1,
+      "english_term" : "Outer Forearm Middle Inward Block",
+      "korean_hangul" : "바깥팔목가운데안으로막기",
+      "phonetic_pronunciation" : "/pa.k͈at.pʰal.mok.ka.un.de.a.nɯ.ɾʌ.mak.ɡi/",
+      "romanized_pronunciation" : "Bakat Palmok Kaunde Anaero Makgi"
+    },
+    {
+      "belt_level" : "1st_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Inward striking technique using reverse knife hand",
+      "difficulty" : 1,
+      "english_term" : "Reverse Knife Hand Inward Strike",
+      "korean_hangul" : "손칼등안으로타어리기",
+      "phonetic_pronunciation" : "/son.kʰal.dɯŋ.a.nɯ.ɾʌ.tʰa.ʌ.ɾi.ɡi/",
+      "romanized_pronunciation" : "Sonkal Dung Anaero Taerigi"
+    },
+    {
+      "belt_level" : "1st_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Simultaneous upward blocking using both palms",
+      "difficulty" : 1,
+      "english_term" : "Twin Palm Upward Block",
+      "korean_hangul" : "상손바닥올려막기",
+      "phonetic_pronunciation" : "/saŋ.son.ba.dak.ol.ljʌ.mak.ɡi/",
+      "romanized_pronunciation" : "Sang Sonbadak Ollyo Makgi"
+    },
+    {
+      "belt_level" : "1st_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Checking block using crossed knife hands",
+      "difficulty" : 1,
+      "english_term" : "X Knife Hand Checking Block",
+      "korean_hangul" : "교차손칼멈춘막기",
+      "phonetic_pronunciation" : "/kjo.tʃʰa.son.kʰal.mʌm.tʃʰau.mak.ɡi/",
+      "romanized_pronunciation" : "Kyocha Sonkal Momchau Makgi"
+    }
+  ]
+}

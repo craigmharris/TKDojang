@@ -1,0 +1,112 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/LineWork/LineWorkView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Line Work",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading LineWork Content...",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 30
+        }
+      },
+      {
+        "comment": "",
+        "key": "LineWork exercises are not available for your current progression level.",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 77
+        }
+      },
+      {
+        "comment": "",
+        "key": "Please select a profile to view LineWork exercises.",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 84
+        }
+      },
+      {
+        "comment": "",
+        "key": "No LineWork Content",
+        "location": {
+          "startingColumn": 21,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "No Profile Selected",
+        "location": {
+          "startingColumn": 17,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld exercises",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 236
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lldx",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 341
+        }
+      },
+      {
+        "comment": "",
+        "key": "+%lld",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 359
+        }
+      },
+      {
+        "comment": "",
+        "key": "Exercise Details",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 453
+        }
+      },
+      {
+        "comment": "",
+        "key": "Belt Level:",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 466
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld repetitions",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 508
+        }
+      },
+      {
+        "comment": "",
+        "key": "Skill Focus Areas",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 832
+        }
+      }
+    ]
+  },
+  "version": 1
+}

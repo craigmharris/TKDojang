@@ -1,0 +1,152 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Patterns/PatternPracticeView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Practice %@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 80
+        }
+      },
+      {
+        "comment": "",
+        "key": "Practice Complete",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "End Practice",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 84
+        }
+      },
+      {
+        "comment": "",
+        "key": "Record Progress",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 94
+        }
+      },
+      {
+        "comment": "",
+        "key": "Practice Again",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "Congratulations! You've completed the %@ pattern.",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 101
+        }
+      },
+      {
+        "comment": "",
+        "key": "Move %lld of %lld",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 111
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 152
+        }
+      },
+      {
+        "comment": "",
+        "key": "Previous Move",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 306
+        }
+      },
+      {
+        "comment": "",
+        "key": "Complete Pattern",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 314
+        }
+      },
+      {
+        "comment": "",
+        "key": "Next Move",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 321
+        }
+      },
+      {
+        "comment": "",
+        "key": "Pattern Complete!",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 339
+        }
+      },
+      {
+        "comment": "",
+        "key": "You've successfully completed the %@ pattern.",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 343
+        }
+      },
+      {
+        "comment": "",
+        "key": "Record Progress",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 349
+        }
+      },
+      {
+        "comment": "",
+        "key": "Practice Again",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 356
+        }
+      },
+      {
+        "comment": "",
+        "key": "Image Coming Soon",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 506
+        }
+      },
+      {
+        "comment": "",
+        "key": "Move %lld",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 509
+        }
+      },
+      {
+        "comment": "",
+        "key": "PatternPracticeView Preview",
+        "location": {
+          "startingColumn": 14,
+          "startingLine": 534
+        }
+      }
+    ]
+  },
+  "version": 1
+}

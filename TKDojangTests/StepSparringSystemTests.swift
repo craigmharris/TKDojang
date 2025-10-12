@@ -2,6 +2,19 @@ import XCTest
 import SwiftData
 @testable import TKDojang
 
+// MARK: - Mock StepSparringContentLoader
+class StepSparringContentLoader {
+    let stepSparringService: StepSparringDataService
+    
+    init(stepSparringService: StepSparringDataService) {
+        self.stepSparringService = stepSparringService
+    }
+    
+    func loadAllContent() {
+        // Mock implementation for testing
+    }
+}
+
 /**
  * StepSparringSystemTests.swift
  * 
@@ -29,28 +42,8 @@ final class StepSparringSystemTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        // Create in-memory test container with step sparring models
-        let schema = Schema([
-            BeltLevel.self,
-            TerminologyCategory.self,
-            TerminologyEntry.self,
-            UserProfile.self,
-            UserTerminologyProgress.self,
-            StepSparringSequence.self,
-            StepSparringStep.self,
-            StepSparringAction.self,
-            UserStepSparringProgress.self
-        ])
-        
-        let configuration = ModelConfiguration(
-            schema: schema,
-            isStoredInMemoryOnly: true
-        )
-        
-        testContainer = try ModelContainer(
-            for: schema,
-            configurations: [configuration]
-        )
+        // Use centralized test container with all models
+        testContainer = try TestContainerFactory.createTestContainer()
         
         testContext = ModelContext(testContainer)
         stepSparringService = StepSparringDataService(modelContext: testContext)

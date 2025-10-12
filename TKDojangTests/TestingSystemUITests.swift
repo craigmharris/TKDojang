@@ -81,7 +81,7 @@ final class TestingSystemUITests: XCTestCase {
     
     // MARK: - Test Configuration UI Tests
     
-    func testTestConfigurationUIWorkflow() throws {
+    func testTestingConfigurationUIWorkflow() throws {
         // CRITICAL UI FLOW: Complete test configuration setup
         
         let testProfile = try profileService.createProfile(
@@ -92,7 +92,7 @@ final class TestingSystemUITests: XCTestCase {
         profileService.setActiveProfile(testProfile)
         
         // Test initial configuration view state
-        let configViewModel = TestConfigurationViewModel(
+        let configViewModel = TestingConfigurationViewModel(
             dataServices: dataServices,
             userProfile: testProfile
         )
@@ -167,7 +167,7 @@ final class TestingSystemUITests: XCTestCase {
         
         // Test test creation
         configViewModel.toggleCategorySelection(firstCategory.id)
-        let testConfig = configViewModel.createTestConfiguration()
+        let testConfig = configViewModel.createTestingConfiguration()
         
         XCTAssertNotNil(testConfig, "Should create valid test configuration")
         XCTAssertEqual(testConfig.testType, configViewModel.selectedTestType, "Config should match selected type")
@@ -177,13 +177,13 @@ final class TestingSystemUITests: XCTestCase {
         
         // Performance validation for configuration UI
         let configMeasurement = PerformanceMeasurement.measureExecutionTime {
-            let _ = TestConfigurationViewModel(dataServices: dataServices, userProfile: testProfile)
+            let _ = TestingConfigurationViewModel(dataServices: dataServices, userProfile: testProfile)
         }
-        XCTAssertLessThan(configMeasurement.timeInterval, TestConfiguration.maxUIResponseTime,
+        XCTAssertLessThan(configMeasurement.timeInterval, TestingConfiguration.maxUIResponseTime,
                          "Test configuration UI should load quickly")
     }
     
-    func testTestConfigurationBeltLevelFiltering() throws {
+    func testTestingConfigurationBeltLevelFiltering() throws {
         // Test that available content is filtered by user's belt level
         
         let beginnerProfile = try profileService.createProfile(
@@ -200,7 +200,7 @@ final class TestingSystemUITests: XCTestCase {
         
         // Test beginner content access
         profileService.setActiveProfile(beginnerProfile)
-        let beginnerConfigViewModel = TestConfigurationViewModel(
+        let beginnerConfigViewModel = TestingConfigurationViewModel(
             dataServices: dataServices,
             userProfile: beginnerProfile
         )
@@ -221,7 +221,7 @@ final class TestingSystemUITests: XCTestCase {
         
         // Test advanced content access
         profileService.setActiveProfile(advancedProfile)
-        let advancedConfigViewModel = TestConfigurationViewModel(
+        let advancedConfigViewModel = TestingConfigurationViewModel(
             dataServices: dataServices,
             userProfile: advancedProfile
         )
@@ -255,7 +255,7 @@ final class TestingSystemUITests: XCTestCase {
         profileService.setActiveProfile(testProfile)
         
         // Create test session
-        let testConfig = TestConfiguration(
+        let testConfig = TestingConfiguration(
             testType: .terminology,
             categories: ["basic_techniques"],
             questionCount: 8,
@@ -350,7 +350,7 @@ final class TestingSystemUITests: XCTestCase {
                 testViewModel.selectAnswer(question.answerOptions.first!)
             }
         }
-        XCTAssertLessThan(interactionMeasurement.timeInterval, TestConfiguration.maxUIResponseTime,
+        XCTAssertLessThan(interactionMeasurement.timeInterval, TestingConfiguration.maxUIResponseTime,
                          "Test interactions should be performant")
     }
     
@@ -365,7 +365,7 @@ final class TestingSystemUITests: XCTestCase {
         profileService.setActiveProfile(testProfile)
         
         // Test with time limit
-        let timedTestConfig = TestConfiguration(
+        let timedTestConfig = TestingConfiguration(
             testType: .terminology,
             categories: ["basic_techniques"],
             questionCount: 5,
@@ -408,7 +408,7 @@ final class TestingSystemUITests: XCTestCase {
         }
         
         // Test unlimited time
-        let unlimitedTestConfig = TestConfiguration(
+        let unlimitedTestConfig = TestingConfiguration(
             testType: .patterns,
             categories: ["beginner_patterns"],
             questionCount: 5,
@@ -462,7 +462,7 @@ final class TestingSystemUITests: XCTestCase {
         profileService.setActiveProfile(testProfile)
         
         // Complete a test with known results
-        let testConfig = TestConfiguration(
+        let testConfig = TestingConfiguration(
             testType: .terminology,
             categories: ["basic_techniques"],
             questionCount: 10,
@@ -603,7 +603,7 @@ final class TestingSystemUITests: XCTestCase {
         var allResults: [TestResults] = []
         
         for (testType, targetAccuracy, questionCount) in testConfigs {
-            let config = TestConfiguration(
+            let config = TestingConfiguration(
                 testType: testType,
                 categories: getAppropriateCategories(for: testType),
                 questionCount: questionCount,
@@ -692,7 +692,7 @@ final class TestingSystemUITests: XCTestCase {
             let _ = TestProgressViewModel(userProfile: testProfile, testingService: testingService)
         }
         
-        XCTAssertLessThan(progressMeasurement.timeInterval, TestConfiguration.maxUIResponseTime,
+        XCTAssertLessThan(progressMeasurement.timeInterval, TestingConfiguration.maxUIResponseTime,
                          "Progress calculation should be fast")
     }
     
@@ -708,7 +708,7 @@ final class TestingSystemUITests: XCTestCase {
         )
         profileService.setActiveProfile(testProfile)
         
-        let terminologyConfig = TestConfiguration(
+        let terminologyConfig = TestingConfiguration(
             testType: .terminology,
             categories: ["basic_techniques"],
             questionCount: 6,
@@ -766,7 +766,7 @@ final class TestingSystemUITests: XCTestCase {
         )
         profileService.setActiveProfile(testProfile)
         
-        let patternConfig = TestConfiguration(
+        let patternConfig = TestingConfiguration(
             testType: .patterns,
             categories: ["beginner_patterns"],
             questionCount: 5,
@@ -823,7 +823,7 @@ final class TestingSystemUITests: XCTestCase {
         )
         profileService.setActiveProfile(testProfile)
         
-        let theoryConfig = TestConfiguration(
+        let theoryConfig = TestingConfiguration(
             testType: .theory,
             categories: ["taekwondo_history"],
             questionCount: 4,
@@ -885,7 +885,7 @@ final class TestingSystemUITests: XCTestCase {
         profileService.setActiveProfile(testProfile)
         
         // Test with large question set
-        let largeTestConfig = TestConfiguration(
+        let largeTestConfig = TestingConfiguration(
             testType: .terminology,
             categories: ["basic_techniques", "intermediate_techniques"],
             questionCount: 30,
@@ -917,7 +917,7 @@ final class TestingSystemUITests: XCTestCase {
             }
         }
         
-        XCTAssertLessThan(rapidInteractionMeasurement.timeInterval, TestConfiguration.maxUIResponseTime * 3,
+        XCTAssertLessThan(rapidInteractionMeasurement.timeInterval, TestingConfiguration.maxUIResponseTime * 3,
                          "Rapid test interactions should remain performant")
         
         // Test memory usage during large test
@@ -935,7 +935,7 @@ final class TestingSystemUITests: XCTestCase {
             }
         }
         
-        XCTAssertLessThan(memoryMeasurement.memoryDelta, TestConfiguration.maxMemoryIncrease / 4,
+        XCTAssertLessThan(memoryMeasurement.memoryDelta, TestingConfiguration.maxMemoryIncrease / 4,
                          "Large tests should not cause significant memory growth")
         
         // Test UI responsiveness with rapid type switching
@@ -943,7 +943,7 @@ final class TestingSystemUITests: XCTestCase {
             let testTypes: [TestType] = [.terminology, .patterns, .theory]
             
             for testType in testTypes {
-                let quickConfig = TestConfiguration(
+                let quickConfig = TestingConfiguration(
                     testType: testType,
                     categories: getAppropriateCategories(for: testType),
                     questionCount: 3,
@@ -964,7 +964,7 @@ final class TestingSystemUITests: XCTestCase {
             }
         }
         
-        XCTAssertLessThan(typeSwitchMeasurement.timeInterval, TestConfiguration.maxUIResponseTime * 2,
+        XCTAssertLessThan(typeSwitchMeasurement.timeInterval, TestingConfiguration.maxUIResponseTime * 2,
                          "Test type switching should be performant")
     }
     
@@ -1003,7 +1003,7 @@ final class TestingSystemUITests: XCTestCase {
 // MARK: - Mock UI Components for Testing
 
 // These would be actual SwiftUI ViewModels in the real app
-class TestConfigurationViewModel: ObservableObject {
+class TestingConfigurationViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var selectedTestType: TestType = .terminology
     @Published var selectedCategories: Set<String> = []
@@ -1070,8 +1070,8 @@ class TestConfigurationViewModel: ObservableObject {
         }
     }
     
-    func createTestConfiguration() -> TestConfiguration {
-        return TestConfiguration(
+    func createTestingConfiguration() -> TestingConfiguration {
+        return TestingConfiguration(
             testType: selectedTestType,
             categories: Array(selectedCategories),
             questionCount: questionCount,
@@ -1315,11 +1315,11 @@ class TestResultsViewModel: ObservableObject {
     var canRetakeTest: Bool { true }
     var canReviewIncorrect: Bool { incorrectAnswers > 0 }
     
-    func createRetakeConfiguration() -> TestConfiguration {
+    func createRetakeConfiguration() -> TestingConfiguration {
         return results.testConfiguration
     }
     
-    func createIncorrectReviewConfiguration() -> TestConfiguration {
+    func createIncorrectReviewConfiguration() -> TestingConfiguration {
         var config = results.testConfiguration
         config.questionCount = incorrectAnswers
         return config
@@ -1395,7 +1395,7 @@ struct TestCategory {
     let minimumBeltLevel: String?
 }
 
-struct TestConfiguration {
+struct TestingConfiguration {
     let testType: TestType
     let categories: [String]
     var questionCount: Int
@@ -1416,12 +1416,12 @@ struct TestConfiguration {
 }
 
 struct TestSession {
-    let configuration: TestConfiguration
+    let configuration: TestingConfiguration
     let totalQuestions: Int
     let currentQuestion: TestQuestion
     let correctAnswers: Int
     
-    init(configuration: TestConfiguration) {
+    init(configuration: TestingConfiguration) {
         self.configuration = configuration
         self.totalQuestions = configuration.questionCount
         self.currentQuestion = TestQuestion(
@@ -1453,7 +1453,7 @@ struct TestResults {
     let correctAnswers: Int
     let accuracy: Double
     let testDuration: TimeInterval
-    let testConfiguration: TestConfiguration
+    let testConfiguration: TestingConfiguration
 }
 
 struct AnswerFeedback {

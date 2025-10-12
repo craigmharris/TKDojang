@@ -1,0 +1,504 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/AboutView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "About TKDojang",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 245
+        }
+      },
+      {
+        "comment": "",
+        "key": "TKDojang",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 23
+        }
+      },
+      {
+        "comment": "",
+        "key": "Traditional Taekwondo Learning Companion",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "TKDojang began as a family project. While helping my children prepare for Taekwondo gradings, my partner and I created paper flashcards to practice Korean terminology. As they progressed through belt levels, the content grew beyond what paper could handle effectively.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "I searched for apps that could teach terminology in the same engaging way, but found nothing that combined high build quality with visual appeal and effective learning methods. Coming from a coding background, I thought: 'I could build this with some time and study.'",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 43
+        }
+      },
+      {
+        "comment": "",
+        "key": "The real inspiration came from wanting to test generative AI as a learning tool for programming in SwiftUI – turning a martial arts challenge into a technical adventure that benefits families worldwide.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 45
+        }
+      },
+      {
+        "comment": "",
+        "key": "I'm a dedicated parent with nearly twenty years of Taekwondo experience. After training for seven years and reaching 1st Keup, life took me away from the martial arts for a decade. Now I've returned with my partner and five children, re-learning my way back to my former level with hopes of achieving Dan grade soon.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "I train at a TAGB school in South West England, where I particularly enjoy patterns – the mental focus and precision they require. While I may never be the strongest sparring partner, I'm committed to performing high-quality patterns with slow, deliberate technique.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 56
+        }
+      },
+      {
+        "comment": "",
+        "key": "My professional coding background gave me confidence to build this app, but my experience with language learning apps helped me think differently about creating effective learning tools. I don't consider myself a teacher – rather, I'm curating content to help others learn by sharing what has helped my family.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 58
+        }
+      },
+      {
+        "comment": "",
+        "key": "Primary Users:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 68
+        }
+      },
+      {
+        "comment": "",
+        "key": "Students and families looking to practice terminology and theory, with additional support for pattern and step sparring retention. Recommended for ages 9 and up, with no upper age limit – it's never too late to learn Taekwondo!",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learning Styles:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 72
+        }
+      },
+      {
+        "comment": "",
+        "key": "While traditional front-of-class instruction works for many, students who struggle with spatial awareness or visualization can benefit from this alternative medium. Having multiple ways to practice helps accommodate different learning preferences.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "Usage Approach:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 77
+        }
+      },
+      {
+        "comment": "",
+        "key": "Use TKDojang 'little and often' – a few times per week when approaching gradings, but less frequently overall. Ramp up before belt tests, then ease off. This shouldn't be an app where you spend excessive time.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 80
+        }
+      },
+      {
+        "comment": "",
+        "key": "Important:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "TKDojang is designed as a supplement to dojo training, never a replacement. No prior Taekwondo knowledge is required, but a few lessons help determine if the martial art is right for you.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 85
+        }
+      },
+      {
+        "comment": "",
+        "key": "Primary Sources:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 96
+        }
+      },
+      {
+        "comment": "",
+        "key": "Content is built from TAGB curriculum materials and validated against the TAGB pattern manual. Korean terminology draws from my instructors' teaching, cross-referenced with available online materials from other schools.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 98
+        }
+      },
+      {
+        "comment": "",
+        "key": "Quality Approach:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 100
+        }
+      },
+      {
+        "comment": "",
+        "key": "Romanization has been standardized for both external consistency with TAGB syllabuses and internal consistency within the app. Generative AI assists with hangul characters and phonetic definitions.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 103
+        }
+      },
+      {
+        "comment": "",
+        "key": "Acknowledgment:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 105
+        }
+      },
+      {
+        "comment": "",
+        "key": "There will likely be mistakes, which I'll resolve as they're identified. A Korean-speaking family member and native speaker will help maintain language accuracy over time.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 108
+        }
+      },
+      {
+        "comment": "",
+        "key": "Future Plans:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "While starting with TAGB standards, I hope to eventually accommodate multiple syllabuses, belt systems, and organizations as terminology doesn't vary dramatically between most Taekwondo schools.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 113
+        }
+      },
+      {
+        "comment": "",
+        "key": "Feedback Welcome:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 115
+        }
+      },
+      {
+        "comment": "",
+        "key": "I'm open to all content accuracy feedback and working toward a scalable way to manage corrections from the community.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 118
+        }
+      },
+      {
+        "comment": "",
+        "key": "Local-Only Data:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 129
+        }
+      },
+      {
+        "comment": "",
+        "key": "All profile and progress information stays on your device. I don't see any of your personal data – you don't even need to add your name if you prefer not to.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 131
+        }
+      },
+      {
+        "comment": "",
+        "key": "No Tracking:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 133
+        }
+      },
+      {
+        "comment": "",
+        "key": "During TestFlight testing, I receive crash reports but no personal data. Nothing is tracked for advertising or other purposes. This app is for users, not for data collection.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 136
+        }
+      },
+      {
+        "comment": "",
+        "key": "Multiple Users:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 138
+        }
+      },
+      {
+        "comment": "",
+        "key": "The app supports up to 6 local profiles per device, perfect for families while maintaining individual progress tracking.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 141
+        }
+      },
+      {
+        "comment": "",
+        "key": "Trade-offs:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 143
+        }
+      },
+      {
+        "comment": "",
+        "key": "The privacy-first approach means convenience features like cross-device sync aren't available yet. Cloud features may come when I can guarantee the same level of privacy protection.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 146
+        }
+      },
+      {
+        "comment": "",
+        "key": "Philosophy:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 148
+        }
+      },
+      {
+        "comment": "",
+        "key": "This approach aligns with my preference to reduce screen time addiction across all technology touchpoints. TKDojang respects your time and attention.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 151
+        }
+      },
+      {
+        "comment": "",
+        "key": "Content Expansion:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 162
+        }
+      },
+      {
+        "comment": "",
+        "key": "Additional belt levels, learning modes, and video content showing patterns and technique breakdowns from multiple angles. Development will be driven by user feedback and needs.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 164
+        }
+      },
+      {
+        "comment": "",
+        "key": "Geographic Goals:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 166
+        }
+      },
+      {
+        "comment": "",
+        "key": "Eventually reaching a few thousand users UK-wide, serving a meaningful proportion of the student base across different schools and organizations.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 169
+        }
+      },
+      {
+        "comment": "",
+        "key": "Collaboration:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 171
+        }
+      },
+      {
+        "comment": "",
+        "key": "While I'll likely keep development as a solo effort, I'm eager to bring in collaborators for content creation and review to ensure accuracy and comprehensiveness.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 174
+        }
+      },
+      {
+        "comment": "",
+        "key": "Success Metric:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 176
+        }
+      },
+      {
+        "comment": "",
+        "key": "TKDojang will have achieved its purpose when users can progress from white belt to black belt using the app as a learning companion throughout their entire journey.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 179
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ethical Technology:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 181
+        }
+      },
+      {
+        "comment": "",
+        "key": "No engagement hooks, streaks, or rewards. No advertisements ever. Content should be engaging to improve learning effectiveness, not to increase time spent in the app. The goal is learning, not screen time.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 184
+        }
+      },
+      {
+        "comment": "",
+        "key": "Copyright & Attribution",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 195
+        }
+      },
+      {
+        "comment": "",
+        "key": "Original content © 2024 TKDojang. TAGB curriculum materials serve as inspiration with no direct copies or plagiarism. TAGB organization approval is being sought for official recognition.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 198
+        }
+      },
+      {
+        "comment": "",
+        "key": "Important Disclaimers",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 200
+        }
+      },
+      {
+        "comment": "",
+        "key": "Pricing Philosophy",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 212
+        }
+      },
+      {
+        "comment": "",
+        "key": "Small one-time fees cover development and maintenance costs only. No advertisements, subscriptions, or mandatory in-app purchases. If sustainable support isn't possible, the app will be retired rather than compromised with invasive monetization.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 216
+        }
+      },
+      {
+        "comment": "",
+        "key": "Contact & Feedback",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 218
+        }
+      },
+      {
+        "comment": "",
+        "key": "Currently available through TestFlight feedback or App Store reviews. A dedicated support email address will be provided soon for bug reports, content corrections, and general feedback.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 222
+        }
+      },
+      {
+        "comment": "",
+        "key": "• TKDojang is a learning aid, not direct instruction",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 205
+        }
+      },
+      {
+        "comment": "",
+        "key": "• All physical activities are at your own risk",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 206
+        }
+      },
+      {
+        "comment": "",
+        "key": "• This app supplements but never replaces proper dojo training",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 207
+        }
+      },
+      {
+        "comment": "",
+        "key": "• Content accuracy is best-effort with ongoing improvements",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 208
+        }
+      },
+      {
+        "comment": "",
+        "key": "• No commercial use of app content permitted",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 209
+        }
+      },
+      {
+        "comment": "",
+        "key": "Thank you for joining the TKDojang journey",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 230
+        }
+      },
+      {
+        "comment": "",
+        "key": "Version 1.0 • Built with SwiftUI",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 236
+        }
+      },
+      {
+        "comment": "",
+        "key": "Done",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 250
+        }
+      }
+    ]
+  },
+  "version": 1
+}

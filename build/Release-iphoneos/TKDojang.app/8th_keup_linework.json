@@ -1,0 +1,286 @@
+{
+  "belt_level": "8th Keup",
+  "belt_id": "8th_keup",
+  "belt_color": "yellow",
+  "line_work_exercises": [
+    {
+      "id": "l_stance__twin_forearm_block",
+      "movement_type": "FWD & BWD",
+      "order": 1,
+      "name": "L Stance, Twin Forearm Block",
+      "techniques": [
+        {
+          "id": "l_stance",
+          "english": "L Stance",
+          "romanised": "Niunja Sogi",
+          "hangul": "ㄴ자서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "L-shaped stance with proper weight distribution"
+        },
+        {
+          "id": "twin_forearm_block",
+          "english": "Twin Forearm Block",
+          "romanised": "Sang Palmok Makgi",
+          "hangul": "쌍팔목막기",
+          "category": "Blocking",
+          "target_area": null,
+          "description": "Double block using both forearms simultaneously"
+        }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 8,
+        "movement_pattern": "Execute l stance, twin forearm block with proper timing and form",
+        "key_points": [
+          "Maintain proper stance foundation throughout",
+          "Effective blocking coverage and timing"
+        ],
+        "common_mistakes": [
+          "Poor timing between techniques",
+          "Insufficient power generation",
+          "Loss of balance during execution",
+          "Incorrect technique sequencing"
+        ],
+        "execution_tips": [
+          "Practice each component technique separately first",
+          "Focus on smooth transitions between movements",
+          "Maintain proper form throughout execution"
+        ]
+      },
+      "categories": [
+        "Blocking",
+        "Stances"
+      ]
+    },
+    {
+      "id": "walking_stance__front_kick_double_punch",
+      "movement_type": "FWD",
+      "order": 2,
+      "name": "Walking Stance, Front Kick Double Punch",
+      "techniques": [
+        {
+          "id": "walking_stance",
+          "english": "Walking Stance",
+          "romanised": "Gunnun Sogi",
+          "hangul": "걷는서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Natural forward walking stance with weight evenly distributed"
+        },
+        {
+          "id": "front_kick",
+          "english": "Front Kick",
+          "romanised": "Dollyo Chagi",
+          "hangul": "돌려차기",
+          "category": "Kicks",
+          "target_area": null,
+          "description": "Straight forward kick using ball of foot to target middle section"
+        },
+        {
+          "id": "double_punch",
+          "english": "Double Punch",
+          "romanised": "Sang Palmok Makgi",
+          "hangul": "쌍팔목막기",
+          "category": "Striking",
+          "target_area": null,
+          "description": "Combination of obverse punch immediately followed by reverse punch"
+        }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 5,
+        "movement_pattern": "Execute walking stance, front kick double punch with proper timing and form",
+        "key_points": [
+          "Maintain proper stance foundation throughout",
+          "Control balance during kicking techniques",
+          "Generate power through hip rotation and body mechanics",
+          "Smooth coordination between multiple techniques"
+        ],
+        "common_mistakes": [
+          "Poor timing between techniques",
+          "Insufficient power generation",
+          "Loss of balance during execution",
+          "Incorrect technique sequencing"
+        ],
+        "execution_tips": [
+          "Practice each component technique separately first",
+          "Focus on smooth transitions between movements",
+          "Maintain proper form throughout execution"
+        ]
+      },
+      "categories": [
+        "Kicks",
+        "Stances",
+        "Striking"
+      ]
+    },
+    {
+      "id": "l_stance__inward_outer_forearm_block",
+      "movement_type": "BWD",
+      "order": 3,
+      "name": "L Stance, Inward Outer Forearm Block",
+      "techniques": [
+        {
+          "id": "l_stance",
+          "english": "L Stance",
+          "romanised": "Niunja Sogi",
+          "hangul": "ㄴ자서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "L-shaped stance with proper weight distribution"
+        },
+        {
+          "id": "inward_outer_forearm_block",
+          "english": "Inward Outer Forearm Block",
+          "romanised": "Bakat Palmok Makgi",
+          "hangul": "바깥팔목막기",
+          "category": "Blocking",
+          "target_area": null,
+          "description": "Inward sweeping block using outer edge of forearm to deflect middle section attacks"
+        }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 5,
+        "movement_pattern": "Execute l stance, inward outer forearm block with proper timing and form",
+        "key_points": [
+          "Maintain proper stance foundation throughout",
+          "Effective blocking coverage and timing"
+        ],
+        "common_mistakes": [
+          "Poor timing between techniques",
+          "Insufficient power generation",
+          "Loss of balance during execution",
+          "Incorrect technique sequencing"
+        ],
+        "execution_tips": [
+          "Practice each component technique separately first",
+          "Focus on smooth transitions between movements",
+          "Maintain proper form throughout execution"
+        ]
+      },
+      "categories": [
+        "Blocking",
+        "Stances"
+      ]
+    },
+    {
+      "id": "turning_kick__landing_in_l_stance__knife_hand_guarding_block",
+      "movement_type": "FWD",
+      "order": 4,
+      "name": "Turning Kick, Landing in L Stance, Knife Hand Guarding Block",
+      "techniques": [
+        {
+          "id": "turning_kick",
+          "english": "Turning Kick",
+          "romanised": "Dollyo Chagi",
+          "hangul": "돌려차기",
+          "category": "Kicks",
+          "target_area": null,
+          "description": "Circular kick using instep or ball of foot, rotating hip and body"
+        },
+        {
+          "id": "l_stance",
+          "english": "L Stance",
+          "romanised": "Niunja Sogi",
+          "hangul": "ㄴ자서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "L-shaped stance with proper weight distribution"
+        },
+        {
+          "id": "knife_hand_guarding_block",
+          "english": "Knife Hand Guarding Block",
+          "romanised": "Gunnun Sogi",
+          "hangul": "걷는서기",
+          "category": "Blocking",
+          "target_area": null,
+          "description": "Defensive position with knife hand protecting middle section while maintaining guard"
+        }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 5,
+        "movement_pattern": "Execute turning kick, landing in l stance, knife hand guarding block with proper timing and form",
+        "key_points": [
+          "Maintain proper stance foundation throughout",
+          "Control balance during kicking techniques",
+          "Effective blocking coverage and timing",
+          "Smooth coordination between multiple techniques"
+        ],
+        "common_mistakes": [
+          "Poor timing between techniques",
+          "Insufficient power generation",
+          "Loss of balance during execution",
+          "Incorrect technique sequencing"
+        ],
+        "execution_tips": [
+          "Practice each component technique separately first",
+          "Focus on smooth transitions between movements",
+          "Maintain proper form throughout execution"
+        ]
+      },
+      "categories": [
+        "Blocking",
+        "Kicks",
+        "Stances"
+      ]
+    },
+    {
+      "id": "l_stance__forearm_guarding_block",
+      "movement_type": "BWD",
+      "order": 5,
+      "name": "L Stance, Forearm Guarding Block",
+      "techniques": [
+        {
+          "id": "l_stance",
+          "english": "L Stance",
+          "romanised": "Niunja Sogi",
+          "hangul": "ㄴ자서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "L-shaped stance with proper weight distribution"
+        },
+        {
+          "id": "forearm_guarding_block",
+          "english": "Forearm Guarding Block",
+          "romanised": "Nopunde Dung Joomuk Taerigi",
+          "hangul": "높은데등주먹때리기",
+          "category": "Blocking",
+          "target_area": null,
+          "description": "Defensive guarding position using forearm to protect middle section"
+        }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 5,
+        "movement_pattern": "Execute l stance, forearm guarding block with proper timing and form",
+        "key_points": [
+          "Maintain proper stance foundation throughout",
+          "Effective blocking coverage and timing"
+        ],
+        "common_mistakes": [
+          "Poor timing between techniques",
+          "Insufficient power generation",
+          "Loss of balance during execution",
+          "Incorrect technique sequencing"
+        ],
+        "execution_tips": [
+          "Practice each component technique separately first",
+          "Focus on smooth transitions between movements",
+          "Maintain proper form throughout execution"
+        ]
+      },
+      "categories": [
+        "Blocking",
+        "Stances"
+      ]
+    }
+  ],
+  "total_exercises": 5,
+  "skill_focus": [
+    "Advanced kicking techniques",
+    "L stance proficiency and applications"
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "version": "1.0",
+  "category": "target_areas",
+  "description": "Reference guide for target areas and vital points in Taekwondo",
+  "target_areas": [
+    {
+      "id": "head_targets",
+      "region": "Head",
+      "korean": "머리",
+      "korean_romanized": "Meori",
+      "phonetic": "/mʌ.ɾi/",
+      "targets": [
+        {
+          "id": "temple",
+          "name": "Temple",
+          "korean": "관자놀이",
+          "korean_romanized": "Gwanja Nori",
+          "phonetic": "/kwan.dʑa.no.ɾi/",
+          "description": "Side of the head above the ear, vulnerable pressure point",
+          "effective_techniques": ["dollyo_chagi", "guligi_chigi", "sonnal_chigi"],
+          "caution_level": "high",
+          "control_required": "maximum"
+        },
+        {
+          "id": "jaw",
+          "name": "Jaw",
+          "korean": "턱",
+          "korean_romanized": "Teok",
+          "phonetic": "/tʌk/",
+          "description": "Lower jaw area, effective for knockouts but requires control",
+          "effective_techniques": ["dollyo_chagi", "guligi_chigi", "dung_joomok_chigi"],
+          "caution_level": "high",
+          "control_required": "maximum"
+        },
+        {
+          "id": "nose",
+          "name": "Nose",
+          "korean": "코",
+          "korean_romanized": "Ko", 
+          "phonetic": "/ko/",
+          "description": "Center of face, easily broken, causes immediate pain and disorientation",
+          "effective_techniques": ["jireugi", "batangson_chigi", "me_joomok_chigi"],
+          "caution_level": "medium",
+          "control_required": "high"
+        }
+      ]
+    },
+    {
+      "id": "neck_targets",
+      "region": "Neck",
+      "korean": "목",
+      "korean_romanized": "Mok",
+      "phonetic": "/mok/",
+      "targets": [
+        {
+          "id": "throat",
+          "name": "Throat",
+          "korean": "목구멍",
+          "korean_romanized": "Mokgumeong",
+          "phonetic": "/mok.ɡu.mʏŋ/",
+          "description": "Front of neck, extremely dangerous target, training only",
+          "effective_techniques": ["sonkkeut_chigi", "jipge_son_chigi", "sonnal_chigi"],
+          "caution_level": "extreme",
+          "control_required": "training_only"
+        },
+        {
+          "id": "neck_side",
+          "name": "Side of Neck",
+          "korean": "목옆",
+          "korean_romanized": "Mok Yeop",
+          "phonetic": "/mok.jʌp/",
+          "description": "Carotid artery area, pressure point for unconsciousness",
+          "effective_techniques": ["sonnal_chigi", "an_palmok_chigi"],
+          "caution_level": "extreme", 
+          "control_required": "training_only"
+        }
+      ]
+    },
+    {
+      "id": "torso_targets",
+      "region": "Torso",
+      "korean": "몸통",
+      "korean_romanized": "Momtong",
+      "phonetic": "/mom.thoŋ/",
+      "targets": [
+        {
+          "id": "solar_plexus",
+          "name": "Solar Plexus",
+          "korean": "명치",
+          "korean_romanized": "Myeongchi",
+          "phonetic": "/mjʌŋ.tʃʰi/",
+          "description": "Center of chest below sternum, causes winding and pain",
+          "effective_techniques": ["jireugi", "ap_chagi", "palkup_chigi"],
+          "caution_level": "medium",
+          "control_required": "moderate"
+        },
+        {
+          "id": "ribs",
+          "name": "Ribs", 
+          "korean": "갈비",
+          "korean_romanized": "Galbi",
+          "phonetic": "/kal.pi/",
+          "description": "Side of torso, floating ribs are vulnerable to breaking",
+          "effective_techniques": ["yeop_chagi", "dollyo_chagi", "guligi_chigi"],
+          "caution_level": "medium",
+          "control_required": "moderate"
+        },
+        {
+          "id": "kidney",
+          "name": "Kidney",
+          "korean": "콩팥",
+          "korean_romanized": "Kongpat",
+          "phonetic": "/koŋ.pʰat/",
+          "description": "Lower back area, organ damage possible with hard strikes",
+          "effective_techniques": ["yeop_chagi", "dwit_chagi", "guligi_chigi"],
+          "caution_level": "high",
+          "control_required": "high"
+        }
+      ]
+    },
+    {
+      "id": "leg_targets",
+      "region": "Legs",
+      "korean": "다리",
+      "korean_romanized": "Dari",
+      "phonetic": "/ta.ɾi/", 
+      "targets": [
+        {
+          "id": "knee",
+          "name": "Knee",
+          "korean": "무릎",
+          "korean_romanized": "Mureup",
+          "phonetic": "/mu.ɾɯp/",
+          "description": "Joint vulnerable to side attacks, can cause permanent damage",
+          "effective_techniques": ["yeop_chagi", "bal_badak_chigi"],
+          "caution_level": "extreme",
+          "control_required": "training_only"
+        },
+        {
+          "id": "shin",
+          "name": "Shin",
+          "korean": "정강이",
+          "korean_romanized": "Jeonggangyi",
+          "phonetic": "/tʃʏŋ.ɡaŋ.i/",
+          "description": "Front of lower leg, painful and can cause temporary immobilization",
+          "effective_techniques": ["naeryo_chagi", "bal_badak_chagi"],
+          "caution_level": "low",
+          "control_required": "light"
+        },
+        {
+          "id": "groin",
+          "name": "Groin",
+          "korean": "사타구니",
+          "korean_romanized": "Sataguni",
+          "phonetic": "/sa.tʰa.ɡu.ni/",
+          "description": "Extremely sensitive area, causes immediate incapacitation",
+          "effective_techniques": ["ap_chagi", "moorup_chagi", "balkkeut_chigi"],
+          "caution_level": "extreme",
+          "control_required": "training_only"
+        }
+      ]
+    }
+  ],
+  "safety_guidelines": {
+    "general": "All techniques should be practiced with appropriate control and protective equipment",
+    "training_only": "Some targets are for theoretical knowledge only and should never be struck in training",
+    "protective_equipment": "Always use appropriate protective gear during sparring",
+    "instructor_supervision": "Advanced techniques require qualified instructor supervision"
+  }
+}

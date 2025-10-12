@@ -1,0 +1,152 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/FlashcardConfigurationView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Review Configuration",
+        "location": {
+          "startingColumn": 48,
+          "startingLine": 65
+        }
+      },
+      {
+        "comment": "",
+        "key": "Flashcard Configuration",
+        "location": {
+          "startingColumn": 73,
+          "startingLine": 65
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 69
+        }
+      },
+      {
+        "comment": "",
+        "key": "Help",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "Review Session",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "New Flashcard Session",
+        "location": {
+          "startingColumn": 55,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "Configure how you'd like to review these terms",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 102
+        }
+      },
+      {
+        "comment": "",
+        "key": "Customize your flashcard session settings",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 103
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading configuration...",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "Terms in session:",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 194
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 199
+        }
+      },
+      {
+        "comment": "",
+        "key": "5",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 218
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 224
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld terms available for your current settings",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 237
+        }
+      },
+      {
+        "comment": "",
+        "key": "Session Preview",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 252
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start Review",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 308
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start Session",
+        "location": {
+          "startingColumn": 57,
+          "startingLine": 308
+        }
+      },
+      {
+        "comment": "",
+        "key": "⭐️",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 518
+        }
+      }
+    ]
+  },
+  "version": 1
+}

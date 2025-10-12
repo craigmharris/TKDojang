@@ -1,0 +1,9 @@
+"/Users/craig/TKDojang/TKDojangTests/TestHelpers/TestHelpers.swift":
+  objc-header: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-Swift.h"
+  swiftmodule: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests.swiftmodule"
+  swiftdoc: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests.swiftdoc"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-master.dia"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-master.d"
+  abi-baseline-json: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests.abi.json"
+  swiftsourceinfo: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests.swiftsourceinfo"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-master.swiftconstvalues"

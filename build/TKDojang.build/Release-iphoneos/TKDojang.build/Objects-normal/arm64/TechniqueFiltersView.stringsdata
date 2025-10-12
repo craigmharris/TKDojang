@@ -1,0 +1,40 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Techniques/TechniqueFiltersView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Filter Techniques",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "Clear All",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 80
+        }
+      },
+      {
+        "comment": "",
+        "key": "Done",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 87
+        }
+      },
+      {
+        "comment": "",
+        "key": "#%@",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 312
+        }
+      }
+    ]
+  },
+  "version": 1
+}

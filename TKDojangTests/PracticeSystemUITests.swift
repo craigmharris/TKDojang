@@ -1460,13 +1460,13 @@ extension PatternMove {
 
 extension StepSparringStep {
     var attackAction: StepSparringAction {
-        StepSparringAction(actionType: .attack, technique: "Attack technique", target: "Target area")
+        StepSparringAction(technique: "Attack technique", execution: "Target area")
     }
     var defenseAction: StepSparringAction {
-        StepSparringAction(actionType: .defense, technique: "Defense technique", target: "Defense area")
+        StepSparringAction(technique: "Defense technique", execution: "Defense area")
     }
     var counterAction: StepSparringAction {
-        StepSparringAction(actionType: .counter, technique: "Counter technique", target: "Counter area")
+        StepSparringAction(technique: "Counter technique", execution: "Counter area")
     }
 }
 
@@ -1482,11 +1482,3 @@ extension StepSparringService {
     }
 }
 
-struct StepSparringAction {
-    enum ActionType {
-        case attack, defense, counter
-    }
-    let actionType: ActionType
-    let technique: String
-    let target: String
-}

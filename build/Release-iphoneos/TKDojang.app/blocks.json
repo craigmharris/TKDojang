@@ -1,0 +1,667 @@
+{
+  "version": "1.0", 
+  "category": "blocks",
+  "description": "Comprehensive database of Taekwondo defensive blocking techniques",
+  "techniques": [
+    {
+      "id": "bakat_palmok_najunde_makgi",
+      "names": {
+        "korean": "바깥팔목낮은데막기",
+        "korean_romanized": "Bakat Palmok Najunde Makgi",
+        "english": "Outer Forearm Low Block",
+        "phonetic": "/pa.k͈at.pʰal.mok.na.tɯn.de.mak.ɡi/"
+      },
+      "description": "A fundamental defensive technique that blocks low attacks by sweeping the outer forearm downward and outward. The block protects the lower body from kicks and low punches.",
+      "execution": {
+        "chamber": "Blocking arm crosses chest, other hand at solar plexus",
+        "block": "Sweep blocking arm downward and outward to deflect attack",
+        "finish": "End with outer forearm angled downward, fist at hip level"
+      },
+      "blocking_tool": {
+        "korean": "바깥팔목",
+        "korean_romanized": "Bakat Palmok",
+        "english": "Outer Forearm",
+        "phonetic": "/pa.k͈at.pʰal.mok/"
+      },
+      "defends_against": ["low kicks", "low punches", "groin attacks"],
+      "applicable_stances": ["ap_koobi_seogi", "gojung_sogi", "gunnun_sogi"],
+      "belt_levels": ["10th_keup", "9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "basic",
+      "tags": ["fundamental", "low", "sweeping", "outer_forearm", "basic"],
+      "variations": ["sang_bakat_palmok_makgi"],
+      "images": [
+        "bakat_palmok_najunde_chamber.jpg",
+        "bakat_palmok_najunde_block.jpg", 
+        "bakat_palmok_najunde_finish.jpg"
+      ],
+      "common_mistakes": ["Not crossing chest in chamber", "Weak deflection", "Poor timing"]
+    },
+    {
+      "id": "an_palmok_kaunde_makgi",
+      "names": {
+        "korean": "안팔목가운데막기",
+        "korean_romanized": "An Palmok Kaunde Makgi",
+        "english": "Inner Forearm Middle Block", 
+        "phonetic": "/an.pʰal.mok.ka.un.de.mak.ɡi/"
+      },
+      "description": "A middle-level block that deflects attacks to the torso area using the inner edge of the forearm. The block moves from outside to inside across the body.",
+      "execution": {
+        "chamber": "Blocking arm at opposite side, fist near waist",
+        "block": "Sweep inner forearm across body from outside to inside",
+        "finish": "End with inner forearm protecting center line"
+      },
+      "blocking_tool": {
+        "korean": "안팔목",
+        "korean_romanized": "An Palmok", 
+        "english": "Inner Forearm",
+        "phonetic": "/an.pʰal.mok/"
+      },
+      "defends_against": ["middle punches", "body strikes", "chest attacks"],
+      "applicable_stances": ["ap_koobi_seogi", "gojung_sogi", "gunnun_sogi"],
+      "belt_levels": ["10th_keup", "9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "basic",
+      "tags": ["fundamental", "middle", "inner_forearm", "deflection", "basic"],
+      "variations": ["bakat_palmok_kaunde_anaero_makgi"],
+      "images": [
+        "an_palmok_kaunde_chamber.jpg",
+        "an_palmok_kaunde_sweep.jpg",
+        "an_palmok_kaunde_finish.jpg"
+      ],
+      "common_mistakes": ["Insufficient sweep", "Wrong forearm angle", "Poor chamber position"]
+    },
+    {
+      "id": "palmok_chookyo_makgi", 
+      "names": {
+        "korean": "팔목추켜막기",
+        "korean_romanized": "Palmok Chookyo Makgi",
+        "english": "Forearm Rising Block",
+        "phonetic": "/pʰal.mok.tʃʰu.kʌ.mak.ɡi/"
+      },
+      "description": "A high-level defensive technique that blocks attacks to the head and upper body by raising the forearm upward and outward. Protects against overhead and high attacks.",
+      "execution": {
+        "chamber": "Blocking arm positioned low across body",
+        "block": "Sweep forearm upward and outward to head level", 
+        "finish": "End with forearm angled above forehead, protecting head"
+      },
+      "blocking_tool": {
+        "korean": "팔목",
+        "korean_romanized": "Palmok",
+        "english": "Forearm",
+        "phonetic": "/pʰal.mok/"
+      },
+      "defends_against": ["high punches", "overhead strikes", "head attacks", "club attacks"],
+      "applicable_stances": ["ap_koobi_seogi", "gojung_sogi", "gunnun_sogi"],
+      "belt_levels": ["9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "basic",
+      "tags": ["fundamental", "high", "rising", "forearm", "overhead"],
+      "variations": ["bakat_palmok_nopunde_makgi"],
+      "images": [
+        "palmok_chookyo_chamber.jpg",
+        "palmok_chookyo_rising.jpg",
+        "palmok_chookyo_finish.jpg"
+      ],
+      "common_mistakes": ["Not rising high enough", "Poor deflection angle", "Weak structure"]
+    },
+    {
+      "id": "sonkal_daebi_makgi",
+      "names": {
+        "korean": "손칼대비막기",
+        "korean_romanized": "Sonkal Daebi Makgi", 
+        "english": "Knife Hand Guarding Block",
+        "phonetic": "/son.kʰal.de.bi.mak.ɡi/"
+      },
+      "description": "A block using the edge of the open hand (knife hand), typically performed from a back stance. The non-blocking hand supports at the solar plexus level.",
+      "execution": {
+        "chamber": "Blocking hand raised high, supporting hand at solar plexus",
+        "block": "Drive knife hand down and forward to deflect attack",
+        "finish": "End with knife hand extended, supporting hand firm"
+      },
+      "blocking_tool": {
+        "korean": "손칼",
+        "korean_romanized": "Sonkal",
+        "english": "Knife Hand",
+        "phonetic": "/son.kʰal/"
+      },
+      "defends_against": ["punches", "strikes", "grabs", "weapons"],
+      "applicable_stances": ["gojung_sogi"],
+      "belt_levels": ["8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["knife_hand", "open_hand", "supported", "defensive"],
+      "variations": ["sonkal_najunde_daebi_makgi"],
+      "images": [
+        "sonkal_daebi_chamber.jpg",
+        "sonkal_daebi_block.jpg",
+        "sonkal_daebi_hand_detail.jpg"
+      ],
+      "common_mistakes": ["Weak supporting hand", "Poor knife hand formation", "Wrong timing"]
+    },
+    {
+      "id": "palmok_daebi_makgi",
+      "names": {
+        "korean": "팔목대비막기",
+        "korean_romanized": "Palmok Daebi Makgi",
+        "english": "Forearm Guarding Block",
+        "phonetic": "/pʰal.mok.de.bi.mak.ɡi/"
+      },
+      "description": "A defensive block using the forearm to create a strong barrier, often used against powerful attacks or when maximum protection is needed.",
+      "execution": {
+        "chamber": "Forearm positioned to intercept attack",
+        "block": "Position forearm to form protective barrier",
+        "finish": "Maintain strong structure with forearm engaged"
+      },
+      "blocking_tool": {
+        "korean": "팔목",
+        "korean_romanized": "Palmok", 
+        "english": "Forearm",
+        "phonetic": "/pʰal.mok/"
+      },
+      "defends_against": ["powerful strikes", "direct attacks", "weapons"],
+      "applicable_stances": ["gojung_sogi", "ap_koobi_seogi"],
+      "belt_levels": ["9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["forearm", "guarding", "protective", "strong"],
+      "variations": ["doo_palmok_makgi"],
+      "images": [
+        "palmok_daebi_chamber.jpg",
+        "palmok_daebi_barrier.jpg",
+        "palmok_daebi_structure.jpg"
+      ],
+      "common_mistakes": ["Weak arm structure", "Poor positioning", "Inadequate coverage"]
+    },
+    {
+      "id": "doo_palmok_makgi",
+      "names": {
+        "korean": "두팔목막기",
+        "korean_romanized": "Doo Palmok Makgi",
+        "english": "Double Forearm Block",
+        "phonetic": "/tu.pʰal.mok.mak.ɡi/"
+      },
+      "description": "A defensive block using both forearms simultaneously to create maximum protection against powerful or multiple attacks.",
+      "execution": {
+        "chamber": "Both forearms positioned to sides of body",
+        "block": "Bring both forearms together to form protective barrier",
+        "finish": "Maintain strong structure with both arms engaged"
+      },
+      "blocking_tool": {
+        "korean": "양팔목",
+        "korean_romanized": "Yang Palmok",
+        "english": "Both Forearms", 
+        "phonetic": "/jaŋ.pʰal.mok/"
+      },
+      "defends_against": ["powerful strikes", "multiple attacks", "heavy weapons"],
+      "applicable_stances": ["gojung_sogi", "ap_koobi_seogi"],
+      "belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["double", "twin", "strong", "barrier"],
+      "variations": ["doo_palmok_miro_makgi"],
+      "images": [
+        "doo_palmok_chamber.jpg",
+        "doo_palmok_barrier.jpg",
+        "doo_palmok_structure.jpg"
+      ],
+      "common_mistakes": ["Poor synchronization", "Weak arm structure", "Inadequate coverage"]
+    },
+    {
+      "id": "bakat_palmok_hechyo_makgi",
+      "names": {
+        "korean": "바깥팔목해쳐막기",
+        "korean_romanized": "Bakat Palmok Hechyo Makgi", 
+        "english": "Outer Forearm Wedging Block",
+        "phonetic": "/pa.k͈at.pʰal.mok.he.tʃʰjʌ.mak.ɡi/"
+      },
+      "description": "A wedge-shaped block using the outer forearm to split attacks, creating an opening while defending against the incoming technique.",
+      "execution": {
+        "chamber": "Forearm positioned across body",
+        "block": "Drive forearm in wedging motion to split attack",
+        "finish": "End in wedge position, creating defensive opening"
+      },
+      "blocking_tool": {
+        "korean": "바깥팔목",
+        "korean_romanized": "Bakat Palmok",
+        "english": "Outer Forearm",
+        "phonetic": "/pa.k͈at.pʰal.mok/"
+      },
+      "defends_against": ["double attacks", "grabbing attempts", "multiple strikes"],
+      "applicable_stances": ["gunnun_sogi", "gojung_sogi"],
+      "belt_levels": ["7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["wedging", "splitting", "outer_forearm", "opening"],
+      "variations": ["bakat_palmok_san_makgi"],
+      "images": [
+        "bakat_palmok_hechyo_chamber.jpg",
+        "bakat_palmok_hechyo_wedge.jpg",
+        "bakat_palmok_hechyo_finish.jpg"
+      ],
+      "common_mistakes": ["Poor wedge angle", "Insufficient splitting force", "Weak structure"]
+    },
+    {
+      "id": "sonkal_bakaero_makgi",
+      "names": {
+        "korean": "손칼바깥으로막기",
+        "korean_romanized": "Sonkal Bakaero Makgi",
+        "english": "Knife Hand Outward Block",
+        "phonetic": "/son.kʰal.pa.k͈a.nɯ.ɾo.mak.ɡi/"
+      },
+      "description": "An outward blocking motion using the edge of the hand, deflecting attacks from the inside to the outside of the body's centerline.",
+      "execution": {
+        "chamber": "Knife hand positioned across body at chest level",
+        "block": "Sweep knife hand from inside to outside, deflecting attack",
+        "finish": "End with knife hand extended outward, protecting outside line"
+      },
+      "blocking_tool": {
+        "korean": "손칼",
+        "korean_romanized": "Sonkal",
+        "english": "Knife Hand",
+        "phonetic": "/son.kʰal/"
+      },
+      "defends_against": ["straight punches", "middle strikes", "linear attacks"],
+      "applicable_stances": ["ap_koobi_seogi", "gojung_sogi", "gunnun_sogi"],
+      "belt_levels": ["7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["knife_hand", "outward", "deflection", "sweeping"],
+      "variations": ["sonkal_anaero_makgi"],
+      "images": [
+        "sonkal_bakaero_chamber.jpg",
+        "sonkal_bakaero_sweep.jpg", 
+        "sonkal_bakaero_deflection.jpg"
+      ],
+      "common_mistakes": ["Insufficient sweep", "Wrong deflection angle", "Poor knife hand formation"]
+    },
+    {
+      "id": "kyocha_sonkal_momchau_makgi",
+      "names": {
+        "korean": "교차손칼멈춘막기",
+        "korean_romanized": "Kyocha Sonkal Momchau Makgi",
+        "english": "X Knife Hand Checking Block",
+        "phonetic": "/kjo.tʃʰa.son.kʰal.mʌm.tʃʰau.mak.ɡi/"
+      },
+      "description": "A blocking technique where both knife hands cross to form an X shape, providing strong protection against powerful attacks while checking the opponent's technique.",
+      "execution": {
+        "chamber": "Both knife hands positioned to sides",
+        "block": "Cross both knife hands to form X shape",
+        "finish": "Maintain strong X structure while checking attack"
+      },
+      "blocking_tool": {
+        "korean": "교차손칼",
+        "korean_romanized": "Kyocha Sonkal",
+        "english": "Crossed Knife Hands",
+        "phonetic": "/kjo.tʃʰa.son.kʰal/"
+      },
+      "defends_against": ["overhead strikes", "powerful attacks", "multiple techniques"],
+      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi", "ap_koobi_seogi"],
+      "belt_levels": ["1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "advanced",
+      "tags": ["cross", "x_block", "knife_hand", "checking", "advanced"],
+      "variations": ["kyocha_joomuk_noollo_makgi"],
+      "images": [
+        "kyocha_sonkal_chamber.jpg",
+        "kyocha_sonkal_x_formation.jpg",
+        "kyocha_sonkal_check.jpg"
+      ],
+      "common_mistakes": ["Weak X structure", "Poor knife hand formation", "Insufficient checking pressure"]
+    },
+    {
+      "id": "sonbadak_noollo_makgi",
+      "names": {
+        "korean": "손바닥누를로막기",
+        "korean_romanized": "Sonbadak Noollo Makgi",
+        "english": "Palm Pressing Block",
+        "phonetic": "/son.ba.dak.nu.ɾʌl.lo.mak.ɡi/"
+      },
+      "description": "A defensive block using the palm in a pressing motion, deflecting attacks by applying pressure rather than hard contact. Effective against straight attacks and for redirecting force.",
+      "execution": {
+        "chamber": "Position palm ready for pressing motion",
+        "block": "Press palm against incoming attack to deflect or redirect",
+        "recovery": "Return to guard position maintaining palm readiness"
+      },
+      "blocking_tool": {
+        "korean": "손바닥",
+        "korean_romanized": "Sonbadak",
+        "english": "Palm",
+        "phonetic": "/son.ba.dak/"
+      },
+      "defends_against": ["straight punches", "linear attacks", "thrusts"],
+      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
+      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["palm", "pressing", "deflecting", "soft_block"],
+      "variations": ["sonbadak_ollyo_makgi", "sonbadak_hori_makgi"],
+      "images": [
+        "sonbadak_noollo_ready.jpg",
+        "sonbadak_noollo_press.jpg",
+        "sonbadak_noollo_deflect.jpg"
+      ],
+      "common_mistakes": ["Too much force", "Poor palm positioning", "Wrong timing"]
+    },
+    {
+      "id": "sonbadak_ollyo_makgi",
+      "names": {
+        "korean": "손바닥올려막기",
+        "korean_romanized": "Sonbadak Ollyo Makgi",
+        "english": "Palm Upward Block",
+        "phonetic": "/son.ba.dak.ol.ljo.mak.ɡi/"
+      },
+      "description": "An upward blocking technique using the palm, deflecting attacks from below or redirecting downward strikes. The palm moves in an ascending arc to intercept and deflect.",
+      "execution": {
+        "chamber": "Position palm low ready for upward motion",
+        "block": "Drive palm upward in arc to intercept attack",
+        "recovery": "Return palm to guard position"
+      },
+      "blocking_tool": {
+        "korean": "손바닥",
+        "korean_romanized": "Sonbadak",
+        "english": "Palm",
+        "phonetic": "/son.ba.dak/"
+      },
+      "defends_against": ["downward strikes", "overhead attacks", "descending techniques"],
+      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
+      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["palm", "upward", "ascending", "deflecting"],
+      "variations": ["sonbadak_makgi", "sonbadak_noollo_makgi"],
+      "images": [
+        "sonbadak_ollyo_chamber.jpg",
+        "sonbadak_ollyo_rising.jpg",
+        "sonbadak_ollyo_block.jpg"
+      ],
+      "common_mistakes": ["Insufficient upward motion", "Poor palm angle", "Wrong timing"]
+    },
+    {
+      "id": "sonbadak_hori_makgi",
+      "names": {
+        "korean": "손바닥허리막기",
+        "korean_romanized": "Sonbadak Hori Makgi",
+        "english": "Palm Waist Block",
+        "phonetic": "/son.ba.dak.hʌ.ɾi.mak.ɡi/"
+      },
+      "description": "A waist-level blocking technique using the palm, defending against middle-level attacks to the midsection. The palm intercepts attacks at waist height.",
+      "execution": {
+        "chamber": "Position palm at waist level ready for blocking",
+        "block": "Move palm across body to intercept waist-level attack",
+        "recovery": "Return to ready position at waist level"
+      },
+      "blocking_tool": {
+        "korean": "손바닥",
+        "korean_romanized": "Sonbadak",
+        "english": "Palm",
+        "phonetic": "/son.ba.dak/"
+      },
+      "defends_against": ["waist punches", "middle kicks", "body attacks"],
+      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
+      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "basic",
+      "tags": ["palm", "waist", "middle", "horizontal"],
+      "variations": ["sonbadak_makgi", "hori_makgi"],
+      "images": [
+        "sonbadak_hori_ready.jpg",
+        "sonbadak_hori_block.jpg",
+        "sonbadak_hori_deflect.jpg"
+      ],
+      "common_mistakes": ["Wrong waist level", "Poor palm contact", "Insufficient coverage"]
+    },
+    {
+      "id": "an_palmok_dollimyo_makgi",
+      "names": {
+        "korean": "안팔목돌리며막기",
+        "korean_romanized": "An Palmok Dollimyo Makgi",
+        "english": "Inner Forearm Circular Block",
+        "phonetic": "/an.pʰal.mok.tol.li.mjʌ.mak.ɡi/"
+      },
+      "description": "A circular blocking motion using the inner forearm, deflecting attacks through rotational movement. The forearm moves in a circular arc to redirect incoming strikes.",
+      "execution": {
+        "chamber": "Position inner forearm ready for circular motion",
+        "block": "Execute circular sweeping motion with inner forearm",
+        "recovery": "Complete circle and return to guard"
+      },
+      "blocking_tool": {
+        "korean": "안팔목",
+        "korean_romanized": "An Palmok",
+        "english": "Inner Forearm",
+        "phonetic": "/an.pʰal.mok/"
+      },
+      "defends_against": ["straight punches", "linear attacks", "thrusts"],
+      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
+      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["inner_forearm", "circular", "rotational", "sweeping"],
+      "variations": ["bakat_palmok_makgi", "palmok_makgi"],
+      "images": [
+        "an_palmok_dollimyo_ready.jpg",
+        "an_palmok_dollimyo_circle.jpg",
+        "an_palmok_dollimyo_deflect.jpg"
+      ],
+      "common_mistakes": ["Incomplete circular motion", "Wrong forearm contact", "Poor timing"]
+    },
+    {
+      "id": "bakat_palmok_hori_makgi",
+      "names": {
+        "korean": "바깥팔목허리막기",
+        "korean_romanized": "Bakat Palmok Hori Makgi",
+        "english": "Outer Forearm Waist Block",
+        "phonetic": "/pa.k͈at.pʰal.mok.hʌ.ɾi.mak.ɡi/"
+      },
+      "description": "A defensive block at waist level using the outer forearm, protecting the midsection from middle-level attacks. The outer edge of the forearm intercepts strikes to the body.",
+      "execution": {
+        "chamber": "Position outer forearm across body at waist height",
+        "block": "Move outer forearm to intercept waist-level attack",
+        "recovery": "Return forearm to guard position"
+      },
+      "blocking_tool": {
+        "korean": "바깥팔목",
+        "korean_romanized": "Bakat Palmok",
+        "english": "Outer Forearm",
+        "phonetic": "/pa.k͈at.pʰal.mok/"
+      },
+      "defends_against": ["body punches", "middle kicks", "waist attacks"],
+      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
+      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "basic",
+      "tags": ["outer_forearm", "waist", "middle", "body_defense"],
+      "variations": ["bakat_palmok_makgi", "hori_makgi"],
+      "images": [
+        "bakat_palmok_hori_ready.jpg",
+        "bakat_palmok_hori_block.jpg",
+        "bakat_palmok_hori_cover.jpg"
+      ],
+      "common_mistakes": ["Wrong forearm angle", "Insufficient waist coverage", "Poor body position"]
+    },
+    {
+      "id": "sonbadak_anaero_miro_makgi",
+      "names": {
+        "korean": "손바닥안으로밀어막기",
+        "korean_romanized": "Sonbadak Aaero Miro Makgi",
+        "english": "Palm Inward Pushing Block",
+        "phonetic": "/son.ba.dak.a.nɯ.ɾo.mi.ɾo.mak.ɡi/"
+      },
+      "description": "An inward pushing block using the palm of the hand, deflecting attacks by pushing them away from the centerline. Combines blocking with redirecting force.",
+      "execution": {
+        "chamber": "Position palm ready for inward pushing motion",
+        "block": "Push palm inward to deflect attack away from body",
+        "recovery": "Return palm to ready position"
+      },
+      "blocking_tool": {
+        "korean": "손바닥",
+        "korean_romanized": "Sonbadak",
+        "english": "Palm",
+        "phonetic": "/son.ba.dak/"
+      },
+      "defends_against": ["straight attacks", "linear punches", "thrusts"],
+      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
+      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["palm", "inward", "pushing", "redirecting"],
+      "variations": ["sonbadak_miro_makgi", "sonbadak_makgi"],
+      "images": [
+        "sonbadak_anaero_miro_ready.jpg",
+        "sonbadak_anaero_miro_push.jpg",
+        "sonbadak_anaero_miro_deflect.jpg"
+      ],
+      "common_mistakes": ["Weak pushing motion", "Poor palm contact", "Wrong inward angle"]
+    },
+    {
+      "id": "sonkal_dung_bandae_makgi",
+      "names": {
+        "korean": "손칼등반대막기",
+        "korean_romanized": "Sonkal Dung Bandae Makgi",
+        "english": "Reverse Knife Hand Outward Block",
+        "phonetic": "/son.kʰal.dɯŋ.pan.de.mak.ɡi/"
+      },
+      "description": "An outward blocking technique using the reverse knife hand, deflecting attacks away from the body with the back edge of the knife hand formation.",
+      "execution": {
+        "chamber": "Position reverse knife hand across body",
+        "block": "Drive reverse knife hand outward to deflect attack",
+        "recovery": "Return to guard position"
+      },
+      "blocking_tool": {
+        "korean": "손칼등",
+        "korean_romanized": "Sonkal Dung",
+        "english": "Reverse Knife Hand",
+        "phonetic": "/son.kʰal.dɯŋ/"
+      },
+      "defends_against": ["straight attacks", "linear strikes", "front kicks"],
+      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
+      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["reverse_knife_hand", "outward", "deflecting", "back_edge"],
+      "variations": ["sonkal_makgi", "sonkal_dung_taerigi"],
+      "images": [
+        "sonkal_dung_bandae_ready.jpg",
+        "sonkal_dung_bandae_block.jpg",
+        "sonkal_dung_bandae_deflect.jpg"
+      ],
+      "common_mistakes": ["Wrong hand formation", "Poor outward motion", "Weak contact"]
+    },
+    {
+      "id": "sang_sun_palmok_momchau_makgi",
+      "names": {
+        "korean": "상선팔목멈춘막기",
+        "korean_romanized": "Sang Sun Palmok Momchau Makgi",
+        "english": "Twin Straight Forearm Checking Block",
+        "phonetic": "/saŋ.sʌn.pʰal.mok.mʌm.tʃʰau.mak.ɡi/"
+      },
+      "description": "A simultaneous checking block using both forearms straight, stopping attacks through coordinated dual forearm contact. Both arms work together to create a strong defensive barrier.",
+      "execution": {
+        "chamber": "Position both forearms ready for simultaneous block",
+        "block": "Drive both forearms forward simultaneously to check attack",
+        "recovery": "Return both arms to guard position"
+      },
+      "blocking_tool": {
+        "korean": "상선팔목",
+        "korean_romanized": "Sang Sun Palmok",
+        "english": "Twin Straight Forearms",
+        "phonetic": "/saŋ.sʌn.pʰal.mok/"
+      },
+      "defends_against": ["powerful attacks", "multiple strikes", "overwhelming force"],
+      "applicable_stances": ["gojung_sogi", "ap_koobi_seogi"],
+      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "advanced",
+      "tags": ["twin", "simultaneous", "checking", "dual_forearm"],
+      "variations": ["sang_palmok_makgi", "momchau_makgi"],
+      "images": [
+        "sang_sun_palmok_ready.jpg",
+        "sang_sun_palmok_check.jpg",
+        "sang_sun_palmok_barrier.jpg"
+      ],
+      "common_mistakes": ["Uneven forearm contact", "Poor coordination", "Weak checking force"]
+    },
+    {
+      "id": "digutja_makgi",
+      "names": {
+        "korean": "디굿자막기",
+        "korean_romanized": "Digutja Makgi",
+        "english": "U Shape Block",
+        "phonetic": "/di.ɡut.ʃa.mak.ɡi/"
+      },
+      "description": "A blocking technique forming a U-shape with both arms, creating a defensive barrier that can catch or redirect attacks. The arms form a U formation to trap or deflect incoming strikes.",
+      "execution": {
+        "chamber": "Position both arms ready to form U-shape",
+        "block": "Create U formation with arms to catch or deflect attack",
+        "recovery": "Maintain U-shape control then return to guard"
+      },
+      "blocking_tool": {
+        "korean": "두팔",
+        "korean_romanized": "Doo Pal",
+        "english": "Both Arms",
+        "phonetic": "/tu.pʰal/"
+      },
+      "defends_against": ["overhead attacks", "grabbing attempts", "multiple strikes"],
+      "applicable_stances": ["gojung_sogi", "ap_koobi_seogi"],
+      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "advanced",
+      "tags": ["u_shape", "dual_arm", "trapping", "formation"],
+      "variations": ["x_makgi", "sang_makgi"],
+      "images": [
+        "digutja_formation.jpg",
+        "digutja_trap.jpg",
+        "digutja_deflect.jpg"
+      ],
+      "common_mistakes": ["Poor U formation", "Uneven arm positioning", "Weak structure"]
+    },
+    {
+      "id": "kyocha_joomuk_chookyo_makgi",
+      "names": {
+        "korean": "교차주멙추켜막기",
+        "korean_romanized": "Kyocha Joomuk Chookyo Makgi",
+        "english": "X Fist Rising Block",
+        "phonetic": "/kjo.tʃʰa.tʃu.mʌk.tʃʰu.kʌ.mak.ɡi/"
+      },
+      "description": "A rising blocking technique using crossed fists in an X formation, defending against overhead attacks. Both fists cross to create a strong upward defensive barrier.",
+      "execution": {
+        "chamber": "Position both fists low ready for crossing motion",
+        "block": "Cross both fists while rising to form X above head",
+        "recovery": "Uncross fists and return to guard position"
+      },
+      "blocking_tool": {
+        "korean": "교차주멙",
+        "korean_romanized": "Kyocha Joomuk",
+        "english": "Crossed Fists",
+        "phonetic": "/kjo.tʃʰa.tʃu.mʌk/"
+      },
+      "defends_against": ["overhead attacks", "downward strikes", "axe kicks"],
+      "applicable_stances": ["gojung_sogi", "ap_koobi_seogi"],
+      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["crossed_fists", "rising", "overhead_defense", "x_formation"],
+      "variations": ["x_makgi", "sang_nopunde_makgi"],
+      "images": [
+        "kyocha_joomuk_ready.jpg",
+        "kyocha_joomuk_rising.jpg",
+        "kyocha_joomuk_x_block.jpg"
+      ],
+      "common_mistakes": ["Poor fist crossing", "Insufficient rise", "Weak X formation"]
+    },
+    {
+      "id": "sonbadak_miro_makgi",
+      "names": {
+        "korean": "손바닥밀어막기",
+        "korean_romanized": "Sonbadak Miro Makgi",
+        "english": "Palm Pushing Block",
+        "phonetic": "/son.ba.dak.mi.ɾʌ.mak.ɡi/"
+      },
+      "description": "A pushing defensive technique using the palm, deflecting attacks by pushing them away rather than hard blocking. Effective for redirecting force and creating distance.",
+      "execution": {
+        "chamber": "Position palm ready for pushing motion",
+        "block": "Push palm against attack to deflect and redirect",
+        "recovery": "Return palm to guard position"
+      },
+      "blocking_tool": {
+        "korean": "손바닥",
+        "korean_romanized": "Sonbadak",
+        "english": "Palm",
+        "phonetic": "/son.ba.dak/"
+      },
+      "defends_against": ["straight punches", "linear attacks", "body strikes"],
+      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
+      "belt_levels": ["2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["palm", "pushing", "deflecting", "redirecting"],
+      "variations": ["sonbadak_noollo_makgi", "sonbadak_anaero_miro_makgi"],
+      "images": [
+        "sonbadak_miro_ready.jpg",
+        "sonbadak_miro_push.jpg",
+        "sonbadak_miro_redirect.jpg"
+      ],
+      "common_mistakes": ["Too much force", "Poor pushing angle", "Wrong timing"]
+    }
+  ]
+}

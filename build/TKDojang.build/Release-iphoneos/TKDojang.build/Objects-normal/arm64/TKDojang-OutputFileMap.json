@@ -1,0 +1,340 @@
+{
+  "" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang-master.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang-master.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang-master.dia",
+    "emit-module-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang-master-emit-module.dia",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang-master.swiftdeps"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/App/AppInitializationView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/AppInitializationView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/AppInitializationView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/AppInitializationView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/App/ContentView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ContentView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/App/LoadingView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LoadingView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LoadingView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LoadingView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/App/TKDojangApp.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojangApp.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojangApp.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojangApp.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Coordinators/AppCoordinator.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/AppCoordinator.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/AppCoordinator.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/AppCoordinator.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Content/LineWorkContentLoader.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LineWorkContentLoader.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LineWorkContentLoader.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LineWorkContentLoader.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Content/ModularContentLoader.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ModularContentLoader.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ModularContentLoader.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ModularContentLoader.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Content/PatternContentLoader.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternContentLoader.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternContentLoader.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternContentLoader.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Content/StepSparringContentLoader.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringContentLoader.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringContentLoader.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringContentLoader.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Content/TheoryContentLoader.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryContentLoader.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryContentLoader.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryContentLoader.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/DataManager.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/DataManager.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/DataManager.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/DataManager.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/DataServices.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/DataServices.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/DataServices.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/DataServices.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Models/PatternModels.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternModels.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternModels.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternModels.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Models/PatternTestModels.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestModels.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestModels.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestModels.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Models/ProfileModels.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileModels.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileModels.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileModels.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Models/StepSparringModels.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringModels.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringModels.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringModels.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Models/TerminologyModels.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TerminologyModels.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TerminologyModels.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TerminologyModels.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Models/TestingModels.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TestingModels.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TestingModels.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TestingModels.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/DataValidationService.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/DataValidationService.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/DataValidationService.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/DataValidationService.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/EnhancedTerminologyService.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/EnhancedTerminologyService.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/EnhancedTerminologyService.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/EnhancedTerminologyService.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/LeitnerService.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LeitnerService.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LeitnerService.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LeitnerService.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/PatternDataService.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternDataService.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternDataService.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternDataService.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/PatternTestService.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestService.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestService.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestService.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/ProfileExportService.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileExportService.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileExportService.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileExportService.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/ProfileService.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileService.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileService.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileService.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/ProgressCacheService.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProgressCacheService.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProgressCacheService.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProgressCacheService.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/StepSparringDataService.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringDataService.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringDataService.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringDataService.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/TechniquesDataService.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TechniquesDataService.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TechniquesDataService.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TechniquesDataService.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/TerminologyDataService.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TerminologyDataService.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TerminologyDataService.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TerminologyDataService.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/TestingService.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TestingService.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TestingService.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TestingService.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Utils/BeltTheme.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/BeltTheme.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/BeltTheme.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/BeltTheme.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Utils/BeltUtils.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/BeltUtils.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/BeltUtils.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/BeltUtils.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Utils/ColorExtensions.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ColorExtensions.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ColorExtensions.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ColorExtensions.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Utils/DebugLogger.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/DebugLogger.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/DebugLogger.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/DebugLogger.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Utils/FeatureFlags.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FeatureFlags.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FeatureFlags.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FeatureFlags.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Core/Utils/LeitnerConfig.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LeitnerConfig.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LeitnerConfig.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LeitnerConfig.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Authentication/AuthenticationCoordinatorView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/AuthenticationCoordinatorView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/AuthenticationCoordinatorView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/AuthenticationCoordinatorView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Dashboard/MainTabCoordinatorView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/MainTabCoordinatorView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/MainTabCoordinatorView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/MainTabCoordinatorView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Dashboard/OnboardingCoordinatorView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/OnboardingCoordinatorView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/OnboardingCoordinatorView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/OnboardingCoordinatorView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Dashboard/ProgressViewStub.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProgressViewStub.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProgressViewStub.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProgressViewStub.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/LineWork/LineWorkView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LineWorkView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LineWorkView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/LineWorkView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Patterns/PatternPracticeView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternPracticeView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternPracticeView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternPracticeView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Patterns/PatternTestView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/AboutView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/AboutView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/AboutView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/AboutView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/GradingHistoryManagementView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/GradingHistoryManagementView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/GradingHistoryManagementView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/GradingHistoryManagementView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/ProfileCreationView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileCreationView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileCreationView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileCreationView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/ProfileEditView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileEditView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileEditView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileEditView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/ProfileManagementView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileManagementView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileManagementView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileManagementView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/ProfileSwitcher.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileSwitcher.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileSwitcher.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileSwitcher.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/SafeDataManagementView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/SafeDataManagementView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/SafeDataManagementView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/SafeDataManagementView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/UserSettingsView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/UserSettingsView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/UserSettingsView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/UserSettingsView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/FlashcardConfigurationView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardConfigurationView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardConfigurationView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardConfigurationView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/FlashcardModeGuideView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardModeGuideView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardModeGuideView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardModeGuideView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/FlashcardResultsView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardResultsView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardResultsView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardResultsView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/FlashcardView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/StepSparringPracticeView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringPracticeView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringPracticeView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringPracticeView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/StepSparringView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Techniques/TechniqueDetailView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueDetailView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueDetailView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueDetailView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Techniques/TechniqueFiltersView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueFiltersView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueFiltersView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueFiltersView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Techniques/TechniquesView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TechniquesView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TechniquesView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TechniquesView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Testing/TestResultsView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TestResultsView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TestResultsView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TestResultsView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Testing/TestTakingView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TestTakingView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TestTakingView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TestTakingView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Theory/TheoryDetailView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryDetailView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryDetailView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryDetailView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Theory/TheoryQuizView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryQuizView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryQuizView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryQuizView.o"
+  },
+  "/Users/craig/TKDojang/TKDojang/Sources/Features/Theory/TheoryView.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryView.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryView.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryView.o"
+  },
+  "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  }
+}

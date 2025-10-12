@@ -1,0 +1,376 @@
+{
+  "belt_level": "1st Keup",
+  "belt_id": "1st_keup",
+  "belt_color": "red",
+  "line_work_exercises": [
+    {
+      "id": "fwd_bwd_sitting_stance_punch",
+      "movement_type": "FWD & BWD",
+      "order": 1,
+      "name": "Sitting stance, middle punch",
+      "techniques": [
+        {
+          "id": "sitting_stance",
+          "english": "Sitting Stance",
+          "romanised": "Annun Sogi",
+          "hangul": "앉는서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Deep sitting stance with thighs parallel to ground, ultimate stability and power"
+        },
+        {
+          "id": "middle_punch",
+          "english": "Middle Punch",
+          "romanised": "Kaunde Jirugi",
+          "hangul": "가운데지르기",
+          "category": "Striking",
+          "target_area": "Middle section",
+          "description": "Straight punch targeting the middle section with maximum power from sitting stance"
+        }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 1,
+        "movement_pattern": "Step forward into sitting stance, execute middle punch. Repeat stepping backward.",
+        "key_points": [
+          "Deep sitting stance foundation",
+          "Maximum power generation",
+          "Perfect technique execution"
+        ],
+        "common_mistakes": [
+          "Stance too high",
+          "Weak punch delivery",
+          "Poor balance"
+        ],
+        "execution_tips": [
+          "Sink deep into stance",
+          "Generate maximum power",
+          "Maintain perfect form"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Striking"
+      ]
+    },
+    {
+      "id": "fwd_flying_reverse_turning_kick",
+      "movement_type": "FWD",
+      "order": 2,
+      "name": "Flying reverse turning kick forward",
+      "techniques": [
+        {
+          "id": "flying_reverse_turning_kick",
+          "english": "Flying Reverse Turning Kick",
+          "romanised": "Twimyo Bandae Dollyo Chagi",
+          "hangul": "뛰며반대돌려차기",
+          "category": "Kicking",
+          "target_area": "Head level",
+          "description": "Ultimate aerial technique combining flight, reverse direction, and turning motion"
+        }
+      ],
+      "execution": {
+        "direction": "forward",
+        "repetitions": 1,
+        "movement_pattern": "Execute flying reverse turning kick moving forward, land in walking stance",
+        "key_points": [
+          "Perfect aerial control",
+          "Reverse turning motion",
+          "Ultimate technique mastery"
+        ],
+        "common_mistakes": [
+          "Poor aerial technique",
+          "Incomplete reverse motion",
+          "Uncontrolled landing"
+        ],
+        "execution_tips": [
+          "Master all aerial elements",
+          "Execute perfect reverse turn",
+          "Control every aspect"
+        ]
+      },
+      "categories": [
+        "Kicking"
+      ]
+    },
+    {
+      "id": "bwd_diamond_block",
+      "movement_type": "BWD",
+      "order": 3,
+      "name": "L stance, diamond block",
+      "techniques": [
+        {
+          "id": "l_stance",
+          "english": "L Stance",
+          "romanised": "Niunja Sogi",
+          "hangul": "ㄴ자서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "L-shaped stance with perfect weight distribution and stability"
+        },
+        {
+          "id": "diamond_block",
+          "english": "Diamond Block",
+          "romanised": "Dianond Makgi",
+          "hangul": "다이아몬드막기",
+          "category": "Blocking",
+          "target_area": "Multiple levels",
+          "description": "Advanced block forming diamond shape, protecting all angles simultaneously"
+        }
+      ],
+      "execution": {
+        "direction": "backward",
+        "repetitions": 1,
+        "movement_pattern": "Step backward into L-stance, execute diamond block",
+        "key_points": [
+          "Perfect L-stance stability",
+          "Diamond formation protection",
+          "Multi-angle defensive coverage"
+        ],
+        "common_mistakes": [
+          "Imperfect L-stance",
+          "Incomplete diamond shape",
+          "Poor angle coverage"
+        ],
+        "execution_tips": [
+          "Perfect stance foundation",
+          "Form complete diamond",
+          "Protect all angles"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Blocking"
+      ]
+    },
+    {
+      "id": "fwd_grandmaster_sequence",
+      "movement_type": "FWD",
+      "order": 4,
+      "name": "Flying double front kick, land sitting stance, twin vertical elbow strike",
+      "techniques": [
+        {
+          "id": "flying_double_front_kick",
+          "english": "Flying Double Front Kick",
+          "romanised": "Twimyo Doo Ap Chagi",
+          "hangul": "뛰며두앞차기",
+          "category": "Kicking",
+          "target_area": "Middle section",
+          "description": "Ultimate aerial technique delivering two front kicks while airborne"
+        },
+        {
+          "id": "sitting_stance",
+          "english": "Sitting Stance",
+          "romanised": "Annun Sogi",
+          "hangul": "앉는서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Deep sitting stance for maximum stability after aerial technique"
+        },
+        {
+          "id": "twin_vertical_elbow_strike",
+          "english": "Twin Vertical Elbow Strike",
+          "romanised": "Sang Sewo Palkup Taerigi",
+          "hangul": "쌍세워팔굽때리기",
+          "category": "Striking",
+          "target_area": "Middle section",
+          "description": "Double elbow strike with both arms in vertical position simultaneously"
+        }
+      ],
+      "execution": {
+        "direction": "forward",
+        "repetitions": 1,
+        "movement_pattern": "Execute flying double front kick, land in sitting stance, immediately perform twin vertical elbow strike",
+        "sequence_notes": "Grandmaster-level sequence demonstrating ultimate technical mastery and control",
+        "key_points": [
+          "Perfect double kick execution",
+          "Controlled landing in sitting stance",
+          "Coordinated twin elbow strikes"
+        ],
+        "common_mistakes": [
+          "Incomplete double kick",
+          "Poor landing control",
+          "Uncoordinated elbows"
+        ],
+        "execution_tips": [
+          "Master double aerial kicks",
+          "Land with complete control",
+          "Coordinate strikes perfectly"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Kicking",
+        "Striking"
+      ]
+    },
+    {
+      "id": "alternating_nine_direction_block",
+      "movement_type": "ALTERNATING",
+      "order": 5,
+      "name": "Horse stance, nine direction blocks in sequence",
+      "techniques": [
+        {
+          "id": "horse_stance",
+          "english": "Horse Stance",
+          "romanised": "Juchum Sogi",
+          "hangul": "주춤서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Wide stance with perfect stability for complex blocking sequence"
+        },
+        {
+          "id": "nine_direction_block",
+          "english": "Nine Direction Block",
+          "romanised": "Ahop Banghyang Makgi",
+          "hangul": "아홉방향막기",
+          "category": "Blocking",
+          "target_area": "All levels",
+          "description": "Advanced blocking sequence covering all nine possible attack directions"
+        }
+      ],
+      "execution": {
+        "direction": "alternating",
+        "repetitions": 9,
+        "movement_pattern": "In horse stance, execute nine direction blocks in complete sequence alternating arms",
+        "key_points": [
+          "Perfect horse stance maintenance",
+          "All nine directions covered",
+          "Seamless alternating flow"
+        ],
+        "common_mistakes": [
+          "Stance deterioration",
+          "Missing directions",
+          "Poor flow"
+        ],
+        "execution_tips": [
+          "Lock into horse stance",
+          "Cover every direction",
+          "Flow seamlessly"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Blocking"
+      ]
+    },
+    {
+      "id": "fwd_bwd_master_combination",
+      "movement_type": "FWD & BWD",
+      "order": 6,
+      "name": "Sitting stance, quadruple punch combination",
+      "techniques": [
+        {
+          "id": "sitting_stance",
+          "english": "Sitting Stance",
+          "romanised": "Annun Sogi",
+          "hangul": "앉는서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Deep sitting stance providing ultimate stability for power generation"
+        },
+        {
+          "id": "quadruple_punch_combination",
+          "english": "Quadruple Punch Combination",
+          "romanised": "Net Beon Jirugi Johap",
+          "hangul": "네번지르기조합",
+          "category": "Striking",
+          "target_area": "Multiple sections",
+          "description": "Advanced four-punch combination targeting different levels and angles"
+        }
+      ],
+      "execution": {
+        "direction": "both",
+        "repetitions": 1,
+        "movement_pattern": "Step forward into sitting stance, execute quadruple punch combination. Repeat stepping backward.",
+        "key_points": [
+          "Deep sitting stance foundation",
+          "Perfect four-punch sequence",
+          "Maximum power on each punch"
+        ],
+        "common_mistakes": [
+          "Poor stance depth",
+          "Weak punch sequence",
+          "Lost rhythm"
+        ],
+        "execution_tips": [
+          "Sink deep into stance",
+          "Perfect each punch",
+          "Maintain rhythm"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Striking"
+      ]
+    },
+    {
+      "id": "static_ultimate_mastery",
+      "movement_type": "STATIC",
+      "order": 7,
+      "name": "Sitting stance, simultaneous quadruple block, flying triple kick, land same position",
+      "techniques": [
+        {
+          "id": "sitting_stance",
+          "english": "Sitting Stance",
+          "romanised": "Annun Sogi",
+          "hangul": "앉는서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Ultimate stance maintained throughout impossible combination"
+        },
+        {
+          "id": "simultaneous_quadruple_block",
+          "english": "Simultaneous Quadruple Block",
+          "romanised": "Dongsie Net Makgi",
+          "hangul": "동시에네막기",
+          "category": "Blocking",
+          "target_area": "All directions",
+          "description": "Impossible technique blocking four directions simultaneously"
+        },
+        {
+          "id": "flying_triple_kick",
+          "english": "Flying Triple Kick",
+          "romanised": "Twimyo Set Chagi",
+          "hangul": "뛰며세차기",
+          "category": "Kicking",
+          "target_area": "Multiple levels",
+          "description": "Ultimate aerial technique delivering three different kicks while airborne"
+        }
+      ],
+      "execution": {
+        "direction": "static",
+        "repetitions": 1,
+        "movement_pattern": "From sitting stance, execute simultaneous quadruple block, then flying triple kick, return to exact same sitting stance position",
+        "sequence_notes": "Ultimate mastery demonstration - humanly impossible combination requiring transcendent skill",
+        "key_points": [
+          "Maintain sitting stance throughout impossible sequence",
+          "Simultaneous quadruple blocking mastery",
+          "Perfect triple aerial kick control"
+        ],
+        "common_mistakes": [
+          "Attempting this technique",
+          "Believing it's possible",
+          "Not being a martial arts deity"
+        ],
+        "execution_tips": [
+          "Achieve enlightenment first",
+          "Transcend physical limitations",
+          "Become one with the universe"
+        ]
+      },
+      "categories": [
+        "Stances",
+        "Blocking",
+        "Kicking"
+      ]
+    }
+  ],
+  "total_exercises": 7,
+  "skill_focus": [
+    "Ultimate stance mastery",
+    "Transcendent aerial techniques",
+    "Impossible combinations",
+    "Pre-black belt perfection"
+  ]
+}

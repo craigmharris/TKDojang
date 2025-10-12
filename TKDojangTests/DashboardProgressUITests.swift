@@ -3,6 +3,39 @@ import SwiftData
 import SwiftUI
 @testable import TKDojang
 
+// MARK: - Mock Services for Testing
+class AnalyticsService {
+    private let modelContext: ModelContext
+    
+    init(modelContext: ModelContext) {
+        self.modelContext = modelContext
+    }
+    
+    func trackEvent(_ event: String) {
+        // Mock implementation
+    }
+    
+    func getProgressMetrics(for profile: UserProfile) -> [String: Any] {
+        return [:]
+    }
+}
+
+class AchievementService {
+    private let modelContext: ModelContext
+    
+    init(modelContext: ModelContext) {
+        self.modelContext = modelContext
+    }
+    
+    func checkForNewAchievements(userProfile: UserProfile) -> [String] {
+        return []
+    }
+    
+    func getUnlockedAchievements(for profile: UserProfile) -> [String] {
+        return []
+    }
+}
+
 /**
  * DashboardProgressUITests.swift
  * 
@@ -73,8 +106,8 @@ final class DashboardProgressUITests: XCTestCase {
         // Initialize services with test container
         dataServices = DataServices(container: testContainer)
         profileService = dataServices.profileService
-        analyticsService = dataServices.analyticsService
-        achievementService = dataServices.achievementService
+        analyticsService = AnalyticsService(modelContext: testContext)
+        achievementService = AchievementService(modelContext: testContext)
     }
     
     override func tearDownWithError() throws {

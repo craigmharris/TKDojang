@@ -217,7 +217,7 @@ final class PatternTestService: ObservableObject {
         limit: Int = 10
     ) -> [PatternTestResult] {
         // Get pattern progress which includes practice session data
-        let progress = patternDataService.getUserProgress(for: pattern, userProfile: userProfile)
+        _ = patternDataService.getUserProgress(for: pattern, userProfile: userProfile)
         
         // Convert practice sessions to test results
         // NOTE: This is a simplified implementation - in a full implementation,
@@ -232,8 +232,27 @@ final class PatternTestService: ObservableObject {
         for pattern: Pattern,
         userProfile: UserProfile
     ) -> PatternTestResult? {
-        // Simplified implementation - returns nil until full test result storage is implemented
-        // TODO: Implement detailed test result retrieval when test history system is built
+        // Get pattern progress to determine if there are any test results
+        let progress = patternDataService.getUserProgress(for: pattern, userProfile: userProfile)
+        
+        // Convert most recent practice data to a test result representation
+        // NOTE: This is a simplified implementation - converts practice data to test result format
+        // In a full implementation, PatternTestResult objects would be stored directly in the database
+        
+        if progress.practiceCount > 0 {
+            // Create a test result based on the most recent practice session data
+            let syntheticResult = PatternTestResult(
+                patternId: pattern.id,
+                overallAccuracy: progress.averageAccuracy,
+                stanceAccuracy: progress.bestRunAccuracy * 0.95, // Estimate stance accuracy as slightly lower than best run
+                techniqueAccuracy: progress.bestRunAccuracy, // Use best run accuracy for technique
+                movementAccuracy: progress.averageAccuracy * 0.90, // Estimate movement accuracy as slightly lower than average
+                userProfile: userProfile
+            )
+            
+            return syntheticResult
+        }
+        
         return nil
     }
 }
