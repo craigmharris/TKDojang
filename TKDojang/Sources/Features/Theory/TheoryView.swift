@@ -272,12 +272,12 @@ struct TheoryView: View {
      */
     private func loadTheoryContent() async {
         guard let activeProfile = dataServices.profileService.activeProfile else {
-            print("⚠️ No active profile for theory content loading")
+            DebugLogger.ui("⚠️ No active profile for theory content loading")
             isLoading = false
             return
         }
         
-        print("🔄 Loading theory content for profile: \(activeProfile.name), belt: \(activeProfile.currentBeltLevel.name), mode: \(activeProfile.learningMode)")
+        DebugLogger.ui("🔄 Loading theory content for profile: \(activeProfile.name), belt: \(activeProfile.currentBeltLevel.name), mode: \(activeProfile.learningMode)")
         
         // Determine which belt levels to load based on learning mode
         let beltLevelsToLoad = getBeltLevelsToLoad(for: activeProfile)
@@ -291,7 +291,7 @@ struct TheoryView: View {
         }
         
         theoryContent = loadedContent
-        print("✅ Loaded theory content for \(loadedContent.count) belt levels (lazy loading)")
+        DebugLogger.ui("✅ Loaded theory content for \(loadedContent.count) belt levels (lazy loading)")
         
         // Update available categories based on loaded content
         let relevantSections = getRelevantTheorySections(for: activeProfile)

@@ -116,7 +116,7 @@ class LeitnerConfigManager {
             return getLegacyInterval(forBox: boxNumber)
             
         } catch {
-            print("❌ LeitnerConfigManager: Failed to load config, using fallback: \(error)")
+            DebugLogger.data("❌ LeitnerConfigManager: Failed to load config, using fallback: \(error)")
             return getLegacyInterval(forBox: boxNumber)
         }
     }
@@ -141,7 +141,7 @@ class LeitnerConfigManager {
             return createFallbackPreset()
             
         } catch {
-            print("❌ LeitnerConfigManager: Failed to get preset, using fallback")
+            DebugLogger.data("❌ LeitnerConfigManager: Failed to get preset, using fallback")
             return createFallbackPreset()
         }
     }
@@ -167,7 +167,7 @@ class LeitnerConfigManager {
             let config = try loadConfiguration()
             return config.leitnerSystem.presets
         } catch {
-            print("❌ LeitnerConfigManager: Failed to load presets")
+            DebugLogger.data("❌ LeitnerConfigManager: Failed to load presets")
             return ["standard": createFallbackPreset()]
         }
     }

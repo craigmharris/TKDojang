@@ -1,0 +1,64 @@
+Belt Level,Belt ID,Order,Exercise Name,Direction,Movement Type,Techniques (pipe-separated),Repetitions,Notes
+8th Keup,8th_keup,1,"L stance, Twin Forearm Block",,FWD & BWD,L stance| Twin Forearm Block,8,
+8th Keup,8th_keup,2,"Walking Stance, Front Kick Double Punch",,FWD,Walking Stance|Front Kick |Double Punch,5,
+8th Keup,8th_keup,3,"L Stance, Inward Outer Forearm Block",,BWD,L Stance|Inward Outer Forearm Block,5,
+8th Keup,8th_keup,4,"Turning Kick, landing in L Stance, Knife Hand Guarding Block",,FWD,Turning Kick| L Stance|Knife Hand Guarding Block,5,
+8th Keup,8th_keup,5,"L Stance, Forearm Guarding Block",,BWD,L Stance||Forearm Guarding Block,5,
+7th Keup,7th_keup,1,"Walking stance, high back fist strike",,FWD & BWD,Walking stance|high back fist strike,5,
+7th Keup,7th_keup,2,"Turning Kick, landing in L Stance, Knife Hand Guarding Block",,FWD,Turning Kick| L Stance| Knife Hand Guarding Block,5,
+7th Keup,7th_keup,3,"Walking Stance, Wedging Block",,BWD,Walking Stance| Wedging Block,5,
+7th Keup,7th_keup,4,"Side Kick landing in L Stance, Forearm Guarding Block",,FWD,Side Kick | L Stance|Forearm Guarding Block,5,
+7th Keup,7th_keup,5,"L Stance, Knife Hand Guarding Block",,BWD,L Stance|Knife Hand Guarding Block,5,
+7th Keup,7th_keup,6,"Walking Stance, Straight Fingertip Thrust",,FWD,Walking Stance|Straight Fingertip Thrust,5,
+7th Keup,7th_keup,7,"Walking Stance, High Outer Forearm Block, Middle Reverse Punch",,BWD,Walking Stance| High Outer Forearm Block| Middle Reverse Punch,5,
+6th Keup,6th_keup,1,First 2 Moves of Won Hyo,,FWD,L Stance | Twin Forearm Block | Inward Knife Hand Strike,5,First 2 moves of Won Hyo
+6th Keup,6th_keup,2,"Walking Stance, Low Block, Rising Block, Reverse Punch",,BWD,Walking Stance| Low Block| Rising Block| Reverse Punch,5,
+6th Keup,6th_keup,3,"Walking Stance, Straight Fingertip Thrust, Release, Spin, High Back Fist Side Strike",,FWD,Walking Stance| Straight Fingertip Thrust| Release| Spin| High Back Fist Side Strike,5,
+6th Keup,6th_keup,4,"Fixed Stance, Side Punch",,BWD,Fixed Stance| Side Punch,5,
+6th Keup,6th_keup,5,"Bending Ready Stance, Side Kick landing in L Stance, Knife Hand Guarding Block",,FWD,Bending Ready Stance| Side Kick | L Stance| Knife Hand Guarding Block,5,Moves 7-9 and 25-27 of Won Hyo
+6th Keup,6th_keup,6,"L Stance, Inward Middle Outer Forearm Block, Slip front foot to Walking Stance, High Back Fist Side Strike",,BWD,L Stance| Inward Middle Outer Forearm Block|  Walking Stance| High Back Fist Side Strike,5,
+6th Keup,6th_keup,7,"Rear Leg Front Kick and Side Kick, Alternat Leg Turning Kick landing in L Stance, Knife Hand Guarding Block",,FWD,Rear Leg Front Kick | Side Kick| Turning Kick | L Stance| Knife Hand Guarding Block,5,
+6th Keup,6th_keup,8,"Walking Stance, Circular Block",,BWD,Walking Stance| Circular Block,5,
+5th Keup,5th_keup,1,"Walking Stance, High Section Hooking Block (x2), Obverse Middle Punch",,FWD,Walking Stance| High Section Hooking Block (x2)| Obverse Middle Punch,5,Moves 15-17 and 18-20 of Yul Gok
+5th Keup,5th_keup,2,"L Stance, Twin Knife Hand Block",,BWD,L Stance| Twin Knife Hand Block,5,
+5th Keup,5th_keup,3,"Side Kick, Reverse Side Kick, landing in L Stance Forearm Guarding Block",,FWD,Side Kick| Reverse Side Kick|  L Stance |Forearm Guarding Block,5,
+5th Keup,5th_keup,4,"Walking Stance, High Double Forearm Block",,BWD,Walking Stance| High Double Forearm Block,5,
+5th Keup,5th_keup,5,"Front Kick, Turning Kick (Same Leg), landing in L Stance Forearm Guarding Block",,FWD,Front Kick| Turning Kick| L Stance| Forearm Guarding Block,5,
+5th Keup,5th_keup,6,L Stance Upward Plm Heel Block,,BWD,L Stance |Upward Palm Heel Block,5,
+5th Keup,5th_keup,7,"Bending Ready Stance, Side Kick, land in Walking Stance Front Elbow Strike",,FWD,Bending Ready Stance| Side Kick|  Walking Stance |Front Elbow Strike,5,Moves 22-24 and 25-27 of Yul Gok
+5th Keup,5th_keup,8,"Walking Stance, X-Fist Pressing Block",,BWD,Walking Stance| X-Fist Pressing Block,5,
+5th Keup,5th_keup,9,"Turning Kick, Reverse Turning Kick (360 deg), landing in L Stance Forearm Guarding Block",,FWD & BWD,Turning Kick| Reverse Turning Kick (360 deg)|  L Stance |Forearm Guarding Block,8,
+4th Keup,4th_keup,1,First 3 moves of Joong Gun,,FWD,L Stance | Reverse Knife Hand Block | Front Snap Kick | Palm Upward Block,5,Moves 1-3 and 4-6 of Joong Gun
+4th Keup,4th_keup,2,"Walking Stance, Pressing Block",,BWD,Walking Stance| Pressing Block,5,Moves 27 and 29 of Joong Gun
+4th Keup,4th_keup,3,"Turning Kick, Side Kick (Same Leg) landing in L Stance Forearm Guarding Block",,FWD,Turning Kick| Side Kick | L Stance | Forearm Guarding Block,5,
+4th Keup,4th_keup,4,"L Stance High Back Fist Side Strike, Release, slip front foot into walking stance, High Reverse Punch",,BWD,L Stance | High Back Fist Side Strike| Release|  walking stance| High Reverse Punch,5,Moves 14-16 and 17-19 of Joong Gun
+4th Keup,4th_keup,5,"Walking Stance Double Forearm Block, pull back into L Stance Side Punch",,FWD,Walking Stance |Double Forearm Block|  L Stance |Side Punch,5,Moves 20-21 and 23-24 of Joong Gun
+4th Keup,4th_keup,6,L Stance Outer Forearm Waist Block,,BWD,L Stance | Outer Forearm Waist Block,5,
+4th Keup,4th_keup,7,"Side Kick , Hooking Kick (Same Leg) land L Stance, Forearm Guarding Block",,FWD,Side Kick | Hooking Kick | L Stance| Forearm Guarding Block,5,
+4th Keup,4th_keup,8,"L Stance Knife Hand Guarding Block, slip front foot into Walking Stance, Upper Elbow Strike",,BWD,L Stance |Knife Hand Guarding Block|  Walking Stance| Upper Elbow Strike,5,Moves 7-8 and 9-10 of Joong Gun
+4th Keup,4th_keup,9,"Turning Kick, Reverse Side Kick, landing in L stance, forearm guarding block",,FWD,Turning Kick| Reverse Side Kick|  L stance| forearm guarding block,5,
+4th Keup,4th_keup,10,"Fixed stance, U-shaped block",,BWD,Fixed stance| U-shaped block,5,
+3rd Keup,3rd_keup,1,"Side kick, spin into L stance, Knife Hand Strike",,FWD,Side kick|  L stance| Knife Hand Strike,5,
+3rd Keup,3rd_keup,2,"L Stance, low knife hand guarding block, slip front foot into walking stance, circular block",,BWD,L Stance| low knife hand guarding block|  walking stance| circular block,5,Moves 31-32 and 33-34 of Toi Gye
+3rd Keup,3rd_keup,3,"Hook Kick and Side kick from Front leg, Rear leg turning kick, landing in L stance knife hand guarding block",,FWD,Hook Kick | Side kick |  turning kick|  L stance |knife hand guarding block,5,
+3rd Keup,3rd_keup,4,"Sitting Stance, W shaped block",,BWD,Sitting Stance| W shaped block,5,
+3rd Keup,3rd_keup,5,"L Stance, Knife Hand Guarding Block, Front leg front kick, land in walking stance, High Flat Fingertip Thrust",,FWD,L Stance| Knife Hand Guarding Block|  front kick|  walking stance| High Flat Fingertip Thrust,5,Moves 22-24 and 25-27 of Toi Gye
+3rd Keup,3rd_keup,6,"Walking Stance, X-Fist Pressing Block, Twin Vertical Punch",,BWD,Walking Stance| X-Fist Pressing Block| Twin Vertical Punch,5,
+3rd Keup,3rd_keup,7,"Turning Kick, Reverse Turning Kick (180 deg), landing in L Stance Forearm Guarding Block",,FWD,Turning Kick| Reverse Turning Kick|  L Stance |Forearm Guarding Block,5,
+3rd Keup,3rd_keup,8,"L Stance, low double forearm block, slip front foot into walking stance, high grab",,BWD,L Stance| low double forearm block|  walking stance| high grab,5,Moves 19-20 of Toi Gye
+3rd Keup,3rd_keup,9,"Turning kick, downward kick (same leg), landing in L Stance, Forearm Guarding Block",,FWD,Turning kick| downward kick |  L Stance| Forearm Guarding Block,5,
+3rd Keup,3rd_keup,10,First 2 moves of Toi Gye,,BWD,L Stance | Iner Forearm Block | Walking Stance | Upset Fingertip Thrust,5,Moves 1-2 and 4-5 of Toi Gye
+2nd Keup,2nd_keup,1,"Double side kick (same leg), landing in L Stance Knife Hand Guarding Block",,FWD,Double side kick |  L Stance |Knife Hand Guarding Block,5,
+2nd Keup,2nd_keup,2,"Walking Stance, High Twin Vertical Punch",,BWD,Walking Stance| High Twin Vertical Punch,5,
+2nd Keup,2nd_keup,3,"Double Turning Kick (same leg), landing in L Stance, Forearm Guarding Block",,FWD,Double Turning Kick |  L Stance| Forearm Guarding Block,5,
+2nd Keup,2nd_keup,4,"Walking Stance, Pressing Block (normal speed)",,BWD,Walking Stance| Pressing Block ,5,
+2nd Keup,2nd_keup,5,"Walking Stance, Middle Obverse Punch, Grasp and Release, Front Leg Side Kick, landing L Stance Knife Hand Guarding Block",,FWD,Walking Stance| Middle Obverse Punch| Grasp | Release| Front Leg Side Kick|  L Stance |Knife Hand Guarding Block,5,Moves 9-12 from Hwa Rang
+2nd Keup,2nd_keup,6,"Walking Stance, X-Fist Pressing Block, X-Fist Rising Block",,BWD,Walking Stance| X-Fist Pressing Block| X-Fist Rising Block,5,
+2nd Keup,2nd_keup,7,"Side Kick, Reverse Side Kick, landing in Walking Stance, Reverse Punch, pull back to L Stance, Forearm Guargin Block",,FWD,Side Kick| Reverse Side Kick|  Walking Stance| Reverse Punch|  L Stance| Forearm Guarding Block,5,
+2nd Keup,2nd_keup,8,"L Stance, Twin Forearm Block, Upward Punch, slide into Fixed Stance, Side Punch, pull back into Vertical Stance, Downward Knife Hand Strike",,BWD,L Stance| Twin Forearm Block| Upward Punch|  Fixed Stance| Side Punch|  Vertical Stance| Downward Knife Hand Strike,5,Moves 3-6 from Hwa Rang
+2nd Keup,2nd_keup,9,"Front Kick, Turning Kick (same leg), rear leg reverse turning kick (180 deg), landing in L stace knife hand guarding block",,FWD,Front Kick| Turning Kick |  reverse turning kick |  L stance| knife hand guarding block,5,
+2nd Keup,2nd_keup,10,"L Stance obverse middle punch, slip front foot to walking stance, X-Fist pressing block",,BWD,L Stance |obverse middle punch|  walking stance| X-Fist pressing block,5,Moves 23-24 from Hwa Rang
+2nd Keup,2nd_keup,11,Jumping front kick from back leg  x2 on each leg,,STATIC,Jumping Front Kick,2,
+2nd Keup,2nd_keup,12,Jumping turning kick from back leg   x2 on each leg,,STATIC,Jumping Turnig Kick,2,
+2nd Keup,2nd_keup,13,Jumping side kick from front leg   x2 on each leg,,STATIC,Jumping Side Kick,2,
+2nd Keup,2nd_keup,14,Jumping reverse side kick   x2 on each leg,,STATIC,Jumping Reverse Side Kick,2,

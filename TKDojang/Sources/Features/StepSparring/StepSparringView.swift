@@ -103,7 +103,7 @@ struct StepSparringView: View {
         }
         .onChange(of: dataServices.profileService.activeProfile) { oldProfile, newProfile in
             Task {
-                print("🔄 Step Sparring: Profile changed from \(oldProfile?.name ?? "nil") to \(newProfile?.name ?? "nil")")
+                DebugLogger.ui("🔄 Step Sparring: Profile changed from \(oldProfile?.name ?? "nil") to \(newProfile?.name ?? "nil")")
                 await loadContent()
             }
         }
@@ -124,9 +124,9 @@ struct StepSparringView: View {
         if let profile = userProfile {
             // Defensive programming: wrap in do-catch to prevent crashes
             progressSummary = dataServices.stepSparringService.getProgressSummary(userProfile: profile)
-            print("✅ Loaded step sparring progress summary (defensive mode)")
+            DebugLogger.ui("✅ Loaded step sparring progress summary (defensive mode)")
         } else {
-            print("ℹ️ No active profile found, Step Sparring will show empty state")
+            DebugLogger.ui("ℹ️ No active profile found, Step Sparring will show empty state")
         }
         
         isLoading = false
@@ -408,7 +408,7 @@ struct StepSparringSequenceListView: View {
                 )
             }
             
-            print("✅ Loaded \(sequenceData.count) sequence data objects for \(type.displayName) (safe mode)")
+            DebugLogger.ui("✅ Loaded \(sequenceData.count) sequence data objects for \(type.displayName) (safe mode)")
         }
         
         isLoading = false
@@ -506,7 +506,7 @@ struct StepSparringSequenceDisplayCard: View {
         }
         
         // Fallback: create a minimal sequence for navigation (shouldn't happen)
-        print("⚠️ Could not find sequence \(sequenceDisplay.id), creating fallback")
+        DebugLogger.ui("⚠️ Could not find sequence \(sequenceDisplay.id), creating fallback")
         let fallback = StepSparringSequence(
             name: sequenceDisplay.name,
             type: sequenceDisplay.type,

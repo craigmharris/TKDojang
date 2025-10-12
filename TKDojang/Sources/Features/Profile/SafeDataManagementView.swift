@@ -257,12 +257,8 @@ struct SafeDataManagementView: View {
         // Use the existing ProfileExportService through DataServices
         Task {
             do {
-                let success = await dataServices.exportAllProfiles()
-                if success {
-                    DebugLogger.data("✅ All profiles exported successfully")
-                } else {
-                    DebugLogger.data("⚠️ Profile export completed with some warnings")
-                }
+                let data = try dataServices.profileExportService.exportAllProfiles()
+                DebugLogger.data("✅ All profiles exported successfully (\(data.count) bytes)")
             } catch {
                 DebugLogger.data("❌ Profile export failed: \(error)")
             }

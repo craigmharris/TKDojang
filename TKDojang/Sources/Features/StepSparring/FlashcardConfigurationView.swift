@@ -379,7 +379,7 @@ struct FlashcardConfigurationView: View {
             let terms = try dataServices.terminologyService.modelContextForLoading.fetch(descriptor)
             return min(terms.count, profile.learningMode == .mastery ? 50 : terms.count)
         } catch {
-            print("❌ Config: Failed to count available terms: \(error)")
+            DebugLogger.data("❌ Config: Failed to count available terms: \(error)")
             return 0
         }
     }

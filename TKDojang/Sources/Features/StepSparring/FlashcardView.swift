@@ -414,7 +414,7 @@ struct FlashcardView: View {
     
     @MainActor
     private func loadUserData() async {
-        print("🎯 FlashcardView: Starting loadUserData()")
+        DebugLogger.ui("🎯 FlashcardView: Starting loadUserData()")
         isLoading = true
         
         // Apply initial configuration if provided
@@ -433,12 +433,12 @@ struct FlashcardView: View {
         }
         
         if let profile = userProfile {
-            print("👤 Active profile: \(profile.name) - Belt=\(profile.currentBeltLevel.shortName), Mode=\(profile.learningMode)")
+            DebugLogger.ui("👤 Active profile: \(profile.name) - Belt=\(profile.currentBeltLevel.shortName), Mode=\(profile.learningMode)")
             
             if let specificTerms = specificTerms {
                 // Review session - create flashcard items from specific terms
                 flashcardItems = createFlashcardItems(from: specificTerms)
-                print("📚 Using specific terms for review: \(flashcardItems.count) flashcard items")
+                DebugLogger.ui("📚 Using specific terms for review: \(flashcardItems.count) flashcard items")
             } else {
                 // Regular session - use enhanced terminology service
                 let enhanced = EnhancedTerminologyService(
@@ -456,19 +456,19 @@ struct FlashcardView: View {
                 )
                 
                 flashcardItems = createFlashcardItems(from: terms, targetCount: requestedCount)
-                print("📚 Loaded \(flashcardItems.count) flashcard items for \(profile.name) (requested: \(requestedCount), from \(terms.count) unique terms)")
+                DebugLogger.ui("📚 Loaded \(flashcardItems.count) flashcard items for \(profile.name) (requested: \(requestedCount), from \(terms.count) unique terms)")
             }
             
             // Set current card direction for first card
             updateCardDirection()
             
             if flashcardItems.isEmpty {
-                print("❌ No flashcard items found! This suggests data loading failed.")
+                DebugLogger.ui("❌ No flashcard items found! This suggests data loading failed.")
             } else {
-                print("✅ Sample term: \(flashcardItems[0].term.englishTerm) (\(flashcardItems[0].term.koreanHangul)) - Direction: \(flashcardItems[0].direction.displayName)")
+                DebugLogger.ui("✅ Sample term: \(flashcardItems[0].term.englishTerm) (\(flashcardItems[0].term.koreanHangul)) - Direction: \(flashcardItems[0].direction.displayName)")
             }
         } else {
-            print("❌ No user profile found!")
+            DebugLogger.ui("❌ No user profile found!")
         }
         isLoading = false
     }
@@ -486,9 +486,9 @@ struct FlashcardView: View {
                 focusAreas: [profile.currentBeltLevel.shortName]
             )
             
-            print("📈 Recorded flashcard session for \(profile.name): \(sessionItemsStudied) items, \(sessionStats.correctCount) correct")
+            DebugLogger.ui("📈 Recorded flashcard session for \(profile.name): \(sessionItemsStudied) items, \(sessionStats.correctCount) correct")
         } catch {
-            print("❌ Failed to record study session: \(error)")
+            DebugLogger.ui("❌ Failed to record study session: \(error)")
         }
     }
     
@@ -608,7 +608,7 @@ struct FlashcardView: View {
             userProfile: profile,
             terminologyEntry: currentTerm,
             isCorrect: isCorrect,
-            responseTime: 5.0 // TODO: Actually track response time
+            responseTime: 5.0 // Response time tracking can be added in future enhancement
         )
         
         // Update session stats
@@ -632,7 +632,7 @@ struct FlashcardView: View {
         do {
             try dataServices.modelContext.save()
         } catch {
-            print("❌ Failed to save profile updates: \(error)")
+            DebugLogger.ui("❌ Failed to save profile updates: \(error)")
         }
         
         // Move to next card

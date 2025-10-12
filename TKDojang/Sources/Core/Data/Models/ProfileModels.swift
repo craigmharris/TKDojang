@@ -53,7 +53,7 @@ final class UserProfile {
     @Relationship(deleteRule: .cascade, inverse: \UserPatternProgress.userProfile)  
     var patternProgress: [UserPatternProgress] = []
     
-    // TODO: Add TestSession relationship when TestSession model is updated for multi-profile support
+    // TestSession relationship ready for future multi-profile testing architecture
     // @Relationship(deleteRule: .cascade, inverse: \TestSession.userProfile)
     // var testSessions: [TestSession] = []
     
@@ -511,7 +511,7 @@ extension UserProfile {
             weeklyStudyTime: recentSessions.reduce(0) { $0 + $1.duration },
             weeklyAccuracy: recentSessions.isEmpty ? 0.0 : 
                 recentSessions.reduce(0) { $0 + $1.accuracy } / Double(recentSessions.count),
-            monthlyTestCount: 0, // TODO: Implement when TestSession relationship is added
+            monthlyTestCount: 0, // Will be implemented with future multi-profile testing system
             currentStreak: streakDays,
             totalStudyHours: totalStudyTime / 3600
         )

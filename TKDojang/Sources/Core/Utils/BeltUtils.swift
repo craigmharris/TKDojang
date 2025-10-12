@@ -56,7 +56,7 @@ final class BeltUtils {
         do {
             return try modelContext.fetch(descriptor)
         } catch {
-            print("❌ BeltUtils: Failed to fetch belt levels: \(error)")
+            DebugLogger.data("❌ BeltUtils: Failed to fetch belt levels: \(error)")
             return []
         }
     }

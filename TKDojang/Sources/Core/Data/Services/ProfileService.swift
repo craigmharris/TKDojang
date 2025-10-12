@@ -403,9 +403,14 @@ class ProfileService {
      * SwiftData relationship traversal hangs on main thread - needs investigation
      */
     func getStudySessions(for profile: UserProfile) throws -> [StudySession] {
-        // TEMPORARY: Return empty array to prevent freezes
-        // TODO: Implement proper SwiftData query without relationship access
-        return []
+        // Safe implementation: Use "Fetch All → Filter In-Memory" pattern 
+        let descriptor = FetchDescriptor<StudySession>(
+            sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
+        )
+        let allSessions = try modelContext.fetch(descriptor)
+        return allSessions.filter { session in
+            session.userProfile.id == profile.id
+        }
     }
     
     // MARK: - Grading Record Management
@@ -472,9 +477,14 @@ class ProfileService {
      * SwiftData relationship traversal hangs on main thread - needs investigation
      */
     func getGradingHistory(for profile: UserProfile) throws -> [GradingRecord] {
-        // TEMPORARY: Return empty array to prevent freezes
-        // TODO: Implement proper SwiftData query without relationship access
-        return []
+        // Safe implementation: Use "Fetch All → Filter In-Memory" pattern
+        let descriptor = FetchDescriptor<GradingRecord>(
+            sortBy: [SortDescriptor(\.gradingDate, order: .reverse)]
+        )
+        let allRecords = try modelContext.fetch(descriptor)
+        return allRecords.filter { record in
+            record.userProfile.id == profile.id
+        }
     }
     
     /**

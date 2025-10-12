@@ -205,7 +205,7 @@ struct TestTakingView: View {
             do {
                 try service.recordAnswer(for: question, answerIndex: index)
             } catch {
-                print("Failed to record answer: \\(error)")
+                DebugLogger.ui("❌ Failed to record answer: \(error)")
             }
         }
         
@@ -239,7 +239,7 @@ struct TestTakingView: View {
             
             showingResults = true
         } catch {
-            print("Failed to complete test: \(error)")
+            DebugLogger.ui("❌ Failed to complete test: \(error)")
         }
     }
     
@@ -255,7 +255,7 @@ struct TestTakingView: View {
                 focusAreas: [testSession.testType.displayName]
             )
         } catch {
-            print("❌ Failed to record test session: \(error)")
+            DebugLogger.profile("❌ Failed to record test session: \(error)")
         }
     }
 }

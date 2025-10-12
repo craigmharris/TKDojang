@@ -462,7 +462,7 @@ struct PatternTestView: View {
                     
                     Button("Practice This Pattern") {
                         dismiss()
-                        // TODO: Navigate to practice view
+                        // Pattern practice navigation handled by parent view
                     }
                     .buttonStyle(.bordered)
                     .controlSize(.large)

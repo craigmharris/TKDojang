@@ -194,10 +194,10 @@ final class PatternTestService: ObservableObject {
         
         // Store test result using PatternDataService
         patternDataService.recordPracticeSession(
-            for: pattern,
+            pattern: pattern,
             userProfile: userProfile,
             accuracy: result.overallAccuracy,
-            timeSpent: 0  // Test time tracking could be added in future
+            practiceTime: 0  // Test time tracking could be added in future
         )
         
         DebugLogger.ui("📊 Test completed with \(Int(result.overallAccuracy * 100))% accuracy")
@@ -232,21 +232,8 @@ final class PatternTestService: ObservableObject {
         for pattern: Pattern,
         userProfile: UserProfile
     ) -> PatternTestResult? {
-        let progress = patternDataService.getUserProgress(for: pattern, userProfile: userProfile)
-        
-        // Return basic result info based on progress
-        // NOTE: This is simplified - full implementation would store detailed test data
-        guard let lastReviewed = progress?.lastReviewDate else { return nil }
-        
-        // Create a basic test result from available data
-        return PatternTestResult(
-            id: UUID(),
-            patternId: pattern.id,
-            userProfileId: userProfile.id,
-            score: progress?.masteryLevel == .master ? 1.0 : 0.75,  // Estimated based on mastery
-            completedAt: lastReviewed,
-            timeSpent: 0,  // Not tracked in current implementation
-            responses: []  // Detailed responses not stored yet
-        )
+        // Simplified implementation - returns nil until full test result storage is implemented
+        // TODO: Implement detailed test result retrieval when test history system is built
+        return nil
     }
 }

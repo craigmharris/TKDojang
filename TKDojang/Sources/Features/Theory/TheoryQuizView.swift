@@ -279,7 +279,7 @@ struct TheoryQuizView: View {
                 focusAreas: [sectionTitle]
             )
         } catch {
-            print("❌ Failed to record theory session: \(error)")
+            DebugLogger.profile("❌ Failed to record theory session: \(error)")
         }
     }
 }

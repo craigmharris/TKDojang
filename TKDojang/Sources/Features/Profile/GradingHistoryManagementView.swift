@@ -113,7 +113,7 @@ struct GradingHistoryManagementView: View {
             }
             isLoading = false
         } catch {
-            print("❌ Failed to load grading records: \(error)")
+            DebugLogger.profile("❌ Failed to load grading records: \(error)")
             isLoading = false
         }
     }
@@ -128,7 +128,7 @@ struct GradingHistoryManagementView: View {
                 await refreshProgressCache()
             }
         } catch {
-            print("❌ Failed to delete grading record: \(error)")
+            DebugLogger.profile("❌ Failed to delete grading record: \(error)")
         }
     }
     
@@ -404,7 +404,7 @@ struct GradingEntryView: View {
             
             isLoading = false
         } catch {
-            print("❌ Failed to load belt levels: \(error)")
+            DebugLogger.profile("❌ Failed to load belt levels: \(error)")
             isLoading = false
         }
     }
@@ -447,7 +447,7 @@ struct GradingEntryView: View {
                 onSave(existing)
                 dismiss()
             } catch {
-                print("❌ Failed to update grading record: \(error)")
+                DebugLogger.profile("❌ Failed to update grading record: \(error)")
             }
         } else {
             // Create new grading
@@ -472,7 +472,7 @@ struct GradingEntryView: View {
                 onSave(newGrading)
                 dismiss()
             } catch {
-                print("❌ Failed to save grading record: \(error)")
+                DebugLogger.profile("❌ Failed to save grading record: \(error)")
             }
         }
     }

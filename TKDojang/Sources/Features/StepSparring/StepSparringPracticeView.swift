@@ -89,7 +89,7 @@ struct StepSparringPracticeView: View {
             let results = try dataServices.modelContext.fetch(descriptor)
             return results.first
         } catch {
-            print("❌ Failed to fetch belt level for \(normalizedBelt): \(error)")
+            DebugLogger.data("❌ Failed to fetch belt level for \(normalizedBelt): \(error)")
             return nil
         }
     }
@@ -390,7 +390,7 @@ struct StepSparringPracticeView: View {
                 focusAreas: [sequence.name]
             )
         } catch {
-            print("❌ Failed to record step sparring session: \(error)")
+            DebugLogger.profile("❌ Failed to record step sparring session: \(error)")
         }
     }
     
