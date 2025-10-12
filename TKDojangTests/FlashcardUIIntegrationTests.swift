@@ -1216,9 +1216,9 @@ class FlashcardConfigurationViewModel: ObservableObject {
     private func loadAvailableCategories() {
         // Mock implementation - would load from data service
         availableCategories = [
-            TerminologyCategory(id: "basic_techniques", name: "Basic Techniques", minimumBeltLevel: "10th Keup"),
-            TerminologyCategory(id: "intermediate_techniques", name: "Intermediate Techniques", minimumBeltLevel: "7th Keup"),
-            TerminologyCategory(id: "advanced_techniques", name: "Advanced Techniques", minimumBeltLevel: "4th Keup")
+            TerminologyCategory(name: "basic_techniques", displayName: "Basic Techniques", sortOrder: 1),
+            TerminologyCategory(name: "intermediate_techniques", displayName: "Intermediate Techniques", sortOrder: 2),
+            TerminologyCategory(name: "advanced_techniques", displayName: "Advanced Techniques", sortOrder: 3)
         ]
     }
 }
@@ -1480,15 +1480,5 @@ struct FlashcardSessionState {
     let sessionConfiguration: FlashcardSessionConfiguration
 }
 
-struct TerminologyCategory {
-    let id: String
-    let name: String
-    let minimumBeltLevel: String?
-    
-    init(id: String, name: String, minimumBeltLevel: String? = nil) {
-        self.id = id
-        self.name = name
-        self.minimumBeltLevel = minimumBeltLevel
-    }
-}
+// Removed test struct - using real TKDojang.TerminologyCategory model instead
 
