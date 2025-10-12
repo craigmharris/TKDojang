@@ -65,9 +65,9 @@ class PatternDataService {
         
         do {
             try modelContext.save()
-            print("✅ Created pattern: \(name) with \(moves.count) moves")
+            DebugLogger.data("✅ Created pattern: \(name) with \(moves.count) moves")
         } catch {
-            print("❌ Failed to save pattern: \(error)")
+            DebugLogger.data("❌ Failed to save pattern: \(error)")
         }
         
         return pattern
@@ -96,7 +96,7 @@ class PatternDataService {
                 return belt1SortOrder > belt2SortOrder // Higher sort order first (9th keup before 8th keup)
             }
         } catch {
-            print("Failed to fetch patterns: \(error)")
+            DebugLogger.data("Failed to fetch patterns: \(error)")
             return []
         }
     }
@@ -114,7 +114,7 @@ class PatternDataService {
         do {
             return try modelContext.fetch(descriptor).first
         } catch {
-            print("Failed to fetch pattern '\(name)': \(error)")
+            DebugLogger.data("Failed to fetch pattern '\(name)': \(error)")
             return nil
         }
     }
@@ -133,7 +133,7 @@ class PatternDataService {
                 pattern.beltLevels.contains { $0.id == beltLevel.id }
             }
         } catch {
-            print("Failed to fetch patterns for belt level: \(error)")
+            DebugLogger.data("Failed to fetch patterns for belt level: \(error)")
             return []
         }
     }
@@ -176,9 +176,9 @@ class PatternDataService {
         
         do {
             try modelContext.save()
-            print("✅ Added move \(moveNumber) to pattern \(pattern.name)")
+            DebugLogger.data("✅ Added move \(moveNumber) to pattern \(pattern.name)")
         } catch {
-            print("❌ Failed to save move: \(error)")
+            DebugLogger.data("❌ Failed to save move: \(error)")
         }
         
         return move
@@ -209,7 +209,7 @@ class PatternDataService {
                 return newProgress
             }
         } catch {
-            print("Failed to get user progress: \(error)")
+            DebugLogger.data("Failed to get user progress: \(error)")
             let newProgress = UserPatternProgress(userProfile: userProfile, pattern: pattern)
             modelContext.insert(newProgress)
             return newProgress
@@ -235,9 +235,9 @@ class PatternDataService {
         
         do {
             try modelContext.save()
-            print("✅ Recorded practice session for \(pattern.name): \(Int(accuracy * 100))% accuracy")
+            DebugLogger.data("✅ Recorded practice session for \(pattern.name): \(Int(accuracy * 100))% accuracy")
         } catch {
-            print("❌ Failed to save practice session: \(error)")
+            DebugLogger.data("❌ Failed to save practice session: \(error)")
         }
     }
     
@@ -258,7 +258,7 @@ class PatternDataService {
         do {
             return try modelContext.fetch(descriptor)
         } catch {
-            print("Failed to fetch patterns due for review: \(error)")
+            DebugLogger.data("Failed to fetch patterns due for review: \(error)")
             return []
         }
     }
@@ -293,7 +293,7 @@ class PatternDataService {
                 averageAccuracy: averageAccuracy
             )
         } catch {
-            print("Failed to fetch pattern statistics: \(error)")
+            DebugLogger.data("Failed to fetch pattern statistics: \(error)")
             return PatternStatistics()
         }
     }
@@ -304,7 +304,7 @@ class PatternDataService {
      * Development helper: Force reload patterns from JSON (use with caution)
      */
     func forceReloadPatternsFromJSON() {
-        print("⚠️ DEVELOPMENT: Force reloading patterns from JSON files...")
+        DebugLogger.data("⚠️ DEVELOPMENT: Force reloading patterns from JSON files...")
         loadPatternsFromJSON()
     }
     
@@ -318,45 +318,45 @@ class PatternDataService {
         do {
             let existingPatterns = try modelContext.fetch(descriptor)
             if !existingPatterns.isEmpty {
-                print("📚 Patterns already exist, skipping seeding")
-                print("   Found \(existingPatterns.count) existing patterns")
+                DebugLogger.data("📚 Patterns already exist, skipping seeding")
+                DebugLogger.data("   Found \(existingPatterns.count) existing patterns")
                 
                 // Debug: Check which patterns have no belt levels (this could be the issue!)
                 let patternsWithoutBelts = existingPatterns.filter { $0.beltLevels.isEmpty }
                 if !patternsWithoutBelts.isEmpty {
-                    print("⚠️ WARNING: \(patternsWithoutBelts.count) patterns have NO belt levels!")
-                    print("   Patterns without belts: \(patternsWithoutBelts.map { $0.name })")
+                    DebugLogger.data("⚠️ WARNING: \(patternsWithoutBelts.count) patterns have NO belt levels!")
+                    DebugLogger.data("   Patterns without belts: \(patternsWithoutBelts.map { $0.name })")
                 }
                 
                 let patternsWithBelts = existingPatterns.filter { !$0.beltLevels.isEmpty }
-                print("   Patterns with belt levels: \(patternsWithBelts.count)")
+                DebugLogger.data("   Patterns with belt levels: \(patternsWithBelts.count)")
                 if !patternsWithBelts.isEmpty {
-                    print("   Belt levels: \(Array(Set(patternsWithBelts.compactMap { $0.beltLevels.first?.shortName })).sorted())")
+                    DebugLogger.data("   Belt levels: \(Array(Set(patternsWithBelts.compactMap { $0.beltLevels.first?.shortName })).sorted())")
                 }
                 return
             }
         } catch {
-            print("Failed to check existing patterns: \(error)")
+            DebugLogger.data("Failed to check existing patterns: \(error)")
         }
         
         // Load patterns from JSON files
         loadPatternsFromJSON()
         
-        print("✅ Seeded initial patterns from JSON files")
+        DebugLogger.data("✅ Seeded initial patterns from JSON files")
     }
     
     /**
      * Loads all patterns from JSON files using PatternContentLoader
      */
     private func loadPatternsFromJSON() {
-        print("🌱 Loading patterns from JSON files...")
+        DebugLogger.data("🌱 Loading patterns from JSON files...")
         
         let contentLoader = PatternContentLoader(patternService: self)
         
         // Use Task to handle the @MainActor requirement
         Task { @MainActor in
             contentLoader.loadAllContent()
-            print("✅ Completed loading patterns from JSON files")
+            DebugLogger.data("✅ Completed loading patterns from JSON files")
         }
     }
     
@@ -388,15 +388,15 @@ class PatternDataService {
             try modelContext.delete(model: Pattern.self)
             try modelContext.delete(model: PatternMove.self)
             try modelContext.save()
-            print("🔄 Cleared all patterns from database")
+            DebugLogger.data("🔄 Cleared all patterns from database")
             
             // Reload patterns from JSON
             let loader = PatternContentLoader(patternService: self)
             loader.loadAllContent()
-            print("🔄 Reloaded patterns from JSON")
+            DebugLogger.data("🔄 Reloaded patterns from JSON")
             
         } catch {
-            print("❌ Failed to clear and reload patterns: \(error)")
+            DebugLogger.data("❌ Failed to clear and reload patterns: \(error)")
         }
     }
     
@@ -411,7 +411,7 @@ class PatternDataService {
         do {
             return try modelContext.fetch(descriptor)
         } catch {
-            print("❌ Failed to fetch belt levels: \(error)")
+            DebugLogger.data("❌ Failed to fetch belt levels: \(error)")
             return []
         }
     }

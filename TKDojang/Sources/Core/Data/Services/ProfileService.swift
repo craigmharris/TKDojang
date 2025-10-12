@@ -89,8 +89,8 @@ class ProfileService {
         modelContext.insert(profile)
         try modelContext.save()
         
-        // TEMPORARILY DISABLED: Auto-backup to prevent SwiftData crashes during testing
-        // exportService?.autoBackupProfile(profile)
+        // Auto-backup profile after creation
+        exportService?.autoBackupProfile(profile)
         
         // Activate if this is the first profile or if requested
         if existingProfiles.isEmpty {
@@ -142,8 +142,8 @@ class ProfileService {
         
         try modelContext.save()
         
-        // TEMPORARILY DISABLED: Auto-backup to prevent SwiftData crashes during testing
-        // exportService?.autoBackupProfile(profile)
+        // Auto-backup profile after update
+        exportService?.autoBackupProfile(profile)
         
         print("✅ Updated profile: \(profile.name)")
     }
@@ -205,8 +205,8 @@ class ProfileService {
             await progressCacheService?.refreshCache(for: profile.id)
         }
         
-        // TEMPORARILY DISABLED: Auto-backup to prevent SwiftData crashes during testing
-        // exportService?.autoBackupProfile(profile)
+        // Auto-backup profile after activation
+        exportService?.autoBackupProfile(profile)
         
         print("🔄 Activated profile: \(profile.name)")
     }
@@ -299,9 +299,8 @@ class ProfileService {
         
         try modelContext.save()
         
-        // TEMPORARILY DISABLED: Auto-backup after study session to prevent SwiftData crashes
-        // TODO: Re-enable once SwiftData relationship invalidation issues are resolved
-        // exportService?.autoBackupProfile(active)
+        // Auto-backup after study session to preserve progress
+        exportService?.autoBackupProfile(active)
         
         // FIXED: Re-enabled progress cache refresh after fixing predicate relationship navigation
         Task {

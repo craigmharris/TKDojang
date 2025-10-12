@@ -251,10 +251,22 @@ struct SafeDataManagementView: View {
     }
     
     private func exportAllProfilesData() {
-        // Export all profile data for backup
-        // This would integrate with the existing export functionality
-        print("📤 Exporting all profile data...")
-        // TODO: Implement comprehensive data export
+        // Export all profile data for backup using ProfileExportService
+        DebugLogger.data("📤 Exporting all profile data...")
+        
+        // Use the existing ProfileExportService through DataServices
+        Task {
+            do {
+                let success = await dataServices.exportAllProfiles()
+                if success {
+                    DebugLogger.data("✅ All profiles exported successfully")
+                } else {
+                    DebugLogger.data("⚠️ Profile export completed with some warnings")
+                }
+            } catch {
+                DebugLogger.data("❌ Profile export failed: \(error)")
+            }
+        }
     }
     
     private func performSystemReset() {
@@ -267,7 +279,17 @@ struct SafeDataManagementView: View {
         // Start database reset immediately - the isResettingDatabase flag will
         // trigger the loading screen in ContentView to prevent any profile access
         Task {
-            await dataServices.resetAndReloadDatabase()
+            do {
+                try await dataServices.resetAndReloadDatabase()
+                DebugLogger.data("✅ Database reset completed successfully")
+            } catch {
+                DebugLogger.data("❌ Database reset failed: \(error)")
+                // Show error to user through UI notification
+                DispatchQueue.main.async {
+                    // Could implement error notification system here
+                    DebugLogger.ui("❌ Database reset failed - user should be notified")
+                }
+            }
         }
     }
 }

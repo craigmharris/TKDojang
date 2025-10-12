@@ -43,7 +43,7 @@ class DataManager {
     }
     
     private init() {
-        print("🏗️ Initializing DataManager... - \(Date())")
+        DebugLogger.data("🏗️ Initializing DataManager... - \(Date())")
         do {
             // Configure the SwiftData model container
             let schema = Schema([
@@ -100,10 +100,10 @@ class DataManager {
             self.profileService.exportService = self.profileExportService
             
             // Note: Initial data setup will be handled by AppCoordinator
-            print("✅ DataManager initialization complete - \(Date())")
+            DebugLogger.data("✅ DataManager initialization complete - \(Date())")
             
         } catch {
-            print("❌ Failed to create model container: \(error)")
+            DebugLogger.data("❌ Failed to create model container: \(error)")
             fatalError("Failed to create model container: \(error). Please use 'Reset Database & Reload Content' from User Settings.")
         }
     }
@@ -122,37 +122,37 @@ class DataManager {
             let existingBeltLevels = try modelContainer.mainContext.fetch(descriptor)
             
             if existingBeltLevels.isEmpty {
-                print("🗃️ Database is empty, loading all content from JSON...")
+                DebugLogger.data("🗃️ Database is empty, loading all content from JSON...")
                 
                 // Load belt levels and terminology
                 let modularLoader = ModularContentLoader(dataService: terminologyService)
                 modularLoader.loadCompleteSystem()
                 
                 // Load patterns from JSON
-                print("🥋 Loading patterns from JSON...")
+                DebugLogger.data("🥋 Loading patterns from JSON...")
                 let patternLoader = PatternContentLoader(patternService: patternService)
                 patternLoader.loadAllContent()
                 
                 // Load step sparring from JSON  
-                print("🥊 Loading step sparring from JSON...")
+                DebugLogger.data("🥊 Loading step sparring from JSON...")
                 let stepSparringLoader = StepSparringContentLoader(stepSparringService: stepSparringService)
                 stepSparringLoader.loadAllContent()
                 
-                print("✅ All JSON content loaded successfully")
+                DebugLogger.data("✅ All JSON content loaded successfully")
             } else {
-                print("✅ Database already contains \(existingBeltLevels.count) belt levels")
+                DebugLogger.data("✅ Database already contains \(existingBeltLevels.count) belt levels")
                 // Debug: Check if belt levels have colors
                 for belt in existingBeltLevels.prefix(3) {
-                    print("🎨 Belt: \(belt.shortName), Primary Color: \(belt.primaryColor ?? "nil"), Secondary: \(belt.secondaryColor ?? "nil")")
+                    DebugLogger.data("🎨 Belt: \(belt.shortName), Primary Color: \(belt.primaryColor ?? "nil"), Secondary: \(belt.secondaryColor ?? "nil")")
                 }
                 
                 // Check if we have any terminology entries at all
                 let termDescriptor = FetchDescriptor<TerminologyEntry>()
                 let existingTerms = try modelContainer.mainContext.fetch(termDescriptor)
-                print("📊 Database contains \(existingTerms.count) terminology entries")
+                DebugLogger.data("📊 Database contains \(existingTerms.count) terminology entries")
                 
                 if existingTerms.isEmpty {
-                    print("🔄 No terms found - forcing content reload...")
+                    DebugLogger.data("🔄 No terms found - forcing content reload...")
                     let modularLoader = ModularContentLoader(dataService: terminologyService)
                     modularLoader.loadCompleteSystem()
                 }
@@ -192,24 +192,24 @@ class DataManager {
             
             if existingPatterns.count != expectedPatternCount || !missingPatterns.isEmpty || !extraPatterns.isEmpty {
                 if !missingPatterns.isEmpty {
-                    print("📚 Missing patterns: \(missingPatterns.sorted()) - reloading from JSON...")
+                    DebugLogger.data("📚 Missing patterns: \(missingPatterns.sorted()) - reloading from JSON...")
                 }
                 if !extraPatterns.isEmpty {
-                    print("📚 Extra patterns: \(extraPatterns.sorted()) - reloading from JSON...")
+                    DebugLogger.data("📚 Extra patterns: \(extraPatterns.sorted()) - reloading from JSON...")
                 }
                 if existingPatterns.count != expectedPatternCount {
-                    print("📚 Pattern count mismatch: \(existingPatterns.count) vs \(expectedPatternCount) expected - reloading...")
+                    DebugLogger.data("📚 Pattern count mismatch: \(existingPatterns.count) vs \(expectedPatternCount) expected - reloading...")
                 }
                 
                 patternService.clearAndReloadPatterns()
             } else {
-                print("✅ Complete pattern set synchronized (\(existingPatterns.count) patterns)")
+                DebugLogger.data("✅ Complete pattern set synchronized (\(existingPatterns.count) patterns)")
                 for pattern in existingPatterns.prefix(3) {
-                    print("   \(pattern.name): \(pattern.moves.count) moves")
+                    DebugLogger.data("   \(pattern.name): \(pattern.moves.count) moves")
                 }
             }
         } catch {
-            print("❌ Failed to check pattern synchronization: \(error)")
+            DebugLogger.data("❌ Failed to check pattern synchronization: \(error)")
         }
     }
     
@@ -222,7 +222,7 @@ class DataManager {
         // Dynamic discovery of pattern files (consistent with PatternContentLoader)
         let patternFiles = discoverPatternFiles()
         
-        print("📁 Dynamically discovered \(patternFiles.count) pattern JSON files: \(patternFiles)")
+        DebugLogger.data("📁 Dynamically discovered \(patternFiles.count) pattern JSON files: \(patternFiles)")
         
         for filename in patternFiles {
             // Try subdirectory first, then fallback to bundle root
@@ -245,14 +245,14 @@ class DataManager {
                         expectedNames.insert(pattern.name)
                     }
                 } catch {
-                    print("⚠️ Failed to read pattern names from \(filename): \(error)")
+                    DebugLogger.data("⚠️ Failed to read pattern names from \(filename): \(error)")
                 }
             } else {
-                print("⚠️ Could not find \(filename).json in bundle")
+                DebugLogger.data("⚠️ Could not find \(filename).json in bundle")
             }
         }
         
-        print("📋 Expected patterns from JSON: \(expectedNames.sorted())")
+        DebugLogger.data("📋 Expected patterns from JSON: \(expectedNames.sorted())")
         return expectedNames
     }
     
@@ -276,7 +276,7 @@ class DataManager {
                     foundFiles.append(filename)
                 }
             } catch {
-                print("⚠️ Failed to scan Patterns subdirectory: \(error)")
+                DebugLogger.data("⚠️ Failed to scan Patterns subdirectory: \(error)")
             }
         }
         
@@ -296,7 +296,7 @@ class DataManager {
                     foundFiles.append(filename)
                 }
             } catch {
-                print("⚠️ Failed to scan bundle root: \(error)")
+                DebugLogger.data("⚠️ Failed to scan bundle root: \(error)")
             }
         }
         
@@ -444,7 +444,7 @@ class DataManager {
                 }
             }
         } catch {
-            print("❌ Failed to check step sparring synchronization: \(error)")
+            DebugLogger.data("❌ Failed to check step sparring synchronization: \(error)")
         }
     }
     
@@ -499,59 +499,113 @@ class DataManager {
             }
             
             try modelContainer.mainContext.save()
-            print("✅ User progress reset successfully")
+            DebugLogger.data("✅ User progress reset successfully")
         } catch {
-            print("❌ Failed to reset user progress: \\(error)")
+            DebugLogger.data("❌ Failed to reset user progress: \\(error)")
         }
     }
     
     /**
-     * Resets entire database and exits the app for clean restart
+     * Resets entire database and reinitializes container
      * Use this to force reload when content structure changes
      * 
-     * CRITICAL: This deletes the database file and exits the app for maximum safety
+     * IMPROVED: Graceful in-process reset instead of nuclear exit(0) approach
      */
-    func resetAndReloadDatabase() async {
-        // Set resetting flag to prevent any profile access
+    func resetAndReloadDatabase() async throws {
+        DebugLogger.data("🔄 Starting graceful database reset...")
+        
+        // Set resetting flag to prevent any profile access during reset
         isResettingDatabase = true
         
-        print("🔄 Starting database reset - will exit app for clean restart...")
+        // Notify observers that reset is starting
+        NotificationCenter.default.post(name: .databaseResetStarting, object: nil)
         
         // CRITICAL: Clear ProfileService active profile reference
         profileService.clearActiveProfileForReset()
         
-        // Delete the database files completely
-        let appSupportDir = URL.applicationSupportDirectory
-        let dbURL = appSupportDir.appending(path: "Model.sqlite")
-        let dbSHMURL = appSupportDir.appending(path: "Model.sqlite-shm")
-        let dbWALURL = appSupportDir.appending(path: "Model.sqlite-wal")
+        // Save the current model container reference
+        let oldContainer = modelContainer
         
-        try? FileManager.default.removeItem(at: dbURL)
-        try? FileManager.default.removeItem(at: dbSHMURL)
-        try? FileManager.default.removeItem(at: dbWALURL)
-        
-        print("🗑️ Database files deleted - app will exit for clean restart")
-        
-        // Show final message to user
-        await MainActor.run {
-            // Show alert then exit
-            let alert = UIAlertController(
-                title: "Database Reset Complete", 
-                message: "The app will now restart with a fresh database. Please reopen the app.",
-                preferredStyle: .alert
-            )
-            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-                exit(0) // Clean app exit
-            })
+        do {
+            // Delete the database files completely
+            let appSupportDir = URL.applicationSupportDirectory
+            let dbURL = appSupportDir.appending(path: "Model.sqlite")
+            let dbSHMURL = appSupportDir.appending(path: "Model.sqlite-shm")
+            let dbWALURL = appSupportDir.appending(path: "Model.sqlite-wal")
             
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-               let window = windowScene.windows.first,
-               let rootVC = window.rootViewController {
-                rootVC.present(alert, animated: true)
-            } else {
-                // Fallback: exit immediately if we can't show alert
-                exit(0)
-            }
+            try? FileManager.default.removeItem(at: dbURL)
+            try? FileManager.default.removeItem(at: dbSHMURL)
+            try? FileManager.default.removeItem(at: dbWALURL)
+            
+            DebugLogger.data("🗑️ Database files deleted successfully")
+            
+            // Create new model container with same configuration
+            let schema = Schema([
+                BeltLevel.self,
+                TerminologyCategory.self,
+                TerminologyEntry.self,
+                UserProfile.self,
+                UserTerminologyProgress.self,
+                TestSession.self,
+                TestConfiguration.self,
+                TestQuestion.self,
+                TestResult.self,
+                CategoryPerformance.self,
+                BeltLevelPerformance.self,
+                TestPerformance.self,
+                Pattern.self,
+                PatternMove.self,
+                UserPatternProgress.self,
+                PatternTestResult.self,
+                StudySession.self,
+                StepSparringSequence.self,
+                StepSparringStep.self,
+                StepSparringAction.self,
+                UserStepSparringProgress.self,
+                GradingRecord.self
+            ])
+            
+            let modelConfiguration = ModelConfiguration(
+                schema: schema,
+                isStoredInMemoryOnly: false,
+                cloudKitDatabase: .none
+            )
+            
+            let newContainer = try ModelContainer(
+                for: schema,
+                configurations: [modelConfiguration]
+            )
+            
+            // Update all service references with new container
+            self.modelContainer = newContainer
+            self.terminologyService = TerminologyDataService(modelContext: newContainer.mainContext)
+            self.patternService = PatternDataService(modelContext: newContainer.mainContext)
+            self.progressCacheService = ProgressCacheService(modelContext: newContainer.mainContext)
+            self.profileService = ProfileService(modelContext: newContainer.mainContext)
+            self.stepSparringService = StepSparringDataService(modelContext: newContainer.mainContext)
+            self.profileExportService = ProfileExportService(modelContext: newContainer.mainContext)
+            self.leitnerService = LeitnerService(modelContext: newContainer.mainContext)
+            self.techniquesService = TechniquesDataService()
+            
+            // Reconnect service dependencies
+            self.profileService.progressCacheService = self.progressCacheService
+            self.profileService.exportService = self.profileExportService
+            
+            // Generate new reset ID to trigger UI refresh
+            databaseResetId = UUID()
+            isResettingDatabase = false
+            
+            DebugLogger.data("✅ Database container recreated successfully")
+            
+            // Reload all content from JSON
+            await setupInitialData()
+            
+            DebugLogger.data("✅ Database reset and reload completed successfully")
+            
+        } catch {
+            DebugLogger.data("❌ Database reset failed: \(error)")
+            isResettingDatabase = false
+            throw error
         }
     }
     

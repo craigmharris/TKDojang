@@ -106,8 +106,8 @@ class DataServices: ObservableObject {
         dataManager.resetUserProgress()
     }
     
-    func resetAndReloadDatabase() async {
-        await dataManager.resetAndReloadDatabase()
+    func resetAndReloadDatabase() async throws {
+        try await dataManager.resetAndReloadDatabase()
     }
     
     var isResettingDatabase: Bool {
