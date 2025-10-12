@@ -31,7 +31,7 @@ final class ArchitecturalIntegrationTests: XCTestCase {
         try super.setUpWithError()
         
         // Create comprehensive test container with all models for integration testing
-        testContainer = TestContainerFactory.createTestContainer()
+        testContainer = try TestContainerFactory.createTestContainer()
         
         testContext = ModelContext(testContainer)
         try setupTestData()
@@ -685,7 +685,7 @@ final class ArchitecturalIntegrationTests: XCTestCase {
             
             // Create study sessions
             for j in 0..<5 {
-                let session = StudySession(userProfile: testProfile, sessionType: .terminology)
+                let session = StudySession(userProfile: testProfile, sessionType: .flashcards)
                 session.duration = Double(600 + j * 120)
                 session.itemsStudied = j + 3
                 session.correctAnswers = j + 2

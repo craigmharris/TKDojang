@@ -1507,10 +1507,3 @@ struct TerminologyCategory {
     }
 }
 
-// Character extension for Korean detection
-extension Character {
-    var isHangul: Bool {
-        guard let scalar = unicodeScalars.first else { return false }
-        return (0xAC00...0xD7AF).contains(scalar.value)
-    }
-}

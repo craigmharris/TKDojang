@@ -1282,7 +1282,7 @@ class StepSparringTypeSelectionViewModel: ObservableObject {
         selectedSequence = sequence
     }
     
-    func filterSequences(by difficulty: SequenceDifficulty) -> [StepSparringSequence] {
+    func filterSequences(by difficulty: Int) -> [StepSparringSequence] {
         return selectedSequences.filter { $0.difficulty == difficulty }
     }
     
@@ -1295,12 +1295,12 @@ class StepSparringTypeSelectionViewModel: ObservableObject {
         }
     }
     
-    func getTypeDifficulty(_ type: StepSparringType) -> SequenceDifficulty {
+    func getTypeDifficulty(_ type: StepSparringType) -> Int {
         switch type {
-        case .oneStep: return .beginner
-        case .twoStep: return .intermediate
-        case .threeStep: return .advanced
-        case .free: return .expert
+        case .oneStep: return 1
+        case .twoStep: return 2
+        case .threeStep: return 3
+        case .semiFree: return 4
         }
     }
     
@@ -1389,9 +1389,6 @@ enum StepSparringPhase {
 }
 
 
-enum SequenceDifficulty {
-    case beginner, intermediate, advanced, expert
-}
 
 enum PracticeSessionType {
     case pattern, stepSparring
@@ -1469,7 +1466,6 @@ extension StepSparringStep {
 
 extension StepSparringSequence {
     var minimumBeltLevel: String? { "10th Keup" }
-    var difficulty: SequenceDifficulty { .beginner }
 }
 
 extension StepSparringDataService {

@@ -35,7 +35,6 @@ class TestContainerFactory {
         let schema = Schema([
             // Core Models
             BeltLevel.self,
-            TerminologyCategory.self,
             TerminologyEntry.self,
             UserProfile.self,
             UserTerminologyProgress.self,

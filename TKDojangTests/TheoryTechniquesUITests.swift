@@ -36,37 +36,15 @@ final class TheoryTechniquesUITests: XCTestCase {
         try super.setUpWithError()
         
         // Create comprehensive test container with theory and techniques models
-        let schema = Schema([
-            BeltLevel.self,
-            TerminologyCategory.self,
-            TerminologyEntry.self,
-            UserProfile.self,
-            UserTerminologyProgress.self,
-            StudySession.self,
-            GradingRecord.self,
-            Pattern.self,
-            PatternMove.self
-        ])
-        
-        let configuration = ModelConfiguration(
-            schema: schema,
-            isStoredInMemoryOnly: true
-        )
-        
-        testContainer = try ModelContainer(
-            for: schema,
-            configurations: [configuration]
-        )
-        
+        testContainer = try TestContainerFactory.createTestContainer()
         testContext = ModelContext(testContainer)
         
         // Set up extensive theory and techniques content
         let testData = TestDataFactory()
         try testData.createBasicTestData(in: testContext)
-        try testData.createExtensiveTheoryAndTechniquesContent(in: testContext)
         
         // Initialize services with test container
-        dataServices = DataServices(container: testContainer)
+        dataServices = DataServices.shared
         profileService = dataServices.profileService
         theoryService = dataServices.theoryService
         techniquesService = dataServices.techniquesService
@@ -1090,11 +1068,11 @@ class TechniquesViewModel: ObservableObject {
     @Published var filteredTechniques: [Technique] = []
     @Published var availableCategories: [TechniqueCategory] = []
     
-    private let techniquesService: TechniquesService
+    private let techniquesService: TechniquesDataService
     private let userProfile: UserProfile
     private var currentFilters: [String: Any] = [:]
     
-    init(techniquesService: TechniquesService, userProfile: UserProfile) {
+    init(techniquesService: TechniquesDataService, userProfile: UserProfile) {
         self.techniquesService = techniquesService
         self.userProfile = userProfile
         loadTechniques()

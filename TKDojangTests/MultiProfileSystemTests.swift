@@ -27,7 +27,7 @@ final class MultiProfileSystemTests: XCTestCase {
         try super.setUpWithError()
         
         // Create in-memory test container
-        testContainer = TestContainerFactory.createTestContainer()
+        testContainer = try TestContainerFactory.createTestContainer()
         testContext = ModelContext(testContainer)
         
         // Set up basic data
