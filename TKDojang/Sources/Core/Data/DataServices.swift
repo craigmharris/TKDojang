@@ -29,7 +29,7 @@ class DataServices: ObservableObject {
         if let instance = _shared {
             return instance
         }
-        print("🔑 DataServices.shared: Creating singleton instance for first time - \(Date())")
+        DebugLogger.data("🔑 DataServices.shared: Creating singleton instance for first time - \(Date())")
         let instance = DataServices()
         _shared = instance
         return instance
@@ -38,7 +38,7 @@ class DataServices: ObservableObject {
     private var _dataManager: DataManager?
     
     private init() { 
-        print("🔑 DataServices.init(): Private initializer called - \(Date())")
+        DebugLogger.data("🔑 DataServices.init(): Private initializer called - \(Date())")
     }
     
     private var dataManager: DataManager {
@@ -47,10 +47,10 @@ class DataServices: ObservableObject {
         }
         
         // This is the only place DataManager.shared is accessed
-        print("🔑 DataServices: First access to DataManager - about to initialize DataManager.shared - \(Date())")
+        DebugLogger.data("🔑 DataServices: First access to DataManager - about to initialize DataManager.shared - \(Date())")
         let dm = DataManager.shared
         _dataManager = dm
-        print("🔑 DataServices: DataManager.shared obtained successfully - \(Date())")
+        DebugLogger.data("🔑 DataServices: DataManager.shared obtained successfully - \(Date())")
         return dm
     }
     
@@ -125,20 +125,20 @@ class DataServices: ObservableObject {
      */
     func loadSharedProfileState() {
         guard !hasLoadedProfiles else { 
-            print("🔄 DataServices: Profile state already loaded, skipping duplicate load")
+            DebugLogger.data("🔄 DataServices: Profile state already loaded, skipping duplicate load")
             return 
         }
         
-        print("🔄 DataServices: Loading shared profile state (first time)")
+        DebugLogger.data("🔄 DataServices: Loading shared profile state (first time)")
         
         do {
             allProfiles = try profileService.getAllProfiles()
             activeProfile = profileService.getActiveProfile()
             hasLoadedProfiles = true
             
-            print("✅ DataServices: Loaded shared profile state - \(allProfiles.count) profiles, active: \(activeProfile?.name ?? "none")")
+            DebugLogger.data("✅ DataServices: Loaded shared profile state - \(allProfiles.count) profiles, active: \(activeProfile?.name ?? "none")")
         } catch {
-            print("❌ DataServices: Failed to load shared profile state: \(error)")
+            DebugLogger.data("❌ DataServices: Failed to load shared profile state: \(error)")
             allProfiles = []
             activeProfile = nil
         }
@@ -148,15 +148,15 @@ class DataServices: ObservableObject {
      * Updates shared profile state after profile operations
      */
     func refreshSharedProfileState() {
-        print("🔄 DataServices: Refreshing shared profile state")
+        DebugLogger.data("🔄 DataServices: Refreshing shared profile state")
         
         do {
             allProfiles = try profileService.getAllProfiles()
             activeProfile = profileService.getActiveProfile()
             
-            print("✅ DataServices: Refreshed shared profile state - \(allProfiles.count) profiles, active: \(activeProfile?.name ?? "none")")
+            DebugLogger.data("✅ DataServices: Refreshed shared profile state - \(allProfiles.count) profiles, active: \(activeProfile?.name ?? "none")")
         } catch {
-            print("❌ DataServices: Failed to refresh shared profile state: \(error)")
+            DebugLogger.data("❌ DataServices: Failed to refresh shared profile state: \(error)")
         }
     }
     
@@ -164,10 +164,10 @@ class DataServices: ObservableObject {
      * Switches to profile and updates shared state
      */
     func switchToProfile(_ profile: UserProfile) throws {
-        print("🔄 DataServices: Switching to profile: \(profile.name)")
+        DebugLogger.data("🔄 DataServices: Switching to profile: \(profile.name)")
         try profileService.activateProfile(profile)
         refreshSharedProfileState()
-        print("✅ DataServices: Profile switch completed")
+        DebugLogger.data("✅ DataServices: Profile switch completed")
     }
 }
 

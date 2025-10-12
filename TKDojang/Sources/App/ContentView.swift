@@ -17,7 +17,7 @@ import SwiftUI
 struct ContentView: View {
     
     init() {
-        print("📄 ContentView.init() - ContentView being created - \(Date())")
+        DebugLogger.ui("📄 ContentView.init() - ContentView being created - \(Date())")
     }
     
     /**
@@ -32,22 +32,22 @@ struct ContentView: View {
     // It will be added via  only when needed (e.g., main flow)
     
     var body: some View {
-        print("🔄 ContentView.body - Flow is: \(appCoordinator.currentFlow) - \(Date())")
+        DebugLogger.ui("🔄 ContentView.body - Flow is: \(appCoordinator.currentFlow) - \(Date())")
         // NOTE: No DataManager access in this view to prevent blocking during app launch
         return Group {
             switch appCoordinator.currentFlow {
             case .loading:
-                print("⏳ Creating LoadingView...")
+                DebugLogger.ui("⏳ Creating LoadingView...")
                 return AnyView(LoadingView()
                     .transition(.opacity))
                 
             case .onboarding:
-                print("🎯 Creating OnboardingCoordinatorView...")
+                DebugLogger.ui("🎯 Creating OnboardingCoordinatorView...")
                 return AnyView(OnboardingCoordinatorView()
                     .transition(.move(edge: .trailing)))
                 
             case .main:
-                print("🏠 Creating MainTabCoordinatorView with DataServices... - \(Date())")
+                DebugLogger.ui("🏠 Creating MainTabCoordinatorView with DataServices... - \(Date())")
                 return AnyView(MainTabCoordinatorView()
                     .transition(.move(edge: .bottom)))
             }

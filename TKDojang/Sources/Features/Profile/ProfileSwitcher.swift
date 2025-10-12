@@ -40,11 +40,11 @@ struct ProfileSwitcher: View {
                 ForEach(profiles) { profile in
                     Button(action: {
                         let isCurrentlyActive = (activeProfile?.id == profile.id)
-                        print("🔍 ProfileSwitcher: Tapped profile \(profile.name), isCurrentlyActive: \(isCurrentlyActive)")
+                        DebugLogger.profile("🔍 ProfileSwitcher: Tapped profile \(profile.name), isCurrentlyActive: \(isCurrentlyActive)")
                         if !isCurrentlyActive {
                             switchToProfile(profile)
                         } else {
-                            print("⚠️ ProfileSwitcher: Profile \(profile.name) is already active, ignoring tap")
+                            DebugLogger.profile("⚠️ ProfileSwitcher: Profile \(profile.name) is already active, ignoring tap")
                         }
                     }) {
                         HStack {
@@ -100,7 +100,7 @@ struct ProfileSwitcher: View {
         .sheet(isPresented: $showingProfileManagement) {
             ProfileManagementView()
                 .onDisappear {
-                    print("👋 ProfileSwitcher: ProfileManagementView disappeared, refreshing shared state [Instance: \(instanceId)]")
+                    DebugLogger.profile("👋 ProfileSwitcher: ProfileManagementView disappeared, refreshing shared state [Instance: \(instanceId)]")
                     dataServices.refreshSharedProfileState()
                 }
         }
@@ -115,14 +115,14 @@ struct ProfileSwitcher: View {
     
     private func switchToProfile(_ profile: UserProfile) {
         do {
-            print("🔄 ProfileSwitcher: Switching to profile: \(profile.name) [Instance: \(instanceId)]")
+            DebugLogger.profile("🔄 ProfileSwitcher: Switching to profile: \(profile.name) [Instance: \(instanceId)]")
             
             // Use shared DataServices method for profile switching
             try dataServices.switchToProfile(profile)
             
-            print("✅ ProfileSwitcher: Profile switch completed [Instance: \(instanceId)]")
+            DebugLogger.profile("✅ ProfileSwitcher: Profile switch completed [Instance: \(instanceId)]")
         } catch {
-            print("❌ ProfileSwitcher: Failed to switch profile: \(error)")
+            DebugLogger.profile("❌ ProfileSwitcher: Failed to switch profile: \(error)")
             errorMessage = "Failed to switch profile: \(error.localizedDescription)"
             showingError = true
         }

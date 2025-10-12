@@ -151,7 +151,7 @@ class TestingService: ObservableObject {
         )
         
         guard distractors.count == 3 else {
-            print("⚠️ Could not generate enough distractors for: \(entry.englishTerm)")
+            DebugLogger.data("⚠️ Could not generate enough distractors for: \(entry.englishTerm)")
             return nil
         }
         
@@ -186,7 +186,7 @@ class TestingService: ObservableObject {
         )
         
         guard distractors.count == 3 else {
-            print("⚠️ Could not generate enough distractors for: \(entry.englishTerm)")
+            DebugLogger.data("⚠️ Could not generate enough distractors for: \(entry.englishTerm)")
             return nil
         }
         
@@ -404,7 +404,7 @@ class TestingService: ObservableObject {
         do {
             return try modelContext.fetch(descriptor)
         } catch {
-            print("Failed to fetch terminology for belt \\(beltLevel.shortName): \\(error)")
+            DebugLogger.data("Failed to fetch terminology for belt \\(beltLevel.shortName): \\(error)")
             return []
         }
     }
@@ -420,7 +420,7 @@ class TestingService: ObservableObject {
         do {
             return try modelContext.fetch(descriptor).first
         } catch {
-            print("Failed to fetch previous belt: \\(error)")
+            DebugLogger.data("Failed to fetch previous belt: \\(error)")
             return nil
         }
     }
@@ -491,6 +491,6 @@ class TestingService: ObservableObject {
         // Insert the session into the model context
         modelContext.insert(studySession)
         
-        print("📊 Recorded test session for \(profile.name): \(result.correctAnswers)/\(result.totalQuestions) (\(Int(result.accuracy))%)")
+        DebugLogger.data("📊 Recorded test session for \(profile.name): \(result.correctAnswers)/\(result.totalQuestions) (\(Int(result.accuracy))%)")
     }
 }

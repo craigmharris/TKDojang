@@ -228,8 +228,8 @@ struct ProfileManagementView: View {
         Task {
             do {
                 let fileURL = try dataServices.profileExportService.saveAllProfilesToFile()
-                print("✅ All profiles exported successfully to: \(fileURL.path)")
-                print("📱 File ready for sharing - simulator file sharing may show errors but file creation succeeded")
+                DebugLogger.profile("✅ All profiles exported successfully to: \(fileURL.path)")
+                DebugLogger.profile("📱 File ready for sharing - simulator file sharing may show errors but file creation succeeded")
                 await MainActor.run {
                     self.fileToShare = fileURL
                     self.showingShareSheet = true
@@ -247,8 +247,8 @@ struct ProfileManagementView: View {
         Task {
             do {
                 let fileURL = try dataServices.profileExportService.saveProfileToFile(profile)
-                print("✅ Single profile exported successfully to: \(fileURL.path)")
-                print("📱 File ready for sharing - simulator file sharing may show errors but file creation succeeded")
+                DebugLogger.profile("✅ Single profile exported successfully to: \(fileURL.path)")
+                DebugLogger.profile("📱 File ready for sharing - simulator file sharing may show errors but file creation succeeded")
                 await MainActor.run {
                     self.fileToShare = fileURL
                     self.showingShareSheet = true
@@ -536,9 +536,9 @@ struct ShareSheet: UIViewControllerRepresentable {
         #if targetEnvironment(simulator)
         controller.completionWithItemsHandler = { activityType, completed, returnedItems, error in
             if let error = error {
-                print("⚠️ Simulator sharing error (expected): \(error.localizedDescription)")
+                DebugLogger.profile("⚠️ Simulator sharing error (expected): \(error.localizedDescription)")
             } else {
-                print("✅ Export file created successfully - Simulator sharing limitations are normal")
+                DebugLogger.profile("✅ Export file created successfully - Simulator sharing limitations are normal")
             }
         }
         #endif

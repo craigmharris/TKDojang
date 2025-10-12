@@ -60,7 +60,7 @@ class TerminologyDataService {
         do {
             try modelContext.save()
         } catch {
-            print("Failed to save categories: \\(error)")
+            DebugLogger.data("Failed to save categories: \\(error)")
         }
         
         return categories
@@ -117,7 +117,7 @@ class TerminologyDataService {
         do {
             try modelContext.save()
         } catch {
-            print("Failed to save terminology entry: \\(error)")
+            DebugLogger.data("Failed to save terminology entry: \\(error)")
         }
         
         return entry
@@ -162,7 +162,7 @@ class TerminologyDataService {
             
             return Array(entries.prefix(limit))
         } catch {
-            print("Failed to fetch terminology: \(error)")
+            DebugLogger.data("Failed to fetch terminology: \(error)")
             return []
         }
     }
@@ -184,7 +184,7 @@ class TerminologyDataService {
             let progressEntries = try modelContext.fetch(descriptor)
             return progressEntries.map { $0.terminologyEntry }
         } catch {
-            print("Failed to fetch due reviews: \\(error)")
+            DebugLogger.data("Failed to fetch due reviews: \\(error)")
             return []
         }
     }
@@ -229,7 +229,7 @@ class TerminologyDataService {
             try modelContext.save()
             
         } catch {
-            print("Failed to record user answer: \\(error)")
+            DebugLogger.data("Failed to record user answer: \\(error)")
         }
     }
     
@@ -269,7 +269,7 @@ class TerminologyDataService {
             )
             
         } catch {
-            print("Failed to fetch user statistics: \\(error)")
+            DebugLogger.data("Failed to fetch user statistics: \\(error)")
             return UserStatistics()
         }
     }
@@ -306,7 +306,7 @@ class TerminologyDataService {
         do {
             return try modelContext.fetch(descriptor).first
         } catch {
-            print("Failed to fetch default user profile: \\(error)")
+            DebugLogger.data("Failed to fetch default user profile: \\(error)")
             return nil
         }
     }
@@ -334,7 +334,7 @@ class TerminologyDataService {
                 return newProgress
             }
         } catch {
-            print("Failed to fetch existing progress, creating new: \\(error)")
+            DebugLogger.data("Failed to fetch existing progress, creating new: \\(error)")
             let newProgress = UserTerminologyProgress(
                 terminologyEntry: terminologyEntry,
                 userProfile: userProfile

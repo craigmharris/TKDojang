@@ -19,7 +19,7 @@ final class LeitnerService: ObservableObject {
     @Published var isLeitnerModeEnabled: Bool {
         didSet {
             UserDefaults.standard.set(isLeitnerModeEnabled, forKey: "leitnerModeEnabled")
-            print("🎯 LeitnerService: Mode changed to \(isLeitnerModeEnabled ? "Leitner" : "Classic")")
+            DebugLogger.data("🎯 LeitnerService: Mode changed to \(isLeitnerModeEnabled ? "Leitner" : "Classic")")
         }
     }
     
@@ -91,7 +91,7 @@ final class LeitnerService: ObservableObject {
             }
             return dueEntries.map { $0.terminologyEntry }
         } catch {
-            print("❌ LeitnerService: Failed to fetch Leitner terms: \(error)")
+            DebugLogger.data("❌ LeitnerService: Failed to fetch Leitner terms: \(error)")
             return []
         }
     }
@@ -126,7 +126,7 @@ final class LeitnerService: ObservableObject {
             
             return Array(filteredTerms.prefix(limit))
         } catch {
-            print("❌ LeitnerService: Failed to fetch classic terms: \(error)")
+            DebugLogger.data("❌ LeitnerService: Failed to fetch classic terms: \(error)")
             return []
         }
     }
@@ -176,9 +176,9 @@ final class LeitnerService: ObservableObject {
         
         do {
             try modelContext.save()
-            print("📊 LeitnerService: Recorded Leitner answer - Term: \(terminologyEntry.englishTerm), Correct: \(isCorrect), Box: \(progress.currentBox)")
+            DebugLogger.data("📊 LeitnerService: Recorded Leitner answer - Term: \(terminologyEntry.englishTerm), Correct: \(isCorrect), Box: \(progress.currentBox)")
         } catch {
-            print("❌ LeitnerService: Failed to save Leitner progress: \(error)")
+            DebugLogger.data("❌ LeitnerService: Failed to save Leitner progress: \(error)")
         }
     }
     
@@ -218,9 +218,9 @@ final class LeitnerService: ObservableObject {
         
         do {
             try modelContext.save()
-            print("📊 LeitnerService: Recorded classic answer - Term: \(terminologyEntry.englishTerm), Correct: \(isCorrect), Mastery: \(progress.masteryLevel)")
+            DebugLogger.data("📊 LeitnerService: Recorded classic answer - Term: \(terminologyEntry.englishTerm), Correct: \(isCorrect), Mastery: \(progress.masteryLevel)")
         } catch {
-            print("❌ LeitnerService: Failed to save classic progress: \(error)")
+            DebugLogger.data("❌ LeitnerService: Failed to save classic progress: \(error)")
         }
     }
     
@@ -266,7 +266,7 @@ final class LeitnerService: ObservableObject {
                 return newProgress
             }
         } catch {
-            print("❌ LeitnerService: Failed to fetch/create progress: \(error)")
+            DebugLogger.data("❌ LeitnerService: Failed to fetch/create progress: \(error)")
             // Fallback: create new progress entry
             let newProgress = UserTerminologyProgress(terminologyEntry: terminologyEntry, userProfile: userProfile)
             modelContext.insert(newProgress)
@@ -298,7 +298,7 @@ final class LeitnerService: ObservableObject {
             
             return distribution
         } catch {
-            print("❌ LeitnerService: Failed to get box distribution: \(error)")
+            DebugLogger.data("❌ LeitnerService: Failed to get box distribution: \(error)")
             return [:]
         }
     }
@@ -320,7 +320,7 @@ final class LeitnerService: ObservableObject {
                 }.count
                 return dueCount
             } catch {
-                print("❌ LeitnerService: Failed to count due terms: \(error)")
+                DebugLogger.data("❌ LeitnerService: Failed to count due terms: \(error)")
                 return 0
             }
         } else {
@@ -335,7 +335,7 @@ final class LeitnerService: ObservableObject {
      * Migrates existing progress data to Leitner boxes (called when enabling Leitner mode)
      */
     func migrateToLeitnerMode(userProfile: UserProfile) {
-        print("🔄 LeitnerService: Starting migration to Leitner mode for \(userProfile.name)")
+        DebugLogger.data("🔄 LeitnerService: Starting migration to Leitner mode for \(userProfile.name)")
         
         let profileId = userProfile.id
         let descriptor = FetchDescriptor<UserTerminologyProgress>()
@@ -363,9 +363,9 @@ final class LeitnerService: ObservableObject {
             }
             
             try modelContext.save()
-            print("✅ LeitnerService: Migrated \(userProgress.count) progress entries to Leitner boxes")
+            DebugLogger.data("✅ LeitnerService: Migrated \(userProgress.count) progress entries to Leitner boxes")
         } catch {
-            print("❌ LeitnerService: Failed to migrate to Leitner mode: \(error)")
+            DebugLogger.data("❌ LeitnerService: Failed to migrate to Leitner mode: \(error)")
         }
     }
 }

@@ -204,13 +204,13 @@ struct UserSettingsView: View {
         // Use @Query first, but fall back to service if empty
         if !beltLevels.isEmpty {
             let sorted = beltLevels.sorted { $0.sortOrder > $1.sortOrder } // Higher sortOrder first (10th Keup -> 1st Dan)
-            print("🔧 DEBUG: sortedBeltLevels from @Query count: \(sorted.count)")
+            DebugLogger.profile("🔧 DEBUG: sortedBeltLevels from @Query count: \(sorted.count)")
             return sorted
         } else {
             // Fallback: Load belt levels directly from service
             let serviceBelts = dataServices.patternService.getAllBeltLevels()
             let sorted = serviceBelts.sorted { $0.sortOrder > $1.sortOrder }
-            print("🔧 DEBUG: sortedBeltLevels from service count: \(sorted.count)")
+            DebugLogger.profile("🔧 DEBUG: sortedBeltLevels from service count: \(sorted.count)")
             return sorted
         }
     }
@@ -254,26 +254,26 @@ struct UserSettingsView: View {
     // MARK: - Helper Methods
     
     private func loadCurrentSettings() {
-        print("🔧 DEBUG: UserSettingsView loading current settings")
+        DebugLogger.profile("🔧 DEBUG: UserSettingsView loading current settings")
         isRefreshing = true
         
         // Use ProfileService to get the active profile instead of cached method
         userProfile = dataServices.profileService.getActiveProfile()
-        print("🔧 DEBUG: Active profile from service: \(userProfile?.name ?? "nil")")
+        DebugLogger.profile("🔧 DEBUG: Active profile from service: \(userProfile?.name ?? "nil")")
         
         // If no active profile, create one using the DataManager method
         if userProfile == nil {
-            print("🔧 DEBUG: No active profile, creating default")
+            DebugLogger.profile("🔧 DEBUG: No active profile, creating default")
             userProfile = dataServices.getOrCreateDefaultUserProfile()
         }
         
         if let profile = userProfile {
-            print("🔧 DEBUG: Profile loaded: \(profile.name), belt: \(profile.currentBeltLevel.shortName)")
+            DebugLogger.profile("🔧 DEBUG: Profile loaded: \(profile.name), belt: \(profile.currentBeltLevel.shortName)")
             selectedBeltLevelId = profile.currentBeltLevel.id
             selectedLearningMode = profile.learningMode
             dailyStudyGoal = profile.dailyStudyGoal
         } else {
-            print("🔧 DEBUG: Still no profile after attempting creation")
+            DebugLogger.profile("🔧 DEBUG: Still no profile after attempting creation")
         }
         
         isRefreshing = false
@@ -292,7 +292,7 @@ struct UserSettingsView: View {
             try dataServices.modelContainer.mainContext.save()
             dismiss()
         } catch {
-            print("Failed to save settings: \(error)")
+            DebugLogger.profile("Failed to save settings: \(error)")
         }
     }
     

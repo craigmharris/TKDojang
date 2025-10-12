@@ -263,7 +263,7 @@ class TechniquesDataService: ObservableObject {
         
         // First try: Scan Techniques subdirectory for any JSON files
         if let techniquesPath = Bundle.main.path(forResource: nil, ofType: nil, inDirectory: "Techniques") {
-            print("📁 Scanning Techniques subdirectory: \(techniquesPath)")
+            DebugLogger.data("📁 Scanning Techniques subdirectory: \(techniquesPath)")
             
             do {
                 let fileManager = FileManager.default
@@ -278,13 +278,13 @@ class TechniquesDataService: ObservableObject {
                     foundFiles.append(jsonFile)
                 }
             } catch {
-                print("⚠️ Failed to scan Techniques subdirectory: \(error)")
+                DebugLogger.data("⚠️ Failed to scan Techniques subdirectory: \(error)")
             }
         }
         
         // Fallback: Try bundle root for technique files
         if foundFiles.isEmpty, let bundlePath = Bundle.main.resourcePath {
-            print("📁 Techniques subdirectory not found, scanning bundle root for technique files...")
+            DebugLogger.data("📁 Techniques subdirectory not found, scanning bundle root for technique files...")
             
             do {
                 let fileManager = FileManager.default
@@ -299,11 +299,11 @@ class TechniquesDataService: ObservableObject {
                 
                 foundFiles = techniqueFiles
             } catch {
-                print("⚠️ Failed to scan bundle root: \(error)")
+                DebugLogger.data("⚠️ Failed to scan bundle root: \(error)")
             }
         }
         
-        print("📁 Found \(foundFiles.count) technique JSON files: \(foundFiles.sorted())")
+        DebugLogger.data("📁 Found \(foundFiles.count) technique JSON files: \(foundFiles.sorted())")
         return foundFiles.sorted()
     }
     
@@ -318,11 +318,11 @@ class TechniquesDataService: ObservableObject {
         isLoading = true
         loadingError = nil
         
-        print("🗃️ TechniquesDataService: Loading all technique data...")
+        DebugLogger.data("🗃️ TechniquesDataService: Loading all technique data...")
         
         // Dynamically discover and load technique files
         let techniqueFiles = discoverTechniqueFiles()
-        print("🔍 TechniquesDataService: Discovered \(techniqueFiles.count) technique files: \(techniqueFiles)")
+        DebugLogger.data("🔍 TechniquesDataService: Discovered \(techniqueFiles.count) technique files: \(techniqueFiles)")
         
         for file in techniqueFiles {
             await loadTechniqueFile(file)
@@ -337,7 +337,7 @@ class TechniquesDataService: ObservableObject {
         // Build master list of all techniques
         allTechniques = techniquesCache.values.flatMap { $0 }
         
-        print("✅ TechniquesDataService: Loaded \(allTechniques.count) techniques across \(techniquesCache.count) categories")
+        DebugLogger.data("✅ TechniquesDataService: Loaded \(allTechniques.count) techniques across \(techniquesCache.count) categories")
         
         isLoading = false
     }
@@ -460,7 +460,7 @@ class TechniquesDataService: ObservableObject {
             }
             
             guard let url = url else {
-                print("❌ Could not find \(filename) at expected path")
+                DebugLogger.data("❌ Could not find \(filename) at expected path")
                 return
             }
             
@@ -537,10 +537,10 @@ class TechniquesDataService: ObservableObject {
                 techniquesCache[category] = techniques
             }
             
-            print("✅ Loaded \(techniquesCache[category]?.count ?? 0) techniques from \(filename)")
+            DebugLogger.data("✅ Loaded \(techniquesCache[category]?.count ?? 0) techniques from \(filename)")
             
         } catch {
-            print("❌ Failed to load \(filename): \(error)")
+            DebugLogger.data("❌ Failed to load \(filename): \(error)")
         }
     }
     
@@ -562,7 +562,7 @@ class TechniquesDataService: ObservableObject {
             }
             
             guard let url = url else {
-                print("❌ Could not find techniques_index.json")
+                DebugLogger.data("❌ Could not find techniques_index.json")
                 return
             }
             
@@ -571,7 +571,7 @@ class TechniquesDataService: ObservableObject {
             categoriesCache = indexData.categories
             
         } catch {
-            print("❌ Failed to load techniques index: \(error)")
+            DebugLogger.data("❌ Failed to load techniques index: \(error)")
         }
     }
     
@@ -593,7 +593,7 @@ class TechniquesDataService: ObservableObject {
             }
             
             guard let url = url else {
-                print("❌ Could not find target_areas.json")
+                DebugLogger.data("❌ Could not find target_areas.json")
                 return
             }
             
@@ -602,7 +602,7 @@ class TechniquesDataService: ObservableObject {
             targetAreasCache = targetData.targetAreas
             
         } catch {
-            print("❌ Failed to load target areas: \(error)")
+            DebugLogger.data("❌ Failed to load target areas: \(error)")
         }
     }
     

@@ -154,7 +154,7 @@ struct SafeDataManagementView: View {
             )
             profiles = try dataServices.modelContext.fetch(descriptor)
         } catch {
-            print("❌ Failed to load profiles: \(error)")
+            DebugLogger.profile("❌ Failed to load profiles: \(error)")
         }
     }
     
@@ -175,9 +175,9 @@ struct SafeDataManagementView: View {
             }
             
             loadProfiles()
-            print("✅ Profile deleted successfully")
+            DebugLogger.profile("✅ Profile deleted successfully")
         } catch {
-            print("❌ Failed to delete profile: \(error)")
+            DebugLogger.profile("❌ Failed to delete profile: \(error)")
         }
         
         profileDeleteConfirmation = ""
@@ -202,9 +202,9 @@ struct SafeDataManagementView: View {
             }
             
             try dataServices.modelContext.save()
-            print("✅ Progress reset successfully")
+            DebugLogger.profile("✅ Progress reset successfully")
         } catch {
-            print("❌ Failed to reset progress: \(error)")
+            DebugLogger.profile("❌ Failed to reset progress: \(error)")
         }
         
         selectedProfile = nil
@@ -247,7 +247,7 @@ struct SafeDataManagementView: View {
     private func resetTestResults(for profile: UserProfile) {
         // This would reset test sessions when that model supports multi-profile
         // For now, this is a placeholder
-        print("⚠️ Test result reset not yet implemented for multi-profile")
+        DebugLogger.profile("⚠️ Test result reset not yet implemented for multi-profile")
     }
     
     private func exportAllProfilesData() {

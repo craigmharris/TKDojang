@@ -74,7 +74,7 @@ class ProgressCacheService {
                 }
             }
         } catch {
-            print("❌ Failed to refresh all caches: \(error)")
+            DebugLogger.data("❌ Failed to refresh all caches: \(error)")
         }
     }
     
@@ -98,7 +98,7 @@ class ProgressCacheService {
             
             return snapshot
         } catch {
-            print("❌ Failed to update cache for profile \(profileId): \(error)")
+            DebugLogger.data("❌ Failed to update cache for profile \(profileId): \(error)")
             return nil
         }
     }

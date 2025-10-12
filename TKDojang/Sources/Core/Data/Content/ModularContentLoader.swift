@@ -41,10 +41,10 @@ class ModularContentLoader {
             // Discover and load all content files
             try loadAllContent(beltLevels: beltLevels, categories: categories)
             
-            print("✅ Successfully loaded complete TAGB system with \(beltLevels.count) belts and \(categories.count) categories")
+            DebugLogger.data("✅ Successfully loaded complete TAGB system with \(beltLevels.count) belts and \(categories.count) categories")
             
         } catch {
-            print("❌ Failed to load TAGB system: \(error)")
+            DebugLogger.data("❌ Failed to load TAGB system: \(error)")
         }
     }
     
@@ -53,12 +53,12 @@ class ModularContentLoader {
      */
     private func loadBeltSystem() throws -> BeltSystemConfig {
         guard let url = Bundle.main.url(forResource: "belt_system", withExtension: "json") else {
-            print("❌ belt_system.json not found in bundle")
+            DebugLogger.data("❌ belt_system.json not found in bundle")
             throw ContentLoadError.missingFile("belt_system.json")
         }
         
         guard let data = try? Data(contentsOf: url) else {
-            print("❌ Failed to read belt_system.json data")
+            DebugLogger.data("❌ Failed to read belt_system.json data")
             throw ContentLoadError.missingFile("belt_system.json")
         }
         
@@ -140,10 +140,10 @@ class ModularContentLoader {
                     do {
                         try loadCategoryContent(from: resourceURL, belt: belt, category: category)
                     } catch {
-                        print("❌ Failed to load content from \(uniqueFileName).json: \(error)")
+                        DebugLogger.data("❌ Failed to load content from \(uniqueFileName).json: \(error)")
                     }
                 } else {
-                    print("❌ Category '\(categoryName)' not found in categories")
+                    DebugLogger.data("❌ Category '\(categoryName)' not found in categories")
                 }
             }
         }
@@ -184,7 +184,7 @@ class ModularContentLoader {
         do {
             let _ = try JSONDecoder().decode(CategoryContent.self, from: data)
         } catch {
-            print("❌ Failed to decode \(url.lastPathComponent): \(error)")
+            DebugLogger.data("❌ Failed to decode \(url.lastPathComponent): \(error)")
             throw error
         }
         
@@ -195,7 +195,7 @@ class ModularContentLoader {
         
         // Validate that file matches expected belt level
         guard content.beltLevel == expectedBeltId else {
-            print("⚠️ Belt level mismatch in \(url.lastPathComponent): expected \(expectedBeltId), got \(content.beltLevel)")
+            DebugLogger.data("⚠️ Belt level mismatch in \(url.lastPathComponent): expected \(expectedBeltId), got \(content.beltLevel)")
             return
         }
         

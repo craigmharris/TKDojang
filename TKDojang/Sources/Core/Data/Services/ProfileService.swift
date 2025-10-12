@@ -97,7 +97,7 @@ class ProfileService {
             try activateProfile(profile)
         }
         
-        print("✅ Created profile: \(name) with \(avatar.displayName) avatar")
+        DebugLogger.profile("✅ Created profile: \(name) with \(avatar.displayName) avatar")
         return profile
     }
     
@@ -145,7 +145,7 @@ class ProfileService {
         // Auto-backup profile after update
         exportService?.autoBackupProfile(profile)
         
-        print("✅ Updated profile: \(profile.name)")
+        DebugLogger.profile("✅ Updated profile: \(profile.name)")
     }
     
     /**
@@ -178,7 +178,7 @@ class ProfileService {
         // Reorder remaining profiles
         try reorderProfiles()
         
-        print("✅ Deleted profile: \(profile.name)")
+        DebugLogger.profile("✅ Deleted profile: \(profile.name)")
     }
     
     /**
@@ -208,7 +208,7 @@ class ProfileService {
         // Auto-backup profile after activation
         exportService?.autoBackupProfile(profile)
         
-        print("🔄 Activated profile: \(profile.name)")
+        DebugLogger.profile("🔄 Activated profile: \(profile.name)")
     }
     
     // MARK: - Profile Queries
@@ -307,7 +307,7 @@ class ProfileService {
             await progressCacheService?.refreshCache(for: active.id)
         }
         
-        print("📊 Recorded \(sessionType.displayName) session for \(active.name)")
+        DebugLogger.profile("📊 Recorded \(sessionType.displayName) session for \(active.name)")
     }
     
     // MARK: - Profile Migration and Setup
@@ -318,7 +318,7 @@ class ProfileService {
     func migrateExistingData(to profile: UserProfile) throws {
         // This would be called during app upgrade to handle existing user data
         // Implementation would depend on existing data structure
-        print("🔄 Migrating existing data to profile: \(profile.name)")
+        DebugLogger.profile("🔄 Migrating existing data to profile: \(profile.name)")
         
         // For now, this is a placeholder for future implementation
         // when we need to handle existing installations
@@ -351,7 +351,7 @@ class ProfileService {
      * CRITICAL: This prevents SwiftData crashes when profiles are deleted
      */
     func clearActiveProfileForReset() {
-        print("🔄 Clearing active profile reference for database reset")
+        DebugLogger.profile("🔄 Clearing active profile reference for database reset")
         activeProfile = nil
     }
     
@@ -371,7 +371,7 @@ class ProfileService {
                 }
             }
         } catch {
-            print("❌ Failed to load active profile: \(error)")
+            DebugLogger.profile("❌ Failed to load active profile: \(error)")
         }
     }
     

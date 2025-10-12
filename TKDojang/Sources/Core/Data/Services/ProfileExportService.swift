@@ -357,9 +357,9 @@ class ProfileExportService: ObservableObject {
         Task {
             do {
                 _ = try saveToiCloud(profile)
-                print("✅ Profile \(profile.name) automatically backed up to iCloud")
+                DebugLogger.data("✅ Profile \(profile.name) automatically backed up to iCloud")
             } catch {
-                print("⚠️ Failed to auto-backup profile to iCloud: \(error)")
+                DebugLogger.data("⚠️ Failed to auto-backup profile to iCloud: \(error)")
                 // Silent failure - automatic backup shouldn't interrupt user flow
             }
         }
@@ -431,7 +431,7 @@ class ProfileExportService: ObservableObject {
             do {
                 return try convertToExportableTerminology(progress)
             } catch {
-                print("⚠️ Skipping invalidated terminology progress: \(error)")
+                DebugLogger.data("⚠️ Skipping invalidated terminology progress: \(error)")
                 return nil
             }
         }
@@ -452,7 +452,7 @@ class ProfileExportService: ObservableObject {
             do {
                 return try convertToExportablePattern(progress)
             } catch {
-                print("⚠️ Skipping invalidated pattern progress: \(error)")
+                DebugLogger.data("⚠️ Skipping invalidated pattern progress: \(error)")
                 return nil
             }
         }
@@ -546,7 +546,7 @@ class ProfileExportService: ObservableObject {
                 let exportable = try convertToExportableTerminology(progress)
                 validProgress.append(exportable)
             } catch {
-                print("⚠️ Skipping invalidated terminology progress: \(error)")
+                DebugLogger.data("⚠️ Skipping invalidated terminology progress: \(error)")
             }
         }
         
@@ -580,7 +580,7 @@ class ProfileExportService: ObservableObject {
                 let exportable = try convertToExportablePattern(progress)
                 validProgress.append(exportable)
             } catch {
-                print("⚠️ Skipping invalidated pattern progress: \(error)")
+                DebugLogger.data("⚠️ Skipping invalidated pattern progress: \(error)")
             }
         }
         
@@ -627,7 +627,7 @@ class ProfileExportService: ObservableObject {
                 let exportable = try convertToExportableStepSparring(progress)
                 validProgress.append(exportable)
             } catch {
-                print("⚠️ Skipping invalidated step sparring progress: \(error)")
+                DebugLogger.data("⚠️ Skipping invalidated step sparring progress: \(error)")
                 // Continue with other progress objects
             }
         }
@@ -721,7 +721,7 @@ class ProfileExportService: ObservableObject {
         let entries = try modelContext.fetch(entryRequest)
         
         guard let terminologyEntry = entries.first else {
-            print("⚠️ Terminology entry not found for ID: \(data.terminologyEntryID)")
+            DebugLogger.data("⚠️ Terminology entry not found for ID: \(data.terminologyEntryID)")
             return
         }
         
@@ -747,7 +747,7 @@ class ProfileExportService: ObservableObject {
         )
         
         guard let pattern = try? modelContext.fetch(patternRequest).first else {
-            print("⚠️ Pattern not found for name: \(data.patternName)")
+            DebugLogger.data("⚠️ Pattern not found for name: \(data.patternName)")
             return
         }
         
@@ -789,7 +789,7 @@ class ProfileExportService: ObservableObject {
         )
         
         guard let sequence = try? modelContext.fetch(sequenceRequest).first else {
-            print("⚠️ Step sparring sequence not found for type: \(data.sequenceType), number: \(data.sequenceNumber)")
+            DebugLogger.data("⚠️ Step sparring sequence not found for type: \(data.sequenceType), number: \(data.sequenceNumber)")
             return
         }
         
@@ -846,7 +846,7 @@ class ProfileExportService: ObservableObject {
                 return startingBelt
             }
         } catch {
-            print("❌ ProfileExportService: Failed to fetch belt levels: \(error)")
+            DebugLogger.data("❌ ProfileExportService: Failed to fetch belt levels: \(error)")
         }
         
         // Fallback to creating a basic white belt if no belts exist
@@ -856,8 +856,8 @@ class ProfileExportService: ObservableObject {
     private func getiCloudDocumentsURL() throws -> URL {
         // Check if iCloud is available and properly configured
         guard FileManager.default.url(forUbiquityContainerIdentifier: nil) != nil else {
-            print("❌ iCloud Documents not available - App needs iCloud capability in Xcode project settings")
-            print("💡 To fix: In Xcode, go to target settings → Signing & Capabilities → + Capability → iCloud → Documents")
+            DebugLogger.data("❌ iCloud Documents not available - App needs iCloud capability in Xcode project settings")
+            DebugLogger.data("💡 To fix: In Xcode, go to target settings → Signing & Capabilities → + Capability → iCloud → Documents")
             throw ProfileImportError.iCloudNotAvailable
         }
         
@@ -869,9 +869,9 @@ class ProfileExportService: ObservableObject {
         // Create directory if it doesn't exist
         do {
             try FileManager.default.createDirectory(at: iCloudURL, withIntermediateDirectories: true)
-            print("✅ iCloud Documents directory ready: \(iCloudURL.path)")
+            DebugLogger.data("✅ iCloud Documents directory ready: \(iCloudURL.path)")
         } catch {
-            print("❌ Failed to create iCloud Documents directory: \(error)")
+            DebugLogger.data("❌ Failed to create iCloud Documents directory: \(error)")
             throw error
         }
         

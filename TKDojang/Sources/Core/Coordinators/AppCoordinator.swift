@@ -32,7 +32,7 @@ class AppCoordinator: ObservableObject {
      */
     @Published var currentFlow: AppFlow = .loading {
         didSet {
-            print("🔀 AppCoordinator: currentFlow changed from \(oldValue) to \(currentFlow) - \(Date())")
+            DebugLogger.ui("🔀 AppCoordinator: currentFlow changed from \(oldValue) to \(currentFlow) - \(Date())")
         }
     }
     
@@ -83,7 +83,7 @@ class AppCoordinator: ObservableObject {
      * SIMPLE APPROACH: Always start with loading screen first
      */
     private func determineInitialFlow() {
-        print("🔍 AppCoordinator: Starting with loading screen... - \(Date())")
+        DebugLogger.ui("🔍 AppCoordinator: Starting with loading screen... - \(Date())")
         
         // ALWAYS start with loading screen to show Korean animation
         currentFlow = .loading
@@ -94,19 +94,19 @@ class AppCoordinator: ObservableObject {
             try? await Task.sleep(nanoseconds: 1_000_000_000)
             
             // Initialize data while still showing loading screen
-            print("🔍 Starting background data initialization... - \(Date())")
+            DebugLogger.data("🔍 Starting background data initialization... - \(Date())")
             await initializeAppData()
-            print("✅ Background data initialization complete - \(Date())")
+            DebugLogger.data("✅ Background data initialization complete - \(Date())")
             
             // Now determine the appropriate flow
             await MainActor.run {
                 let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
                 
                 if hasCompletedOnboarding {
-                    print("✅ User has completed onboarding, showing main flow - \(Date())")
+                    DebugLogger.ui("✅ User has completed onboarding, showing main flow - \(Date())")
                     self.showMainFlow()
                 } else {
-                    print("🎯 User needs onboarding, showing onboarding flow")
+                    DebugLogger.ui("🎯 User needs onboarding, showing onboarding flow")
                     self.showOnboarding()
                 }
             }
@@ -141,9 +141,7 @@ class AppCoordinator: ObservableObject {
      */
     @MainActor
     private func initializeAppData() async {
-        print("🔍 AppCoordinator: Initializing app data... - \(Date())")
-        
-        let dataManager = DataManager.shared
+        DebugLogger.data("🔍 AppCoordinator: Initializing app data... - \(Date())")
         
         // Always ensure content is synchronized with JSON files
         do {
@@ -151,25 +149,25 @@ class AppCoordinator: ObservableObject {
             let existingBeltLevels = try DataManager.shared.modelContainer.mainContext.fetch(descriptor)
             
             if existingBeltLevels.isEmpty {
-                print("🗃️ Database is empty, loading all initial content from JSON...")
+                DebugLogger.data("🗃️ Database is empty, loading all initial content from JSON...")
                 
                 // Load terminology and belt data
                 let modularLoader = ModularContentLoader(dataService: DataManager.shared.terminologyService)
                 modularLoader.loadCompleteSystem()
-                print("✅ Terminology and belt data loaded")
+                DebugLogger.data("✅ Terminology and belt data loaded")
             } else {
-                print("✅ Database already has \(existingBeltLevels.count) belt levels, running content synchronization...")
+                DebugLogger.data("✅ Database already has \(existingBeltLevels.count) belt levels, running content synchronization...")
             }
             
             // Always ensure content is synchronized
             await DataManager.shared.setupInitialData()
-            print("✅ Content synchronization complete")
+            DebugLogger.data("✅ Content synchronization complete")
             
             // Load shared profile state for ProfileSwitcher optimization
             DataServices.shared.loadSharedProfileState()
-            print("✅ Shared profile state loaded for ProfileSwitcher optimization")
+            DebugLogger.data("✅ Shared profile state loaded for ProfileSwitcher optimization")
         } catch {
-            print("❌ Failed to initialize app data: \(error)")
+            DebugLogger.data("❌ Failed to initialize app data: \(error)")
             // Continue anyway - app can still function with empty database
         }
     }

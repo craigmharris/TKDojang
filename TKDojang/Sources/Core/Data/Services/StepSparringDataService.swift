@@ -42,10 +42,10 @@ final class StepSparringDataService {
                 }
                 return lhs.sequenceNumber < rhs.sequenceNumber
             }
-            print("📚 DEBUG: loadAllSequences() found \(sequences.count) step sparring sequences in database")
+            DebugLogger.data("📚 DEBUG: loadAllSequences() found \(sequences.count) step sparring sequences in database")
             return sequences
         } catch {
-            print("❌ Failed to load step sparring sequences: \(error)")
+            DebugLogger.data("❌ Failed to load step sparring sequences: \(error)")
             return []
         }
     }
@@ -82,19 +82,19 @@ final class StepSparringDataService {
                 // Manual belt level checking - BYPASS the relationship entirely
                 let isAvailable = manualBeltLevelCheck(for: sequence, userBelt: userProfile.currentBeltLevel)
                 
-                print("🔍 FILTER DEBUG: Sequence #\(sequence.sequenceNumber) '\(sequence.name)':")
-                print("   Manual belt check result: \(isAvailable)")
-                print("   User belt: \(userProfile.currentBeltLevel.shortName)(\(userProfile.currentBeltLevel.sortOrder))")
-                print("   Available: \(isAvailable)")
+                DebugLogger.data("🔍 FILTER DEBUG: Sequence #\(sequence.sequenceNumber) '\(sequence.name)':")
+                DebugLogger.data("   Manual belt check result: \(isAvailable)")
+                DebugLogger.data("   User belt: \(userProfile.currentBeltLevel.shortName)(\(userProfile.currentBeltLevel.sortOrder))")
+                DebugLogger.data("   Available: \(isAvailable)")
                 
                 return isAvailable
             }
             
             let sortedSequences = filteredSequences.sorted { $0.sequenceNumber < $1.sequenceNumber }
-            print("✅ Found \(sortedSequences.count) \(type.displayName) sequences")
+            DebugLogger.data("✅ Found \(sortedSequences.count) \(type.displayName) sequences")
             return sortedSequences
         } catch {
-            print("❌ Failed to fetch sequences: \(error)")
+            DebugLogger.data("❌ Failed to fetch sequences: \(error)")
             return []
         }
     }
@@ -150,7 +150,7 @@ final class StepSparringDataService {
                 return belt.sortOrder
             }
         } catch {
-            print("❌ Failed to get sort order for \(beltName): \(error)")
+            DebugLogger.data("❌ Failed to get sort order for \(beltName): \(error)")
         }
         
         return Int.max // Default to inaccessible if belt not found
@@ -168,7 +168,7 @@ final class StepSparringDataService {
             let results = try modelContext.fetch(descriptor)
             return results.first
         } catch {
-            print("❌ Failed to fetch sequence \(id): \(error)")
+            DebugLogger.data("❌ Failed to fetch sequence \(id): \(error)")
             return nil
         }
     }
@@ -195,7 +195,7 @@ final class StepSparringDataService {
                 progress.sequence.id == sequenceId
             }
         } catch {
-            print("❌ Failed to fetch step sparring progress: \(error)")
+            DebugLogger.data("❌ Failed to fetch step sparring progress: \(error)")
             return nil
         }
     }
@@ -220,9 +220,9 @@ final class StepSparringDataService {
         
         do {
             try modelContext.save()
-            print("✅ Created step sparring progress for \(sequence.name)")
+            DebugLogger.data("✅ Created step sparring progress for \(sequence.name)")
         } catch {
-            print("❌ Failed to save step sparring progress: \(error)")
+            DebugLogger.data("❌ Failed to save step sparring progress: \(error)")
         }
         
         return newProgress
@@ -242,9 +242,9 @@ final class StepSparringDataService {
         
         do {
             try modelContext.save()
-            print("✅ Recorded practice session for \(sequence.name)")
+            DebugLogger.data("✅ Recorded practice session for \(sequence.name)")
         } catch {
-            print("❌ Failed to save practice session: \(error)")
+            DebugLogger.data("❌ Failed to save practice session: \(error)")
         }
     }
     
@@ -268,7 +268,7 @@ final class StepSparringDataService {
             // Return without additional sorting to avoid relationship access
             return allProgress
         } catch {
-            print("❌ Failed to fetch user step sparring progress: \(error)")
+            DebugLogger.data("❌ Failed to fetch user step sparring progress: \(error)")
             return []
         }
     }
@@ -322,7 +322,7 @@ final class StepSparringDataService {
      * Clears existing step sparring sequences and reloads from JSON
      */
     func clearAndReloadStepSparring() {
-        print("🔄 Clearing and reloading step sparring sequences from JSON...")
+        DebugLogger.data("🔄 Clearing and reloading step sparring sequences from JSON...")
         
         // Clear existing sequences and progress
         do {
@@ -341,16 +341,16 @@ final class StepSparringDataService {
             }
             
             try modelContext.save()
-            print("🗑️ Cleared \(existingSequences.count) sequences and \(existingProgress.count) progress records")
+            DebugLogger.data("🗑️ Cleared \(existingSequences.count) sequences and \(existingProgress.count) progress records")
         } catch {
-            print("❌ Failed to clear existing step sparring data: \(error)")
+            DebugLogger.data("❌ Failed to clear existing step sparring data: \(error)")
         }
         
         // Reload from JSON
         let loader = StepSparringContentLoader(stepSparringService: self)
         loader.loadAllContent()
         
-        print("✅ Step sparring sequences reloaded from JSON")
+        DebugLogger.data("✅ Step sparring sequences reloaded from JSON")
     }
     
     

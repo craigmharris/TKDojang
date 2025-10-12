@@ -105,7 +105,7 @@ struct StepSparringContentLoader {
         case "semi_free":
             return .semiFree
         default:
-            print("⚠️ Unknown step sparring type '\(jsonType)' - defaulting to three_step")
+            DebugLogger.data("⚠️ Unknown step sparring type '\(jsonType)' - defaulting to three_step")
             return .threeStep
         }
     }
@@ -137,7 +137,7 @@ struct StepSparringContentLoader {
         }
         
         guard let fileUrl = url else {
-            print("❌ Could not find \(filename).json in any location")
+            DebugLogger.data("❌ Could not find \(filename).json in any location")
             return
         }
         
@@ -166,7 +166,7 @@ struct StepSparringContentLoader {
             DebugLogger.data("✅ Successfully loaded \(contentData.sequences.count) \(sparringType.displayName) sparring sequences from \(filename)")
             
         } catch {
-            print("❌ Failed to load sparring content from \(filename): \(error)")
+            DebugLogger.data("❌ Failed to load sparring content from \(filename): \(error)")
         }
     }
     
@@ -187,9 +187,9 @@ struct StepSparringContentLoader {
         sequence.applicableBeltLevelIds = data.applicableBeltLevels
         // sequence.beltLevels = [] // Leave empty to avoid relationship crashes
         
-        print("🔍 BELT DEBUG: Sequence #\(data.sequenceNumber) '\(data.name)':")
-        print("   JSON belt IDs: \(data.applicableBeltLevels)")
-        print("   Stored in applicableBeltLevelIds: \(sequence.applicableBeltLevelIds)")
+        DebugLogger.data("🔍 BELT DEBUG: Sequence #\(data.sequenceNumber) '\(data.name)':")
+        DebugLogger.data("   JSON belt IDs: \(data.applicableBeltLevels)")
+        DebugLogger.data("   Stored in applicableBeltLevelIds: \(sequence.applicableBeltLevelIds)")
         
         // Create steps and sort by step number to ensure correct order
         sequence.steps = data.steps
@@ -224,9 +224,9 @@ struct StepSparringContentLoader {
             let totalSteps = sequence.type.stepCount
             if data.stepNumber == totalSteps {
                 step.counterAction = createAction(from: counterData)
-                print("✅ Added counter attack to final step #\(data.stepNumber) of '\(sequence.name)'")
+                DebugLogger.data("✅ Added counter attack to final step #\(data.stepNumber) of '\(sequence.name)'")
             } else {
-                print("⚠️ WARNING: Counter attack found in step #\(data.stepNumber) of '\(sequence.name)' - should only be in final step #\(totalSteps)")
+                DebugLogger.data("⚠️ WARNING: Counter attack found in step #\(data.stepNumber) of '\(sequence.name)' - should only be in final step #\(totalSteps)")
                 // Still add it but log the warning
                 step.counterAction = createAction(from: counterData)
             }

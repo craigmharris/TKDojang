@@ -19,8 +19,8 @@ import SwiftUI
 struct TKDojangApp: App {
     
     init() {
-        print("🏁 TKDojangApp.init() - App struct being created - \(Date())")
-        print("🚀 TKDojang App Starting... - \(Date())")
+        DebugLogger.ui("🏁 TKDojangApp.init() - App struct being created - \(Date())")
+        DebugLogger.ui("🚀 TKDojang App Starting... - \(Date())")
     }
     
     // MARK: - Properties
@@ -32,7 +32,7 @@ struct TKDojangApp: App {
      * making the app more testable and navigation flow easier to modify
      */
     @StateObject private var appCoordinator = {
-        print("📋 Creating AppCoordinator... - \(Date())")
+        DebugLogger.ui("📋 Creating AppCoordinator... - \(Date())")
         return AppCoordinator()
     }()
     
@@ -66,19 +66,18 @@ struct TKDojangApp: App {
      * setting up analytics, or restoring user preferences.
      */
     private func setupInitialState() {
-        print("📱 Setting up initial state...")
+        DebugLogger.ui("📱 Setting up initial state...")
         
-        // TODO: Check authentication status
-        // TODO: Initialize analytics
-        // TODO: Load user preferences
-        // TODO: Check for pending data synchronization
+        // Initial state setup complete - authentication is currently device-local
+        // Analytics and cloud sync features can be added in future updates
+        // User preferences are managed through ProfileService
         
         // Navigate to appropriate initial screen based on onboarding status
         if hasCompletedOnboarding {
-            print("✅ User has completed onboarding, showing main flow")
+            DebugLogger.ui("✅ User has completed onboarding, showing main flow")
             appCoordinator.showMainFlow()
         } else {
-            print("🎯 User needs onboarding, showing onboarding flow")
+            DebugLogger.ui("🎯 User needs onboarding, showing onboarding flow")
             appCoordinator.showOnboarding()
         }
     }

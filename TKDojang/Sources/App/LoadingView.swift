@@ -65,7 +65,7 @@ struct LoadingView: View {
     ]
     
     init() {
-        print("🎨 LoadingView: INIT - LoadingView is being created - \(Date())")
+        DebugLogger.ui("🎨 LoadingView: INIT - LoadingView is being created - \(Date())")
     }
     
     var body: some View {
@@ -169,54 +169,54 @@ struct LoadingView: View {
             }
         }
         .onAppear {
-            print("🎨 LoadingView: ON_APPEAR - LoadingView is now visible on screen! - \(Date())")
+            DebugLogger.ui("🎨 LoadingView: ON_APPEAR - LoadingView is now visible on screen! - \(Date())")
             
             // Enhanced font debug
-            print("📋 Font bundle debug:")
+            DebugLogger.ui("📋 Font bundle debug:")
             
             // Check if font file exists in bundle
             if let fontPath = Bundle.main.path(forResource: "NanumBrushScript-Regular", ofType: "ttf") {
-                print("  ✅ Font file found at: \(fontPath)")
+                DebugLogger.ui("  ✅ Font file found at: \(fontPath)")
                 
                 // Try to register font manually
                 let fontURL = URL(fileURLWithPath: fontPath)
                 if CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, nil) {
-                    print("  ✅ Font registered successfully")
+                    DebugLogger.ui("  ✅ Font registered successfully")
                 } else {
-                    print("  ❌ Font registration failed")
+                    DebugLogger.ui("  ❌ Font registration failed")
                 }
             } else {
-                print("  ❌ Font file not found in bundle")
+                DebugLogger.ui("  ❌ Font file not found in bundle")
                 // List all .ttf files in bundle
                 if let bundlePath = Bundle.main.resourcePath {
-                    print("  📁 Bundle contents (.ttf files):")
+                    DebugLogger.ui("  📁 Bundle contents (.ttf files):")
                     let fileManager = FileManager.default
                     do {
                         let files = try fileManager.contentsOfDirectory(atPath: bundlePath)
                         for file in files.filter({ $0.hasSuffix(".ttf") }) {
-                            print("    Found: \(file)")
+                            DebugLogger.ui("    Found: \(file)")
                         }
                     } catch {
-                        print("    Error reading bundle: \(error)")
+                        DebugLogger.ui("    Error reading bundle: \(error)")
                     }
                 }
             }
             
             // Check available fonts after potential registration
-            print("📋 Available font families with 'nanum' or 'brush':")
+            DebugLogger.ui("📋 Available font families with 'nanum' or 'brush':")
             for family in UIFont.familyNames.sorted() {
                 if family.lowercased().contains("nanum") || family.lowercased().contains("brush") {
-                    print("  Family: \(family)")
+                    DebugLogger.ui("  Family: \(family)")
                     for fontName in UIFont.fontNames(forFamilyName: family) {
-                        print("    Font: \(fontName)")
+                        DebugLogger.ui("    Font: \(fontName)")
                     }
                 }
             }
             if UIFont.familyNames.filter({ $0.lowercased().contains("nanum") || $0.lowercased().contains("brush") }).isEmpty {
-                print("  No Nanum or Brush fonts found in system")
+                DebugLogger.ui("  No Nanum or Brush fonts found in system")
             }
             
-            print("🎨 LoadingView: Starting scroll animation... - \(Date())")
+            DebugLogger.ui("🎨 LoadingView: Starting scroll animation... - \(Date())")
             
             // Mark font as ready after registration attempt
             fontIsReady = true
@@ -225,7 +225,7 @@ struct LoadingView: View {
             startColorAnimation()
         }
         .onDisappear {
-            print("🎨 LoadingView: ON_DISAPPEAR - LoadingView is being removed! - \(Date())")
+            DebugLogger.ui("🎨 LoadingView: ON_DISAPPEAR - LoadingView is being removed! - \(Date())")
         }
     }
     
@@ -250,7 +250,7 @@ struct LoadingView: View {
                 // Signal completion after a short pause
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     // Loading complete - app will handle transition
-                    print("🎨 LoadingView: Belt progression complete - ready for transition")
+                    DebugLogger.ui("🎨 LoadingView: Belt progression complete - ready for transition")
                 }
             }
         }

@@ -39,7 +39,7 @@ class EnhancedTerminologyService {
         learningSystem: LearningSystem
     ) -> [TerminologyEntry] {
         
-        print("🎯 Enhanced: Getting \(requestedCount) terms for \(userProfile.name) in \(userProfile.learningMode) mode")
+        DebugLogger.data("🎯 Enhanced: Getting \(requestedCount) terms for \(userProfile.name) in \(userProfile.learningMode) mode")
         
         let terms: [TerminologyEntry]
         
@@ -59,7 +59,7 @@ class EnhancedTerminologyService {
             )
         }
         
-        print("✅ Enhanced: Returning \(terms.count) terms for flashcard session")
+        DebugLogger.data("✅ Enhanced: Returning \(terms.count) terms for flashcard session")
         return terms
     }
     
@@ -80,7 +80,7 @@ class EnhancedTerminologyService {
         // Get terms for current belt only
         var availableTerms = getCurrentBeltTerms(beltSortOrder: currentBeltSortOrder)
         
-        print("📚 Progression: Found \(availableTerms.count) terms for current belt (\(userProfile.currentBeltLevel.shortName))")
+        DebugLogger.data("📚 Progression: Found \(availableTerms.count) terms for current belt (\(userProfile.currentBeltLevel.shortName))")
         
         // If we don't have enough terms, we'll allow repetition in different directions
         // This is handled by the FlashcardView itself when creating both directions
@@ -88,7 +88,7 @@ class EnhancedTerminologyService {
         // For Leitner mode, filter by due dates if enabled
         if learningSystem == .leitner {
             availableTerms = filterTermsForLeitner(terms: availableTerms, userProfile: userProfile)
-            print("🕐 Leitner: Filtered to \(availableTerms.count) due terms")
+            DebugLogger.data("🕐 Leitner: Filtered to \(availableTerms.count) due terms")
         }
         
         // Return up to requested count
@@ -117,14 +117,14 @@ class EnhancedTerminologyService {
         // Get all terms up to and including current belt
         var availableTerms = getAllTermsUpToBelt(beltSortOrder: currentBeltSortOrder)
         
-        print("📚 Mastery: Found \(availableTerms.count) terms up to current belt")
+        DebugLogger.data("📚 Mastery: Found \(availableTerms.count) terms up to current belt")
         
         // For Leitner mode, filter by due dates if enabled
         if learningSystem == .leitner {
             let dueTerms = filterTermsForLeitner(terms: availableTerms, userProfile: userProfile)
             if !dueTerms.isEmpty {
                 availableTerms = dueTerms
-                print("🕐 Leitner: Filtered to \(availableTerms.count) due terms")
+                DebugLogger.data("🕐 Leitner: Filtered to \(availableTerms.count) due terms")
             }
         }
         
@@ -152,7 +152,7 @@ class EnhancedTerminologyService {
             let terms = try terminologyService.modelContextForLoading.fetch(descriptor)
             return terms
         } catch {
-            print("❌ Enhanced: Failed to fetch current belt terms: \(error)")
+            DebugLogger.data("❌ Enhanced: Failed to fetch current belt terms: \(error)")
             return []
         }
     }
@@ -173,7 +173,7 @@ class EnhancedTerminologyService {
             let terms = try terminologyService.modelContextForLoading.fetch(descriptor)
             return terms
         } catch {
-            print("❌ Enhanced: Failed to fetch mastery terms: \(error)")
+            DebugLogger.data("❌ Enhanced: Failed to fetch mastery terms: \(error)")
             return []
         }
     }
@@ -201,7 +201,7 @@ class EnhancedTerminologyService {
         let currentBeltTerms = terms.filter { $0.beltLevel.sortOrder == currentBeltSortOrder }
         let priorBeltTerms = terms.filter { $0.beltLevel.sortOrder > currentBeltSortOrder }
         
-        print("📊 Smart Select: Current belt: \(currentBeltTerms.count), Prior belts: \(priorBeltTerms.count)")
+        DebugLogger.data("📊 Smart Select: Current belt: \(currentBeltTerms.count), Prior belts: \(priorBeltTerms.count)")
         
         // Calculate distribution
         let currentBeltAllocation = min(currentBeltTerms.count, Int(Double(maxCount) * 0.6)) // 60% for current belt
@@ -213,7 +213,7 @@ class EnhancedTerminologyService {
         
         let finalSelection = (selectedCurrentBelt + selectedPriorBelt).shuffled()
         
-        print("✅ Smart Select: Selected \(selectedCurrentBelt.count) current + \(selectedPriorBelt.count) prior = \(finalSelection.count) total")
+        DebugLogger.data("✅ Smart Select: Selected \(selectedCurrentBelt.count) current + \(selectedPriorBelt.count) prior = \(finalSelection.count) total")
         
         return finalSelection
     }
@@ -247,7 +247,7 @@ class EnhancedTerminologyService {
         // Shuffle and trim to target count
         let finalItems = Array(flashcardItems.shuffled().prefix(targetCount))
         
-        print("🔄 Card Repetition: Created \(finalItems.count) flashcard items from \(terms.count) unique terms")
+        DebugLogger.data("🔄 Card Repetition: Created \(finalItems.count) flashcard items from \(terms.count) unique terms")
         
         return finalItems
     }
@@ -274,11 +274,11 @@ class EnhancedTerminologyService {
             let priorTerms = try terminologyService.modelContextForLoading.fetch(descriptor)
             let topUpTerms = Array(priorTerms.shuffled().prefix(needed))
             
-            print("⬆️ Top-up: Added \(topUpTerms.count) terms from prior belt")
+            DebugLogger.data("⬆️ Top-up: Added \(topUpTerms.count) terms from prior belt")
             
             return topUpTerms
         } catch {
-            print("❌ Enhanced: Failed to fetch top-up terms: \(error)")
+            DebugLogger.data("❌ Enhanced: Failed to fetch top-up terms: \(error)")
             return []
         }
     }
