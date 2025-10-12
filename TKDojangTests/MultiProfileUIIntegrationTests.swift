@@ -30,34 +30,8 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        // Create comprehensive test container with all models needed for profile testing
-        let schema = Schema([
-            BeltLevel.self,
-            TerminologyCategory.self,
-            TerminologyEntry.self,
-            UserProfile.self,
-            UserTerminologyProgress.self,
-            UserPatternProgress.self,
-            UserStepSparringProgress.self,
-            StudySession.self,
-            GradingRecord.self,
-            Pattern.self,
-            PatternMove.self,
-            StepSparringSequence.self,
-            StepSparringStep.self,
-            StepSparringAction.self
-        ])
-        
-        let configuration = ModelConfiguration(
-            schema: schema,
-            isStoredInMemoryOnly: true
-        )
-        
-        testContainer = try ModelContainer(
-            for: schema,
-            configurations: [configuration]
-        )
-        
+        // Create comprehensive test container using centralized factory
+        testContainer = try TestContainerFactory.createTestContainer()
         testContext = ModelContext(testContainer)
         
         // Set up basic test data needed for profile operations

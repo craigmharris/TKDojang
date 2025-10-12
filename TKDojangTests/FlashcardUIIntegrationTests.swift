@@ -155,28 +155,13 @@ final class FlashcardUIIntegrationTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        // Create comprehensive test container with flashcard-related models
-        let schema = Schema([
-            BeltLevel.self,
-            TerminologyCategory.self,
-            TerminologyEntry.self,
-            UserProfile.self,
-            UserTerminologyProgress.self,
-            StudySession.self,
-            GradingRecord.self
-        ])
-        
-        let configuration = ModelConfiguration(
-            schema: schema,
-            isStoredInMemoryOnly: true
-        )
-        
-        testContainer = try ModelContainer(
-            for: schema,
-            configurations: [configuration]
-        )
-        
+        // Create comprehensive test container using centralized factory
+        testContainer = try TestContainerFactory.createTestContainer()
         testContext = ModelContext(testContainer)
+        
+        // Set up test data
+        let testData = TestDataFactory()
+        try testData.createBasicTestData(in: testContext)
         
         // Set up extensive flashcard test data
         let testData = TestDataFactory()

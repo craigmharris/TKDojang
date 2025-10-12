@@ -28,29 +28,16 @@ final class LineWorkSystemTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        // Create test container with required models
-        let schema = Schema([
-            BeltLevel.self,
-            TerminologyCategory.self,
-            TerminologyEntry.self,
-            UserProfile.self,
-            UserTerminologyProgress.self
-        ])
-        
-        let configuration = ModelConfiguration(
-            schema: schema,
-            isStoredInMemoryOnly: true
-        )
-        
-        testContainer = try ModelContainer(
-            for: schema,
-            configurations: [configuration]
-        )
-        
+        // Create comprehensive test container using centralized factory
+        testContainer = try TestContainerFactory.createTestContainer()
         testContext = ModelContext(testContainer)
         
-        // Setup test belt levels
-        try setupTestBeltLevels()
+        // Set up test data
+        let testData = TestDataFactory()
+        try testData.createBasicTestData(in: testContext)
+        
+        // Get belt levels from TestDataFactory
+        testBelts = TestDataFactory().createAllBeltLevels()
     }
     
     override func tearDownWithError() throws {
@@ -60,37 +47,7 @@ final class LineWorkSystemTests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    private func setupTestBeltLevels() throws {
-        // Create test belt levels with proper TAGB coloring
-        let testBeltData = [
-            ("10th Keup", "10th Keup", "White", 15, "#F5F5F5", "#F5F5F5"),
-            ("9th Keup", "9th Keup", "White with Yellow Tag", 14, "#F5F5F5", "#FFD60A"), 
-            ("8th Keup", "8th Keup", "Yellow", 13, "#FFD60A", "#FFD60A"),
-            ("7th Keup", "7th Keup", "Yellow with Green Tag", 12, "#FFD60A", "#4CAF50"),
-            ("6th Keup", "6th Keup", "Green", 11, "#4CAF50", "#4CAF50"),
-            ("5th Keup", "5th Keup", "Green with Blue Tag", 10, "#4CAF50", "#2196F3"),
-            ("4th Keup", "4th Keup", "Blue", 9, "#2196F3", "#2196F3"),
-            ("3rd Keup", "3rd Keup", "Blue with Red Tag", 8, "#2196F3", "#F44336"),
-            ("2nd Keup", "2nd Keup", "Red", 7, "#F44336", "#F44336"),
-            ("1st Keup", "1st Keup", "Red with Black Tag", 6, "#F44336", "#000000")
-        ]
-        
-        for (name, shortName, colorName, sortOrder, primary, secondary) in testBeltData {
-            let belt = BeltLevel(
-                name: name,
-                shortName: shortName,
-                colorName: colorName,
-                sortOrder: sortOrder,
-                isKyup: true
-            )
-            belt.primaryColor = primary
-            belt.secondaryColor = secondary
-            testBelts.append(belt)
-            testContext.insert(belt)
-        }
-        
-        try testContext.save()
-    }
+    // Removed: setupTestBeltLevels() - now using TestDataFactory
     
     // MARK: - Exercise Structure Tests
     
