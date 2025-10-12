@@ -101,10 +101,9 @@ final class DashboardProgressUITests: XCTestCase {
         
         let testProfile = try profileService.createProfile(
             name: "Dashboard User",
-            currentBeltLevel: getBeltLevel("7th Keup"),
-            learningMode: .mastery
+            beltLevel: getBeltLevel("7th Keup")
         )
-        profileService.setActiveProfile(testProfile)
+        try profileService.activateProfile(testProfile)
         
         // Add study history for dashboard content
         try addStudyHistory(for: testProfile)
@@ -198,11 +197,10 @@ final class DashboardProgressUITests: XCTestCase {
         
         let testProfile = try profileService.createProfile(
             name: "Welcome Card Tester",
-            currentBeltLevel: getBeltLevel("10th Keup"),
-            learningMode: .progression
+            beltLevel: getBeltLevel("10th Keup")
         )
         testProfile.dailyStudyGoal = 30 // 30 minutes
-        profileService.setActiveProfile(testProfile)
+        try profileService.activateProfile(testProfile)
         
         // Add some study sessions to test progress calculation
         for i in 0..<5 {
@@ -285,10 +283,9 @@ final class DashboardProgressUITests: XCTestCase {
         
         let testProfile = try profileService.createProfile(
             name: "Progress Viz Tester",
-            currentBeltLevel: getBeltLevel("7th Keup"),
-            learningMode: .mastery
+            beltLevel: getBeltLevel("7th Keup")
         )
-        profileService.setActiveProfile(testProfile)
+        try profileService.activateProfile(testProfile)
         
         // Create comprehensive study history for visualization
         try createExtensiveStudyHistory(for: testProfile)
@@ -381,10 +378,9 @@ final class DashboardProgressUITests: XCTestCase {
         
         let testProfile = try profileService.createProfile(
             name: "Streak Tracker",
-            currentBeltLevel: getBeltLevel("10th Keup"),
-            learningMode: .progression
+            beltLevel: getBeltLevel("10th Keup")
         )
-        profileService.setActiveProfile(testProfile)
+        try profileService.activateProfile(testProfile)
         
         // Create study sessions across multiple days for streak testing
         try createStreakTestData(for: testProfile)
@@ -467,10 +463,9 @@ final class DashboardProgressUITests: XCTestCase {
         
         let testProfile = try profileService.createProfile(
             name: "Achievement Hunter",
-            currentBeltLevel: getBeltLevel("7th Keup"),
-            learningMode: .mastery
+            beltLevel: getBeltLevel("7th Keup")
         )
-        profileService.setActiveProfile(testProfile)
+        try profileService.activateProfile(testProfile)
         
         // Add varied study activities to trigger achievements
         try addVariedStudyActivities(for: testProfile)
@@ -567,10 +562,9 @@ final class DashboardProgressUITests: XCTestCase {
         
         let testProfile = try profileService.createProfile(
             name: "Quick Action Tester",
-            currentBeltLevel: getBeltLevel("10th Keup"),
-            learningMode: .progression
+            beltLevel: getBeltLevel("10th Keup")
         )
-        profileService.setActiveProfile(testProfile)
+        try profileService.activateProfile(testProfile)
         
         let quickActionsViewModel = DashboardQuickActionsViewModel(
             userProfile: testProfile,
@@ -663,10 +657,9 @@ final class DashboardProgressUITests: XCTestCase {
         
         let testProfile = try profileService.createProfile(
             name: "Activity Tracker",
-            currentBeltLevel: getBeltLevel("7th Keup"),
-            learningMode: .mastery
+            beltLevel: getBeltLevel("7th Keup")
         )
-        profileService.setActiveProfile(testProfile)
+        try profileService.activateProfile(testProfile)
         
         // Add diverse activity history
         try addDiverseActivityHistory(for: testProfile)
@@ -754,10 +747,9 @@ final class DashboardProgressUITests: XCTestCase {
         
         let testProfile = try profileService.createProfile(
             name: "Performance Tester",
-            currentBeltLevel: getBeltLevel("7th Keup"),
-            learningMode: .progression
+            beltLevel: getBeltLevel("7th Keup")
         )
-        profileService.setActiveProfile(testProfile)
+        try profileService.activateProfile(testProfile)
         
         // Create large dataset for performance testing
         try createLargeDatasetForPerformanceTesting(for: testProfile)
