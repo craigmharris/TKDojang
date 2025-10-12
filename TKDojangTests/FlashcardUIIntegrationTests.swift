@@ -1431,8 +1431,8 @@ class FlashcardProgressViewModel: ObservableObject {
         return []
     }
     
-    var accuracyTrend: AccuracyTrend? {
-        return AccuracyTrend(isImproving: true, averageAccuracy: 0.75)
+    var accuracyTrend: FlashcardAccuracyTrend? {
+        return FlashcardAccuracyTrend(isImproving: true, averageAccuracy: 0.75)
     }
     
     var studyTimeStatistics: StudyTimeStatistics {
@@ -1464,7 +1464,7 @@ struct ActionRecommendation {
     let action: () -> Void
 }
 
-struct AccuracyTrend {
+struct FlashcardAccuracyTrend {
     let isImproving: Bool
     let averageAccuracy: Double
 }

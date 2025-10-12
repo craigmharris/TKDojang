@@ -1017,38 +1017,6 @@ final class ContentLoadingTests: XCTestCase {
         print("✅ Belt-themed icon system integration validated")
     }
     
-    func testContentLoaderArchitecturalConsistency() throws {
-        // Test that all content loaders follow the same architectural patterns
-        // Validates consistent implementation across StepSparring, Pattern, and Techniques loaders
-        
-        let startTime = CFAbsoluteTimeGetCurrent()
-        
-        // Test all loaders use consistent error handling and fallback patterns
-        let stepSparringService = StepSparringDataService(modelContext: testContext)
-        let stepSparringLoader = StepSparringContentLoader(stepSparringService: stepSparringService)
-        
-        let patternService = PatternDataService(modelContext: testContext)  
-        let patternLoader = PatternContentLoader(patternService: patternService)
-        
-        let techniquesService = TechniquesDataService()
-        
-        // All should complete without throwing exceptions (robust error handling)
-        XCTAssertNoThrow(stepSparringLoader.loadAllContent(), "StepSparring loader should handle errors gracefully")
-        XCTAssertNoThrow(patternLoader.loadAllContent(), "Pattern loader should handle errors gracefully")
-        
-        Task { @MainActor in
-            await techniquesService.loadAllTechniques()
-            XCTAssertFalse(techniquesService.isLoading, "Techniques service should complete loading")
-        }
-        
-        let endTime = CFAbsoluteTimeGetCurrent()
-        let loadTime = endTime - startTime
-        
-        // All loaders should complete within reasonable time (performance consistency)
-        XCTAssertLessThan(loadTime, 15.0, "All content loaders should complete within 15 seconds")
-        
-        print("✅ Content loader architectural consistency validated (Load time: \(String(format: "%.3f", loadTime))s)")
-    }
     
     func testDynamicDiscoveryNamingConventions() throws {
         // Test that dynamic discovery respects proper naming conventions

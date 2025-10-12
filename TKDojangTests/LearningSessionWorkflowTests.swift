@@ -27,7 +27,7 @@ final class LearningSessionWorkflowTests: XCTestCase {
     var dataServices: DataServices!
     var profileService: ProfileService!
     var flashcardService: FlashcardService!
-    var patternService: PatternService!
+    var patternService: PatternDataService!
     var testingService: TestingService!
     
     override func setUpWithError() throws {

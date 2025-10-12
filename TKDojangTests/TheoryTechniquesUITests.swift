@@ -29,8 +29,8 @@ final class TheoryTechniquesUITests: XCTestCase {
     var testContext: ModelContext!
     var dataServices: DataServices!
     var profileService: ProfileService!
-    var theoryService: TheoryService!
-    var techniquesService: TechniquesService!
+    var theoryService: TechniquesDataService!
+    var techniquesService: TechniquesDataService!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -925,10 +925,10 @@ class TheoryViewModel: ObservableObject {
     @Published var selectedDifficulty: TheoryDifficulty?
     @Published var sortOption: TheorySortOption = .title
     
-    private let theoryService: TheoryService
+    private let theoryService: TechniquesDataService
     private let userProfile: UserProfile
     
-    init(theoryService: TheoryService, userProfile: UserProfile) {
+    init(theoryService: TechniquesDataService, userProfile: UserProfile) {
         self.theoryService = theoryService
         self.userProfile = userProfile
         loadTheoryContent()
@@ -1021,11 +1021,11 @@ class TheoryDetailViewModel: ObservableObject {
     @Published var actualReadingTime: TimeInterval = 0
     
     let theoryContent: TheoryContent
-    private let theoryService: TheoryService
+    private let theoryService: TechniquesDataService
     private let userProfile: UserProfile
     var readingStartTime: Date?
     
-    init(theoryContent: TheoryContent, theoryService: TheoryService, userProfile: UserProfile) {
+    init(theoryContent: TheoryContent, theoryService: TechniquesDataService, userProfile: UserProfile) {
         self.theoryContent = theoryContent
         self.theoryService = theoryService
         self.userProfile = userProfile

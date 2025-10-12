@@ -27,24 +27,7 @@ final class MultiProfileSystemTests: XCTestCase {
         try super.setUpWithError()
         
         // Create in-memory test container
-        let schema = Schema([
-            BeltLevel.self,
-            TerminologyCategory.self,
-            TerminologyEntry.self,
-            UserProfile.self,
-            UserTerminologyProgress.self
-        ])
-        
-        let configuration = ModelConfiguration(
-            schema: schema,
-            isStoredInMemoryOnly: true
-        )
-        
-        testContainer = try ModelContainer(
-            for: schema,
-            configurations: [configuration]
-        )
-        
+        testContainer = TestContainerFactory.createTestContainer()
         testContext = ModelContext(testContainer)
         
         // Set up basic data

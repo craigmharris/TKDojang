@@ -29,8 +29,8 @@ final class PracticeSystemUITests: XCTestCase {
     var testContext: ModelContext!
     var dataServices: DataServices!
     var profileService: ProfileService!
-    var patternService: PatternService!
-    var stepSparringService: StepSparringService!
+    var patternService: PatternDataService!
+    var stepSparringService: StepSparringDataService!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -926,10 +926,10 @@ class PatternPracticeViewModel: ObservableObject {
     @Published var totalPracticeTime: TimeInterval = 0
     
     private let pattern: Pattern
-    private let patternService: PatternService
+    private let patternService: PatternDataService
     private let userProfile: UserProfile
     
-    init(pattern: Pattern, patternService: PatternService, userProfile: UserProfile, sessionState: PatternSessionState? = nil) {
+    init(pattern: Pattern, patternService: PatternDataService, userProfile: UserProfile, sessionState: PatternSessionState? = nil) {
         self.pattern = pattern
         self.patternService = patternService
         self.userProfile = userProfile
@@ -998,9 +998,9 @@ class PatternImageCarouselViewModel: ObservableObject {
     @Published var selectedImageIndex: Int = 0
     
     private let move: PatternMove
-    private let patternService: PatternService
+    private let patternService: PatternDataService
     
-    init(move: PatternMove, patternService: PatternService) {
+    init(move: PatternMove, patternService: PatternDataService) {
         self.move = move
         self.patternService = patternService
     }
@@ -1106,10 +1106,10 @@ class StepSparringViewModel: ObservableObject {
     @Published var totalPracticeTime: TimeInterval = 0
     
     private let sequence: StepSparringSequence
-    private let stepSparringService: StepSparringService
+    private let stepSparringService: StepSparringDataService
     private let userProfile: UserProfile
     
-    init(sequence: StepSparringSequence, stepSparringService: StepSparringService, userProfile: UserProfile) {
+    init(sequence: StepSparringSequence, stepSparringService: StepSparringDataService, userProfile: UserProfile) {
         self.sequence = sequence
         self.stepSparringService = stepSparringService
         self.userProfile = userProfile
@@ -1182,10 +1182,10 @@ class StepSparringPhaseFlowViewModel: ObservableObject {
     @Published var isPhaseActive: Bool = false
     
     private let currentStep: StepSparringStep
-    private let sparringService: StepSparringService
+    private let sparringService: StepSparringDataService
     private var completedPhases: Set<StepSparringPhase> = []
     
-    init(currentStep: StepSparringStep, sparringService: StepSparringService) {
+    init(currentStep: StepSparringStep, sparringService: StepSparringDataService) {
         self.currentStep = currentStep
         self.sparringService = sparringService
     }
@@ -1251,10 +1251,10 @@ class StepSparringTypeSelectionViewModel: ObservableObject {
     @Published var selectedType: StepSparringType?
     @Published var selectedSequence: StepSparringSequence?
     
-    private let stepSparringService: StepSparringService
+    private let stepSparringService: StepSparringDataService
     private let userProfile: UserProfile
     
-    init(stepSparringService: StepSparringService, userProfile: UserProfile) {
+    init(stepSparringService: StepSparringDataService, userProfile: UserProfile) {
         self.stepSparringService = stepSparringService
         self.userProfile = userProfile
     }
@@ -1388,9 +1388,6 @@ enum StepSparringPhase {
     case attack, defense, counter
 }
 
-enum StepSparringType {
-    case oneStep, twoStep, threeStep, free
-}
 
 enum SequenceDifficulty {
     case beginner, intermediate, advanced, expert
@@ -1475,7 +1472,7 @@ extension StepSparringSequence {
     var difficulty: SequenceDifficulty { .beginner }
 }
 
-extension StepSparringService {
+extension StepSparringDataService {
     func getSequences(for type: StepSparringType, userProfile: UserProfile) -> [StepSparringSequence] {
         // Mock implementation
         return []

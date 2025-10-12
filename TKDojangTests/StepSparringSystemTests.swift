@@ -594,7 +594,7 @@ final class StepSparringSystemTests: XCTestCase {
         
         // Verify counter attack is properly associated
         XCTAssertNotNil(step.counterAction, "Step should have counter action")
-        XCTAssertEqual(step.counterAction?.technique, "Counter punch", "Counter technique should match")
+        XCTAssertEqual(step.counterAction!.technique, "Counter punch", "Counter technique should match")
     }
     
     func testSequenceOrderingAndSorting() throws {

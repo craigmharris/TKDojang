@@ -31,40 +31,7 @@ final class ArchitecturalIntegrationTests: XCTestCase {
         try super.setUpWithError()
         
         // Create comprehensive test container with all models for integration testing
-        let schema = Schema([
-            BeltLevel.self,
-            TerminologyCategory.self,
-            TerminologyEntry.self,
-            UserProfile.self,
-            UserTerminologyProgress.self,
-            Pattern.self,
-            PatternMove.self,
-            UserPatternProgress.self,
-            StepSparringSequence.self,
-            StepSparringStep.self,
-            StepSparringAction.self,
-            UserStepSparringProgress.self,
-            TestSession.self,
-            TestConfiguration.self,
-            TestQuestion.self,
-            TestResult.self,
-            CategoryPerformance.self,
-            BeltLevelPerformance.self,
-            TestPerformance.self,
-            PatternTestResult.self,
-            StudySession.self,
-            GradingRecord.self
-        ])
-        
-        let configuration = ModelConfiguration(
-            schema: schema,
-            isStoredInMemoryOnly: true
-        )
-        
-        testContainer = try ModelContainer(
-            for: schema,
-            configurations: [configuration]
-        )
+        testContainer = TestContainerFactory.createTestContainer()
         
         testContext = ModelContext(testContainer)
         try setupTestData()
@@ -515,9 +482,9 @@ final class ArchitecturalIntegrationTests: XCTestCase {
                 
                 group.addTask {
                     do {
-                        let patternService = PatternDataService(modelContext: self.testContext)
+                        let patternService = await PatternDataService(modelContext: self.testContext)
                         let patternLoader = PatternContentLoader(patternService: patternService)
-                        patternLoader.loadAllContent()
+                        await patternLoader.loadAllContent()
                         return true
                     } catch {
                         print("Patterns failed in iteration \(iteration): \(error)")
@@ -527,7 +494,7 @@ final class ArchitecturalIntegrationTests: XCTestCase {
                 
                 group.addTask {
                     do {
-                        let techniquesService = TechniquesDataService()
+                        let techniquesService = await TechniquesDataService()
                         await techniquesService.loadAllTechniques()
                         return true
                     } catch {
@@ -579,7 +546,7 @@ final class ArchitecturalIntegrationTests: XCTestCase {
             try? stepSparringLoader.loadAllContent()
             
             // System should continue functioning
-            let testProfile = UserProfile(name: "Recovery Test", currentBeltLevel: testBelts.first, learningMode: .practice)
+            let testProfile = UserProfile(name: "Recovery Test", currentBeltLevel: testBelts.first!, learningMode: .mastery)
             testContext.insert(testProfile)
             try testContext.save()
             
@@ -718,14 +685,11 @@ final class ArchitecturalIntegrationTests: XCTestCase {
             
             // Create study sessions
             for j in 0..<5 {
-                let session = StudySession(
-                    userProfile: testProfile,
-                    contentType: "mixed",
-                    sessionDuration: Double(600 + j * 120),
-                    itemsStudied: j + 3,
-                    correctAnswers: j + 2,
-                    sessionDate: Calendar.current.date(byAdding: .day, value: -j, to: Date()) ?? Date()
-                )
+                let session = StudySession(userProfile: testProfile, sessionType: .terminology)
+                session.duration = Double(600 + j * 120)
+                session.itemsStudied = j + 3
+                session.correctAnswers = j + 2
+                session.startTime = Calendar.current.date(byAdding: .day, value: -j, to: Date()) ?? Date()
                 testContext.insert(session)
             }
         }
