@@ -1,0 +1,104 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Theory/TheoryQuizView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Theory Quiz",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 46
+        }
+      },
+      {
+        "comment": "",
+        "key": "Close",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 50
+        }
+      },
+      {
+        "comment": "",
+        "key": "Question %lld of %lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 64
+        }
+      },
+      {
+        "comment": "",
+        "key": "Answer:",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "Reveal Answer",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 113
+        }
+      },
+      {
+        "comment": "",
+        "key": "Next Question",
+        "location": {
+          "startingColumn": 73,
+          "startingLine": 132
+        }
+      },
+      {
+        "comment": "",
+        "key": "View Results",
+        "location": {
+          "startingColumn": 91,
+          "startingLine": 132
+        }
+      },
+      {
+        "comment": "",
+        "key": "I Got It Wrong",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 121
+        }
+      },
+      {
+        "comment": "",
+        "key": "I Got It Right",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 126
+        }
+      },
+      {
+        "comment": "",
+        "key": "Quiz Complete!",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 150
+        }
+      },
+      {
+        "comment": "",
+        "key": "Retake Quiz",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 195
+        }
+      },
+      {
+        "comment": "",
+        "key": "Close",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 200
+        }
+      }
+    ]
+  },
+  "version": 1
+}

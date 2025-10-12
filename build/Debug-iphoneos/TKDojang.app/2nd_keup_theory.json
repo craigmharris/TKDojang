@@ -1,0 +1,165 @@
+{
+  "belt_level": "2nd Keup",
+  "belt_id": "2nd_keup",
+  "theory_sections": [
+    {
+      "id": "advanced_brown_belt",
+      "title": "Advanced Brown Belt Understanding",
+      "category": "Belt Knowledge",
+      "content": {
+        "meaning": "Advanced Brown Belt represents the deep, rich earth ready to support new growth - the student is preparing for the transformation to black belt.",
+        "significance": "The 2nd keup student has achieved near-mastery of intermediate techniques and is ready to learn the discipline and responsibility of advanced training.",
+        "preparation_aspects": [
+          "Mental preparation for black belt responsibility",
+          "Technical refinement at expert level",
+          "Understanding of teaching and leadership",
+          "Development of mature martial arts character"
+        ]
+      },
+      "questions": [
+        {
+          "question": "What does the advanced brown belt represent?",
+          "answer": "Deep, rich earth ready to support new growth - preparing for transformation to black belt."
+        },
+        {
+          "question": "What aspects should a 2nd keup student develop?",
+          "answer": "Mental preparation, technical refinement, teaching understanding, and mature martial arts character."
+        }
+      ]
+    },
+    {
+      "id": "yul_gok_theory",
+      "title": "Yul-Gok Pattern Theory",
+      "category": "Pattern Knowledge",
+      "content": {
+        "pattern_name": "Yul-Gok",
+        "movements": "38 movements",
+        "meaning": "Yul-Gok is the pen name of the great philosopher and scholar Yi I (1536-1584), nicknamed the 'Confucius of Korea'.",
+        "significance": "This pattern honors intellectual achievement and scholarly pursuit, emphasizing that martial arts training should include mental and philosophical development.",
+        "key_techniques": [
+          "Palm block",
+          "Ridge hand strike",
+          "Arc hand strike",
+          "Back piercing kick",
+          "Complex stance transitions"
+        ],
+        "philosophical_emphasis": [
+          "Balance between physical and intellectual development",
+          "Importance of scholarly study alongside martial training",
+          "Development of wisdom and understanding",
+          "Integration of Confucian values with martial arts"
+        ],
+        "complexity": "Yul-Gok is the longest pattern learned before black belt, requiring excellent memory, stamina, and technical precision.",
+        "confucian_influence": "Yi I's Confucian teachings emphasize respect, learning, and moral development - core values in traditional martial arts."
+      },
+      "questions": [
+        {
+          "question": "Who is Yul-Gok named after?",
+          "answer": "The great philosopher and scholar Yi I (1536-1584), nicknamed the 'Confucius of Korea'."
+        },
+        {
+          "question": "How many movements are in Yul-Gok?",
+          "answer": "38 movements"
+        },
+        {
+          "question": "What makes Yul-Gok significant among colored belt patterns?",
+          "answer": "It is the longest pattern before black belt, requiring excellent memory, stamina, and precision."
+        },
+        {
+          "question": "What does Yul-Gok emphasize about martial arts training?",
+          "answer": "That it should include mental and philosophical development alongside physical training."
+        }
+      ]
+    },
+    {
+      "id": "one_step_sparring_introduction",
+      "title": "Introduction to One-Step Sparring",
+      "category": "Philosophy",
+      "content": {
+        "definition": "One-step sparring is the most advanced form of step sparring, where the attacker performs one attack and the defender must block and counter effectively.",
+        "key_differences": [
+          "Realistic timing - similar to actual self-defense",
+          "Single opportunity for defense and counter",
+          "Requires automatic responses and muscle memory",
+          "Allows for creative and varied counter-attacks"
+        ],
+        "mental_requirements": [
+          "Instant decision making",
+          "Complete focus and concentration",
+          "Confidence in technique execution",
+          "Calm under pressure"
+        ],
+        "advanced_concepts": [
+          {
+            "concept": "Distance Management",
+            "description": "Understanding proper spacing for effective techniques"
+          },
+          {
+            "concept": "Timing Precision",
+            "description": "Executing techniques at exactly the right moment"
+          },
+          {
+            "concept": "Multiple Counters",
+            "description": "Following up initial counter with additional techniques"
+          },
+          {
+            "concept": "Creative Application",
+            "description": "Adapting techniques to different situations"
+          }
+        ],
+        "safety_emphasis": "With realistic timing and power, safety becomes even more important - control and communication are essential."
+      },
+      "questions": [
+        {
+          "question": "What is one-step sparring?",
+          "answer": "The most advanced step sparring where attacker performs one attack and defender blocks and counters."
+        },
+        {
+          "question": "What mental skills does one-step sparring develop?",
+          "answer": "Instant decision making, complete focus, confidence, and calm under pressure."
+        },
+        {
+          "question": "Why is safety especially important in one-step sparring?",
+          "answer": "Because of realistic timing and power - control and communication are essential."
+        }
+      ]
+    },
+    {
+      "id": "grading_requirements",
+      "title": "2nd Keup Grading Requirements",
+      "category": "Grading Knowledge",
+      "content": {
+        "techniques_required": [
+          "Palm block with proper circular motion",
+          "Ridge hand strike and arc hand strike",
+          "Back piercing kick with full turn",
+          "X-stance and close ready stance",
+          "Twin forearm block with maximum power"
+        ],
+        "pattern": "Yul-Gok (38 movements)",
+        "step_sparring": "One-step sparring sequences 10, 11, and 12",
+        "theory_topics": [
+          "Advanced brown belt understanding",
+          "Yul-Gok pattern history and meaning",
+          "Introduction to one-step sparring",
+          "Scholarly pursuit and martial arts development"
+        ],
+        "expectations": "Demonstrate near-black belt level techniques with excellent control and power, perform longest colored belt pattern with understanding, and execute one-step sparring with realistic timing"
+      },
+      "questions": [
+        {
+          "question": "What pattern is required for 2nd keup grading?",
+          "answer": "Yul-Gok (38 movements)"
+        },
+        {
+          "question": "What new sparring level is introduced at 2nd keup?",
+          "answer": "One-step sparring"
+        },
+        {
+          "question": "What new hand techniques are required at 2nd keup?",
+          "answer": "Ridge hand strike and arc hand strike"
+        }
+      ]
+    }
+  ]
+}

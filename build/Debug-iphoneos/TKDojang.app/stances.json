@@ -1,0 +1,423 @@
+{
+  "version": "1.0",
+  "category": "stances", 
+  "description": "Comprehensive database of Taekwondo stances and footwork positions",
+  "techniques": [
+    {
+      "id": "narani_junbi_sogi",
+      "names": {
+        "korean": "나란히준비서기",
+        "korean_romanized": "Narani Junbi Sogi",
+        "english": "Parallel Ready Stance",
+        "phonetic": "/na.ɾan.hi.tʃun.bi.sʌ.ɡi/"
+      },
+      "description": "Ready position with feet parallel and hands in guard position, prepared for immediate action while maintaining balance and mobility.",
+      "execution": {
+        "foot_position": "Feet parallel, shoulder-width apart, pointing forward",
+        "weight_distribution": "50% on each foot, evenly balanced",
+        "body_posture": "Upright, relaxed but alert, hands ready"
+      },
+      "characteristics": {
+        "stability": "high",
+        "mobility": "high", 
+        "attack_readiness": "excellent",
+        "defense_readiness": "excellent"
+      },
+      "applicable_techniques": ["all kicks", "all punches", "all blocks"],
+      "belt_levels": ["10th_keup", "9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "basic",
+      "tags": ["fundamental", "parallel", "ready", "balanced"],
+      "transitions_to": ["gunnun_sogi", "ap_koobi_seogi", "gojung_sogi"],
+      "images": [
+        "narani_junbi_front.jpg",
+        "narani_junbi_side.jpg",
+        "narani_junbi_ready.jpg"
+      ],
+      "common_mistakes": ["Feet not parallel", "Tension in shoulders", "Poor hand position"]
+    },
+    {
+      "id": "narani_sogi",
+      "names": {
+        "korean": "나란히서기",
+        "korean_romanized": "Narani Sogi",
+        "english": "Parallel Stance",
+        "phonetic": "/na.ɾan.hi.sʌ.ɡi/"
+      },
+      "description": "A stance where both feet are parallel and evenly spaced, typically shoulder-width apart. Used for certain blocks and as a neutral position.",
+      "execution": {
+        "foot_position": "Both feet parallel, pointing forward",
+        "weight_distribution": "50% on each foot",
+        "body_posture": "Upright, balanced, knees slightly bent"
+      },
+      "characteristics": {
+        "stability": "high",
+        "mobility": "medium",
+        "attack_readiness": "good",
+        "defense_readiness": "good"
+      },
+      "applicable_techniques": ["side kicks", "certain blocks", "meditation"],
+      "belt_levels": ["10th_keup", "9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "basic",
+      "tags": ["parallel", "neutral", "balanced", "stable"],
+      "transitions_to": ["narani_junbi_sogi", "gunnun_sogi", "moa_junbi_sogi"],
+      "images": [
+        "narani_sogi_front.jpg",
+        "narani_sogi_feet.jpg", 
+        "narani_sogi_posture.jpg"
+      ],
+      "common_mistakes": ["Feet not parallel", "Uneven weight", "Too rigid posture"]
+    },
+    {
+      "id": "gunnun_sogi",
+      "names": {
+        "korean": "거넋서기",
+        "korean_romanized": "Gunnun Sogi",
+        "english": "Walking Stance",
+        "phonetic": "/kʌ.nɯn.sʌ.ɡi/"
+      },
+      "description": "A natural walking stance with one foot forward and one back, used for basic techniques and movement. The stance allows for easy forward and backward motion.",
+      "execution": {
+        "foot_position": "One foot forward, one back, about one step apart",
+        "weight_distribution": "60% front foot, 40% back foot",
+        "body_posture": "Natural upright position, slight forward lean"
+      },
+      "characteristics": {
+        "stability": "medium",
+        "mobility": "high",
+        "attack_readiness": "good", 
+        "defense_readiness": "good"
+      },
+      "applicable_techniques": ["front kicks", "punches", "basic blocks"],
+      "belt_levels": ["10th_keup", "9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "basic",
+      "tags": ["walking", "natural", "mobile", "fundamental"],
+      "transitions_to": ["ap_koobi_seogi", "narani_junbi_sogi", "gojung_sogi"],
+      "images": [
+        "gunnun_sogi_front.jpg",
+        "gunnun_sogi_side.jpg",
+        "gunnun_sogi_movement.jpg"
+      ],
+      "common_mistakes": ["Too wide stance", "Wrong weight distribution", "Unnatural posture"]
+    },
+    {
+      "id": "gunnun_junbi_sogi",
+      "names": {
+        "korean": "거넋준비서기",
+        "korean_romanized": "Gunnun Junbi Sogi",
+        "english": "Walking Ready Stance",
+        "phonetic": "/kʌ.nɯn.tʃun.bi.sʌ.ɡi/"
+      },
+      "description": "Ready position in walking stance with hands prepared, combining the mobility of walking stance with readiness for immediate action.",
+      "execution": {
+        "foot_position": "One foot forward in walking stance position",
+        "weight_distribution": "60% front foot, 40% back foot", 
+        "body_posture": "Natural walking position with hands ready"
+      },
+      "characteristics": {
+        "stability": "medium",
+        "mobility": "high",
+        "attack_readiness": "excellent",
+        "defense_readiness": "good"
+      },
+      "applicable_techniques": ["quick attacks", "combinations", "movement"],
+      "belt_levels": ["10th_keup", "9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "basic",
+      "tags": ["walking", "ready", "mobile", "prepared"],
+      "transitions_to": ["gunnun_sogi", "narani_junbi_sogi"],
+      "images": [
+        "gunnun_junbi_front.jpg",
+        "gunnun_junbi_ready.jpg",
+        "gunnun_junbi_hands.jpg"
+      ],
+      "common_mistakes": ["Poor hand positioning", "Wrong weight distribution", "Too rigid"]
+    },
+    {
+      "id": "annun_sogi",
+      "names": {
+        "korean": "앉뀐서기",
+        "korean_romanized": "Annun Sogi",
+        "english": "Sitting Stance",
+        "phonetic": "/an.nɯn.sʌ.ɡi/"
+      },
+      "description": "A wide, low stance with feet parallel and knees bent, resembling a sitting position. Excellent for leg strengthening and certain defensive techniques.",
+      "execution": {
+        "foot_position": "Feet wide apart, parallel, about 2 shoulder widths",
+        "weight_distribution": "50% on each foot",
+        "body_posture": "Low squat position, thighs parallel to ground"
+      },
+      "characteristics": {
+        "stability": "excellent",
+        "mobility": "poor",
+        "attack_readiness": "limited",
+        "defense_readiness": "good"
+      },
+      "applicable_techniques": ["side blocks", "strengthening exercises", "certain punches"],
+      "belt_levels": ["10th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["sitting", "wide", "low", "strengthening"],
+      "transitions_to": ["narani_junbi_sogi", "narani_sogi"],
+      "images": [
+        "annun_sogi_wide.jpg",
+        "annun_sogi_squat.jpg", 
+        "annun_sogi_stability.jpg"
+      ],
+      "common_mistakes": ["Not low enough", "Feet not parallel", "Poor knee alignment"]
+    },
+    {
+      "id": "gojung_sogi",
+      "names": {
+        "korean": "고정서기",
+        "korean_romanized": "Gojung Sogi",
+        "english": "Fixed Stance",
+        "phonetic": "/ko.dʑʌŋ.sʌ.ɡi/"
+      },
+      "description": "A stable stance with feet firmly planted for balance, designed for maximum stability and power generation when stability is more important than mobility.",
+      "execution": {
+        "foot_position": "Feet positioned for maximum stability",
+        "weight_distribution": "Even distribution for balance",
+        "body_posture": "Firm, stable base with controlled center of gravity"
+      },
+      "characteristics": {
+        "stability": "excellent",
+        "mobility": "poor",
+        "attack_readiness": "good_power",
+        "defense_readiness": "excellent"
+      },
+      "applicable_techniques": ["powerful blocks", "breaking", "strong attacks"],
+      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["fixed", "stable", "firm", "power"],
+      "transitions_to": ["narani_junbi_sogi", "ap_koobi_seogi"],
+      "images": [
+        "gojung_sogi_stable.jpg",
+        "gojung_sogi_firm.jpg",
+        "gojung_sogi_power.jpg"
+      ],
+      "common_mistakes": ["Insufficient stability", "Poor balance", "Wrong foot positioning"]
+    },
+    {
+      "id": "moa_junbi_sogi", 
+      "names": {
+        "korean": "모아준비서기",
+        "korean_romanized": "Moa Junbi Sogi",
+        "english": "Closed Ready Stance",
+        "phonetic": "/mo.a.tʃun.bi.sʌ.ɡi/"
+      },
+      "description": "Ready position with feet together and hands ready for action, used for specific techniques requiring a closed foot position.",
+      "execution": {
+        "foot_position": "Feet together, heels and toes touching",
+        "weight_distribution": "50% on each foot",
+        "body_posture": "Upright, hands ready for immediate action"
+      },
+      "characteristics": {
+        "stability": "medium",
+        "mobility": "low",
+        "attack_readiness": "limited",
+        "defense_readiness": "limited"
+      },
+      "applicable_techniques": ["formal positions", "specific patterns"],
+      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "basic",
+      "tags": ["closed", "together", "ready", "formal"],
+      "transitions_to": ["narani_junbi_sogi", "narani_sogi"],
+      "images": [
+        "moa_junbi_front.jpg",
+        "moa_junbi_together.jpg",
+        "moa_junbi_ready.jpg"
+      ],
+      "common_mistakes": ["Feet not properly together", "Poor ready position", "Tension in body"]
+    },
+    {
+      "id": "kyocha_sogi",
+      "names": {
+        "korean": "교차서기",
+        "korean_romanized": "Kyocha Sogi",
+        "english": "X Stance",
+        "phonetic": "/kjo.tʃʰa.sʌ.ɡi/"
+      },
+      "description": "A stance with legs crossed in X formation, typically used as a transitional position or for specific techniques requiring crossed leg positioning.",
+      "execution": {
+        "foot_position": "Legs crossed in X formation",
+        "weight_distribution": "Primarily on supporting leg",
+        "body_posture": "Balanced despite crossed position"
+      },
+      "characteristics": {
+        "stability": "low",
+        "mobility": "high_transitional",
+        "attack_readiness": "limited",
+        "defense_readiness": "limited"
+      },
+      "applicable_techniques": ["transitional movements", "spinning techniques"],
+      "belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "advanced",
+      "tags": ["cross", "x_formation", "transitional", "advanced"],
+      "transitions_to": ["narani_junbi_sogi", "gunnun_sogi", "gojung_sogi"],
+      "images": [
+        "kyocha_sogi_cross.jpg",
+        "kyocha_sogi_x_formation.jpg",
+        "kyocha_sogi_transition.jpg"
+      ],
+      "common_mistakes": ["Poor balance", "Staying too long in position", "Wrong leg crossing"]
+    },
+    {
+      "id": "charyot_sogi",
+      "names": {
+        "korean": "차렷서기",
+        "korean_romanized": "Charyot Sogi",
+        "english": "Attention Stance",
+        "phonetic": "/tʃʰa.ɾjʌt.sʌ.ɡi/"
+      },
+      "description": "Formal standing position with heels together and body erect, used for attention, bowing, and beginning/ending forms. Demonstrates respect and discipline.",
+      "execution": {
+        "foot_position": "Heels together, feet forming slight V shape",
+        "weight_distribution": "50% on each foot",
+        "body_posture": "Upright, shoulders back, arms at sides"
+      },
+      "characteristics": {
+        "stability": "medium",
+        "mobility": "low",
+        "attack_readiness": "poor",
+        "defense_readiness": "poor"
+      },
+      "applicable_techniques": ["bowing", "formal positions", "attention"],
+      "belt_levels": ["10th_keup", "9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "basic",
+      "tags": ["formal", "attention", "discipline", "respect"],
+      "transitions_to": ["narani_junbi_sogi", "narani_sogi"],
+      "images": [
+        "charyot_sogi_front.jpg",
+        "charyot_sogi_side.jpg",
+        "charyot_sogi_formal.jpg"
+      ],
+      "common_mistakes": ["Feet not together properly", "Poor posture", "Excessive tension"]
+    },
+    {
+      "id": "guburyo_sogi",
+      "names": {
+        "korean": "구부려서기",
+        "korean_romanized": "Guburyo Sogi", 
+        "english": "Bending Ready Stance",
+        "phonetic": "/ku.bu.ɾjʌ.sʌ.ɡi/"
+      },
+      "description": "Ready position with knees slightly bent for mobility, providing a dynamic ready position that allows for quick movement and technique execution.",
+      "execution": {
+        "foot_position": "Feet about shoulder-width apart",
+        "weight_distribution": "Equal weight on both feet",
+        "body_posture": "Knees bent, ready for quick movement"
+      },
+      "characteristics": {
+        "stability": "medium",
+        "mobility": "excellent",
+        "attack_readiness": "excellent",
+        "defense_readiness": "excellent"
+      },
+      "applicable_techniques": ["quick kicks", "rapid movement", "evasion"],
+      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["bending", "mobile", "ready", "dynamic"],
+      "transitions_to": ["narani_junbi_sogi", "gunnun_sogi"],
+      "images": [
+        "guburyo_sogi_bent.jpg",
+        "guburyo_sogi_ready.jpg",
+        "guburyo_sogi_mobile.jpg"
+      ],
+      "common_mistakes": ["Not enough knee bend", "Poor balance", "Too rigid"]
+    },
+    {
+      "id": "soo_jik_sogi",
+      "names": {
+        "korean": "수직서기",
+        "korean_romanized": "Soo Jik Sogi",
+        "english": "Vertical Stance", 
+        "phonetic": "/su.dʑik.sʌ.ɡi/"
+      },
+      "description": "Upright stance with straight vertical posture, emphasizing perfect alignment and balance for formal techniques and demonstrations.",
+      "execution": {
+        "foot_position": "Feet positioned for vertical alignment",
+        "weight_distribution": "Balanced distribution",
+        "body_posture": "Perfectly vertical, straight alignment"
+      },
+      "characteristics": {
+        "stability": "high",
+        "mobility": "low",
+        "attack_readiness": "limited",
+        "defense_readiness": "limited"
+      },
+      "applicable_techniques": ["formal techniques", "demonstrations", "patterns"],
+      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["vertical", "straight", "formal", "alignment"],
+      "transitions_to": ["narani_junbi_sogi", "gunnun_sogi"],
+      "images": [
+        "soo_jik_vertical.jpg",
+        "soo_jik_alignment.jpg",
+        "soo_jik_posture.jpg"
+      ],
+      "common_mistakes": ["Not perfectly vertical", "Poor alignment", "Excessive rigidity"]
+    },
+    {
+      "id": "nachua_sogi",
+      "names": {
+        "korean": "낮춤서기",
+        "korean_romanized": "Nachua Sogi",
+        "english": "Low Stance",
+        "phonetic": "/nat.ʃʰum.sʌ.ɡi/"
+      },
+      "description": "A stance with the body positioned low to the ground, providing maximum stability and power for low-level techniques. Requires strong leg muscles and flexibility.",
+      "execution": {
+        "foot_position": "Feet positioned wide for low body position",
+        "weight_distribution": "Balanced to maintain low center of gravity",
+        "body_posture": "Body lowered significantly, maintaining good posture"
+      },
+      "characteristics": {
+        "stability": "excellent",
+        "mobility": "poor",
+        "attack_readiness": "good_power",
+        "defense_readiness": "excellent"
+      },
+      "applicable_techniques": ["low blocks", "powerful strikes", "stability training"],
+      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "advanced",
+      "tags": ["low", "stable", "powerful", "advanced"],
+      "transitions_to": ["gojung_sogi", "annun_sogi"],
+      "images": [
+        "nachua_sogi_low.jpg",
+        "nachua_sogi_stable.jpg",
+        "nachua_sogi_power.jpg"
+      ],
+      "common_mistakes": ["Not low enough", "Poor balance", "Weak leg strength"]
+    },
+    {
+      "id": "dwit_bal_sogi",
+      "names": {
+        "korean": "뒤발서기",
+        "korean_romanized": "Dwit Bal Sogi",
+        "english": "Rear Foot Stance",
+        "phonetic": "/twi.bal.sʌ.ɡi/"
+      },
+      "description": "A stance with weight primarily on the rear foot, allowing the front foot to be light and mobile for quick kicking techniques. Provides excellent mobility for the front leg.",
+      "execution": {
+        "foot_position": "Front foot light, rear foot supporting body weight",
+        "weight_distribution": "80% rear foot, 20% front foot",
+        "body_posture": "Balanced on rear foot, front foot ready for action"
+      },
+      "characteristics": {
+        "stability": "medium",
+        "mobility": "excellent_front_leg",
+        "attack_readiness": "excellent_kicks",
+        "defense_readiness": "good"
+      },
+      "applicable_techniques": ["front leg kicks", "quick footwork", "evasive movement"],
+      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["rear_foot", "mobile", "kicking", "light_front"],
+      "transitions_to": ["gunnun_sogi", "narani_junbi_sogi"],
+      "images": [
+        "dwit_bal_weight.jpg",
+        "dwit_bal_mobile.jpg",
+        "dwit_bal_kick_ready.jpg"
+      ],
+      "common_mistakes": ["Too much weight on front foot", "Poor balance", "Front foot too heavy"]
+    }
+  ]
+}

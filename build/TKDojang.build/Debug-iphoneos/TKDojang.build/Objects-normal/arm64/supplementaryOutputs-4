@@ -1,0 +1,36 @@
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/ProfileEditView.swift":
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileEditView.dia"
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileEditView.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileEditView.swiftdeps"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileEditView.swiftconstvalues"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/ProfileEditView.d"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Techniques/TechniqueDetailView.swift":
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueDetailView.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueDetailView.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueDetailView.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueDetailView.dia"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueDetailView.d"
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/EnhancedTerminologyService.swift":
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/EnhancedTerminologyService.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/EnhancedTerminologyService.swiftdeps"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/EnhancedTerminologyService.swiftconstvalues"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/EnhancedTerminologyService.d"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/EnhancedTerminologyService.dia"
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Data/DataManager.swift":
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/DataManager.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/DataManager.dia"
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/DataManager.o"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/DataManager.swiftconstvalues"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/DataManager.d"
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Content/StepSparringContentLoader.swift":
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringContentLoader.dia"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringContentLoader.d"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringContentLoader.swiftdeps"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringContentLoader.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringContentLoader.o"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Authentication/AuthenticationCoordinatorView.swift":
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/AuthenticationCoordinatorView.d"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/AuthenticationCoordinatorView.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/AuthenticationCoordinatorView.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/AuthenticationCoordinatorView.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/AuthenticationCoordinatorView.dia"

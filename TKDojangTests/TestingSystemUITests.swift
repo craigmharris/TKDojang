@@ -200,15 +200,17 @@ final class TestingSystemUITests: XCTestCase {
         XCTAssertNotNil(testProfile.currentBeltLevel, "Should have belt context for progression testing")
         
         // Test grading record support
-        let gradingRecord = GradingRecord(userProfile: testProfile, beltLevel: testProfile.currentBeltLevel)
-        gradingRecord.overallScore = 85.0
-        gradingRecord.testDate = Date()
-        gradingRecord.passed = true
+        let gradingRecord = GradingRecord(
+            userProfile: testProfile, 
+            gradingDate: Date(),
+            beltTested: testProfile.currentBeltLevel,
+            beltAchieved: testProfile.currentBeltLevel
+        )
         testContext.insert(gradingRecord)
         try testContext.save()
         
-        XCTAssertGreaterThan(gradingRecord.overallScore, 0, "Should track testing scores")
-        XCTAssertNotNil(gradingRecord.testDate, "Should track test dates")
+        XCTAssertTrue(gradingRecord.passed, "Should track testing success")
+        XCTAssertNotNil(gradingRecord.gradingDate, "Should track grading dates")
         
         print("✅ Progression testing validation infrastructure validation completed")
     }

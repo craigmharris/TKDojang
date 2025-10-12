@@ -1,0 +1,208 @@
+{
+  "" : {
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-master.dia",
+    "emit-module-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-master-emit-module.dia",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TKDojangTests-master.swiftdeps"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/ArchitecturalIntegrationTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ArchitecturalIntegrationTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ArchitecturalIntegrationTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ArchitecturalIntegrationTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ArchitecturalIntegrationTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ArchitecturalIntegrationTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ArchitecturalIntegrationTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ArchitecturalIntegrationTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ArchitecturalIntegrationTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/ContentLoadingTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ContentLoadingTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ContentLoadingTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ContentLoadingTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ContentLoadingTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ContentLoadingTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ContentLoadingTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ContentLoadingTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ContentLoadingTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/DashboardProgressUITests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DashboardProgressUITests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DashboardProgressUITests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DashboardProgressUITests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DashboardProgressUITests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DashboardProgressUITests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DashboardProgressUITests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DashboardProgressUITests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DashboardProgressUITests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/DynamicDiscoveryTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DynamicDiscoveryTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DynamicDiscoveryTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DynamicDiscoveryTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DynamicDiscoveryTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DynamicDiscoveryTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DynamicDiscoveryTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DynamicDiscoveryTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/DynamicDiscoveryTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/EdgeCasesPerformanceTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/EdgeCasesPerformanceTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/EdgeCasesPerformanceTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/EdgeCasesPerformanceTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/EdgeCasesPerformanceTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/EdgeCasesPerformanceTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/EdgeCasesPerformanceTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/EdgeCasesPerformanceTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/EdgeCasesPerformanceTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/FlashcardUIIntegrationTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/FlashcardUIIntegrationTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/FlashcardUIIntegrationTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/FlashcardUIIntegrationTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/FlashcardUIIntegrationTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/FlashcardUIIntegrationTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/FlashcardUIIntegrationTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/FlashcardUIIntegrationTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/FlashcardUIIntegrationTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/JSONConsistencyTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/JSONConsistencyTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/JSONConsistencyTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/JSONConsistencyTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/JSONConsistencyTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/JSONConsistencyTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/JSONConsistencyTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/JSONConsistencyTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/JSONConsistencyTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/LearningSessionWorkflowTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LearningSessionWorkflowTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LearningSessionWorkflowTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LearningSessionWorkflowTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LearningSessionWorkflowTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LearningSessionWorkflowTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LearningSessionWorkflowTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LearningSessionWorkflowTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LearningSessionWorkflowTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/LineWorkSystemTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LineWorkSystemTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LineWorkSystemTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LineWorkSystemTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LineWorkSystemTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LineWorkSystemTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LineWorkSystemTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LineWorkSystemTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/LineWorkSystemTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/ModelRelationshipTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ModelRelationshipTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ModelRelationshipTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ModelRelationshipTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ModelRelationshipTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ModelRelationshipTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ModelRelationshipTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ModelRelationshipTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/ModelRelationshipTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/MultiProfileSystemTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileSystemTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileSystemTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileSystemTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileSystemTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileSystemTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileSystemTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileSystemTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileSystemTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/MultiProfileUIIntegrationTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileUIIntegrationTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileUIIntegrationTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileUIIntegrationTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileUIIntegrationTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileUIIntegrationTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileUIIntegrationTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileUIIntegrationTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/MultiProfileUIIntegrationTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/NavigationAndStateTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/NavigationAndStateTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/NavigationAndStateTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/NavigationAndStateTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/NavigationAndStateTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/NavigationAndStateTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/NavigationAndStateTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/NavigationAndStateTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/NavigationAndStateTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/PatternSystemTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PatternSystemTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PatternSystemTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PatternSystemTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PatternSystemTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PatternSystemTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PatternSystemTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PatternSystemTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PatternSystemTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/PerformanceTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PerformanceTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PerformanceTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PerformanceTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PerformanceTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PerformanceTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PerformanceTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PerformanceTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PerformanceTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/PracticeSystemUITests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PracticeSystemUITests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PracticeSystemUITests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PracticeSystemUITests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PracticeSystemUITests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PracticeSystemUITests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PracticeSystemUITests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PracticeSystemUITests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/PracticeSystemUITests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/StepSparringSystemTests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/StepSparringSystemTests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/StepSparringSystemTests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/StepSparringSystemTests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/StepSparringSystemTests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/StepSparringSystemTests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/StepSparringSystemTests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/StepSparringSystemTests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/StepSparringSystemTests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/TestHelpers/TestHelpers.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestHelpers.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestHelpers.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestHelpers.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestHelpers.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestHelpers.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestHelpers.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestHelpers.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestHelpers~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/TestingSystemUITests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestingSystemUITests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestingSystemUITests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestingSystemUITests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestingSystemUITests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestingSystemUITests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestingSystemUITests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestingSystemUITests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TestingSystemUITests~partial.swiftmodule"
+  },
+  "/Users/craig/TKDojang/TKDojangTests/TheoryTechniquesUITests.swift" : {
+    "const-values" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TheoryTechniquesUITests.swiftconstvalues",
+    "dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TheoryTechniquesUITests.d",
+    "diagnostics" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TheoryTechniquesUITests.dia",
+    "index-unit-output-path" : "/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TheoryTechniquesUITests.o",
+    "llvm-bc" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TheoryTechniquesUITests.bc",
+    "object" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TheoryTechniquesUITests.o",
+    "swift-dependencies" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TheoryTechniquesUITests.swiftdeps",
+    "swiftmodule" : "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojangTests.build/Objects-normal/arm64/TheoryTechniquesUITests~partial.swiftmodule"
+  }
+}

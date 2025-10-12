@@ -1,0 +1,208 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Dashboard/ProgressViewStub.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Progress",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 31
+        }
+      },
+      {
+        "comment": "",
+        "key": "Time Range",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 187
+        }
+      },
+      {
+        "comment": "",
+        "key": "Study Activity",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 214
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learning Breakdown",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 266
+        }
+      },
+      {
+        "comment": "",
+        "key": "Belt Progress",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 352
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%%",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 400
+        }
+      },
+      {
+        "comment": "",
+        "key": "This Week",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 431
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading your progress...",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 495
+        }
+      },
+      {
+        "comment": "",
+        "key": "No Progress Data",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 510
+        }
+      },
+      {
+        "comment": "",
+        "key": "Complete some learning sessions to see your progress here.",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 514
+        }
+      },
+      {
+        "comment": "",
+        "key": "Belt Journey",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 531
+        }
+      },
+      {
+        "comment": "",
+        "key": "Current Belt",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 577
+        }
+      },
+      {
+        "comment": "",
+        "key": "Studying",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 610
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learning %@ belt content",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 618
+        }
+      },
+      {
+        "comment": "",
+        "key": "Update",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 698
+        }
+      },
+      {
+        "comment": "",
+        "key": "Study Level Mismatch",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 685
+        }
+      },
+      {
+        "comment": "",
+        "key": "Estimated readiness: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 761
+        }
+      },
+      {
+        "comment": "",
+        "key": "Next: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 728
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%% Ready",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 734
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%%",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 785
+        }
+      },
+      {
+        "comment": "",
+        "key": "Grading History",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 870
+        }
+      },
+      {
+        "comment": "",
+        "key": "Manage",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 876
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add Grading History",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 981
+        }
+      },
+      {
+        "comment": "",
+        "key": "No Grading History",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 970
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add your belt gradings to track your journey and unlock detailed progress analytics.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 975
+        }
+      }
+    ]
+  },
+  "version": 1
+}

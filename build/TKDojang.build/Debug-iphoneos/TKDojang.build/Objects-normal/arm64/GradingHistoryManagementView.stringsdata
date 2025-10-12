@@ -1,0 +1,240 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/GradingHistoryManagementView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Grading History",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading grading history...",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 34
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add Grading",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 59
+        }
+      },
+      {
+        "comment": "",
+        "key": "Done",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 65
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add First Grading",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 163
+        }
+      },
+      {
+        "comment": "",
+        "key": "No Grading History",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 153
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add your belt gradings to track your Taekwondo journey and see progress analytics.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 157
+        }
+      },
+      {
+        "comment": "",
+        "key": "• %@",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 241
+        }
+      },
+      {
+        "comment": "",
+        "key": "Edit",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 259
+        }
+      },
+      {
+        "comment": "",
+        "key": "Delete",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 263
+        }
+      },
+      {
+        "comment": "",
+        "key": "Edit Grading",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 364
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add Grading",
+        "location": {
+          "startingColumn": 59,
+          "startingLine": 364
+        }
+      },
+      {
+        "comment": "",
+        "key": "Grading Details",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 314
+        }
+      },
+      {
+        "comment": "",
+        "key": "Grading Type & Grade",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 332
+        }
+      },
+      {
+        "comment": "",
+        "key": "Additional Information",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 348
+        }
+      },
+      {
+        "comment": "",
+        "key": "Notes",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 359
+        }
+      },
+      {
+        "comment": "",
+        "key": "Grading Date",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 315
+        }
+      },
+      {
+        "comment": "",
+        "key": "Belt Tested For",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 317
+        }
+      },
+      {
+        "comment": "",
+        "key": "Belt Achieved",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 323
+        }
+      },
+      {
+        "comment": "",
+        "key": "Passed",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 329
+        }
+      },
+      {
+        "comment": "",
+        "key": "Grading Type",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 333
+        }
+      },
+      {
+        "comment": "",
+        "key": "Pass Grade",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 340
+        }
+      },
+      {
+        "comment": "",
+        "key": "Examiner",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 349
+        }
+      },
+      {
+        "comment": "",
+        "key": "Club/Dojang",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 350
+        }
+      },
+      {
+        "comment": "",
+        "key": "Preparation Time",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 353
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld days",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 355
+        }
+      },
+      {
+        "comment": "",
+        "key": "Notes (optional)",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 360
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 368
+        }
+      },
+      {
+        "comment": "",
+        "key": "Save",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 374
+        }
+      }
+    ]
+  },
+  "version": 1
+}

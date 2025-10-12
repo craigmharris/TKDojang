@@ -1,0 +1,18 @@
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/StepSparringDataService.swift":
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringDataService.swiftconstvalues"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringDataService.d"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringDataService.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringDataService.dia"
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringDataService.o"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/FlashcardConfigurationView.swift":
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardConfigurationView.o"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardConfigurationView.dia"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardConfigurationView.d"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardConfigurationView.swiftdeps"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardConfigurationView.swiftconstvalues"
+"/Users/craig/TKDojang/TKDojang/Sources/App/LoadingView.swift":
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/LoadingView.o"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/LoadingView.swiftconstvalues"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/LoadingView.dia"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/LoadingView.swiftdeps"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/LoadingView.d"

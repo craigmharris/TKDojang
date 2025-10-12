@@ -1,0 +1,18 @@
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Data/DataManager.swift":
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/DataManager.o"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/DataManager.dia"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/DataManager.swiftconstvalues"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/DataManager.d"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/DataManager.swiftdeps"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/StepSparringPracticeView.swift":
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringPracticeView.swiftconstvalues"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringPracticeView.dia"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringPracticeView.swiftdeps"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringPracticeView.d"
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/StepSparringPracticeView.o"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Theory/TheoryQuizView.swift":
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryQuizView.o"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryQuizView.swiftconstvalues"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryQuizView.d"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryQuizView.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryQuizView.dia"

@@ -1,0 +1,56 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/ProfileSwitcher.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Error",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 107
+        }
+      },
+      {
+        "comment": "",
+        "key": "Family Profiles",
+        "location": {
+          "startingColumn": 21,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Manage Profiles",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 84
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 108
+        }
+      },
+      {
+        "comment": "",
+        "key": "Sample Screen",
+        "location": {
+          "startingColumn": 1,
+          "startingLine": 234
+        }
+      },
+      {
+        "comment": "",
+        "key": "TKDojang",
+        "location": {
+          "startingColumn": 1,
+          "startingLine": 234
+        }
+      }
+    ]
+  },
+  "version": 1
+}

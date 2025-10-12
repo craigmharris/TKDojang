@@ -1,0 +1,66 @@
+{
+  "belt_level" : "9th_keup",
+  "category" : "basics",
+  "metadata" : {
+    "created_at" : "2025-08-16T23:26:59Z",
+    "source" : "CSV Import Tool",
+    "total_count" : 5
+  },
+  "terminology" : [
+    {
+      "belt_level" : "9th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Front part of foot behind toes used for kicking",
+      "difficulty" : 1,
+      "english_term" : "Ball of Foot",
+      "korean_hangul" : "앙발굵",
+      "phonetic_pronunciation" : "/ap.bal.kum.tʃʰi/",
+      "romanized_pronunciation" : "Ap Kumchi"
+    },
+    {
+      "belt_level" : "9th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Front knuckles of closed fist used for punching",
+      "difficulty" : 1,
+      "english_term" : "Fore Fist",
+      "korean_hangul" : "앙주먹",
+      "phonetic_pronunciation" : "/ap.tʃu.mʌk/",
+      "romanized_pronunciation" : "Ap Joomuk"
+    },
+    {
+      "belt_level" : "9th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Edge of hand used for striking and blocking",
+      "difficulty" : 1,
+      "english_term" : "Knife Hand",
+      "korean_hangul" : "손칼",
+      "phonetic_pronunciation" : "/son.kʰal/",
+      "romanized_pronunciation" : "Sonkal"
+    },
+    {
+      "belt_level" : "9th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Rear-weighted stance resembling letter L shape",
+      "difficulty" : 1,
+      "english_term" : "L Stance",
+      "korean_hangul" : "니은자서기",
+      "phonetic_pronunciation" : "/ni.ɯn.dʑa.sʌ.ɡi/",
+      "romanized_pronunciation" : "Niunja Sogi"
+    },
+    {
+      "belt_level" : "9th_keup",
+      "category" : "basics",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Turning technique that involves stepping to change direction",
+      "difficulty" : 1,
+      "english_term" : "Step Turn",
+      "korean_hangul" : "옴겨디딜며돌기",
+      "phonetic_pronunciation" : "/om.ɡjʌ.ti.dim.mjʌ.tol.ɡi/",
+      "romanized_pronunciation" : "Omgyo Didimyo Dolgi"
+    }
+  ]
+}

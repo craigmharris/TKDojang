@@ -1,0 +1,216 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/UserSettingsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Learning Settings",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 172
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading settings...",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "Current Level",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 33
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learning Focus",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 43
+        }
+      },
+      {
+        "comment": "",
+        "key": "Study Preferences",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 65
+        }
+      },
+      {
+        "comment": "",
+        "key": "Data Management",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 136
+        }
+      },
+      {
+        "comment": "",
+        "key": "Current Settings Summary",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 146
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your Belt Level",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 34
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learning Mode",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "Daily Goal: %lld terms",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 66
+        }
+      },
+      {
+        "comment": "",
+        "key": "Leitner Box Spaced Repetition",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 71
+        }
+      },
+      {
+        "comment": "",
+        "key": "Box Distribution:",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learning Statistics:",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 95
+        }
+      },
+      {
+        "comment": "",
+        "key": "Terms Due for Review:",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 103
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 105
+        }
+      },
+      {
+        "comment": "",
+        "key": "Box %lld:",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 118
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld terms",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 120
+        }
+      },
+      {
+        "comment": "",
+        "key": "Advanced Features",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 131
+        }
+      },
+      {
+        "comment": "",
+        "key": "Leitner Box uses spaced repetition to optimize learning. Terms are scheduled for review based on how well you know them.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 133
+        }
+      },
+      {
+        "comment": "",
+        "key": "Delete profiles, reset progress, or export data. Family-safe options with confirmations.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 141
+        }
+      },
+      {
+        "comment": "",
+        "key": "Manage Profile Data",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 137
+        }
+      },
+      {
+        "comment": "",
+        "key": "Current Belt:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 149
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learning Mode:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 156
+        }
+      },
+      {
+        "comment": "",
+        "key": "Content Focus:",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 163
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 177
+        }
+      },
+      {
+        "comment": "",
+        "key": "Save",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 183
+        }
+      }
+    ]
+  },
+  "version": 1
+}

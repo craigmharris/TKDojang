@@ -1,0 +1,132 @@
+{
+  "belt_level" : "2nd_keup",
+  "category" : "techniques",
+  "metadata" : {
+    "created_at" : "2025-08-17T09:28:54Z",
+    "source" : "CSV Import Tool",
+    "total_count" : 11
+  },
+  "terminology" : [
+    {
+      "belt_level" : "2nd_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Controlled sparring practice with one predetermined attack",
+      "difficulty" : 1,
+      "english_term" : "1-step Sparring",
+      "korean_hangul" : "일보맞서기",
+      "phonetic_pronunciation" : "/il.bo.mat.sʌ.ɡi/",
+      "romanized_pronunciation" : "Ilbo Matsoki"
+    },
+    {
+      "belt_level" : "2nd_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Semicircular kicking technique in crescent shape",
+      "difficulty" : 1,
+      "english_term" : "Crescent Kick",
+      "korean_hangul" : "반달차기",
+      "phonetic_pronunciation" : "/pan.dal.tʃʰa.ɡi/",
+      "romanized_pronunciation" : "Bandal Chagi"
+    },
+    {
+      "belt_level" : "2nd_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Kicking technique directed downward from above",
+      "difficulty" : 1,
+      "english_term" : "Downward Kick",
+      "korean_hangul" : "내려차기",
+      "phonetic_pronunciation" : "/ne.ɾjʌ.tʃʰa.ɡi/",
+      "romanized_pronunciation" : "Naeryo Chagi"
+    },
+    {
+      "belt_level" : "2nd_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Jumping kick performed while airborne",
+      "difficulty" : 1,
+      "english_term" : "Flying Kick",
+      "korean_hangul" : "뛰며차기",
+      "phonetic_pronunciation" : "/tʃwi.mjʌ.tʃʰa.ɡi/",
+      "romanized_pronunciation" : "Twimyo Chagi"
+    },
+    {
+      "belt_level" : "2nd_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Jumping side kick performed while airborne",
+      "difficulty" : 1,
+      "english_term" : "Flying Side Kick",
+      "korean_hangul" : "뛰며옭차기",
+      "phonetic_pronunciation" : "/tʃwi.mjʌ.jʌp.tʃʰa.ɡi/",
+      "romanized_pronunciation" : "Twimyo Yop Chagi"
+    },
+    {
+      "belt_level" : "2nd_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Kicking technique with hooking motion",
+      "difficulty" : 1,
+      "english_term" : "Hooking Kick",
+      "korean_hangul" : "굴추차기",
+      "phonetic_pronunciation" : "/ɡol.tʃʰo.tʃʰa.ɡi/",
+      "romanized_pronunciation" : "Golcho Chagi"
+    },
+    {
+      "belt_level" : "2nd_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Downward striking technique using knife hand",
+      "difficulty" : 1,
+      "english_term" : "Knife Hand Downward Strike",
+      "korean_hangul" : "손칼내려타어리기",
+      "phonetic_pronunciation" : "/son.kʰal.ne.ɾjʌ.tʰa.ʌ.ɾi.ɡi/",
+      "romanized_pronunciation" : "Sonkal Naeryo Taerigi"
+    },
+    {
+      "belt_level" : "2nd_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Pushing defensive technique using the palm",
+      "difficulty" : 1,
+      "english_term" : "Palm Pushing Block",
+      "korean_hangul" : "손바닥밀어막기",
+      "phonetic_pronunciation" : "/son.ba.dak.mi.ɾʌ.mak.ɡi/",
+      "romanized_pronunciation" : "Sonbadak Miro Makgi"
+    },
+    {
+      "belt_level" : "2nd_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Hook kick performed in reverse direction",
+      "difficulty" : 1,
+      "english_term" : "Reverse Hook Kick",
+      "korean_hangul" : "반대돌려걸로차기",
+      "phonetic_pronunciation" : "/pan.de.dol.ljʌ.ɡʌl.lo.tʃʰa.ɡi/",
+      "romanized_pronunciation" : "Bandae Dollyo Goro Chagi"
+    },
+    {
+      "belt_level" : "2nd_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Penetrating side kick with piercing motion",
+      "difficulty" : 1,
+      "english_term" : "Side Piercing Kick",
+      "korean_hangul" : "옭차지르기",
+      "phonetic_pronunciation" : "/jʌp.tʃʰa.tʃi.ɾɯ.ɡi/",
+      "romanized_pronunciation" : "Yop Cha Jirugi"
+    },
+    {
+      "belt_level" : "2nd_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-17T09:28:54Z",
+      "definition" : "Punching technique directed upward",
+      "difficulty" : 1,
+      "english_term" : "Upward Punch",
+      "korean_hangul" : "올려지르기",
+      "phonetic_pronunciation" : "/ol.ljʌ.tʃi.ɾɯ.ɡi/",
+      "romanized_pronunciation" : "Ollyo Jirugi"
+    }
+  ]
+}

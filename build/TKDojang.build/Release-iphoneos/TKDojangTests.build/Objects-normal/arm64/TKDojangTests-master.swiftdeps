@@ -1,7 +1,7 @@
 version: "Apple Swift version 6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)"
 options: "1ee520197b9c04c53345ba6d2340a8e00cf0157febe19bab617f4fae9cc9176e"
-build_start_time: [1760267182, 655787000]
-build_end_time: [1760267191, 185581000]
+build_start_time: [1760270403, 548011000]
+build_end_time: [1760270414, 153198000]
 inputs:
   "/Users/craig/TKDojang/TKDojangTests/ArchitecturalIntegrationTests.swift": !dirty [1759097052, 306836944]
   "/Users/craig/TKDojang/TKDojangTests/ContentLoadingTests.swift": !dirty [1759097052, 308584051]
@@ -18,7 +18,7 @@ inputs:
   "/Users/craig/TKDojang/TKDojangTests/NavigationAndStateTests.swift": !dirty [1760230740, 777041585]
   "/Users/craig/TKDojang/TKDojangTests/PatternSystemTests.swift": !dirty [1759097052, 311568143]
   "/Users/craig/TKDojang/TKDojangTests/PerformanceTests.swift": !dirty [1759097052, 311958477]
-  "/Users/craig/TKDojang/TKDojangTests/PracticeSystemUITests.swift": !dirty [1760267084, 823035496]
+  "/Users/craig/TKDojang/TKDojangTests/PracticeSystemUITests.swift": !dirty [1760270172, 850284148]
   "/Users/craig/TKDojang/TKDojangTests/StepSparringSystemTests.swift": !dirty [1760266696, 330907976]
   "/Users/craig/TKDojang/TKDojangTests/TestHelpers/TestHelpers.swift": !dirty [1760266395, 620388080]
   "/Users/craig/TKDojang/TKDojangTests/TestingSystemUITests.swift": !dirty [1760266641, 71461151]

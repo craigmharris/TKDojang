@@ -1,0 +1,77 @@
+{
+  "belt_level" : "7th_keup",
+  "category" : "techniques",
+  "metadata" : {
+    "created_at" : "2025-08-16T23:26:59Z",
+    "source" : "CSV Import Tool",
+    "total_count" : 6
+  },
+  "terminology" : [
+    {
+      "belt_level" : "7th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "High-level side strike using back of fist",
+      "difficulty" : 1,
+      "english_term" : "Back Fist High Side Strike",
+      "korean_hangul" : "등주먹높은데옆타어리기",
+      "phonetic_pronunciation" : "/dɯŋ.tʃu.mʌk.no.pɯn.de.jʌp.tʰa.ʌ.ɾi.ɡi/",
+      "romanized_pronunciation" : "Dung Joomuk Nopunde Yop Taerigi"
+    },
+    {
+      "belt_level" : "7th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Outward blocking motion using edge of hand",
+      "difficulty" : 1,
+      "english_term" : "Knife Hand Outward Block",
+      "korean_hangul" : "손칼바깥으로막기",
+      "phonetic_pronunciation" : "/son.kʰal.pa.k͈a.nɯ.ɾo.mak.ɡi/",
+      "romanized_pronunciation" : "Sonkal Bakaero Makgi"
+    },
+    {
+      "belt_level" : "7th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "High-level defensive block using outer forearm",
+      "difficulty" : 1,
+      "english_term" : "Outer Forearm High Block",
+      "korean_hangul" : "바깥팔목높은데막기",
+      "phonetic_pronunciation" : "/pa.k͈at.pʰal.mok.no.pɯn.de.mak.ɡi/",
+      "romanized_pronunciation" : "Bakat Palmok Nopunde Makgi"
+    },
+    {
+      "belt_level" : "7th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Wedge-shaped block using outer forearm to split attacks",
+      "difficulty" : 1,
+      "english_term" : "Outer Forearm Wedging Block",
+      "korean_hangul" : "바깥팔목해쳐막기",
+      "phonetic_pronunciation" : "/pa.k͈at.pʰal.mok.he.tʃʰjʌ.mak.ɡi/",
+      "romanized_pronunciation" : "Bakat Palmot Hechyo Makgi"
+    },
+    {
+      "belt_level" : "7th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Technique to escape from grabs or holds",
+      "difficulty" : 1,
+      "english_term" : "Release Move",
+      "korean_hangul" : "잡탈솔태",
+      "phonetic_pronunciation" : "/tʃap.tʰal.sol.tʰe/",
+      "romanized_pronunciation" : "Jap Tasol Tae"
+    },
+    {
+      "belt_level" : "7th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Direct thrusting attack using fingertips",
+      "difficulty" : 1,
+      "english_term" : "Straight Fingertip Thrust",
+      "korean_hangul" : "손손끝퉤기",
+      "phonetic_pronunciation" : "/son.son.kɯt.tʰul.ɡi/",
+      "romanized_pronunciation" : "Son Sonku Tulgi"
+    }
+  ]
+}

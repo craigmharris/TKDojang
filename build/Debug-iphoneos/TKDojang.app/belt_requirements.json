@@ -1,0 +1,362 @@
+{
+  "version": "1.0",
+  "category": "belt_requirements",
+  "description": "Detailed requirements and technique focus for each belt level in TAGB Taekwondo",
+  "belt_levels": [
+    {
+      "id": "10th_keup",
+      "name": "White Belt",
+      "korean": "십급흰띠",
+      "korean_romanized": "Sip Geup Huin Tti",
+      "phonetic": "/sip.kɯʔp.hɯin.t͈i/",
+      "color_significance": "Innocence and beginning, like a blank canvas ready to learn",
+      "minimum_training_time": "3 months or 20 sessions",
+      "required_techniques": [
+        "saju_jirugi",
+        "ap_seogi",
+        "joonbi_seogi", 
+        "moa_seogi",
+        "basic_jireugi"
+      ],
+      "required_fitness": [
+        "10 press ups",
+        "basic flexibility"
+      ],
+      "theory_requirements": [
+        "meaning of Taekwondo",
+        "basic etiquette",
+        "Korean numbers 1-10"
+      ],
+      "pattern": "None",
+      "sparring": "None",
+      "breaking": "None"
+    },
+    {
+      "id": "9th_keup", 
+      "name": "White Belt with Yellow Stripe",
+      "korean": "구급흰띠노란줄",
+      "korean_romanized": "Gu Geup Huin Tti Noran Jul",
+      "phonetic": "/ku.kɯʔp.hɯin.t͈i.no.ɾan.tʃul/",
+      "color_significance": "First growth, like a plant beginning to sprout", 
+      "minimum_training_time": "3 months from previous grade",
+      "required_techniques": [
+        "arae_makgi",
+        "momtong_makgi", 
+        "olgul_makgi",
+        "ap_koobi_seogi",
+        "bandae_jireugi"
+      ],
+      "required_fitness": [
+        "15 press ups",
+        "improved flexibility"
+      ],
+      "theory_requirements": [
+        "meaning of belt colors",
+        "basic Korean commands",
+        "dojang etiquette"
+      ],
+      "pattern": "Chon-Ji (19 movements)",
+      "sparring": "None",
+      "breaking": "None"
+    },
+    {
+      "id": "8th_keup",
+      "name": "Yellow Belt", 
+      "korean": "팔급노란띠",
+      "korean_romanized": "Pal Geup Noran Tti",
+      "phonetic": "/pʰal.kɯʔp.no.ɾan.t͈i/",
+      "color_significance": "Earth, where the plant takes root and begins to grow",
+      "minimum_training_time": "3 months from previous grade",
+      "required_techniques": [
+        "ap_chagi",
+        "sonnal_makgi",
+        "dwit_koobi_seogi",
+        "juchum_seogi",
+        "naranhi_seogi"
+      ],
+      "required_fitness": [
+        "20 press ups", 
+        "front kick exercises"
+      ],
+      "theory_requirements": [
+        "five tenets of Taekwondo",
+        "Korean technique names",
+        "basic anatomy"
+      ],
+      "pattern": "Dan-Gun (21 movements)",
+      "sparring": "3-step sparring numbers 1-4",
+      "breaking": "None"
+    },
+    {
+      "id": "7th_keup",
+      "name": "Yellow Belt with Green Stripe",
+      "korean": "칠급노란띠초록줄", 
+      "korean_romanized": "Chil Geup Noran Tti Chorok Jul",
+      "phonetic": "/tʃʰil.kɯʔp.no.ɾan.t͈i.tʃʰo.rok.tʃul/",
+      "color_significance": "Growth continues, plant getting stronger",
+      "minimum_training_time": "4 months from previous grade",
+      "required_techniques": [
+        "dollyo_chagi",
+        "yeop_chagi", 
+        "geodeo_sonnal_makgi",
+        "dung_joomok_chigi",
+        "moorup_chagi"
+      ],
+      "required_fitness": [
+        "25 press ups",
+        "turning kick exercises",
+        "side kick exercises"
+      ],
+      "theory_requirements": [
+        "student oath",
+        "advanced Korean terms",
+        "basic self-defense concepts"
+      ],
+      "pattern": "Do-San (24 movements)",
+      "sparring": "3-step sparring numbers 5-8",
+      "breaking": "None"
+    },
+    {
+      "id": "6th_keup",
+      "name": "Green Belt",
+      "korean": "육급초록띠",
+      "korean_romanized": "Yuk Geup Chorok Tti", 
+      "phonetic": "/juk.kɯʔp.tʃʰo.rok.t͈i/",
+      "color_significance": "Growth and development, like a healthy plant",
+      "minimum_training_time": "4 months from previous grade",
+      "required_techniques": [
+        "dwit_chagi",
+        "bandal_chagi",
+        "anuro_bandal_chagi",
+        "bakuro_bandal_chagi",
+        "bitureo_makgi"
+      ],
+      "required_fitness": [
+        "30 press ups",
+        "back kick exercises", 
+        "crescent kick exercises"
+      ],
+      "theory_requirements": [
+        "Korean counting",
+        "vital points awareness",
+        "distance concepts"
+      ],
+      "pattern": "Won-Hyo (28 movements)",
+      "sparring": "2-step sparring introduction",
+      "breaking": "None"
+    },
+    {
+      "id": "5th_keup",
+      "name": "Green Belt with Blue Stripe",
+      "korean": "오급초록띠파란줄",
+      "korean_romanized": "O Geup Chorok Tti Paran Jul",
+      "phonetic": "/o.kɯʔp.tʃʰo.rok.t͈i.pʰa.ɾan.tʃul/",
+      "color_significance": "Reaching toward the sky, like a plant growing tall",
+      "minimum_training_time": "5 months from previous grade", 
+      "required_techniques": [
+        "naeryo_chagi",
+        "guligi_chigi",
+        "me_joomok_chigi",
+        "batangson_chigi",
+        "hecho_makgi"
+      ],
+      "required_fitness": [
+        "35 press ups",
+        "axe kick exercises",
+        "hook punch combinations"
+      ],
+      "theory_requirements": [
+        "advanced vital points",
+        "self-defense principles",
+        "Korean martial arts history"
+      ],
+      "pattern": "Yul-Gok (38 movements)",
+      "sparring": "2-step sparring techniques",
+      "breaking": "Hand breaking introduction"
+    },
+    {
+      "id": "4th_keup",
+      "name": "Blue Belt",
+      "korean": "사급파란띠",
+      "korean_romanized": "Sa Geup Paran Tti",
+      "phonetic": "/sa.kɯʔp.pʰa.ɾan.t͈i/",
+      "color_significance": "Sky, representing growth toward greater heights",
+      "minimum_training_time": "5 months from previous grade",
+      "required_techniques": [
+        "golcha_chagi",
+        "twimyo_chagi_introduction",
+        "palkup_chigi",
+        "pyonjoomok_chigi",
+        "advanced_combinations"
+      ],
+      "required_fitness": [
+        "40 press ups",
+        "jumping kick exercises",
+        "hook kick training"
+      ],
+      "theory_requirements": [
+        "sparring strategy",
+        "advanced Korean terms",
+        "injury prevention"
+      ],
+      "pattern": "Joong-Gun (32 movements)",
+      "sparring": "1-step sparring introduction", 
+      "breaking": "Foot breaking introduction"
+    },
+    {
+      "id": "3rd_keup",
+      "name": "Blue Belt with Red Stripe",
+      "korean": "삼급파란띠빨간줄",
+      "korean_romanized": "Sam Geup Paran Tti Ppalgan Jul", 
+      "phonetic": "/sam.kɯʔp.pʰa.ɾan.t͈i.pˤal.ɡan.tʃul/",
+      "color_significance": "Moving toward mastery, sky meeting the fire of advanced skill",
+      "minimum_training_time": "6 months from previous grade",
+      "required_techniques": [
+        "twimyo_ap_chagi",
+        "twimyo_yeop_chagi", 
+        "bandae_dollyo_chagi",
+        "sonkkeut_chigi",
+        "advanced_footwork"
+      ],
+      "required_fitness": [
+        "45 press ups",
+        "advanced jumping kicks",
+        "spinning techniques"
+      ],
+      "theory_requirements": [
+        "competition rules",
+        "advanced self-defense",
+        "teaching basics"
+      ],
+      "pattern": "Toi-Gye (37 movements)",
+      "sparring": "1-step sparring, semi-free sparring",
+      "breaking": "Multiple boards"
+    },
+    {
+      "id": "2nd_keup",
+      "name": "Red Belt",
+      "korean": "이급빨간띠",
+      "korean_romanized": "I Geup Ppalgan Tti",
+      "phonetic": "/i.kɯʔp.pˤal.ɡan.t͈i/",
+      "color_significance": "Danger, warning that the student is becoming dangerous and must control power",
+      "minimum_training_time": "6 months from previous grade",
+      "required_techniques": [
+        "twimyo_dollyo_chagi",
+        "bandae_golcha_chigi",
+        "ho_sin_sul_basics",
+        "advanced_combinations",
+        "competition_techniques"
+      ],
+      "required_fitness": [
+        "50 press ups",
+        "advanced jumping techniques",
+        "competition conditioning"
+      ],
+      "theory_requirements": [
+        "teaching methodology",
+        "advanced anatomy",
+        "competition strategy"
+      ],
+      "pattern": "Hwa-Rang (29 movements)",
+      "sparring": "Free sparring, advanced self-defense",
+      "breaking": "Advanced breaking techniques"
+    },
+    {
+      "id": "1st_keup",
+      "name": "Red Belt with Black Stripe",
+      "korean": "일급빨간띠검은줄",
+      "korean_romanized": "Il Geup Ppalgan Tti Geomeun Jul",
+      "phonetic": "/il.kɯʔp.pˤal.ɡan.t͈i.kʌ.mɯn.tʃul/",
+      "color_significance": "Approaching mastery, the red of danger begins to be tempered with black wisdom",
+      "minimum_training_time": "8 months from previous grade",
+      "required_techniques": [
+        "all_jumping_kicks",
+        "advanced_ho_sin_sul",
+        "competition_sparring",
+        "teaching_demonstrations",
+        "advanced_breaking"
+      ],
+      "required_fitness": [
+        "60 press ups",
+        "competition fitness level",
+        "advanced flexibility"
+      ],
+      "theory_requirements": [
+        "complete Korean terminology",
+        "teaching qualifications",
+        "advanced strategy"
+      ],
+      "pattern": "Choong-Moo (30 movements)",
+      "sparring": "All sparring types, competition level",
+      "breaking": "Advanced power breaking"
+    },
+    {
+      "id": "1st_dan",
+      "name": "1st Degree Black Belt",
+      "korean": "일단검은띠",
+      "korean_romanized": "Il Dan Geomeun Tti",
+      "phonetic": "/il.tan.kʌ.mɯn.t͈i/",
+      "color_significance": "Opposite of white, showing experience but still learning (beginning of true learning)",
+      "minimum_training_time": "1 year from 1st Kup",
+      "required_techniques": [
+        "all_fundamental_techniques",
+        "teaching_capability",
+        "advanced_applications",
+        "leadership_skills"
+      ],
+      "required_fitness": [
+        "advanced conditioning",
+        "demonstration capability",
+        "endurance for teaching"
+      ],
+      "theory_requirements": [
+        "complete martial arts philosophy",
+        "teaching methodology",
+        "historical knowledge"
+      ],
+      "pattern": "Kwang-Gae (39 movements)",
+      "sparring": "Instruction capability",
+      "breaking": "Teaching demonstrations"
+    },
+    {
+      "id": "2nd_dan",
+      "name": "2nd Degree Black Belt", 
+      "korean": "이단검은띠",
+      "korean_romanized": "I Dan Geomeun Tti",
+      "phonetic": "/i.tan.kʌ.mɯn.t͈i/",
+      "color_significance": "Deepening knowledge and responsibility",
+      "minimum_training_time": "2 years from 1st Dan",
+      "required_techniques": [
+        "advanced_teaching",
+        "curriculum_development",
+        "advanced_breaking",
+        "competition_coaching"
+      ],
+      "required_fitness": [
+        "instructor_level_fitness",
+        "demonstration_mastery"
+      ],
+      "theory_requirements": [
+        "advanced_teaching_theory",
+        "martial_arts_research",
+        "leadership_development"
+      ],
+      "pattern": "Po-Eun (36 movements)",
+      "sparring": "Advanced instruction",
+      "breaking": "Multiple station breaking"
+    }
+  ],
+  "grading_criteria": {
+    "technique_execution": "Proper form, power, speed, and control",
+    "knowledge": "Korean terminology, theory, and application understanding",
+    "fitness": "Appropriate physical conditioning for belt level",
+    "attitude": "Proper martial arts spirit and etiquette",
+    "consistency": "Regular training attendance and improvement"
+  },
+  "progression_notes": {
+    "time_minimums": "Minimum times are guidelines, actual progression depends on skill development",
+    "instructor_discretion": "Final grading decisions rest with qualified instructors",
+    "continuous_training": "Students must maintain regular training between gradings",
+    "attitude_importance": "Martial arts spirit is as important as technical skill"
+  }
+}

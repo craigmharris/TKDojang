@@ -1,0 +1,30 @@
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Dashboard/OnboardingCoordinatorView.swift":
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/OnboardingCoordinatorView.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/OnboardingCoordinatorView.swiftdeps"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/OnboardingCoordinatorView.d"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/OnboardingCoordinatorView.dia"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/OnboardingCoordinatorView.swiftconstvalues"
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Content/TheoryContentLoader.swift":
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryContentLoader.swiftconstvalues"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryContentLoader.d"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryContentLoader.dia"
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryContentLoader.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryContentLoader.swiftdeps"
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/LeitnerService.swift":
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/LeitnerService.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/LeitnerService.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/LeitnerService.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/LeitnerService.dia"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/LeitnerService.d"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Techniques/TechniqueFiltersView.swift":
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueFiltersView.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueFiltersView.swiftdeps"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueFiltersView.d"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueFiltersView.swiftconstvalues"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TechniqueFiltersView.dia"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/SafeDataManagementView.swift":
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/SafeDataManagementView.dia"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/SafeDataManagementView.swiftdeps"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/SafeDataManagementView.swiftconstvalues"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/SafeDataManagementView.d"
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/SafeDataManagementView.o"

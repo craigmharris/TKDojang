@@ -1,0 +1,36 @@
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Theory/TheoryDetailView.swift":
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryDetailView.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryDetailView.dia"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryDetailView.d"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryDetailView.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TheoryDetailView.o"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/FlashcardView.swift":
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardView.d"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardView.swiftconstvalues"
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardView.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardView.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/FlashcardView.dia"
+"/Users/craig/TKDojang/TKDojang/Sources/App/AppInitializationView.swift":
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/AppInitializationView.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/AppInitializationView.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/AppInitializationView.dia"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/AppInitializationView.d"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/AppInitializationView.swiftconstvalues"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/GradingHistoryManagementView.swift":
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/GradingHistoryManagementView.o"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/GradingHistoryManagementView.d"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/GradingHistoryManagementView.swiftconstvalues"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/GradingHistoryManagementView.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/GradingHistoryManagementView.dia"
+"/Users/craig/TKDojang/TKDojang/Sources/Features/Patterns/PatternTestView.swift":
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestView.d"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestView.swiftconstvalues"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestView.swiftdeps"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestView.dia"
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/PatternTestView.o"
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Models/TerminologyModels.swift":
+  object: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TerminologyModels.o"
+  swift-dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TerminologyModels.swiftdeps"
+  const-values: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TerminologyModels.swiftconstvalues"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TerminologyModels.dia"
+  dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Debug-iphoneos/TKDojang.build/Objects-normal/arm64/TerminologyModels.d"

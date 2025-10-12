@@ -1,0 +1,192 @@
+{
+  "source": "/Users/craig/TKDojang/TKDojang/Sources/Features/Profile/ProfileEditView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Edit Profile",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 194
+        }
+      },
+      {
+        "comment": "",
+        "key": "Error",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 213
+        }
+      },
+      {
+        "comment": "",
+        "key": "Profile Name",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 68
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose a name for this profile (up to 20 characters)",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "Enter name",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 71
+        }
+      },
+      {
+        "comment": "",
+        "key": "Avatar",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 84
+        }
+      },
+      {
+        "comment": "",
+        "key": "Color Theme",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "Current Belt Level",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 109
+        }
+      },
+      {
+        "comment": "",
+        "key": "Update your belt level as you progress",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 125
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learning Focus",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 134
+        }
+      },
+      {
+        "comment": "",
+        "key": "Learning Mode",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 137
+        }
+      },
+      {
+        "comment": "",
+        "key": "Daily Study Goal",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 155
+        }
+      },
+      {
+        "comment": "",
+        "key": "Set a realistic daily goal to maintain consistent progress",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 176
+        }
+      },
+      {
+        "comment": "",
+        "key": "Study %lld terms per day",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 160
+        }
+      },
+      {
+        "comment": "",
+        "key": "Terms per day",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 166
+        }
+      },
+      {
+        "comment": "",
+        "key": "5",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 168
+        }
+      },
+      {
+        "comment": "",
+        "key": "50",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 171
+        }
+      },
+      {
+        "comment": "",
+        "key": "Profile Statistics",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 185
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 198
+        }
+      },
+      {
+        "comment": "",
+        "key": "Save",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 204
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 214
+        }
+      },
+      {
+        "comment": "",
+        "key": "Created",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 325
+        }
+      },
+      {
+        "comment": "",
+        "key": "Last Active",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 336
+        }
+      }
+    ]
+  },
+  "version": 1
+}

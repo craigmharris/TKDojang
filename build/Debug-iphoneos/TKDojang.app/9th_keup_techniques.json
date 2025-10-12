@@ -1,0 +1,66 @@
+{
+  "belt_level" : "9th_keup",
+  "category" : "techniques",
+  "metadata" : {
+    "created_at" : "2025-08-16T23:26:59Z",
+    "source" : "CSV Import Tool",
+    "total_count" : 5
+  },
+  "terminology" : [
+    {
+      "belt_level" : "9th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Two consecutive punches delivered in sequence",
+      "difficulty" : 1,
+      "english_term" : "Double Punch",
+      "korean_hangul" : "두지르기",
+      "phonetic_pronunciation" : "/tu.tʃi.ɾɯ.ɡi/",
+      "romanized_pronunciation" : "Doo Jirugi"
+    },
+    {
+      "belt_level" : "9th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Protective blocking technique using forearm",
+      "difficulty" : 1,
+      "english_term" : "Forearm Guarding Block",
+      "korean_hangul" : "팔목대비막기",
+      "phonetic_pronunciation" : "/pʰal.mok.de.bi.mak.ɡi/",
+      "romanized_pronunciation" : "Palmok Daebi Makgi"
+    },
+    {
+      "belt_level" : "9th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Upward blocking motion using forearm",
+      "difficulty" : 1,
+      "english_term" : "Forearm Rising Block",
+      "korean_hangul" : "팔목추켜막기",
+      "phonetic_pronunciation" : "/pʰal.mok.tʃʰu.kʌ.mak.ɡi/",
+      "romanized_pronunciation" : "Palmok Chookyo Makgi"
+    },
+    {
+      "belt_level" : "9th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Forward kicking technique using front of foot",
+      "difficulty" : 1,
+      "english_term" : "Front Kick",
+      "korean_hangul" : "앙차기",
+      "phonetic_pronunciation" : "/ap.tʃʰa.ɡi/",
+      "romanized_pronunciation" : "Ap Chagi"
+    },
+    {
+      "belt_level" : "9th_keup",
+      "category" : "techniques",
+      "created_at" : "2025-08-16T23:26:59Z",
+      "definition" : "Striking technique using edge of hand",
+      "difficulty" : 1,
+      "english_term" : "Knife Hand Strike",
+      "korean_hangul" : "손칼타어리기",
+      "phonetic_pronunciation" : "/son.kʰal.tʰa.ʌ.ɾi.ɡi/",
+      "romanized_pronunciation" : "Sonkal Taerigi"
+    }
+  ]
+}

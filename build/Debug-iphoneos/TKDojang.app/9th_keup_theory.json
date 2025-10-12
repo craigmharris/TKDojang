@@ -1,0 +1,177 @@
+{
+  "belt_level": "9th Keup",
+  "belt_id": "9th_keup",
+  "theory_sections": [
+    {
+      "id": "orange_belt_meaning",
+      "title": "Orange Belt Meaning",
+      "category": "Belt Knowledge",
+      "content": {
+        "meaning": "Orange Belt represents the sun beginning to rise - the student is starting to see the light of knowledge.",
+        "significance": "Like the early morning sun that brings warmth and light, the orange belt student is beginning to understand basic Taekwondo principles and techniques.",
+        "symbolism": "Dawn of understanding, emerging knowledge, growing confidence"
+      },
+      "questions": [
+        {
+          "question": "What does the orange belt represent?",
+          "answer": "The sun beginning to rise - the student is starting to see the light of knowledge."
+        },
+        {
+          "question": "How is the orange belt student like the morning sun?",
+          "answer": "They are beginning to understand basic Taekwondo principles and bring warmth to their training."
+        }
+      ]
+    },
+    {
+      "id": "dojang_etiquette",
+      "title": "Dojang Etiquette and Respect",
+      "category": "Philosophy",
+      "content": {
+        "introduction": "Proper etiquette in the dojang shows respect and creates a positive learning environment for everyone.",
+        "basic_rules": [
+          {
+            "rule": "Always bow when entering and leaving the dojang",
+            "reason": "Shows respect for the training space and what it represents"
+          },
+          {
+            "rule": "Bow to instructors and senior students",
+            "reason": "Acknowledges their knowledge and experience"
+          },
+          {
+            "rule": "Keep the dojang clean and tidy",
+            "reason": "Shows respect for the shared training space"
+          },
+          {
+            "rule": "Arrive on time and ready to train",
+            "reason": "Shows respect for the instructor and other students' time"
+          },
+          {
+            "rule": "Listen carefully and follow instructions",
+            "reason": "Shows respect for the learning process and safety"
+          }
+        ],
+        "uniform_care": [
+          "Keep your dobok clean and pressed",
+          "Tie your belt properly with the correct knot",
+          "Remove jewelry before training for safety",
+          "Keep fingernails and toenails trimmed"
+        ]
+      },
+      "questions": [
+        {
+          "question": "Why do we bow when entering the dojang?",
+          "answer": "To show respect for the training space and what it represents."
+        },
+        {
+          "question": "What are three important dojang etiquette rules?",
+          "answer": "Bow when entering/leaving, keep the dojang clean, and arrive on time ready to train."
+        },
+        {
+          "question": "Why should we keep our dobok clean?",
+          "answer": "To show respect for Taekwondo and maintain proper training standards."
+        }
+      ]
+    },
+    {
+      "id": "basic_korean_expanded",
+      "title": "Expanded Korean Commands",
+      "category": "Language",
+      "content": {
+        "class_commands": [
+          {
+            "english": "Line up",
+            "korean": "Yeol Majchweo",
+            "pronunciation": "YUL-mah-chwo",
+            "usage": "Students form lines for class beginning"
+          },
+          {
+            "english": "At ease",
+            "korean": "Shwieo",
+            "pronunciation": "SHWEE-oh",
+            "usage": "Relax from attention position"
+          },
+          {
+            "english": "Turn around",
+            "korean": "Dwiro Dora",
+            "pronunciation": "DWEE-roh DOH-rah",
+            "usage": "Turn to face opposite direction"
+          }
+        ],
+        "counting_extended": [
+          {
+            "english": "Four",
+            "korean": "Net",
+            "pronunciation": "NET"
+          },
+          {
+            "english": "Five",
+            "korean": "Daseot",
+            "pronunciation": "DAH-sut"
+          }
+        ],
+        "basic_techniques": [
+          {
+            "english": "Punch",
+            "korean": "Jireugi",
+            "pronunciation": "jee-RUH-gee"
+          },
+          {
+            "english": "Block",
+            "korean": "Makgi",
+            "pronunciation": "MAHK-gee"
+          },
+          {
+            "english": "Stance",
+            "korean": "Sogi",
+            "pronunciation": "SOH-gee"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "question": "What is the Korean command for 'Line up'?",
+          "answer": "Yeol Majchweo"
+        },
+        {
+          "question": "How do you say 'Block' in Korean?",
+          "answer": "Makgi"
+        },
+        {
+          "question": "What does 'Sogi' mean?",
+          "answer": "Stance"
+        }
+      ]
+    },
+    {
+      "id": "grading_requirements",
+      "title": "9th Keup Grading Requirements",
+      "category": "Grading Knowledge",
+      "content": {
+        "techniques_required": [
+          "All 10th keup techniques with improved form",
+          "Extended practice of basic blocks and punches",
+          "Improved stance stability and transitions"
+        ],
+        "theory_topics": [
+          "Orange belt meaning",
+          "Dojang etiquette and respect",
+          "Expanded Korean commands",
+          "Review of five tenets with better understanding"
+        ],
+        "pattern": "None required for 9th keup",
+        "step_sparring": "None required for 9th keup",
+        "expectations": "Show improvement in basic techniques and demonstrate understanding of respect and etiquette"
+      },
+      "questions": [
+        {
+          "question": "What is the main focus for 9th keup grading?",
+          "answer": "Improvement in basic techniques and understanding of respect and etiquette."
+        },
+        {
+          "question": "What belt meaning should 9th keup students know?",
+          "answer": "Orange belt meaning - the sun beginning to rise."
+        }
+      ]
+    }
+  ]
+}

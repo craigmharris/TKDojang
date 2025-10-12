@@ -1,0 +1,82 @@
+{
+  "leitner_system": {
+    "name": "TAGB Taekwondo Spaced Repetition",
+    "description": "Optimized review intervals for Korean terminology and technique learning",
+    "version": "1.0",
+    "intervals": {
+      "box_1": {
+        "days": 1,
+        "description": "New items - review tomorrow"
+      },
+      "box_2": {
+        "days": 3,
+        "description": "Getting familiar - review in 3 days"
+      },
+      "box_3": {
+        "days": 7,
+        "description": "Learning well - review in 1 week"
+      },
+      "box_4": {
+        "days": 14,
+        "description": "Good retention - review in 2 weeks"
+      },
+      "box_5": {
+        "days": 30,
+        "description": "Well learned - review in 1 month"
+      }
+    },
+    "presets": {
+      "beginner": {
+        "name": "Beginner Learner",
+        "description": "More frequent reviews for beginners",
+        "intervals": {
+          "box_1": { "days": 1 },
+          "box_2": { "days": 2 },
+          "box_3": { "days": 4 },
+          "box_4": { "days": 8 },
+          "box_5": { "days": 16 }
+        }
+      },
+      "standard": {
+        "name": "Standard Learning",
+        "description": "Balanced approach for most learners",
+        "intervals": {
+          "box_1": { "days": 1 },
+          "box_2": { "days": 3 },
+          "box_3": { "days": 7 },
+          "box_4": { "days": 14 },
+          "box_5": { "days": 30 }
+        }
+      },
+      "advanced": {
+        "name": "Advanced Learner",
+        "description": "Longer intervals for experienced learners",
+        "intervals": {
+          "box_1": { "days": 2 },
+          "box_2": { "days": 5 },
+          "box_3": { "days": 12 },
+          "box_4": { "days": 25 },
+          "box_5": { "days": 60 }
+        }
+      },
+      "intensive": {
+        "name": "Intensive Study",
+        "description": "Frequent reviews for intensive learning periods",
+        "intervals": {
+          "box_1": { "days": 1 },
+          "box_2": { "days": 1 },
+          "box_3": { "days": 2 },
+          "box_4": { "days": 4 },
+          "box_5": { "days": 8 }
+        }
+      }
+    },
+    "settings": {
+      "default_preset": "standard",
+      "max_boxes": 5,
+      "allow_custom_intervals": true,
+      "min_interval_days": 1,
+      "max_interval_days": 365
+    }
+  }
+}

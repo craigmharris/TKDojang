@@ -1,9 +1,9 @@
-"/Users/craig/TKDojang/TKDojang/Sources/Core/Data/Services/TechniquesDataService.swift":
-  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang-master.dia"
+"/Users/craig/TKDojang/TKDojang/Sources/Core/Utils/ColorExtensions.swift":
+  swiftmodule: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang.swiftmodule"
+  objc-header: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang-Swift.h"
+  swiftsourceinfo: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang.swiftsourceinfo"
   dependencies: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang-master.d"
   const-values: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang-master.swiftconstvalues"
-  swiftmodule: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang.swiftmodule"
-  abi-baseline-json: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang.abi.json"
-  objc-header: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang-Swift.h"
   swiftdoc: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang.swiftdoc"
-  swiftsourceinfo: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang.swiftsourceinfo"
+  diagnostics: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang-master.dia"
+  abi-baseline-json: "/Users/craig/TKDojang/build/TKDojang.build/Release-iphoneos/TKDojang.build/Objects-normal/arm64/TKDojang.abi.json"

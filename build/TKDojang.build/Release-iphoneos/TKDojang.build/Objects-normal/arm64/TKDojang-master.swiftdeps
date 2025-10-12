@@ -1,7 +1,7 @@
 version: "Apple Swift version 6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)"
 options: "a8a049ac8951110dd1db36fc6c73af8fa5bbdc7f80aee2040a1d1872891b9ba2"
-build_start_time: [1760267108, 625900000]
-build_end_time: [1760267191, 183616000]
+build_start_time: [1760270323, 563487000]
+build_end_time: [1760270414, 151111000]
 inputs:
   "/Users/craig/TKDojang/TKDojang/Sources/App/AppInitializationView.swift": [1760228093, 852267673]
   "/Users/craig/TKDojang/TKDojang/Sources/App/ContentView.swift": [1760228114, 943096224]

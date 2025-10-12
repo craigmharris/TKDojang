@@ -1,0 +1,139 @@
+{
+  "version": "1.0",
+  "category": "hand_techniques",
+  "description": "Comprehensive database of Taekwondo hand and arm techniques beyond basic strikes",
+  "techniques": [
+    {
+      "id": "an_palmok_chigi",
+      "names": {
+        "korean": "안팔목치기",
+        "korean_romanized": "An Palmok Chigi",
+        "english": "Inner Forearm Strike",
+        "phonetic": "/an.pʰal.mok.tʃʰi.ɡi/"
+      },
+      "description": "A strike using the inner edge of the forearm, typically delivered in a horizontal motion across the body to strike the opponent's neck or chest area.",
+      "execution": {
+        "chamber": "Forearm positioned across opposite shoulder",
+        "strike": "Drive inner forearm horizontally across to target",
+        "retraction": "Pull arm back to guard position"
+      },
+      "striking_tool": {
+        "korean": "안팔목",
+        "korean_romanized": "An Palmok",
+        "english": "Inner Forearm",
+        "phonetic": "/an.pʰal.mok/"
+      },
+      "target_areas": ["neck", "throat", "chest", "collar bone"],
+      "applicable_stances": ["ap_koobi_seogi", "dwit_koobi_seogi"],
+      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["forearm", "inner", "horizontal", "clothesline"],
+      "variations": ["naeryo_an_palmok_chigi"],
+      "images": [
+        "an_palmok_chamber.jpg",
+        "an_palmok_strike.jpg",
+        "an_palmok_impact.jpg"
+      ],
+      "common_mistakes": ["Wrong forearm edge", "Poor horizontal motion", "Insufficient power"]
+    },
+    {
+      "id": "bakkat_palmok_chigi",
+      "names": {
+        "korean": "바깥팔목치기",
+        "korean_romanized": "Bakkat Palmok Chigi",
+        "english": "Outer Forearm Strike",
+        "phonetic": "/pa.k͈at.pʰal.mok.tʃʰi.ɡi/"
+      },
+      "description": "A strike using the outer edge of the forearm, delivered from outside to inside across the body, effective against the side of the head or ribs.",
+      "execution": {
+        "chamber": "Forearm positioned to outside of body",
+        "strike": "Drive outer forearm across body to target",
+        "retraction": "Return arm to guard or ready position"
+      },
+      "striking_tool": {
+        "korean": "바깥팔목",
+        "korean_romanized": "Bakkat Palmok",
+        "english": "Outer Forearm",
+        "phonetic": "/pa.k͈at.pʰal.mok/"
+      },
+      "target_areas": ["temple", "jaw", "ribs", "neck"],
+      "applicable_stances": ["ap_koobi_seogi", "gunnun_sogi"],
+      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "intermediate",
+      "tags": ["forearm", "outer", "crossing", "sweeping"],
+      "variations": ["ollyo_bakkat_palmok_chigi"],
+      "images": [
+        "bakkat_palmok_chamber.jpg",
+        "bakkat_palmok_cross.jpg",
+        "bakkat_palmok_contact.jpg"
+      ],
+      "common_mistakes": ["Wrong forearm edge", "Poor crossing motion", "Weak impact"]
+    },
+    {
+      "id": "jipge_son_chigi",
+      "names": {
+        "korean": "집게손치기",
+        "korean_romanized": "Jipge Son Chigi",
+        "english": "Pincer Hand Strike",
+        "phonetic": "/tʃip.ɡe.son.tʃʰi.ɡi/"
+      },
+      "description": "A grasping strike where the hand forms a pincer shape to grab and strike simultaneously, used against soft tissue areas or pressure points.",
+      "execution": {
+        "chamber": "Hand open with thumb and fingers forming pincer",
+        "strike": "Grab and squeeze target while driving forward",
+        "retraction": "Release and pull hand back to guard"
+      },
+      "striking_tool": {
+        "korean": "집게손",
+        "korean_romanized": "Jipge Son",
+        "english": "Pincer Hand",
+        "phonetic": "/tʃip.ɡe.son/"
+      },
+      "target_areas": ["throat", "pressure points", "soft tissue", "nerve clusters"],
+      "applicable_stances": ["gunnun_sogi", "gojung_sogi"],
+      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "advanced",
+      "tags": ["pincer", "grab", "pressure_point", "specialized"],
+      "variations": ["sang_jipge_son_chigi"],
+      "images": [
+        "jipge_son_formation.jpg",
+        "jipge_son_grab.jpg",
+        "jipge_son_pressure.jpg"
+      ],
+      "common_mistakes": ["Weak pincer formation", "Poor targeting", "Insufficient pressure"]
+    },
+    {
+      "id": "dugum_ji_chigi",
+      "names": {
+        "korean": "둘째손가락치기",
+        "korean_romanized": "Dugum Ji Chigi",
+        "english": "Arc Hand Strike",
+        "phonetic": "/tu.ɡɯm.dʑi.tʃʰi.ɡi/"
+      },
+      "description": "A strike using the arc formed by the index finger and thumb, targeting specific pressure points or small areas with precision.",
+      "execution": {
+        "chamber": "Form arc with index finger and thumb",
+        "strike": "Drive arc forward into specific target point",
+        "retraction": "Pull hand back while maintaining arc formation"
+      },
+      "striking_tool": {
+        "korean": "둘째손가락",
+        "korean_romanized": "Dugum Ji",
+        "english": "Arc Hand",
+        "phonetic": "/tu.ɡɯm.dʑi/"
+      },
+      "target_areas": ["throat", "temple", "pressure points", "nerve centers"],
+      "applicable_stances": ["gunnun_sogi", "gojung_sogi"],
+      "belt_levels": ["3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "difficulty": "advanced",
+      "tags": ["arc", "precision", "pressure_point", "specialized"],
+      "variations": ["sang_dugum_ji_chigi"],
+      "images": [
+        "dugum_ji_formation.jpg",
+        "dugum_ji_precision.jpg",
+        "dugum_ji_target.jpg"
+      ],
+      "common_mistakes": ["Poor arc formation", "Lack of precision", "Wrong targeting"]
+    }
+  ]
+}
