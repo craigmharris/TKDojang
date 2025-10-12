@@ -35,6 +35,7 @@ class TestContainerFactory {
         let schema = Schema([
             // Core Models
             BeltLevel.self,
+            TerminologyCategory.self,
             TerminologyEntry.self,
             UserProfile.self,
             UserTerminologyProgress.self,
@@ -150,8 +151,8 @@ class TestDataFactory {
             ("titles", "Titles & Honorifics", 8)
         ]
         
-        return categoryData.map { data in
-            let category = TerminologyCategory(name: data.name, displayName: data.display, sortOrder: data.order)
+        return categoryData.map { (name, display, order) in
+            let category = TerminologyCategory(name: name, displayName: display, sortOrder: order)
             category.iconName = "circle.fill" // Default SF Symbol
             return category
         }
