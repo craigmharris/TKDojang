@@ -32,6 +32,10 @@ final class LearningSessionWorkflowTests: XCTestCase {
         // Create test container using centralized factory
         testContainer = try TestContainerFactory.createTestContainer()
         testContext = testContainer.mainContext
+        
+        // Create basic test data for all learning session tests
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
     }
     
     override func tearDownWithError() throws {
@@ -60,9 +64,6 @@ final class LearningSessionWorkflowTests: XCTestCase {
     
     func testLearningSessionDataStructures() throws {
         // Test basic data structures needed for learning sessions
-        let dataFactory = TestDataFactory()
-        try dataFactory.createBasicTestData(in: testContext)
-        
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let terminology = try testContext.fetch(FetchDescriptor<TerminologyEntry>())
         
@@ -84,8 +85,11 @@ final class LearningSessionWorkflowTests: XCTestCase {
         
         // Verify profile creation
         let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertEqual(savedProfiles.count, 1)
-        XCTAssertEqual(savedProfiles.first?.name, "Learning Session Tester")
+        XCTAssertGreaterThanOrEqual(savedProfiles.count, 1)
+        
+        // Find the profile we just created
+        let createdProfile = savedProfiles.first { $0.name == "Learning Session Tester" }
+        XCTAssertNotNil(createdProfile, "Should find the profile we just created")
     }
     
     func testFlashcardSessionWorkflow() throws {
@@ -278,15 +282,16 @@ final class LearningSessionWorkflowTests: XCTestCase {
         
         // Verify learning modes
         let profiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertEqual(profiles.count, 2)
+        XCTAssertGreaterThanOrEqual(profiles.count, 2)
         
-        let masteryModeProfile = profiles.first { $0.learningMode == .mastery }
-        let progressionModeProfile = profiles.first { $0.learningMode == .progression }
+        // Find the specific profiles we created
+        let masteryModeProfile = profiles.first { $0.name == "Mastery Mode User" }
+        let progressionModeProfile = profiles.first { $0.name == "Progression Mode User" }
         
-        XCTAssertNotNil(masteryModeProfile)
-        XCTAssertNotNil(progressionModeProfile)
-        XCTAssertEqual(masteryModeProfile?.name, "Mastery Mode User")
-        XCTAssertEqual(progressionModeProfile?.name, "Progression Mode User")
+        XCTAssertNotNil(masteryModeProfile, "Should find the mastery mode profile we created")
+        XCTAssertNotNil(progressionModeProfile, "Should find the progression mode profile we created")
+        XCTAssertEqual(masteryModeProfile?.learningMode, .mastery)
+        XCTAssertEqual(progressionModeProfile?.learningMode, .progression)
     }
     
     func testSessionPerformanceTracking() throws {

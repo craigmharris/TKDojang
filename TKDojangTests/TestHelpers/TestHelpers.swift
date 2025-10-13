@@ -120,16 +120,21 @@ class TestDataFactory {
      * Creates basic test belt levels (white, yellow, green)
      */
     func createBasicBeltLevels() -> [BeltLevel] {
+        // Include more belt levels to ensure all content types are available for testing
         let basicBelts = [
             BeltLevel(name: "10th Keup (White Belt)", shortName: "10th Keup", colorName: "White", sortOrder: 15, isKyup: true),
             BeltLevel(name: "9th Keup (Yellow Belt)", shortName: "9th Keup", colorName: "Yellow", sortOrder: 14, isKyup: true),
-            BeltLevel(name: "7th Keup (Green Belt)", shortName: "7th Keup", colorName: "Green", sortOrder: 12, isKyup: true)
+            BeltLevel(name: "8th Keup (Orange Belt)", shortName: "8th Keup", colorName: "Orange", sortOrder: 13, isKyup: true),
+            BeltLevel(name: "7th Keup (Green Belt)", shortName: "7th Keup", colorName: "Green", sortOrder: 12, isKyup: true),
+            BeltLevel(name: "1st Dan (Black Belt)", shortName: "1st Dan", colorName: "Black", sortOrder: 5, isKyup: false)
         ]
         
-        // Set colors
+        // Set colors  
         basicBelts[0].primaryColor = "white"
         basicBelts[1].primaryColor = "yellow"
-        basicBelts[2].primaryColor = "green"
+        basicBelts[2].primaryColor = "orange"
+        basicBelts[3].primaryColor = "green" 
+        basicBelts[4].primaryColor = "black"
         
         return basicBelts
     }
@@ -582,6 +587,29 @@ class TestDataFactory {
                 for entry in entries {
                     context.insert(entry)
                 }
+            }
+        }
+        
+        // Create belt-appropriate content based on realistic Taekwondo syllabus
+        // 10th Keup (White): Only terminology and basic LineWork
+        // 9th Keup (Yellow): Add basic patterns 
+        // 7th Keup (Green): Add step sparring
+        
+        // Create patterns for 9th Keup and higher
+        let patternBelts = belts.filter { $0.sortOrder <= 14 } // 9th Keup and higher
+        if !patternBelts.isEmpty {
+            let patterns = createSamplePatterns(belts: patternBelts, count: 2)
+            for pattern in patterns {
+                context.insert(pattern)
+            }
+        }
+        
+        // Create step sparring for 7th Keup and higher  
+        let stepSparringBelts = belts.filter { $0.sortOrder <= 12 } // 7th Keup and higher
+        if !stepSparringBelts.isEmpty {
+            let sequences = createSampleStepSparringSequences(belts: stepSparringBelts, count: 1) 
+            for sequence in sequences {
+                context.insert(sequence)
             }
         }
         

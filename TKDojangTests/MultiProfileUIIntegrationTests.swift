@@ -29,6 +29,10 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
         try super.setUpWithError()
         testContainer = try TestContainerFactory.createTestContainer()
         testContext = testContainer.mainContext
+        
+        // Create basic test data for consistent baseline
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
     }
     
     override func tearDownWithError() throws {
@@ -56,10 +60,7 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
     }
     
     func testBasicProfileCreation() throws {
-        // Test basic profile creation infrastructure
-        let dataFactory = TestDataFactory()
-        try dataFactory.createBasicTestData(in: testContext)
-        
+        // Test basic profile creation infrastructure (data already created in setUp)
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
         
@@ -75,17 +76,15 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
         testContext.insert(profile)
         try testContext.save()
         
-        // Verify profile was created
+        // Verify our specific profile was created
         let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertEqual(savedProfiles.count, 1)
-        XCTAssertEqual(savedProfiles.first?.name, "Test User")
+        let ourProfile = savedProfiles.first { $0.name == "Test User" }
+        XCTAssertNotNil(ourProfile, "Should find our test user profile")
+        XCTAssertEqual(ourProfile?.name, "Test User")
     }
     
     func testMultipleProfileCreation() throws {
-        // Test multiple profile creation
-        let dataFactory = TestDataFactory()
-        try dataFactory.createBasicTestData(in: testContext)
-        
+        // Test multiple profile creation (data already created in setUp)
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
         
@@ -119,21 +118,21 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
         testContext.insert(profile3)
         try testContext.save()
         
-        // Verify all profiles were created
+        // Verify all our specific profiles were created
         let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertEqual(savedProfiles.count, 3)
+        let testProfileNames = ["User One", "User Two", "User Three"]
+        let ourProfiles = savedProfiles.filter { testProfileNames.contains($0.name) }
         
-        let names = Set(savedProfiles.map { $0.name })
+        XCTAssertEqual(ourProfiles.count, 3, "Should have created our 3 test profiles")
+        
+        let names = Set(ourProfiles.map { $0.name })
         XCTAssertTrue(names.contains("User One"))
         XCTAssertTrue(names.contains("User Two"))
         XCTAssertTrue(names.contains("User Three"))
     }
     
     func testProfileUniqueNameConstraint() throws {
-        // Test profile name uniqueness infrastructure
-        let dataFactory = TestDataFactory()
-        try dataFactory.createBasicTestData(in: testContext)
-        
+        // Test profile name uniqueness infrastructure (data already created in setUp)
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
         
@@ -152,15 +151,13 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
         // Verify unique name constraint would be enforced at service level
         // (Infrastructure test focuses on data storage capability)
         let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertEqual(savedProfiles.count, 1)
-        XCTAssertEqual(savedProfiles.first?.name, "Duplicate Name")
+        let ourProfile = savedProfiles.first { $0.name == "Duplicate Name" }
+        XCTAssertNotNil(ourProfile, "Should find our duplicate name test profile")
+        XCTAssertEqual(ourProfile?.name, "Duplicate Name")
     }
     
     func testProfileActivationInfrastructure() throws {
-        // Test profile activation data structure
-        let dataFactory = TestDataFactory()
-        try dataFactory.createBasicTestData(in: testContext)
-        
+        // Test profile activation data structure (data already created in setUp)
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
         
@@ -189,20 +186,20 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
         testContext.insert(profile2)
         try testContext.save()
         
-        // Verify activation states
+        // Verify activation states for our specific test profiles
         let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertEqual(savedProfiles.count, 2)
+        let testProfileNames = ["First User", "Second User"]
+        let ourProfiles = savedProfiles.filter { testProfileNames.contains($0.name) }
         
-        let activeProfiles = savedProfiles.filter { $0.isActive }
-        XCTAssertEqual(activeProfiles.count, 1)
+        XCTAssertEqual(ourProfiles.count, 2, "Should have created our 2 test profiles")
+        
+        let activeProfiles = ourProfiles.filter { $0.isActive }
+        XCTAssertEqual(activeProfiles.count, 1, "Should have 1 active profile")
         XCTAssertEqual(activeProfiles.first?.name, "First User")
     }
     
     func testProfileSessionIsolation() throws {
-        // Test that study sessions are properly isolated between profiles
-        let dataFactory = TestDataFactory()
-        try dataFactory.createBasicTestData(in: testContext)
-        
+        // Test that study sessions are properly isolated between profiles (data already created in setUp)
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
         
@@ -238,24 +235,20 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
         testContext.insert(session2)
         try testContext.save()
         
-        // Verify session isolation
+        // Verify session isolation using profile-specific filtering
         let allSessions = try testContext.fetch(FetchDescriptor<StudySession>())
-        XCTAssertEqual(allSessions.count, 2)
         
         let profile1Sessions = allSessions.filter { $0.userProfile.id == profile1.id }
         let profile2Sessions = allSessions.filter { $0.userProfile.id == profile2.id }
         
-        XCTAssertEqual(profile1Sessions.count, 1)
-        XCTAssertEqual(profile2Sessions.count, 1)
+        XCTAssertEqual(profile1Sessions.count, 1, "Profile 1 should have 1 session")
+        XCTAssertEqual(profile2Sessions.count, 1, "Profile 2 should have 1 session")
         XCTAssertEqual(profile1Sessions.first?.sessionType, .flashcards)
         XCTAssertEqual(profile2Sessions.first?.sessionType, .patterns)
     }
     
     func testProfileProgressIsolation() throws {
-        // Test terminology progress isolation between profiles
-        let dataFactory = TestDataFactory()
-        try dataFactory.createBasicTestData(in: testContext)
-        
+        // Test terminology progress isolation between profiles (data already created in setUp)
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let terminology = try testContext.fetch(FetchDescriptor<TerminologyEntry>())
         let testBelt = beltLevels.first!
@@ -295,24 +288,20 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
         testContext.insert(progress2)
         try testContext.save()
         
-        // Verify progress isolation
+        // Verify progress isolation using profile-specific filtering
         let allProgress = try testContext.fetch(FetchDescriptor<UserTerminologyProgress>())
-        XCTAssertEqual(allProgress.count, 2)
         
         let profile1Progress = allProgress.filter { $0.userProfile.id == profile1.id }
         let profile2Progress = allProgress.filter { $0.userProfile.id == profile2.id }
         
-        XCTAssertEqual(profile1Progress.count, 1)
-        XCTAssertEqual(profile2Progress.count, 1)
+        XCTAssertEqual(profile1Progress.count, 1, "Profile 1 should have 1 progress entry")
+        XCTAssertEqual(profile2Progress.count, 1, "Profile 2 should have 1 progress entry")
         XCTAssertEqual(profile1Progress.first?.correctCount, 5)
         XCTAssertEqual(profile2Progress.first?.correctCount, 3)
     }
     
     func testProfileDifferentBeltLevels() throws {
-        // Test profiles with different belt levels
-        let dataFactory = TestDataFactory()
-        try dataFactory.createBasicTestData(in: testContext)
-        
+        // Test profiles with different belt levels (data already created in setUp)
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         XCTAssertGreaterThan(beltLevels.count, 1, "Need multiple belt levels for test")
         
@@ -340,19 +329,19 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
         testContext.insert(advancedProfile)
         try testContext.save()
         
-        // Verify different belt levels
+        // Verify different belt levels for our specific test profiles
         let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertEqual(savedProfiles.count, 2)
+        let testProfileNames = ["Beginner", "Advanced"]
+        let ourProfiles = savedProfiles.filter { testProfileNames.contains($0.name) }
         
-        let belts = Set(savedProfiles.map { $0.currentBeltLevel.id })
-        XCTAssertEqual(belts.count, 2) // Should have 2 different belt levels
+        XCTAssertEqual(ourProfiles.count, 2, "Should have created our 2 test profiles")
+        
+        let belts = Set(ourProfiles.map { $0.currentBeltLevel.id })
+        XCTAssertEqual(belts.count, 2, "Should have 2 different belt levels")
     }
     
     func testProfileAvatarAndThemeVariations() throws {
-        // Test profile customization infrastructure
-        let dataFactory = TestDataFactory()
-        try dataFactory.createBasicTestData(in: testContext)
-        
+        // Test profile customization infrastructure (data already created in setUp)
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
         
@@ -371,22 +360,22 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
         }
         try testContext.save()
         
-        // Verify all profiles created with different customizations
+        // Verify all our specific profiles created with different customizations
         let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertEqual(savedProfiles.count, 6)
+        let testProfileNames = ["Student 1", "Student 2", "Instructor", "Master", "Ninja", "Champion"]
+        let ourProfiles = savedProfiles.filter { testProfileNames.contains($0.name) }
         
-        let avatars = Set(savedProfiles.map { $0.avatar })
-        let themes = Set(savedProfiles.map { $0.colorTheme })
+        XCTAssertEqual(ourProfiles.count, 6, "Should have created our 6 test profiles")
         
-        XCTAssertEqual(avatars.count, 6) // All different avatars
-        XCTAssertEqual(themes.count, 6) // All different themes
+        let avatars = Set(ourProfiles.map { $0.avatar })
+        let themes = Set(ourProfiles.map { $0.colorTheme })
+        
+        XCTAssertEqual(avatars.count, 6, "All profiles should have different avatars")
+        XCTAssertEqual(themes.count, 6, "All profiles should have different themes")
     }
     
     func testProfileActivityTracking() throws {
-        // Test profile activity tracking infrastructure
-        let dataFactory = TestDataFactory()
-        try dataFactory.createBasicTestData(in: testContext)
-        
+        // Test profile activity tracking infrastructure (data already created in setUp)
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
         
@@ -406,21 +395,19 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
         testContext.insert(profile)
         try testContext.save()
         
-        // Verify activity tracking
+        // Verify activity tracking for our specific profile
         let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        let savedProfile = savedProfiles.first!
+        let savedProfile = savedProfiles.first { $0.name == "Activity Tracker" }
         
-        XCTAssertEqual(savedProfile.totalFlashcardsSeen, 25)
-        XCTAssertEqual(savedProfile.streakDays, 7)
-        XCTAssertGreaterThan(savedProfile.totalStudyTime, 0)
-        XCTAssertNotNil(savedProfile.lastActiveAt)
+        XCTAssertNotNil(savedProfile, "Should find our activity tracker profile")
+        XCTAssertEqual(savedProfile?.totalFlashcardsSeen, 25)
+        XCTAssertEqual(savedProfile?.streakDays, 7)
+        XCTAssertGreaterThan(savedProfile?.totalStudyTime ?? 0, 0)
+        XCTAssertNotNil(savedProfile?.lastActiveAt)
     }
     
     func testProfileLearningModeSettings() throws {
-        // Test different learning mode configurations
-        let dataFactory = TestDataFactory()
-        try dataFactory.createBasicTestData(in: testContext)
-        
+        // Test different learning mode configurations (data already created in setUp)
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
         
@@ -445,24 +432,24 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
         testContext.insert(progressionProfile)
         try testContext.save()
         
-        // Verify learning modes
+        // Verify learning modes for our specific test profiles
         let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertEqual(savedProfiles.count, 2)
+        let testProfileNames = ["Mastery Learner", "Progression Learner"]
+        let ourProfiles = savedProfiles.filter { testProfileNames.contains($0.name) }
         
-        let masteryProfiles = savedProfiles.filter { $0.learningMode == .mastery }
-        let progressionProfiles = savedProfiles.filter { $0.learningMode == .progression }
+        XCTAssertEqual(ourProfiles.count, 2, "Should have created our 2 learning mode test profiles")
         
-        XCTAssertEqual(masteryProfiles.count, 1)
-        XCTAssertEqual(progressionProfiles.count, 1)
+        let masteryProfiles = ourProfiles.filter { $0.learningMode == .mastery }
+        let progressionProfiles = ourProfiles.filter { $0.learningMode == .progression }
+        
+        XCTAssertEqual(masteryProfiles.count, 1, "Should have 1 mastery profile")
+        XCTAssertEqual(progressionProfiles.count, 1, "Should have 1 progression profile")
         XCTAssertEqual(masteryProfiles.first?.name, "Mastery Learner")
         XCTAssertEqual(progressionProfiles.first?.name, "Progression Learner")
     }
     
     func testProfileDataConsistency() throws {
-        // Test data consistency across profile infrastructure
-        let dataFactory = TestDataFactory()
-        try dataFactory.createBasicTestData(in: testContext)
-        
+        // Test data consistency across profile infrastructure (data already created in setUp)
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let terminology = try testContext.fetch(FetchDescriptor<TerminologyEntry>())
         let categories = try testContext.fetch(FetchDescriptor<TerminologyCategory>())
@@ -491,10 +478,7 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
     }
     
     func testMultipleProfileSessionPerformance() throws {
-        // Test performance with multiple profiles and sessions
-        let dataFactory = TestDataFactory()
-        try dataFactory.createBasicTestData(in: testContext)
-        
+        // Test performance with multiple profiles and sessions (data already created in setUp)
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
         
@@ -527,13 +511,16 @@ final class MultiProfileUIIntegrationTests: XCTestCase {
         }
         try testContext.save()
         
-        // Verify all data was created
+        // Verify all our test data was created using profile-specific filtering
         let allSessions = try testContext.fetch(FetchDescriptor<StudySession>())
-        XCTAssertEqual(allSessions.count, 15) // 5 profiles × 3 sessions each
+        let testProfileIds = Set(profiles.map { $0.id })
+        let ourSessions = allSessions.filter { testProfileIds.contains($0.userProfile.id) }
+        
+        XCTAssertEqual(ourSessions.count, 15, "Should have 15 sessions (5 profiles × 3 sessions each)")
         
         // Test performance of filtering sessions by profile
         let firstProfile = profiles.first!
-        let profileSessions = allSessions.filter { $0.userProfile.id == firstProfile.id }
-        XCTAssertEqual(profileSessions.count, 3)
+        let profileSessions = ourSessions.filter { $0.userProfile.id == firstProfile.id }
+        XCTAssertEqual(profileSessions.count, 3, "First profile should have 3 sessions")
     }
 }

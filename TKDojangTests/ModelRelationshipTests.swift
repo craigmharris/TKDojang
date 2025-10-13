@@ -99,15 +99,24 @@ final class ModelRelationshipTests: XCTestCase {
     func testUserPatternProgressRelationships() throws {
         // Test user pattern progress relationship infrastructure
         
-        let testBelts = TestDataFactory().createAllBeltLevels()
+        let testFactory = TestDataFactory()
+        let testBelts = testFactory.createAllBeltLevels()
         for belt in testBelts {
             testContext.insert(belt)
+        }
+        
+        // Create test patterns first to ensure they exist
+        let testPatterns = testFactory.createSamplePatterns(belts: testBelts, count: 2)
+        for pattern in testPatterns {
+            testContext.insert(pattern)
         }
         
         let testProfile = UserProfile(name: "Pattern Progress Test User", currentBeltLevel: testBelts[0])
         testContext.insert(testProfile)
         
-        // Create pattern progress infrastructure
+        try testContext.save()
+        
+        // Create pattern progress infrastructure with existing patterns
         let patterns = try testContext.fetch(FetchDescriptor<Pattern>())
         if !patterns.isEmpty {
             let pattern = patterns.first!
@@ -134,15 +143,24 @@ final class ModelRelationshipTests: XCTestCase {
     func testUserStepSparringProgressRelationships() throws {
         // Test user step sparring progress relationship infrastructure
         
-        let testBelts = TestDataFactory().createAllBeltLevels()
+        let testFactory = TestDataFactory()
+        let testBelts = testFactory.createAllBeltLevels()
         for belt in testBelts {
             testContext.insert(belt)
+        }
+        
+        // Create test sequences first to ensure they exist
+        let testSequences = testFactory.createSampleStepSparringSequences(belts: testBelts, count: 2)
+        for sequence in testSequences {
+            testContext.insert(sequence)
         }
         
         let testProfile = UserProfile(name: "Step Sparring Progress Test User", currentBeltLevel: testBelts[1])
         testContext.insert(testProfile)
         
-        // Create step sparring progress infrastructure
+        try testContext.save()
+        
+        // Create step sparring progress infrastructure with existing sequences
         let sequences = try testContext.fetch(FetchDescriptor<StepSparringSequence>())
         if !sequences.isEmpty {
             let sequence = sequences.first!
@@ -384,11 +402,19 @@ final class ModelRelationshipTests: XCTestCase {
         // Performance validation
         XCTAssertLessThan(loadTime, 3.0, "Relationship operations should be performant")
         
-        // Verify relationship integrity under load
+        // Verify relationship integrity under load - check our specific test data
         let profiles = try testContext.fetch(FetchDescriptor<UserProfile>())
         let sessions = try testContext.fetch(FetchDescriptor<StudySession>())
         
-        XCTAssertEqual(profiles.count, sessions.count, "Should maintain 1:1 relationship count")
+        // Filter to our test data only
+        let ourProfiles = profiles.filter { $0.name.contains("Performance Test User") }
+        let ourSessions = sessions.filter { session in
+            ourProfiles.contains { $0.id == session.userProfile.id }
+        }
+        
+        XCTAssertEqual(ourProfiles.count, 5, "Should have created 5 test profiles")
+        XCTAssertEqual(ourSessions.count, 5, "Should have created 5 test sessions")
+        XCTAssertEqual(ourProfiles.count, ourSessions.count, "Should maintain 1:1 relationship count for test data")
         
         print("✅ Relationship performance validation completed (Load time: \(String(format: "%.3f", loadTime))s)")
     }
