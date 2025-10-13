@@ -112,13 +112,14 @@ final class DashboardProgressUITests: XCTestCase {
         testContext.insert(session2)
         try testContext.save()
         
-        // Verify sessions were created
-        let sessions = try testContext.fetch(FetchDescriptor<StudySession>())
-        XCTAssertEqual(sessions.count, 2)
+        // Verify sessions were created - use profile-specific filtering
+        let allSessions = try testContext.fetch(FetchDescriptor<StudySession>())
+        let profileSessions = allSessions.filter { $0.userProfile.id == profile.id }
+        XCTAssertEqual(profileSessions.count, 2)
         
         // Verify session data
-        let flashcardSession = sessions.first { $0.sessionType == .flashcards }
-        let patternSession = sessions.first { $0.sessionType == .patterns }
+        let flashcardSession = profileSessions.first { $0.sessionType == .flashcards }
+        let patternSession = profileSessions.first { $0.sessionType == .patterns }
         
         XCTAssertNotNil(flashcardSession)
         XCTAssertNotNil(patternSession)
@@ -163,12 +164,15 @@ final class DashboardProgressUITests: XCTestCase {
         testContext.insert(session2)
         try testContext.save()
         
-        // Verify separate tracking
+        // Verify separate tracking - use test-specific filtering
         let allSessions = try testContext.fetch(FetchDescriptor<StudySession>())
-        XCTAssertEqual(allSessions.count, 2)
+        let testSessions = allSessions.filter { session in
+            session.userProfile.id == profile1.id || session.userProfile.id == profile2.id
+        }
+        XCTAssertEqual(testSessions.count, 2)
         
-        let profile1Sessions = allSessions.filter { $0.userProfile.id == profile1.id }
-        let profile2Sessions = allSessions.filter { $0.userProfile.id == profile2.id }
+        let profile1Sessions = testSessions.filter { $0.userProfile.id == profile1.id }
+        let profile2Sessions = testSessions.filter { $0.userProfile.id == profile2.id }
         
         XCTAssertEqual(profile1Sessions.count, 1)
         XCTAssertEqual(profile2Sessions.count, 1)
@@ -205,11 +209,12 @@ final class DashboardProgressUITests: XCTestCase {
         testContext.insert(stepSparringSession)
         try testContext.save()
         
-        // Verify all session types
-        let sessions = try testContext.fetch(FetchDescriptor<StudySession>())
-        XCTAssertEqual(sessions.count, 3)
+        // Verify all session types - use profile-specific filtering
+        let allSessions = try testContext.fetch(FetchDescriptor<StudySession>())
+        let profileSessions = allSessions.filter { $0.userProfile.id == profile.id }
+        XCTAssertEqual(profileSessions.count, 3)
         
-        let sessionTypes = Set(sessions.map { $0.sessionType })
+        let sessionTypes = Set(profileSessions.map { $0.sessionType })
         XCTAssertTrue(sessionTypes.contains(.flashcards))
         XCTAssertTrue(sessionTypes.contains(.patterns))
         XCTAssertTrue(sessionTypes.contains(.step_sparring))
@@ -236,9 +241,10 @@ final class DashboardProgressUITests: XCTestCase {
         
         try testContext.save()
         
-        // Verify tracking data
-        let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        let savedProfile = savedProfiles.first!
+        // Verify tracking data - use profile-specific filtering
+        let allProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
+        let savedProfile = allProfiles.first { $0.id == profile.id }!
+        XCTAssertNotNil(savedProfile, "Should find the specific profile we created")
         
         XCTAssertEqual(savedProfile.totalFlashcardsSeen, 25)
         XCTAssertGreaterThan(savedProfile.totalStudyTime, 0)
@@ -274,12 +280,13 @@ final class DashboardProgressUITests: XCTestCase {
         
         try testContext.save()
         
-        // Verify performance data
-        let sessions = try testContext.fetch(FetchDescriptor<StudySession>())
-        XCTAssertEqual(sessions.count, 5)
+        // Verify performance data - use profile-specific filtering
+        let allSessions = try testContext.fetch(FetchDescriptor<StudySession>())
+        let profileSessions = allSessions.filter { $0.userProfile.id == profile.id }
+        XCTAssertEqual(profileSessions.count, 5)
         
-        let totalItemsStudied = sessions.reduce(0) { $0 + $1.itemsStudied }
-        let totalCorrectAnswers = sessions.reduce(0) { $0 + $1.correctAnswers }
+        let totalItemsStudied = profileSessions.reduce(0) { $0 + $1.itemsStudied }
+        let totalCorrectAnswers = profileSessions.reduce(0) { $0 + $1.correctAnswers }
         
         XCTAssertEqual(totalItemsStudied, 75) // 5+10+15+20+25
         XCTAssertEqual(totalCorrectAnswers, 60) // 4+8+12+16+20
@@ -313,9 +320,10 @@ final class DashboardProgressUITests: XCTestCase {
         
         try testContext.save()
         
-        // Verify streak data
-        let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        let savedProfile = savedProfiles.first!
+        // Verify streak data - use profile-specific filtering
+        let allProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
+        let savedProfile = allProfiles.first { $0.id == profile.id }!
+        XCTAssertNotNil(savedProfile, "Should find the specific profile we created")
         
         XCTAssertEqual(savedProfile.streakDays, 5)
         XCTAssertNotNil(savedProfile.lastActiveAt)

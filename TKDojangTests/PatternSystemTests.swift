@@ -480,9 +480,13 @@ final class PatternSystemTests: XCTestCase {
             }
             
             if let url = jsonURL,
-               let jsonData = try? Data(contentsOf: url),
-               let parsedData = try? JSONDecoder().decode(PatternJSONData.self, from: jsonData) {
-                jsonFiles["\(fileName).json"] = parsedData
+               let jsonData = try? Data(contentsOf: url) {
+                do {
+                    let parsedData = try JSONDecoder().decode(PatternJSONData.self, from: jsonData)
+                    jsonFiles["\(fileName).json"] = parsedData
+                } catch {
+                    // Silent fallback - JSON may not match expected structure
+                }
             }
         }
         
@@ -509,7 +513,7 @@ final class PatternSystemTests: XCTestCase {
                     foundFiles.append(filename)
                 }
             } catch {
-                print("Failed to scan Patterns subdirectory: \(error)")
+                // Silent fallback - directory may not exist in test environment
             }
         }
         
@@ -527,7 +531,7 @@ final class PatternSystemTests: XCTestCase {
                     foundFiles.append(filename)
                 }
             } catch {
-                print("Failed to scan bundle root: \(error)")
+                // Silent fallback - scanning may fail in test environment
             }
         }
         

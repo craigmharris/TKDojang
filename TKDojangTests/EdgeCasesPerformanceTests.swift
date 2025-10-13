@@ -101,9 +101,10 @@ final class EdgeCasesPerformanceTests: XCTestCase {
         // Performance validation - should save 100 profiles quickly
         XCTAssertLessThan(saveTime, 5.0, "Should save 100 profiles in under 5 seconds")
         
-        // Verify all profiles were saved
-        let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertEqual(savedProfiles.count, 100)
+        // Verify all profiles were saved - use profile-specific filtering
+        let allProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
+        let performanceProfiles = allProfiles.filter { $0.name.hasPrefix("Performance User ") }
+        XCTAssertEqual(performanceProfiles.count, 100)
     }
     
     func testLargeSessionDatasetPerformance() throws {
@@ -146,9 +147,10 @@ final class EdgeCasesPerformanceTests: XCTestCase {
         // Performance validation - should save 500 sessions quickly
         XCTAssertLessThan(saveTime, 10.0, "Should save 500 sessions in under 10 seconds")
         
-        // Verify all sessions were saved
-        let savedSessions = try testContext.fetch(FetchDescriptor<StudySession>())
-        XCTAssertEqual(savedSessions.count, 500)
+        // Verify all sessions were saved - use profile-specific filtering
+        let allSessions = try testContext.fetch(FetchDescriptor<StudySession>())
+        let profileSessions = allSessions.filter { $0.userProfile.id == profile.id }
+        XCTAssertEqual(profileSessions.count, 500)
     }
     
     func testEdgeCaseProfileNames() throws {
@@ -185,12 +187,15 @@ final class EdgeCasesPerformanceTests: XCTestCase {
         
         try testContext.save()
         
-        // Verify all edge case profiles were created
-        let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertGreaterThanOrEqual(savedProfiles.count, edgeCaseNames.count)
+        // Verify all edge case profiles were created - use name-specific filtering
+        let allProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
+        let edgeCaseProfiles = allProfiles.filter { profile in
+            edgeCaseNames.contains(profile.name)
+        }
+        XCTAssertEqual(edgeCaseProfiles.count, edgeCaseNames.count)
         
         // Verify names were preserved correctly
-        let savedNames = Set(savedProfiles.map { $0.name })
+        let savedNames = Set(edgeCaseProfiles.map { $0.name })
         for edgeName in edgeCaseNames {
             XCTAssertTrue(savedNames.contains(edgeName), "Edge case name '\(edgeName)' should be preserved")
         }
@@ -219,12 +224,13 @@ final class EdgeCasesPerformanceTests: XCTestCase {
         
         try testContext.save()
         
-        // Verify all belt level profiles were created
-        let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertEqual(savedProfiles.count, beltLevels.count)
+        // Verify all belt level profiles were created - use name-specific filtering
+        let allProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
+        let beltProgressionProfiles = allProfiles.filter { $0.name.hasPrefix("Belt Level ") && $0.name.hasSuffix(" User") }
+        XCTAssertEqual(beltProgressionProfiles.count, beltLevels.count)
         
         // Verify belt level distribution
-        let profileBeltIds = Set(savedProfiles.map { $0.currentBeltLevel.id })
+        let profileBeltIds = Set(beltProgressionProfiles.map { $0.currentBeltLevel.id })
         let beltLevelIds = Set(beltLevels.map { $0.id })
         XCTAssertEqual(profileBeltIds, beltLevelIds, "All belt levels should be represented")
     }
@@ -260,12 +266,13 @@ final class EdgeCasesPerformanceTests: XCTestCase {
         
         try testContext.save()
         
-        // Verify extreme sessions were saved
-        let sessions = try testContext.fetch(FetchDescriptor<StudySession>())
-        XCTAssertEqual(sessions.count, 2)
+        // Verify extreme sessions were saved - use profile-specific filtering
+        let allSessions = try testContext.fetch(FetchDescriptor<StudySession>())
+        let profileSessions = allSessions.filter { $0.userProfile.id == profile.id }
+        XCTAssertEqual(profileSessions.count, 2)
         
-        let zeroSessionSaved = sessions.first { $0.itemsStudied == 0 }
-        let extremeSessionSaved = sessions.first { $0.itemsStudied == 10000 }
+        let zeroSessionSaved = profileSessions.first { $0.itemsStudied == 0 }
+        let extremeSessionSaved = profileSessions.first { $0.itemsStudied == 10000 }
         
         XCTAssertNotNil(zeroSessionSaved)
         XCTAssertNotNil(extremeSessionSaved)
@@ -296,16 +303,18 @@ final class EdgeCasesPerformanceTests: XCTestCase {
         
         try testContext.save()
         
-        // Verify profile creation without concurrent operations
+        // Verify profile creation without concurrent operations - use name-specific filtering
         // Note: SwiftData ModelContext is not thread-safe, so we avoid concurrent DispatchQueue operations
-        let savedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertGreaterThanOrEqual(savedProfiles.count, 10, "At least 10 profiles should be created successfully")
+        let allProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
+        let concurrentProfiles = allProfiles.filter { $0.name.hasPrefix("Concurrent User ") }
+        XCTAssertGreaterThanOrEqual(concurrentProfiles.count, 10, "At least 10 concurrent profiles should be created successfully")
         
-        // Test sequential access patterns instead
+        // Test sequential access patterns instead - use profile-specific filtering
         var accessResults: [Int] = []
         for _ in 1...5 {
-            let fetchedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-            accessResults.append(fetchedProfiles.count)
+            let allFetchedProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
+            let concurrentFetchedProfiles = allFetchedProfiles.filter { $0.name.hasPrefix("Concurrent User ") }
+            accessResults.append(concurrentFetchedProfiles.count)
         }
         
         // All sequential reads should return consistent results
@@ -355,9 +364,10 @@ final class EdgeCasesPerformanceTests: XCTestCase {
         
         try testContext.save()
         
-        // Verify all progress entries were created
-        let progressEntries = try testContext.fetch(FetchDescriptor<UserTerminologyProgress>())
-        XCTAssertEqual(progressEntries.count, terminology.count)
+        // Verify all progress entries were created - use profile-specific filtering
+        let allProgressEntries = try testContext.fetch(FetchDescriptor<UserTerminologyProgress>())
+        let profileProgressEntries = allProgressEntries.filter { $0.userProfile.id == profile.id }
+        XCTAssertEqual(profileProgressEntries.count, terminology.count)
     }
     
     func testDataIntegrityUnderStress() throws {
@@ -408,20 +418,27 @@ final class EdgeCasesPerformanceTests: XCTestCase {
         
         try testContext.save()
         
-        // Verify data integrity
+        // Verify data integrity - use profile-specific filtering
         let allSessions = try testContext.fetch(FetchDescriptor<StudySession>())
         let allProgress = try testContext.fetch(FetchDescriptor<UserTerminologyProgress>())
         
-        XCTAssertEqual(allSessions.count, 100) // 20 profiles × 5 sessions
-        XCTAssertEqual(allProgress.count, 20) // 20 profiles × 1 progress entry
+        let stressTestSessions = allSessions.filter { session in
+            profiles.contains { $0.id == session.userProfile.id }
+        }
+        let stressTestProgress = allProgress.filter { progress in
+            profiles.contains { $0.id == progress.userProfile.id }
+        }
+        
+        XCTAssertEqual(stressTestSessions.count, 100) // 20 profiles × 5 sessions
+        XCTAssertEqual(stressTestProgress.count, 20) // 20 profiles × 1 progress entry
         
         // Verify relationships are intact
-        for session in allSessions {
+        for session in stressTestSessions {
             XCTAssertNotNil(session.userProfile)
             XCTAssertTrue(profiles.contains { $0.id == session.userProfile.id })
         }
         
-        for progress in allProgress {
+        for progress in stressTestProgress {
             XCTAssertNotNil(progress.userProfile)
             XCTAssertNotNil(progress.terminologyEntry)
             XCTAssertTrue(profiles.contains { $0.id == progress.userProfile.id })
@@ -449,9 +466,10 @@ final class EdgeCasesPerformanceTests: XCTestCase {
             testContext.insert(profile)
             try testContext.save()
             
-            // Verify profile creation succeeded
-            let profiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-            XCTAssertEqual(profiles.count, 1)
+            // Verify profile creation succeeded - use name-specific filtering
+            let allProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
+            let recoveryProfiles = allProfiles.filter { $0.name == "Recovery Test User" }
+            XCTAssertEqual(recoveryProfiles.count, 1)
             
         } catch {
             XCTFail("Basic profile creation should not fail: \(error)")
@@ -469,8 +487,11 @@ final class EdgeCasesPerformanceTests: XCTestCase {
         testContext.insert(additionalProfile)
         try testContext.save()
         
-        let finalProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        XCTAssertEqual(finalProfiles.count, 2)
+        let allFinalProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
+        let recoveryTestProfiles = allFinalProfiles.filter { profile in
+            profile.name == "Recovery Test User" || profile.name == "Post-Error User"
+        }
+        XCTAssertEqual(recoveryTestProfiles.count, 2)
     }
     
     // MARK: - Performance Validation Tests
@@ -519,12 +540,14 @@ final class EdgeCasesPerformanceTests: XCTestCase {
         let startTime = CFAbsoluteTimeGetCurrent()
         
         let allProfiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        let masteryProfiles = allProfiles.filter { $0.learningMode == .mastery }
+        let filterTestProfiles = allProfiles.filter { $0.name.hasPrefix("Filter Test User ") }
+        let masteryProfiles = filterTestProfiles.filter { $0.learningMode == .mastery }
         
         let filterTime = CFAbsoluteTimeGetCurrent() - startTime
         
         // Performance validation
         XCTAssertLessThan(filterTime, 2.0, "Filtering 1000 profiles should complete in under 2 seconds")
+        XCTAssertEqual(filterTestProfiles.count, 1000, "Should create 1000 filter test profiles")
         XCTAssertEqual(masteryProfiles.count, 500) // Half should be mastery mode
     }
     

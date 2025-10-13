@@ -55,9 +55,30 @@ final class TheoryTechniquesUITests: XCTestCase {
         let description: String?
         let terms: [TerminologyJSONTerm]
         
+        // Support both old and new JSON array names
+        let terminology: [TerminologyJSONTerm]?
+        
         enum CodingKeys: String, CodingKey {
             case beltLevel = "belt_level"
-            case category, description, terms
+            case category, description, terms, terminology
+        }
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            
+            beltLevel = try container.decode(String.self, forKey: .beltLevel)
+            category = try container.decode(String.self, forKey: .category)
+            description = try container.decodeIfPresent(String.self, forKey: .description)
+            
+            // Try both array formats
+            if let terminology = try container.decodeIfPresent([TerminologyJSONTerm].self, forKey: .terminology) {
+                terms = terminology
+            } else {
+                terms = try container.decodeIfPresent([TerminologyJSONTerm].self, forKey: .terms) ?? []
+            }
+            
+            // Initialize optional property
+            self.terminology = try container.decodeIfPresent([TerminologyJSONTerm].self, forKey: .terminology)
         }
     }
     
@@ -68,6 +89,46 @@ final class TheoryTechniquesUITests: XCTestCase {
         let phonetic: String
         let definition: String
         let difficulty: Int
+        
+        // Support both old and new JSON field formats
+        let englishTerm: String?
+        let koreanHangul: String?
+        let romanizedPronunciation: String?
+        let phoneticPronunciation: String?
+        
+        enum CodingKeys: String, CodingKey {
+            case english, korean, pronunciation, phonetic, definition, difficulty
+            case englishTerm = "english_term"
+            case koreanHangul = "korean_hangul"
+            case romanizedPronunciation = "romanized_pronunciation"
+            case phoneticPronunciation = "phonetic_pronunciation"
+        }
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            
+            // Try new format first, fallback to old format
+            if let englishTerm = try container.decodeIfPresent(String.self, forKey: .englishTerm) {
+                english = englishTerm
+                korean = try container.decodeIfPresent(String.self, forKey: .koreanHangul) ?? ""
+                pronunciation = try container.decodeIfPresent(String.self, forKey: .romanizedPronunciation) ?? ""
+                phonetic = try container.decodeIfPresent(String.self, forKey: .phoneticPronunciation) ?? ""
+            } else {
+                english = try container.decode(String.self, forKey: .english)
+                korean = try container.decode(String.self, forKey: .korean)
+                pronunciation = try container.decode(String.self, forKey: .pronunciation)
+                phonetic = try container.decode(String.self, forKey: .phonetic)
+            }
+            
+            definition = try container.decode(String.self, forKey: .definition)
+            difficulty = try container.decode(Int.self, forKey: .difficulty)
+            
+            // Initialize the optional properties
+            englishTerm = try container.decodeIfPresent(String.self, forKey: .englishTerm)
+            koreanHangul = try container.decodeIfPresent(String.self, forKey: .koreanHangul)
+            romanizedPronunciation = try container.decodeIfPresent(String.self, forKey: .romanizedPronunciation)
+            phoneticPronunciation = try container.decodeIfPresent(String.self, forKey: .phoneticPronunciation)
+        }
     }
     
     /**
@@ -87,9 +148,13 @@ final class TheoryTechniquesUITests: XCTestCase {
             }
             
             if let url = jsonURL,
-               let jsonData = try? Data(contentsOf: url),
-               let parsedData = try? JSONDecoder().decode(TerminologyJSONData.self, from: jsonData) {
-                jsonFiles["\(fileName).json"] = parsedData
+               let jsonData = try? Data(contentsOf: url) {
+                do {
+                    let parsedData = try JSONDecoder().decode(TerminologyJSONData.self, from: jsonData)
+                    jsonFiles["\(fileName).json"] = parsedData
+                } catch {
+                    // Silent fallback - JSON may not match expected structure
+                }
             }
         }
         
@@ -116,7 +181,7 @@ final class TheoryTechniquesUITests: XCTestCase {
                     foundFiles.append(filename)
                 }
             } catch {
-                print("Failed to scan Terminology subdirectory: \(error)")
+                // Silent fallback - directory may not exist in test environment
             }
         }
         
@@ -134,7 +199,7 @@ final class TheoryTechniquesUITests: XCTestCase {
                     foundFiles.append(filename)
                 }
             } catch {
-                print("Failed to scan bundle root: \(error)")
+                // Silent fallback - scanning may fail in test environment
             }
         }
         
@@ -425,10 +490,13 @@ extension TheoryTechniquesUITests {
             return
         }
         
-        // Test search-relevant data from JSON
+        // Test search-relevant data from JSON with improved debugging
         var searchableTerms: [(english: String, korean: String, definition: String)] = []
+        var debugInfo: [String] = []
         
-        for jsonData in jsonFiles.values {
+        for (fileName, jsonData) in jsonFiles {
+            debugInfo.append("File: \(fileName), Category: \(jsonData.category), Terms: \(jsonData.terms.count)")
+            
             if jsonData.category == "techniques" {
                 for term in jsonData.terms {
                     // Validate search functionality requirements
@@ -445,7 +513,14 @@ extension TheoryTechniquesUITests {
             }
         }
         
-        XCTAssertGreaterThan(searchableTerms.count, 0, "Should have searchable techniques from JSON")
+        if searchableTerms.count == 0 {
+            print("⚠️ Debug info for testTechniquesSearchFromJSON:")
+            for info in debugInfo {
+                print("  \(info)")
+            }
+        }
+        
+        XCTAssertGreaterThan(searchableTerms.count, 0, "Should have searchable techniques from JSON. Found \(jsonFiles.count) files: \(debugInfo.joined(separator: ", "))")
         
         // Test that we have diverse search content
         let uniqueEnglishTerms = Set(searchableTerms.map { $0.english })
