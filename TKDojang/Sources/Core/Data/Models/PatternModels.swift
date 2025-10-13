@@ -25,11 +25,14 @@ final class Pattern {
     var id: UUID
     var name: String
     var hangul: String
+    var pronunciation: String = ""
+    var phonetic: String = ""
     var englishMeaning: String
     var significance: String
     var moveCount: Int
     var diagramDescription: String
     var startingStance: String
+    var difficulty: Int = 1
     
     // Media URLs (internal asset references)
     var videoURL: String?
@@ -47,11 +50,14 @@ final class Pattern {
     init(
         name: String,
         hangul: String,
+        pronunciation: String = "",
+        phonetic: String = "",
         englishMeaning: String,
         significance: String,
         moveCount: Int,
         diagramDescription: String,
         startingStance: String,
+        difficulty: Int = 1,
         videoURL: String? = nil,
         diagramImageURL: String? = nil,
         startingMoveImageURL: String? = nil
@@ -59,11 +65,14 @@ final class Pattern {
         self.id = UUID()
         self.name = name
         self.hangul = hangul
+        self.pronunciation = pronunciation
+        self.phonetic = phonetic
         self.englishMeaning = englishMeaning
         self.significance = significance
         self.moveCount = moveCount
         self.diagramDescription = diagramDescription
         self.startingStance = startingStance
+        self.difficulty = difficulty
         self.videoURL = videoURL
         self.diagramImageURL = diagramImageURL
         self.startingMoveImageURL = startingMoveImageURL
@@ -84,6 +93,7 @@ final class PatternMove {
     var moveNumber: Int
     var stance: String
     var technique: String
+    var koreanTechnique: String = ""
     var direction: String
     var target: String?
     var keyPoints: String
@@ -119,6 +129,7 @@ final class PatternMove {
         moveNumber: Int,
         stance: String,
         technique: String,
+        koreanTechnique: String = "",
         direction: String,
         target: String? = nil,
         keyPoints: String,
@@ -134,6 +145,7 @@ final class PatternMove {
         self.moveNumber = moveNumber
         self.stance = stance
         self.technique = technique
+        self.koreanTechnique = koreanTechnique
         self.direction = direction
         self.target = target
         self.keyPoints = keyPoints

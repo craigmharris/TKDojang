@@ -368,6 +368,90 @@ final class PatternSystemTests: XCTestCase {
         
         print("✅ Pattern system performance validation completed (Load time: \(String(format: "%.3f", loadTime))s)")
     }
+    
+    // MARK: - Content-Driven Pattern Tests
+    
+    /**
+     * Test that pattern JSON files exist and are accessible
+     */
+    func testPatternJSONFilesExist() throws {
+        // Test that pattern JSON files exist in bundle
+        let expectedFiles = [
+            "9th_keup_patterns",
+            "8th_keup_patterns",
+            "7th_keup_patterns"
+        ]
+        
+        var foundFiles = 0
+        for filename in expectedFiles {
+            if let url = Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: "Patterns") ?? Bundle.main.url(forResource: filename, withExtension: "json") {
+                // Try to load and parse the JSON
+                if let data = try? Data(contentsOf: url) {
+                    do {
+                        let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+                        if let dict = jsonObject as? [String: Any] {
+                            XCTAssertTrue(dict.keys.contains("patterns"), "JSON should contain patterns array")
+                            XCTAssertTrue(dict.keys.contains("belt_level"), "JSON should contain belt_level")
+                            foundFiles += 1
+                        }
+                    } catch {
+                        XCTFail("Failed to parse JSON file \(filename): \(error)")
+                    }
+                }
+            }
+        }
+        
+        XCTAssertGreaterThan(foundFiles, 0, "Should find at least one pattern JSON file")
+        print("✅ Pattern JSON files validation completed: \(foundFiles) files found")
+    }
+    
+    /**
+     * Test pattern data service functionality
+     */
+    @MainActor
+    func testPatternDataService() async throws {
+        // Set up test data
+        let testBelts = TestDataFactory().createAllBeltLevels()
+        for belt in testBelts {
+            testContext.insert(belt)
+        }
+        
+        let testProfile = UserProfile(name: "Pattern Service Test User", currentBeltLevel: testBelts.first!)
+        testContext.insert(testProfile)
+        
+        // Create a test pattern manually
+        let testPattern = Pattern(
+            name: "Test Pattern",
+            hangul: "테스트",
+            englishMeaning: "Test Pattern",
+            significance: "Pattern for testing",
+            moveCount: 10,
+            diagramDescription: "Test diagram",
+            startingStance: "Ready stance"
+        )
+        testPattern.beltLevels.append(testBelts.first!)
+        testContext.insert(testPattern)
+        try testContext.save()
+        
+        // Test pattern service
+        let patternService = PatternDataService(modelContext: testContext)
+        let availablePatterns = try await patternService.getPatternsForUser(userProfile: testProfile)
+        
+        XCTAssertGreaterThan(availablePatterns.count, 0, "Should have patterns available for user")
+        
+        // Test progress tracking with pattern service
+        if let pattern = availablePatterns.first {
+            let progress = UserPatternProgress(userProfile: testProfile, pattern: pattern)
+            progress.recordPracticeSession(accuracy: 0.85, practiceTime: 300.0)
+            testContext.insert(progress)
+            try testContext.save()
+            
+            XCTAssertEqual(progress.practiceCount, 1, "Should record practice session")
+            XCTAssertEqual(progress.bestRunAccuracy, 0.85, "Should track accuracy")
+        }
+        
+        print("✅ Pattern data service validation completed: \(availablePatterns.count) patterns")
+    }
 }
 
 // MARK: - Mock Supporting Types

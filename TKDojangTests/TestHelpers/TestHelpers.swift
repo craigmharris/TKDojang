@@ -330,11 +330,14 @@ class TestDataFactory {
             let pattern = Pattern(
                 name: data.name,
                 hangul: data.hangul,
+                pronunciation: data.name.lowercased(),
+                phonetic: "/\(data.name.lowercased())/",
                 englishMeaning: data.englishMeaning,
                 significance: data.significance,
                 moveCount: data.moveCount,
                 diagramDescription: "Test diagram for \(data.name)",
                 startingStance: "Parallel ready stance",
+                difficulty: 1,
                 videoURL: "https://example.com/patterns/\(data.name.lowercased()).mp4",
                 diagramImageURL: "https://example.com/diagrams/\(data.name.lowercased()).jpg"
             )
@@ -373,6 +376,7 @@ class TestDataFactory {
                 moveNumber: i + 1,
                 stance: moveData.0,
                 technique: moveData.1,
+                koreanTechnique: "Korean \(moveData.1)",
                 direction: moveData.2,
                 target: moveData.3,
                 keyPoints: moveData.4,
