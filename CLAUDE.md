@@ -269,25 +269,142 @@ For critical data operations with complex state management, clean process termin
 
 ## Quality Assurance Requirements
 
-### Before Marking Tasks Complete:
+### **CRITICAL: Completion Criteria (MANDATORY)**
+
+**⚠️ NEVER mark tasks as "completed" without ALL of the following:**
+
+#### **1. Execution Proof Required**
+- **Successful compilation**: Zero build errors
+- **Functional testing**: All tests pass with evidence (output/screenshots)
+- **User environment validation**: User confirms functionality in their setup
+
+#### **2. For JSON-Driven Test Conversions Specifically**
+
+**🚫 FORBIDDEN to mark complete if ANY hardcoded logic remains:**
+```swift
+// ❌ HARDCODED TEST CASES
+let testCases = [("specific belt", "specific file")]
+
+// ❌ HARDCODED EXPECTATIONS  
+XCTAssertEqual(results.count, 5) // specific numbers
+
+// ❌ HARDCODED CONTENT ASSUMPTIONS
+XCTAssertTrue(items.contains { $0.name == "SpecificName" })
+
+// ❌ HARDCODED BELT/FILE REFERENCES
+let beltName = "8th Keup" // any specific belt
+guard let json = jsonFiles["specific_file.json"] // specific file
+```
+
+**✅ REQUIRED for completion - Fully dynamic patterns:**
+```swift
+// ✅ DYNAMIC DISCOVERY
+for (fileName, jsonData) in availableJsonFiles {
+    // Work with whatever is available
+}
+
+// ✅ DYNAMIC EXPECTATIONS FROM JSON
+XCTAssertEqual(appData.count, jsonData.expectedCount)
+
+// ✅ GRACEFUL HANDLING OF ANY CONTENT
+guard let anyItem = availableItems.first else {
+    XCTFail("No items available - check data loading")
+    return
+}
+```
+
+#### **3. Validation Checklist (Required)**
+
+Before marking ANY JSON-driven conversion complete:
+
+**Build Validation:**
+```bash
+# Must pass clean
+xcodebuild -project TKDojang.xcodeproj -scheme TKDojang build
+```
+
+**Test Execution Validation:**
+```bash
+# All tests must pass
+xcodebuild -project TKDojang.xcodeproj -scheme TKDojang test -only-testing:TestSuiteName
+```
+
+**Hardcoded Logic Detection:**
+```bash
+# Must return NO results
+grep -n "XCTAssertEqual.*count.*[0-9]" TestFile.swift
+grep -n '".*keup\|dan"' TestFile.swift
+grep -n "let.*=.*\[\(" TestFile.swift
+```
+
+**Dynamic Pattern Verification:**
+```bash
+# Must find these patterns
+grep -n "for.*in.*jsonFiles\|availableItems" TestFile.swift
+grep -n "guard let.*\.first" TestFile.swift
+```
+
+### **Process Failure Prevention**
+
+Based on Pattern testing cycle lessons learned:
+
+#### **❌ Common Completion Mistakes:**
+1. **Claiming "JSON-driven complete" while hardcoded logic remains**
+2. **Marking "build errors fixed" without compilation proof**
+3. **Saying "tests working" without execution evidence**
+4. **"Dynamic implementation" with static assumptions still present**
+
+#### **✅ Required Evidence for Completion:**
+1. **Compilation success**: "Build succeeded" output
+2. **Test execution success**: "All tests passed" with count
+3. **Hardcoded audit clean**: "No hardcoded patterns found"
+4. **User validation**: "User confirmed tests pass in their environment"
+
+### **Legacy QA Requirements**
+
+#### **Before Marking Tasks Complete:**
 - **Build + Runtime Verification**: Successful compilation AND functional testing required
-- **Root Cause Analysis**: Always identify WHY issues occurred, not just HOW to fix them
+- **Root Cause Analysis**: Always identify WHY issues occurred, not just HOW to fix them  
 - **Multiple Approach Evaluation**: Present 2-3 solutions with trade-offs before implementing
 - **Evidence-Based Validation**: Measure actual improvements, don't assume them
 
-### Error Prevention Process:
+#### **Error Prevention Process:**
 - **Challenge Suboptimal Approaches**: Point out better alternatives even if current approach works
 - **Question Assumptions**: Validate rather than assume requirements are optimal
 - **Think Systems-Level**: Consider broader architectural implications
+- **Start Simple**: Working solutions over perfect implementations
+- **User Validation Required**: No completion without user confirmation
 
 
 ## Architecture Decision Process
 
-### Implementation Standards:
+### **JSON-Driven Testing Implementation Standards:**
+
+#### **Phase 1: Assessment (Before Starting)**
+1. **Problem Definition**: What hardcoded assumptions need elimination?
+2. **Current State Audit**: Identify all hardcoded test cases, expectations, content references
+3. **JSON Content Survey**: What JSON files are available? What structure do they have?
+4. **Complexity Assessment**: Can this be done simply, or does it need complex infrastructure?
+
+#### **Phase 2: Implementation (Incremental)**
+1. **Start Simple**: File existence and basic parsing first
+2. **Basic Integration**: Load JSON, test basic structure
+3. **Dynamic Discovery**: Replace hardcoded file references with discovery
+4. **Dynamic Expectations**: Replace hardcoded assertions with JSON-driven ones
+5. **Comprehensive Testing**: Full validation against all available JSON content
+
+#### **Phase 3: Validation (Mandatory Before Completion)**
+1. **Build Success**: Zero errors, clean compilation
+2. **Test Execution**: All tests pass with evidence
+3. **Hardcoded Elimination**: Systematic verification none remain
+4. **User Environment**: Confirmation tests work in target setup
+5. **Documentation**: Update methodology with lessons learned
+
+### **Legacy Implementation Standards:**
 1. **Problem Definition**: Clearly articulate what problem is actually being solved
 2. **Solution Evaluation**: Present multiple approaches with honest pros/cons
 3. **Impact Assessment**: Consider performance, maintainability, and complexity effects
-4. **Validation Strategy**: Define how success will be measured
+4. **Validation Strategy**: Define how success will be measured  
 5. **Incremental Testing**: Break changes into verifiable steps
 
 ## Notes for Claude Code
@@ -298,3 +415,102 @@ For critical data operations with complex state management, clean process termin
 - When suggesting changes, explain the benefits and trade-offs
 - Consider the long-term maintainability and scalability of all code changes
 - **Sometimes nuclear options are the right choice** - don't over-engineer when simple solutions work better
+- **Completion requires proof** - Never mark complete without successful execution evidence
+- **JSON-driven testing is the standard** - All content testing should use actual JSON files as source of truth
+- **Systematic hardcoded removal required** - Use validation checklists to ensure complete conversion
+
+## JSON-Driven Test Conversion Validation Checklist
+
+### **Pre-Conversion Assessment**
+
+**✓ Identify all hardcoded patterns in existing tests:**
+- [ ] Hardcoded test case arrays: `let testCases = [...specific values...]`
+- [ ] Hardcoded count expectations: `XCTAssertEqual(items.count, 5)`
+- [ ] Hardcoded content assumptions: `XCTAssertTrue(items.contains { $0.name == "SpecificName" })`
+- [ ] Hardcoded belt/file references: `"8th Keup"`, `"specific_file.json"`
+- [ ] Hardcoded belt name conversions: `"8th_keup" -> "8th Keup"`
+
+### **During Implementation**
+
+**✓ Replace with dynamic patterns:**
+- [ ] Dynamic JSON file discovery: `for (fileName, jsonData) in loadJSONFiles()`
+- [ ] Dynamic expectations from JSON: `XCTAssertEqual(app.count, json.expected.count)`
+- [ ] Graceful handling of missing content: `guard let anyItem = available.first`
+- [ ] Belt level mapping from actual test database: `testBelts.first(where: { condition })`
+- [ ] Content discovery from available data: `if let pattern = availablePatterns.first`
+
+### **Post-Implementation Validation**
+
+**✓ Build validation:**
+```bash
+# Must pass without errors
+xcodebuild -project TKDojang.xcodeproj -scheme TKDojang build
+```
+
+**✓ Test execution validation:**
+```bash
+# All tests must pass
+xcodebuild -project TKDojang.xcodeproj -scheme TKDojang test -only-testing:TestSuiteName
+```
+
+**✓ Hardcoded pattern detection (must return no results):**
+```bash
+grep -n 'XCTAssertEqual.*\.count.*[0-9]' TestFile.swift
+grep -n '".*keup"\|".*dan"' TestFile.swift  
+grep -n 'let.*testCases.*=.*\[' TestFile.swift
+grep -n 'XCTAssertTrue.*\.name.*==' TestFile.swift
+```
+
+**✓ Dynamic pattern verification (must find these):**
+```bash
+grep -n 'for.*in.*jsonFiles\|for.*in.*available' TestFile.swift
+grep -n 'guard let.*\.first' TestFile.swift
+grep -n 'XCTAssertEqual.*json.*\.count' TestFile.swift
+```
+
+**✓ User environment validation:**
+- [ ] User runs tests in their Xcode environment
+- [ ] User confirms all tests pass
+- [ ] User validates no hardcoded assumptions cause failures
+
+### **Final Completion Criteria**
+
+**⚠️ Do NOT mark complete unless ALL criteria met:**
+
+- [ ] **Zero build errors**: Clean compilation
+- [ ] **All tests pass**: Evidence of successful execution
+- [ ] **Zero hardcoded patterns**: Audit confirms complete removal
+- [ ] **Dynamic patterns verified**: Required patterns found in code
+- [ ] **User environment success**: User confirms functionality
+- [ ] **Documentation updated**: Lessons learned captured
+
+**If ANY criteria fails**: Mark as "in_progress" and address specific failure before proceeding.
+
+## JSON-Driven Testing Standard Operating Procedures
+
+### **When Implementing JSON-Driven Tests:**
+
+#### **DO:**
+- Start with simple file existence validation
+- Use existing app infrastructure (ContentLoaders, Services)
+- Implement incremental phases: File → Parse → Load → Validate
+- Make tests work with ANY available content
+- Use dynamic discovery patterns consistently
+- Provide clear error messages when content missing
+- Test with actual app services, not mocked data
+
+#### **DON'T:**  
+- Create complex JSON parsing infrastructure from scratch
+- Assume specific files exist or specific content present
+- Use hardcoded belt name conversions
+- Implement hanging async operations without timeouts
+- Mark complete without successful test execution
+- Create over-engineered solutions when simple works
+
+#### **Red Flags (Stop and Reconsider):**
+- "Should have exactly N items" - probably hardcoded expectation
+- "Test for 8th Keup patterns" - probably hardcoded belt assumption  
+- "Load specific_file.json" - probably hardcoded file reference
+- Complex async operations that could hang
+- 88+ build errors from malformed code
+- Tests that work in isolation but fail when run together
