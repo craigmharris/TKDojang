@@ -377,8 +377,14 @@ final class StepSparringSystemTests: XCTestCase {
         let expectedFifthKeupCount = getExpectedSequenceCount(for: "5th_keup", from: jsonData)
         let actualFifthKeupSequences = getSequencesForBeltLevel("5th_keup", from: appSequences)
         
+        DebugLogger.data("📊 Two-step filtering debug for 5th Keup:")
+        DebugLogger.data("   JSON files loaded: \(jsonData.count)")
+        DebugLogger.data("   Expected count: \(expectedFifthKeupCount)")
+        DebugLogger.data("   Actual sequences found: \(actualFifthKeupSequences.count)")
+        DebugLogger.data("   App sequences total: \(appSequences.count)")
+        
         XCTAssertEqual(actualFifthKeupSequences.count, expectedFifthKeupCount,
-                      "5th Keup should see \(expectedFifthKeupCount) two-step sequences based on JSON data")
+                      "5th Keup should see \(expectedFifthKeupCount) two-step sequences based on JSON data (found \(actualFifthKeupSequences.count))")
         
         let expectedFourthKeupCount = getExpectedSequenceCount(for: "4th_keup", from: jsonData)
         let actualFourthKeupSequences = getSequencesForBeltLevel("4th_keup", from: appSequences)
@@ -929,13 +935,19 @@ final class StepSparringSystemTests: XCTestCase {
     /// Gets expected sequence count for a belt level from JSON data
     private func getExpectedSequenceCount(for beltId: String, from jsonData: [String: StepSparringJSONData]) -> Int {
         var count = 0
-        for (_, data) in jsonData {
+        DebugLogger.data("🔍 Counting sequences for \(beltId):")
+        for (fileName, data) in jsonData {
+            DebugLogger.data("   Checking \(fileName): \(data.sequences.count) sequences")
             for sequence in data.sequences {
                 if sequence.applicableBeltLevels.contains(beltId) {
                     count += 1
+                    DebugLogger.data("     ✓ '\(sequence.name)' includes \(beltId)")
+                } else {
+                    DebugLogger.data("     ✗ '\(sequence.name)' applicable to: \(sequence.applicableBeltLevels)")
                 }
             }
         }
+        DebugLogger.data("   Total count for \(beltId): \(count)")
         return count
     }
 }

@@ -106,7 +106,7 @@ enum MovementType: String, Codable, CaseIterable {
 struct ExerciseExecution: Codable {
     let direction: String
     let repetitions: Int
-    let movementPattern: String
+    let movementPattern: String?
     let sequenceNotes: String?
     let alternatingPattern: String?
     let keyPoints: [String]

@@ -167,11 +167,14 @@ struct PatternContentLoader {
         let pattern = Pattern(
             name: data.name,
             hangul: data.hangul,
+            pronunciation: data.pronunciation,
+            phonetic: data.phonetic,
             englishMeaning: data.englishMeaning,
             significance: data.significance,
             moveCount: data.moveCount,
             diagramDescription: data.diagramDescription,
             startingStance: data.startingStance,
+            difficulty: data.difficulty,
             videoURL: data.videoUrl,
             diagramImageURL: data.diagramImageUrl,
             startingMoveImageURL: data.startingMoveImageUrl
@@ -209,6 +212,7 @@ struct PatternContentLoader {
             moveNumber: data.moveNumber,
             stance: data.stance,
             technique: data.technique,
+            koreanTechnique: data.koreanTechnique ?? "",
             direction: data.direction,
             target: data.target,
             keyPoints: data.keyPoints,

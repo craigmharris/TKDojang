@@ -618,12 +618,14 @@ struct LineWorkExerciseDetailView: View {
             sectionHeaderView(title: "Execution Details", icon: "gearshape")
             
             VStack(alignment: .leading, spacing: 12) {
-                // Movement Pattern (full width)
-                fullWidthDetailCard(
-                    title: "Movement Pattern",
-                    icon: "arrow.right.circle",
-                    content: exercise.execution.movementPattern
-                )
+                // Movement Pattern (full width, if available)
+                if let movementPattern = exercise.execution.movementPattern {
+                    fullWidthDetailCard(
+                        title: "Movement Pattern",
+                        icon: "arrow.right.circle",
+                        content: movementPattern
+                    )
+                }
                 
                 // Sequence Notes (full width, if available)
                 if let sequenceNotes = exercise.execution.sequenceNotes {
