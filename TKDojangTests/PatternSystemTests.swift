@@ -557,7 +557,7 @@ final class PatternSystemTests: XCTestCase {
     /**
      * Test JSON-driven pattern belt level filtering
      */
-    func testPatternBeltLevelFiltering() throws {
+    func testPatternBeltLevelFilteringFromJSON() throws {
         let jsonFiles = loadPatternJSONFiles()
         
         guard !jsonFiles.isEmpty else {
