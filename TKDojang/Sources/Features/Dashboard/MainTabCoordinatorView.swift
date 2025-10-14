@@ -19,6 +19,7 @@ struct MainTabCoordinatorView: View {
                     Label("Home", systemImage: "house")
                 }
                 .tag(0)
+                .accessibilityIdentifier("navigation-tab-home")
             
             // Learn Tab
             LearnView()
@@ -26,6 +27,7 @@ struct MainTabCoordinatorView: View {
                     Label("Learn", systemImage: "book.fill")
                 }
                 .tag(1)
+                .accessibilityIdentifier("navigation-tab-learn")
             
             // Practice Tab
             PracticeView()
@@ -33,6 +35,7 @@ struct MainTabCoordinatorView: View {
                     Label("Practice", systemImage: "figure.martial.arts")
                 }
                 .tag(2)
+                .accessibilityIdentifier("navigation-tab-practice")
             
             // Progress Tab - using stub due to SwiftData relationship issues
             ProgressViewStub()
@@ -40,6 +43,7 @@ struct MainTabCoordinatorView: View {
                     Label("Progress", systemImage: "chart.line.uptrend.xyaxis")
                 }
                 .tag(3)
+                .accessibilityIdentifier("navigation-tab-progress")
             
             // Profile Tab
             ProfileView()
@@ -47,6 +51,7 @@ struct MainTabCoordinatorView: View {
                     Label("Profile", systemImage: "person.circle")
                 }
                 .tag(4)
+                .accessibilityIdentifier("navigation-tab-profile")
         }
         .accentColor(.blue)
     }
@@ -461,6 +466,7 @@ struct LearnView: View {
                         .cornerRadius(12)
                     }
                     .buttonStyle(PlainButtonStyle())
+                    .accessibilityIdentifier("learn-flashcards-button")
                     
                     NavigationLink(destination: TestSelectionView()) {
                         HStack {
@@ -477,6 +483,7 @@ struct LearnView: View {
                         .cornerRadius(12)
                     }
                     .buttonStyle(PlainButtonStyle())
+                    .accessibilityIdentifier("learn-tests-button")
                     
                     NavigationLink(destination: TheoryView()) {
                         HStack {
@@ -1444,6 +1451,7 @@ struct PatternDetailView: View {
                     .cornerRadius(12)
                 }
                 .buttonStyle(PlainButtonStyle())
+                .accessibilityIdentifier("pattern-practice-button")
                 
                 // Test Interface Button
                 NavigationLink(destination: PatternTestView(pattern: pattern)) {

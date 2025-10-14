@@ -21,6 +21,7 @@ INTEGRATION_TESTS=(
     "ArchitecturalIntegrationTests"
     "ContentLoadingTests"
     "EdgeCasesPerformanceTests"
+    "AccessibilityComplianceTests"
 )
 
 # UI tests (slowest - run separately)
@@ -104,6 +105,19 @@ case $MODE in
         exit $failed_tests
         ;;
         
+    "accessibility")
+        echo "♿ Running Accessibility Tests"
+        echo "=============================="
+        
+        failed_tests=0
+        if ! run_test_suite "AccessibilityComplianceTests" "Accessibility"; then
+            failed_tests=$((failed_tests + 1))
+        fi
+        
+        echo "Accessibility tests completed with $failed_tests failures"
+        exit $failed_tests
+        ;;
+        
     "ui")
         echo "🖥️  Running UI Tests"
         echo "==================="
@@ -151,13 +165,14 @@ case $MODE in
         ;;
         
     *)
-        echo "Usage: $0 [fast|integration|ui|all]"
+        echo "Usage: $0 [fast|integration|accessibility|ui|all]"
         echo ""
         echo "Modes:"
-        echo "  fast        - Run only fast unit tests (~30s)"
-        echo "  integration - Run integration tests (~2-3min)"
-        echo "  ui          - Run UI tests (~5-10min)"  
-        echo "  all         - Run all tests sequentially"
+        echo "  fast          - Run only fast unit tests (~30s)"
+        echo "  integration   - Run integration tests (~2-3min)"
+        echo "  accessibility - Run WCAG compliance tests (~1min)"
+        echo "  ui            - Run UI tests (~5-10min)"  
+        echo "  all           - Run all tests sequentially"
         echo ""
         echo "Default: fast"
         exit 1

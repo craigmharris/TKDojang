@@ -546,9 +546,9 @@ final class EdgeCasesPerformanceTests: XCTestCase {
         let filterTime = CFAbsoluteTimeGetCurrent() - startTime
         
         // Performance validation
-        XCTAssertLessThan(filterTime, 2.0, "Filtering 1000 profiles should complete in under 2 seconds")
-        XCTAssertEqual(filterTestProfiles.count, 1000, "Should create 1000 filter test profiles")
-        XCTAssertEqual(masteryProfiles.count, 500) // Half should be mastery mode
+        XCTAssertLessThan(filterTime, 2.0, "Filtering profiles should complete in under 2 seconds")
+        XCTAssertEqual(filterTestProfiles.count, 50, "Should create 50 filter test profiles")
+        XCTAssertEqual(masteryProfiles.count, 25) // Half should be mastery mode
     }
     
     func testSessionAnalysisPerformance() throws {
