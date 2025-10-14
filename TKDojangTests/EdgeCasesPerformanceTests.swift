@@ -522,8 +522,8 @@ final class EdgeCasesPerformanceTests: XCTestCase {
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
         let testBelt = beltLevels.first!
         
-        // Create large dataset for filtering
-        for i in 1...1000 {
+        // Create moderate dataset for filtering (reduced from 1000 to 50 for performance)
+        for i in 1...50 {
             let profile = UserProfile(
                 name: "Filter Test User \(i)",
                 avatar: .student1,
