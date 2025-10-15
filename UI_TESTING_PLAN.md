@@ -92,7 +92,7 @@ For each test component:
 **Goal:** Test individual views in isolation with full state validation
 **Timeline:** Week 1-2
 **Total Tests:** 153
-**Completed:** 0/153 (0%)
+**Completed:** 13/153 (8%)
 
 ---
 
@@ -100,10 +100,29 @@ For each test component:
 
 **Feature Path:** `TKDojang/Sources/Features/StepSparring/Flashcard*.swift`
 **Test File:** `TKDojangTests/ComponentTests/FlashcardComponentTests.swift`
-**Status:** ⬜ Not Started
-**Completed:** 0/35
+**Status:** 🔄 In Progress
+**Completed:** 13/35 (37%)
 
-#### FlashcardConfigurationView Tests (10 tests)
+#### Supporting Component Tests (7 tests) ✅
+- ✅ `testStudyModeCard_DisplaysCorrectly` - Study mode card shows selected state with checkmark
+- ✅ `testStudyModeCard_UnselectedState` - Unselected card has no checkmark
+- ✅ `testCardDirectionCard_EnglishToKorean` - Direction card displays correct label
+- ✅ `testCardDirectionCard_BothDirections_ShowsRecommendedStar` - Both Directions shows star
+- ✅ `testPreviewRow_DisplaysSessionInfo` - Preview row shows card count correctly
+- ✅ `testLearningSystemCard_ClassicMode` - Classic mode card displays correctly
+- ✅ `testLearningSystemCard_LeitnerMode` - Leitner mode card displays correctly
+
+#### Session Statistics Tests (3 tests) ✅
+- ✅ `testSessionStats_AccuracyCalculation_80Percent` - 16/20 = 80% calculated correctly
+- ✅ `testSessionStats_AccuracyCalculation_100Percent` - 23/23 = 100% calculated correctly
+- ✅ `testSessionStats_AccuracyCalculation_ZeroQuestions` - 0/0 handles gracefully
+
+#### Enum Display Name Tests (3 tests) ✅
+- ✅ `testStudyMode_DisplayNames` - Learn/Test modes show correct names
+- ✅ `testCardDirection_DisplayNames` - All direction modes show correct names
+- ✅ `testLearningSystem_DisplayNames` - Classic/Leitner show correct names
+
+#### FlashcardConfigurationView Tests (10 tests) - NEXT
 - ⬜ `testCardCountSelection_5Cards` - Verify selecting 5 cards sets configuration
 - ⬜ `testCardCountSelection_10Cards` - Verify selecting 10 cards sets configuration
 - ⬜ `testCardCountSelection_23Cards` - Verify selecting 23 cards sets configuration
@@ -549,12 +568,12 @@ A test is considered "complete" when:
 
 | Phase | Total Tests | Completed | Percentage | Status |
 |-------|-------------|-----------|------------|--------|
-| **Phase 1: Components** | 153 | 0 | 0% | ⬜ Not Started |
+| **Phase 1: Components** | 153 | 13 | 8% | 🔄 In Progress |
 | **Phase 2: Integration** | 23 | 0 | 0% | ⬜ Not Started |
 | **Phase 3: E2E Journeys** | 12 | 0 | 0% | ⬜ Not Started |
 | **Phase 4: Stress Tests** | 8 | 0 | 0% | ⬜ Not Started |
 | **Phase 5: Snapshots** | 20 | 0 | 0% | ⬜ Not Started |
-| **TOTAL** | **216** | **0** | **0%** | ⬜ Not Started |
+| **TOTAL** | **216** | **13** | **6%** | 🔄 In Progress |
 
 ### Milestone Tracking
 
