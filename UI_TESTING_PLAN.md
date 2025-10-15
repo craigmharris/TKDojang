@@ -17,7 +17,7 @@ This plan establishes comprehensive UI testing for TKDojang to:
 
 **Total Test Target:** 196-216 tests across 5 phases
 **Estimated Timeline:** 3-4 weeks (Phases 1-4), +1 week (Phase 5 optional)
-**Current Progress:** 0/196 tests implemented (0%)
+**Current Progress:** 16/196 tests implemented (8%)
 
 ---
 
@@ -92,7 +92,7 @@ For each test component:
 **Goal:** Test individual views in isolation with full state validation
 **Timeline:** Week 1-2
 **Total Tests:** 153
-**Completed:** 13/153 (8%)
+**Completed:** 16/153 (10%)
 
 ---
 
@@ -101,7 +101,9 @@ For each test component:
 **Feature Path:** `TKDojang/Sources/Features/StepSparring/Flashcard*.swift`
 **Test File:** `TKDojangTests/ComponentTests/FlashcardComponentTests.swift`
 **Status:** 🔄 In Progress
-**Completed:** 13/35 (37%)
+**Completed:** 16/35 (46%)
+
+**🐛 CRITICAL BUG DISCOVERED:** Property-based tests exposed that selecting N flashcards returned ALL available cards (not N) for single-direction modes. Bug fixed in FlashcardView.swift.
 
 #### Supporting Component Tests (7 tests) ✅
 - ✅ `testStudyModeCard_DisplaysCorrectly` - Study mode card shows selected state with checkmark
@@ -121,6 +123,11 @@ For each test component:
 - ✅ `testStudyMode_DisplayNames` - Learn/Test modes show correct names
 - ✅ `testCardDirection_DisplayNames` - All direction modes show correct names
 - ✅ `testLearningSystem_DisplayNames` - Classic/Leitner show correct names
+
+#### Property-Based Tests with Randomization (3 tests) ✅ **[BREAKTHROUGH]**
+- ✅ `testArray_UniqueElements` - Array uniquing removes duplicates correctly
+- ✅ `testFlashcardItemCreation_PropertyBased_CardCountMatchesRequest` - Random belt levels + random card counts (5-50) validate "N selected → N returned" property
+- ✅ `testFlashcardItemCreation_MultipleRandomRuns` - 10 random configurations test edge cases every run
 
 #### FlashcardConfigurationView Tests (10 tests) - NEXT
 - ⬜ `testCardCountSelection_5Cards` - Verify selecting 5 cards sets configuration
@@ -568,12 +575,12 @@ A test is considered "complete" when:
 
 | Phase | Total Tests | Completed | Percentage | Status |
 |-------|-------------|-----------|------------|--------|
-| **Phase 1: Components** | 153 | 13 | 8% | 🔄 In Progress |
+| **Phase 1: Components** | 153 | 16 | 10% | 🔄 In Progress |
 | **Phase 2: Integration** | 23 | 0 | 0% | ⬜ Not Started |
 | **Phase 3: E2E Journeys** | 12 | 0 | 0% | ⬜ Not Started |
 | **Phase 4: Stress Tests** | 8 | 0 | 0% | ⬜ Not Started |
 | **Phase 5: Snapshots** | 20 | 0 | 0% | ⬜ Not Started |
-| **TOTAL** | **216** | **13** | **6%** | 🔄 In Progress |
+| **TOTAL** | **216** | **16** | **7%** | 🔄 In Progress |
 
 ### Milestone Tracking
 
@@ -602,7 +609,8 @@ A test is considered "complete" when:
 
 | Date | Issue | Resolution | Status |
 |------|-------|------------|--------|
-| - | - | - | - |
+| 2025-10-15 | **Critical**: FlashcardView returned ALL cards instead of N when user selected N (single-direction modes) | Fixed in FlashcardView.swift:547-617 - added defensive trimming to respect targetCount | ✅ Resolved |
+| 2025-10-15 | Property-based tests discovered card count bug by testing with random configurations (5-50 cards, random belts) | Validated fix with testFlashcardItemCreation_PropertyBased_CardCountMatchesRequest | ✅ Resolved |
 
 ---
 
