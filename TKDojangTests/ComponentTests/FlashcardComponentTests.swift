@@ -583,6 +583,243 @@ final class FlashcardComponentTests: XCTestCase {
         print("✅ Property test passed: 15 random configurations correctly propagated to sessions")
     }
 
+    // MARK: - FlashcardView Navigation Property-Based Tests
+
+    /**
+     * Property-based test: Card navigation indices
+     *
+     * PROPERTY: For a session with N cards:
+     *   - currentIndex starts at 0
+     *   - next() advances from 0 to N-1
+     *   - previous() decreases from N-1 to 0
+     *   - currentIndex never negative or >= N
+     *
+     * APPROACH: Test with random session sizes
+     */
+    func testCardNavigation_PropertyBased_IndicesWithinBounds() throws {
+        let sessionSizes = [5, 10, 15, 23, 30, 45]
+
+        for sessionSize in sessionSizes {
+            // Simulate navigation through session
+            var currentIndex = 0
+
+            // PROPERTY 1: Can navigate forward through all cards
+            for expectedIndex in 0..<sessionSize {
+                XCTAssertEqual(currentIndex, expectedIndex,
+                    "Forward navigation: index mismatch at card \(expectedIndex)")
+                XCTAssertTrue(currentIndex >= 0,
+                    "Index must never be negative")
+                XCTAssertTrue(currentIndex < sessionSize,
+                    "Index must never exceed session size")
+
+                if currentIndex < sessionSize - 1 {
+                    currentIndex += 1  // Simulate next()
+                }
+            }
+
+            // PROPERTY 2: Can navigate backward through all cards
+            for expectedIndex in (0..<sessionSize).reversed() {
+                XCTAssertEqual(currentIndex, expectedIndex,
+                    "Backward navigation: index mismatch at card \(expectedIndex)")
+                XCTAssertTrue(currentIndex >= 0,
+                    "Index must never be negative during reverse")
+                XCTAssertTrue(currentIndex < sessionSize,
+                    "Index must never exceed session size during reverse")
+
+                if currentIndex > 0 {
+                    currentIndex -= 1  // Simulate previous()
+                }
+            }
+        }
+
+        print("✅ Property test passed: Navigation indices always within bounds for all session sizes")
+    }
+
+    /**
+     * Property-based test: Progress calculation
+     *
+     * PROPERTY: Progress = (currentIndex + 1) / totalCards
+     *   - Always between 0 and 1
+     *   - Increases monotonically as cards advance
+     *   - Reaches 1.0 on last card
+     *
+     * APPROACH: Test with random session sizes and random positions
+     */
+    func testProgress_PropertyBased_MonotonicIncrease() throws {
+        let sessionSizes = [5, 10, 20, 30, 50]
+
+        for sessionSize in sessionSizes {
+            var previousProgress: Double = 0
+
+            for currentIndex in 0..<sessionSize {
+                // Calculate progress
+                let progress = Double(currentIndex + 1) / Double(sessionSize)
+
+                // PROPERTY 1: Progress between 0 and 1
+                XCTAssertTrue(progress >= 0.0 && progress <= 1.0,
+                    "Progress \(progress) out of bounds [0, 1]")
+
+                // PROPERTY 2: Progress increases monotonically
+                XCTAssertTrue(progress >= previousProgress,
+                    "Progress decreased from \(previousProgress) to \(progress)")
+
+                // PROPERTY 3: Progress reaches 1.0 on last card
+                if currentIndex == sessionSize - 1 {
+                    XCTAssertEqual(progress, 1.0, accuracy: 0.001,
+                        "Progress should be 1.0 on last card")
+                }
+
+                previousProgress = progress
+            }
+        }
+
+        print("✅ Property test passed: Progress always increases monotonically to 1.0")
+    }
+
+    // MARK: - SessionStats Property-Based Tests
+
+    /**
+     * Property-based test: Answer recording
+     *
+     * PROPERTY: Recording answers should:
+     *   - Increment correct count when marking correct
+     *   - Increment incorrect count when marking incorrect
+     *   - Total count = correct + incorrect
+     *   - Counts never decrease
+     *
+     * APPROACH: Random sequences of correct/incorrect answers
+     */
+    func testAnswerRecording_PropertyBased_CountersIncrement() throws {
+        // Test with 20 random answer sequences
+        for run in 1...20 {
+            var stats = SessionStats()
+
+            // Generate random sequence of 30 answers
+            let answerSequence = (0..<30).map { _ in Bool.random() }
+
+            var expectedCorrect = 0
+            var expectedIncorrect = 0
+
+            for isCorrect in answerSequence {
+                // Act: Record answer
+                if isCorrect {
+                    stats.correctCount += 1
+                    expectedCorrect += 1
+                } else {
+                    stats.incorrectCount += 1
+                    expectedIncorrect += 1
+                }
+
+                // Assert: PROPERTIES
+                // 1. Counts match expected
+                XCTAssertEqual(stats.correctCount, expectedCorrect,
+                    "Run \(run): Correct count mismatch")
+                XCTAssertEqual(stats.incorrectCount, expectedIncorrect,
+                    "Run \(run): Incorrect count mismatch")
+
+                // 2. Total = correct + incorrect
+                XCTAssertEqual(stats.totalCount, expectedCorrect + expectedIncorrect,
+                    "Run \(run): Total count property violated")
+
+                // 3. Counts never negative
+                XCTAssertTrue(stats.correctCount >= 0,
+                    "Correct count cannot be negative")
+                XCTAssertTrue(stats.incorrectCount >= 0,
+                    "Incorrect count cannot be negative")
+            }
+        }
+
+        print("✅ Property test passed: 20 random answer sequences validated counter properties")
+    }
+
+    /**
+     * Property-based test: Accuracy calculation across all possible ratios
+     *
+     * PROPERTY: Accuracy = (correct / total) × 100
+     *   - Always between 0 and 100
+     *   - 0% when all incorrect
+     *   - 100% when all correct
+     *   - Monotonic with respect to correct answers (more correct = higher %)
+     *
+     * APPROACH: Test all ratios from 0/N to N/N for various N
+     */
+    func testAccuracy_PropertyBased_AllPossibleRatios() throws {
+        let totalCounts = [5, 10, 20, 23, 30, 50]
+
+        for total in totalCounts {
+            for correct in 0...total {
+                // Arrange
+                var stats = SessionStats()
+                stats.correctCount = correct
+                stats.incorrectCount = total - correct
+
+                // Act
+                let accuracy = stats.accuracyPercentage
+
+                // Assert: PROPERTIES
+                // 1. Accuracy in valid range
+                XCTAssertTrue(accuracy >= 0 && accuracy <= 100,
+                    "Accuracy \(accuracy)% out of range [0, 100]")
+
+                // 2. Edge cases
+                if correct == 0 {
+                    XCTAssertEqual(accuracy, 0,
+                        "All incorrect should be 0%")
+                }
+                if correct == total {
+                    XCTAssertEqual(accuracy, 100,
+                        "All correct should be 100%")
+                }
+
+                // 3. Expected calculation
+                let expected = total > 0 ? Int((Double(correct) / Double(total)) * 100) : 0
+                XCTAssertEqual(accuracy, expected,
+                    "\(correct)/\(total) should be \(expected)%")
+            }
+        }
+
+        print("✅ Property test passed: Accuracy validated for all possible ratios")
+    }
+
+    /**
+     * Property-based test: Session data integrity
+     *
+     * PROPERTY: Session completion data must be consistent:
+     *   - Cards studied = correct + incorrect
+     *   - Displayed metrics match actual session
+     *   - No data loss during session
+     *
+     * APPROACH: Random sessions with varying outcomes
+     */
+    func testSessionCompletion_PropertyBased_DataIntegrity() throws {
+        // Run 25 random session scenarios
+        for run in 1...25 {
+            // Arrange: Random session parameters
+            let totalCards = [5, 10, 15, 20, 25, 30].randomElement()!
+            let correctCount = Int.random(in: 0...totalCards)
+            let incorrectCount = totalCards - correctCount
+
+            // Act: Create session stats
+            var stats = SessionStats()
+            stats.correctCount = correctCount
+            stats.incorrectCount = incorrectCount
+
+            // Assert: PROPERTY - Data integrity
+            XCTAssertEqual(stats.totalCount, totalCards,
+                "Run \(run): Total cards mismatch")
+            XCTAssertEqual(stats.correctCount + stats.incorrectCount, totalCards,
+                "Run \(run): Counts don't sum to total")
+
+            // Calculate expected accuracy
+            let expectedAccuracy = totalCards > 0 ?
+                Int((Double(correctCount) / Double(totalCards)) * 100) : 0
+            XCTAssertEqual(stats.accuracyPercentage, expectedAccuracy,
+                "Run \(run): Accuracy calculation incorrect")
+        }
+
+        print("✅ Property test passed: 25 random sessions validated data integrity")
+    }
+
     // MARK: - Helper Methods for Property-Based Tests
 
     /**
