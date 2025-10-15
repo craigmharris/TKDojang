@@ -124,10 +124,38 @@ For each test component:
 1. **Analyze**: Review feature behavior and identify testable scenarios
 2. **Validate**: Confirm test coverage addresses user concerns
 3. **Implement**: Write tests with clear descriptions and assertions
-4. **Execute**: Run tests and verify they pass
+4. **Execute**: Run tests and verify they pass (see Testing Workflow below)
 5. **Document**: Add clear comments explaining what's tested and why
 6. **Mark Complete**: Update checkbox in this document
 7. **Commit**: Commit test file to repository with descriptive message
+
+### Testing Workflow (3-Phase Approach)
+
+**Environment Setup:**
+```bash
+source .claude/test-config.sh  # Loads device config and helper functions
+```
+
+**Phase 1: Initial Implementation**
+- Build once: `xcode_build_for_testing`
+- Run full suite: `xcode_test_class ClassName`
+
+**Phase 2: Iterative Fixes**
+- Run single test: `xcode_test_method ClassName testMethod`
+- No rebuild needed for test-only changes
+
+**Phase 3: Final Validation**
+- Run full suite: `xcode_test_class ClassName`
+- Verify all tests pass before commit
+
+**Key Principles:**
+- ✅ Always use device ID (0A227615-B123-4282-BB13-2CD2EFB0A434)
+- ✅ Build once, test many times
+- ✅ Use `-only-testing:` for targeted execution
+- ❌ Never use `tee` (causes hangs)
+- ❌ Don't rebuild for test-only changes
+
+See CLAUDE.md "Testing Workflow" section for detailed commands and error recovery.
 
 ---
 

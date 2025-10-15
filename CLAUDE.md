@@ -109,15 +109,138 @@ grep -n "for.*in.*jsonFiles" TestFile.swift                   # Must find dynami
 
 ## Environment & Commands
 
-### Build Commands
+### Testing Workflow
+
+#### Test Environment Configuration
 ```bash
-# Build the project
-xcodebuild -project TKDojang.xcodeproj -scheme TKDojang -destination "platform=iOS Simulator,name=iPhone 16" build
+# Source test configuration (recommended)
+source .claude/test-config.sh
 
-# Run tests
-xcodebuild -project TKDojang.xcodeproj -scheme TKDojang test
+# Manual configuration
+export TEST_DEVICE_ID="0A227615-B123-4282-BB13-2CD2EFB0A434"
+export TEST_DESTINATION="platform=iOS Simulator,id=${TEST_DEVICE_ID}"
+```
 
+**Critical:** Always use device ID, never device name (device names cause flaky resolution)
+
+#### When to Build vs Test-Only
+
+**Rebuild Required:**
+- ✅ New test file created
+- ✅ App source code changed
+- ✅ First test run in new session
+- ✅ After `xcodebuild clean`
+
+**Test-Only (No Rebuild):**
+- ✅ Test code changes only
+- ✅ Fixing test assertions
+- ✅ Iterating on test logic
+- ✅ Running different test subsets
+
+#### 3-Phase Test Execution Strategy
+
+**Phase 1: Initial Implementation (Full Suite)**
+```bash
+# Build once
+xcodebuild -project TKDojang.xcodeproj \
+  -scheme TKDojang \
+  -destination "$TEST_DESTINATION" \
+  build-for-testing 2>&1 | grep -E "(error:|BUILD.*SUCCEEDED)"
+
+# Run full test suite for new file
+xcodebuild test-without-building \
+  -project TKDojang.xcodeproj \
+  -scheme TKDojang \
+  -destination "$TEST_DESTINATION" \
+  -only-testing:TKDojangTests/MultipleChoiceComponentTests \
+  2>&1 | grep -E "(Test Suite|Test Case.*passed|Test Case.*failed|TEST.*SUCCEEDED)"
+```
+
+**Phase 2: Iterative Fixes (Single Tests)**
+```bash
+# Run ONLY failing test (no rebuild)
+xcodebuild test-without-building \
+  -project TKDojang.xcodeproj \
+  -scheme TKDojang \
+  -destination "$TEST_DESTINATION" \
+  -only-testing:TKDojangTests/MultipleChoiceComponentTests/testSpecificMethod \
+  2>&1 | tail -20
+```
+
+**Phase 3: Final Validation (Full Suite)**
+```bash
+# Run full suite again before commit
+xcodebuild test-without-building \
+  -project TKDojang.xcodeproj \
+  -scheme TKDojang \
+  -destination "$TEST_DESTINATION" \
+  -only-testing:TKDojangTests/MultipleChoiceComponentTests \
+  2>&1 | grep -E "(Test Suite.*passed|failed with|TEST.*SUCCEEDED)"
+```
+
+#### Error Checking Patterns
+
+```bash
+# Quick success check
+xcodebuild ... | grep -E "\*\* TEST (BUILD|EXECUTE) SUCCEEDED"
+
+# Build error check
+xcodebuild ... 2>&1 | grep -E "(error:|warning:)" | head -50
+
+# Test summary
+xcodebuild ... 2>&1 | grep -E "(Test Suite|Test Case.*passed|Test Case.*failed)" | tail -30
+
+# Specific test failure details
+xcodebuild ... 2>&1 | grep -A 10 "testFailingMethod"
+
+# Count passing tests
+xcodebuild ... 2>&1 | grep -c "Test Case.*passed"
+```
+
+#### Performance Tips & Common Issues
+
+**✅ DO:**
+- Use device ID for destination (never device name)
+- Build once, test many times
+- Use `-only-testing:` to target specific test classes
+- Redirect to file then grep separately for detailed logs
+- Use helper functions from `.claude/test-config.sh`
+
+**❌ DON'T:**
+- Never use `tee` with xcodebuild (causes hangs)
+- Don't rebuild when only test code changed
+- Don't use `timeout`/`gtimeout` (not consistently available)
+- Don't parse xcresult without `--legacy` flag
+
+#### Error Recovery
+
+```bash
+# If build hangs/times out:
+killall xcodebuild
+xcodebuild clean -project TKDojang.xcodeproj -scheme TKDojang
+# Then rebuild with build-for-testing
+
+# If simulator issues:
+xcrun simctl list | grep Booted  # Check booted simulators
+xcrun simctl shutdown all         # Shutdown all simulators if needed
+
+# If detailed logs needed:
+xcodebuild ... > /tmp/test.log 2>&1
+grep "error:" /tmp/test.log
+```
+
+### Build Commands (Legacy - Use Testing Workflow Above)
+```bash
 # Target device: iPhone 16 (iOS 18.6) - Device ID: 0A227615-B123-4282-BB13-2CD2EFB0A434
+
+# Build for testing (preferred)
+xcodebuild -project TKDojang.xcodeproj -scheme TKDojang \
+  -destination "platform=iOS Simulator,id=0A227615-B123-4282-BB13-2CD2EFB0A434" \
+  build-for-testing
+
+# Run tests without building
+xcodebuild test-without-building -project TKDojang.xcodeproj -scheme TKDojang \
+  -destination "platform=iOS Simulator,id=0A227615-B123-4282-BB13-2CD2EFB0A434"
 ```
 
 ### Quality Assurance Requirements
