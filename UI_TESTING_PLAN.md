@@ -62,7 +62,8 @@ This plan establishes comprehensive UI testing for TKDojang to:
 - **Purpose:** Component and integration testing
 - **License:** MIT (free, no attribution required)
 - **Impact:** Development-only, zero bundle impact on end users
-- **Status:** ⬜ Not Added
+- **Version:** 0.10.3
+- **Status:** ✅ Added to TKDojangTests target
 
 ### swift-snapshot-testing (Phase 5 - Optional)
 - **Purpose:** Visual regression testing
@@ -557,7 +558,7 @@ A test is considered "complete" when:
 
 ### Milestone Tracking
 
-- ⬜ **Milestone 1:** ViewInspector dependency added
+- ✅ **Milestone 1:** ViewInspector dependency added (v0.10.3)
 - ⬜ **Milestone 2:** Phase 1 (Component Tests) complete
 - ⬜ **Milestone 3:** Phase 2 (Integration Tests) complete
 - ⬜ **Milestone 4:** Phase 3 (E2E Tests) complete
