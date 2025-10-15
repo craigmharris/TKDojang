@@ -347,8 +347,8 @@ class TestDataFactory {
                 pattern.beltLevels = [belts[i % belts.count]]
             }
             
-            // Add sample moves
-            pattern.moves = createSamplePatternMoves(for: pattern, count: min(data.moveCount, 5))
+            // Add sample moves (create full count to match moveCount property)
+            pattern.moves = createSamplePatternMoves(for: pattern, count: data.moveCount)
             
             patterns.append(pattern)
         }
@@ -584,10 +584,10 @@ class TestDataFactory {
             context.insert(category)
         }
         
-        // Create terminology entries
+        // Create terminology entries (5 per category to ensure enough for quick tests)
         for belt in belts {
             for category in categories {
-                let entries = createSampleTerminologyEntries(belt: belt, category: category, count: 3)
+                let entries = createSampleTerminologyEntries(belt: belt, category: category, count: 5)
                 for entry in entries {
                     context.insert(entry)
                 }

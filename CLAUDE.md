@@ -39,6 +39,126 @@ This file provides context and instructions for Claude Code when working on this
 - **Quality Gates**: All JSON-driven test conversions require successful execution proof
 - **TestDataFactory**: Use centralized test data generation across all test types
 
+## Test Architecture Principles (MANDATORY)
+
+### Data Source Hierarchy
+
+Tests MUST follow this strict hierarchy for data sources:
+
+1. **PRIMARY: Production JSON Files** (`Sources/Core/Data/Content/`)
+   - ✅ Component tests testing features with JSON data
+   - ✅ System tests validating JSON loading
+   - ✅ Integration tests with real content
+   - **WHY**: Tests should catch real data quality issues that users will encounter
+
+2. **SECONDARY: TestDataFactory** (ONLY when justified)
+   - ✅ Testing data loading failure scenarios
+   - ✅ Unit testing the TestDataFactory itself
+   - ✅ New features where JSON doesn't exist yet (temporary)
+   - ❌ NEVER as default "because it's easier"
+   - ❌ NEVER to work around insufficient JSON data (fix the JSON instead)
+
+### Pre-Work Validation (REQUIRED)
+
+**Before starting ANY test work, Claude MUST:**
+
+1. **Check for existing JSON data**:
+   ```bash
+   ls -la TKDojang/Sources/Core/Data/Content/[FeatureName]/
+   ```
+
+2. **Present Data Source Analysis**:
+   ```
+   Feature: [name]
+   JSON Data Available: [Yes/No - list files]
+   Current Test Approach: [Synthetic/JSON/Mixed]
+   CLAUDE.md Compliance: [Yes/No with reasoning]
+   Proposed Approach: [what I plan to use and WHY]
+
+   Proceed? (Requires approval)
+   ```
+
+3. **Get explicit approval** before writing test code
+
+### Red Flags That MUST Trigger Challenge
+
+If you encounter ANY of these, STOP and challenge the approach:
+
+- ❌ Component test with `createBasicTestData()` but JSON files exist
+- ❌ "Fixing" failing tests by increasing synthetic data counts
+- ❌ Hardcoded expected counts (`XCTAssertEqual(count, 5)`) instead of dynamic discovery
+- ❌ Tests passing with TestDataFactory but would fail with real JSON
+- ❌ Test file with 0 JSON loading occurrences when feature has JSON data
+- ❌ Comment saying "uses real JSON" but `grep "Bundle.main" TestFile.swift` returns nothing
+
+### Required Self-Review Questions
+
+Before marking ANY test work complete, Claude MUST answer:
+
+1. **Data Source Validation**:
+   - Does production JSON exist for this feature?
+   - If yes, am I using it? If no, why not?
+   - If using TestDataFactory, what's the documented justification?
+
+2. **Property-Based Testing Validation**:
+   - Are there hardcoded expected counts?
+   - Do tests adapt to available data dynamically?
+   - Would changing JSON content break these tests inappropriately?
+
+3. **JSON-Driven Validation**:
+   - Do tests load from actual JSON in `Sources/Core/Data/Content/`?
+   - Would these tests catch data quality issues in JSON files?
+   - Run: `grep -c "TestDataFactory\|createBasicTestData" TestFile.swift` - should be 0
+
+4. **Architecture Compliance**:
+   - Re-read CLAUDE.md testing section
+   - Does this follow stated architecture principles?
+   - Am I applying "Senior Engineering Advisor" role to my OWN work?
+
+### Validation Commands
+
+```bash
+# Check test data source (should return 0 for Component tests with JSON available)
+grep -c "createBasicTestData\|TestDataFactory" YourTest.swift
+
+# Check JSON usage (should be > 0 for features with JSON data)
+grep -c "Bundle.main.url.*json\|JSONDecoder" YourTest.swift
+
+# Verify no hardcoded counts
+grep -n "XCTAssertEqual.*count.*[0-9]" YourTest.swift  # Should return nothing
+
+# Check dynamic discovery
+grep -n "for.*in.*jsonFiles\|\.count" YourTest.swift  # Should find dynamic patterns
+```
+
+### Enforcement Pattern
+
+When completing test work, Claude MUST provide:
+
+```markdown
+## Test Architecture Compliance Report
+
+### Data Source Used
+- [X] Production JSON files from Sources/Core/Data/Content/
+- [ ] TestDataFactory (Justification: ________________)
+
+### Validation Results
+- JSON files available: [Yes/No - list files]
+- grep "TestDataFactory" count: [number]
+- grep "Bundle.main.url.*json" count: [number]
+- Hardcoded counts found: [Yes/No - list if yes]
+
+### Self-Review Checklist
+- [ ] Re-read CLAUDE.md testing principles
+- [ ] Verified JSON data usage where available
+- [ ] Tests adapt dynamically to content
+- [ ] Would catch real production JSON bugs
+- [ ] Documented any TestDataFactory usage justification
+
+### Compliance Status
+[COMPLIANT / NON-COMPLIANT with explanation]
+```
+
 ## Communication Style & Technical Approach
 
 ### Primary Role: Senior Engineering Advisor
