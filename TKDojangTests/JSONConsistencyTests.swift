@@ -130,7 +130,7 @@ final class JSONConsistencyTests: XCTestCase {
         
         var validFilesFound = 0
         for patternFile in expectedPatternFiles {
-            if let url = Bundle.main.url(forResource: patternFile, withExtension: "json", subdirectory: "Patterns") {
+            if Bundle.main.url(forResource: patternFile, withExtension: "json", subdirectory: "Patterns") != nil {
                 XCTAssertTrue(patternFile.contains("_patterns"), 
                             "Pattern file '\(patternFile)' should follow '*_patterns.json' naming convention")
                 validFilesFound += 1
@@ -152,7 +152,7 @@ final class JSONConsistencyTests: XCTestCase {
         
         var validFilesFound = 0
         for stepFile in expectedStepSparringFiles {
-            if let url = Bundle.main.url(forResource: stepFile, withExtension: "json", subdirectory: "StepSparring") {
+            if Bundle.main.url(forResource: stepFile, withExtension: "json", subdirectory: "StepSparring") != nil {
                 XCTAssertTrue(stepFile.hasSuffix("_step") || stepFile.contains("sparring"), 
                             "Step sparring file '\(stepFile)' should contain sparring-related keywords")
                 validFilesFound += 1
@@ -290,11 +290,10 @@ final class JSONConsistencyTests: XCTestCase {
                 
                 do {
                     let jsonData = try Data(contentsOf: URL(fileURLWithPath: filePath))
-                    
+
                     // Validate JSON can be parsed as dictionary
-                    let decoder = JSONDecoder()
                     let jsonObject = try JSONSerialization.jsonObject(with: jsonData) as? [String: Any]
-                    
+
                     // Validate basic structure
                     XCTAssertNotNil(jsonObject, "Pattern file '\(filename)' should be valid JSON")
                     
@@ -331,11 +330,10 @@ final class JSONConsistencyTests: XCTestCase {
                 
                 do {
                     let jsonData = try Data(contentsOf: URL(fileURLWithPath: filePath))
-                    
+
                     // Validate JSON can be parsed as dictionary
-                    let decoder = JSONDecoder()
                     let jsonObject = try JSONSerialization.jsonObject(with: jsonData) as? [String: Any]
-                    
+
                     // Validate basic structure
                     XCTAssertNotNil(jsonObject, "StepSparring file '\(filename)' should be valid JSON")
                     

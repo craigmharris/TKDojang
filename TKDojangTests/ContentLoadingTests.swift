@@ -413,8 +413,8 @@ final class ContentLoadingTests: XCTestCase {
     
     func testBeltLevelAssociationDuringLoading() throws {
         // Test that content gets properly associated with belt levels during loading
-        let availableBeltIds = testBelts.map { $0.shortName }
-        
+        let _ = testBelts.map { $0.shortName }
+
         // Simulate pattern loading with belt level association
         let testPattern = Pattern(
             name: "Belt Association Test",

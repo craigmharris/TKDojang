@@ -598,7 +598,7 @@ final class PatternSystemTests: XCTestCase {
         }
         
         // Test move structure consistency from JSON
-        for (fileName, jsonData) in jsonFiles {
+        for (_, jsonData) in jsonFiles {
             for pattern in jsonData.patterns {
                 XCTAssertEqual(pattern.moves.count, pattern.moveCount, 
                              "Pattern '\(pattern.name)' move count should match moves array length")

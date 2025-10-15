@@ -224,7 +224,7 @@ final class LineWorkSystemTests: XCTestCase {
         
         // Collect all movement types found in actual JSON files
         var foundMovementTypes = Set<String>()
-        
+
         for (fileName, jsonData) in jsonFiles {
             for exercise in jsonData.lineWorkExercises {
                 foundMovementTypes.insert(exercise.movementType)

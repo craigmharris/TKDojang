@@ -52,7 +52,8 @@ final class MultipleChoiceComponentTests: XCTestCase {
         testingService = TestingService(modelContext: testContext, terminologyService: terminologyService)
 
         // Load test data
-        try TestDataFactory.loadAllTestData(into: testContext)
+        let dataFactory = TestDataFactory()
+        try dataFactory.createBasicTestData(in: testContext)
     }
 
     override func tearDown() async throws {
@@ -850,9 +851,9 @@ final class MultipleChoiceComponentTests: XCTestCase {
     private func createTestProfile(belt: BeltLevel) throws -> UserProfile {
         let profile = UserProfile(
             name: "Test User",
-            currentBeltLevel: belt,
-            avatar: "person.circle",
-            themeColor: "blue"
+            avatar: .student1,
+            colorTheme: .blue,
+            currentBeltLevel: belt
         )
         testContext.insert(profile)
         try testContext.save()

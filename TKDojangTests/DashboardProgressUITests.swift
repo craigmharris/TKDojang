@@ -60,8 +60,8 @@ final class DashboardProgressUITests: XCTestCase {
     func testDashboardDataLoading() throws {
         // Test basic dashboard data can be loaded (data already created in setUp)
         let beltLevels = try testContext.fetch(FetchDescriptor<BeltLevel>())
-        let profiles = try testContext.fetch(FetchDescriptor<UserProfile>())
-        
+        let _ = try testContext.fetch(FetchDescriptor<UserProfile>())
+
         // Verify core data exists from setUp
         XCTAssertGreaterThan(beltLevels.count, 0, "Should have belt levels for dashboard")
         

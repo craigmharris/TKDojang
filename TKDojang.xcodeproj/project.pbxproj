@@ -18,6 +18,11 @@
 		44104D452E9E987A0005703F /* AccessibilityComplianceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44104D442E9E987A0005703F /* AccessibilityComplianceTests.swift */; };
 		44104D482E9FAB9F0005703F /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 44104D472E9FAB9F0005703F /* ViewInspector */; };
 		44104D4B2E9FB0390005703F /* FlashcardComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44104D492E9FB0380005703F /* FlashcardComponentTests.swift */; };
+		44104D5F2E9FE38D0005703F /* MultipleChoiceComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44104D592E9FE38D0005703F /* MultipleChoiceComponentTests.swift */; };
+		44104D672E9FE3EB0005703F /* ProfileDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44104D642E9FE3EB0005703F /* ProfileDataTests.swift */; };
+		44104D682E9FE3EB0005703F /* StepSparringComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44104D652E9FE3EB0005703F /* StepSparringComponentTests.swift */; };
+		44104D692E9FE3EB0005703F /* PatternPracticeComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44104D632E9FE3EB0005703F /* PatternPracticeComponentTests.swift */; };
+		44104D6A2E9FE3EB0005703F /* TheoryTechniquesDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44104D662E9FE3EB0005703F /* TheoryTechniquesDataTests.swift */; };
 		448135B42E550CC900966B0E /* TKDojangUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448135B22E550CC900966B0E /* TKDojangUITests.swift */; };
 		448135C02E550CD400966B0E /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448135B52E550CD400966B0E /* TestHelpers.swift */; };
 		448135C12E550CD400966B0E /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448135BB2E550CD400966B0E /* PerformanceTests.swift */; };
@@ -57,6 +62,11 @@
 		4337A80097ED473A9642F92E /* DashboardProgressUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardProgressUITests.swift; sourceTree = "<group>"; };
 		44104D442E9E987A0005703F /* AccessibilityComplianceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityComplianceTests.swift; sourceTree = "<group>"; };
 		44104D492E9FB0380005703F /* FlashcardComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardComponentTests.swift; sourceTree = "<group>"; };
+		44104D592E9FE38D0005703F /* MultipleChoiceComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceComponentTests.swift; sourceTree = "<group>"; };
+		44104D632E9FE3EB0005703F /* PatternPracticeComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternPracticeComponentTests.swift; sourceTree = "<group>"; };
+		44104D642E9FE3EB0005703F /* ProfileDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataTests.swift; sourceTree = "<group>"; };
+		44104D652E9FE3EB0005703F /* StepSparringComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSparringComponentTests.swift; sourceTree = "<group>"; };
+		44104D662E9FE3EB0005703F /* TheoryTechniquesDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheoryTechniquesDataTests.swift; sourceTree = "<group>"; };
 		444D541D2E4F8EF4009F3E49 /* TKDojang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TKDojang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444D542F2E4F8EF8009F3E49 /* TKDojangTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TKDojangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		444D54392E4F8EF8009F3E49 /* TKDojangUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TKDojangUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +139,11 @@
 		44104D4A2E9FB0380005703F /* ComponentTests */ = {
 			isa = PBXGroup;
 			children = (
+				44104D632E9FE3EB0005703F /* PatternPracticeComponentTests.swift */,
+				44104D642E9FE3EB0005703F /* ProfileDataTests.swift */,
+				44104D652E9FE3EB0005703F /* StepSparringComponentTests.swift */,
+				44104D662E9FE3EB0005703F /* TheoryTechniquesDataTests.swift */,
+				44104D592E9FE38D0005703F /* MultipleChoiceComponentTests.swift */,
 				44104D492E9FB0380005703F /* FlashcardComponentTests.swift */,
 			);
 			path = ComponentTests;
@@ -353,7 +368,12 @@
 				44104D452E9E987A0005703F /* AccessibilityComplianceTests.swift in Sources */,
 				448135C22E550CD400966B0E /* MultiProfileSystemTests.swift in Sources */,
 				7C74545FC9ED4647BC16DEFF /* ArchitecturalIntegrationTests.swift in Sources */,
+				44104D672E9FE3EB0005703F /* ProfileDataTests.swift in Sources */,
+				44104D682E9FE3EB0005703F /* StepSparringComponentTests.swift in Sources */,
+				44104D692E9FE3EB0005703F /* PatternPracticeComponentTests.swift in Sources */,
+				44104D6A2E9FE3EB0005703F /* TheoryTechniquesDataTests.swift in Sources */,
 				10373632931B4DB28DB266F9 /* ContentLoadingTests.swift in Sources */,
+				44104D5F2E9FE38D0005703F /* MultipleChoiceComponentTests.swift in Sources */,
 				23B3AB9D83F941A09E6D5E82 /* DashboardProgressUITests.swift in Sources */,
 				0C71A23805A64310B6DF94F7 /* DynamicDiscoveryTests.swift in Sources */,
 				44104D4B2E9FB0390005703F /* FlashcardComponentTests.swift in Sources */,
