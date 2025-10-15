@@ -758,7 +758,7 @@ final class PatternSystemTests: XCTestCase {
         
         // Test pattern service
         let patternService = PatternDataService(modelContext: testContext)
-        let availablePatterns = try await patternService.getPatternsForUser(userProfile: testProfile)
+        let availablePatterns = patternService.getPatternsForUser(userProfile: testProfile)
         
         XCTAssertGreaterThan(availablePatterns.count, 0, "Should have patterns available for user")
         

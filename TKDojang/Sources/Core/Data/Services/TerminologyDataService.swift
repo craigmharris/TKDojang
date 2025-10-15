@@ -311,7 +311,7 @@ class TerminologyDataService {
         }
     }
     
-    private func getOrCreateProgress(for terminologyEntry: TerminologyEntry, userProfile: UserProfile) -> UserTerminologyProgress {
+    func getOrCreateProgress(for terminologyEntry: TerminologyEntry, userProfile: UserProfile) -> UserTerminologyProgress {
         let profileId = userProfile.id
         let entryId = terminologyEntry.id
         

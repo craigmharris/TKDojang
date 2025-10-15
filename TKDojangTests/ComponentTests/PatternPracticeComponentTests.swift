@@ -653,7 +653,7 @@ final class PatternPracticeComponentTests: XCTestCase {
                 practiceTime: 60.0
             )
         }
-        let masteryBefore = progress.masteryLevel
+        _ = progress.masteryLevel
 
         // Act: Multiple poor performances
         for _ in 0..<3 {

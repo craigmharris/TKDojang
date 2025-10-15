@@ -382,7 +382,7 @@ final class MultipleChoiceComponentTests: XCTestCase {
             for correctCount in 0...size {
                 // Arrange: Create profile and test session
                 let profile = try createDefaultTestProfile()
-                var testSession = try testingService.createQuickTest(for: profile)
+                let testSession = try testingService.createQuickTest(for: profile)
 
                 // Ensure we have exactly 'size' questions by creating comprehensive test if needed
                 // Skip if we can't get exact size match - property test still validates accuracy calculation

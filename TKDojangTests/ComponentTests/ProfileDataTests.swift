@@ -30,6 +30,7 @@ import SwiftData
  *
  * TOTAL: 30 property-based tests
  */
+@MainActor
 final class ProfileDataTests: XCTestCase {
     var testContext: ModelContext!
     var profileService: ProfileService!
@@ -371,7 +372,7 @@ final class ProfileDataTests: XCTestCase {
             let profile = try createTestProfile(belt: belt)
 
             let terminologyService = TerminologyDataService(modelContext: testContext)
-            let availableTerms = terminologyService.getTerminology(for: profile)
+            let availableTerms = terminologyService.getTerminologyForUser(userProfile: profile)
 
             // PROPERTY: All returned terms must be appropriate for user's belt
             for term in availableTerms {
@@ -381,7 +382,7 @@ final class ProfileDataTests: XCTestCase {
                 XCTAssertGreaterThanOrEqual(termBeltOrder, userBeltOrder,
                     """
                     PROPERTY VIOLATION: Term not appropriate for belt
-                    Term: \(term.english) (\(term.beltLevel.shortName))
+                    Term: \(term.englishTerm) (\(term.beltLevel.shortName))
                     User belt: \(belt.shortName)
                     Term sortOrder: \(termBeltOrder)
                     User sortOrder: \(userBeltOrder)
@@ -408,7 +409,7 @@ final class ProfileDataTests: XCTestCase {
 
             // PROPERTY: All returned patterns must be appropriate for user's belt
             for pattern in availablePatterns {
-                let isAvailable = pattern.isAvailableFor(beltLevel: belt)
+                let isAvailable = pattern.isAppropriateFor(beltLevel: belt)
                 XCTAssertTrue(isAvailable,
                     """
                     PROPERTY VIOLATION: Pattern not appropriate for belt
@@ -444,11 +445,11 @@ final class ProfileDataTests: XCTestCase {
 
         // Activate low belt profile
         try profileService.activateProfile(lowProfile)
-        let lowBeltTerms = terminologyService.getTerminology(for: lowProfile)
+        let lowBeltTerms = terminologyService.getTerminologyForUser(userProfile: lowProfile)
 
         // Activate high belt profile
         try profileService.activateProfile(highProfile)
-        let highBeltTerms = terminologyService.getTerminology(for: highProfile)
+        let highBeltTerms = terminologyService.getTerminologyForUser(userProfile: highProfile)
 
         // PROPERTY: High belt should see MORE or EQUAL content
         XCTAssertGreaterThanOrEqual(highBeltTerms.count, lowBeltTerms.count,
@@ -485,7 +486,7 @@ final class ProfileDataTests: XCTestCase {
         // Test progression through belts (from lowest to highest)
         for belt in allBelts.reversed() {
             let profile = try createTestProfile(belt: belt)
-            let terms = terminologyService.getTerminology(for: profile)
+            let terms = terminologyService.getTerminologyForUser(userProfile: profile)
 
             // PROPERTY: Content count must not decrease as belt advances
             XCTAssertGreaterThanOrEqual(terms.count, previousCount,
@@ -538,7 +539,7 @@ final class ProfileDataTests: XCTestCase {
         let profile2 = try createTestProfile(name: "User2", belt: belt)
 
         let terminologyService = TerminologyDataService(modelContext: testContext)
-        let terms = terminologyService.getTerminology(for: profile1)
+        let terms = terminologyService.getTerminologyForUser(userProfile: profile1)
         guard let testTerm = terms.first else {
             XCTFail("No terminology available")
             return
@@ -768,7 +769,7 @@ final class ProfileDataTests: XCTestCase {
         let profile2 = try createTestProfile(name: "User2", belt: belt)
 
         let terminologyService = TerminologyDataService(modelContext: testContext)
-        let terms = terminologyService.getTerminology(for: profile1)
+        let terms = terminologyService.getTerminologyForUser(userProfile: profile1)
         guard let testTerm = terms.first else {
             XCTFail("No terminology available")
             return
@@ -805,17 +806,17 @@ final class ProfileDataTests: XCTestCase {
         }
 
         // Create progress for profile1
-        let progress1 = patternService.getOrCreateProgress(for: testPattern, userProfile: profile1)
-        progress1.bestAccuracy = 0.9
+        let progress1 = patternService.getUserProgress(for: testPattern, userProfile: profile1)
+        progress1.bestRunAccuracy = 0.9
         try testContext.save()
 
         // Check progress for profile2
-        let progress2 = patternService.getOrCreateProgress(for: testPattern, userProfile: profile2)
+        let progress2 = patternService.getUserProgress(for: testPattern, userProfile: profile2)
 
         // PROPERTY: Progress must be independent
         XCTAssertNotEqual(progress1.id, progress2.id,
             "PROPERTY VIOLATION: Same progress object returned for different profiles")
-        XCTAssertEqual(progress2.bestAccuracy, 0.0,
+        XCTAssertEqual(progress2.bestRunAccuracy, 0.0,
             "PROPERTY VIOLATION: Progress leaked from profile1 to profile2")
     }
 

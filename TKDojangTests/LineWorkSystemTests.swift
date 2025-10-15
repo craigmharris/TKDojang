@@ -225,7 +225,7 @@ final class LineWorkSystemTests: XCTestCase {
         // Collect all movement types found in actual JSON files
         var foundMovementTypes = Set<String>()
 
-        for (fileName, jsonData) in jsonFiles {
+        for (_, jsonData) in jsonFiles {
             for exercise in jsonData.lineWorkExercises {
                 foundMovementTypes.insert(exercise.movementType)
             }
@@ -277,8 +277,8 @@ final class LineWorkSystemTests: XCTestCase {
         
         // Collect all categories found in actual JSON files
         var foundCategories = Set<String>()
-        
-        for (fileName, jsonData) in jsonFiles {
+
+        for (_, jsonData) in jsonFiles {
             for exercise in jsonData.lineWorkExercises {
                 // Add categories from exercise level
                 foundCategories.formUnion(Set(exercise.categories))
@@ -520,7 +520,7 @@ final class LineWorkSystemTests: XCTestCase {
         
         // Collect all belt IDs and colors referenced in JSON files
         var jsonBeltData: [(id: String, color: String)] = []
-        for (fileName, jsonData) in jsonFiles {
+        for (_, jsonData) in jsonFiles {
             jsonBeltData.append((id: jsonData.beltId, color: jsonData.beltColor))
         }
         
@@ -565,8 +565,8 @@ final class LineWorkSystemTests: XCTestCase {
         
         // Test BeltIconCircle for belts referenced in actual JSON content
         var testedBelts = Set<String>()
-        
-        for (fileName, jsonData) in jsonFiles {
+
+        for (_, jsonData) in jsonFiles {
             // Skip if we've already tested this belt color/type
             if testedBelts.contains(jsonData.beltColor) {
                 continue
@@ -592,7 +592,7 @@ final class LineWorkSystemTests: XCTestCase {
                     print("   ✅ Solid belt \(jsonData.beltColor) (\(jsonData.beltLevel)): Will display solid color")
                 }
             } else {
-                print("   ⚠️ \(fileName): Belt \(jsonData.beltColor) (\(jsonData.beltLevel)) not found in test data")
+                print("   ⚠️ Belt \(jsonData.beltColor) (\(jsonData.beltLevel)) not found in test data")
             }
         }
         
@@ -616,8 +616,8 @@ final class LineWorkSystemTests: XCTestCase {
         // Collect all movement types and exercises from JSON files
         var allJsonExercises: [LineWorkJSONExercise] = []
         var foundMovementTypes = Set<String>()
-        
-        for (fileName, jsonData) in jsonFiles {
+
+        for (_, jsonData) in jsonFiles {
             allJsonExercises.append(contentsOf: jsonData.lineWorkExercises)
             for exercise in jsonData.lineWorkExercises {
                 foundMovementTypes.insert(exercise.movementType)
@@ -668,8 +668,8 @@ final class LineWorkSystemTests: XCTestCase {
         // Collect all categories and exercises from JSON files
         var allJsonExercises: [LineWorkJSONExercise] = []
         var foundCategories = Set<String>()
-        
-        for (fileName, jsonData) in jsonFiles {
+
+        for (_, jsonData) in jsonFiles {
             allJsonExercises.append(contentsOf: jsonData.lineWorkExercises)
             for exercise in jsonData.lineWorkExercises {
                 foundCategories.formUnion(Set(exercise.categories))
@@ -814,7 +814,7 @@ final class LineWorkSystemTests: XCTestCase {
             let startTime = CFAbsoluteTimeGetCurrent()
             
             // Parse all available JSON files
-            for (fileName, jsonData) in jsonFiles {
+            for (_, jsonData) in jsonFiles {
                 // Test JSON parsing performance by accessing all fields
                 XCTAssertFalse(jsonData.beltLevel.isEmpty, "Should parse belt level")
                 XCTAssertFalse(jsonData.beltId.isEmpty, "Should parse belt ID")
