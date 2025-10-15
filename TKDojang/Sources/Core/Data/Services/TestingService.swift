@@ -69,36 +69,40 @@ class TestingService: ObservableObject {
         var terminology = getTerminologyForBelt(currentBelt)
         var includedBelts = [currentBelt.shortName.replacingOccurrences(of: " ", with: "_").lowercased()]
         
-        // If current belt has fewer than 5 questions, include previous belt
-        if terminology.count < 5 {
+        // If current belt has fewer than 3 terms, include previous belt
+        if terminology.count < 3 {
             if let previousBelt = getPreviousBelt(from: currentBelt) {
                 let previousTerminology = getTerminologyForBelt(previousBelt)
                 terminology.append(contentsOf: previousTerminology)
                 includedBelts.append(previousBelt.shortName.replacingOccurrences(of: " ", with: "_").lowercased())
             }
         }
-        
-        // Limit to 10 questions max
-        let questionCount = min(10, max(5, terminology.count))
-        let selectedTerminology = Array(terminology.shuffled().prefix(questionCount))
-        
+
         let configuration = TestConfiguration(
-            maxQuestions: questionCount,
+            maxQuestions: 10,  // Will select 5-10 from generated pool
             includedBeltLevels: includedBelts,
             focusCategories: [],
             hasTimeLimit: false,
             questionTypes: [.englishToKorean, .koreanToEnglish]
         )
-        
+
+        // Generate ALL possible questions from available terminology (both directions)
+        // This creates a large pool to select from, preventing paired questions
+        let allQuestions = try generateQuestions(from: terminology, configuration: configuration)
+
+        // Randomly select 5-10 questions from the full pool
+        // This ensures better variation and prevents answer hints
+        let questionCount = min(10, max(5, allQuestions.count))
+        let selectedQuestions = Array(allQuestions.shuffled().prefix(questionCount))
+
         let testSession = TestSession(
             testType: .quick,
             userBeltLevel: currentBelt,
-            categories: Array(Set(selectedTerminology.map { $0.category.name })),
+            categories: Array(Set(selectedQuestions.compactMap { $0.terminologyEntry?.category.name })),
             configuration: configuration
         )
-        
-        let questions = try generateQuestions(from: selectedTerminology, configuration: configuration)
-        testSession.questions = questions.shuffled()
+
+        testSession.questions = selectedQuestions
         
         modelContext.insert(testSession)
         try modelContext.save()
