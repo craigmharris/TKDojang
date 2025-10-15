@@ -17,6 +17,7 @@
 		39B253782889496C9842C9CE /* StepSparringSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FC23CF55984FEFA06E2CAF /* StepSparringSystemTests.swift */; };
 		44104D452E9E987A0005703F /* AccessibilityComplianceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44104D442E9E987A0005703F /* AccessibilityComplianceTests.swift */; };
 		44104D482E9FAB9F0005703F /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 44104D472E9FAB9F0005703F /* ViewInspector */; };
+		44104D4B2E9FB0390005703F /* FlashcardComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44104D492E9FB0380005703F /* FlashcardComponentTests.swift */; };
 		448135B42E550CC900966B0E /* TKDojangUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448135B22E550CC900966B0E /* TKDojangUITests.swift */; };
 		448135C02E550CD400966B0E /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448135B52E550CD400966B0E /* TestHelpers.swift */; };
 		448135C12E550CD400966B0E /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448135BB2E550CD400966B0E /* PerformanceTests.swift */; };
@@ -55,6 +56,7 @@
 		305950DAECD9495583E91DD8 /* TestingSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSystemUITests.swift; sourceTree = "<group>"; };
 		4337A80097ED473A9642F92E /* DashboardProgressUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardProgressUITests.swift; sourceTree = "<group>"; };
 		44104D442E9E987A0005703F /* AccessibilityComplianceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityComplianceTests.swift; sourceTree = "<group>"; };
+		44104D492E9FB0380005703F /* FlashcardComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardComponentTests.swift; sourceTree = "<group>"; };
 		444D541D2E4F8EF4009F3E49 /* TKDojang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TKDojang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444D542F2E4F8EF8009F3E49 /* TKDojangTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TKDojangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		444D54392E4F8EF8009F3E49 /* TKDojangUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TKDojangUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44104D4A2E9FB0380005703F /* ComponentTests */ = {
+			isa = PBXGroup;
+			children = (
+				44104D492E9FB0380005703F /* FlashcardComponentTests.swift */,
+			);
+			path = ComponentTests;
+			sourceTree = "<group>";
+		};
 		444D54142E4F8EF4009F3E49 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +173,7 @@
 		448135BD2E550CD400966B0E /* TKDojangTests */ = {
 			isa = PBXGroup;
 			children = (
+				44104D4A2E9FB0380005703F /* ComponentTests */,
 				44104D442E9E987A0005703F /* AccessibilityComplianceTests.swift */,
 				448135B62E550CD400966B0E /* TestHelpers */,
 				448135BA2E550CD400966B0E /* MultiProfileSystemTests.swift */,
@@ -345,6 +356,7 @@
 				10373632931B4DB28DB266F9 /* ContentLoadingTests.swift in Sources */,
 				23B3AB9D83F941A09E6D5E82 /* DashboardProgressUITests.swift in Sources */,
 				0C71A23805A64310B6DF94F7 /* DynamicDiscoveryTests.swift in Sources */,
+				44104D4B2E9FB0390005703F /* FlashcardComponentTests.swift in Sources */,
 				5AAE1C840A8842AA8AA145D3 /* EdgeCasesPerformanceTests.swift in Sources */,
 				260B228E440347E593DD1128 /* FlashcardUIIntegrationTests.swift in Sources */,
 				85F5E5BD7528474C9AB160C4 /* JSONConsistencyTests.swift in Sources */,

@@ -546,13 +546,27 @@ struct FlashcardView: View {
      */
     private func createFlashcardItems(from terms: [TerminologyEntry], targetCount: Int? = nil) -> [FlashcardItem] {
         var items: [FlashcardItem] = []
-        
+
         switch cardDirection {
         case .englishToKorean:
-            items = terms.map { FlashcardItem(term: $0, direction: .englishToKorean) }
-            
+            if let target = targetCount {
+                // Respect targetCount: shuffle terms and take only what's needed
+                let selectedTerms = terms.shuffled().prefix(target)
+                items = selectedTerms.map { FlashcardItem(term: $0, direction: .englishToKorean) }
+            } else {
+                // No target specified, create cards for all terms
+                items = terms.map { FlashcardItem(term: $0, direction: .englishToKorean) }
+            }
+
         case .koreanToEnglish:
-            items = terms.map { FlashcardItem(term: $0, direction: .koreanToEnglish) }
+            if let target = targetCount {
+                // Respect targetCount: shuffle terms and take only what's needed
+                let selectedTerms = terms.shuffled().prefix(target)
+                items = selectedTerms.map { FlashcardItem(term: $0, direction: .koreanToEnglish) }
+            } else {
+                // No target specified, create cards for all terms
+                items = terms.map { FlashcardItem(term: $0, direction: .koreanToEnglish) }
+            }
             
         case .bothDirections:
             // FIXED: Aug 29, 2025 - Proper card count handling for Both Directions mode
@@ -593,8 +607,14 @@ struct FlashcardView: View {
                 }
             }
         }
-        
-        return items.shuffled() // Always shuffle the final order
+
+        // BUG FIX: Ensure exact count when targetCount specified (discovered by property-based testing)
+        let shuffled = items.shuffled()
+        if let target = targetCount {
+            return Array(shuffled.prefix(target))
+        } else {
+            return shuffled
+        }
     }
     
     private func recordAnswer(isCorrect: Bool) {

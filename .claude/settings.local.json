@@ -36,7 +36,10 @@
       "Bash(/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -typecheck /Users/craig/TKDojang/TKDojangTests/PerformanceTests.swift -I /Users/craig/TKDojang/TKDojang/Sources)",
       "Bash(gtimeout:*)",
       "Bash(swift:*)",
-      "Bash(kill:*)"
+      "Bash(kill:*)",
+      "Bash(git commit:*)",
+      "Bash(xcrun simctl list:*)",
+      "Bash(xcrun xcresulttool get:*)"
     ],
     "deny": [],
     "ask": [],
