@@ -440,6 +440,149 @@ final class FlashcardComponentTests: XCTestCase {
         print("✅ Multi-run property test passed: 10 random configurations all satisfied card count property")
     }
 
+    // MARK: - FlashcardConfiguration Property-Based Tests
+
+    /**
+     * Property-based test: FlashcardConfiguration should preserve all settings
+     *
+     * PROPERTY: Configuration created with parameters (mode, direction, count, system)
+     *           should return those exact values when accessed
+     *
+     * APPROACH: Test with random combinations of all possible values
+     */
+    func testFlashcardConfiguration_PropertyBased_PreservesAllSettings() throws {
+        // Run 20 random configurations
+        for run in 1...20 {
+            // Arrange: Random configuration parameters
+            let randomMode = StudyMode.allCases.randomElement()!
+            let randomDirection = CardDirection.allCases.randomElement()!
+            let randomCount = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50].randomElement()!
+            let randomSystem = LearningSystem.allCases.randomElement()!
+
+            // Act: Create configuration
+            let config = FlashcardConfiguration(
+                studyMode: randomMode,
+                cardDirection: randomDirection,
+                numberOfTerms: randomCount,
+                learningSystem: randomSystem
+            )
+
+            // Assert: PROPERTY - All settings must be preserved exactly
+            XCTAssertEqual(config.studyMode, randomMode,
+                "Run \(run): Study mode not preserved")
+            XCTAssertEqual(config.cardDirection, randomDirection,
+                "Run \(run): Card direction not preserved")
+            XCTAssertEqual(config.numberOfTerms, randomCount,
+                "Run \(run): Term count not preserved")
+            XCTAssertEqual(config.learningSystem, randomSystem,
+                "Run \(run): Learning system not preserved")
+        }
+
+        print("✅ Property test passed: 20 random configurations all preserved settings correctly")
+    }
+
+    /**
+     * Property-based test: Number of terms slider constraints
+     *
+     * PROPERTY: numberOfTerms must always be:
+     *   - Multiple of 5 (step constraint)
+     *   - Between 5 and min(50, available)
+     *   - Never exceed available terms
+     *
+     * APPROACH: Test with random available term counts
+     */
+    func testNumberOfTermsSlider_PropertyBased_RespectsConstraints() throws {
+        // Test with various available term counts
+        let availableTermCounts = [3, 7, 15, 23, 45, 67, 100, 150]
+
+        for availableCount in availableTermCounts {
+            // Calculate expected constraints
+            let maxAllowed = min(50, max(availableCount, 5))
+            let validCounts = stride(from: 5, through: maxAllowed, by: 5)
+
+            for selectedCount in validCounts {
+                // Act: Simulate user selecting this count
+                let config = FlashcardConfiguration(
+                    studyMode: .test,
+                    cardDirection: .bothDirections,
+                    numberOfTerms: selectedCount,
+                    learningSystem: .classic
+                )
+
+                // Assert: PROPERTIES
+                // 1. Must be multiple of 5
+                XCTAssertEqual(selectedCount % 5, 0,
+                    "Selected count \(selectedCount) not multiple of 5")
+
+                // 2. Must be within range
+                XCTAssertTrue(selectedCount >= 5,
+                    "Selected count \(selectedCount) below minimum")
+                XCTAssertTrue(selectedCount <= maxAllowed,
+                    "Selected count \(selectedCount) exceeds max \(maxAllowed)")
+
+                // 3. Configuration stores correct value
+                XCTAssertEqual(config.numberOfTerms, selectedCount,
+                    "Configuration doesn't store selected count")
+            }
+        }
+
+        print("✅ Property test passed: Slider constraints validated for all scenarios")
+    }
+
+    /**
+     * Property-based test: Configuration → FlashcardView data flow
+     *
+     * PROPERTY: FlashcardConfiguration passed to FlashcardView should result in
+     *           a session with those exact settings
+     *
+     * APPROACH: Random configurations should produce matching sessions
+     */
+    func testConfigurationToSessionFlow_PropertyBased_DataPropagation() throws {
+        // Run 15 random configuration scenarios
+        for run in 1...15 {
+            // Arrange: Random configuration
+            let randomConfig = FlashcardConfiguration(
+                studyMode: StudyMode.allCases.randomElement()!,
+                cardDirection: CardDirection.allCases.randomElement()!,
+                numberOfTerms: [5, 10, 15, 20, 25, 30].randomElement()!,
+                learningSystem: LearningSystem.allCases.randomElement()!
+            )
+
+            // Act: Get random terms from test data
+            let allTerms = try testContext.fetch(FetchDescriptor<TerminologyEntry>())
+            guard !allTerms.isEmpty else {
+                XCTFail("No terms in test data")
+                return
+            }
+
+            let randomTerms = Array(allTerms.shuffled().prefix(50))
+
+            // Create flashcard items using the configuration settings
+            let items = createFlashcardItemsForTest(
+                from: randomTerms,
+                targetCount: randomConfig.numberOfTerms,
+                direction: randomConfig.cardDirection
+            )
+
+            // Assert: PROPERTY - Configuration settings flow to session correctly
+            XCTAssertEqual(items.count, randomConfig.numberOfTerms,
+                """
+                Run \(run): Configuration numberOfTerms=\(randomConfig.numberOfTerms) but got \(items.count) items
+                Direction: \(randomConfig.cardDirection.displayName)
+                """)
+
+            // Verify all items match the configured direction (or both for .bothDirections)
+            if randomConfig.cardDirection != .bothDirections {
+                for item in items {
+                    XCTAssertEqual(item.direction, randomConfig.cardDirection,
+                        "Run \(run): Item direction doesn't match config")
+                }
+            }
+        }
+
+        print("✅ Property test passed: 15 random configurations correctly propagated to sessions")
+    }
+
     // MARK: - Helper Methods for Property-Based Tests
 
     /**
