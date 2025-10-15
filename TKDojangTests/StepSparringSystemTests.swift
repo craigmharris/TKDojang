@@ -97,12 +97,11 @@ final class StepSparringSystemTests: XCTestCase {
         var totalJSONSequences = 0
         var totalJSONSteps = 0
         
-        for (fileName, data) in jsonData {
+        for (_, data) in jsonData {
             totalJSONSequences += data.sequences.count
             for sequence in data.sequences {
                 totalJSONSteps += sequence.steps.count
             }
-            print("   📄 \\(fileName): \\(data.sequences.count) sequences, type: \\(data.type)")
         }
         
         print("   📊 Total in JSON: \\(totalJSONSequences) sequences, \\(totalJSONSteps) steps")

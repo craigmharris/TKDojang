@@ -380,7 +380,7 @@ struct FlashcardView: View {
     
     private func statItem(_ label: String, value: Any, color: Color) -> some View {
         VStack {
-            Text("\(value)")
+            Text(String(describing: value))
                 .font(.headline)
                 .foregroundColor(color)
             Text(label)

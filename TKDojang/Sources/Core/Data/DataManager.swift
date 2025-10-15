@@ -522,10 +522,10 @@ class DataManager {
         
         // CRITICAL: Clear ProfileService active profile reference
         profileService.clearActiveProfileForReset()
-        
-        // Save the current model container reference
-        let oldContainer = modelContainer
-        
+
+        // Save the current model container reference (for cleanup if needed)
+        _ = modelContainer
+
         do {
             // Delete the database files completely
             let appSupportDir = URL.applicationSupportDirectory

@@ -23,6 +23,7 @@ import SwiftData
  *
  * TOTAL: 31 property-based tests
  */
+@MainActor
 final class StepSparringComponentTests: XCTestCase {
     var testContext: ModelContext!
     var stepSparringService: StepSparringDataService!
@@ -147,7 +148,7 @@ final class StepSparringComponentTests: XCTestCase {
      * Lower belt = higher sortOrder, so users see sequences for their belt and below
      */
     func testSequenceData_PropertyBased_BeltLevelAppropriateness() throws {
-        let allSequences = try testContext.fetch(FetchDescriptor<StepSparringSequence>())
+        _ = try testContext.fetch(FetchDescriptor<StepSparringSequence>())
         let allBelts = try testContext.fetch(FetchDescriptor<BeltLevel>())
 
         // Test with 5 random belt levels
@@ -284,7 +285,7 @@ final class StepSparringComponentTests: XCTestCase {
             let allSequences = try testContext.fetch(FetchDescriptor<StepSparringSequence>())
             guard let sequence = allSequences.randomElement() else { continue }
 
-            let progress = stepSparringService.getOrCreateProgress(for: sequence, userProfile: profile)
+            _ = stepSparringService.getOrCreateProgress(for: sequence, userProfile: profile)
 
             // Complete random number of steps
             let stepsCompleted = Int.random(in: 0...sequence.totalSteps)
@@ -358,7 +359,7 @@ final class StepSparringComponentTests: XCTestCase {
             return
         }
 
-        let progress = stepSparringService.getOrCreateProgress(for: sequence, userProfile: profile)
+        _ = stepSparringService.getOrCreateProgress(for: sequence, userProfile: profile)
 
         // Complete steps incrementally
         for stepNum in 1...sequence.totalSteps {

@@ -393,7 +393,7 @@ final class MultipleChoiceComponentTests: XCTestCase {
                     let configuration = TestConfiguration(
                         maxQuestions: size,
                         includedBeltLevels: [profile.currentBeltLevel.shortName],
-                        questionTypes: [.englishToKorean, .koreanToEnglish]
+                        questionTypes: [QuestionType.englishToKorean, QuestionType.koreanToEnglish]
                     )
 
                     testSession = TestSession(
