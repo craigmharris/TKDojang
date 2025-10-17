@@ -10,7 +10,7 @@
       "description": "Obverse punch and reverse punch with blocks and punch counter",
       "difficulty": 2,
       "key_learning_points": "Basic punch combinations and blocking sequences",
-      "applicable_belt_levels": ["5th_keup", "4th_keup"],
+      "applicable_belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
@@ -72,7 +72,7 @@
       "description": "High punch and middle punch with rising and inner blocks",
       "difficulty": 2,
       "key_learning_points": "Multi-level attack defense and timing",
-      "applicable_belt_levels": ["5th_keup", "4th_keup"],
+      "applicable_belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
@@ -134,7 +134,7 @@
       "description": "Front kick and punch combination with low block and counter",
       "difficulty": 2,
       "key_learning_points": "Mixed attack types and adaptive defense",
-      "applicable_belt_levels": ["5th_keup", "4th_keup"],
+      "applicable_belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
@@ -196,7 +196,7 @@
       "description": "Turning kick and punch with dodge and block sequence",
       "difficulty": 2,
       "key_learning_points": "Circular attacks and movement-based defense",
-      "applicable_belt_levels": ["5th_keup", "4th_keup"],
+      "applicable_belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,

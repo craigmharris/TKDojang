@@ -10,7 +10,7 @@
       "description": "Rising block with back kick counter",
       "difficulty": 3,
       "key_learning_points": "High defense with powerful back techniques",
-      "applicable_belt_levels": ["6th_keup"],
+      "applicable_belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
@@ -94,7 +94,7 @@
       "description": "X-block with side piercing kick counter",
       "difficulty": 3,
       "key_learning_points": "Crossed arm defense and piercing kicks",
-      "applicable_belt_levels": ["6th_keup"],
+      "applicable_belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
@@ -178,7 +178,7 @@
       "description": "U-shape block with reverse turning kick counter",
       "difficulty": 3,
       "key_learning_points": "Advanced defense patterns and spinning counters",
-      "applicable_belt_levels": ["6th_keup"],
+      "applicable_belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,

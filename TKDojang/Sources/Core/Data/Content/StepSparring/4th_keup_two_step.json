@@ -10,7 +10,7 @@
       "description": "Side kick and back fist with advanced blocking",
       "difficulty": 3,
       "key_learning_points": "Linear and circular attack combinations",
-      "applicable_belt_levels": ["4th_keup"],
+      "applicable_belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
@@ -72,7 +72,7 @@
       "description": "Hook kick and elbow strike with wedging blocks",
       "difficulty": 3,
       "key_learning_points": "Close-range combat and spreading defenses",
-      "applicable_belt_levels": ["4th_keup"],
+      "applicable_belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
@@ -134,7 +134,7 @@
       "description": "Back kick and knife-hand strike sequence",
       "difficulty": 3,
       "key_learning_points": "Power techniques and precise hand strikes",
-      "applicable_belt_levels": ["4th_keup"],
+      "applicable_belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
@@ -196,7 +196,7 @@
       "description": "Advanced combination with multiple techniques",
       "difficulty": 3,
       "key_learning_points": "Complex attack patterns and flowing defense",
-      "applicable_belt_levels": ["4th_keup"],
+      "applicable_belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,

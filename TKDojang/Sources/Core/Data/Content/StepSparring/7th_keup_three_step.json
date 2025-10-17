@@ -10,7 +10,7 @@
       "description": "Double forearm block with turning kick counter",
       "difficulty": 2,
       "key_learning_points": "Advanced blocking and spinning techniques",
-      "applicable_belt_levels": ["7th_keup", "6th_keup"],
+      "applicable_belt_levels": ["7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
@@ -94,7 +94,7 @@
       "description": "Twin forearm block with back fist counter",
       "difficulty": 2,
       "key_learning_points": "Parallel blocking and fast hand techniques",
-      "applicable_belt_levels": ["7th_keup", "6th_keup"],
+      "applicable_belt_levels": ["7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
@@ -178,7 +178,7 @@
       "description": "Wedging block with hook kick counter",
       "difficulty": 2,
       "key_learning_points": "Spreading blocks and advanced kicks",
-      "applicable_belt_levels": ["7th_keup", "6th_keup"],
+      "applicable_belt_levels": ["7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,

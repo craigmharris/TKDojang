@@ -10,7 +10,7 @@
       "description": "Inner forearm block with obverse punch counter",
       "difficulty": 1,
       "key_learning_points": "Basic blocking and counter-attack timing",
-      "applicable_belt_levels": ["8th_keup", "7th_keup", "6th_keup"],
+      "applicable_belt_levels": ["8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
@@ -94,7 +94,7 @@
       "description": "Rising block with front kick counter",
       "difficulty": 1,
       "key_learning_points": "High blocks and kicking counters",
-      "applicable_belt_levels": ["8th_keup", "7th_keup", "6th_keup"],
+      "applicable_belt_levels": ["8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
@@ -178,7 +178,7 @@
       "description": "Outer forearm block with reverse punch counter",
       "difficulty": 1,
       "key_learning_points": "Outside blocking and opposite hand counters",
-      "applicable_belt_levels": ["8th_keup", "7th_keup", "6th_keup"],
+      "applicable_belt_levels": ["8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
@@ -262,7 +262,7 @@
       "description": "Low block with side kick counter",
       "difficulty": 1,
       "key_learning_points": "Low section defense and powerful side kicks",
-      "applicable_belt_levels": ["8th_keup", "7th_keup", "6th_keup"],
+      "applicable_belt_levels": ["8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
       "steps": [
         {
           "step_number": 1,
