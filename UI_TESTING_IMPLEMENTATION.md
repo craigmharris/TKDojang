@@ -12,6 +12,15 @@ This document captures key lessons and architectural decisions for UI testing im
 - **Data Source:** 7 production JSON files (20 sequences)
 - **Architecture:** CLAUDE.md compliant (zero TestDataFactory usage)
 - **Achievement:** Successfully caught and fixed real data quality issue (non-cumulative belt progression)
+- **Pattern:** Multi-level @Model hierarchy with persistent storage
+
+### LineWorkComponentTests (2025-10-17)
+- **Status:** ✅ Complete - 19/19 tests passing
+- **Approach:** JSON-driven property-based testing
+- **Data Source:** 10 production JSON files (10th_keup to 1st_keup)
+- **Architecture:** CLAUDE.md compliant (zero TestDataFactory usage)
+- **Achievement:** Simpler pattern (Codable structs, no SwiftData complexity)
+- **Pattern:** Direct JSON loading with dynamic discovery
 
 ---
 
@@ -187,34 +196,59 @@ Before marking complete:
 
 ---
 
-## Next Features for JSON-Driven Property-Based Tests
+## Component Test Coverage Status
 
-### Remaining Component Tests to Implement
+### ✅ Complete - JSON-Driven Property-Based Tests
 
-1. **LineWorkComponentTests** (if JSON exists)
-2. **TheoryComponentTests** (if JSON exists)
-3. **TechniquesComponentTests** (if JSON exists)
+All features with production JSON files now have comprehensive component tests:
 
-### Investigation Required
+1. ✅ **PatternPracticeComponentTests** - 11 JSON files (Patterns)
+2. ✅ **MultipleChoiceComponentTests** - Dynamic JSON loading
+3. ✅ **StepSparringComponentTests** - 7 JSON files (25 tests)
+4. ✅ **TheoryTechniquesDataTests** - 22 JSON files (12+ tests)
+5. ✅ **LineWorkComponentTests** - 10 JSON files (19 tests)
 
-For each feature:
-1. Check for production JSON files: `ls Sources/Core/Data/Content/[Feature]/`
-2. If JSON exists → implement JSON-driven property-based tests
-3. If no JSON → document justification for TestDataFactory usage
-4. Follow StepSparringComponentTests as reference implementation
+### ✅ Complete - Justified TestDataFactory Usage
+
+1. ✅ **FlashcardComponentTests** - UI component testing (ViewInspector)
+2. ✅ **ProfileDataTests** - User-created data (30 property-based tests)
+
+### Architecture Compliance: 100%
+
+- **Zero CLAUDE.md violations**
+- **All JSON-backed features tested with production data**
+- **All TestDataFactory usage properly justified**
+- **Property-based testing throughout (no hardcoded data dependencies)**
 
 ---
 
-## Reference Implementation
+## Reference Implementations
 
-**File:** `/Users/craig/TKDojang/TKDojangTests/ComponentTests/StepSparringComponentTests.swift`
+### Multi-Level @Model Hierarchy (Complex)
+
+**File:** `/Users/craig/TKDojang/TKDojangTests/StepSparringComponentTests.swift`
 
 **Pattern:**
 - 25 property-based tests across 6 categories
 - Loads 7 production JSON files dynamically
-- Persistent storage for 3-level @Model hierarchy
+- **Persistent storage for 3-level @Model hierarchy** (required)
+- Explicit insertion of all @Model levels
 - Exact field mappings matching production ContentLoader
 - Zero hardcoded values
 - 100% CLAUDE.md compliant
 
-**Use as template for future multi-level @Model + JSON test implementations.**
+**Use as template for:** Features with nested SwiftData @Model relationships
+
+### Codable Structs (Simple)
+
+**File:** `/Users/craig/TKDojang/TKDojangTests/LineWorkComponentTests.swift`
+
+**Pattern:**
+- 19 property-based tests across 8 categories
+- Loads 10 production JSON files dynamically
+- **No SwiftData complexity** (pure Codable structs)
+- Direct JSON loading with dynamic discovery
+- Zero hardcoded values
+- 100% CLAUDE.md compliant
+
+**Use as template for:** Features using Codable structs without database persistence
