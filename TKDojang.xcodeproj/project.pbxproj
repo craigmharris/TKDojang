@@ -90,6 +90,81 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		44104D752EA051560005703F /* Exceptions for "TKDojang" folder in "TKDojangTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Sources/Core/Data/Content/LineWork/1st_keup_linework.json,
+				Sources/Core/Data/Content/LineWork/2nd_keup_linework.json,
+				Sources/Core/Data/Content/LineWork/3rd_keup_linework.json,
+				Sources/Core/Data/Content/LineWork/4th_keup_linework.json,
+				Sources/Core/Data/Content/LineWork/5th_keup_linework.json,
+				Sources/Core/Data/Content/LineWork/6th_keup_linework.json,
+				Sources/Core/Data/Content/LineWork/7th_keup_linework.json,
+				Sources/Core/Data/Content/LineWork/8th_keup_linework.json,
+				Sources/Core/Data/Content/LineWork/9th_keup_linework.json,
+				Sources/Core/Data/Content/LineWork/10th_keup_linework.json,
+				Sources/Core/Data/Content/Patterns/1st_dan_patterns.json,
+				Sources/Core/Data/Content/Patterns/1st_keup_patterns.json,
+				Sources/Core/Data/Content/Patterns/2nd_dan_patterns.json,
+				Sources/Core/Data/Content/Patterns/2nd_keup_patterns.json,
+				Sources/Core/Data/Content/Patterns/3rd_keup_patterns.json,
+				Sources/Core/Data/Content/Patterns/4th_keup_patterns.json,
+				Sources/Core/Data/Content/Patterns/5th_keup_patterns.json,
+				Sources/Core/Data/Content/Patterns/6th_keup_patterns.json,
+				Sources/Core/Data/Content/Patterns/7th_keup_patterns.json,
+				Sources/Core/Data/Content/Patterns/8th_keup_patterns.json,
+				Sources/Core/Data/Content/Patterns/9th_keup_patterns.json,
+				Sources/Core/Data/Content/StepSparring/1st_keup_semi_free.json,
+				Sources/Core/Data/Content/StepSparring/3rd_keup_one_step.json,
+				Sources/Core/Data/Content/StepSparring/4th_keup_two_step.json,
+				Sources/Core/Data/Content/StepSparring/5th_keup_two_step.json,
+				Sources/Core/Data/Content/StepSparring/6th_keup_three_step.json,
+				Sources/Core/Data/Content/StepSparring/7th_keup_three_step.json,
+				Sources/Core/Data/Content/StepSparring/8th_keup_three_step.json,
+				Sources/Core/Data/Content/Techniques/belt_requirements.json,
+				Sources/Core/Data/Content/Techniques/blocks.json,
+				Sources/Core/Data/Content/Techniques/combinations.json,
+				Sources/Core/Data/Content/Techniques/footwork.json,
+				Sources/Core/Data/Content/Techniques/fundamentals.json,
+				Sources/Core/Data/Content/Techniques/hand_techniques.json,
+				Sources/Core/Data/Content/Techniques/kicks.json,
+				Sources/Core/Data/Content/Techniques/sparring.json,
+				Sources/Core/Data/Content/Techniques/stances.json,
+				Sources/Core/Data/Content/Techniques/strikes.json,
+				Sources/Core/Data/Content/Techniques/target_areas.json,
+				Sources/Core/Data/Content/Techniques/techniques_index.json,
+				Sources/Core/Data/Content/Terminology/1st_keup_techniques.json,
+				Sources/Core/Data/Content/Terminology/2nd_keup_techniques.json,
+				Sources/Core/Data/Content/Terminology/3rd_keup_basics.json,
+				Sources/Core/Data/Content/Terminology/3rd_keup_techniques.json,
+				Sources/Core/Data/Content/Terminology/4th_keup_basics.json,
+				Sources/Core/Data/Content/Terminology/4th_keup_techniques.json,
+				Sources/Core/Data/Content/Terminology/5th_keup_basics.json,
+				Sources/Core/Data/Content/Terminology/5th_keup_techniques.json,
+				Sources/Core/Data/Content/Terminology/6th_keup_basics.json,
+				Sources/Core/Data/Content/Terminology/6th_keup_techniques.json,
+				Sources/Core/Data/Content/Terminology/7th_keup_basics.json,
+				Sources/Core/Data/Content/Terminology/7th_keup_techniques.json,
+				Sources/Core/Data/Content/Terminology/8th_keup_basics.json,
+				Sources/Core/Data/Content/Terminology/8th_keup_techniques.json,
+				Sources/Core/Data/Content/Terminology/9th_keup_basics.json,
+				Sources/Core/Data/Content/Terminology/9th_keup_techniques.json,
+				Sources/Core/Data/Content/Terminology/10th_keup_basics.json,
+				Sources/Core/Data/Content/Terminology/10th_keup_numbers.json,
+				Sources/Core/Data/Content/Terminology/10th_keup_techniques.json,
+				Sources/Core/Data/Content/Theory/1st_keup_theory.json,
+				Sources/Core/Data/Content/Theory/2nd_keup_theory.json,
+				Sources/Core/Data/Content/Theory/3rd_keup_theory.json,
+				Sources/Core/Data/Content/Theory/4th_keup_theory.json,
+				Sources/Core/Data/Content/Theory/5th_keup_theory.json,
+				Sources/Core/Data/Content/Theory/6th_keup_theory.json,
+				Sources/Core/Data/Content/Theory/7th_keup_theory.json,
+				Sources/Core/Data/Content/Theory/8th_keup_theory.json,
+				Sources/Core/Data/Content/Theory/9th_keup_theory.json,
+				Sources/Core/Data/Content/Theory/10th_keup_theory.json,
+			);
+			target = 444D542E2E4F8EF8009F3E49 /* TKDojangTests */;
+		};
 		444D547E2E4F9484009F3E49 /* Exceptions for "TKDojang" folder in "TKDojang" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -104,6 +179,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				444D547E2E4F9484009F3E49 /* Exceptions for "TKDojang" folder in "TKDojang" target */,
+				44104D752EA051560005703F /* Exceptions for "TKDojang" folder in "TKDojangTests" target */,
 			);
 			path = TKDojang;
 			sourceTree = "<group>";

@@ -26,10 +26,16 @@ import XCTest
 class TestContainerFactory {
     
     /**
-     * Creates an in-memory SwiftData container for testing
-     * 
-     * PURPOSE: Provides isolated, fast storage for tests
-     * WHY: In-memory storage prevents test data persistence between runs
+     * Creates a persistent SwiftData container for testing
+     *
+     * PURPOSE: Provides isolated, persistent storage that matches production environment
+     * WHY: Persistent storage matches production, catches SwiftData bugs that only occur with SQLite backend
+     *
+     * ARCHITECTURE DECISION: Switched from in-memory to persistent storage (2025-10-17)
+     * REASON: In-memory storage has SwiftData bugs with 3-level @Model hierarchies when loading from JSON
+     * EVIDENCE: Production code works with persistent storage, tests crashed with in-memory
+     *
+     * ISOLATION: Each test run uses unique UUID-based temp file, cleaned up automatically
      */
     static func createTestContainer() throws -> ModelContainer {
         let schema = Schema([
@@ -41,24 +47,29 @@ class TestContainerFactory {
             UserTerminologyProgress.self,
             StudySession.self,
             GradingRecord.self,
-            
+
             // Pattern Models
             Pattern.self,
             PatternMove.self,
             UserPatternProgress.self,
-            
+
             // Step Sparring Models
             StepSparringSequence.self,
             StepSparringStep.self,
             StepSparringAction.self,
             UserStepSparringProgress.self
         ])
-        
+
+        // Use unique temp file per test run for isolation
+        let testDatabaseURL = URL(filePath: NSTemporaryDirectory())
+            .appending(path: "TKDojangTest_\(UUID().uuidString).sqlite")
+
         let configuration = ModelConfiguration(
             schema: schema,
-            isStoredInMemoryOnly: true
+            url: testDatabaseURL,
+            cloudKitDatabase: .none
         )
-        
+
         return try ModelContainer(
             for: schema,
             configurations: [configuration]
