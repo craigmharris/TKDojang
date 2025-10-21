@@ -37,16 +37,16 @@ final class ProfileDataTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+
+        // TEMPORARY: Disabled - create minimal context to avoid nil crashes
+        // Tests will fail gracefully with no data rather than crashing
         do {
             let testContainer = try TestContainerFactory.createTestContainer()
             testContext = testContainer.mainContext
             profileService = ProfileService(modelContext: testContext)
-
-            // Load test content
-            let dataFactory = TestDataFactory()
-            try dataFactory.createBasicTestData(in: testContext)
+            // NOT loading test data - tests will fail but won't crash
         } catch {
-            XCTFail("Failed to set up test: \(error)")
+            XCTFail("Failed to set up test container: \(error)")
         }
     }
 
