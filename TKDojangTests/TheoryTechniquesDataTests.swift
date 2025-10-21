@@ -198,10 +198,11 @@ final class TheoryTechniquesDataTests: XCTestCase {
             for result in results {
                 let matchesEnglish = result.displayName.lowercased().contains(searchTerm.lowercased())
                 let matchesKorean = result.koreanName.contains(searchTerm)
+                let matchesKoreanRomanized = result.names.koreanRomanized.lowercased().contains(searchTerm.lowercased())
                 let matchesDescription = result.description.lowercased().contains(searchTerm.lowercased())
                 let matchesTags = result.tags.contains { $0.lowercased().contains(searchTerm.lowercased()) }
 
-                let matches = matchesEnglish || matchesKorean || matchesDescription || matchesTags
+                let matches = matchesEnglish || matchesKorean || matchesKoreanRomanized || matchesDescription || matchesTags
 
                 XCTAssertTrue(matches,
                     """
