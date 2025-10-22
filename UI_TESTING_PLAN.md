@@ -17,7 +17,7 @@ This plan establishes comprehensive UI testing for TKDojang to:
 
 **Total Test Target:** 196-216 tests across 5 phases
 **Estimated Timeline:** 3-4 weeks (Phases 1-4), +1 week (Phase 5 optional)
-**Current Progress:** 172/196 tests implemented (88%) - Phase 1 & 2 Complete
+**Current Progress:** 173/196 tests implemented (88%) - Phase 1 & 2 Complete, Phase 3 Started
 
 ---
 
@@ -651,20 +651,27 @@ Phase 2 was originally planned as "ViewInspector-based view integration tests." 
 
 ## Phase 3: End-to-End User Journeys (XCUITest)
 
-**Goal:** Test cross-feature navigation with proven components
+**Goal:** Test cross-feature navigation with proven components + services
 **Timeline:** Week 3
 **Total Tests:** 12
-**Completed:** 0/12 (0%)
+**Completed:** 1/12 (8%) 🔄 **IN PROGRESS**
 
 **Test File:** `TKDojangUITests/CriticalUserJourneysUITests.swift`
-**Status:** ⬜ Not Started
+**Status:** 🔄 In Progress (2025-10-22)
+
+**APPROACH:**
+- Test infrastructure created with helper methods for resilient element selection
+- E2E tests validate UI flows tie together proven Phase 1 components + Phase 2 services
+- Tests use explicit waits (`waitForExistence`) not sleeps
+- Element selectors support multiple label variations for robustness
+- **Iteration required**: E2E tests need refinement with actual UI structure
 
 ---
 
 ### 3.1 User Journey Tests (12 tests)
 
 - ⬜ `testNewUserOnboarding` - Welcome → Profile Creation → Dashboard → First Action
-- ⬜ `testFlashcardCompleteWorkflow` - Dashboard → Configure (23 cards, Korean) → Study → Mark Correct/Skip → Results → Dashboard (verify metrics updated)
+- 🔄 `testFlashcardCompleteWorkflow` - Dashboard → Configure (23 cards, Korean) → Study → Mark Correct/Skip → Results → Dashboard (verify metrics updated) **[CREATED - Needs iteration with actual UI]**
 - ⬜ `testMultipleChoiceCompleteWorkflow` - Dashboard → Configure (20 questions, 7th keup) → Answer → Review → Results → Dashboard
 - ⬜ `testPatternPracticeCompleteWorkflow` - Dashboard → Select Pattern → Practice (all 19 moves) → Complete → Results → Dashboard
 - ⬜ `testStepSparringWorkflow` - Dashboard → Select Sequence → Practice → Complete → Dashboard
@@ -784,10 +791,10 @@ A test is considered "complete" when:
 |-------|-------------|-----------|------------|--------|
 | **Phase 1: Components** | 153 | 153 | 100% | ✅ Complete |
 | **Phase 2: Integration** | 23 | 19 | 83% | ✅ Functionally Complete |
-| **Phase 3: E2E Journeys** | 12 | 0 | 0% | ⬜ Not Started |
+| **Phase 3: E2E Journeys** | 12 | 1 | 8% | 🔄 In Progress |
 | **Phase 4: Stress Tests** | 8 | 0 | 0% | ⬜ Not Started |
 | **Phase 5: Snapshots** | 20 | 0 | 0% | ⬜ Not Started |
-| **TOTAL** | **216** | **172** | **80%** | 🔄 In Progress |
+| **TOTAL** | **216** | **173** | **80%** | 🔄 In Progress |
 
 ### Milestone Tracking
 

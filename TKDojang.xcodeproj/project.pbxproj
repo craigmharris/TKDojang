@@ -30,6 +30,7 @@
 		4435EA2B2EA908B5003FE95E /* FlashcardServiceIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4435EA2A2EA908B5003FE95E /* FlashcardServiceIntegrationTests.swift */; };
 		4435EA2D2EA90ABB003FE95E /* PatternServiceIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4435EA2C2EA90ABB003FE95E /* PatternServiceIntegrationTests.swift */; };
 		4435EA2F2EA916E0003FE95E /* MultipleChoiceServiceIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4435EA2E2EA916E0003FE95E /* MultipleChoiceServiceIntegrationTests.swift */; };
+		4435EA312EA933E0003FE95E /* CriticalUserJourneysUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4435EA302EA933E0003FE95E /* CriticalUserJourneysUITests.swift */; };
 		448135B42E550CC900966B0E /* TKDojangUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448135B22E550CC900966B0E /* TKDojangUITests.swift */; };
 		448135C02E550CD400966B0E /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448135B52E550CD400966B0E /* TestHelpers.swift */; };
 		448135C12E550CD400966B0E /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448135BB2E550CD400966B0E /* PerformanceTests.swift */; };
@@ -79,6 +80,7 @@
 		4435EA2A2EA908B5003FE95E /* FlashcardServiceIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardServiceIntegrationTests.swift; sourceTree = "<group>"; };
 		4435EA2C2EA90ABB003FE95E /* PatternServiceIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternServiceIntegrationTests.swift; sourceTree = "<group>"; };
 		4435EA2E2EA916E0003FE95E /* MultipleChoiceServiceIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceServiceIntegrationTests.swift; sourceTree = "<group>"; };
+		4435EA302EA933E0003FE95E /* CriticalUserJourneysUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticalUserJourneysUITests.swift; sourceTree = "<group>"; };
 		444D541D2E4F8EF4009F3E49 /* TKDojang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TKDojang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444D542F2E4F8EF8009F3E49 /* TKDojangTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TKDojangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		444D54392E4F8EF8009F3E49 /* TKDojangUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TKDojangUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,6 +250,7 @@
 		448135B32E550CC900966B0E /* TKDojangUITests */ = {
 			isa = PBXGroup;
 			children = (
+				4435EA302EA933E0003FE95E /* CriticalUserJourneysUITests.swift */,
 				448135B22E550CC900966B0E /* TKDojangUITests.swift */,
 			);
 			path = TKDojangUITests;
@@ -483,6 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4435EA312EA933E0003FE95E /* CriticalUserJourneysUITests.swift in Sources */,
 				448135B42E550CC900966B0E /* TKDojangUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
