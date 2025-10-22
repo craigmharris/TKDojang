@@ -86,32 +86,45 @@ final class ProfileDataTests: XCTestCase {
 
     /// Creates terminology test data for content filtering tests
     /// Matches StepSparringComponentTests pattern - create data in individual tests
+    /// CRITICAL: Creates CUMULATIVE content - higher belts see progressively more content
     private func createTerminologyTestData() throws {
         let dataFactory = TestDataFactory()
         let belts = try testContext.fetch(FetchDescriptor<BeltLevel>())
+            .sorted { $0.sortOrder > $1.sortOrder } // Sort descending (beginners first)
         let categories = dataFactory.createBasicCategories()
 
         for category in categories {
             testContext.insert(category)
         }
 
+        // Create cumulative content: each belt gets content from all higher sortOrder belts
+        // This mirrors real Taekwondo: black belts know everything from white belt onwards
         for belt in belts {
             for category in categories {
+                // Create 5 entries specific to this belt level
                 let entries = dataFactory.createSampleTerminologyEntries(belt: belt, category: category, count: 5)
                 for entry in entries {
                     testContext.insert(entry)
                 }
             }
         }
+        // Note: Content filtering happens in TerminologyDataService - it returns items where
+        // item.beltLevel.sortOrder >= user.beltLevel.sortOrder
+        // So advanced belts (low sortOrder) see content from beginner belts (high sortOrder)
 
         try testContext.save()
     }
 
     /// Creates pattern test data for content filtering tests
+    /// CRITICAL: Respects realistic Taekwondo syllabus - patterns start at 9th Keup
     private func createPatternTestData() throws {
         let dataFactory = TestDataFactory()
         let belts = try testContext.fetch(FetchDescriptor<BeltLevel>())
-        let patterns = dataFactory.createSamplePatterns(belts: belts, count: 2)
+
+        // Patterns are only for 9th Keup and higher (sortOrder <= 14)
+        // WHY: 10th Keup (white belt beginners) don't learn patterns yet
+        let patternBelts = belts.filter { $0.sortOrder <= 14 }
+        let patterns = dataFactory.createSamplePatterns(belts: patternBelts, count: 2)
 
         for pattern in patterns {
             testContext.insert(pattern)
@@ -254,8 +267,9 @@ final class ProfileDataTests: XCTestCase {
         )
 
         // PROPERTY: Valid names (1-20 chars) must be accepted
-        for length in [1, 10, 20] {
-            let validName = String(repeating: "x", count: length) + "\(Int.random(in: 1...999))"
+        for (index, length) in [1, 10, 20].enumerated() {
+            // Ensure exact length by accounting for index digit
+            let validName = String(repeating: "x", count: max(0, length - 1)) + "\(index)"
             XCTAssertNoThrow(
                 try profileService.createProfile(
                     name: validName,
@@ -484,35 +498,36 @@ final class ProfileDataTests: XCTestCase {
         }
 
         // Create two profiles with different belt levels
-        let lowBelt = allBelts.last! // Highest sortOrder = lowest belt
-        let highBelt = allBelts.first! // Lowest sortOrder = highest belt
+        // After sorting descending: first = highest sortOrder (beginner), last = lowest sortOrder (advanced)
+        let beginnerBelt = allBelts.first! // Highest sortOrder = 10th Keup (beginner)
+        let advancedBelt = allBelts.last!  // Lowest sortOrder = 1st Dan (advanced)
 
-        let lowProfile = try createTestProfile(name: "LowBelt", belt: lowBelt)
-        let highProfile = try createTestProfile(name: "HighBelt", belt: highBelt)
+        let beginnerProfile = try createTestProfile(name: "Beginner", belt: beginnerBelt)
+        let advancedProfile = try createTestProfile(name: "Advanced", belt: advancedBelt)
 
         let terminologyService = TerminologyDataService(modelContext: testContext)
 
-        // Activate low belt profile
-        try profileService.activateProfile(lowProfile)
-        let lowBeltTerms = terminologyService.getTerminologyForUser(userProfile: lowProfile)
+        // Activate beginner profile
+        try profileService.activateProfile(beginnerProfile)
+        let beginnerTerms = terminologyService.getTerminologyForUser(userProfile: beginnerProfile, limit: .max)
 
-        // Activate high belt profile
-        try profileService.activateProfile(highProfile)
-        let highBeltTerms = terminologyService.getTerminologyForUser(userProfile: highProfile)
+        // Activate advanced profile
+        try profileService.activateProfile(advancedProfile)
+        let advancedTerms = terminologyService.getTerminologyForUser(userProfile: advancedProfile, limit: .max)
 
-        // PROPERTY: High belt should see MORE or EQUAL content
-        XCTAssertGreaterThanOrEqual(highBeltTerms.count, lowBeltTerms.count,
+        // PROPERTY: Advanced belt should see MORE or EQUAL content than beginner
+        XCTAssertGreaterThanOrEqual(advancedTerms.count, beginnerTerms.count,
             """
-            PROPERTY VIOLATION: High belt sees less content than low belt
-            Low belt (\(lowBelt.shortName)): \(lowBeltTerms.count) terms
-            High belt (\(highBelt.shortName)): \(highBeltTerms.count) terms
+            PROPERTY VIOLATION: Advanced belt sees less content than beginner
+            Beginner (\(beginnerBelt.shortName)): \(beginnerTerms.count) terms
+            Advanced (\(advancedBelt.shortName)): \(advancedTerms.count) terms
             """)
 
         // PROPERTY: Content sets should be different (unless same belt)
-        if lowBelt.id != highBelt.id {
-            let lowIds = Set(lowBeltTerms.map { $0.id })
-            let highIds = Set(highBeltTerms.map { $0.id })
-            XCTAssertNotEqual(lowIds, highIds,
+        if beginnerBelt.id != advancedBelt.id {
+            let beginnerIds = Set(beginnerTerms.map { $0.id })
+            let advancedIds = Set(advancedTerms.map { $0.id })
+            XCTAssertNotEqual(beginnerIds, advancedIds,
                 "PROPERTY VIOLATION: Different belts should see different content sets")
         }
     }
@@ -534,12 +549,13 @@ final class ProfileDataTests: XCTestCase {
         let terminologyService = TerminologyDataService(modelContext: testContext)
         var previousCount = 0
 
-        // Test progression through belts (from lowest to highest)
-        for belt in allBelts.reversed() {
+        // Test progression from beginner to advanced (high sortOrder → low sortOrder)
+        // allBelts is sorted descending, so iterate forward: 10th Keup → 1st Dan
+        for belt in allBelts {
             let profile = try createTestProfile(belt: belt)
-            let terms = terminologyService.getTerminologyForUser(userProfile: profile)
+            let terms = terminologyService.getTerminologyForUser(userProfile: profile, limit: .max)
 
-            // PROPERTY: Content count must not decrease as belt advances
+            // PROPERTY: Content count must INCREASE as belt advances (beginner sees less than advanced)
             XCTAssertGreaterThanOrEqual(terms.count, previousCount,
                 """
                 PROPERTY VIOLATION: Content decreased on belt advancement
@@ -629,12 +645,12 @@ final class ProfileDataTests: XCTestCase {
         XCTAssertEqual(profile.streakDays, 0,
             "PROPERTY VIOLATION: Initial streak should be 0")
 
-        // Record activity
-        profile.recordActivity()
+        // Record study activity (studyTime > 0 indicates real activity, not just activation)
+        profile.recordActivity(studyTime: 60)
 
-        // PROPERTY: Streak should increment on activity
+        // PROPERTY: Streak should increment after study activity
         XCTAssertGreaterThan(profile.streakDays, 0,
-            "PROPERTY VIOLATION: Streak should increment after activity")
+            "PROPERTY VIOLATION: Streak should increment after study activity")
     }
 
     /**
@@ -851,14 +867,22 @@ final class ProfileDataTests: XCTestCase {
     func testProfileIsolation_PropertyBased_PatternProgressIsolated() throws {
         try createPatternTestData()
 
-        let belt = try getRandomBelt()
+        // Only select belts that have patterns (sortOrder <= 14)
+        // WHY: 10th Keup (sortOrder 15) has no patterns, createPatternTestData filters them out
+        let allBelts = try testContext.fetch(FetchDescriptor<BeltLevel>())
+        let patternBelts = allBelts.filter { $0.sortOrder <= 14 }
+        guard let belt = patternBelts.randomElement() else {
+            XCTFail("No belts with patterns available")
+            return
+        }
+
         let profile1 = try createTestProfile(name: "User1", belt: belt)
         let profile2 = try createTestProfile(name: "User2", belt: belt)
 
         let patternService = PatternDataService(modelContext: testContext)
         let patterns = patternService.getPatternsForUser(userProfile: profile1)
         guard let testPattern = patterns.first else {
-            XCTFail("No patterns available")
+            XCTFail("No patterns available for belt \(belt.shortName) (sortOrder: \(belt.sortOrder))")
             return
         }
 
@@ -1015,22 +1039,23 @@ final class ProfileDataTests: XCTestCase {
         let allBelts = try testContext.fetch(FetchDescriptor<BeltLevel>())
             .sorted { $0.sortOrder > $1.sortOrder }
 
-        guard allBelts.count >= 2 else {
-            XCTFail("Need at least 2 belt levels")
+        guard allBelts.count >= 3 else {
+            XCTFail("Need at least 3 belt levels")
             return
         }
 
-        let lowBelt = allBelts[allBelts.count - 2] // Second lowest
-        let highBelt = allBelts[allBelts.count - 3] // Third lowest
+        // After sorting descending: first elements = higher sortOrder (beginners), last elements = lower sortOrder (advanced)
+        let currentBelt = allBelts[1] // Second from beginning = e.g. 9th Keup (sortOrder 14)
+        let nextBelt = allBelts[2]    // Third from beginning = e.g. 8th Keup (sortOrder 13) - LOWER sortOrder = advancement
 
-        let profile = try createTestProfile(belt: lowBelt)
+        let profile = try createTestProfile(belt: currentBelt)
         try profileService.activateProfile(profile)
 
-        // Record passing grading
+        // Record passing grading for next belt
         try profileService.recordGrading(
             gradingDate: Date(),
-            beltTested: highBelt,
-            beltAchieved: highBelt,
+            beltTested: nextBelt,
+            beltAchieved: nextBelt,
             passed: true
         )
 
@@ -1038,12 +1063,13 @@ final class ProfileDataTests: XCTestCase {
         let reloadedProfile = try profileService.getAllProfiles()
             .first { $0.id == profile.id }!
 
-        // PROPERTY: Belt must be updated after passing
-        XCTAssertEqual(reloadedProfile.currentBeltLevel.id, highBelt.id,
+        // PROPERTY: Belt must be updated after passing (sortOrder should DECREASE on advancement)
+        XCTAssertEqual(reloadedProfile.currentBeltLevel.id, nextBelt.id,
             """
             PROPERTY VIOLATION: Belt not updated after passing grading
-            Expected: \(highBelt.shortName)
-            Got: \(reloadedProfile.currentBeltLevel.shortName)
+            Current before grading: \(currentBelt.shortName) (sortOrder: \(currentBelt.sortOrder))
+            Achieved belt: \(nextBelt.shortName) (sortOrder: \(nextBelt.sortOrder))
+            Current after grading: \(reloadedProfile.currentBeltLevel.shortName) (sortOrder: \(reloadedProfile.currentBeltLevel.sortOrder))
             """)
     }
 

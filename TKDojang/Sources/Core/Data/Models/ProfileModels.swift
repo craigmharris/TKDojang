@@ -99,19 +99,33 @@ final class UserProfile {
         lastActiveAt = Date()
         updatedAt = Date()
         totalStudyTime += studyTime
-        updateStreakDays()
+        updateStreakDays(withStudyTime: studyTime)
     }
-    
+
     /**
      * Calculates current streak based on daily activity
+     *
+     * WHY: Distinguishes between profile activation (studyTime = 0) and real study (studyTime > 0)
+     * BEHAVIOR: Only increments streak when actual study activity occurs
      */
-    private func updateStreakDays() {
+    private func updateStreakDays(withStudyTime studyTime: TimeInterval) {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
         let lastActive = calendar.startOfDay(for: lastActiveAt)
-        
+
+        // SPECIAL CASE: First real activity after profile creation
+        // WHY: Profile creation auto-activates and calls recordActivity() with studyTime=0
+        // We only want to start streak on ACTUAL study activity (studyTime > 0)
+        if streakDays == 0 {
+            // Only increment streak if this is real study activity, not just activation
+            if studyTime > 0 {
+                streakDays = 1
+            }
+            return
+        }
+
         let daysSinceActive = calendar.dateComponents([.day], from: lastActive, to: today).day ?? 0
-        
+
         if daysSinceActive <= 1 {
             // Active today or yesterday, maintain/increment streak
             if daysSinceActive == 0 && calendar.isDate(lastActiveAt, inSameDayAs: Date()) {
