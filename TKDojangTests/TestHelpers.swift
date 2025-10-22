@@ -128,26 +128,43 @@ class TestDataFactory {
     }
     
     /**
-     * Creates basic test belt levels (white, yellow, green)
+     * Creates basic test belt levels - ALL 10 keup levels + 1st Dan
+     *
+     * PURPOSE: Provides complete, production-accurate belt data for integration tests
+     * WHY: Tests were failing because only 5 belts were created, tests need all 10 keup levels
+     *
+     * DATA SOURCE: Based on belt_system.json for accuracy
+     * Uses production hex colors and exact naming conventions
      */
     func createBasicBeltLevels() -> [BeltLevel] {
-        // Include more belt levels to ensure all content types are available for testing
-        let basicBelts = [
-            BeltLevel(name: "10th Keup (White Belt)", shortName: "10th Keup", colorName: "White", sortOrder: 15, isKyup: true),
-            BeltLevel(name: "9th Keup (Yellow Belt)", shortName: "9th Keup", colorName: "Yellow", sortOrder: 14, isKyup: true),
-            BeltLevel(name: "8th Keup (Orange Belt)", shortName: "8th Keup", colorName: "Orange", sortOrder: 13, isKyup: true),
-            BeltLevel(name: "7th Keup (Green Belt)", shortName: "7th Keup", colorName: "Green", sortOrder: 12, isKyup: true),
-            BeltLevel(name: "1st Dan (Black Belt)", shortName: "1st Dan", colorName: "Black", sortOrder: 5, isKyup: false)
+        // Create all 10 keup levels + 1st Dan with production-accurate data
+        let beltData: [(name: String, short: String, color: String, order: Int, isKyup: Bool, primary: String, secondary: String)] = [
+            ("10th Keup (White Belt)", "10th Keup", "White", 15, true, "#F5F5F5", "#F5F5F5"),
+            ("9th Keup (White Belt - Yellow Tag)", "9th Keup", "White/Yellow", 14, true, "#F5F5F5", "#FFD60A"),
+            ("8th Keup (Yellow Belt)", "8th Keup", "Yellow", 13, true, "#FFD60A", "#FFD60A"),
+            ("7th Keup (Yellow Belt - Green Tag)", "7th Keup", "Yellow/Green", 12, true, "#FFD60A", "#4CAF50"),
+            ("6th Keup (Green Belt)", "6th Keup", "Green", 11, true, "#4CAF50", "#4CAF50"),
+            ("5th Keup (Green Belt - Blue Tag)", "5th Keup", "Green/Blue", 10, true, "#4CAF50", "#2196F3"),
+            ("4th Keup (Blue Belt)", "4th Keup", "Blue", 9, true, "#2196F3", "#2196F3"),
+            ("3rd Keup (Blue Belt - Red Tag)", "3rd Keup", "Blue/Red", 8, true, "#2196F3", "#F44336"),
+            ("2nd Keup (Red Belt)", "2nd Keup", "Red", 7, true, "#F44336", "#F44336"),
+            ("1st Keup (Red Belt - Black Tag)", "1st Keup", "Red/Black", 6, true, "#F44336", "#000000"),
+            ("1st Dan (Black Belt)", "1st Dan", "Black", 5, false, "#000000", "#000000")
         ]
-        
-        // Set colors  
-        basicBelts[0].primaryColor = "white"
-        basicBelts[1].primaryColor = "yellow"
-        basicBelts[2].primaryColor = "orange"
-        basicBelts[3].primaryColor = "green" 
-        basicBelts[4].primaryColor = "black"
-        
-        return basicBelts
+
+        return beltData.map { data in
+            let belt = BeltLevel(
+                name: data.name,
+                shortName: data.short,
+                colorName: data.color,
+                sortOrder: data.order,
+                isKyup: data.isKyup
+            )
+            // Use production hex colors
+            belt.primaryColor = data.primary
+            belt.secondaryColor = data.secondary
+            return belt
+        }
     }
     
     // MARK: - Category Creation

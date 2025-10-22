@@ -293,10 +293,24 @@ class ProfileService {
             correctAnswers: correctAnswers,
             focusAreas: focusAreas
         )
-        
+
         modelContext.insert(session)
         active.recordActivity(studyTime: session.duration)
-        
+
+        // Update profile statistics based on session type
+        switch sessionType {
+        case .flashcards:
+            active.totalFlashcardsSeen += itemsStudied
+        case .testing:
+            active.totalTestsTaken += 1
+        case .patterns:
+            // Patterns are tracked separately via PatternDataService
+            break
+        case .step_sparring, .mixed:
+            // These types don't have specific counters yet
+            break
+        }
+
         try modelContext.save()
         
         // Auto-backup after study session to preserve progress

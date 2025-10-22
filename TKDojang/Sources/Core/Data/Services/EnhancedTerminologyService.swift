@@ -141,16 +141,19 @@ class EnhancedTerminologyService {
     // MARK: - Term Selection Helpers
     
     private func getCurrentBeltTerms(beltSortOrder: Int) -> [TerminologyEntry] {
+        // ✅ SAFE - "Fetch All → Filter In-Memory" Pattern
+        // WHY: Predicate relationship navigation causes SwiftData model invalidation
         let descriptor = FetchDescriptor<TerminologyEntry>(
-            predicate: #Predicate<TerminologyEntry> { entry in
-                entry.beltLevel.sortOrder == beltSortOrder
-            },
             sortBy: [SortDescriptor(\.difficulty), SortDescriptor(\.englishTerm)]
         )
-        
+
         do {
-            let terms = try terminologyService.modelContextForLoading.fetch(descriptor)
-            return terms
+            let allTerms = try terminologyService.modelContextForLoading.fetch(descriptor)
+            // Filter in-memory for safety
+            let filteredTerms = allTerms.filter { entry in
+                entry.beltLevel.sortOrder == beltSortOrder
+            }
+            return filteredTerms
         } catch {
             DebugLogger.data("❌ Enhanced: Failed to fetch current belt terms: \(error)")
             return []
@@ -158,20 +161,29 @@ class EnhancedTerminologyService {
     }
     
     private func getAllTermsUpToBelt(beltSortOrder: Int) -> [TerminologyEntry] {
+        // ✅ SAFE - "Fetch All → Filter In-Memory" Pattern
+        // WHY: Predicate relationship navigation causes SwiftData model invalidation
         let descriptor = FetchDescriptor<TerminologyEntry>(
-            predicate: #Predicate<TerminologyEntry> { entry in
-                entry.beltLevel.sortOrder >= beltSortOrder
-            },
-            sortBy: [
-                SortDescriptor(\.beltLevel.sortOrder, order: .reverse), // Current belt first
-                SortDescriptor(\.difficulty),
-                SortDescriptor(\.englishTerm)
-            ]
+            sortBy: [SortDescriptor(\.difficulty), SortDescriptor(\.englishTerm)]
         )
-        
+
         do {
-            let terms = try terminologyService.modelContextForLoading.fetch(descriptor)
-            return terms
+            let allTerms = try terminologyService.modelContextForLoading.fetch(descriptor)
+            // Filter in-memory for safety
+            let filteredTerms = allTerms.filter { entry in
+                entry.beltLevel.sortOrder >= beltSortOrder
+            }
+            // Sort by belt (current first), then difficulty
+            let sortedTerms = filteredTerms.sorted { lhs, rhs in
+                if lhs.beltLevel.sortOrder != rhs.beltLevel.sortOrder {
+                    return lhs.beltLevel.sortOrder < rhs.beltLevel.sortOrder  // Lower sort order (higher belts) first
+                }
+                if lhs.difficulty != rhs.difficulty {
+                    return lhs.difficulty < rhs.difficulty
+                }
+                return lhs.englishTerm < rhs.englishTerm
+            }
+            return sortedTerms
         } catch {
             DebugLogger.data("❌ Enhanced: Failed to fetch mastery terms: \(error)")
             return []
@@ -259,23 +271,26 @@ class EnhancedTerminologyService {
         currentBeltSortOrder: Int,
         needed: Int
     ) -> [TerminologyEntry] {
-        
+
         // Find the immediately prior belt (higher sortOrder)
         let priorBeltSortOrder = currentBeltSortOrder + 1
-        
+
+        // ✅ SAFE - "Fetch All → Filter In-Memory" Pattern
+        // WHY: Predicate relationship navigation causes SwiftData model invalidation
         let descriptor = FetchDescriptor<TerminologyEntry>(
-            predicate: #Predicate<TerminologyEntry> { entry in
-                entry.beltLevel.sortOrder == priorBeltSortOrder
-            },
             sortBy: [SortDescriptor(\.difficulty), SortDescriptor(\.englishTerm)]
         )
-        
+
         do {
-            let priorTerms = try terminologyService.modelContextForLoading.fetch(descriptor)
+            let allTerms = try terminologyService.modelContextForLoading.fetch(descriptor)
+            // Filter in-memory for safety
+            let priorTerms = allTerms.filter { entry in
+                entry.beltLevel.sortOrder == priorBeltSortOrder
+            }
             let topUpTerms = Array(priorTerms.shuffled().prefix(needed))
-            
+
             DebugLogger.data("⬆️ Top-up: Added \(topUpTerms.count) terms from prior belt")
-            
+
             return topUpTerms
         } catch {
             DebugLogger.data("❌ Enhanced: Failed to fetch top-up terms: \(error)")
