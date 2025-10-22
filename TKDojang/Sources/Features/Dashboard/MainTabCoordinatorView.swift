@@ -1092,6 +1092,7 @@ struct PatternsView: View {
     @State private var patterns: [Pattern] = []
     @State private var userProfile: UserProfile?
     @State private var isLoading = true
+    @State private var activeProfileId: UUID?
     
     var body: some View {
         VStack(spacing: 20) {
@@ -1166,9 +1167,13 @@ struct PatternsView: View {
                 ProfileSwitcher()
             }
         }
-        .task {
+        .task(id: activeProfileId) {
+            // Reload patterns whenever active profile ID changes
             await loadPatterns()
-            // Note: onChange listener removed to prevent early DataManager initialization
+        }
+        .onAppear {
+            // Update profile ID to trigger task reload
+            activeProfileId = dataServices.profileService.getActiveProfile()?.id
         }
     }
     
@@ -1286,6 +1291,7 @@ struct PatternCard: View {
             )
         }
         .buttonStyle(PlainButtonStyle())
+        .accessibilityIdentifier("pattern-card-\(pattern.id)")
         .task {
             loadUserProgress()
         }

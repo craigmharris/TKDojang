@@ -654,17 +654,43 @@ Phase 2 was originally planned as "ViewInspector-based view integration tests." 
 **Goal:** Test cross-feature navigation with proven components + services
 **Timeline:** Week 3
 **Total Tests:** 12
-**Completed:** 1/12 (8%) 🔄 **IN PROGRESS**
+**Completed:** 4/12 (33%) 🔄 **IN PROGRESS**
 
 **Test File:** `TKDojangUITests/CriticalUserJourneysUITests.swift`
-**Status:** 🔄 In Progress (2025-10-22)
+**Status:** 🔄 In Progress (2025-10-23)
 
-**APPROACH:**
-- Test infrastructure created with helper methods for resilient element selection
-- E2E tests validate UI flows tie together proven Phase 1 components + Phase 2 services
-- Tests use explicit waits (`waitForExistence`) not sleeps
-- Element selectors support multiple label variations for robustness
-- **Iteration required**: E2E tests need refinement with actual UI structure
+**APPROACH & KEY LEARNINGS:**
+- ✅ Test infrastructure created with helper methods for resilient element selection
+- ✅ Tests use explicit waits (`waitForExistence`) not sleeps for reliability
+- ✅ Element selectors support multiple label variations for robustness
+- ✅ **Randomization** used where appropriate (flashcard counts, test questions, pattern moves)
+- ✅ **Sanity checking** validates accuracy percentages, counts, and session data integrity
+
+**🎯 CRITICAL ARCHITECTURAL INSIGHT: Data Layer Validation > UI Rendering**
+
+**Lesson from Test 3.5 (Profile Switching):**
+SwiftUI aggressively caches views in navigation stacks. When switching profiles, navigating back to the same view can show stale data because SwiftUI reuses the cached view instance instead of recreating it.
+
+**WRONG APPROACH** (what we tried first):
+```swift
+// ❌ Count UI elements (pattern cards) after profile switch
+let patternCount = app.buttons.matching(predicate).count
+// Problem: View might be cached, showing old data
+// Problem: LazyVStack doesn't render off-screen elements
+// Problem: Fighting SwiftUI view lifecycle is fragile
+```
+
+**RIGHT APPROACH** (what works):
+```swift
+// ✅ Validate data-layer properties (belt levels)
+XCTAssertTrue(profile1Shows6thKeup)
+XCTAssertTrue(profile2Shows2ndKeup)
+// Benefit: Validates data isolation directly
+// Benefit: No dependency on UI rendering
+// Benefit: Tests the actual business logic
+```
+
+**PRINCIPLE:** For data isolation tests, validate **what profiles have** (belt levels, settings, progress), not **what the UI renders** (card counts, list items). The data layer is the source of truth.
 
 ---
 
