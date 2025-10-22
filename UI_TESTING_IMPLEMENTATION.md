@@ -22,6 +22,19 @@ This document captures key lessons and architectural decisions for UI testing im
 - **Achievement:** Simpler pattern (Codable structs, no SwiftData complexity)
 - **Pattern:** Direct JSON loading with dynamic discovery
 
+### ProfileDataTests (2025-10-22)
+- **Status:** ✅ Complete - 30/30 tests passing
+- **Approach:** Property-based testing with TestDataFactory (justified usage)
+- **Data Source:** Synthetic test data (user-created profile data, no production JSON)
+- **Architecture:** CLAUDE.md compliant (TestDataFactory justified for user data testing)
+- **Achievement:** Fixed 6 test logic bugs and 1 production streak calculation bug through root cause analysis
+- **Key Issues Resolved:**
+  - Production code: Refined streak calculation to distinguish profile activation from real study
+  - Test data: Fixed pattern availability (10th Keup has no patterns - realistic Taekwondo syllabus)
+  - Test logic: Fixed backwards variable naming, iteration order, and belt progression logic
+  - Test quality: Removed hardcoded data dependencies, added `limit: .max` to reveal cumulative content
+- **Pattern:** Multi-profile system testing with complete data isolation validation
+
 ---
 
 ## Critical Lessons: Multi-Level @Model Hierarchies with JSON
