@@ -32,28 +32,35 @@ import SwiftData
  */
 @MainActor
 final class ProfileDataTests: XCTestCase {
+    var testContainer: ModelContainer!
     var testContext: ModelContext!
     var profileService: ProfileService!
 
-    override func setUp() {
-        super.setUp()
+    @MainActor
+    override func setUp() async throws {
+        try await super.setUp()
 
-        // TEMPORARY: Disabled - create minimal context to avoid nil crashes
-        // Tests will fail gracefully with no data rather than crashing
-        do {
-            let testContainer = try TestContainerFactory.createTestContainer()
-            testContext = testContainer.mainContext
-            profileService = ProfileService(modelContext: testContext)
-            // NOT loading test data - tests will fail but won't crash
-        } catch {
-            XCTFail("Failed to set up test container: \(error)")
+        testContainer = try TestContainerFactory.createTestContainer()
+        testContext = testContainer.mainContext
+        profileService = ProfileService(modelContext: testContext)
+
+        // CRITICAL: ONLY BeltLevels - matching StepSparringComponentTests pattern
+        // WHY: Async setUp required for proper SwiftData initialization with @MainActor
+        // SOLUTION: Create ONLY BeltLevels here, everything else in individual tests
+        let dataFactory = TestDataFactory()
+        let belts = dataFactory.createBasicBeltLevels()
+        for belt in belts {
+            testContext.insert(belt)
         }
+
+        try testContext.save()
     }
 
-    override func tearDown() {
+    override func tearDown() async throws {
         testContext = nil
+        testContainer = nil
         profileService = nil
-        super.tearDown()
+        try await super.tearDown()
     }
 
     // MARK: - Test Helpers
@@ -75,6 +82,42 @@ final class ProfileDataTests: XCTestCase {
             colorTheme: ProfileColorTheme.allCases.randomElement()!,
             beltLevel: randomBelt
         )
+    }
+
+    /// Creates terminology test data for content filtering tests
+    /// Matches StepSparringComponentTests pattern - create data in individual tests
+    private func createTerminologyTestData() throws {
+        let dataFactory = TestDataFactory()
+        let belts = try testContext.fetch(FetchDescriptor<BeltLevel>())
+        let categories = dataFactory.createBasicCategories()
+
+        for category in categories {
+            testContext.insert(category)
+        }
+
+        for belt in belts {
+            for category in categories {
+                let entries = dataFactory.createSampleTerminologyEntries(belt: belt, category: category, count: 5)
+                for entry in entries {
+                    testContext.insert(entry)
+                }
+            }
+        }
+
+        try testContext.save()
+    }
+
+    /// Creates pattern test data for content filtering tests
+    private func createPatternTestData() throws {
+        let dataFactory = TestDataFactory()
+        let belts = try testContext.fetch(FetchDescriptor<BeltLevel>())
+        let patterns = dataFactory.createSamplePatterns(belts: belts, count: 2)
+
+        for pattern in patterns {
+            testContext.insert(pattern)
+        }
+
+        try testContext.save()
     }
 
     // MARK: - 1. Profile Data Properties (5 tests)
@@ -363,6 +406,8 @@ final class ProfileDataTests: XCTestCase {
      * CRITICAL: User concern #3 - Content visibility by belt
      */
     func testContentFiltering_PropertyBased_TerminologyFilteredByBelt() throws {
+        try createTerminologyTestData()
+
         let allBelts = try testContext.fetch(FetchDescriptor<BeltLevel>())
             .sorted { $0.sortOrder > $1.sortOrder }
 
@@ -396,6 +441,8 @@ final class ProfileDataTests: XCTestCase {
      * CRITICAL: User concern #3 - Content visibility by belt
      */
     func testContentFiltering_PropertyBased_PatternsFilteredByBelt() throws {
+        try createPatternTestData()
+
         let allBelts = try testContext.fetch(FetchDescriptor<BeltLevel>())
             .sorted { $0.sortOrder > $1.sortOrder }
 
@@ -426,6 +473,8 @@ final class ProfileDataTests: XCTestCase {
      * CRITICAL: User concern #3 - Profile switching affects visibility
      */
     func testContentFiltering_PropertyBased_ContentChangesOnProfileSwitch() throws {
+        try createTerminologyTestData()
+
         let allBelts = try testContext.fetch(FetchDescriptor<BeltLevel>())
             .sorted { $0.sortOrder > $1.sortOrder }
 
@@ -472,6 +521,8 @@ final class ProfileDataTests: XCTestCase {
      * PROPERTY: Higher belt levels must see more or equal content
      */
     func testContentFiltering_PropertyBased_ProgressionUnlocksContent() throws {
+        try createTerminologyTestData()
+
         let allBelts = try testContext.fetch(FetchDescriptor<BeltLevel>())
             .sorted { $0.sortOrder > $1.sortOrder }
 
@@ -534,6 +585,8 @@ final class ProfileDataTests: XCTestCase {
      * PROPERTY: Profile isolation - different profiles see independent content states
      */
     func testContentFiltering_PropertyBased_ProfileIsolationOfProgressData() throws {
+        try createTerminologyTestData()
+
         let belt = try getRandomBelt()
         let profile1 = try createTestProfile(name: "User1", belt: belt)
         let profile2 = try createTestProfile(name: "User2", belt: belt)
@@ -764,6 +817,8 @@ final class ProfileDataTests: XCTestCase {
      * PROPERTY: Terminology progress must not leak between profiles
      */
     func testProfileIsolation_PropertyBased_TerminologyProgressIsolated() throws {
+        try createTerminologyTestData()
+
         let belt = try getRandomBelt()
         let profile1 = try createTestProfile(name: "User1", belt: belt)
         let profile2 = try createTestProfile(name: "User2", belt: belt)
@@ -794,6 +849,8 @@ final class ProfileDataTests: XCTestCase {
      * PROPERTY: Pattern progress must not leak between profiles
      */
     func testProfileIsolation_PropertyBased_PatternProgressIsolated() throws {
+        try createPatternTestData()
+
         let belt = try getRandomBelt()
         let profile1 = try createTestProfile(name: "User1", belt: belt)
         let profile2 = try createTestProfile(name: "User2", belt: belt)

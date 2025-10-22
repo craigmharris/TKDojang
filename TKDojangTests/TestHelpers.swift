@@ -619,21 +619,20 @@ class TestDataFactory {
             }
         }
         
-        // Create step sparring for 7th Keup and higher  
+        // Create step sparring for 7th Keup and higher
         let stepSparringBelts = belts.filter { $0.sortOrder <= 12 } // 7th Keup and higher
         if !stepSparringBelts.isEmpty {
-            let sequences = createSampleStepSparringSequences(belts: stepSparringBelts, count: 1) 
+            let sequences = createSampleStepSparringSequences(belts: stepSparringBelts, count: 1)
             for sequence in sequences {
                 context.insert(sequence)
             }
         }
-        
-        // Create test profiles
-        let profiles = createTestUserProfiles(belts: belts)
-        for profile in profiles {
-            context.insert(profile)
-        }
-        
+
+        // CRITICAL: Do NOT create UserProfiles in setUp()
+        // WHY: UserProfile has complex inverse relationship arrays that corrupt SwiftData
+        // when created before BeltLevel fetch operations in tests
+        // SOLUTION: Tests create UserProfiles individually as needed (like StepSparringComponentTests)
+
         try context.save()
     }
     
