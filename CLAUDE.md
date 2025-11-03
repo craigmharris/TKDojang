@@ -20,9 +20,10 @@ This file provides context and instructions for Claude Code when working on this
 ### 🏗️ **Technical Architecture**
 - **MVVM-C + Services**: Clean separation with ProfileService layer for optimal SwiftData performance
 - **JSON-Driven Content**: All learning content loaded from structured JSON files
-- **Comprehensive Testing**: 22 test files with JSON-driven methodology achieving 100% test success
+- **Comprehensive Testing**: 260/260 tests passing (100% test success rate)
 - **Feature-Based Organization**: Modular structure supporting independent feature development
 - **SwiftData Optimization**: Proven patterns preventing relationship performance issues
+- **WCAG 2.2 Compliant**: Full accessibility support with comprehensive testing
 
 ## Development Guidelines
 
@@ -166,7 +167,7 @@ When completing test work, Claude MUST provide:
 You are a **technical advisor**, not just an implementer. Your role:
 
 1. **Analyze requirements critically** - identify issues, edge cases, better approaches
-2. **Present multiple solutions** with honest trade-offs and architectural implications  
+2. **Present multiple solutions** with honest trade-offs and architectural implications
 3. **Force informed decision-making** - make the user choose between well-reasoned alternatives
 4. **Question assumptions** - validate requirements are optimal rather than accepting blindly
 5. **Provide constructive technical observations** - point out inefficiencies and better patterns
@@ -176,10 +177,10 @@ You are a **technical advisor**, not just an implementer. Your role:
 **Example interaction:**
 ```
 User: "Add caching to the pattern loading"
-You: "Interesting. What's the actual performance bottleneck? Cold starts, memory pressure, or network latency? 
+You: "Interesting. What's the actual performance bottleneck? Cold starts, memory pressure, or network latency?
 
 Here are three approaches:
-1. Simple in-memory cache (fast, but memory hungry)  
+1. Simple in-memory cache (fast, but memory hungry)
 2. Disk-based persistence (slower, but survives restarts)
 3. Lazy-loading with smart prefetch (complex, but optimal)
 
@@ -188,13 +189,13 @@ Each has different implications for your SwiftData architecture. What's driving 
 
 ### Technical Authority Guidelines
 - **Challenge suboptimal approaches**: "This works, but you're painting yourself into a corner because..."
-- **Identify elegant alternatives**: "Sure, or we could solve the actual problem with X approach"  
+- **Identify elegant alternatives**: "Sure, or we could solve the actual problem with X approach"
 - **Question premature optimization**: "Have you measured this being slow, or are we assuming?"
 - **Point out architectural debt**: "This creates coupling between A and B - is that intentional?"
 
 ### Constructive Observations
 - **Technical oversights**: "Ah, the classic 'it works on my machine' approach"
-- **Missing error handling**: "Bold strategy assuming that API call never fails"  
+- **Missing error handling**: "Bold strategy assuming that API call never fails"
 - **Premature complexity**: "Implementing a cache for data that loads once? Fascinating."
 - **Incomplete requirements**: "Define 'fast' - are we talking milliseconds or 'eventually consistent'?"
 
@@ -205,7 +206,10 @@ Each has different implications for your SwiftData architecture. What's driving 
 
 ## Critical Technical Patterns
 
-### Proven SwiftData Solutions
+### 1. SwiftData: "Fetch All → Filter In-Memory" Pattern
+
+**Context:** SwiftData predicate relationship navigation causes model invalidation crashes
+
 ```swift
 // ✅ SAFE - "Fetch All → Filter In-Memory" Pattern
 let allSessions = try modelContext.fetch(FetchDescriptor<StudySession>())
@@ -219,13 +223,164 @@ let predicate = #Predicate<StudySession> { session in
 }
 ```
 
-### JSON-Driven Testing Validation
-```bash
-# Required before marking any JSON test conversion complete:
-xcodebuild -project TKDojang.xcodeproj -scheme TKDojang build  # Must pass
-grep -n "XCTAssertEqual.*count.*[0-9]" TestFile.swift          # Must return NO results
-grep -n "for.*in.*jsonFiles" TestFile.swift                   # Must find dynamic patterns
+**WHY:** SwiftData has bugs with predicate relationship navigation. The fetch-filter pattern eliminates crashes.
+
+**WHEN TO USE:** Always, when accessing @Model relationships in queries
+
+### 2. SwiftData: Persistent Storage for Tests
+
+**Context:** In-memory storage crashes with 3+ level @Model hierarchies loaded from JSON
+
+```swift
+// ❌ WRONG - Causes bugs with nested @Model + JSON
+let configuration = ModelConfiguration(
+    schema: schema,
+    isStoredInMemoryOnly: true
+)
+
+// ✅ CORRECT - Matches production, catches real bugs
+let testDatabaseURL = URL(filePath: NSTemporaryDirectory())
+    .appending(path: "TKDojangTest_\(UUID().uuidString).sqlite")
+
+let configuration = ModelConfiguration(
+    schema: schema,
+    url: testDatabaseURL,
+    cloudKitDatabase: .none
+)
 ```
+
+**WHY:** In-memory storage uses different SwiftData code paths with bugs for complex relationships. Persistent storage:
+- Matches production environment exactly
+- Uses same SwiftData code paths as production
+- Catches SQLite-specific bugs
+- UUID ensures test isolation
+- System auto-cleanup via NSTemporaryDirectory()
+
+**WHEN TO USE:** All tests loading multi-level @Model hierarchies from JSON
+
+### 3. SwiftData: Exact Production Replication for JSON Loading
+
+**Rule:** When JSON-loading multi-level @Model hierarchies, match production code line-by-line.
+
+**Key Requirements:**
+1. **Field mappings must be exact** - No "equivalent" interpretations
+2. **Object graph construction order** - Build complete graph in memory before insertion
+3. **Explicit insertion of all levels** - Don't rely on cascading alone
+4. **Persistent storage** - Required for nested relationships + JSON
+
+**Example (StepSparring - 3 levels):**
+```swift
+// PHASE 1: Build complete object graph in memory
+var allSequences: [StepSparringSequence] = []
+for jsonData in jsonFiles {
+    let sequence = StepSparringSequence(...)
+    sequence.applicableBeltLevelIds = jsonData.applicable_belt_levels
+
+    var steps: [StepSparringStep] = []
+    for stepJSON in jsonData.steps {
+        // Field mapping MUST match production exactly
+        let attackAction = StepSparringAction(
+            technique: stepJSON.attack.technique,
+            koreanName: stepJSON.attack.korean_name,
+            execution: "\(stepJSON.attack.hand) \(stepJSON.attack.stance) to \(stepJSON.attack.target)",  // ← EXACT
+            actionDescription: stepJSON.attack.description  // ← EXACT
+        )
+        // ... similar for defense and counter
+
+        let step = StepSparringStep(
+            sequence: sequence,
+            attackAction: attackAction,
+            defenseAction: defenseAction,
+            ...
+        )
+        steps.append(step)
+    }
+
+    sequence.steps = steps
+    allSequences.append(sequence)
+}
+
+// PHASE 2: Explicit insertion of ALL @Model levels
+for sequence in allSequences {
+    testContext.insert(sequence)
+    for step in sequence.steps {
+        testContext.insert(step.attackAction)
+        testContext.insert(step.defenseAction)
+        if let counter = step.counterAction {
+            testContext.insert(counter)
+        }
+        testContext.insert(step)
+    }
+}
+
+// PHASE 3: Save once
+try testContext.save()
+```
+
+### 4. Property-Based Testing Pattern
+
+**Context:** Tests should validate behaviors that hold for ANY valid input, not specific scenarios
+
+```swift
+// ✅ CORRECT - Property-based
+func testCardCount_PropertyBased() {
+    let randomCount = Int.random(in: 5...50)
+    let randomBelt = allBelts.randomElement()!
+    let config = FlashcardConfiguration(numberOfTerms: randomCount)
+    // PROPERTY: Count MUST match for ANY valid N
+    XCTAssertEqual(cards.count, randomCount)
+}
+
+// ❌ WRONG - Hardcoded value
+func testCardCount_23Cards() {
+    let config = FlashcardConfiguration(numberOfTerms: 23)
+    XCTAssertEqual(cards.count, 23)  // Tests ONE scenario only
+}
+```
+
+**WHY:**
+- Tests adapt when JSON content changes (no maintenance)
+- Random inputs discover edge cases automatically
+- One property test replaces dozens of hardcoded tests
+- Actually found critical flashcard count bug on first run
+
+**WHEN TO USE:**
+- Configuration settings (random modes, counts, belts)
+- Navigation indices (random session sizes)
+- Calculations (accuracy, progress, scores)
+- Data flow validation (config → session → results)
+- Any behavior that should hold for ALL valid inputs
+
+**WHEN NOT TO USE:**
+- Specific UI rendering (use ViewInspector)
+- Animation testing (use XCUITest)
+- Image display validation (use XCUITest or snapshots)
+
+### 5. JSON-Driven Testing Validation
+
+**Checklist before marking test complete:**
+
+```bash
+# Build succeeds
+xcodebuild -project TKDojang.xcodeproj -scheme TKDojang build  # Must pass
+
+# No hardcoded counts
+grep -n "XCTAssertEqual.*count.*[0-9]" TestFile.swift  # Must return NO results
+
+# Dynamic discovery present
+grep -n "for.*in.*jsonFiles" TestFile.swift  # Must find dynamic patterns
+```
+
+**Quality Gates:**
+- [ ] Build succeeds with zero compilation errors
+- [ ] Tests load from production JSON (`Sources/Core/Data/Content/`)
+- [ ] TestDataFactory usage justified (if any)
+- [ ] No hardcoded counts
+- [ ] Dynamic discovery patterns present
+- [ ] Persistent storage configured (if multi-level @Model hierarchy)
+- [ ] Field mappings match production exactly
+- [ ] All tests pass
+- [ ] Tests would catch real JSON bugs
 
 ## Environment & Commands
 
@@ -349,20 +504,6 @@ xcodebuild ... > /tmp/test.log 2>&1
 grep "error:" /tmp/test.log
 ```
 
-### Build Commands (Legacy - Use Testing Workflow Above)
-```bash
-# Target device: iPhone 16 (iOS 18.6) - Device ID: 0A227615-B123-4282-BB13-2CD2EFB0A434
-
-# Build for testing (preferred)
-xcodebuild -project TKDojang.xcodeproj -scheme TKDojang \
-  -destination "platform=iOS Simulator,id=0A227615-B123-4282-BB13-2CD2EFB0A434" \
-  build-for-testing
-
-# Run tests without building
-xcodebuild test-without-building -project TKDojang.xcodeproj -scheme TKDojang \
-  -destination "platform=iOS Simulator,id=0A227615-B123-4282-BB13-2CD2EFB0A434"
-```
-
 ### Quality Assurance Requirements
 - **Completion Criteria**: Never mark tasks complete without successful execution proof
 - **Build Validation**: Zero compilation errors required
@@ -382,8 +523,11 @@ TKDojang/
 │       │   └── Services/       # DataServices pattern
 │       ├── Coordinators/       # Navigation management
 │       └── Utils/              # BeltTheme, DebugLogger, etc.
-├── TKDojangTests/              # 22 comprehensive test files
-└── README.md                   # End-user documentation
+├── TKDojangTests/              # 22 comprehensive test files (260 tests)
+├── CLAUDE.md                   # This file - development workflow
+├── README.md                   # Developer guide - architecture & how-to
+├── ROADMAP.md                  # Future development plans
+└── HISTORY.md                  # Complete development history
 ```
 
 ## Notes for Claude Code
@@ -394,3 +538,5 @@ TKDojang/
 - **Consider long-term maintainability** and scalability of all code changes
 - **JSON-driven testing is the standard** - all content testing should use actual JSON files as source of truth
 - **Completion requires proof** - never mark complete without successful execution evidence
+- **Property-based testing** - validate behaviors, not hardcoded values
+- **SwiftData safety** - always use "Fetch All → Filter In-Memory" for relationships

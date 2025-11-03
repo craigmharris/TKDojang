@@ -1,292 +1,683 @@
 # TKDojang Development Roadmap
 
-This document outlines future development priorities, technical debt, and feature enhancements for the TKDojang app based on analysis of current capabilities and identified opportunities.
+**Last Updated:** November 2, 2025
+**Current Status:** Production-ready (260/260 tests passing, WCAG 2.2 compliant)
 
-## 🎯 **Current State Assessment**
+---
 
-### ✅ **Production Ready**
-- Complete multi-profile system with 6 profile support
+## Current State Assessment
+
+### ✅ Production Ready
+- Complete multi-profile system (6 profiles)
 - 5 content types fully implemented (Terminology, Patterns, StepSparring, LineWork, Theory, Techniques)
-- Comprehensive testing infrastructure (22 test files, JSON-driven methodology)
+- Comprehensive testing infrastructure (260/260 tests passing)
 - Advanced SwiftData architecture with proven performance patterns
 - Full offline functionality with local data storage
+- WCAG 2.2 Level AA accessibility compliance
 
-### 📊 **Technical Health**
+### 📊 Technical Health
 - **✅ Zero Critical Bugs**: No blocking issues in primary user flows
 - **✅ Perfect Test Coverage**: 260/260 tests passing (100% success rate)
 - **✅ Clean Build**: Zero compilation errors, production-ready codebase
-- **✅ Performance Optimized**: Startup time under 2 seconds, responsive UI
+- **✅ Performance Optimized**: Startup time <2 seconds, responsive UI
 - **✅ Architecture Mature**: MVVM-C + Services pattern proven at scale
-- **✅ WCAG 2.2 Compliant**: Full accessibility support with comprehensive testing
-- **✅ Accessibility Excellence**: VoiceOver, Dynamic Type, and keyboard navigation support
+- **✅ Accessibility Excellence**: VoiceOver, Dynamic Type, keyboard navigation support
 
 ---
 
-## 🚀 **Phase 1: Visual Content Enhancement (High Priority)**
+## Priority 1: Onboarding & First-Time User Experience
 
-### **Complete Image Asset Integration**
-**Status**: Documentation complete, implementation needed  
-**Timeline**: 1-2 months  
-**Priority**: HIGH - Transforms app from text-based to visually rich learning
+**Status:** Planned
+**Timeline:** 2-3 weeks
+**Priority:** CRITICAL - User feedback indicates confusion on first launch
 
-#### **Image Generation System Implementation**
-- **Pattern Move Illustrations**: 258+ move images using established Leonardo AI workflow
-- **Step Sparring Demonstrations**: 54 sparring sequence illustrations
-- **Pattern Diagrams**: 9 visual pattern layouts
-- **App Branding Assets**: Professional icon set and launch imagery
+### User Feedback Context
+- **Issue:** Not clear how to use the app or how features work on initial startup
+- **Impact:** New users don't understand feature capabilities or navigation
+- **Solution:** Comprehensive onboarding with interactive tours
 
-#### **Technical Implementation**
-- **Asset Catalog Integration**: Utilize prepared TKDojang.xcassets structure
-- **Dynamic Image Loading**: Replace placeholder URLs with local asset references
-- **Performance Optimization**: Implement image caching and efficient loading
-- **Fallback System**: Graceful degradation when images unavailable
+### Feature Requirements
 
-#### **Benefits**
-- Transforms learning experience from text-heavy to visual
-- Significantly improves pattern and technique comprehension
-- Professional polish suitable for App Store featured placement
-- Enhanced accessibility through visual learning support
+#### 1. Initial Welcome Flow
+- **Welcome Screen**: Introduce app purpose and key features
+- **Profile Creation Wizard**: Guided first profile setup
+  - Name input with validation
+  - Avatar selection
+  - Belt level selection with explanation
+  - Learning mode preference (Progression vs Mastery)
+- **Quick Tour Option**: Skip to tour or jump straight to dashboard
 
----
+#### 2. Feature-Specific Tours (First-Time Use)
+Each feature shows contextual tour on first access:
 
-## ♿ **Recently Completed: Accessibility Excellence**
+**Flashcard Tour:**
+- Configuration screen walkthrough
+- Study modes explanation (Learn vs Test)
+- Card direction options (English→Korean, Korean→English, Both)
+- Leitner system introduction
+- How to mark cards correct/skip/hard/easy
 
-### **WCAG 2.2 Compliance Achievement** ✅
-**Completed**: October 2025  
-**Impact**: Full accessibility compliance for inclusive learning
+**Multiple Choice Testing Tour:**
+- Test type selection (Comprehensive/Quick/Custom)
+- Question type explanation
+- How to answer and review
+- Result analytics interpretation
 
-#### **Accessibility Infrastructure Implemented**
-- **Comprehensive Testing Suite**: `AccessibilityComplianceTests.swift` with 12 validation methods
-- **WCAG 2.2 Level AA Compliance**: All critical success criteria validated
-- **Accessibility Identifiers**: Systematic `feature-component-action` naming convention
-- **UI Test Enhancement**: Improved reliability with accessibility-focused selectors
-- **Performance Validation**: Accessibility features with zero performance impact
+**Pattern Practice Tour:**
+- Pattern selection by belt level
+- How to navigate moves
+- Progress tracking explanation
+- Mastery levels meaning
 
-#### **Educational App Enhanced Requirements**
-- **Multilingual Support**: Korean text accessibility validation
-- **Progress Indicators**: Screen reader friendly learning progress
-- **Clear Learning Paths**: Accessible belt progression and goal tracking
-- **Error Prevention**: Accessible error handling and recovery guidance
+**Step Sparring Tour:**
+- Sequence selection
+- Attack/Defense/Counter structure
+- How to practice sequences
+- Progress tracking
 
-#### **Testing Infrastructure**
-- **Automated Compliance**: Integrated into fast-test-runner.sh pipeline
-- **Continuous Validation**: 260/260 tests including accessibility coverage
-- **Documentation**: Complete WCAG compliance guide and implementation strategy
-- **Future-Proof**: Ready for European Accessibility Act (EAA) 2025 requirements
+**Theory & Techniques:**
+- Browse and search explanation
+- How to use reference content
+- Belt-specific filtering
 
----
+#### 3. Initial Data Setup
+- **Sample Study Session**: Pre-populate first profile with sample session
+- **Progress Example**: Show what progress tracking looks like
+- **Terminology Starter**: Mark 5-10 terms as "seen" to demonstrate Leitner boxes
+- **Achievement Unlock**: Give first achievement to demonstrate system
 
-## 🔧 **Phase 2: Technical Optimizations (Low Priority)**
+#### 4. Persistent Help System
+- **Help Button**: Available on all major screens
+- **Tooltips**: Optional tooltips for complex UI elements
+- **Settings**: "Reset Tours" option to re-watch
+- **Context-Sensitive Help**: Show relevant help based on current screen
 
-### **Testing & Quality Infrastructure**
-**Status**: ✅ **COMPLETE** - Excellence achieved across all metrics  
-**Timeline**: **DONE** - 260/260 tests passing  
-**Priority**: MAINTENANCE - Foundation is rock solid
+### Technical Implementation
 
-#### **✅ Achievement Summary**
-- **Perfect Test Coverage**: 260/260 tests passing (100% success rate)
-- **Zero Build Errors**: Clean compilation across all targets
-- **Performance Optimization**: Test execution optimized with tiered runner
-- **Accessibility Testing**: Comprehensive WCAG 2.2 compliance validation
-- **UI Test Reliability**: Enhanced with accessibility identifiers
-- **JSON-Driven Validation**: All content testing uses actual data sources
+**TourCoordinator Pattern:**
+```swift
+class TourCoordinator: ObservableObject {
+    @Published var activeTour: TourType?
+    @Published var completedTours: Set<TourType>
 
-#### **Optional Future Enhancements** 
-- **CI/CD Integration**: Automated testing in continuous integration pipeline
-- **Cross-Device Testing**: Expand test coverage to multiple iOS device types
-- **Performance Monitoring**: Automated performance regression detection
+    enum TourType {
+        case welcome, flashcards, testing, patterns,
+             stepSparring, theory, techniques
+    }
 
----
+    func shouldShowTour(_ type: TourType) -> Bool
+    func markTourComplete(_ type: TourType)
+    func resetAllTours()
+}
+```
 
-## 📈 **Phase 3: Advanced Analytics & Progress Features (Medium Priority)**
+**Tour UI Components:**
+- Spotlight overlays (highlight specific UI elements)
+- Step-by-step walkthrough modals
+- Interactive demonstrations
+- Skip/Next/Back navigation
+- Progress indicators (Step 1 of 5)
 
-### **Enhanced Progress Tracking**
-**Status**: Foundation exists, expansion opportunity  
-**Timeline**: 2-3 weeks  
-**Priority**: MEDIUM - Improves user engagement and retention
-
-#### **Progress Visualization Enhancements**
-- **Belt Journey Timeline**: Visual progression through belt levels with milestones
-- **Learning Streak Tracking**: Daily/weekly study consistency encouragement
-- **Mastery Heat Maps**: Visual representation of terminology/technique mastery
-- **Family Progress Comparison**: Optional cross-profile progress insights
-
-#### **Advanced Analytics Dashboard**
-- **Study Pattern Analysis**: Optimal learning time recommendations
-- **Weak Area Identification**: Targeted improvement suggestions
-- **Achievement System**: Badges and milestones for learning accomplishments
-- **Progress Sharing**: Export progress reports for instructors/family
-
-#### **Technical Requirements**
-- Expand existing ProgressCacheService capabilities
-- Implement chart visualization components
-- Create advanced analytics data models
-- Ensure privacy-first approach (local-only data)
+### Success Metrics
+- [ ] 90%+ first-time users complete welcome flow
+- [ ] Average time to first study session <3 minutes
+- [ ] User feedback: "Easy to understand" rating >4/5
+- [ ] Support inquiries about "how to use" reduced by 80%
 
 ---
 
-## 🎮 **Phase 4: Interactive Learning Features (Lower Priority)**
+## Priority 2: Vocabulary Builder Feature
 
-### **Gamification & Engagement**
-**Status**: New development opportunity  
-**Timeline**: 1-2 months  
-**Priority**: LOW - Enhancement rather than core functionality
+**Status:** Planned
+**Timeline:** 3-4 weeks
+**Priority:** HIGH - User feedback indicates difficulty with complex phrases
 
-#### **Interactive Training Modes**
-- **Pattern Challenge Mode**: Timed pattern sequence practice
-- **Terminology Speed Tests**: Rapid-fire flashcard challenges
-- **Family Competitions**: Friendly learning challenges between profiles
-- **Daily Learning Goals**: Customizable study targets with tracking
+### User Feedback Context
+- **Issue:** 5-6 word terminology phrases are difficult to learn
+- **Impact:** Users struggle to progress beyond basic terminology
+- **Solution:** Progressive word-building system from individual words to full phrases
 
-#### **Enhanced Assessment Tools**
-- **Adaptive Testing**: Difficulty adjustment based on performance
-- **Comprehensive Grading Prep**: Mock belt tests with timing and scoring
-- **Weak Area Focus**: Targeted practice sessions for improvement areas
-- **Progress Certificates**: Printable achievement recognition
+### Feature Requirements
+
+#### 1. Word Breakdown System
+- **Phrase Analysis**: Break existing terminology into component words
+  - Example: "왼 걷기 서기 아래 막기" → ["왼", "걷기", "서기", "아래", "막기"]
+  - Meaning: ["Left", "Walking", "Stance", "Low", "Block"]
+- **Word Database**: Build vocabulary of individual Korean words used across terminology
+- **Progressive Complexity**: Start with 1-2 word phrases, build to 5-6 words
+
+#### 2. Learning Modes
+
+**Mode 1: Word Matching**
+- Match individual Korean words to English meanings
+- Build familiarity with common words (걷기, 서기, 막기, etc.)
+- Track word-level mastery
+
+**Mode 2: Phrase Building**
+- Given English phrase, build Korean phrase from word tiles
+- Drag-and-drop interface
+- Immediate feedback on correct word order
+- Example: "Left Walking Stance" → Arrange ["왼", "걷기", "서기"]
+
+**Mode 3: Progressive Assembly**
+- Start with 2-word phrases (e.g., "왼 걷기")
+- Progress to 3-word phrases (e.g., "왼 걷기 서기")
+- Build up to full 5-6 word phrases
+- Unlock longer phrases as shorter ones mastered
+
+**Mode 4: Phrase Completion**
+- Given partial phrase, fill in missing words
+- Example: "왼 ___ 서기 아래 ___" (fill "걷기" and "막기")
+- Multiple difficulty levels (1 blank, 2 blanks, 3 blanks)
+
+#### 3. Integration with Existing Systems
+
+**Terminology Integration:**
+- Link vocabulary builder progress to terminology system
+- Show word breakdown for any terminology entry
+- Quick access: "Practice this phrase in Vocabulary Builder"
+
+**Flashcard Enhancement:**
+- Option to study word components before full phrases
+- "Break down this term" button on flashcards
+- Leitner system applies to individual words
+
+**Progress Tracking:**
+- Track word-level mastery (how many times each word seen/correct)
+- Phrase assembly accuracy tracking
+- Time to correctly build phrases
+- Difficulty progression (2-word → 6-word mastery)
+
+#### 4. Content Structure
+
+**Word Database JSON:**
+```json
+{
+  "korean_words": [
+    {
+      "word": "왼",
+      "romanization": "wen",
+      "meaning": "left",
+      "category": "direction",
+      "difficulty": "beginner"
+    },
+    {
+      "word": "걷기",
+      "romanization": "geotgi",
+      "meaning": "walking",
+      "category": "movement",
+      "difficulty": "beginner"
+    }
+  ],
+  "phrase_structures": [
+    {
+      "phrase_id": "left_walking_stance_low_block",
+      "components": ["왼", "걷기", "서기", "아래", "막기"],
+      "full_phrase": "왼 걷기 서기 아래 막기",
+      "meaning": "Left Walking Stance Low Block",
+      "difficulty": 5,
+      "belt_level": "9th_keup"
+    }
+  ]
+}
+```
+
+### UI/UX Design
+
+**Vocabulary Builder Screen:**
+- Mode selector (Word Matching, Phrase Building, Progressive Assembly, Completion)
+- Word bank (available words as draggable tiles)
+- Assembly area (drop zone for building phrases)
+- Progress visualization (words mastered, phrases completed)
+- Difficulty selector (2-word → 6-word)
+
+**Visual Feedback:**
+- ✅ Green highlight for correct word placement
+- ❌ Red highlight for incorrect placement
+- ⚡ Hint system (show first letter/word position)
+- 🎯 Target phrase displayed in English
+
+### Technical Implementation
+
+**VocabularyBuilder Service:**
+```swift
+class VocabularyBuilderService {
+    func loadWordDatabase() -> [KoreanWord]
+    func loadPhraseStructures() -> [PhraseStructure]
+    func getWordsForDifficulty(_ level: Int) -> [KoreanWord]
+    func validatePhraseAssembly(_ words: [String], target: String) -> Bool
+    func trackWordMastery(word: String, correct: Bool)
+    func getProgressionLevel(for profile: UserProfile) -> Int
+}
+```
+
+### Success Metrics
+- [ ] Users show 40% improvement in 5-6 word phrase retention
+- [ ] Average time to master complex phrases reduced by 50%
+- [ ] 70%+ users use Vocabulary Builder before flashcards
+- [ ] User feedback: "Easier to learn phrases" rating >4/5
 
 ---
 
-## 🌐 **Phase 5: Content Expansion (Lower Priority)**
+## Priority 3: E2E Testing Completion
 
-### **Additional Content Types**
-**Status**: Framework supports expansion  
-**Timeline**: 3-4 months  
-**Priority**: LOW - Current content is comprehensive
+**Status:** In Progress (1/12 tests complete)
+**Timeline:** 2-3 weeks
+**Priority:** HIGH - Testing foundation critical for confident development
 
-#### **Advanced Pattern Content**
-- **Black Belt Patterns**: Extend beyond 1st Dan to higher black belt forms
-- **Video Integration**: Pattern demonstrations and technique breakdowns
-- **Multiple Style Support**: ITF, WTF, and other Taekwondo styles
-- **Historical Context**: Deeper cultural and historical pattern information
+### Current Status
+- **Phase 1 (Component Tests):** ✅ 153/153 complete (100%)
+- **Phase 2 (Integration Tests):** ✅ 19/23 complete (83% - functionally complete)
+- **Phase 3 (E2E Tests):** 🔄 1/12 complete (8% - in progress)
+- **Overall:** 173/196 tests (88%)
 
-#### **Extended Technique Library**
-- **Advanced Combinations**: Complex technique sequences
-- **Application Examples**: Practical self-defense applications
-- **Breaking Techniques**: Board breaking theory and practice
-- **Competition Sparring**: Sport-specific sparring techniques
+### Remaining E2E User Journey Tests (11 tests)
 
-#### **International Content**
-- **Multiple Languages**: Korean, Spanish, French language support
+**Test File:** `TKDojangUITests/CriticalUserJourneysUITests.swift`
+
+#### Test 1: New User Onboarding ⬜
+**Flow:** Welcome → Profile Creation → Dashboard → First Action
+- Verify welcome screen displays
+- Complete profile creation wizard
+- Navigate to dashboard
+- Trigger first feature (flashcards/patterns/test)
+- Validate initial data setup
+
+#### Test 2: Flashcard Complete Workflow 🔄
+**Flow:** Dashboard → Configure (23 cards, Korean) → Study → Mark Correct/Skip → Results → Dashboard
+- Navigate from dashboard to flashcards
+- Configure session (random card count 10-50, random mode)
+- Study cards with randomized correct/skip actions
+- Verify results accuracy calculation
+- Confirm dashboard metrics updated
+- **Status:** Created, needs iteration with actual UI
+
+#### Test 3: Multiple Choice Complete Workflow ⬜
+**Flow:** Dashboard → Configure (20 questions, 7th keup) → Answer → Review → Results → Dashboard
+- Navigate to multiple choice testing
+- Configure test (random question count, random belt)
+- Answer questions (mix of correct/incorrect)
+- Review answers and explanations
+- Verify result analytics
+- Confirm profile stats updated
+
+#### Test 4: Pattern Practice Complete Workflow ⬜
+**Flow:** Dashboard → Select Pattern → Practice (all 19 moves) → Complete → Results → Dashboard
+- Navigate to pattern practice
+- Select random pattern
+- Navigate through all moves
+- Complete pattern session
+- Verify progress tracking
+- Confirm dashboard updated
+
+#### Test 5: Step Sparring Workflow ⬜
+**Flow:** Dashboard → Select Sequence → Practice → Complete → Dashboard
+- Navigate to step sparring
+- Select random sequence
+- Practice attack/defense/counter
+- Complete sequence
+- Verify mastery level update
+
+#### Test 6: Profile Switching Workflow ⬜
+**Flow:** Dashboard (Profile A) → Switch to Profile B → Verify isolated data → Switch back → Verify data restored
+- Create two profiles with different belts
+- Complete study session as Profile A
+- Switch to Profile B
+- Verify Profile B sees different content (belt-appropriate)
+- Verify Profile B has no Profile A sessions
+- Switch back to Profile A
+- Verify Profile A data intact
+
+#### Test 7: Theory Learning Workflow ⬜
+**Flow:** Dashboard → Theory → Read content → Return → Verify progress tracked
+- Navigate to theory section
+- Browse belt-specific content
+- Read theory sections
+- Return to dashboard
+- Verify reading time tracked (if applicable)
+
+#### Test 8: Dashboard Statistics Accuracy ⬜
+**Flow:** Complete flashcard session → Dashboard → Verify counts/charts update correctly
+- Baseline dashboard stats
+- Complete flashcard session
+- Return to dashboard
+- Verify flashcard count incremented
+- Verify total study time updated
+- Verify streak calculation correct
+- Verify charts reflect new data
+
+#### Test 9: Belt Progression Validation ⬜
+**Flow:** Verify content filters correctly across belt levels
+- Create profiles at different belt levels (9th keup, 5th keup, 1st keup)
+- Verify each sees belt-appropriate content:
+  - Terminology count increases with belt level
+  - Patterns unlock progressively
+  - Step sparring sequences available correctly
+  - Line work exercises match belt
+
+#### Test 10: Search Functionality ⬜
+**Flow:** Search terminology/techniques → Verify results → Select → Verify detail view
+- Navigate to techniques/terminology search
+- Enter search query (random technique name)
+- Verify search results accuracy
+- Select search result
+- Verify detail view displays correctly
+- Test Korean and English search
+
+#### Test 11: Navigation Resilience ⬜
+**Flow:** Navigate forward 10 levels deep → Back button → Verify no crashes/state loss
+- Start at dashboard
+- Navigate through: Dashboard → Learning → Flashcards → Config → Session → Results → Dashboard → Profile → Edit → ... (10+ screens)
+- Use back button to navigate backward
+- Verify no crashes
+- Verify no state loss
+- Verify navigation stack integrity
+
+#### Test 12: Multi-Session Workflow ⬜
+**Flow:** Flashcards → Patterns → Test → Dashboard → Verify all sessions logged
+- Complete flashcard session
+- Complete pattern practice
+- Complete multiple choice test
+- Return to dashboard
+- Verify all 3 sessions appear in history
+- Verify aggregated stats correct
+- Verify streak calculation considers all sessions
+
+### Test Implementation Approach
+
+**Key Learnings Applied:**
+- ✅ Use explicit waits (`waitForExistence`) not sleeps
+- ✅ Validate data-layer properties, not UI element counts
+- ✅ Support multiple label variations for robustness
+- ✅ Use randomization for input values (counts, modes, selections)
+- ✅ Sanity check accuracy percentages and calculations
+
+**Data Layer Validation Principle:**
+For isolation tests, validate **what profiles HAVE** (belt levels, settings, progress), not **what the UI RENDERS** (card counts, list items). SwiftUI caches views aggressively.
+
+### Success Metrics
+- [ ] All 12 E2E tests passing consistently (5+ runs)
+- [ ] Test execution time <30s per test (<6 minutes total)
+- [ ] Zero flaky tests (100% pass rate across 20 runs)
+- [ ] Critical user journeys validated end-to-end
+
+---
+
+## Priority 4: User Testing Feedback
+
+**Status:** Planned
+**Timeline:** 2-4 weeks (ongoing)
+**Priority:** MEDIUM - Address remaining user-reported issues
+
+### Feedback Collection & Prioritization
+- Collect user feedback from testing sessions
+- Categorize by severity (Critical/High/Medium/Low)
+- Prioritize based on frequency and impact
+- Track resolution status
+
+### Categories
+
+**UI/UX Improvements:**
+- Navigation clarity enhancements
+- Visual feedback improvements
+- Button/control placement optimization
+- Color contrast adjustments
+
+**Feature Enhancements:**
+- Requested feature variations
+- Workflow optimizations
+- Performance improvements
+- Content additions
+
+**Bug Fixes:**
+- Edge case handling
+- Error message clarity
+- Data validation improvements
+- Recovery mechanisms
+
+### Process
+1. **Collect:** Gather feedback from users
+2. **Triage:** Categorize and prioritize
+3. **Validate:** Reproduce and understand issue
+4. **Implement:** Fix or enhance
+5. **Test:** Validate resolution
+6. **Deploy:** Release to users
+7. **Verify:** Confirm issue resolved
+
+---
+
+## Priority 5: Image Generation & Integration
+
+**Status:** Planned
+**Timeline:** 4-6 weeks
+**Priority:** MEDIUM - Transforms text-based to visually rich learning
+
+### Overview
+Transform app from text-heavy to visually rich learning experience with 300+ professional-quality martial arts images.
+
+### Image Requirements
+
+**Total Images:** 322
+- **App Icons:** 18 sizes (1024×1024 to 20×20)
+- **Pattern Diagrams:** 9 images (one per pattern)
+- **Pattern Moves:** 258 images (moves across 11 patterns)
+- **Step Sparring:** 54 images (attack/defense/counter sequences)
+- **Branding:** 1 launch logo
+
+### Asset Structure (Already Created)
+```
+TKDojang.xcassets/
+├── AppIcon.appiconset/          # 18 icon sizes
+├── Patterns/
+│   ├── Diagrams/                # 9 pattern diagrams
+│   └── Moves/                   # 258 pattern moves
+├── StepSparring/                # 54 sparring images
+└── Branding/                    # Launch logo
+```
+
+### Implementation Tasks
+
+#### 1. Image Resizing & Optimization
+**Batch Processing Script:**
+```bash
+# Resize images for 2x/3x iOS displays
+# Optimize file sizes (<300KB for moves, <200KB for diagrams)
+# Convert to PNG with proper transparency
+# Validate aspect ratios (3:4 portrait, 4:3 landscape, 1:1 square)
+```
+
+**Quality Requirements:**
+- Resolution: Meets 2x/3x specifications
+- Format: PNG with transparency
+- File Size: <300KB for moves, <200KB for diagrams
+- Aspect Ratio: Correct for category
+
+#### 2. JSON File Updates
+**Update all pattern/step sparring JSON files:**
+```json
+// Before: URL references
+{"image_url": "https://example.com/moves/chon-ji-1.jpg"}
+
+// After: Asset catalog names
+{"image_url": "chon-ji-1"}
+```
+
+#### 3. AsyncImage Integration
+- Update all image loading to use asset catalog names
+- Implement fallback for missing images
+- Add loading states and error handling
+- Performance testing (ensure no startup impact)
+
+#### 4. Visual Consistency Validation
+- Character consistency across pattern sets
+- Belt color accuracy for each keup level
+- Lighting and background uniformity
+- Cultural authenticity review
+
+### Success Metrics
+- [ ] All 322 images integrated successfully
+- [ ] No impact on app startup time (<2 seconds maintained)
+- [ ] Memory usage within limits (<200MB for image loading)
+- [ ] User feedback: "Images help learning" rating >4.5/5
+
+---
+
+## Priority 6: Video Content Support
+
+**Status:** Planned
+**Timeline:** 4-6 weeks
+**Priority:** LOW - Enhancement for advanced learning
+
+### Feature Requirements
+
+#### 1. Video Infrastructure
+- **Video Player Integration**: AVPlayer for inline video playback
+- **Video Storage**: Local video files in app bundle or downloaded content
+- **Streaming Support**: Optional streaming for larger video library
+- **Offline Access**: Downloaded videos available offline
+
+#### 2. Video Content Types
+
+**Pattern Demonstrations:**
+- Full pattern performance (real-time speed)
+- Slow-motion breakdowns
+- Move-by-move instruction
+- Multiple camera angles
+
+**Technique Tutorials:**
+- Proper form demonstrations
+- Common mistakes highlighted
+- Application examples
+- Training drills
+
+**Step Sparring Sequences:**
+- Attack/defense/counter demonstrations
+- Partner interaction videos
+- Timing and rhythm instruction
+
+#### 3. Video Controls
+- Play/Pause
+- Seek bar with preview thumbnails
+- Playback speed control (0.5x, 1x, 2x)
+- Loop/repeat options
+- Fullscreen mode
+
+#### 4. Integration Points
+- **Pattern Practice:** "Watch Demonstration" button
+- **Techniques Library:** Video alongside written description
+- **Step Sparring:** "See Example" for each sequence
+- **Theory:** Instructional videos for concepts
+
+### Technical Considerations
+- **File Size Management**: Optimize video compression
+- **Download System**: Progressive download, resume capability
+- **Storage Management**: User control over downloaded videos
+- **Performance**: Hardware acceleration, efficient buffering
+
+### Success Metrics
+- [ ] Video playback smooth on target devices
+- [ ] Download/streaming reliable
+- [ ] Storage impact acceptable (<500MB for core videos)
+- [ ] User feedback: "Videos improve understanding" >4/5
+
+---
+
+## Priority 7: Additional Features & Enhancements
+
+**Status:** Planned
+**Timeline:** Ongoing
+**Priority:** LOW - Nice-to-have enhancements
+
+### iCloud Backup & Sync
+
+**Requirements:**
+- Profile data backup to iCloud
+- Progress sync across devices
+- Conflict resolution for multi-device use
+- Privacy-first approach (user controls sync)
+
+**Implementation:**
+- CloudKit integration
+- Selective sync (profiles, progress, settings)
+- Offline-first with sync when available
+- Clear sync status indicators
+
+### Additional Enhancements
+
+**Widget Support:**
+- Home screen widgets for quick stats
+- Study streak widget
+- Daily goal progress widget
+- Quick launch to specific features
+
+**Shortcuts Integration:**
+- Siri shortcuts for common actions
+- "Start flashcard session"
+- "Practice today's pattern"
+- "Check my progress"
+
+**Apple Watch Support:**
+- Basic flashcard functionality
+- Progress tracking
+- Workout integration (pattern practice as activity)
+- Glanceable stats
+
+**iPad Optimization:**
+- Enhanced layouts for larger screens
+- Split view support
+- Keyboard shortcuts
+- External display support
+
+### Success Metrics
+- [ ] iCloud sync reliable (>99% success rate)
+- [ ] Cross-device experience seamless
+- [ ] Widgets provide value (daily interaction >30%)
+- [ ] User adoption of extended features >40%
+
+---
+
+## Long-Term Vision
+
+### Platform Expansion
+- **Apple Watch App**: Standalone flashcard functionality
+- **iPad Pro Optimization**: Pencil support for pattern tracing
+- **macOS App**: Full-featured desktop experience
+- **tvOS App**: Large-screen practice mode
+
+### Content Expansion
+- **Advanced Patterns**: Black belt patterns (Kwang-Gae through Se-Jong)
+- **Multiple Styles**: ITF, WTF, ATA variations
+- **International Content**: Multi-language support (Spanish, French, Korean)
 - **Regional Variations**: Accommodate different teaching methodologies
-- **Cultural Context**: Expanded Korean culture and philosophy content
+
+### Community Features
+- **Instructor Mode**: Track student progress (separate app/premium feature)
+- **Dojang Integration**: School-specific content and tracking
+- **Achievement Sharing**: Social sharing (privacy-controlled)
+- **Leaderboards**: Optional competitive features
 
 ---
 
-## 🔧 **Technical Debt & Optimization**
+## Success Metrics Framework
 
-### **Architecture Improvements**
-**Priority**: LOW - Current architecture is solid
+### Development Quality
+- **Test Coverage**: Maintain 100% test pass rate
+- **Build Health**: Zero compilation errors
+- **Performance**: <2s startup, responsive UI
+- **Accessibility**: WCAG 2.2 Level AA compliance maintained
 
-#### **Performance Enhancements**
-- **Memory Optimization**: Further reduce memory footprint during extended use
-- **Battery Efficiency**: Optimize for longer study sessions
-- **Startup Time**: Target sub-1-second launch times
-- **Animation Smoothness**: Enhance UI transition fluidity
+### User Experience
+- **Onboarding Success**: >90% complete welcome flow
+- **Feature Adoption**: >70% users try each major feature
+- **Retention**: >60% weekly active users
+- **Satisfaction**: >4/5 average rating
 
-#### **Code Quality**
-- **SwiftData Relationship Optimization**: Explore advanced relationship patterns
-- **Service Layer Enhancement**: Additional abstraction for complex operations
-- **Error Handling Improvements**: More robust error recovery mechanisms
-- **Logging System Enhancement**: More sophisticated debugging capabilities
-
-### **Platform Integration**
-**Priority**: LOW - Current integration is sufficient
-
-#### **iOS Feature Adoption**
-- **Widget Support**: Home screen widgets for quick study access
-- **Shortcuts Integration**: Siri shortcuts for common actions
-- **Apple Watch Support**: Basic flashcard functionality
-- **iPad Optimization**: Enhanced layout for larger screens
-
-#### **Accessibility Enhancements**
-- **Advanced VoiceOver**: More detailed accessibility descriptions
-- **Switch Control**: Support for alternative input methods
-- **Guided Access**: Support for focused learning sessions
-- **Motor Accessibility**: Accommodate users with motor limitations
+### Technical Excellence
+- **Reliability**: <1% crash rate
+- **Performance**: <200MB memory usage
+- **Battery**: <5% battery drain per hour of use
+- **Storage**: <500MB total app size (including videos)
 
 ---
 
-## 💡 **Innovation Opportunities**
-
-### **Emerging Technology Integration**
-**Priority**: VERY LOW - Experimental features
-
-#### **AR/VR Potential**
-- **Pattern Visualization**: 3D pattern demonstrations in AR
-- **Technique Analysis**: Motion capture for form analysis
-- **Virtual Dojang**: Immersive training environments
-- **Interactive 3D Models**: Detailed technique breakdowns
-
-#### **AI-Powered Features**
-- **Personalized Learning Paths**: AI-driven study recommendations
-- **Technique Recognition**: Camera-based form analysis
-- **Natural Language Processing**: Voice-driven content queries
-- **Adaptive Content**: Dynamic difficulty adjustment
-
----
-
-## 🚦 **Implementation Prioritization**
-
-### **High Priority (Next 3 Months)**
-1. **Visual Content Enhancement** - Transforms user experience quality (only major remaining task)
-
-### **Medium Priority (3-6 Months)**
-1. **Enhanced Progress Tracking** - Improves user engagement
-2. **Advanced Analytics Dashboard** - Adds significant value for serious learners
-3. **Asset Warning Cleanup** - Polish missing image asset warnings (cosmetic)
-
-### **Lower Priority (6+ Months)**
-1. **Interactive Learning Features** - Nice-to-have enhancements
-2. **Content Expansion** - Current content is already comprehensive
-3. **Platform Integration** - Incremental improvements
-4. **Innovation Opportunities** - Experimental, future-looking features
-
----
-
-## 📋 **Decision Criteria**
-
-### **Feature Prioritization Framework**
-
-#### **High Priority Factors**
-- **User Impact**: Significantly improves core learning experience
-- **Market Differentiation**: Provides competitive advantage
-- **Technical Risk**: Low risk of introducing instability
-- **Resource Efficiency**: Reasonable development time investment
-
-#### **Medium Priority Factors**
-- **User Engagement**: Improves retention and daily usage
-- **Platform Benefits**: Takes advantage of iOS ecosystem
-- **Maintenance Impact**: Reduces long-term maintenance burden
-- **Performance Benefits**: Measurable performance improvements
-
-#### **Lower Priority Factors**
-- **Nice-to-Have**: Enhancements that don't address core needs
-- **Experimental**: Unproven technologies or approaches
-- **Niche Appeal**: Benefits small subset of users
-- **High Complexity**: Significant development investment required
-
----
-
-## 🎯 **Success Metrics**
-
-### **Phase 1 Success Criteria**
-- **Visual Assets**: 300+ professional-quality images integrated
-- **Performance**: No impact on app startup or memory usage
-- **User Experience**: Qualitative improvement in pattern learning effectiveness
-- **App Store Readiness**: Professional visual quality suitable for featuring
-
-### **Phase 2 Success Criteria**
-- **Test Suite**: 100% test execution success across all 22 test files
-- **Build System**: Zero warnings, consistent archive builds
-- **CI/CD**: Automated testing integrated into development workflow
-- **Code Quality**: All technical debt items addressed
-
-### **Long-Term Success Indicators**
-- **User Retention**: Increased daily active usage
-- **Learning Effectiveness**: Improved user progress metrics
-- **App Store Performance**: Higher ratings and review quality
-- **Market Position**: Recognition as premium Taekwondo learning app
-
----
-
-*This roadmap reflects current capabilities and market opportunities. Priorities may be adjusted based on user feedback, technical discoveries, or market changes.*
+**This roadmap balances user needs, technical excellence, and sustainable development practices. Priorities may adjust based on user feedback, technical discoveries, or market changes.**
