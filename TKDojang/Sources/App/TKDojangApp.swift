@@ -1,26 +1,42 @@
 import SwiftUI
+import TipKit
 
 /**
  * TKDojangApp.swift
- * 
+ *
  * PURPOSE: Main entry point for the TKDojang App
- * 
+ *
  * ARCHITECTURE DECISION: Using SwiftUI App lifecycle (iOS 14+)
  * WHY: Provides modern declarative app structure, automatic scene management,
  * and better integration with SwiftUI views throughout the app.
- * 
+ *
  * RESPONSIBILITIES:
  * - Initialize app-wide dependencies
  * - Configure global app state
  * - Set up the root coordinator pattern
  * - Handle app lifecycle events
+ * - Configure TipKit for onboarding and contextual help
  */
 @main
 struct TKDojangApp: App {
-    
+
     init() {
         DebugLogger.ui("🏁 TKDojangApp.init() - App struct being created - \(Date())")
         DebugLogger.ui("🚀 TKDojang App Starting... - \(Date())")
+
+        // Configure TipKit for onboarding and feature tours
+        // WHY: TipKit provides native iOS contextual help with minimal code
+        // displayFrequency: .immediate allows tips to show as soon as conditions are met
+        // datastoreLocation: .applicationDefault persists tip state across app launches
+        do {
+            try Tips.configure([
+                .displayFrequency(.immediate),
+                .datastoreLocation(.applicationDefault)
+            ])
+            DebugLogger.ui("✅ TipKit configured successfully")
+        } catch {
+            DebugLogger.ui("⚠️ TipKit configuration failed: \(error.localizedDescription)")
+        }
     }
     
     // MARK: - Properties

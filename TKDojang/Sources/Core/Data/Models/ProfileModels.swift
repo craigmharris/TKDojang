@@ -45,7 +45,13 @@ final class UserProfile {
     var totalFlashcardsSeen: Int = 0 // Default to zero
     var totalTestsTaken: Int = 0 // Default to zero
     var totalPatternsLearned: Int = 0 // Default to zero
-    
+
+    // Onboarding state (per-profile tour completion)
+    // WHY: Track which feature tours this profile has seen for household sharing
+    // Initial tour is device-level (@AppStorage), but feature tours are per-profile
+    var hasCompletedInitialTour: Bool = false
+    var completedFeatureTours: [String] = [] // ["flashcards", "multipleChoice", "patterns", "stepSparring"]
+
     // Relationships (one-to-many)
     @Relationship(deleteRule: .cascade, inverse: \UserTerminologyProgress.userProfile)
     var terminologyProgress: [UserTerminologyProgress] = []

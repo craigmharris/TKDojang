@@ -322,6 +322,7 @@ struct AnswerOptionButton: View {
                 .cornerRadius(12)
         }
         .buttonStyle(PlainButtonStyle())
+        .accessibilityIdentifier("test-answer-option-\(index)")
         .animation(.easeInOut(duration: 0.2), value: showingFeedback)
     }
 }

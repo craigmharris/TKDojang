@@ -85,6 +85,7 @@ struct PatternPracticeView: View {
                     endPractice()
                 }
                 .foregroundColor(.red)
+                .accessibilityIdentifier("pattern-end-practice-button")
             }
         }
         .task {
@@ -94,9 +95,11 @@ struct PatternPracticeView: View {
             Button("Record Progress") {
                 recordPracticeSession()
             }
+            .accessibilityIdentifier("pattern-record-progress-button")
             Button("Practice Again") {
                 restartPractice()
             }
+            .accessibilityIdentifier("pattern-practice-again-button")
         } message: {
             Text("Congratulations! You've completed the \(pattern.name) pattern.")
         }
@@ -309,7 +312,8 @@ struct PatternPracticeView: View {
             .disabled(currentMoveIndex == 0)
             .buttonStyle(.bordered)
             .frame(maxWidth: .infinity)
-            
+            .accessibilityIdentifier("pattern-previous-move-button")
+
             if isLastMove {
                 Button("Complete Pattern") {
                     completePattern()
@@ -317,12 +321,14 @@ struct PatternPracticeView: View {
                 .buttonStyle(.borderedProminent)
                 .tint(.green)
                 .frame(maxWidth: .infinity)
+                .accessibilityIdentifier("pattern-complete-button")
             } else {
                 Button("Next Move") {
                     nextMove()
                 }
                 .buttonStyle(.borderedProminent)
                 .frame(maxWidth: .infinity)
+                .accessibilityIdentifier("pattern-next-move-button")
             }
         }
         .padding(.horizontal)

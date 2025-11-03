@@ -41,7 +41,12 @@
       "Bash(xcrun simctl list:*)",
       "Bash(xcrun xcresulttool get:*)",
       "Bash(source:*)",
-      "Bash(xcode_build_for_testing:*)"
+      "Bash(xcode_build_for_testing:*)",
+      "Read(//Users/craig/Library/Logs/DiagnosticReports/**)",
+      "Bash(for test in TKDojangTests/ComponentTests/*.swift)",
+      "Bash(do echo \"\")",
+      "Read(//private/tmp/**)",
+      "Bash(git log:*)"
     ],
     "deny": [],
     "ask": [],

@@ -622,14 +622,54 @@ let configuration = ModelConfiguration(
 
 ---
 
+## Phase 8: User Experience Enhancement (Nov 3, 2025)
+
+### Onboarding System Implementation (Priority 1)
+
+**Nov 3, 2025** - `93b18b2` - feat(onboarding): Phase 1 Days 1-3 - TipKit integration and initial tour UI
+- **TipKit Framework Integration:** Configured native iOS contextual help system
+- **OnboardingCoordinator Service:** Hybrid state management (device + profile level) for tour tracking
+- **SwiftData Schema Update:** Added `hasCompletedInitialTour` and `completedFeatureTours` to UserProfile
+- **6-Step Interactive Tour:**
+  - Step 1: Welcome message and app purpose
+  - Step 2: Profile customization (name, belt, learning mode)
+  - Step 3: Navigation tabs overview (Practice/Learn/Profile)
+  - Step 4: Practice features explanation (flashcards, patterns, testing, step sparring)
+  - Step 5: Learning modes comparison (Progression vs Mastery)
+  - Step 6: Ready to start with quick tips
+- **New Files:** 8 (OnboardingCoordinator.swift + 7 tour view components)
+- **Modified Files:** 3 (TKDojangApp.swift, ProfileModels.swift, OnboardingCoordinatorView.swift)
+- **Status:** Build successful, Phase 1 Days 1-3 complete
+
+**Technical Decisions:**
+- TipKit chosen for native iOS feel (iOS 16+ requirement acceptable with iOS 18.5 target)
+- TabView with page-style navigation for intuitive swipe gestures
+- Device-level initial tour (happens before profile exists) + profile-level feature tours
+- Auto-customizes default "Student" profile during onboarding
+- Skip functionality on all steps except final
+
+**Why Onboarding Now:**
+- User feedback: "Not clear how to use app or features on first launch"
+- Addresses confusion about complex features (especially flashcard configuration)
+- Lightweight approach: Brief tour + per-feature contextual help (no lengthy walkthroughs)
+
+---
+
 ## Future Development History
 
-### Planned Phases (As of Oct 23, 2025)
+### In Progress (As of Nov 3, 2025)
 
-**Phase 3 (In Progress):** E2E User Journey Testing
+**Phase 8 (In Progress):** Onboarding & First-Time User Experience
+- Days 1-3: ✅ Complete (TipKit integration, initial tour UI)
+- Days 4-5: Pending (Replay tour integration, testing & polish)
+- Week 2: Pending (Per-feature tours with TipKit)
+- Week 3: Pending (Accessibility audit, user testing, documentation)
+- **Timeline:** 15 days total (12 days remaining)
+
+**Phase 3 (Paused):** E2E User Journey Testing
 - 1/12 tests completed
 - 11 remaining test flows documented
-- XCUITest infrastructure established
+- Will resume after onboarding complete
 
 **Phase 4 (Planned):** Stress & Edge Case Testing
 - 0/8 tests

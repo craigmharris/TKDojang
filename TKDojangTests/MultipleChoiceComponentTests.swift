@@ -928,13 +928,21 @@ final class MultipleChoiceComponentTests: XCTestCase {
 
             let inspection = try row.inspect()
 
-            // Verify correct/total display
-            let fractionText = try inspection.vStack().hStack(0).text(1).string()
+            // Get the HStack which contains: Text(title) at 0, Spacer at 1, Text(fraction) at 2, Text(accuracy) at 3
+            let hstack = try inspection.vStack().hStack(0)
+
+            // Verify title display (index 0)
+            let titleText = try hstack.text(0).string()
+            XCTAssertTrue(titleText.contains("Test Category"),
+                "Should display category title")
+
+            // Verify correct/total display (index 2, skipping Spacer at index 1)
+            let fractionText = try hstack.text(2).string()
             XCTAssertTrue(fractionText.contains("\(testCase.correct)/\(testCase.total)"),
                 "Should display \(testCase.correct)/\(testCase.total)")
 
-            // Verify accuracy display
-            let accuracyText = try inspection.vStack().hStack(0).text(2).string()
+            // Verify accuracy display (index 3)
+            let accuracyText = try hstack.text(3).string()
             XCTAssertTrue(accuracyText.contains("\(Int(testCase.accuracy))%"),
                 "Should display \(Int(testCase.accuracy))%")
         }

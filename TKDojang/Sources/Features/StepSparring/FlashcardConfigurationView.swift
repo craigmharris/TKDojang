@@ -317,6 +317,7 @@ struct FlashcardConfigurationView: View {
         }
         .buttonStyle(PlainButtonStyle())
         .disabled(isLoading || (!isReviewSession && availableTermsCount == 0))
+        .accessibilityIdentifier("flashcard-start-session-button")
     }
     
     // MARK: - Actions

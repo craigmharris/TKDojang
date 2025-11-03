@@ -27,102 +27,665 @@
 
 ## Priority 1: Onboarding & First-Time User Experience
 
-**Status:** Planned
-**Timeline:** 2-3 weeks
+**Status:** In Progress (Phase 1 Days 1-3 Complete)
+**Timeline:** 15 days (3 weeks) - 3 days complete, 12 days remaining
 **Priority:** CRITICAL - User feedback indicates confusion on first launch
+**Technology:** TipKit (iOS 16+)
+**Last Updated:** November 3, 2025
 
 ### User Feedback Context
-- **Issue:** Not clear how to use the app or how features work on initial startup
-- **Impact:** New users don't understand feature capabilities or navigation
-- **Solution:** Comprehensive onboarding with interactive tours
+- **Issue:** Users don't understand what each feature does, why content is organized by belt level, or how to use complex configuration screens (especially flashcards)
+- **Impact:** New users struggle to dive into features without context
+- **Solution:** Light-touch onboarding with optional tour + per-feature contextual help using TipKit
 
-### Feature Requirements
+---
 
-#### 1. Initial Welcome Flow
-- **Welcome Screen**: Introduce app purpose and key features
-- **Profile Creation Wizard**: Guided first profile setup
-  - Name input with validation
-  - Avatar selection
-  - Belt level selection with explanation
-  - Learning mode preference (Progression vs Mastery)
-- **Quick Tour Option**: Skip to tour or jump straight to dashboard
+## Current State Analysis
 
-#### 2. Feature-Specific Tours (First-Time Use)
-Each feature shows contextual tour on first access:
+### App Initialization Flow
+1. **AppInitializationView** → LoadingView (4.4s belt animation)
+2. **AppCoordinator.initializeAppData()** → Loads JSON content from `Sources/Core/Data/Content/`
+3. **DataManager.getOrCreateDefaultUserProfile()** → Creates "Student" profile if none exist
+4. **Onboarding Check** (`hasCompletedOnboarding` @AppStorage):
+   - `false` → **OnboardingCoordinatorView** (current: simple welcome screen)
+   - `true` → **MainTabCoordinatorView** (main app)
 
-**Flashcard Tour:**
-- Configuration screen walkthrough
-- Study modes explanation (Learn vs Test)
-- Card direction options (English→Korean, Korean→English, Both)
-- Leitner system introduction
-- How to mark cards correct/skip/hard/easy
+### Current Onboarding
+- Minimal welcome screen (`OnboardingCoordinatorView.swift`)
+- Single "Get Started" button
+- No profile customization
+- No feature tours
+- **Gap:** Users immediately dropped into app with default "Student" profile
 
-**Multiple Choice Testing Tour:**
-- Test type selection (Comprehensive/Quick/Custom)
-- Question type explanation
-- How to answer and review
-- Result analytics interpretation
+### Technical Specifications
+- **iOS Deployment Target:** iOS 18.5 (supports TipKit natively)
+- **Multi-Profile Architecture:** Up to 6 device-local profiles with data isolation
+- **Profile Creation:** Automatic "Student" profile on first launch (DataManager.swift:476-481)
 
-**Pattern Practice Tour:**
-- Pattern selection by belt level
-- How to navigate moves
-- Progress tracking explanation
-- Mastery levels meaning
+---
 
-**Step Sparring Tour:**
-- Sequence selection
-- Attack/Defense/Counter structure
-- How to practice sequences
-- Progress tracking
+## Implementation Plan
 
-**Theory & Techniques:**
-- Browse and search explanation
-- How to use reference content
-- Belt-specific filtering
+### Phase 1: Foundation - TipKit Infrastructure & Initial Tour (Week 1: 5 days)
 
-#### 3. Initial Data Setup
-- **Sample Study Session**: Pre-populate first profile with sample session
-- **Progress Example**: Show what progress tracking looks like
-- **Terminology Starter**: Mark 5-10 terms as "seen" to demonstrate Leitner boxes
-- **Achievement Unlock**: Give first achievement to demonstrate system
+#### Day 1: TipKit Setup + OnboardingCoordinator Service
 
-#### 4. Persistent Help System
-- **Help Button**: Available on all major screens
-- **Tooltips**: Optional tooltips for complex UI elements
-- **Settings**: "Reset Tours" option to re-watch
-- **Context-Sensitive Help**: Show relevant help based on current screen
-
-### Technical Implementation
-
-**TourCoordinator Pattern:**
+**1.1 Add TipKit Framework**
 ```swift
-class TourCoordinator: ObservableObject {
-    @Published var activeTour: TourType?
-    @Published var completedTours: Set<TourType>
+// TKDojangApp.swift - Add import and configuration
+import TipKit
 
-    enum TourType {
-        case welcome, flashcards, testing, patterns,
-             stepSparring, theory, techniques
-    }
-
-    func shouldShowTour(_ type: TourType) -> Bool
-    func markTourComplete(_ type: TourType)
-    func resetAllTours()
+init() {
+    // Configure TipKit for immediate display, persistent storage
+    try? Tips.configure([
+        .displayFrequency(.immediate),
+        .datastoreLocation(.applicationDefault)
+    ])
 }
 ```
 
-**Tour UI Components:**
-- Spotlight overlays (highlight specific UI elements)
-- Step-by-step walkthrough modals
-- Interactive demonstrations
-- Skip/Next/Back navigation
-- Progress indicators (Step 1 of 5)
+**1.2 Create OnboardingCoordinator Service**
+- **File:** `Sources/Core/Services/OnboardingCoordinator.swift`
+- **Responsibilities:**
+  - Track initial tour state (device-level @AppStorage)
+  - Track per-feature tour state (profile-level via UserProfile model)
+  - Provide shouldShow/complete/skip/replay methods
+  - Define FeatureTour enum (flashcards, multipleChoice, patterns, stepSparring)
 
-### Success Metrics
-- [ ] 90%+ first-time users complete welcome flow
+```swift
+@Observable
+@MainActor
+class OnboardingCoordinator {
+    @AppStorage("hasSeenInitialTour") private var hasSeenInitial = false
+    @AppStorage("tourSkippedDate") private var tourSkippedDate: Date?
+
+    var showingInitialTour = false
+    var currentTourStep = 0
+    var totalTourSteps = 6
+
+    enum FeatureTour: String, CaseIterable {
+        case flashcards, multipleChoice, patterns, stepSparring
+    }
+
+    func shouldShowInitialTour() -> Bool
+    func startInitialTour()
+    func skipInitialTour()
+    func completeInitialTour()
+    func replayInitialTour()
+    func shouldShowFeatureTour(_ feature: FeatureTour, profile: UserProfile) -> Bool
+    func completeFeatureTour(_ feature: FeatureTour, profile: UserProfile)
+}
+```
+
+**1.3 Update UserProfile Model**
+- **File:** `TKDojang/Sources/Core/Data/Models/ProfileModels.swift`
+- **Changes:** Add onboarding tracking properties
+- **Migration Required:** SwiftData schema version bump
+
+```swift
+@Model
+class UserProfile {
+    // ... existing properties ...
+
+    // Onboarding state
+    var hasCompletedInitialTour: Bool = false
+    var completedFeatureTours: [String] = []  // ["flashcards", "testing", "patterns"]
+}
+```
+
+**Deliverables:**
+- [x] TipKit configured in TKDojangApp.swift
+- [x] OnboardingCoordinator.swift created with full state management
+- [x] UserProfile model updated with onboarding properties
+- [x] SwiftData migration tested
+
+---
+
+#### Day 2-3: Initial Tour UI with Profile Customization
+
+**2.1 Enhanced OnboardingCoordinatorView**
+- **File:** `TKDojang/Sources/Features/Dashboard/OnboardingCoordinatorView.swift` (complete rewrite)
+- **Structure:** 6-step TabView with page-style navigation
+- **Steps:**
+  1. Welcome (app purpose)
+  2. Profile Customization (edit default "Student" profile)
+  3. Navigation Tabs Overview (Practice, Learn, Profile)
+  4. Practice Features (flashcards, patterns, testing)
+  5. Learning Modes (Progression vs Mastery explanation)
+  6. Ready to Start (confirmation)
+
+**2.2 Create Individual Step Views**
+- **Directory:** `TKDojang/Sources/Features/Onboarding/`
+- **Files:**
+  - `WelcomeStepView.swift` - Welcome message with martial arts icon
+  - `ProfileCustomizationStepView.swift` - TextField for name, BeltLevelPicker, LearningModePicker
+  - `NavigationTabsStepView.swift` - Mock navigation highlighting Practice/Learn/Profile tabs
+  - `PracticeFeaturesStepView.swift` - Icons + descriptions for flashcards, patterns, testing
+  - `LearningModesStepView.swift` - Side-by-side comparison of Progression vs Mastery
+  - `ReadyToStartStepView.swift` - Confirmation screen with "Let's Go!" button
+  - `TourStepCard.swift` - Reusable card component for tour steps
+
+**2.3 Profile Customization Logic**
+- On completion, update default "Student" profile with user's chosen name, belt, and learning mode
+- Use `ProfileService.updateProfile()` to persist changes
+- Gracefully handle if profile doesn't exist (create new)
+
+**Deliverables:**
+- [x] OnboardingCoordinatorView rewritten with 6-step flow
+- [x] All 7 step view components created
+- [x] Profile customization integrated with ProfileService
+- [x] Skip button functional on steps 0-4
+- [x] Page indicators visible and functional
+
+---
+
+#### Day 4: Replay Tour Integration
+
+**4.1 Add "Replay Tour" Button**
+- **File:** `TKDojang/Sources/Features/Profile/ProfileView.swift`
+- **Location:** New section "Help & Support"
+- **Action:** Reset `hasSeenInitialTour` and navigate to `.onboarding` flow
+
+```swift
+Section("Help & Support") {
+    Button {
+        replayTour()
+    } label: {
+        Label("Replay Welcome Tour", systemImage: "questionmark.circle")
+    }
+}
+
+private func replayTour() {
+    let coordinator = OnboardingCoordinator()
+    coordinator.replayInitialTour()
+    appCoordinator.currentFlow = .onboarding
+}
+```
+
+**Deliverables:**
+- [ ] ProfileView updated with "Replay Welcome Tour" button
+- [ ] OnboardingCoordinator.replayInitialTour() implemented
+- [ ] Replay functionality tested (resets state, shows tour again)
+
+---
+
+#### Day 5: Testing & Polish
+
+**5.1 Update Test Infrastructure**
+- **File:** `TKDojangTests/TestHelpers/TestDataFactory.swift`
+- **Add:** `createProfileWithCompletedOnboarding()` helper
+
+```swift
+extension TestDataFactory {
+    static func createProfileWithCompletedOnboarding(
+        name: String = "Test User",
+        belt: BeltLevel
+    ) -> UserProfile {
+        let profile = createBasicProfile(name: name, belt: belt)
+        profile.hasCompletedInitialTour = true
+        profile.completedFeatureTours = OnboardingCoordinator.FeatureTour.allCases.map { $0.rawValue }
+        return profile
+    }
+}
+```
+
+**5.2 Update Existing Tests to Bypass Onboarding**
+- All existing test `setUp()` methods: Set `UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")`
+- Use `createProfileWithCompletedOnboarding()` for profile creation in tests
+
+**5.3 Create Onboarding-Specific Tests**
+- **File:** `TKDojangUITests/OnboardingUITests.swift`
+- **Tests:**
+  - `testInitialTour_ShowsOnFirstLaunch()`
+  - `testInitialTour_CanBeSkipped()`
+  - `testInitialTour_ProfileCustomization()`
+  - `testInitialTour_CompletionMarksFlag()`
+  - `testInitialTour_ReplayableFromProfileScreen()`
+
+**5.4 Polish Pass**
+- Accessibility labels for VoiceOver
+- Dynamic Type compliance check
+- Animation timing adjustments
+- Copy refinement
+
+**Deliverables:**
+- [ ] TestDataFactory helper created
+- [ ] All 260 existing tests pass with onboarding bypassed
+- [ ] 5 new OnboardingUITests created and passing
+- [ ] Accessibility audit complete
+- [ ] Phase 1 complete and ready for user testing
+
+---
+
+### Phase 2: Per-Feature Tours with TipKit (Week 2: 7 days)
+
+#### Day 1-2: TipKit Tips Definition
+
+**2.1 Create FeatureTips.swift**
+- **File:** `TKDojang/Sources/Core/Services/FeatureTips.swift`
+- **Content:** Define all `Tip` structs for features
+
+```swift
+import TipKit
+
+// Flashcard Tips
+struct FlashcardConfigurationTip: Tip {
+    var title: Text { Text("Configure Your Flashcard Session") }
+    var message: Text? { Text("Choose cards, direction, and study mode.") }
+    var image: Image? { Image(systemName: "rectangle.stack.badge.play") }
+}
+
+struct FlashcardStudyModeTip: Tip { ... }
+struct FlashcardDirectionTip: Tip { ... }
+
+// Multiple Choice Tips
+struct TestConfigurationTip: Tip { ... }
+struct TestBeltSelectionTip: Tip { ... }
+
+// Pattern Practice Tips
+struct PatternSelectionTip: Tip { ... }
+
+// Step Sparring Tips
+struct StepSparringSequenceTip: Tip { ... }
+```
+
+**Deliverables:**
+- [ ] FeatureTips.swift created with 10+ Tip definitions
+- [ ] Tips designed for contextual display (anchored to specific UI elements)
+
+---
+
+#### Day 3-4: Flashcard Feature Tour (Priority 1)
+
+**3.1 Update FlashcardConfigurationView**
+- **File:** `TKDojang/Sources/Features/Flashcards/FlashcardConfigurationView.swift`
+- **Changes:**
+  - Add `@State private var showingFeatureTour = false`
+  - Add TipKit tip instances (configTip, studyModeTip, directionTip)
+  - Add Help button: `Button { showingFeatureTour = true } label: { Label("How do flashcards work?", systemImage: "questionmark.circle") }`
+  - Apply `.popoverTip(configTip, arrowEdge: .top)` to configuration sections
+  - Add `.sheet(isPresented: $showingFeatureTour)` for full tour
+  - On first visit: Show tips automatically with 0.5s delay
+
+**3.2 Create FlashcardPreviewView**
+- **File:** `TKDojang/Sources/Features/Flashcards/FlashcardPreviewView.swift`
+- **Purpose:** Show mini flashcard with flip animation in configuration screen
+- **Props:** `sampleTerm`, `studyMode` binding, `direction` binding, `isFlipped` state
+- **Interaction:** Tap to flip, demonstrates Learn vs Test mode behavior
+
+**3.3 Create FlashcardFeatureTourView**
+- **File:** `TKDojang/Sources/Features/Flashcards/FlashcardFeatureTourView.swift`
+- **Structure:** Sheet with TabView of 4-5 tour steps
+- **Steps:**
+  1. Flashcard learning explanation
+  2. Study modes (Learn vs Test)
+  3. Card direction options
+  4. Leitner spaced repetition system
+  5. Tips for effective studying
+
+**Deliverables:**
+- [ ] FlashcardConfigurationView updated with TipKit integration
+- [ ] FlashcardPreviewView created and functional
+- [ ] FlashcardFeatureTourView created with complete tour
+- [ ] Help (?) button functional and accessible
+- [ ] Tips show on first visit, dismissible, don't re-appear
+
+---
+
+#### Day 5: Multiple Choice Feature Tour
+
+**5.1 Update TestConfigurationView**
+- Similar structure to Flashcards
+- Tips for test type selection, belt filtering, question format
+- Preview of sample question
+- Help button → Full tour sheet
+
+**5.2 Create TestConfigurationHelpView**
+- Tour covering test types (Comprehensive/Quick/Custom)
+- Belt level filtering explanation
+- Results interpretation guide
+
+**Deliverables:**
+- [ ] TestConfigurationView updated with TipKit
+- [ ] TestConfigurationHelpView created
+- [ ] Tips functional and non-intrusive
+
+---
+
+#### Day 6: Patterns & Step Sparring Tours (Lighter)
+
+**6.1 Pattern Practice Help**
+- **File:** `PatternPracticeHelpView.swift`
+- **Content:** Lighter 2-3 step tour
+  - Pattern selection by belt
+  - Navigation through moves
+  - Progress tracking
+
+**6.2 Step Sparring Help**
+- **File:** `StepSparringHelpView.swift`
+- **Content:** 2-3 step tour
+  - Sequence selection
+  - Attack/Defense/Counter structure
+  - Mastery levels
+
+**Deliverables:**
+- [ ] PatternPracticeHelpView created
+- [ ] StepSparringHelpView created
+- [ ] Both integrated with (?) buttons in their respective views
+
+---
+
+#### Day 7: Theory & Techniques Help Overlays
+
+**7.1 Theory Help Sheet**
+- **File:** `TKDojang/Sources/Features/Theory/TheoryHelpSheet.swift`
+- **Type:** Simple explanation overlay (no walkthrough)
+- **Content:**
+  - What theory content includes
+  - How to filter by belt level
+  - How to browse sections
+- **Trigger:** (?) button in TheoryView toolbar
+
+**7.2 Techniques Help Sheet**
+- **File:** `TKDojang/Sources/Features/Techniques/TechniquesHelpSheet.swift`
+- **Type:** Simple explanation overlay
+- **Content:**
+  - How to search techniques
+  - Browse by category
+  - Filter by belt level
+- **Trigger:** (?) button in TechniquesView toolbar
+
+**7.3 Consistent (?) Icon Pattern**
+- All feature screens have (?) icon in toolbar/nav bar
+- Tapping shows contextual help (either tips or sheet)
+- Maintains visual consistency across app
+
+**Deliverables:**
+- [ ] TheoryHelpSheet.swift created
+- [ ] TechniquesHelpSheet.swift created
+- [ ] (?) buttons added to TheoryView and TechniquesView
+- [ ] All 6 features have help access points
+
+---
+
+### Phase 3: Polish & Testing (Week 3: 3 days)
+
+#### Day 1: Accessibility Audit
+
+**Accessibility Checklist:**
+- [ ] VoiceOver: All tour steps have clear labels
+- [ ] VoiceOver: Tips readable and dismissible
+- [ ] Dynamic Type: All text scales correctly
+- [ ] Keyboard Navigation: Can navigate tour with external keyboard
+- [ ] Color Contrast: All text meets WCAG 2.2 AA standards
+- [ ] Reduced Motion: Tour animations respect accessibility settings
+
+**Files to Audit:**
+- All tour views
+- All help sheets
+- TipKit popovers
+- Onboarding flow
+
+**Tools:**
+- Xcode Accessibility Inspector
+- VoiceOver testing on device
+- Dynamic Type preview in Xcode
+
+**Deliverables:**
+- [ ] Accessibility audit complete
+- [ ] All issues fixed
+- [ ] Accessibility test cases added to OnboardingUITests
+
+---
+
+#### Day 2: User Testing
+
+**User Testing Protocol:**
+1. Recruit 2-3 users (ideally Taekwondo students unfamiliar with app)
+2. Give tasks:
+   - "Complete initial onboarding"
+   - "Start your first flashcard session"
+   - "Find help for patterns feature"
+3. Observe:
+   - Do they skip the tour?
+   - Do tours help or confuse?
+   - Any remaining confusion points?
+4. Gather feedback:
+   - Tour clarity rating (1-5)
+   - Tour length (too long/just right/too short)
+   - Feature help usefulness (1-5)
+
+**Metrics to Track:**
+- Tour completion rate (target: >70%)
+- Tour skip rate (target: <30%)
+- Time to first study session (target: <3 min)
+- Feature help engagement (target: >50% use at least once)
+
+**Deliverables:**
+- [ ] User testing sessions complete
+- [ ] Feedback documented
+- [ ] Refinements identified
+
+---
+
+#### Day 3: Documentation & Completion
+
+**3.1 Update Documentation**
+- **README.md:** Add "Onboarding Architecture" section
+- **CLAUDE.md:** Add testing patterns for onboarding
+  - How to bypass onboarding in tests
+  - How to test onboarding flows
+  - TestDataFactory usage
+- **Code Comments:** WHY explanations for tour trigger logic
+
+**3.2 Final Test Suite Validation**
+- Run full test suite (260 existing + 8+ new = 268+ tests)
+- Verify all tests pass
+- Check test execution time (should be <30s total for onboarding tests)
+
+**3.3 Refinements from User Testing**
+- Implement feedback-driven improvements
+- Adjust copy, timing, or flow based on user testing
+- Re-test after refinements
+
+**Deliverables:**
+- [ ] README.md updated
+- [ ] CLAUDE.md updated with testing patterns
+- [ ] All code comments complete
+- [ ] Full test suite passing (268+ tests)
+- [ ] User testing refinements implemented
+- [ ] **Phase 3 complete - Onboarding ready for production**
+
+---
+
+## Testing Strategy
+
+### Test Setup Pattern
+
+**All Existing Tests - Bypass Onboarding:**
+```swift
+class FlashcardServiceTests: XCTestCase {
+    override func setUp() async throws {
+        // Bypass onboarding
+        UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
+        UserDefaults.standard.set(true, forKey: "hasSeenInitialTour")
+
+        // Use helper for profile with completed onboarding
+        testProfile = TestDataFactory.createProfileWithCompletedOnboarding(belt: whiteBelt)
+    }
+}
+```
+
+### New Onboarding Tests
+
+**OnboardingUITests.swift:**
+- `testInitialTour_ShowsOnFirstLaunch()` - Verify tour appears when flags are false
+- `testInitialTour_CanBeSkipped()` - Skip button functionality
+- `testInitialTour_ProfileCustomization()` - Can edit Student profile during tour
+- `testInitialTour_CompletionPersists()` - Flags persist after app restart
+- `testInitialTour_ReplayableFromProfile()` - Replay button resets and shows tour
+- `testFlashcardTour_ShowsOnFirstUse()` - Feature tour triggers on first visit
+- `testFlashcardTour_TipKitPopoverAppears()` - Tips display correctly
+- `testFeatureTour_ManualTriggerViaHelpButton()` - (?) button opens help
+- `testTheoryHelp_DisplaysCorrectly()` - Help sheets display correctly
+
+**Total New Tests:** 8+ (targeting 270+ total tests)
+
+---
+
+## Files to Create/Modify
+
+### New Files (25)
+```
+Sources/
+├── Core/Services/
+│   ├── OnboardingCoordinator.swift          ✨ NEW
+│   └── FeatureTips.swift                    ✨ NEW
+├── Features/Onboarding/
+│   ├── WelcomeStepView.swift                ✨ NEW
+│   ├── ProfileCustomizationStepView.swift   ✨ NEW
+│   ├── NavigationTabsStepView.swift         ✨ NEW
+│   ├── PracticeFeaturesStepView.swift       ✨ NEW
+│   ├── LearningModesStepView.swift          ✨ NEW
+│   ├── ReadyToStartStepView.swift           ✨ NEW
+│   └── TourStepCard.swift                   ✨ NEW
+├── Features/Flashcards/
+│   ├── FlashcardPreviewView.swift           ✨ NEW
+│   └── FlashcardFeatureTourView.swift       ✨ NEW
+├── Features/Testing/
+│   └── TestConfigurationHelpView.swift      ✨ NEW
+├── Features/Patterns/
+│   └── PatternPracticeHelpView.swift        ✨ NEW
+├── Features/StepSparring/
+│   └── StepSparringHelpView.swift           ✨ NEW
+├── Features/Theory/
+│   └── TheoryHelpSheet.swift                ✨ NEW
+└── Features/Techniques/
+    └── TechniquesHelpSheet.swift            ✨ NEW
+
+TKDojangTests/
+├── OnboardingCoordinatorTests.swift         ✨ NEW
+└── TestHelpers/
+    └── TestDataFactory.swift                🔧 UPDATE
+
+TKDojangUITests/
+└── OnboardingUITests.swift                  ✨ NEW
+```
+
+### Files to Modify (7)
+```
+TKDojang/Sources/
+├── App/
+│   └── TKDojangApp.swift                    🔧 UPDATE (Add TipKit config)
+├── Core/Data/Models/
+│   └── ProfileModels.swift                  🔧 UPDATE (Add onboarding properties)
+├── Features/Dashboard/
+│   └── OnboardingCoordinatorView.swift      🔧 REWRITE (Complete redesign)
+├── Features/Profile/
+│   └── ProfileView.swift                    🔧 UPDATE (Add Replay Tour button)
+├── Features/Flashcards/
+│   └── FlashcardConfigurationView.swift     🔧 UPDATE (Add tips + preview)
+├── Features/Testing/
+│   └── TestConfigurationView.swift          🔧 UPDATE (Add tips + help)
+└── Features/Patterns/
+    └── PatternPracticeView.swift            🔧 UPDATE (Add help button)
+```
+
+---
+
+## SwiftData Migration
+
+**Schema Change:**
+```swift
+// UserProfile model additions
+var hasCompletedInitialTour: Bool = false
+var completedFeatureTours: [String] = []
+```
+
+**Migration Steps:**
+1. Update UserProfile model with new properties
+2. Increment schema version in ModelContainer configuration
+3. Test migration with existing database (default values applied automatically)
+4. Document migration in HISTORY.md
+
+**Backward Compatibility:**
+- New properties have default values (false, [])
+- Existing profiles automatically get defaults on first access
+- No manual migration code required (SwiftData handles it)
+
+---
+
+## Success Metrics
+
+**Phase 1 (Initial Tour):**
+- [ ] Initial tour completion rate >70%
+- [ ] Initial tour skip rate <30%
 - [ ] Average time to first study session <3 minutes
-- [ ] User feedback: "Easy to understand" rating >4/5
+- [ ] Profile customization adoption >60%
+
+**Phase 2 (Feature Tours):**
+- [ ] Feature tour engagement >50% (users trigger at least one)
+- [ ] Help button usage >40% for complex features (flashcards, testing)
+- [ ] TipKit tips dismissed appropriately (not re-shown annoyingly)
+
+**Phase 3 (Quality):**
+- [ ] Zero crashes related to onboarding
+- [ ] All 260 existing tests pass with onboarding bypassed
+- [ ] 8+ new onboarding-specific tests pass (target: 270+ total)
+- [ ] Accessibility compliance maintained (WCAG 2.2 AA)
+- [ ] No performance regression (<2s startup time maintained)
+
+**User Feedback:**
+- [ ] "Easy to understand" rating >4/5
 - [ ] Support inquiries about "how to use" reduced by 80%
+- [ ] User satisfaction with onboarding >4/5
+
+---
+
+## Timeline Summary
+
+| Phase | Duration | Key Deliverables |
+|-------|----------|------------------|
+| **Phase 1** | 5 days | Initial tour, profile customization, replay feature, test infrastructure |
+| **Phase 2** | 7 days | TipKit tips, 4 feature tours, 2 help sheets, consistent (?) icons |
+| **Phase 3** | 3 days | Accessibility audit, user testing, documentation, refinements |
+| **Total** | **15 days** | **Complete onboarding system with TipKit** |
+
+---
+
+## Risk Mitigation
+
+**Risk:** TipKit bugs or limitations
+- **Mitigation:** TipKit is mature (iOS 16+), well-documented, and used in production apps. Fallback: Use simple sheet-based tours.
+
+**Risk:** User testing reveals tours are too long/annoying
+- **Mitigation:** Built-in skip functionality, short tours (4-6 steps max), optional engagement
+
+**Risk:** Schema migration breaks existing data
+- **Mitigation:** SwiftData handles additive migrations automatically. Test thoroughly with existing database before release.
+
+**Risk:** Test suite maintenance burden
+- **Mitigation:** TestDataFactory helper makes bypassing onboarding one-liner. Onboarding tests isolated in dedicated file.
+
+---
+
+## Post-Implementation
+
+**Monitoring:**
+- Track tour completion/skip rates via analytics (future)
+- Monitor support inquiries for "how to use" questions
+- Gather user feedback via in-app prompts
+
+**Future Enhancements:**
+- Video tutorials for patterns (link to Priority 6)
+- Interactive demos (tap-along guides)
+- Contextual tips throughout app (expand TipKit usage)
+- Personalized onboarding based on belt level
+
+**Maintenance:**
+- Update tours when features change significantly
+- Refresh copy based on user feedback
+- Add tours for new features as they launch
 
 ---
 

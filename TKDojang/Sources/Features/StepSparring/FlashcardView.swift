@@ -343,12 +343,14 @@ struct FlashcardView: View {
                 }
                 .buttonStyle(.bordered)
                 .tint(.red)
-                
+                .accessibilityIdentifier("flashcard-incorrect-button")
+
                 Button("Correct") {
                     recordAnswer(isCorrect: true)
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(.green)
+                .accessibilityIdentifier("flashcard-correct-button")
             } else {
                 // Test mode - navigation buttons
                 Button("Previous") {
@@ -356,11 +358,13 @@ struct FlashcardView: View {
                 }
                 .buttonStyle(.bordered)
                 .disabled(currentTermIndex == 0)
-                
+                .accessibilityIdentifier("flashcard-previous-button")
+
                 Button("Skip") {
                     nextCard()
                 }
                 .buttonStyle(.bordered)
+                .accessibilityIdentifier("flashcard-skip-button")
             }
         }
     }
