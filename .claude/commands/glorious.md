@@ -184,17 +184,16 @@ git add CLAUDE.md README.md HISTORY.md ROADMAP.md
 # Commit with approved message
 git commit -m "[approved message]"
 
-# Get commit hash
-COMMIT_HASH=$(git rev-parse --short HEAD)
-
-# Update HISTORY.md with commit hash
-# (edit the entry we just added to include the hash)
-git add HISTORY.md
-git commit --amend --no-edit
-
 # Push to origin
 git push origin main
+
+# Get commit hash and update HISTORY.md locally (don't commit)
+COMMIT_HASH=$(git rev-parse --short HEAD)
+# Edit HISTORY.md to replace placeholder with actual commit hash
+# Leave this as LOCAL-ONLY change - it will be committed with next material update
 ```
+
+**Important:** After pushing, update the commit hash in HISTORY.md but **DO NOT commit/push this change**. The hash update will be included in the next material documentation update, avoiding an infinite amend loop.
 
 **Show user confirmation of successful push.**
 

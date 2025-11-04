@@ -83,14 +83,15 @@ Execute:
 ```bash
 git add CLAUDE.md README.md HISTORY.md ROADMAP.md
 git commit -m "[generated message]"
-
-COMMIT_HASH=$(git rev-parse --short HEAD)
-# Update HISTORY.md with hash
-git add HISTORY.md
-git commit --amend --no-edit
-
 git push origin main
+
+# Get commit hash and update HISTORY.md locally (don't commit)
+COMMIT_HASH=$(git rev-parse --short HEAD)
+# Edit HISTORY.md to replace placeholder with actual commit hash
+# Leave this as LOCAL-ONLY change - it will be committed with next material update
 ```
+
+**Important:** Update the commit hash in HISTORY.md but leave it as a local-only change. The hash update will go out with the next material documentation update.
 
 ---
 
