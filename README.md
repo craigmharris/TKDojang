@@ -36,6 +36,12 @@
 
 ### Core Features
 
+**Onboarding & Help System**
+- Interactive 6-step welcome tour with profile customization
+- Per-feature contextual help using TipKit framework
+- Replay tour accessible from profile settings
+- Light-touch approach: brief tour + on-demand help
+
 **Multi-Profile System (6 profiles)**
 - Device-local profiles with complete data isolation
 - Individual progress tracking per profile
@@ -70,7 +76,7 @@
 ### Prerequisites
 
 - **Xcode 15.0+**
-- **iOS 17.0+ SDK**
+- **iOS 17.0+ SDK** (TipKit framework requires iOS 16+, target: iOS 18.5)
 - **macOS 14.0+ (Sonoma)**
 - **CocoaPods or Swift Package Manager**
 

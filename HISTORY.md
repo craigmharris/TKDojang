@@ -622,9 +622,11 @@ let configuration = ModelConfiguration(
 
 ---
 
-## Phase 8: User Experience Enhancement (Nov 3, 2025)
+## Phase 8: User Experience Enhancement (Nov 2025)
 
-### Onboarding System Implementation (Priority 1)
+### Onboarding System Implementation - Phase 1 Complete (Nov 3-4, 2025)
+
+**Priority 1: Onboarding & First-Time User Experience - Week 1 COMPLETE**
 
 **Nov 3, 2025** - `93b18b2` - feat(onboarding): Phase 1 Days 1-3 - TipKit integration and initial tour UI
 - **TipKit Framework Integration:** Configured native iOS contextual help system
@@ -639,19 +641,55 @@ let configuration = ModelConfiguration(
   - Step 6: Ready to start with quick tips
 - **New Files:** 8 (OnboardingCoordinator.swift + 7 tour view components)
 - **Modified Files:** 3 (TKDojangApp.swift, ProfileModels.swift, OnboardingCoordinatorView.swift)
-- **Status:** Build successful, Phase 1 Days 1-3 complete
+- **Status:** Build successful, Days 1-3 complete
+
+**Nov 4, 2025** - `9391907` - feat(onboarding): Complete Phase 1 - Replay tour, testing, bug fixes
+- **Days 4-5 Implementation:**
+  - Added "Replay Welcome Tour" button to main ProfileView (not hidden in menu)
+  - Created OnboardingCoordinatorTests.swift (14 comprehensive tests)
+  - TestDataFactory helper for bypassing onboarding in non-onboarding tests
+  - Debug database reset functionality for testing flows
+- **Critical Bug Fixes:**
+  1. **Replay Tour Environment Objects** - Fixed replay button opening document picker instead of tour
+     - Root Cause: ProfileManagementView missing appCoordinator environment object
+     - Fix: Added `.environmentObject(appCoordinator)` to ProfileSwitcher and MainTabCoordinatorView sheets
+     - Impact: Replay tour now correctly triggers onboarding flow
+  2. **Profile Deletion SwiftData Detachment** - Fixed fatal crash when deleting profiles
+     - Root Cause: `profileToDelete` reference held deleted profile, SwiftUI tried to render detached object
+     - Error: `Fatal error: This backing data was detached from a context without resolving attribute faults`
+     - Fix: Clear `profileToDelete` BEFORE deletion, add 0.1s delay before profile reload
+     - Location: ProfileManagementView.swift deleteProfile() method
+  3. **Database Reset for Testing** - Added debug-only reset capability
+     - Feature: "Reset App Data" button in ProfileManagementView Options (DEBUG builds only)
+     - Method: Clear UserDefaults persistent domain, reset SwiftData database, navigate to onboarding
+     - Purpose: Enable testing onboarding flows without app reinstall
+- **UX Improvements:**
+  - Moved replay tour button from hidden Options menu to main profile screen Settings & Actions section
+  - Positioned between "About TKDojang" and "Manage All Profiles" for visibility
+  - Uses consistent `.bordered` button style with other CTAs
+- **Testing:**
+  - 14 OnboardingCoordinator tests covering state management, tour navigation, feature tours
+  - All existing tests maintained (260/260 passing)
+  - Build successful with zero errors
+- **User Validation:** MVP tested and approved, ready for Phase 2 (feature tours)
 
 **Technical Decisions:**
-- TipKit chosen for native iOS feel (iOS 16+ requirement acceptable with iOS 18.5 target)
-- TabView with page-style navigation for intuitive swipe gestures
-- Device-level initial tour (happens before profile exists) + profile-level feature tours
-- Auto-customizes default "Student" profile during onboarding
-- Skip functionality on all steps except final
+- **Hybrid State Management:** Device-level @AppStorage for initial tour (before profile exists) + profile-level SwiftData for feature tours (multi-user households)
+- **TipKit Framework:** Native iOS 16+ contextual help (acceptable with iOS 18.5 target)
+- **TabView Navigation:** Page-style with swipe gestures for intuitive tour progression
+- **Auto-Customization:** Default "Student" profile customized during onboarding Step 2
+- **Skip Functionality:** Available on all steps except final (encourages profile customization)
+- **SwiftData Migration:** Additive schema changes with default values (automatic migration)
+- **Test Isolation:** TestDataFactory helper bypasses onboarding for non-onboarding tests
 
 **Why Onboarding Now:**
 - User feedback: "Not clear how to use app or features on first launch"
 - Addresses confusion about complex features (especially flashcard configuration)
 - Lightweight approach: Brief tour + per-feature contextual help (no lengthy walkthroughs)
+- Foundation for Phase 2 feature-specific tours with TipKit
+
+**Phase 1 Status:** ✅ COMPLETE (5/5 days)
+**Next:** Phase 2 - Per-feature tours with TipKit (7 days)
 
 ---
 
