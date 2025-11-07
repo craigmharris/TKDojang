@@ -23,6 +23,7 @@ struct TechniquesView: View {
     @StateObject private var viewModel = TechniquesViewModel()
     @State private var searchText = ""
     @State private var showingFilters = false
+    @State private var showingHelp = false
     @State private var selectedCategory: String?
     @State private var selectedBeltFilter: String?
     @State private var selectedDifficulty: String?
@@ -44,6 +45,14 @@ struct TechniquesView: View {
             .navigationTitle("Technique Reference")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Button(action: { showingHelp = true }) {
+                        Label("Help", systemImage: "questionmark.circle")
+                    }
+                    .accessibilityIdentifier("techniques-help-button")
+                    .accessibilityLabel("Show techniques help")
+                }
+
                 ToolbarItem(placement: .navigationBarTrailing) {
                     ProfileSwitcher()
                 }
@@ -55,6 +64,9 @@ struct TechniquesView: View {
                     selectedDifficulty: $selectedDifficulty,
                     selectedTags: $selectedTags
                 )
+            }
+            .sheet(isPresented: $showingHelp) {
+                TechniquesHelpSheet()
             }
         }
         .task {

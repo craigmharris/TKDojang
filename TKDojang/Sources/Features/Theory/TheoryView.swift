@@ -34,6 +34,7 @@ struct TheoryView: View {
     @State private var availableCategories: [String] = []
     @State private var selectedBeltFilter: String? = nil
     @State private var showingFilters = false
+    @State private var showingHelp = false
     
     var body: some View {
         NavigationStack {
@@ -59,7 +60,15 @@ struct TheoryView: View {
                             .font(.title3)
                     }
                 }
-                
+
+                ToolbarItem(placement: .principal) {
+                    Button(action: { showingHelp = true }) {
+                        Label("Help", systemImage: "questionmark.circle")
+                    }
+                    .accessibilityIdentifier("theory-help-button")
+                    .accessibilityLabel("Show theory help")
+                }
+
                 ToolbarItem(placement: .topBarTrailing) {
                     ProfileSwitcher()
                 }
@@ -82,6 +91,9 @@ struct TheoryView: View {
                 selectedBeltFilter: $selectedBeltFilter,
                 selectedCategory: $selectedCategory
             )
+        }
+        .sheet(isPresented: $showingHelp) {
+            TheoryHelpSheet()
         }
     }
     
