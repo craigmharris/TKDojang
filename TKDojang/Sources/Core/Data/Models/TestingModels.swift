@@ -438,7 +438,7 @@ enum QuestionType: String, CaseIterable, Codable {
     case koreanToEnglish = "korean_to_english"
     case definitionToTerm = "definition_to_term"
     case audioRecognition = "audio_recognition"
-    
+
     var displayName: String {
         switch self {
         case .englishToKorean:
@@ -450,5 +450,58 @@ enum QuestionType: String, CaseIterable, Codable {
         case .audioRecognition:
             return "Audio Recognition"
         }
+    }
+}
+
+// MARK: - UI Configuration (View Layer)
+
+/**
+ * TestUIConfig
+ *
+ * PURPOSE: Lightweight configuration struct for the test configuration UI
+ * WHY: Separates view-layer configuration from data-layer TestConfiguration model
+ * USAGE: MultipleChoiceConfigurationView → TestUIConfig → TestingService converts to TestConfiguration
+ */
+struct TestUIConfig {
+    enum BeltScope: String, CaseIterable {
+        case currentOnly = "current"
+        case allUpToCurrent = "all_up_to_current"
+
+        var displayName: String {
+            switch self {
+            case .currentOnly:
+                return "Current Belt Only"
+            case .allUpToCurrent:
+                return "All Belts Up to Current"
+            }
+        }
+
+        var description: String {
+            switch self {
+            case .currentOnly:
+                return "Questions from your current belt level only"
+            case .allUpToCurrent:
+                return "Questions from white belt through your current belt"
+            }
+        }
+    }
+
+    var testType: TestType
+    var questionCount: Int?  // Only used for .custom type
+    var beltScope: BeltScope
+
+    /// Default configuration for Quick test
+    static var quick: TestUIConfig {
+        TestUIConfig(testType: .quick, questionCount: nil, beltScope: .currentOnly)
+    }
+
+    /// Default configuration for Comprehensive test
+    static var comprehensive: TestUIConfig {
+        TestUIConfig(testType: .comprehensive, questionCount: nil, beltScope: .currentOnly)
+    }
+
+    /// Create custom test configuration
+    static func custom(questionCount: Int, beltScope: BeltScope = .currentOnly) -> TestUIConfig {
+        TestUIConfig(testType: .custom, questionCount: questionCount, beltScope: beltScope)
     }
 }

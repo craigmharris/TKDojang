@@ -21,7 +21,8 @@ import SwiftData
 
 struct ProfileSwitcher: View {
     @EnvironmentObject private var dataServices: DataServices
-    
+    @EnvironmentObject var appCoordinator: AppCoordinator
+
     @State private var showingProfileManagement = false
     @State private var errorMessage: String?
     @State private var showingError = false
@@ -99,6 +100,8 @@ struct ProfileSwitcher: View {
         
         .sheet(isPresented: $showingProfileManagement) {
             ProfileManagementView()
+                .environmentObject(dataServices)
+                .environmentObject(appCoordinator)
                 .onDisappear {
                     DebugLogger.profile("👋 ProfileSwitcher: ProfileManagementView disappeared, refreshing shared state [Instance: \(instanceId)]")
                     dataServices.refreshSharedProfileState()

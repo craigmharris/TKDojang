@@ -23,8 +23,9 @@ import UniformTypeIdentifiers
 
 struct ProfileManagementView: View {
     @EnvironmentObject private var dataServices: DataServices
+    @EnvironmentObject var appCoordinator: AppCoordinator
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var profiles: [UserProfile] = []
     @State private var showingCreateProfile = false
     @State private var profileToEdit: UserProfile?
@@ -32,7 +33,7 @@ struct ProfileManagementView: View {
     @State private var showingDeleteAlert = false
     @State private var errorMessage: String?
     @State private var showingError = false
-    
+
     // Export/Import state
     @State private var showingExportOptions = false
     @State private var showingImportPicker = false
@@ -40,6 +41,9 @@ struct ProfileManagementView: View {
     @State private var fileToShare: URL?
     @State private var importResult: ImportResult?
     @State private var showingImportResult = false
+
+    // Debug/Reset state
+    @State private var showingResetConfirmation = false
     
     var body: some View {
         NavigationStack {
@@ -80,28 +84,37 @@ struct ProfileManagementView: View {
                         Button(action: { showingImportPicker = true }) {
                             Label("Import Profiles", systemImage: "square.and.arrow.down")
                         }
-                        
+
                         Button(action: { showingExportOptions = true }) {
                             Label("Export Profiles", systemImage: "square.and.arrow.up")
                         }
-                        
+
+                        // Debug/Development features
+                        #if DEBUG
+                        Divider()
+
+                        Button(role: .destructive, action: { resetAppData() }) {
+                            Label("Reset App Data (Debug)", systemImage: "exclamationmark.triangle")
+                        }
+                        #endif
+
                         // iCloud features - hidden when feature flag is disabled
                         if FeatureFlags.isiCloudEnabled {
                             Divider()
-                            
+
                             Button(action: { exportToiCloud() }) {
                                 Label("Backup to iCloud", systemImage: "icloud.and.arrow.up")
                             }
-                            
+
                             Button(action: { showAvailableiCloudBackups() }) {
                                 Label("Restore from iCloud", systemImage: "icloud.and.arrow.down")
                             }
                         }
-                        
+
                     } label: {
                         HStack(spacing: 6) {
-                            Image(systemName: "square.and.arrow.up")
-                            Text("Export/Import")
+                            Image(systemName: "ellipsis.circle")
+                            Text("Options")
                         }
                         .font(.subheadline)
                         .padding(.horizontal, 12)
@@ -111,7 +124,7 @@ struct ProfileManagementView: View {
                         .cornerRadius(8)
                     }
                 }
-                
+
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
                         dismiss()
@@ -188,6 +201,14 @@ struct ProfileManagementView: View {
                     Text(result.summary)
                 }
             }
+            .alert("Reset All App Data?", isPresented: $showingResetConfirmation) {
+                Button("Cancel", role: .cancel) { }
+                Button("Reset", role: .destructive) {
+                    performReset()
+                }
+            } message: {
+                Text("This will delete all profiles, progress, and settings. The app will restart with fresh onboarding. This action cannot be undone.")
+            }
         }
     }
     
@@ -211,7 +232,7 @@ struct ProfileManagementView: View {
         do {
             try dataServices.profileService.activateProfile(profile)
             loadProfiles() // Refresh to show active state
-            
+
             // Dismiss after a short delay to show selection feedback
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 dismiss()
@@ -221,7 +242,29 @@ struct ProfileManagementView: View {
             showingError = true
         }
     }
-    
+
+    // MARK: - Onboarding Functions
+
+    /**
+     * Replay the welcome tour
+     *
+     * WHY: Users may want to see the onboarding tour again after skipping it
+     * or to refresh their understanding of app features
+     */
+    private func replayWelcomeTour() {
+        // Create onboarding coordinator and trigger replay
+        let onboardingCoordinator = OnboardingCoordinator()
+        onboardingCoordinator.replayInitialTour()
+
+        // Navigate to onboarding flow
+        appCoordinator.currentFlow = .onboarding
+
+        // Dismiss this screen so user sees onboarding
+        dismiss()
+
+        DebugLogger.ui("🔄 User triggered welcome tour replay from profile management")
+    }
+
     // MARK: - Export/Import Functions
     
     private func exportAllProfiles() {
@@ -342,14 +385,72 @@ struct ProfileManagementView: View {
     }
     
     private func deleteProfile(_ profile: UserProfile) {
+        // Clear profileToDelete BEFORE deletion to prevent SwiftUI from
+        // trying to render the deleted profile
+        // WHY: SwiftData detaches deleted objects, accessing them causes crashes
+        profileToDelete = nil
+
         do {
             try dataServices.profileService.deleteProfile(profile)
-            loadProfiles()
+
+            // Delay profile reload to ensure deletion is fully processed
+            // WHY: Immediate reload can cause SwiftUI to access invalidated objects
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.loadProfiles()
+            }
         } catch {
             errorMessage = "Failed to delete profile: \(error.localizedDescription)"
             showingError = true
         }
-        profileToDelete = nil
+    }
+
+    // MARK: - Debug/Reset Functions
+
+    /**
+     * Show confirmation alert for resetting app data
+     *
+     * PURPOSE: Debug/development tool to quickly reset app for testing onboarding
+     * WHY: Easier than deleting and reinstalling app during development
+     */
+    private func resetAppData() {
+        showingResetConfirmation = true
+    }
+
+    /**
+     * Perform complete app data reset
+     *
+     * WHAT IT DOES:
+     * - Clears all UserDefaults (onboarding flags, settings, etc.)
+     * - Resets SwiftData database (all profiles and progress)
+     * - Transitions to onboarding flow
+     *
+     * WHY: Allows testing fresh user experience without reinstalling app
+     */
+    private func performReset() {
+        Task {
+            do {
+                // Clear all UserDefaults
+                if let bundleID = Bundle.main.bundleIdentifier {
+                    UserDefaults.standard.removePersistentDomain(forName: bundleID)
+                }
+
+                // Reset database
+                try await dataServices.resetAndReloadDatabase()
+
+                // Navigate to onboarding
+                await MainActor.run {
+                    appCoordinator.currentFlow = .onboarding
+                    dismiss()
+                }
+
+                DebugLogger.ui("✅ App data reset complete - showing onboarding")
+            } catch {
+                await MainActor.run {
+                    errorMessage = "Failed to reset app data: \(error.localizedDescription)"
+                    showingError = true
+                }
+            }
+        }
     }
 }
 

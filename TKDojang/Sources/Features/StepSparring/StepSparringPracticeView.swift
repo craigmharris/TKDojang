@@ -16,16 +16,18 @@ import SwiftData
 
 struct StepSparringPracticeView: View {
     let sequence: StepSparringSequence
-    
+
     @EnvironmentObject private var dataServices: DataServices
+    @EnvironmentObject private var onboardingCoordinator: OnboardingCoordinator
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var currentStepIndex = 0
     // Removed showingAttack - now displaying both attack and defense simultaneously
     @State private var userProfile: UserProfile?
     @State private var progress: UserStepSparringProgress?
     @State private var practiceStartTime = Date()
     @State private var showingCompletion = false
+    @State private var showingTour = false
     @State private var sessionCompleted = false
     
     // Ensure steps are always sorted by stepNumber (SwiftData relationships don't guarantee order)
@@ -145,9 +147,34 @@ struct StepSparringPracticeView: View {
                 }
                 .foregroundColor(.primary)
             }
-            
+
+            ToolbarItem(placement: .principal) {
+                Button {
+                    showingTour = true
+                } label: {
+                    Label("Help", systemImage: "questionmark.circle")
+                }
+                .accessibilityIdentifier("stepsparring-help-button")
+                .accessibilityLabel("Show step sparring tour")
+            }
+
             ToolbarItem(placement: .navigationBarTrailing) {
                 ProfileSwitcher()
+            }
+        }
+        .sheet(isPresented: $showingTour) {
+            if let profile = userProfile {
+                FeatureTourView(
+                    feature: .stepSparring,
+                    onComplete: {
+                        onboardingCoordinator.completeFeatureTour(.stepSparring, profile: profile)
+                        showingTour = false
+                    },
+                    onSkip: {
+                        onboardingCoordinator.completeFeatureTour(.stepSparring, profile: profile)
+                        showingTour = false
+                    }
+                )
             }
         }
         .sheet(isPresented: $showingCompletion) {
@@ -162,9 +189,31 @@ struct StepSparringPracticeView: View {
         }
         .task {
             loadUserData()
+            checkAndShowTour()
         }
     }
-    
+
+    // MARK: - Helper Functions
+
+    /**
+     * Check if tour should be shown automatically on first visit
+     *
+     * WHY: Per-profile tracking ensures each user sees tours independently
+     * Only shows once per profile to avoid annoyance
+     */
+    private func checkAndShowTour() {
+        guard let profile = userProfile else { return }
+
+        // Check if this profile has completed the step sparring tour
+        if onboardingCoordinator.shouldShowFeatureTour(.stepSparring, profile: profile) {
+            // Small delay to let the view fully appear first
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                showingTour = true
+                DebugLogger.ui("🎯 Automatically showing step sparring tour for \(profile.name) (first visit)")
+            }
+        }
+    }
+
     // MARK: - Header
     
     private var practiceHeader: some View {

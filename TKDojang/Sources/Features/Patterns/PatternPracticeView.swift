@@ -24,12 +24,14 @@ import SwiftUI
 struct PatternPracticeView: View {
     let pattern: Pattern
     @EnvironmentObject private var dataServices: DataServices
+    @EnvironmentObject private var onboardingCoordinator: OnboardingCoordinator
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var currentMoveIndex = 0
     @State private var userProfile: UserProfile?
     @State private var practiceStartTime = Date()
     @State private var showingCompleteDialog = false
+    @State private var showingTour = false
     @State private var practiceAccuracy: Double = 0.0
     @State private var userProgress: UserPatternProgress?
     @State private var selectedImageIndex = 0
@@ -80,6 +82,16 @@ struct PatternPracticeView: View {
         .navigationTitle("Practice \(pattern.name)")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    showingTour = true
+                } label: {
+                    Label("Help", systemImage: "questionmark.circle")
+                }
+                .accessibilityIdentifier("pattern-help-button")
+                .accessibilityLabel("Show pattern practice tour")
+            }
+
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("End Practice") {
                     endPractice()
@@ -88,8 +100,24 @@ struct PatternPracticeView: View {
                 .accessibilityIdentifier("pattern-end-practice-button")
             }
         }
+        .sheet(isPresented: $showingTour) {
+            if let profile = userProfile {
+                FeatureTourView(
+                    feature: .patterns,
+                    onComplete: {
+                        onboardingCoordinator.completeFeatureTour(.patterns, profile: profile)
+                        showingTour = false
+                    },
+                    onSkip: {
+                        onboardingCoordinator.completeFeatureTour(.patterns, profile: profile)
+                        showingTour = false
+                    }
+                )
+            }
+        }
         .task {
             loadUserProfile()
+            checkAndShowTour()
         }
         .alert("Practice Complete", isPresented: $showingCompleteDialog) {
             Button("Record Progress") {
@@ -474,6 +502,25 @@ struct PatternPracticeView: View {
         
         // Return to pattern list after recording progress
         dismiss()
+    }
+
+    /**
+     * Check if tour should be shown automatically on first visit
+     *
+     * WHY: Per-profile tracking ensures each user sees tours independently
+     * Only shows once per profile to avoid annoyance
+     */
+    private func checkAndShowTour() {
+        guard let profile = userProfile else { return }
+
+        // Check if this profile has completed the pattern tour
+        if onboardingCoordinator.shouldShowFeatureTour(.patterns, profile: profile) {
+            // Small delay to let the view fully appear first
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                showingTour = true
+                DebugLogger.ui("🎯 Automatically showing pattern tour for \(profile.name) (first visit)")
+            }
+        }
     }
 }
 

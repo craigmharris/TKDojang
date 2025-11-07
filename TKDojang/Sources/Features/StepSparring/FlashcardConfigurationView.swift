@@ -15,16 +15,18 @@ import SwiftData
 
 struct FlashcardConfigurationView: View {
     let specificTerms: [TerminologyEntry]? // For review sessions
-    
+
     @EnvironmentObject private var dataServices: DataServices
+    @EnvironmentObject private var onboardingCoordinator: OnboardingCoordinator
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var userProfile: UserProfile?
     @State private var studyMode: StudyMode = .test
     @State private var cardDirection: CardDirection = .bothDirections
     @State private var numberOfTerms: Int = 20
     @State private var learningSystem: LearningSystem = .classic
     @State private var showingModeGuide = false
+    @State private var showingTour = false
     @State private var availableTermsCount = 0
     @State private var isLoading = true
     
@@ -72,16 +74,36 @@ struct FlashcardConfigurationView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Help") {
-                        showingModeGuide = true
+                    Button {
+                        showingTour = true
+                    } label: {
+                        Label("Help", systemImage: "questionmark.circle")
                     }
+                    .accessibilityIdentifier("flashcard-help-button")
+                    .accessibilityLabel("Show flashcard tour")
                 }
             }
             .sheet(isPresented: $showingModeGuide) {
                 FlashcardModeGuideView()
             }
+            .sheet(isPresented: $showingTour) {
+                if let profile = userProfile {
+                    FeatureTourView(
+                        feature: .flashcards,
+                        onComplete: {
+                            onboardingCoordinator.completeFeatureTour(.flashcards, profile: profile)
+                            showingTour = false
+                        },
+                        onSkip: {
+                            onboardingCoordinator.completeFeatureTour(.flashcards, profile: profile)
+                            showingTour = false
+                        }
+                    )
+                }
+            }
             .task {
                 await loadConfiguration()
+                checkAndShowTour()
             }
         }
     }
@@ -181,67 +203,17 @@ struct FlashcardConfigurationView: View {
     }
     
     // MARK: - Number of Terms Section
-    
+
     private var numberOfTermsSection: some View {
         ConfigurationSection(
             title: "Number of Terms",
             icon: "number.circle.fill",
             iconColor: .orange
         ) {
-            VStack(spacing: 16) {
-                // Current selection display
-                HStack {
-                    Text("Terms in session:")
-                        .font(.subheadline)
-                    
-                    Spacer()
-                    
-                    Text("\(numberOfTerms)")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.orange)
-                }
-                
-                // Slider
-                VStack(spacing: 8) {
-                    Slider(
-                        value: Binding(
-                            get: { Double(numberOfTerms) },
-                            set: { numberOfTerms = Int($0) }
-                        ),
-                        in: 5...min(50, Double(max(availableTermsCount, 5))),
-                        step: 5
-                    )
-                    .tint(.orange)
-                    
-                    HStack {
-                        Text("5")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        
-                        Spacer()
-                        
-                        Text("\(min(50, max(availableTermsCount, 5)))")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-                }
-                
-                // Available terms info
-                if availableTermsCount > 0 {
-                    HStack {
-                        Image(systemName: "info.circle")
-                            .font(.caption)
-                            .foregroundColor(.blue)
-                        
-                        Text("\(availableTermsCount) terms available for your current settings")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        
-                        Spacer()
-                    }
-                }
-            }
+            CardCountPickerComponent(
+                numberOfTerms: $numberOfTerms,
+                availableTermsCount: availableTermsCount
+            )
         }
     }
     
@@ -401,6 +373,25 @@ struct FlashcardConfigurationView: View {
         
         return flashcardView
     }
+
+    /**
+     * Check if tour should be shown automatically on first visit
+     *
+     * WHY: Per-profile tracking ensures each user sees tours independently
+     * Only shows once per profile to avoid annoyance
+     */
+    private func checkAndShowTour() {
+        guard let profile = userProfile else { return }
+
+        // Check if this profile has completed the flashcard tour
+        if onboardingCoordinator.shouldShowFeatureTour(.flashcards, profile: profile) {
+            // Small delay to let the view fully appear first
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                showingTour = true
+                DebugLogger.ui("🎯 Automatically showing flashcard tour for \(profile.name) (first visit)")
+            }
+        }
+    }
 }
 
 // MARK: - Learning System Enum
@@ -461,7 +452,7 @@ struct StudyModeCard: View {
     let mode: StudyMode
     let isSelected: Bool
     let onSelect: () -> Void
-    
+
     var body: some View {
         Button(action: onSelect) {
             HStack {
@@ -470,18 +461,19 @@ struct StudyModeCard: View {
                         .font(.subheadline)
                         .fontWeight(.medium)
                         .foregroundColor(.primary)
-                    
+
                     Text(mode.description)
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                
+
                 Spacer()
-                
+
                 if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundColor(.green)
+                        .accessibilityIdentifier("flashcard-studymode-\(mode.rawValue)-selected")
                 }
             }
             .padding()
@@ -493,6 +485,10 @@ struct StudyModeCard: View {
             )
         }
         .buttonStyle(PlainButtonStyle())
+        .accessibilityIdentifier("flashcard-studymode-\(mode.rawValue)-button")
+        .accessibilityLabel("\(mode.displayName) study mode")
+        .accessibilityHint(mode.description)
+        .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
     }
 }
 
@@ -500,11 +496,11 @@ struct CardDirectionCard: View {
     let direction: CardDirection
     let isSelected: Bool
     let onSelect: () -> Void
-    
+
     private var isRecommended: Bool {
         direction == .bothDirections
     }
-    
+
     var body: some View {
         Button(action: onSelect) {
             HStack {
@@ -514,24 +510,26 @@ struct CardDirectionCard: View {
                             .font(.subheadline)
                             .fontWeight(.medium)
                             .foregroundColor(.primary)
-                        
+
                         if isRecommended {
                             Text("⭐️")
                                 .font(.caption)
+                                .accessibilityLabel("Recommended")
                         }
                     }
-                    
+
                     Text(direction.description)
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                
+
                 Spacer()
-                
+
                 if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundColor(.purple)
+                        .accessibilityIdentifier("flashcard-direction-\(direction.rawValue)-selected")
                 }
             }
             .padding()
@@ -543,6 +541,10 @@ struct CardDirectionCard: View {
             )
         }
         .buttonStyle(PlainButtonStyle())
+        .accessibilityIdentifier("flashcard-direction-\(direction.rawValue)-button")
+        .accessibilityLabel("\(direction.displayName) card direction\(isRecommended ? ", recommended" : "")")
+        .accessibilityHint(direction.description)
+        .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
     }
 }
 
@@ -550,7 +552,7 @@ struct LearningSystemCard: View {
     let system: LearningSystem
     let isSelected: Bool
     let onSelect: () -> Void
-    
+
     var body: some View {
         Button(action: onSelect) {
             HStack {
@@ -559,18 +561,19 @@ struct LearningSystemCard: View {
                         .font(.subheadline)
                         .fontWeight(.medium)
                         .foregroundColor(.primary)
-                    
+
                     Text(system.description)
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                
+
                 Spacer()
-                
+
                 if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundColor(.blue)
+                        .accessibilityIdentifier("flashcard-learningsystem-\(system.rawValue)-selected")
                 }
             }
             .padding()
@@ -582,6 +585,10 @@ struct LearningSystemCard: View {
             )
         }
         .buttonStyle(PlainButtonStyle())
+        .accessibilityIdentifier("flashcard-learningsystem-\(system.rawValue)-button")
+        .accessibilityLabel("\(system.displayName) learning system")
+        .accessibilityHint(system.description)
+        .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
     }
 }
 
@@ -590,25 +597,29 @@ struct PreviewRow: View {
     let title: String
     let value: String
     let color: Color
-    
+
     var body: some View {
         HStack {
             Image(systemName: icon)
                 .font(.subheadline)
                 .foregroundColor(color)
                 .frame(width: 20)
-            
+                .accessibilityHidden(true)
+
             Text(title)
                 .font(.subheadline)
                 .foregroundColor(.primary)
-            
+
             Spacer()
-            
+
             Text(value)
                 .font(.subheadline)
                 .fontWeight(.medium)
                 .foregroundColor(color)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(title): \(value)")
+        .accessibilityIdentifier("flashcard-preview-\(title.lowercased().replacingOccurrences(of: " ", with: "-"))")
     }
 }
 

@@ -7,10 +7,11 @@ import SwiftData
  * PURPOSE: Main authenticated user interface with tab-based navigation
  */
 struct MainTabCoordinatorView: View {
-    
+
     @EnvironmentObject var appCoordinator: AppCoordinator
+    @StateObject private var onboardingCoordinator = OnboardingCoordinator()
     @State private var selectedTab = 0
-    
+
     var body: some View {
         TabView(selection: $selectedTab) {
             // Dashboard/Home Tab
@@ -20,7 +21,7 @@ struct MainTabCoordinatorView: View {
                 }
                 .tag(0)
                 .accessibilityIdentifier("navigation-tab-home")
-            
+
             // Learn Tab
             LearnView()
                 .tabItem {
@@ -28,7 +29,7 @@ struct MainTabCoordinatorView: View {
                 }
                 .tag(1)
                 .accessibilityIdentifier("navigation-tab-learn")
-            
+
             // Practice Tab
             PracticeView()
                 .tabItem {
@@ -36,7 +37,7 @@ struct MainTabCoordinatorView: View {
                 }
                 .tag(2)
                 .accessibilityIdentifier("navigation-tab-practice")
-            
+
             // Progress Tab - using stub due to SwiftData relationship issues
             ProgressViewStub()
                 .tabItem {
@@ -44,7 +45,7 @@ struct MainTabCoordinatorView: View {
                 }
                 .tag(3)
                 .accessibilityIdentifier("navigation-tab-progress")
-            
+
             // Profile Tab
             ProfileView()
                 .tabItem {
@@ -53,6 +54,7 @@ struct MainTabCoordinatorView: View {
                 .tag(4)
                 .accessibilityIdentifier("navigation-tab-profile")
         }
+        .environmentObject(onboardingCoordinator)
         .accentColor(.blue)
     }
 }
@@ -468,7 +470,7 @@ struct LearnView: View {
                     .buttonStyle(PlainButtonStyle())
                     .accessibilityIdentifier("learn-flashcards-button")
                     
-                    NavigationLink(destination: TestSelectionView()) {
+                    NavigationLink(destination: MultipleChoiceConfigurationView()) {
                         HStack {
                             Image(systemName: "checkmark.circle")
                                 .frame(width: 24)
@@ -1598,7 +1600,13 @@ struct TestSelectionView: View {
         .navigationBarTitleDisplayMode(.large)
         .navigationDestination(isPresented: $showingTest) {
             if let session = testSession {
-                TestTakingView(testSession: session)
+                TestTakingView(
+                    testSession: session,
+                    dismissToLearn: {
+                        // This is already in the Learn tab, so just dismiss the test view
+                        showingTest = false
+                    }
+                )
             }
         }
     }
@@ -1712,14 +1720,23 @@ struct ProfileView: View {
                         .buttonStyle(.bordered)
                         .controlSize(.large)
                         .frame(maxWidth: .infinity)
-                        
+
                         NavigationLink("About TKDojang") {
                             AboutView()
                         }
                         .buttonStyle(.bordered)
                         .controlSize(.large)
                         .frame(maxWidth: .infinity)
-                        
+
+                        Button {
+                            replayWelcomeTour()
+                        } label: {
+                            Label("Replay Welcome Tour", systemImage: "questionmark.circle")
+                        }
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        .frame(maxWidth: .infinity)
+
                         Button("Manage All Profiles") {
                             showingProfileManagement = true
                         }
@@ -1741,6 +1758,7 @@ struct ProfileView: View {
             }
             .sheet(isPresented: $showingProfileManagement) {
                 ProfileManagementView()
+                    .environmentObject(appCoordinator)
             }
         }
     }
@@ -1766,17 +1784,34 @@ struct ProfileView: View {
         do {
             DebugLogger.profile("🔄 ProfileGridView: Switching to profile: \(profile.name)")
             try dataServices.profileService.activateProfile(profile)
-            
+
             // Immediately refresh the parent view's data
             loadProfiles()
-            
+
             // Notify other views of the change
             dataServices.objectWillChange.send()
-            
+
             DebugLogger.profile("✅ ProfileGridView: Profile switch completed, UI should update")
         } catch {
             DebugLogger.data("❌ Failed to switch profile: \(error)")
         }
+    }
+
+    /**
+     * Replay the welcome tour
+     *
+     * WHY: Users may want to see the onboarding tour again after skipping it
+     * or to refresh their understanding of app features
+     */
+    private func replayWelcomeTour() {
+        // Create onboarding coordinator and trigger replay
+        let onboardingCoordinator = OnboardingCoordinator()
+        onboardingCoordinator.replayInitialTour()
+
+        // Navigate to onboarding flow
+        appCoordinator.currentFlow = .onboarding
+
+        DebugLogger.ui("🔄 User triggered welcome tour replay from profile screen")
     }
 }
 

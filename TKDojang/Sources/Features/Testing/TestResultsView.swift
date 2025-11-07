@@ -16,6 +16,7 @@ import SwiftUI
 struct TestResultsView: View {
     let testSession: TestSession
     let result: TestResult
+    let dismissToLearn: () -> Void  // Closure to dismiss fullScreenCover and return to Learn
     @Environment(\.dismiss) private var dismiss
     @State private var showingTestSelection = false
     
@@ -26,11 +27,10 @@ struct TestResultsView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 24) {
-                    // Header with Score and Achievement
-                    VStack(spacing: 16) {
+        ScrollView {
+            VStack(spacing: 24) {
+                // Header with Score and Achievement
+                VStack(spacing: 16) {
                         // Achievement Badge (if any)
                         if let achievement = result.achievement {
                             Text(achievement)
@@ -107,7 +107,7 @@ struct TestResultsView: View {
                         .cornerRadius(12)
                         
                         Button("Return to Learn") {
-                            dismiss()
+                            dismissToLearn()
                         }
                         .font(.subheadline)
                         .foregroundColor(.secondary)
@@ -123,14 +123,13 @@ struct TestResultsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        dismiss()
+                        dismissToLearn()
                     }
                 }
             }
             .navigationDestination(isPresented: $showingTestSelection) {
-                TestSelectionView()
+                MultipleChoiceConfigurationView()
             }
-        }
     }
 }
 

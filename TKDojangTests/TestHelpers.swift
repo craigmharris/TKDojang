@@ -289,7 +289,38 @@ class TestDataFactory {
         
         return profiles
     }
-    
+
+    /**
+     * Creates a user profile with completed onboarding for testing
+     *
+     * PURPOSE: Bypass onboarding in tests that don't need to test onboarding flow
+     * WHY: Onboarding adds complexity to test setup and is tested separately
+     *
+     * USAGE: Use in test setUp() to create profiles that skip onboarding tours
+     */
+    func createProfileWithCompletedOnboarding(
+        name: String = "Test User",
+        belt: BeltLevel,
+        learningMode: LearningMode = .mastery
+    ) -> UserProfile {
+        let profile = UserProfile(
+            name: name,
+            currentBeltLevel: belt,
+            learningMode: learningMode
+        )
+
+        // Mark all onboarding as complete
+        profile.hasCompletedInitialTour = true
+        profile.completedFeatureTours = [
+            "flashcards",
+            "multipleChoice",
+            "patterns",
+            "stepSparring"
+        ]
+
+        return profile
+    }
+
     // MARK: - Progress Data Creation
     
     /**

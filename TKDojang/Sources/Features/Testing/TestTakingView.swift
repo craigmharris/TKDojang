@@ -15,6 +15,7 @@ import SwiftUI
 
 struct TestTakingView: View {
     let testSession: TestSession
+    let dismissToLearn: () -> Void  // Closure to dismiss back to Learn tab
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var dataServices: DataServices
     @State private var testingService: TestingService?
@@ -70,6 +71,7 @@ struct TestTakingView: View {
                 .background(Color(.systemGroupedBackground))
                 
                 if let question = currentQuestion {
+                    let _ = DebugLogger.ui("✅ TestTakingView: Rendering question at index \(currentQuestionIndex)")
                     ScrollView {
                         VStack(spacing: 24) {
                             // Question Text
@@ -134,19 +136,21 @@ struct TestTakingView: View {
                     }
                 } else {
                     // Test completed
+                    let _ = DebugLogger.ui("❌ TestTakingView: NO currentQuestion - showing completion (index=\(currentQuestionIndex), total=\(testSession.questions.count))")
                     VStack {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.system(size: 60))
                             .foregroundColor(.green)
-                        
+
                         Text("Test Complete!")
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                        
+
                         Text("Processing your results...")
                             .foregroundColor(.secondary)
                     }
                     .onAppear {
+                        DebugLogger.ui("🏁 TestTakingView: Calling completeTest()")
                         completeTest()
                     }
                 }
@@ -158,7 +162,7 @@ struct TestTakingView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     ProfileSwitcher()
                 }
-                
+
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if !showingFeedback {
                         Button("Exit") {
@@ -167,30 +171,58 @@ struct TestTakingView: View {
                     }
                 }
             }
+            .navigationDestination(isPresented: $showingResults) {
+                Group {
+                    if let result = testSession.result {
+                        TestResultsView(
+                            testSession: testSession,
+                            result: result,
+                            dismissToLearn: dismissToLearn
+                        )
+                        .onAppear {
+                            DebugLogger.ui("✅ TestResultsView appeared with score=\(result.accuracy)%")
+                        }
+                    } else {
+                        Text("Error: No results available")
+                            .onAppear {
+                                DebugLogger.ui("❌ navigationDestination: testSession.result is NIL!")
+                            }
+                    }
+                }
+                .onAppear {
+                    DebugLogger.ui("🚀 navigationDestination triggered")
+                }
+            }
         }
         .onAppear {
+            DebugLogger.ui("🎬 TestTakingView: onAppear - testSession.id=\(testSession.id)")
+            DebugLogger.ui("📊 TestTakingView: testSession.questions.count=\(testSession.questions.count)")
+            DebugLogger.ui("❓ TestTakingView: currentQuestion is \(currentQuestion == nil ? "NIL" : "NOT NIL")")
+            DebugLogger.ui("🔢 TestTakingView: currentQuestionIndex=\(currentQuestionIndex)")
+
             if testingService == nil {
                 testingService = TestingService(
                     modelContext: dataServices.modelContext,
                     terminologyService: dataServices.terminologyService
                 )
+                DebugLogger.ui("✅ TestTakingView: TestingService created")
             }
-            
+
             // Load the active profile
             userProfile = dataServices.profileService.getActiveProfile()
-            
+            DebugLogger.ui("👤 TestTakingView: Loaded profile=\(userProfile?.name ?? "nil")")
+
             // Mark first question as presented
             if let firstQuestion = currentQuestion {
                 firstQuestion.markAsPresented()
+                DebugLogger.ui("✅ TestTakingView: Marked first question as presented")
             }
         }
         .onChange(of: dataServices.profileService.activeProfile) {
             userProfile = dataServices.profileService.getActiveProfile()
         }
-        .navigationDestination(isPresented: $showingResults) {
-            if let result = testSession.result {
-                TestResultsView(testSession: testSession, result: result)
-            }
+        .onChange(of: showingResults) { oldValue, newValue in
+            DebugLogger.ui("🔔 showingResults changed from \(oldValue) to \(newValue)")
         }
     }
     
@@ -227,17 +259,26 @@ struct TestTakingView: View {
     }
     
     private func completeTest() {
-        guard let service = testingService else { return }
-        
+        guard let service = testingService else {
+            DebugLogger.ui("❌ completeTest: testingService is nil")
+            return
+        }
+
+        DebugLogger.ui("📊 completeTest: Starting test completion...")
+
         do {
             let result = try service.completeTest(session: testSession, for: userProfile)
+            DebugLogger.ui("✅ completeTest: Test completed - score=\(result.accuracy)%")
+
             // Ensure the result is set on the session for navigation
             testSession.result = result
-            
+            DebugLogger.ui("📝 completeTest: Test result attached to session")
+
             // Record study session for analytics
             recordTestSession(result: result)
-            
+
             showingResults = true
+            DebugLogger.ui("🎯 completeTest: showingResults set to TRUE - should navigate to results")
         } catch {
             DebugLogger.ui("❌ Failed to complete test: \(error)")
         }

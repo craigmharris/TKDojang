@@ -26,37 +26,46 @@ class TestingService: ObservableObject {
     // MARK: - Test Creation
     
     /**
-     * Creates a comprehensive test for the user's current belt level
-     * Includes all terminology from the user's current belt
+     * Creates a comprehensive test for the user's belt level(s)
+     * Includes all terminology from selected belt scope
+     *
+     * - Parameters:
+     *   - userProfile: The user taking the test
+     *   - beltScope: Which belt levels to include (.currentOnly or .allUpToCurrent)
      */
-    func createComprehensiveTest(for userProfile: UserProfile) throws -> TestSession {
+    func createComprehensiveTest(for userProfile: UserProfile, beltScope: TestUIConfig.BeltScope = .currentOnly) throws -> TestSession {
         let beltLevel = userProfile.currentBeltLevel
-        
-        // Get all terminology for current belt
-        let terminology = getTerminologyForBelt(beltLevel)
-        
+        DebugLogger.data("📚 TestingService: Creating comprehensive test for belt=\(beltLevel.shortName), scope=\(beltScope.rawValue)")
+
+        // Get terminology based on belt scope
+        let (terminology, includedBelts) = getTerminologyForBeltScope(beltLevel, scope: beltScope)
+        DebugLogger.data("📊 TestingService: Retrieved \(terminology.count) terms, belts=\(includedBelts)")
+
         let configuration = TestConfiguration(
             maxQuestions: terminology.count,
-            includedBeltLevels: [beltLevel.shortName.replacingOccurrences(of: " ", with: "_").lowercased()],
+            includedBeltLevels: includedBelts,
             focusCategories: [],
             hasTimeLimit: false,
             questionTypes: [.englishToKorean, .koreanToEnglish]
         )
-        
+
         let testSession = TestSession(
             testType: .comprehensive,
             userBeltLevel: beltLevel,
             categories: Array(Set(terminology.map { $0.category.name })),
             configuration: configuration
         )
-        
+
         // Generate questions for all terminology
+        DebugLogger.data("🔄 TestingService: Generating questions from \(terminology.count) terms...")
         let questions = try generateQuestions(from: terminology, configuration: configuration)
+        DebugLogger.data("✅ TestingService: Generated \(questions.count) questions")
         testSession.questions = questions.shuffled() // Randomize order
-        
+
         modelContext.insert(testSession)
         try modelContext.save()
-        
+        DebugLogger.data("💾 TestingService: Test session saved with \(testSession.questions.count) questions")
+
         return testSession
     }
     
@@ -66,15 +75,20 @@ class TestingService: ObservableObject {
      */
     func createQuickTest(for userProfile: UserProfile) throws -> TestSession {
         let currentBelt = userProfile.currentBeltLevel
+        DebugLogger.data("⚡ TestingService: Creating quick test for belt=\(currentBelt.shortName)")
+
         var terminology = getTerminologyForBelt(currentBelt)
         var includedBelts = [currentBelt.shortName.replacingOccurrences(of: " ", with: "_").lowercased()]
-        
+        DebugLogger.data("📊 TestingService: Found \(terminology.count) terms for current belt")
+
         // If current belt has fewer than 3 terms, include previous belt
         if terminology.count < 3 {
+            DebugLogger.data("⚠️ TestingService: Current belt has < 3 terms, looking for previous belt...")
             if let previousBelt = getPreviousBelt(from: currentBelt) {
                 let previousTerminology = getTerminologyForBelt(previousBelt)
                 terminology.append(contentsOf: previousTerminology)
                 includedBelts.append(previousBelt.shortName.replacingOccurrences(of: " ", with: "_").lowercased())
+                DebugLogger.data("✅ TestingService: Added \(previousTerminology.count) terms from previous belt (\(previousBelt.shortName))")
             }
         }
 
@@ -88,12 +102,15 @@ class TestingService: ObservableObject {
 
         // Generate ALL possible questions from available terminology (both directions)
         // This creates a large pool to select from, preventing paired questions
+        DebugLogger.data("🔄 TestingService: Generating questions from \(terminology.count) terms...")
         let allQuestions = try generateQuestions(from: terminology, configuration: configuration)
+        DebugLogger.data("✅ TestingService: Generated \(allQuestions.count) questions")
 
         // Randomly select 5-10 questions from the full pool
         // This ensures better variation and prevents answer hints
         let questionCount = min(10, max(5, allQuestions.count))
         let selectedQuestions = Array(allQuestions.shuffled().prefix(questionCount))
+        DebugLogger.data("🎲 TestingService: Selected \(selectedQuestions.count) questions for quick test")
 
         let testSession = TestSession(
             testType: .quick,
@@ -103,13 +120,74 @@ class TestingService: ObservableObject {
         )
 
         testSession.questions = selectedQuestions
-        
+
         modelContext.insert(testSession)
         try modelContext.save()
-        
+        DebugLogger.data("💾 TestingService: Quick test session saved with \(testSession.questions.count) questions")
+
         return testSession
     }
-    
+
+    /**
+     * Creates a custom test with user-specified parameters
+     *
+     * - Parameters:
+     *   - userProfile: The user taking the test
+     *   - questionCount: Number of questions to generate (10-25)
+     *   - beltScope: Which belt levels to include (.currentOnly or .allUpToCurrent)
+     */
+    func createCustomTest(for userProfile: UserProfile, questionCount: Int, beltScope: TestUIConfig.BeltScope) throws -> TestSession {
+        let beltLevel = userProfile.currentBeltLevel
+        DebugLogger.data("🎨 TestingService: Creating custom test for belt=\(beltLevel.shortName), questionCount=\(questionCount), scope=\(beltScope.rawValue)")
+
+        // Get terminology based on belt scope
+        let (terminology, includedBelts) = getTerminologyForBeltScope(beltLevel, scope: beltScope)
+        DebugLogger.data("📊 TestingService: Retrieved \(terminology.count) terms, belts=\(includedBelts)")
+
+        guard !terminology.isEmpty else {
+            DebugLogger.data("❌ TestingService: No terminology available for custom test")
+            throw TestingError.noQuestionsAvailable
+        }
+
+        let configuration = TestConfiguration(
+            maxQuestions: questionCount,
+            includedBeltLevels: includedBelts,
+            focusCategories: [],
+            hasTimeLimit: false,
+            questionTypes: [.englishToKorean, .koreanToEnglish]
+        )
+
+        // Generate ALL possible questions from available terminology (both directions)
+        DebugLogger.data("🔄 TestingService: Generating questions from \(terminology.count) terms...")
+        let allQuestions = try generateQuestions(from: terminology, configuration: configuration)
+        DebugLogger.data("✅ TestingService: Generated \(allQuestions.count) questions")
+
+        guard !allQuestions.isEmpty else {
+            DebugLogger.data("❌ TestingService: Question generation returned 0 questions")
+            throw TestingError.noQuestionsAvailable
+        }
+
+        // Select requested number of questions from the pool
+        let actualQuestionCount = min(questionCount, allQuestions.count)
+        let selectedQuestions = Array(allQuestions.shuffled().prefix(actualQuestionCount))
+        DebugLogger.data("🎲 TestingService: Selected \(selectedQuestions.count) of \(allQuestions.count) questions for custom test")
+
+        let testSession = TestSession(
+            testType: .custom,
+            userBeltLevel: beltLevel,
+            categories: Array(Set(selectedQuestions.compactMap { $0.terminologyEntry?.category.name })),
+            configuration: configuration
+        )
+
+        testSession.questions = selectedQuestions
+
+        modelContext.insert(testSession)
+        try modelContext.save()
+        DebugLogger.data("💾 TestingService: Custom test session saved with \(testSession.questions.count) questions")
+
+        return testSession
+    }
+
     // MARK: - Question Generation
     
     /**
@@ -397,6 +475,9 @@ class TestingService: ObservableObject {
     
     // MARK: - Helper Methods
     
+    /**
+     * Get terminology for a single belt level
+     */
     private func getTerminologyForBelt(_ beltLevel: BeltLevel) -> [TerminologyEntry] {
         let beltSortOrder = beltLevel.sortOrder
         let descriptor = FetchDescriptor<TerminologyEntry>(
@@ -404,7 +485,7 @@ class TestingService: ObservableObject {
                 entry.beltLevel.sortOrder == beltSortOrder
             }
         )
-        
+
         do {
             return try modelContext.fetch(descriptor)
         } catch {
@@ -412,7 +493,49 @@ class TestingService: ObservableObject {
             return []
         }
     }
-    
+
+    /**
+     * Get terminology based on belt scope
+     *
+     * - Parameters:
+     *   - currentBelt: The user's current belt level
+     *   - scope: Which belts to include
+     * - Returns: Tuple of (terminology entries, belt level identifiers)
+     */
+    private func getTerminologyForBeltScope(_ currentBelt: BeltLevel, scope: TestUIConfig.BeltScope) -> ([TerminologyEntry], [String]) {
+        let currentBeltSortOrder = currentBelt.sortOrder
+
+        switch scope {
+        case .currentOnly:
+            // Just current belt
+            let terminology = getTerminologyForBelt(currentBelt)
+            let beltIds = [currentBelt.shortName.replacingOccurrences(of: " ", with: "_").lowercased()]
+            return (terminology, beltIds)
+
+        case .allUpToCurrent:
+            // All belts from white belt up to current (inclusive)
+            let descriptor = FetchDescriptor<TerminologyEntry>(
+                predicate: #Predicate { entry in
+                    entry.beltLevel.sortOrder >= currentBeltSortOrder
+                }
+            )
+
+            do {
+                let terminology = try modelContext.fetch(descriptor)
+
+                // Get all unique belt IDs from the terminology
+                let beltIds = Array(Set(terminology.map {
+                    $0.beltLevel.shortName.replacingOccurrences(of: " ", with: "_").lowercased()
+                }))
+
+                return (terminology, beltIds)
+            } catch {
+                DebugLogger.data("Failed to fetch terminology for belt scope: \\(error)")
+                return ([], [])
+            }
+        }
+    }
+
     private func getPreviousBelt(from currentBelt: BeltLevel) -> BeltLevel? {
         let targetSortOrder = currentBelt.sortOrder + 1
         let descriptor = FetchDescriptor<BeltLevel>(
@@ -496,5 +619,18 @@ class TestingService: ObservableObject {
         modelContext.insert(studySession)
         
         DebugLogger.data("📊 Recorded test session for \(profile.name): \(result.correctAnswers)/\(result.totalQuestions) (\(Int(result.accuracy))%)")
+    }
+}
+
+// MARK: - Testing Errors
+
+enum TestingError: Error, LocalizedError {
+    case noQuestionsAvailable
+
+    var errorDescription: String? {
+        switch self {
+        case .noQuestionsAvailable:
+            return "No questions available for the selected configuration"
+        }
     }
 }
