@@ -1095,7 +1095,8 @@ struct PatternsView: View {
     @State private var userProfile: UserProfile?
     @State private var isLoading = true
     @State private var activeProfileId: UUID?
-    
+    @State private var showingHelp = false
+
     var body: some View {
         VStack(spacing: 20) {
             // Header
@@ -1164,10 +1165,21 @@ struct PatternsView: View {
                 }
                 #endif
             }
-            
+
+            ToolbarItem(placement: .principal) {
+                Button(action: { showingHelp = true }) {
+                    Label("Help", systemImage: "questionmark.circle")
+                }
+                .accessibilityIdentifier("patterns-help-button")
+                .accessibilityLabel("Show pattern selection help")
+            }
+
             ToolbarItem(placement: .navigationBarTrailing) {
                 ProfileSwitcher()
             }
+        }
+        .sheet(isPresented: $showingHelp) {
+            PatternsHelpSheet()
         }
         .task(id: activeProfileId) {
             // Reload patterns whenever active profile ID changes

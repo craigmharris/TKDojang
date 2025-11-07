@@ -21,8 +21,9 @@ import SwiftUI
 struct PatternTestView: View {
     let pattern: Pattern
     @EnvironmentObject private var dataServices: DataServices
+    @EnvironmentObject private var onboardingCoordinator: OnboardingCoordinator
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var patternTest: PatternTest?
     @State private var currentMoveIndex = 0
     @State private var responses: [TestResponse] = []
@@ -36,6 +37,7 @@ struct PatternTestView: View {
     @State private var stanceOptions: [String] = []
     @State private var techniqueOptions: [String] = []
     @State private var movementOptions: [String] = []
+    @State private var showingTour = false
     
     private var testService: PatternTestService {
         PatternTestService(patternDataService: dataServices.patternService)
@@ -92,6 +94,13 @@ struct PatternTestView: View {
         .navigationTitle("Test \(pattern.name)")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: { showingTour = true }) {
+                    Label("Help", systemImage: "questionmark.circle")
+                }
+                .accessibilityIdentifier(OnboardingCoordinator.FeatureTour.patternTest.helpButtonAccessibilityID)
+            }
+
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("End Test") {
                     dismiss()
@@ -99,8 +108,30 @@ struct PatternTestView: View {
                 .foregroundColor(.red)
             }
         }
+        .sheet(isPresented: $showingTour) {
+            if let profile = userProfile {
+                FeatureTourView(
+                    feature: .patternTest,
+                    onComplete: {
+                        onboardingCoordinator.completeFeatureTour(.patternTest, profile: profile)
+                        showingTour = false
+                    },
+                    onSkip: {
+                        onboardingCoordinator.completeFeatureTour(.patternTest, profile: profile)
+                        showingTour = false
+                    }
+                )
+            }
+        }
         .onAppear {
             DebugLogger.ui("🧪 PatternTestView appeared for pattern: \(pattern.name)")
+
+            // Auto-show tour on first visit
+            if let profile = userProfile {
+                if onboardingCoordinator.shouldShowFeatureTour(.patternTest, profile: profile) {
+                    showingTour = true
+                }
+            }
         }
         .onDisappear {
             DebugLogger.ui("🧪 PatternTestView disappeared for pattern: \(pattern.name)")

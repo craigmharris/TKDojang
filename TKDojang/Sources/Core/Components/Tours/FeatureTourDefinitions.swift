@@ -72,6 +72,8 @@ extension OnboardingCoordinator.FeatureTour {
             return patternTourSteps
         case .stepSparring:
             return stepSparringTourSteps
+        case .patternTest:
+            return patternTestTourSteps
         }
     }
 
@@ -86,6 +88,8 @@ extension OnboardingCoordinator.FeatureTour {
             return "How to practice patterns?"
         case .stepSparring:
             return "How does step sparring work?"
+        case .patternTest:
+            return "How does pattern testing work?"
         }
     }
 
@@ -364,8 +368,49 @@ extension OnboardingCoordinator.FeatureTour {
         switch self {
         case .flashcards, .multipleChoice:
             return 3 // 5 steps @ ~35s each
-        case .patterns, .stepSparring:
+        case .patterns, .stepSparring, .patternTest:
             return 2 // 3 steps @ ~40s each
         }
     }
 }
+
+// MARK: - Pattern Test Tour Steps
+
+/**
+ * Pattern Test feature tour (3 steps - lighter)
+ *
+ * WHY: Pattern Test is a focused feature for testing move sequencing
+ * Explains the three-part selection (stance, technique, movement) and context viewing
+ */
+private var patternTestTourSteps: [FeatureTourStep] {
+    [
+        FeatureTourStep(
+            icon: "checklist",
+            title: "Pattern Sequence Testing",
+            description: "Test your memory of pattern move sequences by selecting the correct stance, technique, and movement for each move. This builds muscle memory and ensures you know patterns thoroughly.",
+            tipText: "Practice the pattern first before testing for better results"
+        ),
+
+        FeatureTourStep(
+            icon: "square.split.3x3",
+            title: "Three-Part Selection",
+            description: "Each move requires three selections: Stance (your body position), Technique (the action you perform), and Movement (the direction you move). All three must be correct to fully master the pattern.",
+            tipText: "Take your time - accuracy is more important than speed"
+        ),
+
+        FeatureTourStep(
+            icon: "arrow.left.arrow.right.square",
+            title: "Sequence Context",
+            description: "View previous moves you've completed and upcoming moves for context. This helps you understand where you are in the pattern and recall the sequence flow.",
+            tipText: "Use context to visualize the full pattern flow as you test"
+        ),
+
+        FeatureTourStep(
+            icon: "checkmark.circle.fill",
+            title: "Review Results",
+            description: "After completing the test, review your accuracy for each component. Results show which moves you mastered and which need more practice.",
+            tipText: "Focus practice on moves where you made mistakes"
+        )
+    ]
+}
+

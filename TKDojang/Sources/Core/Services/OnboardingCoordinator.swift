@@ -55,6 +55,7 @@ class OnboardingCoordinator: ObservableObject {
         case multipleChoice = "multipleChoice"
         case patterns = "patterns"
         case stepSparring = "stepSparring"
+        case patternTest = "patternTest"
 
         /// Display name for the tour
         var title: String {
@@ -63,6 +64,7 @@ class OnboardingCoordinator: ObservableObject {
             case .multipleChoice: return "Multiple Choice Testing"
             case .patterns: return "Pattern Practice"
             case .stepSparring: return "Step Sparring"
+            case .patternTest: return "Pattern Test"
             }
         }
 
@@ -77,6 +79,8 @@ class OnboardingCoordinator: ObservableObject {
                 return "Practice traditional patterns with step-by-step guidance"
             case .stepSparring:
                 return "Master attack, defense, and counter sequences"
+            case .patternTest:
+                return "Test pattern sequencing and memory recall with interactive move selection"
             }
         }
     }

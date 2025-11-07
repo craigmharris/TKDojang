@@ -17,7 +17,8 @@ struct StepSparringView: View {
     @State private var userProfile: UserProfile?
     @State private var progressSummary: StepSparringProgressSummary?
     @State private var isLoading = true
-    
+    @State private var showingHelp = false
+
     var body: some View {
         VStack(spacing: 20) {
             // Header
@@ -94,9 +95,20 @@ struct StepSparringView: View {
         .navigationTitle("Step Sparring")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
+            ToolbarItem(placement: .principal) {
+                Button(action: { showingHelp = true }) {
+                    Label("Help", systemImage: "questionmark.circle")
+                }
+                .accessibilityIdentifier("stepsparring-help-button")
+                .accessibilityLabel("Show step sparring help")
+            }
+
             ToolbarItem(placement: .navigationBarTrailing) {
                 ProfileSwitcher()
             }
+        }
+        .sheet(isPresented: $showingHelp) {
+            StepSparringHelpSheet()
         }
         .task {
             await loadContent()

@@ -18,7 +18,8 @@ struct LineWorkView: View {
     @State private var isLoading = true
     @State private var selectedMovementType: MovementType? = nil
     @State private var selectedCategory: String? = nil
-    
+    @State private var showingHelp = false
+
     private let availableCategories = ["Stances", "Blocking", "Striking", "Kicking"]
     
     var body: some View {
@@ -39,9 +40,20 @@ struct LineWorkView: View {
             .navigationTitle("Line Work")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Button(action: { showingHelp = true }) {
+                        Label("Help", systemImage: "questionmark.circle")
+                    }
+                    .accessibilityIdentifier("linework-help-button")
+                    .accessibilityLabel("Show line work help")
+                }
+
                 ToolbarItem(placement: .topBarTrailing) {
                     ProfileSwitcher()
                 }
+            }
+            .sheet(isPresented: $showingHelp) {
+                LineWorkHelpSheet()
             }
         }
         .task {
