@@ -475,29 +475,79 @@ case .flashcards:
 
 ---
 
-#### Day 3: Multiple Choice Tour (Replicate Pattern)
+#### Day 3: Multiple Choice Configuration + Tour (Enhanced Implementation)
 
-**3.1 Extract Multiple Choice Components**
-- `TestTypePickerComponent.swift` (Comprehensive/Quick/Custom)
-- `BeltFilterComponent.swift` (Belt level selection)
-- `QuestionCountComponent.swift` (Number of questions)
+**Architecture Decision:** Build configuration view matching Flashcards pattern for consistency and improved UX
 
-**3.2 Define Multiple Choice Tour Steps**
-- 4-5 steps covering test types, belt filtering, results interpretation
-- Reuse extracted components in tour
+**Current State:** Binary choice (Quick/Comprehensive) → **Target State:** Rich configuration with granular control
 
-**3.3 Wire Up Testing Coordinator**
-- Add tour state management
-- Help button + sheet integration
-- Automatic first-visit display
+**3.1 Investigate Current Architecture** (~15 min)
+- Find Multiple Choice entry point and navigation flow
+- Locate question selection logic (likely MultipleChoiceService or TestingService)
+- Verify belt filtering mechanism (progression/mastery mode reuse)
+- Map current test flow: entry → question generation → test execution
+
+**3.2 Create TestConfig Model** (~20 lines)
+```swift
+struct TestConfig {
+    enum TestType { case quick, custom, comprehensive }
+    enum BeltScope { case currentOnly, allUpToCurrent }
+
+    var testType: TestType
+    var questionCount: Int?  // For custom type (10-25)
+    var beltScope: BeltScope
+}
+```
+
+**3.3 Build MultipleChoiceConfigurationView** (~300 lines)
+- New file: `Sources/Features/Testing/MultipleChoiceConfigurationView.swift`
+- Composition-based architecture (3 extractable components)
+- **Components to create:**
+  1. `TestTypeCard.swift` - Quick (5-10) / Custom (10-25) / Comprehensive (all)
+  2. `QuestionCountSlider.swift` - For custom type, 10-25 range with dynamic max
+  3. `BeltScopeToggle.swift` - Current belt only / All belts up to current
+- Add accessibility identifiers (pattern: `test-config-{component}-{value}`)
+- Show available question count dynamically (like Flashcards)
+
+**3.4 Update Question Selection Logic** (~50-100 lines modified)
+- Modify question generator to accept TestConfig
+- Reuse existing belt filtering from progression/mastery mode
+- Add question count limiting for Quick/Custom types
+- Ensure Comprehensive still gets all questions (respect max if needed)
+- **No changes to test execution** - just receives different question sets
+
+**3.5 Define Multiple Choice Tour Steps** (5 steps)
+```swift
+Step 1: Test types overview (Quick/Custom/Comprehensive)
+Step 2: Belt scope filtering (live BeltScopeToggle demo)
+Step 3: Custom question count (live QuestionCountSlider demo)
+Step 4: Results interpretation and progress tracking
+Step 5: Ready to test with tips
+```
+
+**3.6 Integration & Tour Wiring**
+- Add (?) help button to MultipleChoiceConfigurationView toolbar
+- Add `.sheet(isPresented: $showingTour)` with FeatureTourView
+- Automatic first-visit display with per-profile tracking
+- Wire TestConfig → question generation → test session
+
+**3.7 Testing Updates**
+- Update MultipleChoiceComponentTests for new config flow
+- Add component tests for TestTypeCard, QuestionCountSlider, BeltScopeToggle
+- Verify existing test execution tests still pass (should be unchanged)
+- Property-based tests for question count validation
 
 **Deliverables:**
-- [ ] Multiple Choice components extracted
-- [ ] Tour steps defined (4-5 steps)
-- [ ] TestConfigurationView refactored and integrated
-- [ ] Tour functional (automatic + manual trigger)
-- [ ] Build succeeds, tests pass
-- **Status:** DEFERRED - requires architecture investigation (no configuration view like Flashcards)
+- [ ] Current architecture investigated and documented
+- [ ] TestConfig model created
+- [ ] 3 configuration components extracted and functional
+- [ ] MultipleChoiceConfigurationView built with accessibility IDs
+- [ ] Question selection logic updated to use TestConfig
+- [ ] Tour steps defined (5 steps with live component demos)
+- [ ] Help button + tour integration complete
+- [ ] All tests updated and passing
+- [ ] Build succeeds, zero breaking changes
+- **Estimated Effort:** 1-1.5 days
 
 ---
 
