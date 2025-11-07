@@ -27,8 +27,8 @@
 
 ## Priority 1: Onboarding & First-Time User Experience
 
-**Status:** In Progress (Phase 1 COMPLETE ✅, Phase 2 Days 1-2,4-5 COMPLETE ✅)
-**Timeline:** 15 days (3 weeks) - ~10 days complete, ~5 days remaining
+**Status:** In Progress (Phase 1 COMPLETE ✅, Phase 2 Days 1-5 COMPLETE ✅)
+**Timeline:** 15 days (3 weeks) - ~12 days complete, ~3 days remaining
 **Priority:** CRITICAL - User feedback indicates confusion on first launch
 **Technology:** TipKit (iOS 16+), Component-based tour architecture
 **Last Updated:** November 7, 2025
@@ -538,16 +538,17 @@ Step 5: Ready to test with tips
 - Property-based tests for question count validation
 
 **Deliverables:**
-- [ ] Current architecture investigated and documented
-- [ ] TestConfig model created
-- [ ] 3 configuration components extracted and functional
-- [ ] MultipleChoiceConfigurationView built with accessibility IDs
-- [ ] Question selection logic updated to use TestConfig
-- [ ] Tour steps defined (5 steps with live component demos)
-- [ ] Help button + tour integration complete
-- [ ] All tests updated and passing
-- [ ] Build succeeds, zero breaking changes
-- **Estimated Effort:** 1-1.5 days
+- [x] Current architecture investigated and documented
+- [x] TestUIConfig model created with BeltScope enum
+- [x] 3 configuration components extracted and functional (TestTypeCard, QuestionCountSlider, BeltScopeToggle)
+- [x] MultipleChoiceConfigurationView built with accessibility IDs (467 lines)
+- [x] TestingService updated with createCustomTest() and belt scope support
+- [x] Tour steps defined (5 steps with live component demos)
+- [x] Help button + tour integration complete
+- [x] 6 critical bugs fixed (slider crash, environment objects, navigation, ModelContext, etc.)
+- [x] All 3 test modes functional (Quick, Custom, Comprehensive)
+- [x] Build succeeds, zero breaking changes
+- **Actual Effort:** 1.5 days (includes extensive debugging and navigation fixes)
 
 ---
 

@@ -711,6 +711,32 @@ let configuration = ModelConfiguration(
 - **Build:** Successful with zero errors
 - **Key Achievement:** Component reuse pattern validated (CardCountPickerComponent used in both production and tour)
 
+**Nov 7, 2025** - `5d28752` - feat(testing): Day 3 - Multiple Choice configuration with dynamic controls and fixed navigation
+- **Multiple Choice Configuration Enhancement:**
+  - Created MultipleChoiceConfigurationView (467 lines) matching Flashcards pattern
+  - Extracted 3 reusable components (~150 lines each with `isDemo` parameter):
+    * TestTypeCard: Quick (5-10) / Custom (10-25) / Comprehensive (all)
+    * QuestionCountSlider: Dynamic 10-25 selector with availability info
+    * BeltScopeToggle: Current belt only vs all belts up to current
+  - Added TestUIConfig model with BeltScope enum
+  - 5-step feature tour with live component demonstrations
+- **TestingService Enhancements:**
+  - Added `createCustomTest()` for user-configured tests
+  - Updated `createComprehensiveTest()` with belt scope support
+  - Added `TestingError.noQuestionsAvailable` for validation
+- **Critical Fixes (6 bugs):**
+  1. **Custom Test Slider Crash** - Dynamic parameters for small datasets (min=5, step=1 for <15 questions)
+  2. **Black Screen - Missing Environment Objects** - Explicit .environmentObject() in fullScreenCover
+  3. **Black Screen - Navigation Destination** - Moved .navigationDestination INSIDE NavigationStack
+  4. **ModelContext Mismatch** - Used dataServices.modelContext consistently (not modelContextForLoading)
+  5. **Navigation Stack Cycling** - Removed duplicate NavigationStack, added dismissToLearn closure chain
+  6. **Belt Predicate Logic Bug** - Changed <= to >= for "all belts up to current" scope
+- **Debug Logging:** Comprehensive logging in MultipleChoiceConfigurationView, TestingService, TestTakingView
+- **Navigation Updates:** Replaced TestSelectionView with MultipleChoiceConfigurationView throughout
+- **Testing Status:** All 3 test modes functional (Quick, Custom, Comprehensive), navigation complete
+- **Build:** ✅ Successful with zero errors
+- **Status:** Phase 2 Day 3 complete, all 4 feature tours implemented
+
 ---
 
 ## Future Development History
@@ -718,11 +744,11 @@ let configuration = ModelConfiguration(
 ### In Progress (As of Nov 7, 2025)
 
 **Phase 8 (In Progress):** Onboarding & First-Time User Experience
-- Days 1-3: ✅ Complete (TipKit integration, initial tour UI)
-- Days 4-5: ✅ Complete (Pattern & StepSparring tours, component-based architecture validated)
-- Week 2: In Progress (3/4 features complete - Flashcards, Patterns, StepSparring)
-- Remaining: Multiple Choice tour (architecture investigation needed), Theory/Techniques help sheets
-- **Timeline:** ~10 days remaining
+- Days 1-5: ✅ Complete (TipKit integration, initial tour UI, replay functionality)
+- Phase 2 Days 1-5: ✅ Complete (All 4 feature tours: Flashcards, Multiple Choice, Patterns, StepSparring)
+- Multiple Choice enhancement: ✅ Complete (rich configuration, 3 components, 5-step tour)
+- Remaining: Theory/Techniques help sheets, polish & documentation (Days 6-7)
+- **Timeline:** ~3-5 days remaining
 
 **Phase 3 (Paused):** E2E User Journey Testing
 - 1/12 tests completed
