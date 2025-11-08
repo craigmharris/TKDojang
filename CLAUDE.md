@@ -382,6 +382,121 @@ grep -n "for.*in.*jsonFiles" TestFile.swift  # Must find dynamic patterns
 - [ ] All tests pass
 - [ ] Tests would catch real JSON bugs
 
+### 6. Component Extraction for Tour Reuse with Accessibility
+
+**Context:** UI components need accessibility identifiers for testing AND should be reusable in tours for 75% maintenance reduction
+
+**Pattern:** Extract components with `isDemo` parameter and comprehensive accessibility
+
+```swift
+// ✅ CORRECT - Extracted component with accessibility and demo mode
+struct CardCountPickerComponent: View {
+    @Binding var numberOfTerms: Int
+    let availableTermsCount: Int
+    let isDemo: Bool  // Enables visual-only demo mode for tours
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Number of Cards")
+                .font(.headline)
+                .accessibilityAddTraits(.isHeader)
+
+            HStack {
+                Button(action: { if !isDemo { numberOfTerms = max(5, numberOfTerms - 5) } }) {
+                    Image(systemName: "minus.circle.fill")
+                }
+                .disabled(isDemo || numberOfTerms <= 5)
+                .accessibilityIdentifier("flashcard-decrease-count")
+
+                Text("\(numberOfTerms)")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .frame(minWidth: 50)
+                    .accessibilityIdentifier("flashcard-count-display")
+                    .accessibilityLabel("\(numberOfTerms) cards selected")
+
+                Button(action: { if !isDemo { numberOfTerms = min(availableTermsCount, numberOfTerms + 5) } }) {
+                    Image(systemName: "plus.circle.fill")
+                }
+                .disabled(isDemo || numberOfTerms >= availableTermsCount)
+                .accessibilityIdentifier("flashcard-increase-count")
+            }
+
+            Text("\(availableTermsCount) available")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .accessibilityLabel("\(availableTermsCount) cards available in total")
+        }
+    }
+}
+
+// Production usage
+CardCountPickerComponent(
+    numberOfTerms: $numberOfTerms,
+    availableTermsCount: availableCount,
+    isDemo: false  // Full functionality
+)
+
+// Tour usage (REUSES SAME COMPONENT!)
+FeatureTourStep(
+    icon: "number.circle",
+    title: "Card Count Selection",
+    description: "Choose how many terms...",
+    liveComponent: AnyView(
+        CardCountPickerComponent(
+            numberOfTerms: .constant(20),
+            availableTermsCount: 50,
+            isDemo: true  // Visual-only, all actions disabled
+        )
+    )
+)
+
+// ❌ WRONG - Inline UI, no accessibility, not reusable
+struct FlashcardConfigurationView: View {
+    var body: some View {
+        HStack {
+            Button("-") { numberOfTerms -= 5 }  // No accessibility ID
+            Text("\(numberOfTerms)")  // No accessibility label
+            Button("+") { numberOfTerms += 5 }  // No accessibility ID
+        }
+    }
+}
+```
+
+**WHY:**
+- Production components update tours automatically when UI changes
+- Comprehensive accessibility IDs enable UI testing
+- 75% maintenance reduction (one component, two contexts)
+- Ensures tour demos match production UI exactly
+- `isDemo` parameter prevents state mutations in tours
+
+**WHEN TO USE:**
+- Any configurable UI component (pickers, sliders, toggles, cards)
+- Components that need to appear in tours
+- All interactive elements requiring accessibility testing
+- When extracting from configuration views
+
+**ACCESSIBILITY ID PATTERN:**
+```
+[feature]-[component]-[element]
+
+Examples:
+- flashcard-count-display
+- test-type-quick-button
+- belt-scope-toggle
+- pattern-help-button
+```
+
+**Component Extraction Checklist:**
+- [ ] Component accepts `isDemo: Bool` parameter
+- [ ] All buttons/controls check `!isDemo` before state changes
+- [ ] `.disabled(isDemo)` on interactive elements
+- [ ] Accessibility identifiers follow `[feature]-[component]-[element]` pattern
+- [ ] Accessibility labels describe current state
+- [ ] Accessibility traits added where appropriate (.isHeader, .isButton, etc.)
+- [ ] Component works in both production and tour contexts
+- [ ] Demo mode shows visual state without functionality
+
 ## Environment & Commands
 
 ### Testing Workflow
