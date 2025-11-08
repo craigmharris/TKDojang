@@ -49,7 +49,9 @@
       "Bash(git log:*)",
       "Bash(git push:*)",
       "Bash(export TEST_DEVICE_ID=0A227615-B123-4282-BB13-2CD2EFB0A434)",
-      "Bash(export:*)"
+      "Bash(export:*)",
+      "Bash(timeout 180 xcodebuild test:*)",
+      "Bash(tee:*)"
     ],
     "deny": [],
     "ask": [],

@@ -711,6 +711,62 @@ let configuration = ModelConfiguration(
 - **Build:** Successful with zero errors
 - **Key Achievement:** Component reuse pattern validated (CardCountPickerComponent used in both production and tour)
 
+**Nov 7, 2025** - `dbe751b` - feat(onboarding): Add Theory and Techniques help sheets with (?) button integration
+- **Theory Help Sheet (TheoryHelpSheet.swift - ~160 lines):**
+  - Explains belt-level organization and content categories
+  - Covers filtering & navigation for theory content
+  - Describes Progression vs Mastery mode content visibility
+  - Integrated with (?) button in TheoryView toolbar (.principal placement)
+- **Techniques Help Sheet (TechniquesHelpSheet.swift - ~170 lines):**
+  - Explains search functionality across English/Korean terms
+  - Covers category browsing (Blocks, Kicks, Punches, Stances, etc.)
+  - Details advanced filtering (belt level, difficulty, tags)
+  - Describes technique detail views with comprehensive information
+  - Integrated with (?) button in TechniquesView toolbar (.principal placement)
+- **Consistent Help Sheet Pattern:**
+  - Single-page overlay with NavigationStack
+  - Sections: helpSection() for content areas, tipRow() for quick tips
+  - Standard structure: Header → Divider → Content Sections → Quick Tips
+  - Toolbar with "Done" button (.navigationBarTrailing)
+- **Build:** ✅ Successful with zero errors
+- **Status:** Phase 2 Day 6 partially complete (Theory & Techniques help)
+
+**Nov 7-8, 2025** - `37f47a2` - feat(onboarding): Complete help system coverage for all features
+- **LineWork Help Sheet (LineWorkHelpSheet.swift - ~170 lines):**
+  - Explains exercise sequences and movement types (STATIC, FORWARD, BACKWARD, FWD & BWD, ALTERNATING)
+  - Covers filtering options (movement type, category, belt level)
+  - Describes learning mode filtering (Progression vs Mastery)
+  - Provides practice guidance and quick tips
+  - Integrated with (?) button in LineWorkView (.principal placement)
+- **Patterns Selection Help Sheet (PatternsHelpSheet.swift - ~170 lines):**
+  - Explains pattern selection from list interface
+  - Covers learning mode filtering and belt-appropriate content
+  - Details progress tracking (percentage, mastery levels, belt-themed progress bars)
+  - Describes pattern information available (significance, moves, Korean terms)
+  - Integrated with (?) button in PatternsView (.principal placement)
+- **Step Sparring Selection Help Sheet (StepSparringHelpSheet.swift - ~175 lines):**
+  - Explains sparring type selection (3-step, 2-step, 1-step, Free)
+  - Covers sequence selection and belt-level filtering
+  - Details progress tracking (overall completion, mastered count, sessions, time)
+  - Describes sequence content (attack-defense-counter, Korean terms, execution details)
+  - Integrated with (?) button in StepSparringView (.principal placement)
+- **Pattern Test Feature Tour (4 steps):**
+  - Added `.patternTest` case to OnboardingCoordinator.FeatureTour enum
+  - Created 4-step tour in FeatureTourDefinitions.swift:
+    * Step 1: Pattern Sequence Testing overview
+    * Step 2: Three-Part Selection (stance, technique, movement)
+    * Step 3: Sequence Context (previous/upcoming moves for flow)
+    * Step 4: Review Results (accuracy breakdown per component)
+  - Integrated with PatternTestView (help button + auto-show on first visit)
+  - Tour completion tracking per profile via OnboardingCoordinator
+- **Architecture Consistency:**
+  - All features now have help/tour access via (?) buttons
+  - Consistent toolbar placement (.principal for help, .trailing for actions)
+  - Uniform help sheet structure across all features
+  - Pattern Test follows same FeatureTourView integration as other complex features
+- **Build:** ✅ Successful with zero errors
+- **Status:** Phase 2 Day 6 complete - comprehensive help coverage achieved
+
 **Nov 7, 2025** - `5d28752` - feat(testing): Day 3 - Multiple Choice configuration with dynamic controls and fixed navigation
 - **Multiple Choice Configuration Enhancement:**
   - Created MultipleChoiceConfigurationView (467 lines) matching Flashcards pattern
@@ -741,14 +797,15 @@ let configuration = ModelConfiguration(
 
 ## Future Development History
 
-### In Progress (As of Nov 7, 2025)
+### In Progress (As of Nov 8, 2025)
 
 **Phase 8 (In Progress):** Onboarding & First-Time User Experience
 - Days 1-5: ✅ Complete (TipKit integration, initial tour UI, replay functionality)
 - Phase 2 Days 1-5: ✅ Complete (All 4 feature tours: Flashcards, Multiple Choice, Patterns, StepSparring)
 - Multiple Choice enhancement: ✅ Complete (rich configuration, 3 components, 5-step tour)
-- Remaining: Theory/Techniques help sheets, polish & documentation (Days 6-7)
-- **Timeline:** ~3-5 days remaining
+- Phase 2 Day 6: ✅ Complete (All help sheets: Theory, Techniques, LineWork, Patterns, StepSparring + Pattern Test tour)
+- Remaining: Day 7 polish & documentation
+- **Timeline:** ~1 day remaining
 
 **Phase 3 (Paused):** E2E User Journey Testing
 - 1/12 tests completed

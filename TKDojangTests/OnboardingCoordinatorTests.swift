@@ -280,11 +280,12 @@ class OnboardingCoordinatorTests: XCTestCase {
         // Test all feature tour types are defined
         let allTours = OnboardingCoordinator.FeatureTour.allCases
 
-        XCTAssertEqual(allTours.count, 4, "Should have 4 feature tours")
+        XCTAssertEqual(allTours.count, 5, "Should have 5 feature tours")
         XCTAssertTrue(allTours.contains(.flashcards))
         XCTAssertTrue(allTours.contains(.multipleChoice))
         XCTAssertTrue(allTours.contains(.patterns))
         XCTAssertTrue(allTours.contains(.stepSparring))
+        XCTAssertTrue(allTours.contains(.patternTest))
     }
 
     func testFeatureTourDisplayNames() {
@@ -293,5 +294,54 @@ class OnboardingCoordinatorTests: XCTestCase {
         XCTAssertFalse(OnboardingCoordinator.FeatureTour.multipleChoice.title.isEmpty)
         XCTAssertFalse(OnboardingCoordinator.FeatureTour.patterns.title.isEmpty)
         XCTAssertFalse(OnboardingCoordinator.FeatureTour.stepSparring.title.isEmpty)
+        XCTAssertFalse(OnboardingCoordinator.FeatureTour.patternTest.title.isEmpty)
+    }
+
+    func testPatternTestTourSteps() {
+        // Given: Pattern Test tour
+        let tour = OnboardingCoordinator.FeatureTour.patternTest
+
+        // When: Getting tour steps
+        let steps = tour.tourSteps
+
+        // Then: Should have 4 steps
+        XCTAssertEqual(steps.count, 4, "Pattern Test tour should have 4 steps")
+
+        // And: Each step should have required properties
+        for (index, step) in steps.enumerated() {
+            XCTAssertFalse(step.icon.isEmpty, "Step \(index) should have an icon")
+            XCTAssertFalse(step.title.isEmpty, "Step \(index) should have a title")
+            XCTAssertFalse(step.description.isEmpty, "Step \(index) should have a description")
+        }
+
+        // And: Tour metadata should be correct
+        XCTAssertEqual(tour.title, "Pattern Test", "Title should be 'Pattern Test'")
+        XCTAssertEqual(tour.estimatedMinutes, 2, "Should estimate 2 minutes")
+        XCTAssertEqual(tour.helpButtonTitle, "How does pattern testing work?")
+    }
+
+    func testPatternTestTourCompletion() throws {
+        // Given: A profile that hasn't seen the Pattern Test tour
+        let testBelt = TestDataFactory().createBasicBeltLevels().first!
+        let profile = UserProfile(name: "Test", currentBeltLevel: testBelt)
+
+        // When: Checking if tour should show
+        let shouldShowBefore = coordinator.shouldShowFeatureTour(.patternTest, profile: profile)
+
+        // Then: Tour should show for new profile
+        XCTAssertTrue(shouldShowBefore, "Pattern Test tour should show for new profile")
+
+        // When: Completing the tour
+        coordinator.completeFeatureTour(.patternTest, profile: profile)
+
+        // Then: Tour should not show again
+        let shouldShowAfter = coordinator.shouldShowFeatureTour(.patternTest, profile: profile)
+        XCTAssertFalse(shouldShowAfter, "Pattern Test tour should not show after completion")
+
+        // And: Should be persisted in profile
+        XCTAssertTrue(
+            profile.completedFeatureTours.contains("patternTest"),
+            "patternTest should be in completedFeatureTours"
+        )
     }
 }
