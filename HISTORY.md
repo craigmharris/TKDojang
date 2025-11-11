@@ -817,6 +817,49 @@ let configuration = ModelConfiguration(
 - **Build:** ✅ Successful with zero errors
 - **Status:** Phase 2 Day 3 complete, all 4 feature tours implemented
 
+**Nov 11, 2025** - `[commit hash]` - feat(vocabulary-builder): Complete all 6 game modes with animations and SwiftUI binding fixes
+- **Vocabulary Builder Feature - All 6 Game Modes Complete:**
+  - ✅ Word Matching: Multiple choice vocabulary recognition
+  - ✅ Slot Builder: Guided slot-by-slot phrase construction with validation
+  - ✅ Template Filler: Fill common phrase patterns from curriculum
+  - ✅ Phrase Decoder: Drag-and-drop word ordering practice
+  - ✅ Memory Match: Card matching game with 3D flip animations
+  - ✅ Creative Sandbox: Free phrase exploration with smart suggestions
+- **Supporting Infrastructure:**
+  - VocabularyBuilderView dashboard with 6 game mode cards
+  - VocabularyBuilderHelpSheet with comprehensive game explanations
+  - VocabularyCategories and PhraseGrammar services (121 words, phrase validation)
+  - VocabularyBuilderSystemTests + 3 component test suites
+  - Configuration → Game → Results flow for all modes
+- **Critical SwiftUI Pattern Discovery - Version Counter for Binding Propagation:**
+  - **Problem:** Child views not updating when nested struct arrays mutated via @Binding
+  - **Root Cause:** SwiftUI doesn't deep-compare array contents for equality detection
+  - **Solution:** Added version counter to session structs, increment on every mutation
+  - **Impact:** Solves entire class of binding propagation bugs in game states
+  - **Documented:** Added Pattern #7 to CLAUDE.md for future reference
+- **Memory Match Game Implementation:**
+  - 3D flip animations (0.3s rotation with easeInOut timing)
+  - Card matching with move counter and completion tracking
+  - Belt-themed card backs with Korean calligraphy
+  - Configurable grid sizes (6-12 pairs)
+  - MemoryMatchService with match validation and metrics
+- **Test Coverage:**
+  - MemoryMatchComponentTests: Game flow, matching logic, state management
+  - PhraseDecoderComponentTests: Word ordering validation
+  - TemplateFillerComponentTests: Template completion logic
+  - VocabularyBuilderSystemTests: Integration across all modes
+- **Files Created:** 15+ views, 5 services, 4 test suites, 1 help sheet
+- **Build:** ✅ Successful with zero errors
+- **Status:** Priority 1 feature complete (pending feature tour creation)
+- **User Impact:** Addresses #1 user feedback - difficulty learning complex 5-6 word Korean phrases
+
+**Technical Achievements:**
+- Discovered and documented critical SwiftUI binding pattern (version counter)
+- Implemented smooth 3D card flip animations without performance impact
+- Created reusable game architecture (Config → Game → Results) for 6 modes
+- Validated property-based testing approach for game logic
+- Achieved 100% build success across all vocabulary builder components
+
 ---
 
 ## Future Development History

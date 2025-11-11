@@ -497,6 +497,67 @@ Examples:
 - [ ] Component works in both production and tour contexts
 - [ ] Demo mode shows visual state without functionality
 
+### 7. SwiftUI: Version Counter for Binding Propagation
+
+**Context:** SwiftUI doesn't detect nested struct mutations in @Binding, causing child views to display stale state
+
+```swift
+// ❌ PROBLEM - Child views don't update
+struct MemoryMatchSession {
+    var cards: [MemoryCard]
+    var moveCount: Int = 0
+}
+
+// In parent view:
+var newSession = session
+newSession.cards[index].isFlipped = true
+session = newSession  // SwiftUI doesn't detect this as a change!
+
+// Child views still see old card state because SwiftUI's change
+// detection doesn't deep-compare array contents
+```
+
+```swift
+// ✅ SOLUTION - Add version counter
+struct MemoryMatchSession {
+    var cards: [MemoryCard]
+    var moveCount: Int = 0
+    var version: Int = 0  // Force change detection
+}
+
+// In parent view - increment version on EVERY state mutation:
+private func flipCard(_ card: MemoryCard) {
+    var cards = session.cards
+    cards[index].isFlipped = true
+
+    var newSession = session
+    newSession.cards = cards
+    newSession.version += 1  // ← This forces SwiftUI to detect change
+    session = newSession
+}
+```
+
+**WHY:**
+- SwiftUI compares struct values for equality to detect changes
+- Nested array mutations don't change struct equality (cards array has same identity)
+- Version counter changes on every mutation, forcing SwiftUI to propagate update
+- All child views observing @Binding receive the new struct
+
+**WHEN TO USE:**
+- Any struct with nested collections (arrays, dictionaries) passed via @Binding
+- When child views aren't updating despite parent state changes
+- Game states, session data, or any mutable nested structures
+- Alternative to converting to ObservableObject (keeps struct value semantics)
+
+**CRITICAL:** Increment version in ALL functions that mutate nested state:
+```swift
+// EVERY mutation function needs version increment:
+flipCard() → version += 1
+resetCards() → version += 1
+markAsMatched() → version += 1
+updateScore() → version += 1
+```
+
 ## Environment & Commands
 
 ### Testing Workflow

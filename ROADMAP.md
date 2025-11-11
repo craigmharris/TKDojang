@@ -1,6 +1,6 @@
 # TKDojang Development Roadmap
 
-**Last Updated:** November 8, 2025
+**Last Updated:** November 11, 2025
 **Current Status:** Production-ready (459/473 tests passing, WCAG 2.2 compliant)
 
 ---
@@ -11,6 +11,7 @@
 - Complete multi-profile system (6 profiles)
 - Comprehensive onboarding & help system (5 tours + 6 help sheets, 100% feature coverage)
 - 5 content types fully implemented (Terminology, Patterns, StepSparring, LineWork, Theory, Techniques)
+- **Vocabulary Builder**: 6 interactive game modes (Word Matching, Slot Builder, Template Filler, Phrase Decoder, Memory Match, Creative Sandbox)
 - Comprehensive testing infrastructure (459/473 tests passing - 97%)
 - Advanced SwiftData architecture with proven performance patterns
 - Full offline functionality with local data storage
@@ -28,134 +29,360 @@
 
 ## Priority 1: Vocabulary Builder Feature
 
-**Status:** Planned
-**Timeline:** 3-4 weeks
+**Status:** 🧪 Testing - All 6 Game Modes Complete (Pending Feature Tour + Data Validation)
+**Timeline:** Complete - Built in Phase 8 (Nov 2025)
 **Priority:** HIGH - User feedback indicates difficulty with complex phrases
 
-### User Feedback Context
-- **Issue:** 5-6 word terminology phrases are difficult to learn
-- **Impact:** Users struggle to progress beyond basic terminology
-- **Solution:** Progressive word-building system from individual words to full phrases
+### Feature Vision
 
-### Feature Requirements
+**Goal:** Teach users Korean TKD phrase grammar through engaging, game-based learning
 
-#### 1. Word Breakdown System
-- **Phrase Analysis**: Break existing terminology into component words
-  - Example: "왼 걷기 서기 아래 막기" → ["왼", "걷기", "서기", "아래", "막기"]
-  - Meaning: ["Left", "Walking", "Stance", "Low", "Block"]
-- **Word Database**: Build vocabulary of individual Korean words used across terminology
-- **Progressive Complexity**: Start with 1-2 word phrases, build to 5-6 words
+**Core Problem:** Users struggle with complex Korean terminology not because phrases are long, but because they don't understand:
+- Word categories (directions, tools, actions, sections)
+- Phrase structure patterns (how words combine)
+- Creative construction (building new valid phrases)
 
-#### 2. Learning Modes
+**Solution:** 6 complementary game modes that teach phrase grammar from multiple angles
 
-**Mode 1: Word Matching**
-- Match individual Korean words to English meanings
-- Build familiarity with common words (걷기, 서기, 막기, etc.)
-- Track word-level mastery
+---
 
-**Mode 2: Phrase Building**
-- Given English phrase, build Korean phrase from word tiles
-- Drag-and-drop interface
-- Immediate feedback on correct word order
-- Example: "Left Walking Stance" → Arrange ["왼", "걷기", "서기"]
+### Implementation Plan
 
-**Mode 3: Progressive Assembly**
-- Start with 2-word phrases (e.g., "왼 걷기")
-- Progress to 3-word phrases (e.g., "왼 걷기 서기")
-- Build up to full 5-6 word phrases
-- Unlock longer phrases as shorter ones mastered
+#### **MVP (Ship in 4 Days): Word Matching + Slot Builder**
 
-**Mode 4: Phrase Completion**
-- Given partial phrase, fill in missing words
-- Example: "왼 ___ 서기 아래 ___" (fill "걷기" and "막기")
-- Multiple difficulty levels (1 blank, 2 blanks, 3 blanks)
+**Phase 1: Foundation Refactor** (4-6 hours)
+- Refactor `VocabularyBuilderView` into game launcher dashboard
+- Create `VocabularyGameMode` enum (6 modes)
+- Extract reusable `GameModeCard` component
+- Establish navigation architecture for all games
+- **Deliverable:** Game launcher with Word Matching (working) + 5 placeholders
 
-#### 3. Integration with Existing Systems
+**Phase 2: Slot Builder - Data & Logic** (6-8 hours)
+- Define word categories (Action, Direction, Tool, Section, Quantity)
+- Create phrase grammar rules and templates
+- Build `PhraseGrammar.swift` with validation logic
+- Implement `SlotBuilderService` for game logic
+- **Deliverable:** Backend ready for UI integration
 
-**Terminology Integration:**
-- Link vocabulary builder progress to terminology system
-- Show word breakdown for any terminology entry
-- Quick access: "Practice this phrase in Vocabulary Builder"
+**Phase 3: Slot Builder - Configuration** (3-4 hours)
+- Create `SlotBuilderConfigurationView`
+- Extract `PhraseLengthPickerComponent` (reusable)
+- Add session count picker
+- Difficulty mode selector (Guided vs Challenge)
+- **Deliverable:** User can configure slot builder sessions
 
-**Flashcard Enhancement:**
-- Option to study word components before full phrases
-- "Break down this term" button on flashcards
-- Leitner system applies to individual words
+**Phase 4: Slot Builder - Game View** (8-10 hours)
+- Build `SlotBuilderGameView` (main gameplay)
+- Create components:
+  - `PhraseSlotComponent` (empty slot with category hint)
+  - `WordCategoryPickerComponent` (grid of options)
+  - `PhraseValidationComponent` (success/error feedback)
+- Implement game states (slot-by-slot progression)
+- **Deliverable:** Fully playable slot builder game
 
-**Progress Tracking:**
-- Track word-level mastery (how many times each word seen/correct)
-- Phrase assembly accuracy tracking
-- Time to correctly build phrases
-- Difficulty progression (2-word → 6-word mastery)
+**Phase 5: Polish & Integration** (4-6 hours)
+- Add accessibility IDs to all components
+- Create `VocabularyBuilderHelpSheet.swift`
+- Add feature tour to `FeatureTourDefinitions.swift`
+- Build `SlotBuilderResultsView` with stats
+- **Deliverable:** Ship-ready quality
 
-#### 4. Content Structure
+**Phase 6: Testing & Documentation** (2-3 hours)
+- Manual testing (navigation, accessibility, tours)
+- Update README.md and ROADMAP.md
+- Validate all help content
+- **Deliverable:** Documented and tested
 
-**Word Database JSON:**
-```json
-{
-  "korean_words": [
-    {
-      "word": "왼",
-      "romanization": "wen",
-      "meaning": "left",
-      "category": "direction",
-      "difficulty": "beginner"
-    },
-    {
-      "word": "걷기",
-      "romanization": "geotgi",
-      "meaning": "walking",
-      "category": "movement",
-      "difficulty": "beginner"
-    }
-  ],
-  "phrase_structures": [
-    {
-      "phrase_id": "left_walking_stance_low_block",
-      "components": ["왼", "걷기", "서기", "아래", "막기"],
-      "full_phrase": "왼 걷기 서기 아래 막기",
-      "meaning": "Left Walking Stance Low Block",
-      "difficulty": 5,
-      "belt_level": "9th_keup"
-    }
-  ]
-}
+**Total MVP Time: 27-37 hours (4 days)**
+
+---
+
+### The 6 Game Modes
+
+#### **1. 🎯 Word Matching** (✅ Complete)
+**What:** Match English words to Korean romanized equivalents
+**Pedagogy:** Build vocabulary recognition - foundation for phrase construction
+**Features:**
+- 4 multiple choice options
+- Difficulty levels (Beginner/Intermediate/Advanced)
+- Progress tracking
+- Immediate feedback
+
+---
+
+#### **2. 🎰 Slot Builder** (✅ Complete)
+**What:** Guided slot-by-slot phrase construction
+**Pedagogy:** Teaches phrase structure through step-by-step building
+
+**How it works:**
+```
+Step 1: "What type of technique?"
+  → [Kick] [Block] [Strike] [Punch]
+  User selects: Block
+
+Step 2: "What section?"
+  → [High (Nopunde)] [Mid (Kaunde)] [Low (Najunde)]
+  User selects: Low (Najunde)
+
+Step 3: "What direction?"
+  → [Outer (Bakat)] [Inner (An)] [Inward (Anaero)]
+  User selects: Outer (Bakat)
+
+Step 4: "What tool?"
+  → [Forearm (Palmok)] [Knife Hand (Sonkal)]
+  User selects: Forearm (Palmok)
+
+Result: "Najunde Bakat Palmok Makgi"
+✓ Low Section Outer Forearm Block
 ```
 
-### UI/UX Design
+**Difficulty Modes:**
+- **Guided:** Category labels shown, limited options per slot
+- **Challenge:** More options, less guidance
 
-**Vocabulary Builder Screen:**
-- Mode selector (Word Matching, Phrase Building, Progressive Assembly, Completion)
-- Word bank (available words as draggable tiles)
-- Assembly area (drop zone for building phrases)
-- Progress visualization (words mastered, phrases completed)
-- Difficulty selector (2-word → 6-word)
+**Phrase Lengths:** 2-5 words (user chooses)
 
-**Visual Feedback:**
-- ✅ Green highlight for correct word placement
-- ❌ Red highlight for incorrect placement
-- ⚡ Hint system (show first letter/word position)
-- 🎯 Target phrase displayed in English
+**Why effective:**
+- Teaches which word categories exist
+- Shows valid combinations
+- Reinforces structure through repetition
+- Immediate validation feedback
 
-### Technical Implementation
+---
 
-**VocabularyBuilder Service:**
-```swift
-class VocabularyBuilderService {
-    func loadWordDatabase() -> [KoreanWord]
-    func loadPhraseStructures() -> [PhraseStructure]
-    func getWordsForDifficulty(_ level: Int) -> [KoreanWord]
-    func validatePhraseAssembly(_ words: [String], target: String) -> Bool
-    func trackWordMastery(word: String, correct: Bool)
-    func getProgressionLevel(for profile: UserProfile) -> Int
-}
+#### **3. 📝 Template Filler** (✅ Complete)
+**What:** Fill common phrase templates with appropriate words
+**Pedagogy:** Learn real phrase patterns from curriculum
+
+**How it works:**
 ```
+Complete this technique:
+"_____ _____ Kick"
+[Direction] [Style]
+
+Word bank: [Front] [Side] [Turning] [Snap] [Thrust] [Rising]
+
+User builds: "Side Thrust Kick"
+✓ Yop Mil Chagi - Correct!
+```
+
+**Templates by complexity:**
+- 2-word: `[Direction] + Kick`
+- 3-word: `[Direction] + [Tool] + Block`
+- 4-word: `[Section] + [Direction] + [Tool] + Block`
+- 5-word: `[Quantity] + [Section] + [Direction] + [Tool] + Block`
+
+**Why effective:**
+- Uses real curriculum patterns
+- Clear success criteria
+- Progressive complexity
+- Less overwhelming than free construction
+
+---
+
+#### **4. 🧩 Phrase Decoder** (✅ Complete)
+**What:** Given English phrase, arrange Korean word tiles in correct order
+**Pedagogy:** Teaches word order through practice
+
+**How it works:**
+```
+Build this phrase:
+"Outer Forearm Block"
+
+Word tiles: [Makgi] [Bakat] [Palmok] [Sang] [Ap] [Najunde]
+
+Drop zones: [____] [____] [____]
+
+Hints:
+💡 Categories: [Direction] [Tool] [Action]
+💡 Position: "Direction comes first"
+💡 Letters: "B____ P____ M____"
+```
+
+**Difficulty modes:**
+- **Apprentice:** Category labels + position hints
+- **Practitioner:** Number of words only
+- **Expert:** No hints, full word bank
+
+**Why effective:**
+- Direct practice with word order
+- Progressive hint system
+- Uses real curriculum terminology
+- Builds confidence through success
+
+---
+
+#### **5. 🎴 Memory Match** (✅ Complete)
+**What:** Classic memory card game with English/Korean pairs
+**Pedagogy:** Strengthens word recognition through pattern matching
+
+**How it works:**
+```
+16/24/30 cards face-down (user chooses)
+- Half are English words
+- Half are Korean romanized equivalents
+
+Turn over two cards:
+Card 1: "Front"
+Card 2: "Ap"
+✓ Match! Cards removed
+
+Continue until all pairs found
+Track: Time, Moves, Accuracy
+```
+
+**Variations:**
+- **Word Match:** English ↔ Korean pairs
+- **Phrase Match:** Full phrase pairs
+- **Mixed Mode:** Some words, some phrases
+
+**Why effective:**
+- Familiar game mechanic (low cognitive load)
+- Builds visual/spatial memory associations
+- Fun, non-threatening way to learn
+- Natural spaced repetition (failed matches seen again)
+
+---
+
+#### **6. 🎨 Creative Sandbox** (✅ Complete)
+**What:** Free phrase construction with smart suggestions
+**Pedagogy:** Encourages exploration and experimentation
+
+**How it works:**
+```
+┌─────────────────────────────┐
+│ Your phrase: [Empty]        │
+└─────────────────────────────┘
+
+Word categories:
+📍 Directions: Ap, Yop, Bakat...
+🎯 Sections: Nopunde, Kaunde...
+🛠️ Tools: Palmok, Sonkal, Joomuk...
+⚡ Actions: Makgi, Chagi, Taerigi...
+
+User adds: [Sang]
+💭 "Sang" (Twin) is often followed by a tool
+   Try: [Sonkal] [Joomuk] [Palmok]
+
+User adds: [Sang] [Sonkal]
+💭 Knife hand techniques often use:
+   Try: [Makgi] [Taerigi] [Daebi]
+
+Built: "Sang Sonkal Makgi"
+✓ Twin Knife Hand Block
+🌟 This is a real technique!
+```
+
+**Features:**
+- User chooses phrase length (2-5 words) - no artificial unlocking
+- Smart suggestions based on context
+- Validation: Real technique vs creative combination
+- Save personal phrase collection
+- If user struggles, suggest shorter phrases
+
+**Why effective:**
+- Freedom encourages creativity
+- Smart suggestions teach patterns naturally
+- Celebrates both curriculum and creative phrases
+- Advanced users can explore deeply
+
+---
+
+### Implementation Completed (Nov 2025)
+
+**All 6 Game Modes Built in Phase 8:**
+- ✅ Template Filler: Fill common phrase patterns from curriculum
+- ✅ Phrase Decoder: Drag-and-drop word ordering practice
+- ✅ Memory Match: Card matching game with 3D flip animations
+- ✅ Creative Sandbox: Free phrase exploration with smart suggestions
+
+**Consistent Architecture Across All Games:**
+- Configuration → Game → Results flow
+- Reusable components with `isDemo` parameter for tours
+- Comprehensive accessibility IDs for testing
+- Belt-themed styling
+- Progress tracking and metrics calculation
+
+**Critical Pattern Discovery:**
+- Version counter pattern for SwiftUI binding propagation (documented in CLAUDE.md)
+- Solves nested struct mutation detection issues
+- Applied across all game session models
+
+---
+
+### Component Reusability Strategy
+
+**Shared Components (Built During MVP):**
+- `GameModeCard` - Dashboard cards for all 6 games
+- `WordTile` - Display Korean/English word pairs
+- `ProgressBar` - Session progress tracking
+- `PhraseValidationComponent` - Success/error feedback
+- `ResultsView` - Session completion stats
+- `PhraseSlotComponent` - Empty slots with hints
+
+**Component Extraction Guidelines:**
+- All components support `isDemo: Bool` parameter
+- Reusable in tours (75% maintenance reduction)
+- Comprehensive accessibility IDs
+- Extracted to `/Components/` folder immediately
+
+---
+
+### Technical Architecture
+
+**Files Created:**
+```
+Features/VocabularyBuilder/
+├── VocabularyBuilderView.swift (Game launcher)
+├── VocabularyBuilderModels.swift (Shared enums/models)
+├── VocabularyBuilderHelpSheet.swift
+├── VocabularyCategories.swift (Word categories)
+├── PhraseGrammar.swift (Templates & validation)
+│
+├── Games/
+│   ├── WordMatchingView.swift (✅ Complete)
+│   ├── SlotBuilderConfigurationView.swift
+│   ├── SlotBuilderGameView.swift
+│   ├── SlotBuilderResultsView.swift
+│   └── [Future games...]
+│
+└── Components/
+    ├── GameModeCard.swift
+    ├── PhraseSlotComponent.swift
+    ├── WordCategoryPickerComponent.swift
+    ├── PhraseLengthPickerComponent.swift
+    └── PhraseValidationComponent.swift
+
+Services/
+└── SlotBuilderService.swift (Game logic)
+```
+
+**Data Structure:**
+- `vocabulary_words.json` - 121 English ↔ Korean mappings (✅ Generated)
+- `VocabularyCategories` - Hardcoded word categories for MVP
+- `PhraseGrammar` - Template rules and validation logic
+
+---
 
 ### Success Metrics
-- [ ] Users show 40% improvement in 5-6 word phrase retention
-- [ ] Average time to master complex phrases reduced by 50%
-- [ ] 70%+ users use Vocabulary Builder before flashcards
-- [ ] User feedback: "Easier to learn phrases" rating >4/5
+
+**MVP Launch (Word Matching + Slot Builder):**
+- [ ] 70%+ users try both games
+- [ ] Average session length >5 minutes
+- [ ] Completion rate >80% for started sessions
+- [ ] User feedback: "Fun and educational" >4/5
+
+**Full Feature (All 6 Games):**
+- [ ] 40% improvement in phrase retention vs flashcards alone
+- [ ] Average time to master 5-word phrases reduced 50%
+- [ ] 60%+ users use Vocabulary Builder before terminology tests
+- [ ] 80%+ users try ≥3 different game modes
+
+**Engagement:**
+- [ ] Users return to Vocabulary Builder 3+ times per week
+- [ ] Average user completes 20+ phrases per session
+- [ ] Memory Match game sees highest replay rate
+- [ ] Creative Sandbox used by 40%+ advanced users
 
 ---
 

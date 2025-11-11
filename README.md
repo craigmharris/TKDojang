@@ -61,6 +61,13 @@
 - Flashcard system with spaced repetition
 - Multiple choice testing with smart distractor selection
 - Pattern practice with move-by-move guidance
+- **Vocabulary Builder**: 6 interactive game modes teaching phrase grammar
+  - Word Matching (multiple choice)
+  - Slot Builder (guided phrase construction)
+  - Template Filler (common phrase patterns)
+  - Phrase Decoder (word ordering practice)
+  - Memory Match (card matching game)
+  - Creative Sandbox (free phrase exploration)
 - Comprehensive progress analytics
 
 ### Technical Highlights
