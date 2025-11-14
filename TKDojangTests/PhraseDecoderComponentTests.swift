@@ -127,19 +127,19 @@ final class PhraseDecoderComponentTests: XCTestCase {
         let techniques = try TechniquePhraseLoader.loadAllTechniques()
 
         for technique in techniques {
-            // English and Korean should have same word count
-            XCTAssertEqual(
-                technique.englishWords.count,
-                technique.koreanWords.count,
-                "English and Korean word counts should match for: \(technique.english)"
-            )
+            // Note: English and Korean word counts may differ (e.g., "9 Shape Block" vs "Gooburigi Makgi")
+            // This is valid - Korean romanization may have different word boundaries
 
-            // Word arrays should match original strings
+            // Word arrays should match original strings when reconstructed
             let reconstructedEnglish = technique.englishWords.joined(separator: " ")
             XCTAssertEqual(reconstructedEnglish, technique.english, "English word array should reconstruct original")
 
             let reconstructedKorean = technique.koreanWords.joined(separator: " ")
             XCTAssertEqual(reconstructedKorean, technique.koreanRomanized, "Korean word array should reconstruct original")
+
+            // Both should have at least one word
+            XCTAssertGreaterThan(technique.englishWords.count, 0, "English should have at least one word")
+            XCTAssertGreaterThan(technique.koreanWords.count, 0, "Korean should have at least one word")
         }
 
         DebugLogger.debug("✅ All \(techniques.count) techniques have correctly split word arrays")
@@ -149,10 +149,13 @@ final class PhraseDecoderComponentTests: XCTestCase {
         let techniques = try TechniquePhraseLoader.loadAllTechniques()
 
         for technique in techniques {
-            let expectedCount = technique.english.components(separatedBy: " ").count
-            XCTAssertEqual(technique.wordCount, expectedCount, "Word count should match for: \(technique.english)")
-            XCTAssertEqual(technique.englishWords.count, expectedCount)
-            XCTAssertEqual(technique.koreanWords.count, expectedCount)
+            // wordCount represents English word count (used for filtering by difficulty)
+            let expectedEnglishCount = technique.english.components(separatedBy: " ").count
+            XCTAssertEqual(technique.wordCount, expectedEnglishCount, "wordCount should match English words for: \(technique.english)")
+            XCTAssertEqual(technique.englishWords.count, expectedEnglishCount, "English word array should match wordCount")
+
+            // Korean word count may differ from English (different language structure)
+            XCTAssertGreaterThan(technique.koreanWords.count, 0, "Korean should have at least one word")
         }
 
         DebugLogger.debug("✅ All techniques have correct word counts")
@@ -206,10 +209,11 @@ final class PhraseDecoderComponentTests: XCTestCase {
                     wordCount,
                     "Challenge should have \(wordCount) words in English"
                 )
-                XCTAssertEqual(
+                // Note: Korean word count may differ from English due to language structure
+                XCTAssertGreaterThan(
                     challenge.correctKorean.count,
-                    wordCount,
-                    "Challenge should have \(wordCount) words in Korean"
+                    0,
+                    "Challenge should have at least one word in Korean"
                 )
                 XCTAssertEqual(
                     challenge.technique.wordCount,
@@ -415,10 +419,16 @@ final class PhraseDecoderComponentTests: XCTestCase {
             XCTAssertEqual(session.challenges.count, phraseCount, "Should generate requested number of challenges")
 
             for challenge in session.challenges {
-                XCTAssertEqual(challenge.correctEnglish.count, wordCount, "English phrase should have correct word count")
-                XCTAssertEqual(challenge.correctKorean.count, wordCount, "Korean phrase should have correct word count")
+                // English word count should match requested wordCount (filter criterion)
+                XCTAssertEqual(challenge.correctEnglish.count, wordCount, "English phrase should match wordCount filter")
                 XCTAssertEqual(challenge.scrambledEnglish.count, wordCount, "Scrambled English should have correct word count")
-                XCTAssertEqual(challenge.scrambledKorean.count, wordCount, "Scrambled Korean should have correct word count")
+
+                // Korean word count may differ from English (different language structure)
+                XCTAssertGreaterThan(challenge.correctKorean.count, 0, "Korean phrase should have at least one word")
+                XCTAssertGreaterThan(challenge.scrambledKorean.count, 0, "Scrambled Korean should have at least one word")
+
+                // Scrambled arrays should have same count as correct arrays
+                XCTAssertEqual(challenge.scrambledKorean.count, challenge.correctKorean.count, "Scrambled Korean should match correct Korean count")
             }
 
             DebugLogger.debug("✅ Property-based test passed: wordCount=\(wordCount), phraseCount=\(phraseCount)")

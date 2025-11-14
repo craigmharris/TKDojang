@@ -529,7 +529,7 @@ final class VocabularyBuilderSystemTests: XCTestCase {
 
             // Memory Match
             let memoryService = MemoryMatchService(modelContext: testContext)
-            let words = try vocabularyService.loadVocabularyWords()
+            try memoryService.loadVocabulary()
             let pairCount = Int.random(in: 6...12)
 
             let memorySession = try memoryService.generateSession(pairCount: pairCount)

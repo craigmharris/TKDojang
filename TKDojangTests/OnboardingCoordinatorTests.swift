@@ -280,12 +280,14 @@ class OnboardingCoordinatorTests: XCTestCase {
         // Test all feature tour types are defined
         let allTours = OnboardingCoordinator.FeatureTour.allCases
 
-        XCTAssertEqual(allTours.count, 5, "Should have 5 feature tours")
-        XCTAssertTrue(allTours.contains(.flashcards))
-        XCTAssertTrue(allTours.contains(.multipleChoice))
-        XCTAssertTrue(allTours.contains(.patterns))
-        XCTAssertTrue(allTours.contains(.stepSparring))
-        XCTAssertTrue(allTours.contains(.patternTest))
+        // Property-based: Verify all expected tours exist (not hardcoded count)
+        XCTAssertTrue(allTours.contains(.flashcards), "Should have flashcards tour")
+        XCTAssertTrue(allTours.contains(.multipleChoice), "Should have multipleChoice tour")
+        XCTAssertTrue(allTours.contains(.patterns), "Should have patterns tour")
+        XCTAssertTrue(allTours.contains(.stepSparring), "Should have stepSparring tour")
+        XCTAssertTrue(allTours.contains(.patternTest), "Should have patternTest tour")
+        XCTAssertTrue(allTours.contains(.vocabularyBuilder), "Should have vocabularyBuilder tour")
+        XCTAssertGreaterThan(allTours.count, 0, "Should have at least one tour")
     }
 
     func testFeatureTourDisplayNames() {
