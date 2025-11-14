@@ -434,6 +434,10 @@ struct TechniquesPlaceholderView: View {
 }
 
 struct LearnView: View {
+    @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var dataServices: DataServices
+    @State private var userProfile: UserProfile?
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 30) {
@@ -469,7 +473,26 @@ struct LearnView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     .accessibilityIdentifier("learn-flashcards-button")
-                    
+
+                    if let profile = userProfile {
+                        NavigationLink(destination: VocabularyBuilderView(modelContext: modelContext, userProfile: profile)) {
+                            HStack {
+                                Image(systemName: "character.book.closed")
+                                    .frame(width: 24)
+                                Text("Vocabulary Builder")
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.orange.opacity(0.1))
+                            .cornerRadius(12)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .accessibilityIdentifier("learn-vocabulary-button")
+                    }
+
                     NavigationLink(destination: MultipleChoiceConfigurationView()) {
                         HStack {
                             Image(systemName: "checkmark.circle")
@@ -508,6 +531,12 @@ struct LearnView: View {
                 Spacer()
             }
             .navigationTitle("Learn")
+            .onAppear {
+                userProfile = dataServices.profileService.getActiveProfile()
+                if userProfile == nil {
+                    userProfile = dataServices.getOrCreateDefaultUserProfile()
+                }
+            }
         }
     }
 }

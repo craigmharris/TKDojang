@@ -74,6 +74,8 @@ extension OnboardingCoordinator.FeatureTour {
             return stepSparringTourSteps
         case .patternTest:
             return patternTestTourSteps
+        case .vocabularyBuilder:
+            return vocabularyBuilderTourSteps
         }
     }
 
@@ -90,6 +92,8 @@ extension OnboardingCoordinator.FeatureTour {
             return "How does step sparring work?"
         case .patternTest:
             return "How does pattern testing work?"
+        case .vocabularyBuilder:
+            return "How does Vocabulary Builder work?"
         }
     }
 
@@ -366,7 +370,7 @@ extension OnboardingCoordinator.FeatureTour {
     /// Estimated completion time in minutes
     var estimatedMinutes: Int {
         switch self {
-        case .flashcards, .multipleChoice:
+        case .flashcards, .multipleChoice, .vocabularyBuilder:
             return 3 // 5 steps @ ~35s each
         case .patterns, .stepSparring, .patternTest:
             return 2 // 3 steps @ ~40s each
@@ -410,6 +414,93 @@ private var patternTestTourSteps: [FeatureTourStep] {
             title: "Review Results",
             description: "After completing the test, review your accuracy for each component. Results show which moves you mastered and which need more practice.",
             tipText: "Focus practice on moves where you made mistakes"
+        )
+    ]
+}
+
+// MARK: - Vocabulary Builder Tour Steps
+
+/**
+ * Vocabulary Builder feature tour (5 steps)
+ *
+ * WHY: 6 game modes teach Korean phrase grammar from complementary angles
+ * - Word categories (directions, tools, actions, sections)
+ * - Phrase structure patterns (how words combine)
+ * - Creative construction (building valid phrases)
+ *
+ * PEDAGOGY: Multiple game types reinforce same core skill, progressive difficulty
+ */
+private var vocabularyBuilderTourSteps: [FeatureTourStep] {
+    [
+        FeatureTourStep(
+            icon: "character.book.closed.fill",
+            title: "Master Phrase Grammar",
+            description: "Vocabulary Builder teaches Korean phrase grammar through 6 interactive games. Instead of memorizing phrases, you'll learn word categories, construction patterns, and creative building—skills that help you understand any technique name.",
+            tipText: "Grammar skills transfer to all techniques, not just the ones you memorize"
+        ),
+
+        FeatureTourStep(
+            icon: "square.grid.2x2.fill",
+            title: "Six Complementary Game Modes",
+            description: "Each game teaches phrase grammar from a different angle: Word Matching builds vocabulary, Slot Builder teaches structure, Template Filler shows patterns, Phrase Decoder practices word order, Memory Match strengthens recall, and Creative Sandbox encourages exploration.",
+            liveComponent: AnyView(
+                VStack(spacing: 12) {
+                    GameModeCard(
+                        icon: "character.book.closed",
+                        title: "Word Matching",
+                        description: "Match English words to Korean equivalents",
+                        difficulty: "Beginner",
+                        estimatedTime: "5-10 min",
+                        isAvailable: true,
+                        accessibilityId: "vocab-tour-word-matching-demo",
+                        isDemo: true
+                    ) {}
+
+                    GameModeCard(
+                        icon: "square.grid.2x2.fill",
+                        title: "Slot Builder",
+                        description: "Build phrases slot-by-slot with guidance",
+                        difficulty: "Beginner",
+                        estimatedTime: "10-15 min",
+                        isAvailable: true,
+                        accessibilityId: "vocab-tour-slot-builder-demo",
+                        isDemo: true
+                    ) {}
+
+                    GameModeCard(
+                        icon: "square.grid.3x3.fill",
+                        title: "Memory Match",
+                        description: "Match word pairs in a memory card game",
+                        difficulty: "Intermediate",
+                        estimatedTime: "15-20 min",
+                        isAvailable: true,
+                        accessibilityId: "vocab-tour-memory-match-demo",
+                        isDemo: true
+                    ) {}
+                }
+            ),
+            tipText: "Try different games to find what works best for your learning style"
+        ),
+
+        FeatureTourStep(
+            icon: "chart.line.uptrend.xyaxis",
+            title: "Progressive Difficulty",
+            description: "Start with Beginner games (Word Matching, Slot Builder) to build foundations. Progress to Intermediate games (Template Filler, Phrase Decoder, Memory Match) for deeper practice. Advanced learners can experiment freely in Creative Sandbox.",
+            tipText: "Master beginner games before moving to intermediate—build confidence first"
+        ),
+
+        FeatureTourStep(
+            icon: "gear",
+            title: "How to Use",
+            description: "Select a game mode from the dashboard. Each game has configuration options (difficulty, phrase length, card count) tailored to that mode. Complete sessions at your own pace—progress is tracked automatically.",
+            tipText: "Short, frequent sessions are more effective than long cramming"
+        ),
+
+        FeatureTourStep(
+            icon: "checkmark.circle.fill",
+            title: "Ready to Build Vocabulary",
+            description: "Choose your starting game based on experience level. Beginners: start with Word Matching to learn vocabulary. Intermediate: try Slot Builder for phrase structure. Advanced: explore Creative Sandbox for free construction.",
+            tipText: "The best game is the one you'll actually use—pick what looks fun!"
         )
     ]
 }

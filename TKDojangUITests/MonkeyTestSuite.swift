@@ -439,7 +439,12 @@ final class MonkeyTestSuite: XCTestCase {
     private func performShakeDevice(logger: MonkeyTestLogger) -> Bool {
         logger.log("📳 Shaking device")
         XCUIDevice.shared.press(.home)
-        Thread.sleep(forTimeInterval: 0.5)
+        // Wait for home screen to appear before reactivating
+        let expectation = XCTestExpectation(description: "Home wait")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1.0)
         app.activate()
         return true
     }
@@ -447,12 +452,13 @@ final class MonkeyTestSuite: XCTestCase {
     private func performMemoryIntensiveAction(logger: MonkeyTestLogger) {
         // Navigate between different tabs rapidly to load different views
         let tabs = app.tabBars.buttons.allElementsBoundByIndex.filter { $0.exists && $0.isHittable }
-        
+
         for tab in tabs {
             tab.tap()
-            Thread.sleep(forTimeInterval: 0.1)
+            // Brief wait for tab activation
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 0.2)
         }
-        
+
         logger.log("💾 Memory intensive navigation completed")
     }
     
@@ -535,16 +541,18 @@ final class MonkeyTestSuite: XCTestCase {
         let profileTab = app.tabBars.buttons.matching(NSPredicate(format: "label CONTAINS 'Profile'")).firstMatch
         if profileTab.exists {
             profileTab.tap()
+            // Wait for profile screen to load
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
-        Thread.sleep(forTimeInterval: 1.0)
     }
-    
+
     private func navigateToFlashcards() {
         let learnTab = app.tabBars.buttons.matching(NSPredicate(format: "label CONTAINS 'Learn'")).firstMatch
         if learnTab.exists {
             learnTab.tap()
+            // Wait for learn screen to load
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
-        Thread.sleep(forTimeInterval: 1.0)
     }
 }
 

@@ -286,7 +286,8 @@ final class RegressionTestSuite: XCTestCase {
         let answerChoices = app.buttons.matching(NSPredicate(format: "label CONTAINS 'A)' OR label CONTAINS '1.'"))
         if answerChoices.count > 0 {
             answerChoices.firstMatch.tap()
-            Thread.sleep(forTimeInterval: 1.0)
+            // Wait for next question or result to appear
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
     }
     
@@ -385,40 +386,45 @@ final class RegressionTestSuite: XCTestCase {
         let profileTab = app.tabBars.buttons.matching(NSPredicate(format: "label CONTAINS 'Profile'")).firstMatch
         if profileTab.exists {
             profileTab.tap()
+            // Wait for profile screen to load
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
-        Thread.sleep(forTimeInterval: 1.0)
     }
-    
+
     private func navigateToFlashcards() {
         let learnTab = app.tabBars.buttons.matching(NSPredicate(format: "label CONTAINS 'Learn'")).firstMatch
         if learnTab.exists {
             learnTab.tap()
+            // Wait for learn screen to load
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
-        Thread.sleep(forTimeInterval: 1.0)
     }
-    
+
     private func navigateToTesting() {
         let testButton = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Test'")).firstMatch
         if testButton.exists {
             testButton.tap()
+            // Wait for testing screen to load
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
-        Thread.sleep(forTimeInterval: 1.0)
     }
-    
+
     private func navigateToPatterns() {
         let patternButton = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Pattern'")).firstMatch
         if patternButton.exists {
             patternButton.tap()
+            // Wait for patterns screen to load
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
-        Thread.sleep(forTimeInterval: 1.0)
     }
-    
+
     private func navigateToProgress() {
         let progressTab = app.tabBars.buttons.matching(NSPredicate(format: "label CONTAINS 'Progress'")).firstMatch
         if progressTab.exists {
             progressTab.tap()
+            // Wait for progress screen to load
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
-        Thread.sleep(forTimeInterval: 1.0)
     }
 }
 

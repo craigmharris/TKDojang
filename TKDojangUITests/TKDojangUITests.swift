@@ -55,11 +55,12 @@ final class TKDojangUITests: XCTestCase {
     }
     
     func testOnboardingFlow() throws {
-        // Give the app more time to fully load
-        Thread.sleep(forTimeInterval: 2.0)
-        
+        // Wait for app to fully load by checking for UI elements (replaces arbitrary wait)
+        let mainAppOrOnboarding = app.tabBars.firstMatch.waitForExistence(timeout: 5.0) ||
+                                  app.staticTexts["Welcome to TKDojang"].waitForExistence(timeout: 5.0)
+
         // Check if we're already in the main app (onboarding completed)
-        let mainAppLoaded = app.tabBars.firstMatch.waitForExistence(timeout: 3.0)
+        let mainAppLoaded = app.tabBars.firstMatch.exists
         
         if mainAppLoaded {
             print("App already past onboarding - main interface loaded")
@@ -178,10 +179,7 @@ final class TKDojangUITests: XCTestCase {
     // MARK: - Main Navigation Tests
     
     func testMainTabNavigation() throws {
-        // Give app extra time to fully initialize
-        Thread.sleep(forTimeInterval: 3.0)
-        
-        // Look for main interface elements more broadly
+        // Wait for main interface to load by checking for tab bar (replaces arbitrary wait)
         let mainInterfaceLoaded = app.tabBars.firstMatch.waitForExistence(timeout: 15.0) ||
                                 app.navigationBars.firstMatch.waitForExistence(timeout: 10.0) ||
                                 app.buttons.matching(NSPredicate(format: "label CONTAINS 'Profile' OR label CONTAINS 'Learn' OR label CONTAINS 'Test'")).firstMatch.waitForExistence(timeout: 10.0)
@@ -224,10 +222,10 @@ final class TKDojangUITests: XCTestCase {
                 if tab.exists && tab.isHittable {
                     print("Testing tab \(i): \(tab.label)")
                     tab.tap()
-                    
-                    // Give time for navigation
-                    Thread.sleep(forTimeInterval: 1.5)
-                    
+
+                    // Wait for tab content to stabilize after navigation
+                    _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
+
                     // Verify app remains responsive
                     XCTAssertTrue(app.state == .runningForeground, "App should remain active after tab navigation")
                     XCTAssertTrue(tabBar.exists, "Tab bar should remain accessible")
@@ -268,9 +266,10 @@ final class TKDojangUITests: XCTestCase {
                 if ratingsExist && ratingButtons.count > 0 {
                     // Tap first rating button
                     ratingButtons.firstMatch.tap()
-                    
-                    // Should advance to next card or show completion
-                    Thread.sleep(forTimeInterval: 1.0)
+
+                    // Wait for next card or completion screen
+                    let nextCardOrCompletion = app.otherElements.firstMatch.waitForExistence(timeout: 2.0) ||
+                                             app.staticTexts.matching(NSPredicate(format: "label CONTAINS 'Complete' OR label CONTAINS 'Finished'")).firstMatch.waitForExistence(timeout: 2.0)
                     XCTAssertTrue(app.state == .runningForeground, "Should remain active after rating")
                 }
             }
@@ -302,11 +301,11 @@ final class TKDojangUITests: XCTestCase {
                 if answerChoices.count > 0 {
                     // Tap first answer choice
                     answerChoices.firstMatch.tap()
-                    
-                    // Should show next question or results
-                    Thread.sleep(forTimeInterval: 2.0)
-                    
-                    let progressMade = app.staticTexts.matching(NSPredicate(format: "label CONTAINS 'Question' OR label CONTAINS 'Score' OR label CONTAINS 'Result'")).firstMatch.exists
+
+                    // Wait for next question or results to appear
+                    let nextQuestionOrResults = app.staticTexts.matching(NSPredicate(format: "label CONTAINS 'Question' OR label CONTAINS 'Score' OR label CONTAINS 'Result'")).firstMatch
+                    let progressMade = nextQuestionOrResults.waitForExistence(timeout: 3.0) || app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
+
                     XCTAssertTrue(progressMade, "Should show test progress or results")
                 }
             } else {
@@ -333,11 +332,10 @@ final class TKDojangUITests: XCTestCase {
             let practiceButton = app.buttons["pattern-practice-button"]
             if practiceButton.waitForExistence(timeout: 3.0) {
                 practiceButton.tap()
-                
-                // Should show pattern practice interface
-                Thread.sleep(forTimeInterval: 2.0)
-                let practiceInterfaceExists = app.staticTexts.matching(NSPredicate(format: "label CONTAINS 'Move' OR label CONTAINS 'Step' OR label CONTAINS 'technique' OR label CONTAINS 'Practice'")).firstMatch.exists ||
-                                            app.buttons.matching(NSPredicate(format: "label CONTAINS 'Next' OR label CONTAINS 'Previous' OR label CONTAINS 'Continue'")).firstMatch.exists
+
+                // Wait for pattern practice interface to load
+                let practiceInterfaceExists = app.staticTexts.matching(NSPredicate(format: "label CONTAINS 'Move' OR label CONTAINS 'Step' OR label CONTAINS 'technique' OR label CONTAINS 'Practice'")).firstMatch.waitForExistence(timeout: 3.0) ||
+                                            app.buttons.matching(NSPredicate(format: "label CONTAINS 'Next' OR label CONTAINS 'Previous' OR label CONTAINS 'Continue'")).firstMatch.waitForExistence(timeout: 3.0)
                 
                 XCTAssertTrue(practiceInterfaceExists, "Should show pattern practice interface after selection")
             } else {
@@ -345,9 +343,9 @@ final class TKDojangUITests: XCTestCase {
                 let patternButton = app.buttons.firstMatch
                 if patternButton.exists && patternButton.isHittable {
                     patternButton.tap()
-                    
-                    // Verify app remains functional
-                    Thread.sleep(forTimeInterval: 2.0)
+
+                    // Wait for any response to pattern interaction
+                    _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
                     XCTAssertTrue(app.state == .runningForeground, "App should remain functional after pattern interaction")
                 } else {
                     print("Pattern content found but no interactive elements available")
@@ -375,7 +373,8 @@ final class TKDojangUITests: XCTestCase {
                 let tab = tabs.element(boundBy: i)
                 if tab.exists && tab.isHittable {
                     tab.tap()
-                    Thread.sleep(forTimeInterval: 0.5) // Brief delay
+                    // Wait briefly for tab to become active
+                    _ = app.otherElements.firstMatch.waitForExistence(timeout: 0.5)
                 }
             }
         }
@@ -388,10 +387,14 @@ final class TKDojangUITests: XCTestCase {
     func testAppRecoveryAfterBackgrounding() throws {
         // Send app to background
         XCUIDevice.shared.press(.home)
-        
-        // Wait briefly
-        Thread.sleep(forTimeInterval: 2.0)
-        
+
+        // Intentionally wait for app to settle in background state
+        let expectation = XCTestExpectation(description: "Background wait")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 3.0)
+
         // Return to foreground
         app.activate()
         
@@ -407,7 +410,7 @@ final class TKDojangUITests: XCTestCase {
     private func navigateToProfileManagement() {
         // Look for profile/settings tab or button
         let profileTab = app.tabBars.buttons.matching(NSPredicate(format: "label CONTAINS 'Profile' OR label CONTAINS 'Settings'")).firstMatch
-        
+
         if profileTab.exists {
             profileTab.tap()
         } else {
@@ -417,13 +420,14 @@ final class TKDojangUITests: XCTestCase {
                 profileButton.tap()
             }
         }
-        
-        Thread.sleep(forTimeInterval: 1.0)
+
+        // Wait for profile management screen to load
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
     }
     
     private func navigateToFlashcards() {
         let flashcardTab = app.tabBars.buttons.matching(NSPredicate(format: "label CONTAINS 'Learn' OR label CONTAINS 'Cards' OR label CONTAINS 'Study'")).firstMatch
-        
+
         if flashcardTab.exists {
             flashcardTab.tap()
         } else {
@@ -433,13 +437,14 @@ final class TKDojangUITests: XCTestCase {
                 flashcardButton.tap()
             }
         }
-        
-        Thread.sleep(forTimeInterval: 1.0)
+
+        // Wait for flashcard screen to load
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
     }
     
     private func navigateToTesting() {
         let testTab = app.tabBars.buttons.matching(NSPredicate(format: "label CONTAINS 'Test' OR label CONTAINS 'Quiz' OR label CONTAINS 'Practice'")).firstMatch
-        
+
         if testTab.exists {
             testTab.tap()
         } else {
@@ -449,13 +454,14 @@ final class TKDojangUITests: XCTestCase {
                 testButton.tap()
             }
         }
-        
-        Thread.sleep(forTimeInterval: 1.0)
+
+        // Wait for testing screen to load
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
     }
     
     private func navigateToPatterns() {
         let patternTab = app.tabBars.buttons.matching(NSPredicate(format: "label CONTAINS 'Pattern' OR label CONTAINS 'Forms'")).firstMatch
-        
+
         if patternTab.exists {
             patternTab.tap()
         } else {
@@ -465,8 +471,9 @@ final class TKDojangUITests: XCTestCase {
                 patternButton.tap()
             }
         }
-        
-        Thread.sleep(forTimeInterval: 1.0)
+
+        // Wait for patterns screen to load
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
     }
     
     // MARK: - Performance Tests

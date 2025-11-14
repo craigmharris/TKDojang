@@ -56,6 +56,7 @@ class OnboardingCoordinator: ObservableObject {
         case patterns = "patterns"
         case stepSparring = "stepSparring"
         case patternTest = "patternTest"
+        case vocabularyBuilder = "vocabularyBuilder"
 
         /// Display name for the tour
         var title: String {
@@ -65,6 +66,7 @@ class OnboardingCoordinator: ObservableObject {
             case .patterns: return "Pattern Practice"
             case .stepSparring: return "Step Sparring"
             case .patternTest: return "Pattern Test"
+            case .vocabularyBuilder: return "Vocabulary Builder"
             }
         }
 
@@ -81,6 +83,8 @@ class OnboardingCoordinator: ObservableObject {
                 return "Master attack, defense, and counter sequences"
             case .patternTest:
                 return "Test pattern sequencing and memory recall with interactive move selection"
+            case .vocabularyBuilder:
+                return "Master Korean phrase grammar through 6 interactive game modes"
             }
         }
     }

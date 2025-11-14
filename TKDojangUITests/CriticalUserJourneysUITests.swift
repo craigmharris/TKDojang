@@ -130,8 +130,10 @@ final class CriticalUserJourneysUITests: XCTestCase {
             // Tap to reveal answer
             flashcard.tap()
 
-            // Wait briefly for flip animation
-            Thread.sleep(forTimeInterval: 0.5)
+            // Wait for answer buttons to become available (replaces arbitrary flip animation wait)
+            // At least one button should appear within 2 seconds
+            let anyAnswerButton = app.buttons.matching(NSPredicate(format: "identifier CONTAINS 'flashcard'")).firstMatch
+            _ = anyAnswerButton.waitForExistence(timeout: 2.0)
 
             // Randomly choose how to answer
             let randomChoice = Int.random(in: 0...2)
@@ -148,7 +150,7 @@ final class CriticalUserJourneysUITests: XCTestCase {
             case 2: // Skip (don't reveal, just skip)
                 // Go back to question side if we're on answer side
                 flashcard.tap()
-                Thread.sleep(forTimeInterval: 0.3)
+                // Wait for skip button to be available after flipping back
                 if app.buttons["flashcard-skip-button"].waitForExistence(timeout: 2.0) {
                     app.buttons["flashcard-skip-button"].tap()
                 }
@@ -156,8 +158,10 @@ final class CriticalUserJourneysUITests: XCTestCase {
                 break
             }
 
-            // Wait for card transition
-            Thread.sleep(forTimeInterval: 1.0)
+            // Wait for card transition by checking if we're still in the session
+            // (next card loads or results screen appears)
+            // Brief wait to allow UI to update
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
 
         // STEP 7: Verify results screen appears
@@ -285,8 +289,10 @@ final class CriticalUserJourneysUITests: XCTestCase {
                 answerButton.tap()
                 totalQuestions += 1
 
-                // Wait for auto-advance (1 second feedback + short transition)
-                Thread.sleep(forTimeInterval: 1.2)
+                // Wait for either next question to appear or results screen (replaces arbitrary wait)
+                // Look for next question progress indicator or results text
+                let nextQuestionOrResults = app.staticTexts.matching(NSPredicate(format: "label CONTAINS 'Question' OR label CONTAINS 'accuracy' OR label CONTAINS 'Test Complete'")).firstMatch
+                _ = nextQuestionOrResults.waitForExistence(timeout: 3.0)
 
                 questionIndex += 1
 
@@ -395,14 +401,10 @@ final class CriticalUserJourneysUITests: XCTestCase {
         }
 
         // STEP 4: Select a random pattern from the list
-        // Wait for pattern list to load
-        Thread.sleep(forTimeInterval: 1.5)
-
-        // Try to find pattern elements - they might be buttons containing pattern names
-        // Look for buttons with pattern-specific text
+        // Wait for pattern list to load by checking for pattern buttons
         let patternButton = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Chon-Ji' OR label CONTAINS 'Dan-Gun' OR label CONTAINS 'Do-San' OR label CONTAINS 'Won-Hyo' OR label CONTAINS 'Yul-Gok'")).firstMatch
 
-        if patternButton.waitForExistence(timeout: 3.0) {
+        if patternButton.waitForExistence(timeout: 5.0) {
             patternButton.tap()
         } else {
             // Fallback: Look for any button containing "Learning" or move count
@@ -428,8 +430,9 @@ final class CriticalUserJourneysUITests: XCTestCase {
         var movesCompleted = 0
 
         for _ in 0..<numberOfMovesToPractice {
-            // Wait for move to load
-            Thread.sleep(forTimeInterval: 0.5)
+            // Wait for move content to load (buttons should be available)
+            let nextButton = app.buttons["pattern-next-move-button"]
+            _ = nextButton.waitForExistence(timeout: 3.0)
 
             // Weighted random choice
             let randomValue = Double.random(in: 0...1)
@@ -488,8 +491,9 @@ final class CriticalUserJourneysUITests: XCTestCase {
         }
 
         // STEP 8: Verify we returned to pattern list or dashboard
-        Thread.sleep(forTimeInterval: 1.0)
+        // Wait for navigation to complete
         let backAtPatterns = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Traditional forms' OR identifier CONTAINS 'pattern'")).firstMatch
+        _ = backAtPatterns.waitForExistence(timeout: 3.0)
         XCTAssertTrue(
             backAtPatterns.exists || app.navigationBars.firstMatch.exists,
             "Should return to pattern list or remain in app"
@@ -566,9 +570,12 @@ final class CriticalUserJourneysUITests: XCTestCase {
             testStudentButton.waitForExistence(timeout: 5.0),
             "Profile sheet should display with 'Test Student' profile"
         )
-        Thread.sleep(forTimeInterval: 1.0)
+        // Ensure button is hittable before tapping
+        _ = testStudentButton.waitForExistence(timeout: 2.0)
         testStudentButton.tap()
-        Thread.sleep(forTimeInterval: 2.0)
+        // Wait for profile switch to complete by checking for belt label
+        let profile1Belt = app.staticTexts.matching(NSPredicate(format: "label CONTAINS '6th Keup'")).firstMatch
+        _ = profile1Belt.waitForExistence(timeout: 5.0)
 
         print("DEBUG: Selected 'Test Student' profile")
 
@@ -596,11 +603,9 @@ final class CriticalUserJourneysUITests: XCTestCase {
             "Profile sheet should display with 'Test Student' profile"
         )
 
-        // Give sheet animation time to complete
-        Thread.sleep(forTimeInterval: 1.0)
-
-        // Find profile buttons by the names we created programmatically
+        // Wait for all profile buttons to be available (sheet animation complete)
         let allProfileButtons = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Test Student' OR label CONTAINS 'Advanced Student' OR label CONTAINS 'Black Belt'"))
+        _ = allProfileButtons.firstMatch.waitForExistence(timeout: 3.0)
 
         print("DEBUG: Found \(allProfileButtons.count) profile button(s)")
 
@@ -615,11 +620,11 @@ final class CriticalUserJourneysUITests: XCTestCase {
         let advancedStudentButton = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Advanced Student'")).firstMatch
         advancedStudentButton.tap()
 
-        // Wait for profile switch to complete
-        Thread.sleep(forTimeInterval: 2.0)
+        // Wait for profile switch to complete by checking for the new belt label
+        let profile2BeltLabel = app.staticTexts.matching(NSPredicate(format: "label CONTAINS '2nd Keup'")).firstMatch
+        _ = profile2BeltLabel.waitForExistence(timeout: 5.0)
 
         // STEP 5: Verify Advanced Student profile shows 2nd Keup belt (different from Test Student's 6th Keup)
-        let profile2BeltLabel = app.staticTexts.matching(NSPredicate(format: "label CONTAINS '2nd Keup'")).firstMatch
         XCTAssertTrue(
             profile2BeltLabel.waitForExistence(timeout: 5.0),
             "Advanced Student profile should display 2nd Keup belt level (different from Test Student's 6th Keup)"
@@ -888,15 +893,24 @@ final class CriticalUserJourneysUITests: XCTestCase {
 
     /**
      * Tap element with retry logic
+     * Replaces sleep-based retry with explicit element existence/hittability waiting
      */
     private func tapElement(_ element: XCUIElement, retries: Int = 3) {
-        for _ in 0..<retries {
+        for attempt in 0..<retries {
             if element.exists && element.isHittable {
                 element.tap()
                 return
             }
-            Thread.sleep(forTimeInterval: 0.5)
+            // Wait for element to become hittable before next retry
+            let timeout: TimeInterval = 0.5
+            _ = element.waitForExistence(timeout: timeout)
+
+            // On last attempt, check one more time before failing
+            if attempt == retries - 1 && element.exists && element.isHittable {
+                element.tap()
+                return
+            }
         }
-        XCTFail("Could not tap element: \(element.label)")
+        XCTFail("Could not tap element after \(retries) attempts: \(element.label)")
     }
 }

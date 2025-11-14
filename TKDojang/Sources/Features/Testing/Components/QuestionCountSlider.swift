@@ -40,6 +40,7 @@ struct QuestionCountSlider: View {
      * Dynamic maximum capped at 25
      * WHY: Ensure max is always >= min to create valid slider range
      */
+    
     private var maxQuestions: Int {
         min(25, max(availableQuestionsCount, minQuestions))
     }

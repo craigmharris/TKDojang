@@ -169,7 +169,6 @@ struct MemoryMatchGameView: View {
         if needsReset {
             resetUnmatchedCards()
             needsReset = false
-            logState()
             return
         }
 
@@ -183,7 +182,6 @@ struct MemoryMatchGameView: View {
 
         // Flip the card
         flipCard(card)
-        logState()
 
         // Check if we now have 2 flipped unmatched cards
         let nowFlipped = session.cards.filter { $0.isFlipped && !$0.isMatched }
@@ -203,8 +201,6 @@ struct MemoryMatchGameView: View {
         newSession.cards = cards
         newSession.version += 1  // Force SwiftUI to detect change
         session = newSession
-
-        DebugLogger.ui("🃏 Flipped: \(card.displayText)")
     }
 
     private func checkForMatch() {
@@ -222,8 +218,7 @@ struct MemoryMatchGameView: View {
             markCardsAsMatched(card1, card2)
             session.matchedPairs += 1
 
-            DebugLogger.ui("✅ Match: \(card1.word.english)")
-            logState()
+            DebugLogger.ui("✅ Match: \(card1.word.english) - \(session.matchedPairs)/\(session.totalPairs)")
 
             // Check for completion
             if session.isComplete {
@@ -239,7 +234,6 @@ struct MemoryMatchGameView: View {
             needsReset = true
 
             DebugLogger.ui("❌ No match")
-            logState()
         }
     }
 
@@ -274,15 +268,6 @@ struct MemoryMatchGameView: View {
         session = newSession
     }
 
-    // MARK: - State Logging
-
-    private func logState() {
-        let flipped = session.cards.filter { $0.isFlipped && !$0.isMatched }.count
-        let back = session.cards.filter { !$0.isFlipped && !$0.isMatched }.count
-        let matched = session.cards.filter { $0.isMatched }.count
-
-        DebugLogger.ui("📊 State: \(flipped) front, \(back) back, \(matched) matched [v\(session.version)]")
-    }
 }
 
 // MARK: - Memory Card View
@@ -295,9 +280,7 @@ private struct MemoryCardView: View {
 
     // Look up current card state from session on EACH render
     private var card: MemoryCard {
-        let found = session.cards.first(where: { $0.id == cardID })
-        print("🔎 Lookup \(found?.displayText ?? "??"): isFlipped=\(found?.isFlipped ?? false), flipped in array=\(session.cards.filter { $0.isFlipped }.count), session v\(session.version)")
-        return found ?? MemoryCard(
+        session.cards.first(where: { $0.id == cardID }) ?? MemoryCard(
             word: VocabularyWord(english: "", romanized: "", hangul: nil, frequency: 0),
             language: .english,
             position: 0
@@ -305,20 +288,30 @@ private struct MemoryCardView: View {
     }
 
     var body: some View {
-        let _ = print("🔍 RENDER: \(card.displayText) - isFlipped=\(card.isFlipped)")
-
-        return Button(action: {
+        Button(action: {
             // Always call onTap - it handles needsReset logic
             if !card.isMatched {
                 onTap()
             }
         }) {
-            // NO ANIMATION - just test if state propagates
-            if card.isFlipped {
-                cardFront
-            } else {
+            ZStack {
+                // Back of card (visible when not flipped)
                 cardBack
+                    .rotation3DEffect(
+                        .degrees(card.isFlipped ? 90 : 0),
+                        axis: (x: 0, y: 1, z: 0)
+                    )
+                    .opacity(card.isFlipped ? 0 : 1)
+
+                // Front of card (visible when flipped)
+                cardFront
+                    .rotation3DEffect(
+                        .degrees(card.isFlipped ? 0 : -90),
+                        axis: (x: 0, y: 1, z: 0)
+                    )
+                    .opacity(card.isFlipped ? 1 : 0)
             }
+            .animation(.easeInOut(duration: 0.3), value: card.isFlipped)
         }
         .buttonStyle(.plain)
         .disabled(card.isMatched)

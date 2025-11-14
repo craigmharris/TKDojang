@@ -54,10 +54,10 @@ final class SnapshotTestSuite: XCTestCase {
      */
     func testHomeScreenSnapshot() throws {
         navigateToHomeScreen()
-        
-        // Wait for content to load
-        Thread.sleep(forTimeInterval: 2.0)
-        
+
+        // Wait for home screen content to be fully rendered
+        _ = app.tabBars.firstMatch.waitForExistence(timeout: 3.0)
+
         // Capture snapshot
         let homeScreenshot = app.screenshot()
         compareSnapshot(homeScreenshot, identifier: "HomeScreen", testName: #function)
@@ -70,19 +70,21 @@ final class SnapshotTestSuite: XCTestCase {
      */
     func testProfileManagementSnapshot() throws {
         navigateToProfileManagement()
-        
-        // Wait for profile list to load
-        Thread.sleep(forTimeInterval: 2.0)
-        
+
+        // Wait for profile list to be fully rendered
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 3.0)
+
         let profileScreenshot = app.screenshot()
         compareSnapshot(profileScreenshot, identifier: "ProfileManagement", testName: #function)
-        
+
         // Test profile creation screen if accessible
         let createButton = app.buttons["Create Profile"]
         if createButton.exists {
             createButton.tap()
-            Thread.sleep(forTimeInterval: 1.0)
-            
+            // Wait for create profile form to render
+            let nameField = app.textFields.firstMatch
+            _ = nameField.waitForExistence(timeout: 2.0)
+
             let createProfileScreenshot = app.screenshot()
             compareSnapshot(createProfileScreenshot, identifier: "CreateProfile", testName: #function)
             
@@ -102,30 +104,33 @@ final class SnapshotTestSuite: XCTestCase {
     func testFlashcardInterfaceSnapshot() throws {
         setupTestProfile()
         navigateToFlashcards()
-        
-        // Wait for flashcards to load
-        Thread.sleep(forTimeInterval: 2.0)
-        
+
+        // Wait for flashcards menu to be fully rendered
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 3.0)
+
         // Capture flashcard list/menu
         let flashcardMenuScreenshot = app.screenshot()
         compareSnapshot(flashcardMenuScreenshot, identifier: "FlashcardMenu", testName: #function)
-        
+
         // Start flashcard session if possible
         let startButton = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Start' OR label CONTAINS 'Begin'")).firstMatch
         if startButton.exists {
             startButton.tap()
-            Thread.sleep(forTimeInterval: 2.0)
-            
+            // Wait for flashcard view to render
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 3.0)
+
             // Capture flashcard view
             let flashcardViewScreenshot = app.screenshot()
             compareSnapshot(flashcardViewScreenshot, identifier: "FlashcardView", testName: #function)
-            
+
             // Show answer if possible
             let showAnswerButton = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Show' OR label CONTAINS 'Answer'")).firstMatch
             if showAnswerButton.exists {
                 showAnswerButton.tap()
-                Thread.sleep(forTimeInterval: 1.0)
-                
+                // Wait for answer to be revealed
+                let answerButtons = app.buttons.matching(NSPredicate(format: "identifier CONTAINS 'flashcard'")).firstMatch
+                _ = answerButtons.waitForExistence(timeout: 2.0)
+
                 let answerViewScreenshot = app.screenshot()
                 compareSnapshot(answerViewScreenshot, identifier: "FlashcardAnswer", testName: #function)
             }
@@ -140,19 +145,22 @@ final class SnapshotTestSuite: XCTestCase {
     func testTestingInterfaceSnapshot() throws {
         setupTestProfile()
         navigateToTesting()
-        
-        Thread.sleep(forTimeInterval: 2.0)
-        
+
+        // Wait for test menu to be fully rendered
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 3.0)
+
         // Capture test menu/configuration
         let testMenuScreenshot = app.screenshot()
         compareSnapshot(testMenuScreenshot, identifier: "TestMenu", testName: #function)
-        
+
         // Start test if possible
         let startTestButton = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Start' OR label CONTAINS 'Test'")).firstMatch
         if startTestButton.exists {
             startTestButton.tap()
-            Thread.sleep(forTimeInterval: 2.0)
-            
+            // Wait for test question to render
+            let questionElements = app.staticTexts.matching(NSPredicate(format: "label CONTAINS '?' OR label CONTAINS 'question'")).firstMatch
+            _ = questionElements.waitForExistence(timeout: 3.0) || app.buttons.firstMatch.waitForExistence(timeout: 3.0)
+
             // Capture test question view
             let testQuestionScreenshot = app.screenshot()
             compareSnapshot(testQuestionScreenshot, identifier: "TestQuestion", testName: #function)
@@ -167,27 +175,30 @@ final class SnapshotTestSuite: XCTestCase {
     func testProgressAnalyticsSnapshot() throws {
         setupTestProfile()
         navigateToProgress()
-        
-        Thread.sleep(forTimeInterval: 3.0) // Extra time for charts to render
-        
+
+        // Wait for charts and progress data to render (may include animations)
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 4.0)
+
         let progressScreenshot = app.screenshot()
         compareSnapshot(progressScreenshot, identifier: "ProgressAnalytics", testName: #function)
-        
+
         // Test different time ranges if available
         let weeklyButton = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Week'")).firstMatch
         if weeklyButton.exists {
             weeklyButton.tap()
-            Thread.sleep(forTimeInterval: 2.0)
-            
+            // Wait for weekly data to render
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 3.0)
+
             let weeklyProgressScreenshot = app.screenshot()
             compareSnapshot(weeklyProgressScreenshot, identifier: "ProgressWeekly", testName: #function)
         }
-        
+
         let monthlyButton = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Month'")).firstMatch
         if monthlyButton.exists {
             monthlyButton.tap()
-            Thread.sleep(forTimeInterval: 2.0)
-            
+            // Wait for monthly data to render
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 3.0)
+
             let monthlyProgressScreenshot = app.screenshot()
             compareSnapshot(monthlyProgressScreenshot, identifier: "ProgressMonthly", testName: #function)
         }
@@ -201,18 +212,20 @@ final class SnapshotTestSuite: XCTestCase {
     func testPatternLearningSnapshot() throws {
         setupTestProfile()
         navigateToPatterns()
-        
-        Thread.sleep(forTimeInterval: 2.0)
-        
+
+        // Wait for pattern menu to be fully rendered
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 3.0)
+
         let patternMenuScreenshot = app.screenshot()
         compareSnapshot(patternMenuScreenshot, identifier: "PatternMenu", testName: #function)
-        
+
         // Access first pattern if available
         let firstPattern = app.buttons.firstMatch
         if firstPattern.exists && firstPattern.label.contains("Chon-Ji") {
             firstPattern.tap()
-            Thread.sleep(forTimeInterval: 2.0)
-            
+            // Wait for pattern detail view to render
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 3.0)
+
             let patternDetailScreenshot = app.screenshot()
             compareSnapshot(patternDetailScreenshot, identifier: "PatternDetail", testName: #function)
         }
@@ -228,24 +241,27 @@ final class SnapshotTestSuite: XCTestCase {
     func testOrientationSnapshots() throws {
         setupTestProfile()
         navigateToHomeScreen()
-        
+
         // Portrait mode
         XCUIDevice.shared.orientation = .portrait
-        Thread.sleep(forTimeInterval: 2.0)
-        
+        // Wait for orientation change and UI to adjust
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 3.0)
+
         let portraitScreenshot = app.screenshot()
         compareSnapshot(portraitScreenshot, identifier: "HomeScreenPortrait", testName: #function)
-        
+
         // Landscape mode (if supported)
         XCUIDevice.shared.orientation = .landscapeLeft
-        Thread.sleep(forTimeInterval: 2.0)
-        
+        // Wait for orientation change and UI to adjust
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 3.0)
+
         let landscapeScreenshot = app.screenshot()
         compareSnapshot(landscapeScreenshot, identifier: "HomeScreenLandscape", testName: #function)
-        
+
         // Return to portrait
         XCUIDevice.shared.orientation = .portrait
-        Thread.sleep(forTimeInterval: 1.0)
+        // Wait for orientation to settle
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
     }
     
     /**
@@ -256,12 +272,13 @@ final class SnapshotTestSuite: XCTestCase {
     func testAccessibilitySnapshots() throws {
         // Note: This requires manual accessibility setting changes on device/simulator
         // or using launch arguments to simulate different accessibility states
-        
+
         setupTestProfile()
         navigateToHomeScreen()
-        
-        Thread.sleep(forTimeInterval: 2.0)
-        
+
+        // Wait for accessibility elements to be fully rendered
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 3.0)
+
         let accessibilityScreenshot = app.screenshot()
         compareSnapshot(accessibilityScreenshot, identifier: "HomeScreenAccessibility", testName: #function)
     }
@@ -277,18 +294,20 @@ final class SnapshotTestSuite: XCTestCase {
         // Test empty states by using fresh profile with no data
         let emptyProfileName = "EmptyTestUser\(Int.random(in: 1000...9999))"
         createTestProfile(name: emptyProfileName)
-        
+
         // Empty progress state
         navigateToProgress()
-        Thread.sleep(forTimeInterval: 2.0)
-        
+        // Wait for empty state UI to render
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 3.0)
+
         let emptyProgressScreenshot = app.screenshot()
         compareSnapshot(emptyProgressScreenshot, identifier: "EmptyProgressState", testName: #function)
-        
+
         // Empty patterns state (if applicable)
         navigateToPatterns()
-        Thread.sleep(forTimeInterval: 2.0)
-        
+        // Wait for patterns UI to render
+        _ = app.otherElements.firstMatch.waitForExistence(timeout: 3.0)
+
         let emptyPatternsScreenshot = app.screenshot()
         compareSnapshot(emptyPatternsScreenshot, identifier: "EmptyPatternsState", testName: #function)
     }
@@ -370,48 +389,54 @@ final class SnapshotTestSuite: XCTestCase {
         let homeTab = app.tabBars.buttons.firstMatch
         if homeTab.exists {
             homeTab.tap()
+            // Wait for home screen to load
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
-        Thread.sleep(forTimeInterval: 1.0)
     }
-    
+
     private func navigateToProfileManagement() {
         let profileTab = app.tabBars.buttons.matching(NSPredicate(format: "label CONTAINS 'Profile'")).firstMatch
         if profileTab.exists {
             profileTab.tap()
+            // Wait for profile screen to load
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
-        Thread.sleep(forTimeInterval: 1.0)
     }
-    
+
     private func navigateToFlashcards() {
         let learnTab = app.tabBars.buttons.matching(NSPredicate(format: "label CONTAINS 'Learn'")).firstMatch
         if learnTab.exists {
             learnTab.tap()
+            // Wait for learn screen to load
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
-        Thread.sleep(forTimeInterval: 1.0)
     }
-    
+
     private func navigateToTesting() {
         let testButton = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Test'")).firstMatch
         if testButton.exists {
             testButton.tap()
+            // Wait for testing screen to load
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
-        Thread.sleep(forTimeInterval: 1.0)
     }
-    
+
     private func navigateToProgress() {
         let progressTab = app.tabBars.buttons.matching(NSPredicate(format: "label CONTAINS 'Progress'")).firstMatch
         if progressTab.exists {
             progressTab.tap()
+            // Wait for progress screen to load
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
-        Thread.sleep(forTimeInterval: 1.0)
     }
-    
+
     private func navigateToPatterns() {
         let patternButton = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Pattern'")).firstMatch
         if patternButton.exists {
             patternButton.tap()
+            // Wait for patterns screen to load
+            _ = app.otherElements.firstMatch.waitForExistence(timeout: 2.0)
         }
-        Thread.sleep(forTimeInterval: 1.0)
     }
 }
 
