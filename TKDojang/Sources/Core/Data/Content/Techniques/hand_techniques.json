@@ -4,6 +4,100 @@
   "description": "Comprehensive database of Taekwondo hand and arm techniques beyond basic strikes",
   "techniques": [
     {
+      "id": "dugum_ji_chigi",
+      "names": {
+        "korean": "둘째손가락치기",
+        "korean_romanized": "Dugum Ji Chigi",
+        "english": "Arc Hand Strike",
+        "phonetic": "/tu.ɡɯm.dʑi.tʃʰi.ɡi/"
+      },
+      "description": "A strike using the arc formed by the index finger and thumb, targeting specific pressure points or small areas with precision.",
+      "execution": {
+        "chamber": "Form arc with index finger and thumb",
+        "strike": "Drive arc forward into specific target point",
+        "retraction": "Pull hand back while maintaining arc formation"
+      },
+      "striking_tool": {
+        "korean": "둘째손가락",
+        "korean_romanized": "Dugum Ji",
+        "english": "Arc Hand",
+        "phonetic": "/tu.ɡɯm.dʑi/"
+      },
+      "target_areas": [
+        "throat",
+        "temple",
+        "pressure points",
+        "nerve centers"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "gojung_sogi"
+      ],
+      "belt_levels": [
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "advanced",
+      "tags": [
+        "arc",
+        "precision",
+        "pressure_point",
+        "specialized"
+      ],
+      "variations": [
+        "sang_dugum_ji_chigi"
+      ],
+      "images": [
+        "dugum_ji_formation.jpg",
+        "dugum_ji_precision.jpg",
+        "dugum_ji_target.jpg"
+      ],
+      "common_mistakes": [
+        "Poor arc formation",
+        "Lack of precision",
+        "Wrong targeting"
+      ]
+    },
+    {
+      "id": "hand_back_fist",
+      "names": {
+        "english": "Back Fist",
+        "korean_romanized": "Dung Joomuk",
+        "korean_hangul": "등 주먹"
+      },
+      "category": "hand_techniques"
+    },
+    {
+      "id": "hand_back_forearm",
+      "names": {
+        "english": "Back Forearm",
+        "korean_romanized": "Dung Palmok",
+        "korean_hangul": "등 팔목"
+      },
+      "category": "hand_techniques"
+    },
+    {
+      "id": "hand_back_sole",
+      "names": {
+        "english": "Back Sole",
+        "korean_romanized": "Dwit Kumchi",
+        "korean_hangul": "뒤 꿈치"
+      },
+      "category": "hand_techniques"
+    },
+    {
+      "id": "hand_hammer_fist",
+      "names": {
+        "english": "Hammer Fist",
+        "korean_romanized": "Yop Joomuk",
+        "korean_hangul": "엽 주먹"
+      },
+      "category": "hand_techniques"
+    },
+    {
       "id": "an_palmok_chigi",
       "names": {
         "korean": "안팔목치기",
@@ -23,24 +117,61 @@
         "english": "Inner Forearm",
         "phonetic": "/an.pʰal.mok/"
       },
-      "target_areas": ["neck", "throat", "chest", "collar bone"],
-      "applicable_stances": ["ap_koobi_seogi", "dwit_koobi_seogi"],
-      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "neck",
+        "throat",
+        "chest",
+        "collar bone"
+      ],
+      "applicable_stances": [
+        "ap_koobi_seogi",
+        "dwit_koobi_seogi"
+      ],
+      "belt_levels": [
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "intermediate",
-      "tags": ["forearm", "inner", "horizontal", "clothesline"],
-      "variations": ["naeryo_an_palmok_chigi"],
+      "tags": [
+        "forearm",
+        "inner",
+        "horizontal",
+        "clothesline"
+      ],
+      "variations": [
+        "naeryo_an_palmok_chigi"
+      ],
       "images": [
         "an_palmok_chamber.jpg",
         "an_palmok_strike.jpg",
         "an_palmok_impact.jpg"
       ],
-      "common_mistakes": ["Wrong forearm edge", "Poor horizontal motion", "Insufficient power"]
+      "common_mistakes": [
+        "Wrong forearm edge",
+        "Poor horizontal motion",
+        "Insufficient power"
+      ]
+    },
+    {
+      "id": "hand_middle_knuckle_fist",
+      "names": {
+        "english": "Middle Knuckle Fist",
+        "korean_romanized": "Joongi Joomuk",
+        "korean_hangul": "중기 주먹"
+      },
+      "category": "hand_techniques"
     },
     {
       "id": "bakkat_palmok_chigi",
       "names": {
         "korean": "바깥팔목치기",
-        "korean_romanized": "Bakkat Palmok Chigi",
+        "korean_romanized": "Bakat Palmok Chigi",
         "english": "Outer Forearm Strike",
         "phonetic": "/pa.k͈at.pʰal.mok.tʃʰi.ɡi/"
       },
@@ -52,22 +183,59 @@
       },
       "striking_tool": {
         "korean": "바깥팔목",
-        "korean_romanized": "Bakkat Palmok",
+        "korean_romanized": "Bakat Palmok",
         "english": "Outer Forearm",
         "phonetic": "/pa.k͈at.pʰal.mok/"
       },
-      "target_areas": ["temple", "jaw", "ribs", "neck"],
-      "applicable_stances": ["ap_koobi_seogi", "gunnun_sogi"],
-      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "temple",
+        "jaw",
+        "ribs",
+        "neck"
+      ],
+      "applicable_stances": [
+        "ap_koobi_seogi",
+        "gunnun_sogi"
+      ],
+      "belt_levels": [
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "intermediate",
-      "tags": ["forearm", "outer", "crossing", "sweeping"],
-      "variations": ["ollyo_bakkat_palmok_chigi"],
+      "tags": [
+        "forearm",
+        "outer",
+        "crossing",
+        "sweeping"
+      ],
+      "variations": [
+        "ollyo_bakkat_palmok_chigi"
+      ],
       "images": [
         "bakkat_palmok_chamber.jpg",
         "bakkat_palmok_cross.jpg",
         "bakkat_palmok_contact.jpg"
       ],
-      "common_mistakes": ["Wrong forearm edge", "Poor crossing motion", "Weak impact"]
+      "common_mistakes": [
+        "Wrong forearm edge",
+        "Poor crossing motion",
+        "Weak impact"
+      ]
+    },
+    {
+      "id": "hand_palm_heel",
+      "names": {
+        "english": "Palm Heel",
+        "korean_romanized": "Pyon Joomuk",
+        "korean_hangul": "편 주먹"
+      },
+      "category": "hand_techniques"
     },
     {
       "id": "jipge_son_chigi",
@@ -89,51 +257,62 @@
         "english": "Pincer Hand",
         "phonetic": "/tʃip.ɡe.son/"
       },
-      "target_areas": ["throat", "pressure points", "soft tissue", "nerve clusters"],
-      "applicable_stances": ["gunnun_sogi", "gojung_sogi"],
-      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "throat",
+        "pressure points",
+        "soft tissue",
+        "nerve clusters"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "gojung_sogi"
+      ],
+      "belt_levels": [
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "advanced",
-      "tags": ["pincer", "grab", "pressure_point", "specialized"],
-      "variations": ["sang_jipge_son_chigi"],
+      "tags": [
+        "pincer",
+        "grab",
+        "pressure_point",
+        "specialized"
+      ],
+      "variations": [
+        "sang_jipge_son_chigi"
+      ],
       "images": [
         "jipge_son_formation.jpg",
         "jipge_son_grab.jpg",
         "jipge_son_pressure.jpg"
       ],
-      "common_mistakes": ["Weak pincer formation", "Poor targeting", "Insufficient pressure"]
+      "common_mistakes": [
+        "Weak pincer formation",
+        "Poor targeting",
+        "Insufficient pressure"
+      ]
     },
     {
-      "id": "dugum_ji_chigi",
+      "id": "hand_reverse_knifehand",
       "names": {
-        "korean": "둘째손가락치기",
-        "korean_romanized": "Dugum Ji Chigi",
-        "english": "Arc Hand Strike",
-        "phonetic": "/tu.ɡɯm.dʑi.tʃʰi.ɡi/"
+        "english": "Reverse Knifehand",
+        "korean_romanized": "Sonkal Dung",
+        "korean_hangul": "손칼 등"
       },
-      "description": "A strike using the arc formed by the index finger and thumb, targeting specific pressure points or small areas with precision.",
-      "execution": {
-        "chamber": "Form arc with index finger and thumb",
-        "strike": "Drive arc forward into specific target point",
-        "retraction": "Pull hand back while maintaining arc formation"
+      "category": "hand_techniques"
+    },
+    {
+      "id": "hand_side_instep",
+      "names": {
+        "english": "Side Instep",
+        "korean_romanized": "Yop Baldung",
+        "korean_hangul": "옆 발등"
       },
-      "striking_tool": {
-        "korean": "둘째손가락",
-        "korean_romanized": "Dugum Ji",
-        "english": "Arc Hand",
-        "phonetic": "/tu.ɡɯm.dʑi/"
-      },
-      "target_areas": ["throat", "temple", "pressure points", "nerve centers"],
-      "applicable_stances": ["gunnun_sogi", "gojung_sogi"],
-      "belt_levels": ["3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "advanced",
-      "tags": ["arc", "precision", "pressure_point", "specialized"],
-      "variations": ["sang_dugum_ji_chigi"],
-      "images": [
-        "dugum_ji_formation.jpg",
-        "dugum_ji_precision.jpg",
-        "dugum_ji_target.jpg"
-      ],
-      "common_mistakes": ["Poor arc formation", "Lack of precision", "Wrong targeting"]
+      "category": "hand_techniques"
     }
   ]
 }

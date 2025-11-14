@@ -4,72 +4,6 @@
   "description": "Comprehensive database of Taekwondo kicking techniques",
   "techniques": [
     {
-      "id": "ap_cha_busigi",
-      "names": {
-        "korean": "앙차부시기",
-        "korean_romanized": "Ap Cha Busigi",
-        "english": "Front Snap Kick",
-        "phonetic": "/ap.tʃʰa.bu.ɕi.ɡi/"
-      },
-      "description": "A basic linear kick executed by raising the knee and extending the foot forward, striking with the ball of the foot. The knee should be brought up first, then the foot extended forward in a snapping motion.",
-      "execution": {
-        "chamber": "Lift knee to waist height, keeping foot close to body",
-        "strike": "Extend foot forward with ball of foot as striking surface",
-        "retraction": "Pull foot back to chambered position before placing down"
-      },
-      "striking_tool": {
-        "korean": "앞꿈치",
-        "korean_romanized": "Apkumchi",
-        "english": "Ball of Foot",
-        "phonetic": "/ap.k͈um.tʃʰi/"
-      },
-      "target_areas": ["solar plexus", "abdomen", "chest", "groin"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi", "ap_koobi_seogi"],
-      "belt_levels": ["8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "basic",
-      "tags": ["linear", "front", "snap", "basic", "fundamental"],
-      "variations": ["ap_cha_olligi"],
-      "images": [
-        "ap_cha_busigi_chamber.jpg",
-        "ap_cha_busigi_execution.jpg",
-        "ap_cha_busigi_target.jpg"
-      ],
-      "common_mistakes": ["Not chambering knee high enough", "Using instep instead of ball of foot", "Leaning back too much"]
-    },
-    {
-      "id": "dollyo_chagi",
-      "names": {
-        "korean": "돌려차기",
-        "korean_romanized": "Dollyo Chagi", 
-        "english": "Turning Kick",
-        "phonetic": "/tol.ɾjʌ.tʃʰa.ɡi/"
-      },
-      "description": "A circular kick that travels in an arc, striking with the ball of the foot or instep. The hip rotates to generate power as the leg sweeps in a circular motion to the target.",
-      "execution": {
-        "chamber": "Lift knee to side, keeping foot close to body",
-        "strike": "Rotate hip and extend foot in circular arc to target", 
-        "retraction": "Pull foot back along same circular path to chamber"
-      },
-      "striking_tool": {
-        "korean": "앞꿈치",
-        "korean_romanized": "Apkumchi",
-        "english": "Ball of Foot",
-        "phonetic": "/ap.k͈um.tʃʰi/"
-      },
-      "target_areas": ["temple", "jaw", "ribs", "liver", "head"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi", "ap_koobi_seogi"],
-      "belt_levels": ["8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "intermediate",
-      "tags": ["circular", "turning", "rotation", "hip", "arc"],
-      "variations": ["bandae_dollyo_chagi"],
-      "images": [
-        "dollyo_chagi_chamber.jpg",
-        "dollyo_chagi_rotation.jpg", 
-        "dollyo_chagi_impact.jpg"
-      ],
-      "common_mistakes": ["Not rotating hip enough", "Poor chamber position", "Losing balance during rotation"]
-    },
-    {
       "id": "dwit_chagi",
       "names": {
         "korean": "뒤차기",
@@ -86,21 +20,77 @@
       "striking_tool": {
         "korean": "뒷축",
         "korean_romanized": "Dwitchook",
-        "english": "Back Heel", 
+        "english": "Back Heel",
         "phonetic": "/twit.tʃʰuk/"
       },
-      "target_areas": ["solar plexus", "abdomen", "ribs", "spine"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi"],
-      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "solar plexus",
+        "abdomen",
+        "ribs",
+        "spine"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "intermediate",
-      "tags": ["linear", "back", "heel", "powerful", "backwards"],
-      "variations": ["twimyo_dwit_chagi"],
+      "tags": [
+        "linear",
+        "back",
+        "heel",
+        "powerful",
+        "backwards"
+      ],
+      "variations": [
+        "twimyo_dwit_chagi"
+      ],
       "images": [
         "dwit_chagi_chamber.jpg",
         "dwit_chagi_execution.jpg",
         "dwit_chagi_heel_detail.jpg"
       ],
-      "common_mistakes": ["Not looking over shoulder", "Poor hip drive", "Telegraphing the technique"]
+      "common_mistakes": [
+        "Not looking over shoulder",
+        "Poor hip drive",
+        "Telegraphing the technique"
+      ]
+    },
+    {
+      "id": "kick_back_piercing_kick",
+      "names": {
+        "english": "Back Piercing Kick",
+        "korean_romanized": "Dwit Cha Jirugi",
+        "korean_hangul": "뒤 차 지르기"
+      },
+      "category": "kicks"
+    },
+    {
+      "id": "kick_checking_kick",
+      "names": {
+        "english": "Checking Kick",
+        "korean_romanized": "Cha Mum Chagi",
+        "korean_hangul": "차 몸 차기"
+      },
+      "category": "kicks"
+    },
+    {
+      "id": "kick_consecutive_kick",
+      "names": {
+        "english": "Consecutive Kick",
+        "korean_romanized": "Yonsok Chagi",
+        "korean_hangul": "연속 차기"
+      },
+      "category": "kicks"
     },
     {
       "id": "bandal_chagi",
@@ -122,18 +112,53 @@
         "english": "Instep",
         "phonetic": "/pal.dɯŋ/"
       },
-      "target_areas": ["temple", "jaw", "arm", "hand", "weapon"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi"],
-      "belt_levels": ["2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "temple",
+        "jaw",
+        "arm",
+        "hand",
+        "weapon"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "intermediate",
-      "tags": ["crescent", "sweeping", "circular", "deflection"],
-      "variations": ["anuro_bandal_chagi", "bakuro_bandal_chagi"],
+      "tags": [
+        "crescent",
+        "sweeping",
+        "circular",
+        "deflection"
+      ],
+      "variations": [
+        "anuro_bandal_chagi",
+        "bakuro_bandal_chagi"
+      ],
       "images": [
         "bandal_chagi_start.jpg",
         "bandal_chagi_arc.jpg",
         "bandal_chagi_finish.jpg"
       ],
-      "common_mistakes": ["Poor arc control", "Wrong striking surface", "Loss of balance"]
+      "common_mistakes": [
+        "Poor arc control",
+        "Wrong striking surface",
+        "Loss of balance"
+      ]
+    },
+    {
+      "id": "kick_dodging_reverse_turning_kick",
+      "names": {
+        "english": "Dodging Reverse Turning Kick",
+        "korean_romanized": "Pihamyo Bandae Dollyo Chagi",
+        "korean_hangul": "피하며 반대 돌려 차기"
+      },
+      "category": "kicks"
     },
     {
       "id": "naeryo_chagi",
@@ -155,54 +180,64 @@
         "english": "Back Heel",
         "phonetic": "/twit.tʃʰuk/"
       },
-      "target_areas": ["crown of head", "shoulder", "collar bone", "forearm"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi"],
-      "belt_levels": ["2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "crown of head",
+        "shoulder",
+        "collar bone",
+        "forearm"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "advanced",
-      "tags": ["downward", "axe", "heel", "overhead", "powerful"],
-      "variations": ["twimyo_naeryo_chagi"],
+      "tags": [
+        "downward",
+        "axe",
+        "heel",
+        "overhead",
+        "powerful"
+      ],
+      "variations": [
+        "twimyo_naeryo_chagi"
+      ],
       "images": [
-        "naeryo_chagi_chamber.jpg", 
+        "naeryo_chagi_chamber.jpg",
         "naeryo_chagi_peak.jpg",
         "naeryo_chagi_impact.jpg"
       ],
-      "common_mistakes": ["Not raising leg high enough", "Poor control on descent", "Wrong striking surface"]
+      "common_mistakes": [
+        "Not raising leg high enough",
+        "Poor control on descent",
+        "Wrong striking surface"
+      ]
     },
     {
-      "id": "golcho_chagi",
+      "id": "kick_flying_front_kick",
       "names": {
-        "korean": "굴추차기",
-        "korean_romanized": "Golcho Chagi",
-        "english": "Hooking Kick",
-        "phonetic": "/ɡol.tʃʰo.tʃʰa.ɡi/"
+        "english": "Flying Front Kick",
+        "korean_romanized": "Twimyo Ap Chagi",
+        "korean_hangul": "뛰며 앞 차기"
       },
-      "description": "A hooking kick that starts like a side kick but curves inward at the end, striking with the back heel. The foot hooks around to strike the side or back of the target.",
-      "execution": {
-        "chamber": "Chamber leg like a side kick",
-        "strike": "Extend as side kick then hook foot inward",
-        "retraction": "Reverse the hooking motion back to chamber"
-      },
-      "striking_tool": {
-        "korean": "뒷축",
-        "korean_romanized": "Dwitchook", 
-        "english": "Back Heel",
-        "phonetic": "/twit.tʃʰuk/"
-      },
-      "target_areas": ["jaw", "temple", "neck", "kidney"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi"],
-      "belt_levels": ["2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "advanced",
-      "tags": ["hooking", "curved", "heel", "deceptive"],
-      "variations": ["bandae_dollyo_goro_chagi"],
-      "images": [
-        "golcho_chagi_chamber.jpg",
-        "golcho_chagi_hook.jpg",
-        "golcho_chagi_impact.jpg"
-      ],
-      "common_mistakes": ["Not hooking enough", "Poor timing", "Wrong foot position"]
+      "category": "kicks"
     },
     {
-      "id": "twimyo_chagi", 
+      "id": "kick_flying_high_kick",
+      "names": {
+        "english": "Flying High Kick",
+        "korean_romanized": "Twimyo Nopi Chagi",
+        "korean_hangul": "뛰며 높이 차기"
+      },
+      "category": "kicks"
+    },
+    {
+      "id": "twimyo_chagi",
       "names": {
         "korean": "뛰며차기",
         "korean_romanized": "Twimyo Chagi",
@@ -221,23 +256,47 @@
         "english": "Varies by kick type",
         "phonetic": "/ta.jaŋ.ham/"
       },
-      "target_areas": ["head", "chest", "solar plexus"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi"],
-      "belt_levels": ["2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "head",
+        "chest",
+        "solar plexus"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "advanced",
-      "tags": ["jumping", "airborne", "dynamic", "power"],
-      "variations": ["twimyo_yop_chagi", "twimyo_dollyo_chagi"],
+      "tags": [
+        "jumping",
+        "airborne",
+        "dynamic",
+        "power"
+      ],
+      "variations": [
+        "twimyo_yop_chagi",
+        "twimyo_dollyo_chagi"
+      ],
       "images": [
         "twimyo_chagi_takeoff.jpg",
         "twimyo_chagi_airborne.jpg",
         "twimyo_chagi_landing.jpg"
       ],
-      "common_mistakes": ["Poor timing", "Bad landing", "Loss of power in air"]
+      "common_mistakes": [
+        "Poor timing",
+        "Bad landing",
+        "Loss of power in air"
+      ]
     },
     {
       "id": "twimyo_yop_chagi",
       "names": {
-        "korean": "뛰며옭차기", 
+        "korean": "뛰며옭차기",
         "korean_romanized": "Twimyo Yop Chagi",
         "english": "Flying Side Kick",
         "phonetic": "/tʃwi.mjʌ.jʌp.tʃʰa.ɡi/"
@@ -249,56 +308,222 @@
         "landing": "Land in controlled stance"
       },
       "striking_tool": {
-        "korean": "발칼", 
+        "korean": "발칼",
         "korean_romanized": "Balkal",
         "english": "Footsword",
         "phonetic": "/pal.kʰal/"
       },
-      "target_areas": ["head", "chest", "ribs"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi"],
-      "belt_levels": ["2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "head",
+        "chest",
+        "ribs"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "advanced",
-      "tags": ["jumping", "side", "flying", "powerful"],
-      "variations": ["twimyo_chagi"],
+      "tags": [
+        "jumping",
+        "side",
+        "flying",
+        "powerful"
+      ],
+      "variations": [
+        "twimyo_chagi"
+      ],
       "images": [
         "twimyo_yop_takeoff.jpg",
-        "twimyo_yop_execution.jpg", 
+        "twimyo_yop_execution.jpg",
         "twimyo_yop_landing.jpg"
       ],
-      "common_mistakes": ["Poor takeoff", "Wrong foot angle", "Hard landing"]
+      "common_mistakes": [
+        "Poor takeoff",
+        "Wrong foot angle",
+        "Hard landing"
+      ]
     },
     {
-      "id": "bandae_dollyo_chagi",
+      "id": "kick_flying_side_piercing_kick",
       "names": {
-        "korean": "반대돌려차기",
-        "korean_romanized": "Bandae Dollyo Chagi", 
-        "english": "Reverse Turning Kick",
-        "phonetic": "/pan.de.dol.ljʌ.tʃʰa.ɡi/"
+        "english": "Flying Side Piercing Kick",
+        "korean_romanized": "Twimyo Yop Cha Jirugi",
+        "korean_hangul": "뛰며 옆 차 지르기"
       },
-      "description": "A reverse circular kick executed by spinning the body in the opposite direction of a regular turning kick, striking with the back heel. Creates deceptive timing and power.",
+      "category": "kicks"
+    },
+    {
+      "id": "kick_flying_side_thrusting_kick",
+      "names": {
+        "english": "Flying Side Thrusting Kick",
+        "korean_romanized": "Twimyo Yop Cha Tulgi",
+        "korean_hangul": "뛰며 옆 차 틀기"
+      },
+      "category": "kicks"
+    },
+    {
+      "id": "kick_flying_turning_kick",
+      "names": {
+        "english": "Flying turning Kick",
+        "korean_romanized": "Twimyo Dollyo Chagi",
+        "korean_hangul": "뛰며 돌려 차기"
+      },
+      "category": "kicks"
+    },
+    {
+      "id": "kick_flying_twisting_kick",
+      "names": {
+        "english": "Flying Twisting Kick",
+        "korean_romanized": "Twimyo Bituro Chagi",
+        "korean_hangul": "뛰며 비트로 차기"
+      },
+      "category": "kicks"
+    },
+    {
+      "id": "kick_flying_two_direction_kick_split_kick",
+      "names": {
+        "english": "Flying Two Direction Kick",
+        "korean_romanized": "Twimyo Sangbang Chagi",
+        "korean_hangul": "뛰며 상방 차기"
+      },
+      "category": "kicks"
+    },
+    {
+      "id": "ap_cha_busigi",
+      "names": {
+        "korean": "앙차부시기",
+        "korean_romanized": "Ap Cha Busigi",
+        "english": "Front Snap Kick",
+        "phonetic": "/ap.tʃʰa.bu.ɕi.ɡi/"
+      },
+      "description": "A basic linear kick executed by raising the knee and extending the foot forward, striking with the ball of the foot. The knee should be brought up first, then the foot extended forward in a snapping motion.",
       "execution": {
-        "chamber": "Pivot on supporting foot, turning body away from target",
-        "strike": "Complete spin while extending heel toward target",
-        "retraction": "Control landing and prepare for follow-up"
+        "chamber": "Lift knee to waist height, keeping foot close to body",
+        "strike": "Extend foot forward with ball of foot as striking surface",
+        "retraction": "Pull foot back to chambered position before placing down"
+      },
+      "striking_tool": {
+        "korean": "앞꿈치",
+        "korean_romanized": "Apkumchi",
+        "english": "Ball of Foot",
+        "phonetic": "/ap.k͈um.tʃʰi/"
+      },
+      "target_areas": [
+        "solar plexus",
+        "abdomen",
+        "chest",
+        "groin"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi",
+        "ap_koobi_seogi"
+      ],
+      "belt_levels": [
+        "8th_keup",
+        "7th_keup",
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "basic",
+      "tags": [
+        "linear",
+        "front",
+        "snap",
+        "basic",
+        "fundamental"
+      ],
+      "variations": [
+        "ap_cha_olligi"
+      ],
+      "images": [
+        "ap_cha_busigi_chamber.jpg",
+        "ap_cha_busigi_execution.jpg",
+        "ap_cha_busigi_target.jpg"
+      ],
+      "common_mistakes": [
+        "Not chambering knee high enough",
+        "Using instep instead of ball of foot",
+        "Leaning back too much"
+      ]
+    },
+    {
+      "id": "golcho_chagi",
+      "names": {
+        "korean": "굴추차기",
+        "korean_romanized": "Golcho Chagi",
+        "english": "Hooking Kick",
+        "phonetic": "/ɡol.tʃʰo.tʃʰa.ɡi/"
+      },
+      "description": "A hooking kick that starts like a side kick but curves inward at the end, striking with the back heel. The foot hooks around to strike the side or back of the target.",
+      "execution": {
+        "chamber": "Chamber leg like a side kick",
+        "strike": "Extend as side kick then hook foot inward",
+        "retraction": "Reverse the hooking motion back to chamber"
       },
       "striking_tool": {
         "korean": "뒷축",
         "korean_romanized": "Dwitchook",
-        "english": "Back Heel", 
+        "english": "Back Heel",
         "phonetic": "/twit.tʃʰuk/"
       },
-      "target_areas": ["head", "temple", "jaw", "ribs"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi"],
-      "belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "advanced",
-      "tags": ["reverse", "spinning", "circular", "heel", "deceptive"],
-      "variations": ["bandae_dollyo_goro_chagi"],
-      "images": [
-        "bandae_dollyo_setup.jpg",
-        "bandae_dollyo_spin.jpg",
-        "bandae_dollyo_impact.jpg"
+      "target_areas": [
+        "jaw",
+        "temple",
+        "neck",
+        "kidney"
       ],
-      "common_mistakes": ["Incomplete rotation", "Poor balance", "Wrong striking surface"]
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "advanced",
+      "tags": [
+        "hooking",
+        "curved",
+        "heel",
+        "deceptive"
+      ],
+      "variations": [
+        "bandae_dollyo_goro_chagi"
+      ],
+      "images": [
+        "golcho_chagi_chamber.jpg",
+        "golcho_chagi_hook.jpg",
+        "golcho_chagi_impact.jpg"
+      ],
+      "common_mistakes": [
+        "Not hooking enough",
+        "Poor timing",
+        "Wrong foot position"
+      ]
+    },
+    {
+      "id": "kick_inward_crescent_kick",
+      "names": {
+        "english": "Inward Crescent Kick",
+        "korean_romanized": "Anaero Bandal Chagi",
+        "korean_hangul": "안으로 반달 차기"
+      },
+      "category": "kicks"
     },
     {
       "id": "moorup_chagi",
@@ -320,84 +545,64 @@
         "english": "Knee",
         "phonetic": "/mu.ɾɯp/"
       },
-      "target_areas": ["solar plexus", "ribs", "abdomen", "groin"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi", "ap_koobi_seogi"],
-      "belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "solar plexus",
+        "ribs",
+        "abdomen",
+        "groin"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi",
+        "ap_koobi_seogi"
+      ],
+      "belt_levels": [
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "basic",
-      "tags": ["knee", "close_range", "upward", "clinch"],
-      "variations": ["twimyo_moorup_chagi"],
+      "tags": [
+        "knee",
+        "close_range",
+        "upward",
+        "clinch"
+      ],
+      "variations": [
+        "twimyo_moorup_chagi"
+      ],
       "images": [
         "moorup_chagi_chamber.jpg",
         "moorup_chagi_impact.jpg",
         "moorup_chagi_clinch.jpg"
       ],
-      "common_mistakes": ["Too much distance", "Poor hip drive", "Wrong angle of attack"]
+      "common_mistakes": [
+        "Too much distance",
+        "Poor hip drive",
+        "Wrong angle of attack"
+      ]
     },
     {
-      "id": "yop_cha_jirugi",
+      "id": "kick_knee_low_front_snap_kick",
       "names": {
-        "korean": "옭차지르기",
-        "korean_romanized": "Yop Cha Jirugi", 
-        "english": "Side Piercing Kick",
-        "phonetic": "/jʌp.tʃʰa.tʃi.ɾɯ.ɡi/"
+        "english": "Knee Low Front Snap Kick",
+        "korean_romanized": "Moorup Ap Cha Busigi",
+        "korean_hangul": "무릎 앞 차 부시기"
       },
-      "description": "A penetrating side kick delivered with thrusting motion, striking with the footsword to pierce through the target.",
-      "execution": {
-        "chamber": "Lift knee across body to waist height",
-        "strike": "Thrust footsword directly into target with piercing motion",
-        "retraction": "Pull foot back to chamber maintaining balance"
-      },
-      "striking_tool": {
-        "korean": "발칼",
-        "korean_romanized": "Balkal",
-        "english": "Footsword",
-        "phonetic": "/pal.kʰal/"
-      },
-      "target_areas": ["ribs", "solar plexus", "kidney"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi"],
-      "belt_levels": ["2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "advanced",
-      "tags": ["side", "piercing", "thrusting", "footsword"],
-      "variations": ["twimyo_yop_cha_jirugi"],
-      "images": [
-        "yop_cha_jirugi_chamber.jpg",
-        "yop_cha_jirugi_thrust.jpg",
-        "yop_cha_jirugi_pierce.jpg"
-      ],
-      "common_mistakes": ["Not enough thrust", "Wrong foot angle", "Poor balance"]
+      "category": "kicks"
     },
     {
-      "id": "ap_cha_olligi",
+      "id": "kick_outward_crescent_kick",
       "names": {
-        "korean": "앙차올리기",
-        "korean_romanized": "Ap Cha Olligi",
-        "english": "Rising Kick",
-        "phonetic": "/ap.tʃʰa.ol.li.ɡi/"
+        "english": "Outward Crescent Kick",
+        "korean_romanized": "Bakaero Bandal Chagi",
+        "korean_hangul": "바깥으로 반달 차기"
       },
-      "description": "The fundamental kick in Taekwondo - an upward kicking motion performed as both stretching and power development exercise. Executed as 3-count movement with chamber, extension, and recovery phases.",
-      "execution": {
-        "chamber": "Chamber the kick while performing guarding block, striking leg fully drawn back",
-        "kick": "Rise up with ball of foot, extending kick with hip engagement to target",
-        "recovery": "Re-chamber the kick and return to ready position (3-count execution)"
-      },
-      "striking_tool": {
-        "korean": "앞꿈치",
-        "korean_romanized": "Apkumchi",
-        "english": "Ball of Foot",
-        "phonetic": "/ap.kɯm.tʃʰi/"
-      },
-      "target_areas": ["groin", "chin", "face"],
-      "applicable_stances": ["narani_junbi_sogi", "gunnun_sogi"],
-      "belt_levels": ["10th_keup", "9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "basic",
-      "tags": ["fundamental", "linear", "stretching", "power_development", "first_kick"],
-      "variations": ["twimyo_ap_cha_olligi"],
-      "images": [
-        "ap_cha_olligi_chamber.jpg",
-        "ap_cha_olligi_extension.jpg",
-        "ap_cha_olligi_recovery.jpg"
-      ],
-      "common_mistakes": ["Swinging leg without hip engagement", "Poor chamber position", "Loss of balance"]
+      "category": "kicks"
     },
     {
       "id": "bandae_dollyo_goro_chagi",
@@ -419,18 +624,355 @@
         "english": "Heel",
         "phonetic": "/twi.k͈ɯm.tʃʰi/"
       },
-      "target_areas": ["head", "temple", "jaw", "ribs"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi"],
-      "belt_levels": ["2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "head",
+        "temple",
+        "jaw",
+        "ribs"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "advanced",
-      "tags": ["advanced", "circular", "spinning", "counter_attack", "deceptive", "hook"],
-      "variations": ["twimyo_bandae_dollyo_goro_chagi"],
+      "tags": [
+        "advanced",
+        "circular",
+        "spinning",
+        "counter_attack",
+        "deceptive",
+        "hook"
+      ],
+      "variations": [
+        "twimyo_bandae_dollyo_goro_chagi"
+      ],
       "images": [
         "bandae_dollyo_goro_setup.jpg",
         "bandae_dollyo_goro_spin.jpg",
         "bandae_dollyo_goro_hook.jpg"
       ],
-      "common_mistakes": ["Loss of balance during spin", "Improper heel positioning", "Dropping guard during rotation"]
+      "common_mistakes": [
+        "Loss of balance during spin",
+        "Improper heel positioning",
+        "Dropping guard during rotation"
+      ]
+    },
+    {
+      "id": "kick_reverse_hooking_kick",
+      "names": {
+        "english": "Reverse Hooking Kick",
+        "korean_romanized": "Bandae Golcho Chagi",
+        "korean_hangul": "반대 걸차 차기"
+      },
+      "category": "kicks"
+    },
+    {
+      "id": "bandae_dollyo_chagi",
+      "names": {
+        "korean": "반대돌려차기",
+        "korean_romanized": "Bandae Dollyo Chagi",
+        "english": "Reverse Turning Kick",
+        "phonetic": "/pan.de.dol.ljʌ.tʃʰa.ɡi/"
+      },
+      "description": "A reverse circular kick executed by spinning the body in the opposite direction of a regular turning kick, striking with the back heel. Creates deceptive timing and power.",
+      "execution": {
+        "chamber": "Pivot on supporting foot, turning body away from target",
+        "strike": "Complete spin while extending heel toward target",
+        "retraction": "Control landing and prepare for follow-up"
+      },
+      "striking_tool": {
+        "korean": "뒷축",
+        "korean_romanized": "Dwitchook",
+        "english": "Back Heel",
+        "phonetic": "/twit.tʃʰuk/"
+      },
+      "target_areas": [
+        "head",
+        "temple",
+        "jaw",
+        "ribs"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "advanced",
+      "tags": [
+        "reverse",
+        "spinning",
+        "circular",
+        "heel",
+        "deceptive"
+      ],
+      "variations": [
+        "bandae_dollyo_goro_chagi"
+      ],
+      "images": [
+        "bandae_dollyo_setup.jpg",
+        "bandae_dollyo_spin.jpg",
+        "bandae_dollyo_impact.jpg"
+      ],
+      "common_mistakes": [
+        "Incomplete rotation",
+        "Poor balance",
+        "Wrong striking surface"
+      ]
+    },
+    {
+      "id": "ap_cha_olligi",
+      "names": {
+        "korean": "앙차올리기",
+        "korean_romanized": "Ap Cha Olligi",
+        "english": "Rising Kick",
+        "phonetic": "/ap.tʃʰa.ol.li.ɡi/"
+      },
+      "description": "The fundamental kick in Taekwondo - an upward kicking motion performed as both stretching and power development exercise. Executed as 3-count movement with chamber, extension, and recovery phases.",
+      "execution": {
+        "chamber": "Chamber the kick while performing guarding block, striking leg fully drawn back",
+        "kick": "Rise up with ball of foot, extending kick with hip engagement to target",
+        "recovery": "Re-chamber the kick and return to ready position (3-count execution)"
+      },
+      "striking_tool": {
+        "korean": "앞꿈치",
+        "korean_romanized": "Apkumchi",
+        "english": "Ball of Foot",
+        "phonetic": "/ap.kɯm.tʃʰi/"
+      },
+      "target_areas": [
+        "groin",
+        "chin",
+        "face"
+      ],
+      "applicable_stances": [
+        "narani_junbi_sogi",
+        "gunnun_sogi"
+      ],
+      "belt_levels": [
+        "10th_keup",
+        "9th_keup",
+        "8th_keup",
+        "7th_keup",
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "basic",
+      "tags": [
+        "fundamental",
+        "linear",
+        "stretching",
+        "power_development",
+        "first_kick"
+      ],
+      "variations": [
+        "twimyo_ap_cha_olligi"
+      ],
+      "images": [
+        "ap_cha_olligi_chamber.jpg",
+        "ap_cha_olligi_extension.jpg",
+        "ap_cha_olligi_recovery.jpg"
+      ],
+      "common_mistakes": [
+        "Swinging leg without hip engagement",
+        "Poor chamber position",
+        "Loss of balance"
+      ]
+    },
+    {
+      "id": "yop_cha_jirugi",
+      "names": {
+        "korean": "옭차지르기",
+        "korean_romanized": "Yop Cha Jirugi",
+        "english": "Side Piercing Kick",
+        "phonetic": "/jʌp.tʃʰa.tʃi.ɾɯ.ɡi/"
+      },
+      "description": "A penetrating side kick delivered with thrusting motion, striking with the footsword to pierce through the target.",
+      "execution": {
+        "chamber": "Lift knee across body to waist height",
+        "strike": "Thrust footsword directly into target with piercing motion",
+        "retraction": "Pull foot back to chamber maintaining balance"
+      },
+      "striking_tool": {
+        "korean": "발칼",
+        "korean_romanized": "Balkal",
+        "english": "Footsword",
+        "phonetic": "/pal.kʰal/"
+      },
+      "target_areas": [
+        "ribs",
+        "solar plexus",
+        "kidney"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "advanced",
+      "tags": [
+        "side",
+        "piercing",
+        "thrusting",
+        "footsword"
+      ],
+      "variations": [
+        "twimyo_yop_cha_jirugi"
+      ],
+      "images": [
+        "yop_cha_jirugi_chamber.jpg",
+        "yop_cha_jirugi_thrust.jpg",
+        "yop_cha_jirugi_pierce.jpg"
+      ],
+      "common_mistakes": [
+        "Not enough thrust",
+        "Wrong foot angle",
+        "Poor balance"
+      ]
+    },
+    {
+      "id": "kick_side_rising_kick",
+      "names": {
+        "english": "Side Rising Kick",
+        "korean_romanized": "Yop Cha Olligi",
+        "korean_hangul": "옆 차 올리기"
+      },
+      "category": "kicks"
+    },
+    {
+      "id": "kick_side_thrusting_kick",
+      "names": {
+        "english": "Side Thrusting Kick",
+        "korean_romanized": "Yop Cha Tulgi",
+        "korean_hangul": "옆 차 틀기"
+      },
+      "category": "kicks"
+    },
+    {
+      "id": "kick_stamping_kick",
+      "names": {
+        "english": "Stamping Kick",
+        "korean_romanized": "Cha Busigi",
+        "korean_hangul": "차 부시기"
+      },
+      "category": "kicks"
+    },
+    {
+      "id": "kick_sweeping_kick",
+      "names": {
+        "english": "Sweeping Kick",
+        "korean_romanized": "Goro Chagi",
+        "korean_hangul": "고로 차기"
+      },
+      "category": "kicks"
+    },
+    {
+      "id": "dollyo_chagi",
+      "names": {
+        "korean": "돌려차기",
+        "korean_romanized": "Dollyo Chagi",
+        "english": "Turning Kick",
+        "phonetic": "/tol.ɾjʌ.tʃʰa.ɡi/"
+      },
+      "description": "A circular kick that travels in an arc, striking with the ball of the foot or instep. The hip rotates to generate power as the leg sweeps in a circular motion to the target.",
+      "execution": {
+        "chamber": "Lift knee to side, keeping foot close to body",
+        "strike": "Rotate hip and extend foot in circular arc to target",
+        "retraction": "Pull foot back along same circular path to chamber"
+      },
+      "striking_tool": {
+        "korean": "앞꿈치",
+        "korean_romanized": "Apkumchi",
+        "english": "Ball of Foot",
+        "phonetic": "/ap.k͈um.tʃʰi/"
+      },
+      "target_areas": [
+        "temple",
+        "jaw",
+        "ribs",
+        "liver",
+        "head"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi",
+        "ap_koobi_seogi"
+      ],
+      "belt_levels": [
+        "8th_keup",
+        "7th_keup",
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "intermediate",
+      "tags": [
+        "circular",
+        "turning",
+        "rotation",
+        "hip",
+        "arc"
+      ],
+      "variations": [
+        "bandae_dollyo_chagi"
+      ],
+      "images": [
+        "dollyo_chagi_chamber.jpg",
+        "dollyo_chagi_rotation.jpg",
+        "dollyo_chagi_impact.jpg"
+      ],
+      "common_mistakes": [
+        "Not rotating hip enough",
+        "Poor chamber position",
+        "Losing balance during rotation"
+      ]
+    },
+    {
+      "id": "kick_twisting_kick",
+      "names": {
+        "english": "Twisting Kick",
+        "korean_romanized": "Bituro Chagi",
+        "korean_hangul": "비트로 차기"
+      },
+      "category": "kicks"
+    },
+    {
+      "id": "kick_vertical_kick",
+      "names": {
+        "english": "Vertical Kick",
+        "korean_romanized": "Sewo Chagi",
+        "korean_hangul": "세워 차기"
+      },
+      "category": "kicks"
     }
   ]
 }

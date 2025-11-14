@@ -4,136 +4,126 @@
   "description": "Comprehensive database of Taekwondo striking and punching techniques",
   "techniques": [
     {
-      "id": "baro_jirugi",
+      "id": "bandal_son_taerigi",
       "names": {
-        "korean": "바로지르기",
-        "korean_romanized": "Baro Jirugi",
-        "english": "Obverse Punch",
-        "phonetic": "/pa.ɾo.tʃi.ɾɯ.ɡi/"
+        "korean": "반달손타어리기",
+        "korean_romanized": "Bandal Son Taerigi",
+        "english": "Arc Hand Strike",
+        "phonetic": "/pan.dal.son.tʰa.ʌ.ɾi.ɡi/"
       },
-      "description": "A straight punch executed with the same hand as the forward leg, creating a direct linear attack from the forward position.",
+      "description": "A curved striking technique using the arc-shaped hand formation. The hand forms a crescent shape to deliver strikes in a sweeping motion, targeting vulnerable areas with the curved edge.",
       "execution": {
-        "chamber": "Fist starts at hip level, palm facing up",
-        "strike": "Drive fist straight forward, rotating to palm down on impact",
-        "retraction": "Pull fist back to hip in reverse motion"
+        "chamber": "Form hand in arc shape with fingers curved together",
+        "strike": "Strike with sweeping motion using curved hand edge",
+        "retraction": "Pull hand back maintaining arc formation"
       },
       "striking_tool": {
-        "korean": "주먹",
-        "korean_romanized": "Joomuk",
-        "english": "Fist",
-        "phonetic": "/tʃu.mʌk/"
+        "korean": "반달손",
+        "korean_romanized": "Bandal Son",
+        "english": "Arc Hand",
+        "phonetic": "/pan.dal.son/"
       },
-      "target_areas": ["solar plexus", "chest", "abdomen", "face"],
-      "applicable_stances": ["gunnun_sogi", "ap_koobi_seogi"],
-      "belt_levels": ["10th_keup", "9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "basic",
-      "tags": ["linear", "fundamental", "fist", "straight", "basic"],
-      "variations": ["bandae_jirugi"],
-      "images": [
-        "baro_jirugi_chamber.jpg",
-        "baro_jirugi_execution.jpg",
-        "baro_jirugi_fist_detail.jpg"
+      "target_areas": [
+        "neck",
+        "temple",
+        "wrist",
+        "forearm"
       ],
-      "common_mistakes": ["No hip rotation", "Fist not tight enough", "Poor stance"]
-    },
-    {
-      "id": "bandae_jirugi",
-      "names": {
-        "korean": "반대지르기",
-        "korean_romanized": "Bandae Jirugi",
-        "english": "Reverse Punch",
-        "phonetic": "/pan.de.tʃi.ɾɯ.ɡi/"
-      },
-      "description": "A punch executed with the opposite hand to the forward leg, generating power through hip rotation and body mechanics.",
-      "execution": {
-        "chamber": "Rear fist at hip level, palm facing up",
-        "strike": "Drive rear fist forward with hip rotation",
-        "retraction": "Pull fist back to hip with reverse rotation"
-      },
-      "striking_tool": {
-        "korean": "주먹",
-        "korean_romanized": "Joomuk",
-        "english": "Fist",
-        "phonetic": "/tʃu.mʌk/"
-      },
-      "target_areas": ["solar plexus", "chest", "abdomen", "face"],
-      "applicable_stances": ["gunnun_sogi", "ap_koobi_seogi"],
-      "belt_levels": ["10th_keup", "9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "basic",
-      "tags": ["reverse", "fundamental", "rotation", "power"],
-      "variations": ["doo_jirugi"],
-      "images": [
-        "bandae_jirugi_chamber.jpg",
-        "bandae_jirugi_rotation.jpg",
-        "bandae_jirugi_impact.jpg"
+      "applicable_stances": [
+        "gojung_sogi",
+        "gunnun_sogi"
       ],
-      "common_mistakes": ["Poor hip rotation", "Wrong timing", "Weak rear hand"]
-    },
-    {
-      "id": "doo_jirugi",
-      "names": {
-        "korean": "두지르기",
-        "korean_romanized": "Doo Jirugi",
-        "english": "Double Punch",
-        "phonetic": "/tu.tʃi.ɾɯ.ɡi/"
-      },
-      "description": "Two consecutive punches delivered in sequence, typically combining obverse and reverse punches for rapid striking.",
-      "execution": {
-        "chamber": "Both fists ready at hip level",
-        "strike": "Execute two punches in rapid sequence",
-        "retraction": "Return both fists to starting position"
-      },
-      "striking_tool": {
-        "korean": "양주먹",
-        "korean_romanized": "Yang Joomuk",
-        "english": "Both Fists",
-        "phonetic": "/jaŋ.tʃu.mʌk/"
-      },
-      "target_areas": ["solar plexus", "chest", "abdomen"],
-      "applicable_stances": ["gunnun_sogi", "ap_koobi_seogi"],
-      "belt_levels": ["9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "belt_levels": [
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "intermediate",
-      "tags": ["double", "sequence", "rapid", "combination"],
-      "variations": ["sang_jirugi"],
-      "images": [
-        "doo_jirugi_ready.jpg",
-        "doo_jirugi_sequence.jpg",
-        "doo_jirugi_finish.jpg"
+      "tags": [
+        "arc",
+        "curved",
+        "hand",
+        "sweeping"
       ],
-      "common_mistakes": ["Poor timing between punches", "Uneven power", "Loss of stance"]
+      "variations": [
+        "sang_bandal_son_taerigi"
+      ],
+      "images": [
+        "bandal_son_chamber.jpg",
+        "bandal_son_strike.jpg",
+        "bandal_son_formation.jpg"
+      ],
+      "common_mistakes": [
+        "Fingers not properly curved",
+        "Poor arc control",
+        "Weak hand conditioning"
+      ]
     },
     {
-      "id": "sonkal_taerigi",
+      "id": "strike_arc-hand_crescent_strike",
       "names": {
-        "korean": "손칼타어리기",
-        "korean_romanized": "Sonkal Taerigi",
-        "english": "Knife Hand Strike",
-        "phonetic": "/son.kʰal.tʰa.ʌ.ɾi.ɡi/"
+        "english": "Arc-hand Crescent Strike",
+        "korean_romanized": "Bandalson Bandal Taerigi",
+        "korean_hangul": "반달손 반달 태리기"
       },
-      "description": "A strike using the edge of the open hand, delivered in a chopping motion. The hand is kept rigid with fingers extended and thumb tucked in.",
-      "execution": {
-        "chamber": "Open hand raised above and behind striking position",
-        "strike": "Drive edge of hand downward and forward to target",
-        "retraction": "Pull hand back to guard or chamber position"
+      "category": "strikes"
+    },
+    {
+      "id": "strike_arc-hand_high_reverse_strike",
+      "names": {
+        "english": "Arc-hand High Reverse Strike",
+        "korean_romanized": "Bandalson Nopunde Bandae Taerigi",
+        "korean_hangul": "반달손 높은데 반대 태리기"
       },
-      "striking_tool": {
-        "korean": "손칼",
-        "korean_romanized": "Sonkal",
-        "english": "Knife Hand",
-        "phonetic": "/son.kʰal/"
+      "category": "strikes"
+    },
+    {
+      "id": "strike_back_fist",
+      "names": {
+        "english": "Back Fist",
+        "korean_romanized": "Dung Joomuk",
+        "korean_hangul": "등 주먹"
       },
-      "target_areas": ["neck", "collar bone", "temple", "wrist", "forearm"],
-      "applicable_stances": ["gojung_sogi", "ap_koobi_seogi"],
-      "belt_levels": ["9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "intermediate",
-      "tags": ["knife_hand", "chop", "edge", "open_hand"],
-      "variations": ["sonkal_anaero_taerigi", "sonkal_naeryo_taerigi"],
-      "images": [
-        "sonkal_taerigi_chamber.jpg",
-        "sonkal_taerigi_strike.jpg",
-        "sonkal_taerigi_hand_detail.jpg"
-      ],
-      "common_mistakes": ["Fingers not rigid", "Thumb not tucked", "Poor hand conditioning"]
+      "category": "strikes"
+    },
+    {
+      "id": "strike_back_fist_downward_strike",
+      "names": {
+        "english": "Back Fist Downward Strike",
+        "korean_romanized": "Dung Joomuk Naeryo Taerigi",
+        "korean_hangul": "등 주먹 내려 태리기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "strike_back_fist_front_strike",
+      "names": {
+        "english": "Back Fist Front Strike",
+        "korean_romanized": "Dung Joomuk Ap Taerigi",
+        "korean_hangul": "등 주먹 앞 태리기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "strike_back_fist_high_side_strike",
+      "names": {
+        "english": "Back Fist High Side Strike",
+        "korean_romanized": "Dung Joomuk Nopunde Yop Taerigi",
+        "korean_hangul": "등 주먹 높은데 옆 태리기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "strike_back_fist_side_back_strike",
+      "names": {
+        "english": "Back Fist Side Back Strike",
+        "korean_romanized": "Dung Joomuk Yop Dwit Taerigi",
+        "korean_hangul": "등 주먹 옆 뒤 태리기"
+      },
+      "category": "strikes"
     },
     {
       "id": "dung_joomuk_taerigi",
@@ -155,18 +145,117 @@
         "english": "Back Fist",
         "phonetic": "/dɯŋ.tʃu.mʌk/"
       },
-      "target_areas": ["temple", "nose", "jaw", "ribs"],
-      "applicable_stances": ["gunnun_sogi", "ap_koobi_seogi", "narani_junbi_sogi"],
-      "belt_levels": ["3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "temple",
+        "nose",
+        "jaw",
+        "ribs"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "ap_koobi_seogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "intermediate",
-      "tags": ["back_fist", "whipping", "arc", "knuckles"],
-      "variations": ["dung_joomuk_nopunde_yop_taerigi", "dung_joomuk_yop_taerigi"],
+      "tags": [
+        "back_fist",
+        "whipping",
+        "arc",
+        "knuckles"
+      ],
+      "variations": [
+        "dung_joomuk_nopunde_yop_taerigi",
+        "dung_joomuk_yop_taerigi"
+      ],
       "images": [
         "dung_joomuk_chamber.jpg",
         "dung_joomuk_strike.jpg",
         "dung_joomuk_knuckles.jpg"
       ],
-      "common_mistakes": ["Not enough whip action", "Wrong knuckles", "Poor timing"]
+      "common_mistakes": [
+        "Not enough whip action",
+        "Wrong knuckles",
+        "Poor timing"
+      ]
+    },
+    {
+      "id": "strike_double_finger_thrust",
+      "names": {
+        "english": "Double Finger Thrust",
+        "korean_romanized": "Doo Songarak Tulgi",
+        "korean_hangul": "두 손가락 틀기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "doo_jirugi",
+      "names": {
+        "korean": "두지르기",
+        "korean_romanized": "Doo Jirugi",
+        "english": "Double Punch",
+        "phonetic": "/tu.tʃi.ɾɯ.ɡi/"
+      },
+      "description": "Two consecutive punches delivered in sequence, typically combining obverse and reverse punches for rapid striking.",
+      "execution": {
+        "chamber": "Both fists ready at hip level",
+        "strike": "Execute two punches in rapid sequence",
+        "retraction": "Return both fists to starting position"
+      },
+      "striking_tool": {
+        "korean": "양주먹",
+        "korean_romanized": "Yang Joomuk",
+        "english": "Both Fists",
+        "phonetic": "/jaŋ.tʃu.mʌk/"
+      },
+      "target_areas": [
+        "solar plexus",
+        "chest",
+        "abdomen"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "ap_koobi_seogi"
+      ],
+      "belt_levels": [
+        "9th_keup",
+        "8th_keup",
+        "7th_keup",
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "intermediate",
+      "tags": [
+        "double",
+        "sequence",
+        "rapid",
+        "combination"
+      ],
+      "variations": [
+        "sang_jirugi"
+      ],
+      "images": [
+        "doo_jirugi_ready.jpg",
+        "doo_jirugi_sequence.jpg",
+        "doo_jirugi_finish.jpg"
+      ],
+      "common_mistakes": [
+        "Poor timing between punches",
+        "Uneven power",
+        "Loss of stance"
+      ]
     },
     {
       "id": "palkup_ap_taerigi",
@@ -188,51 +277,64 @@
         "english": "Elbow",
         "phonetic": "/pʰal.k͈um.tʃʰi/"
       },
-      "target_areas": ["solar plexus", "ribs", "jaw", "temple"],
-      "applicable_stances": ["gunnun_sogi", "ap_koobi_seogi", "narani_junbi_sogi"],
-      "belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "solar plexus",
+        "ribs",
+        "jaw",
+        "temple"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "ap_koobi_seogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "intermediate",
-      "tags": ["elbow", "close_range", "powerful", "bone"],
-      "variations": ["yop_palkup_tulgi"],
+      "tags": [
+        "elbow",
+        "close_range",
+        "powerful",
+        "bone"
+      ],
+      "variations": [
+        "yop_palkup_tulgi"
+      ],
       "images": [
         "palkup_ap_taerigi_chamber.jpg",
         "palkup_ap_taerigi_strike.jpg",
         "palkup_ap_taerigi_close_range.jpg"
       ],
-      "common_mistakes": ["Too much distance", "Poor body mechanics", "Wrong elbow angle"]
+      "common_mistakes": [
+        "Too much distance",
+        "Poor body mechanics",
+        "Wrong elbow angle"
+      ]
     },
     {
-      "id": "yop_palkup_tulgi",
+      "id": "strike_flat_fingertip_high_reverse_thrust",
       "names": {
-        "korean": "옭팔꿈치뛷기",
-        "korean_romanized": "Yop Palkup Tulgi",
-        "english": "Side Elbow Thrust",
-        "phonetic": "/jʌp.pʰal.k͈um.tʃʰi.tʰul.ɡi/"
+        "english": "Flat Fingertip High reverse Thrust",
+        "korean_romanized": "Opun Sonkut Nopunde Bandae Tulgi",
+        "korean_hangul": "엎은 손끝 높은데 반대 틀기"
       },
-      "description": "A thrusting attack using the elbow delivered to the side, effective in close quarters and clinch situations.",
-      "execution": {
-        "chamber": "Position elbow to side of body",
-        "strike": "Thrust elbow horizontally into target",
-        "retraction": "Pull elbow back to guard position"
+      "category": "strikes"
+    },
+    {
+      "id": "strike_flat_fingertip_outward_cross_cut",
+      "names": {
+        "english": "Flat Fingertip Outward Cross Cut",
+        "korean_romanized": "Opun Sonkut Bakaero Gutgi",
+        "korean_hangul": "엎은 손끝 바깥으로 긋기"
       },
-      "striking_tool": {
-        "korean": "팔꿈치",
-        "korean_romanized": "Palkup",
-        "english": "Elbow",
-        "phonetic": "/pʰal.k͈um.tʃʰi/"
-      },
-      "target_areas": ["ribs", "kidney", "solar plexus"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi"],
-      "belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "intermediate",
-      "tags": ["elbow", "side", "thrusting", "close_range"],
-      "variations": ["palkup_ap_taerigi"],
-      "images": [
-        "yop_palkup_chamber.jpg",
-        "yop_palkup_thrust.jpg",
-        "yop_palkup_impact.jpg"
-      ],
-      "common_mistakes": ["Poor horizontal motion", "Insufficient power", "Wrong range"]
+      "category": "strikes"
     },
     {
       "id": "opun_sonkut_tulgi",
@@ -254,381 +356,98 @@
         "english": "Flat Fingertips",
         "phonetic": "/o.pɯn.son.kɯt/"
       },
-      "target_areas": ["throat", "solar plexus", "pressure points"],
-      "applicable_stances": ["gunnun_sogi", "gojung_sogi"],
-      "belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "throat",
+        "solar plexus",
+        "pressure points"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "gojung_sogi"
+      ],
+      "belt_levels": [
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "advanced",
-      "tags": ["fingertip", "flat", "penetrating", "precise"],
-      "variations": ["son_sonkut_tulgi"],
+      "tags": [
+        "fingertip",
+        "flat",
+        "penetrating",
+        "precise"
+      ],
+      "variations": [
+        "son_sonkut_tulgi"
+      ],
       "images": [
         "opun_sonkut_formation.jpg",
         "opun_sonkut_thrust.jpg",
         "opun_sonkut_targeting.jpg"
       ],
-      "common_mistakes": ["Fingers not rigid", "Poor accuracy", "Weak penetration"]
+      "common_mistakes": [
+        "Fingers not rigid",
+        "Poor accuracy",
+        "Weak penetration"
+      ]
     },
     {
-      "id": "son_sonkut_tulgi",
+      "id": "strike_flying_consecutive_punch",
       "names": {
-        "korean": "손손끝뛷기",
-        "korean_romanized": "Son Sonkut Tulgi",
-        "english": "Straight Fingertip Thrust",
-        "phonetic": "/son.son.kɯt.tʰul.ɡi/"
+        "english": "Flying Consecutive Punch",
+        "korean_romanized": "Twimyo Yonsok Jirugi",
+        "korean_hangul": "뛰며 연속 지르기"
       },
-      "description": "A direct thrusting attack using the fingertips in a straight line, targeting specific pressure points or soft tissue areas.",
-      "execution": {
-        "chamber": "Fingers extended straight and rigid",
-        "strike": "Drive fingertips straight forward into target",
-        "retraction": "Pull hand back along same line"
-      },
-      "striking_tool": {
-        "korean": "손끝",
-        "korean_romanized": "Sonkut",
-        "english": "Fingertips",
-        "phonetic": "/son.kɯt/"
-      },
-      "target_areas": ["throat", "eyes", "pressure points"],
-      "applicable_stances": ["gunnun_sogi", "gojung_sogi"],
-      "belt_levels": ["7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "advanced",
-      "tags": ["fingertip", "straight", "precise", "dangerous"],
-      "variations": ["opun_sonkut_tulgi"],
-      "images": [
-        "son_sonkut_formation.jpg",
-        "son_sonkut_thrust.jpg",
-        "son_sonkut_precision.jpg"
-      ],
-      "common_mistakes": ["Fingers not straight", "Poor targeting", "Insufficient conditioning"]
+      "category": "strikes"
     },
     {
-      "id": "ollyo_jirugi",
+      "id": "strike_forefist_punch",
       "names": {
-        "korean": "올려지르기",
-        "korean_romanized": "Ollyo Jirugi",
-        "english": "Upward Punch",
-        "phonetic": "/ol.ljʌ.tʃi.ɾɯ.ɡi/"
+        "english": "Forefist Punch",
+        "korean_romanized": "Ap Joomuk Jirugi",
+        "korean_hangul": "앞 주먹 지르기"
       },
-      "description": "A punching technique directed upward, typically targeting the underside of the jaw or solar plexus from below.",
-      "execution": {
-        "chamber": "Fist positioned low, ready for upward motion",
-        "strike": "Drive fist upward into target with rising motion",
-        "retraction": "Pull fist back to starting position"
-      },
-      "striking_tool": {
-        "korean": "주먹",
-        "korean_romanized": "Joomuk",
-        "english": "Fist",
-        "phonetic": "/tʃu.mʌk/"
-      },
-      "target_areas": ["jaw", "solar plexus", "ribs"],
-      "applicable_stances": ["gunnun_sogi", "ap_koobi_seogi"],
-      "belt_levels": ["2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "intermediate",
-      "tags": ["upward", "rising", "uppercut", "power"],
-      "variations": ["sang_ollyo_jirugi"],
-      "images": [
-        "ollyo_jirugi_chamber.jpg",
-        "ollyo_jirugi_rising.jpg",
-        "ollyo_jirugi_impact.jpg"
-      ],
-      "common_mistakes": ["Poor upward angle", "Insufficient power", "Wrong target selection"]
+      "category": "strikes"
     },
     {
-      "id": "yop_jirugi",
+      "id": "strike_forefist_upward_punch",
       "names": {
-        "korean": "옆지르기",
-        "korean_romanized": "Yop Jirugi",
-        "english": "Side Punch",
-        "phonetic": "/jʌp.tʃi.ɾɯ.ɡi/"
+        "english": "Forefist Upward Punch",
+        "korean_romanized": "Ap Joomuk Ollyo Jirugi",
+        "korean_hangul": "앞 주먹 올려 지르기"
       },
-      "description": "Lateral punching technique delivered to the side while body faces forward. Utilizes body rotation and hip engagement for power generation in sideways striking motion.",
-      "execution": {
-        "chamber": "Both fists positioned at hip level, striking fist upside down in relaxed position",
-        "strike": "Punch to the side with body facing front, head turned toward target, fist rotates so palm faces down on impact",
-        "retraction": "Guided hand pulls back while striking hand returns to chamber"
-      },
-      "striking_tool": {
-        "korean": "주먹",
-        "korean_romanized": "Joomuk",
-        "english": "Fist",
-        "phonetic": "/tʃu.mʌk/"
-      },
-      "target_areas": ["solar plexus", "ribs", "face", "navel"],
-      "applicable_stances": ["gunnun_sogi", "annun_sogi", "narani_sogi"],
-      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "intermediate",
-      "tags": ["fundamental", "lateral", "punching", "body_rotation", "side_attack"],
-      "variations": ["sang_yop_jirugi"],
-      "images": [
-        "yop_jirugi_chamber.jpg",
-        "yop_jirugi_rotation.jpg",
-        "yop_jirugi_impact.jpg"
-      ],
-      "common_mistakes": ["Striking with only elbow instead of full body", "Poor hip rotation", "Wrong head positioning"]
+      "category": "strikes"
     },
     {
-      "id": "sonbadak_taerigi",
+      "id": "strike_front_punch",
       "names": {
-        "korean": "손바닥타어리기",
-        "korean_romanized": "Sonbadak Taerigi",
-        "english": "Palm Strike",
-        "phonetic": "/son.ba.dak.tʰa.ʌ.ɾi.ɡi/"
+        "english": "Front Punch",
+        "korean_romanized": "Ap Jirugi",
+        "korean_hangul": "앞 지르기"
       },
-      "description": "Powerful striking technique using palm or palm heel for close-range combat. Extremely effective and potentially dangerous - can deliver devastating force to vital targets.",
-      "execution": {
-        "chamber": "Palm prepared in striking position, fingers tightly together",
-        "strike": "Execute strike using palm or palm heel, thrust upward or forward depending on target",
-        "recovery": "Return to ready position maintaining hand formation"
-      },
-      "striking_tool": {
-        "korean": "손바닥",
-        "korean_romanized": "Sonbadak",
-        "english": "Palm",
-        "phonetic": "/son.ba.dak/"
-      },
-      "target_areas": ["nose", "chin", "sternum", "solar plexus"],
-      "applicable_stances": ["gunnun_sogi", "gojung_sogi", "annun_sogi"],
-      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "intermediate",
-      "tags": ["advanced", "close_range", "palm_heel", "dangerous", "self_defense", "vital_points"],
-      "variations": ["sang_sonbadak_taerigi", "ollyo_sonbadak_taerigi"],
-      "images": [
-        "sonbadak_taerigi_chamber.jpg",
-        "sonbadak_taerigi_thrust.jpg",
-        "sonbadak_taerigi_impact.jpg"
-      ],
-      "common_mistakes": ["Loose finger formation", "Poor targeting", "Insufficient thrust power", "Wrong palm angle"]
+      "category": "strikes"
     },
     {
-      "id": "bandal_son_taerigi",
+      "id": "strike_high_crescent_punch",
       "names": {
-        "korean": "반달손타어리기",
-        "korean_romanized": "Bandal Son Taerigi",
-        "english": "Arc Hand Strike",
-        "phonetic": "/pan.dal.son.tʰa.ʌ.ɾi.ɡi/"
+        "english": "High Crescent Punch",
+        "korean_romanized": "Nopunde Bandal Jirugi",
+        "korean_hangul": "높은데 반달 지르기"
       },
-      "description": "A curved striking technique using the arc-shaped hand formation. The hand forms a crescent shape to deliver strikes in a sweeping motion, targeting vulnerable areas with the curved edge.",
-      "execution": {
-        "chamber": "Form hand in arc shape with fingers curved together",
-        "strike": "Strike with sweeping motion using curved hand edge",
-        "retraction": "Pull hand back maintaining arc formation"
-      },
-      "striking_tool": {
-        "korean": "반달손",
-        "korean_romanized": "Bandal Son",
-        "english": "Arc Hand",
-        "phonetic": "/pan.dal.son/"
-      },
-      "target_areas": ["neck", "temple", "wrist", "forearm"],
-      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
-      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "intermediate",
-      "tags": ["arc", "curved", "hand", "sweeping"],
-      "variations": ["sang_bandal_son_taerigi"],
-      "images": [
-        "bandal_son_chamber.jpg",
-        "bandal_son_strike.jpg",
-        "bandal_son_formation.jpg"
-      ],
-      "common_mistakes": ["Fingers not properly curved", "Poor arc control", "Weak hand conditioning"]
+      "category": "strikes"
     },
     {
-      "id": "sonkal_anaero_taerigi",
+      "id": "strike_horizontal_punch",
       "names": {
-        "korean": "손칼안으로타어리기",
-        "korean_romanized": "Sonkal Anaero Taerigi",
-        "english": "Knife Hand Inward Strike",
-        "phonetic": "/son.kʰal.a.nɯ.ɾo.tʰa.ʌ.ɾi.ɡi/"
+        "english": "Horizontal Punch",
+        "korean_romanized": "Soopyong Jirugi",
+        "korean_hangul": "수평 지르기"
       },
-      "description": "An inward striking motion using the edge of the hand, delivered in a chopping motion toward the centerline of the body. Targets vulnerable areas with precise knife hand technique.",
-      "execution": {
-        "chamber": "Position knife hand outside the target area",
-        "strike": "Drive hand inward with chopping motion toward centerline",
-        "retraction": "Pull hand back to guard position"
-      },
-      "striking_tool": {
-        "korean": "손칼",
-        "korean_romanized": "Sonkal",
-        "english": "Knife Hand",
-        "phonetic": "/son.kʰal/"
-      },
-      "target_areas": ["neck", "collar bone", "temple", "wrist"],
-      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
-      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "intermediate",
-      "tags": ["knife_hand", "inward", "chop", "centerline"],
-      "variations": ["sonkal_taerigi", "sonkal_dung_taerigi"],
-      "images": [
-        "sonkal_anaero_chamber.jpg",
-        "sonkal_anaero_strike.jpg",
-        "sonkal_anaero_impact.jpg"
-      ],
-      "common_mistakes": ["Poor hand formation", "Weak inward motion", "Wrong target selection"]
-    },
-    {
-      "id": "sonkal_dung_taerigi",
-      "names": {
-        "korean": "손칼등타어리기",
-        "korean_romanized": "Sonkal Dung Taerigi",
-        "english": "Reverse Knife Hand Strike",
-        "phonetic": "/son.kʰal.dɯŋ.tʰa.ʌ.ɾi.ɡi/"
-      },
-      "description": "A striking technique using the back edge of the knife hand, delivered with the reverse side of the traditional knife hand strike. Provides different angle of attack and targeting options.",
-      "execution": {
-        "chamber": "Position hand with back edge facing target",
-        "strike": "Strike with back edge of knife hand in chopping motion",
-        "retraction": "Pull hand back to guard position"
-      },
-      "striking_tool": {
-        "korean": "손칼등",
-        "korean_romanized": "Sonkal Dung",
-        "english": "Reverse Knife Hand",
-        "phonetic": "/son.kʰal.dɯŋ/"
-      },
-      "target_areas": ["temple", "neck", "collar bone", "jaw"],
-      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
-      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "intermediate",
-      "tags": ["knife_hand", "reverse", "back_edge", "chop"],
-      "variations": ["sonkal_taerigi", "sonkal_anaero_taerigi"],
-      "images": [
-        "sonkal_dung_chamber.jpg",
-        "sonkal_dung_strike.jpg",
-        "sonkal_dung_detail.jpg"
-      ],
-      "common_mistakes": ["Wrong edge contact", "Poor hand conditioning", "Incorrect angle"]
-    },
-    {
-      "id": "yop_joomuk_taerigi",
-      "names": {
-        "korean": "옭주멙타어리기",
-        "korean_romanized": "Yop Joomuk Taerigi",
-        "english": "Side Fist Strike",
-        "phonetic": "/jʌp.tʃu.mʌk.tʰa.ʌ.ɾi.ɡi/"
-      },
-      "description": "A striking technique using the side of the fist, delivered with the hammer-like edge of the closed hand. Effective for close-range combat and striking hard targets.",
-      "execution": {
-        "chamber": "Position fist with side edge toward target",
-        "strike": "Drive side of fist into target with hammering motion",
-        "retraction": "Pull fist back to guard position"
-      },
-      "striking_tool": {
-        "korean": "옭주멙",
-        "korean_romanized": "Yop Joomuk",
-        "english": "Side Fist",
-        "phonetic": "/jʌp.tʃu.mʌk/"
-      },
-      "target_areas": ["temple", "jaw", "ribs", "collar bone"],
-      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
-      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "intermediate",
-      "tags": ["side_fist", "hammer", "close_range", "hard_target"],
-      "variations": ["dung_joomuk_taerigi"],
-      "images": [
-        "yop_joomuk_formation.jpg",
-        "yop_joomuk_strike.jpg",
-        "yop_joomuk_impact.jpg"
-      ],
-      "common_mistakes": ["Wrong fist formation", "Poor striking surface", "Insufficient power"]
-    },
-    {
-      "id": "dollyo_jirugi",
-      "names": {
-        "korean": "돌려지르기",
-        "korean_romanized": "Dollyo Jirugi",
-        "english": "Turning Punch",
-        "phonetic": "/dol.ljʌ.tʃi.ɾɯ.ɡi/"
-      },
-      "description": "A punching technique delivered with turning motion, combining body rotation with the punch for increased power and different angle of attack.",
-      "execution": {
-        "chamber": "Position fist ready for turning motion",
-        "strike": "Execute punch while rotating body for added power",
-        "retraction": "Return to guard with reverse rotation"
-      },
-      "striking_tool": {
-        "korean": "주먹",
-        "korean_romanized": "Joomuk",
-        "english": "Fist",
-        "phonetic": "/tʃu.mʌk/"
-      },
-      "target_areas": ["solar plexus", "ribs", "face", "abdomen"],
-      "applicable_stances": ["gunnun_sogi", "narani_sogi"],
-      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "intermediate",
-      "tags": ["turning", "rotation", "power", "angular"],
-      "variations": ["bandae_dollyo_jirugi"],
-      "images": [
-        "dollyo_jirugi_chamber.jpg",
-        "dollyo_jirugi_rotation.jpg",
-        "dollyo_jirugi_impact.jpg"
-      ],
-      "common_mistakes": ["Poor body rotation", "Wrong timing", "Loss of balance"]
-    },
-    {
-      "id": "wi_palkup_taerigi",
-      "names": {
-        "korean": "위팔꿈치타어리기",
-        "korean_romanized": "Wi Palkup Taerigi",
-        "english": "Upper Elbow Strike",
-        "phonetic": "/wi.pʰal.k͈um.tʃʰi.tʰa.ʌ.ɾi.ɡi/"
-      },
-      "description": "An upward striking technique using the elbow, delivered in a rising motion. Extremely effective in close-range combat, targeting the underside of the jaw or solar plexus from below.",
-      "execution": {
-        "chamber": "Position elbow low for upward striking angle",
-        "strike": "Drive elbow upward with rising motion into target",
-        "retraction": "Lower elbow back to guard position"
-      },
-      "striking_tool": {
-        "korean": "위팔꿈치",
-        "korean_romanized": "Wi Palkup",
-        "english": "Upper Elbow",
-        "phonetic": "/wi.pʰal.k͈um.tʃʰi/"
-      },
-      "target_areas": ["jaw", "chin", "solar plexus", "ribs"],
-      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
-      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "intermediate",
-      "tags": ["elbow", "upward", "rising", "close_range"],
-      "variations": ["palkup_ap_taerigi", "yop_palkup_tulgi"],
-      "images": [
-        "wi_palkup_chamber.jpg",
-        "wi_palkup_rising.jpg",
-        "wi_palkup_impact.jpg"
-      ],
-      "common_mistakes": ["Wrong upward angle", "Insufficient rise", "Poor close-range positioning"]
-    },
-    {
-      "id": "bandae_nopunde_jirugi",
-      "names": {
-        "korean": "반대높은데지르기",
-        "korean_romanized": "Bandae Nopunde Jirugi",
-        "english": "Reverse High Punch",
-        "phonetic": "/pan.de.no.pɯn.de.tʃi.ɾɯ.ɡi/"
-      },
-      "description": "A high-level punch delivered with the opposite hand to the stance, targeting the head or upper chest area. Combines reverse punch mechanics with high targeting.",
-      "execution": {
-        "chamber": "Rear fist positioned at hip level ready for high strike",
-        "strike": "Drive rear fist upward and forward to high target with hip rotation",
-        "retraction": "Pull fist back to hip with reverse motion"
-      },
-      "striking_tool": {
-        "korean": "주먹",
-        "korean_romanized": "Joomuk",
-        "english": "Fist",
-        "phonetic": "/tʃu.mʌk/"
-      },
-      "target_areas": ["face", "head", "upper chest", "throat"],
-      "applicable_stances": ["gunnun_sogi", "ap_koobi_seogi"],
-      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
-      "difficulty": "intermediate",
-      "tags": ["reverse", "high", "upward", "head_target"],
-      "variations": ["bandae_jirugi", "nopunde_jirugi"],
-      "images": [
-        "bandae_nopunde_chamber.jpg",
-        "bandae_nopunde_high_strike.jpg",
-        "bandae_nopunde_impact.jpg"
-      ],
-      "common_mistakes": ["Poor high targeting", "Insufficient hip rotation", "Wrong punch angle"]
+      "category": "strikes"
     },
     {
       "id": "sonkal_naeryo_taerigi",
@@ -650,18 +469,915 @@
         "english": "Knife Hand",
         "phonetic": "/son.kʰal/"
       },
-      "target_areas": ["crown of head", "shoulder", "collar bone", "neck"],
-      "applicable_stances": ["gojung_sogi", "gunnun_sogi"],
-      "belt_levels": ["2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "crown of head",
+        "shoulder",
+        "collar bone",
+        "neck"
+      ],
+      "applicable_stances": [
+        "gojung_sogi",
+        "gunnun_sogi"
+      ],
+      "belt_levels": [
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "intermediate",
-      "tags": ["knife_hand", "downward", "chop", "overhead"],
-      "variations": ["sonkal_taerigi", "sonkal_anaero_taerigi"],
+      "tags": [
+        "knife_hand",
+        "downward",
+        "chop",
+        "overhead"
+      ],
+      "variations": [
+        "sonkal_taerigi",
+        "sonkal_anaero_taerigi"
+      ],
       "images": [
         "sonkal_naeryo_chamber.jpg",
         "sonkal_naeryo_downward.jpg",
         "sonkal_naeryo_impact.jpg"
       ],
-      "common_mistakes": ["Poor downward angle", "Weak knife hand formation", "Wrong target height"]
+      "common_mistakes": [
+        "Poor downward angle",
+        "Weak knife hand formation",
+        "Wrong target height"
+      ]
+    },
+    {
+      "id": "sonkal_anaero_taerigi",
+      "names": {
+        "korean": "손칼안으로타어리기",
+        "korean_romanized": "Sonkal Anaero Taerigi",
+        "english": "Knife Hand Inward Strike",
+        "phonetic": "/son.kʰal.a.nɯ.ɾo.tʰa.ʌ.ɾi.ɡi/"
+      },
+      "description": "An inward striking motion using the edge of the hand, delivered in a chopping motion toward the centerline of the body. Targets vulnerable areas with precise knife hand technique.",
+      "execution": {
+        "chamber": "Position knife hand outside the target area",
+        "strike": "Drive hand inward with chopping motion toward centerline",
+        "retraction": "Pull hand back to guard position"
+      },
+      "striking_tool": {
+        "korean": "손칼",
+        "korean_romanized": "Sonkal",
+        "english": "Knife Hand",
+        "phonetic": "/son.kʰal/"
+      },
+      "target_areas": [
+        "neck",
+        "collar bone",
+        "temple",
+        "wrist"
+      ],
+      "applicable_stances": [
+        "gojung_sogi",
+        "gunnun_sogi"
+      ],
+      "belt_levels": [
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "intermediate",
+      "tags": [
+        "knife_hand",
+        "inward",
+        "chop",
+        "centerline"
+      ],
+      "variations": [
+        "sonkal_taerigi",
+        "sonkal_dung_taerigi"
+      ],
+      "images": [
+        "sonkal_anaero_chamber.jpg",
+        "sonkal_anaero_strike.jpg",
+        "sonkal_anaero_impact.jpg"
+      ],
+      "common_mistakes": [
+        "Poor hand formation",
+        "Weak inward motion",
+        "Wrong target selection"
+      ]
+    },
+    {
+      "id": "sonkal_taerigi",
+      "names": {
+        "korean": "손칼타어리기",
+        "korean_romanized": "Sonkal Taerigi",
+        "english": "Knife Hand Strike",
+        "phonetic": "/son.kʰal.tʰa.ʌ.ɾi.ɡi/"
+      },
+      "description": "A strike using the edge of the open hand, delivered in a chopping motion. The hand is kept rigid with fingers extended and thumb tucked in.",
+      "execution": {
+        "chamber": "Open hand raised above and behind striking position",
+        "strike": "Drive edge of hand downward and forward to target",
+        "retraction": "Pull hand back to guard or chamber position"
+      },
+      "striking_tool": {
+        "korean": "손칼",
+        "korean_romanized": "Sonkal",
+        "english": "Knife Hand",
+        "phonetic": "/son.kʰal/"
+      },
+      "target_areas": [
+        "neck",
+        "collar bone",
+        "temple",
+        "wrist",
+        "forearm"
+      ],
+      "applicable_stances": [
+        "gojung_sogi",
+        "ap_koobi_seogi"
+      ],
+      "belt_levels": [
+        "9th_keup",
+        "8th_keup",
+        "7th_keup",
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "intermediate",
+      "tags": [
+        "knife_hand",
+        "chop",
+        "edge",
+        "open_hand"
+      ],
+      "variations": [
+        "sonkal_anaero_taerigi",
+        "sonkal_naeryo_taerigi"
+      ],
+      "images": [
+        "sonkal_taerigi_chamber.jpg",
+        "sonkal_taerigi_strike.jpg",
+        "sonkal_taerigi_hand_detail.jpg"
+      ],
+      "common_mistakes": [
+        "Fingers not rigid",
+        "Thumb not tucked",
+        "Poor hand conditioning"
+      ]
+    },
+    {
+      "id": "strike_knifehand_front_downward_strike",
+      "names": {
+        "english": "Knifehand Front Downward Strike",
+        "korean_romanized": "Sonkal Ap Naeryo Taerigi",
+        "korean_hangul": "손칼 앞 내려 태리기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "strike_knifehand_inwardhighstrike",
+      "names": {
+        "english": "Knifehand InwardHighStrike",
+        "korean_romanized": "Nopunde Sonkal Anaero Taerigi",
+        "korean_hangul": "높은데 손칼 안으로 태리기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "strike_knifehand_mid_air_strike",
+      "names": {
+        "english": "Knifehand Mid Air Strike",
+        "korean_romanized": "Sonkal Twimyo Dolmyo Taerigi",
+        "korean_hangul": "손칼 뛰며 Dolmyo 태리기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "strike_knifehand_side_strike",
+      "names": {
+        "english": "Knifehand Side Strike",
+        "korean_romanized": "Sonkal Yop Taerigi",
+        "korean_hangul": "손칼 옆 태리기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "strike_knuckle_fist_punch",
+      "names": {
+        "english": "Knuckle Fist Punch",
+        "korean_romanized": "Songarak Joomuk Jirugi",
+        "korean_hangul": "손가락 주먹 지르기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "strike_middle_knuckle_fist",
+      "names": {
+        "english": "Middle Knuckle Fist",
+        "korean_romanized": "Joongi Joomuk",
+        "korean_hangul": "중기 주먹"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "strike_middle_turning_punch",
+      "names": {
+        "english": "Middle Turning Punch",
+        "korean_romanized": "Kaunde Dollyo Jirugi",
+        "korean_hangul": "가운데 돌려 지르기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "baro_jirugi",
+      "names": {
+        "korean": "바로지르기",
+        "korean_romanized": "Baro Jirugi",
+        "english": "Obverse Punch",
+        "phonetic": "/pa.ɾo.tʃi.ɾɯ.ɡi/"
+      },
+      "description": "A straight punch executed with the same hand as the forward leg, creating a direct linear attack from the forward position.",
+      "execution": {
+        "chamber": "Fist starts at hip level, palm facing up",
+        "strike": "Drive fist straight forward, rotating to palm down on impact",
+        "retraction": "Pull fist back to hip in reverse motion"
+      },
+      "striking_tool": {
+        "korean": "주먹",
+        "korean_romanized": "Joomuk",
+        "english": "Fist",
+        "phonetic": "/tʃu.mʌk/"
+      },
+      "target_areas": [
+        "solar plexus",
+        "chest",
+        "abdomen",
+        "face"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "ap_koobi_seogi"
+      ],
+      "belt_levels": [
+        "10th_keup",
+        "9th_keup",
+        "8th_keup",
+        "7th_keup",
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "basic",
+      "tags": [
+        "linear",
+        "fundamental",
+        "fist",
+        "straight",
+        "basic"
+      ],
+      "variations": [
+        "bandae_jirugi"
+      ],
+      "images": [
+        "baro_jirugi_chamber.jpg",
+        "baro_jirugi_execution.jpg",
+        "baro_jirugi_fist_detail.jpg"
+      ],
+      "common_mistakes": [
+        "No hip rotation",
+        "Fist not tight enough",
+        "Poor stance"
+      ]
+    },
+    {
+      "id": "strike_open_fist_palm_high_reverse_punch",
+      "names": {
+        "english": "Open Fist (Palm) High Reverse Punch",
+        "korean_romanized": "Pyon Joomuk Nopunde Bandae Jirugi",
+        "korean_hangul": "편 주먹 높은데 반대 지르기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "sonbadak_taerigi",
+      "names": {
+        "korean": "손바닥타어리기",
+        "korean_romanized": "Sonbadak Taerigi",
+        "english": "Palm Strike",
+        "phonetic": "/son.ba.dak.tʰa.ʌ.ɾi.ɡi/"
+      },
+      "description": "Powerful striking technique using palm or palm heel for close-range combat. Extremely effective and potentially dangerous - can deliver devastating force to vital targets.",
+      "execution": {
+        "chamber": "Palm prepared in striking position, fingers tightly together",
+        "strike": "Execute strike using palm or palm heel, thrust upward or forward depending on target",
+        "recovery": "Return to ready position maintaining hand formation"
+      },
+      "striking_tool": {
+        "korean": "손바닥",
+        "korean_romanized": "Sonbadak",
+        "english": "Palm",
+        "phonetic": "/son.ba.dak/"
+      },
+      "target_areas": [
+        "nose",
+        "chin",
+        "sternum",
+        "solar plexus"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "gojung_sogi",
+        "annun_sogi"
+      ],
+      "belt_levels": [
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "intermediate",
+      "tags": [
+        "advanced",
+        "close_range",
+        "palm_heel",
+        "dangerous",
+        "self_defense",
+        "vital_points"
+      ],
+      "variations": [
+        "sang_sonbadak_taerigi",
+        "ollyo_sonbadak_taerigi"
+      ],
+      "images": [
+        "sonbadak_taerigi_chamber.jpg",
+        "sonbadak_taerigi_thrust.jpg",
+        "sonbadak_taerigi_impact.jpg"
+      ],
+      "common_mistakes": [
+        "Loose finger formation",
+        "Poor targeting",
+        "Insufficient thrust power",
+        "Wrong palm angle"
+      ]
+    },
+    {
+      "id": "bandae_nopunde_jirugi",
+      "names": {
+        "korean": "반대높은데지르기",
+        "korean_romanized": "Bandae Nopunde Jirugi",
+        "english": "Reverse High Punch",
+        "phonetic": "/pan.de.no.pɯn.de.tʃi.ɾɯ.ɡi/"
+      },
+      "description": "A high-level punch delivered with the opposite hand to the stance, targeting the head or upper chest area. Combines reverse punch mechanics with high targeting.",
+      "execution": {
+        "chamber": "Rear fist positioned at hip level ready for high strike",
+        "strike": "Drive rear fist upward and forward to high target with hip rotation",
+        "retraction": "Pull fist back to hip with reverse motion"
+      },
+      "striking_tool": {
+        "korean": "주먹",
+        "korean_romanized": "Joomuk",
+        "english": "Fist",
+        "phonetic": "/tʃu.mʌk/"
+      },
+      "target_areas": [
+        "face",
+        "head",
+        "upper chest",
+        "throat"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "ap_koobi_seogi"
+      ],
+      "belt_levels": [
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "intermediate",
+      "tags": [
+        "reverse",
+        "high",
+        "upward",
+        "head_target"
+      ],
+      "variations": [
+        "bandae_jirugi",
+        "nopunde_jirugi"
+      ],
+      "images": [
+        "bandae_nopunde_chamber.jpg",
+        "bandae_nopunde_high_strike.jpg",
+        "bandae_nopunde_impact.jpg"
+      ],
+      "common_mistakes": [
+        "Poor high targeting",
+        "Insufficient hip rotation",
+        "Wrong punch angle"
+      ]
+    },
+    {
+      "id": "sonkal_dung_taerigi",
+      "names": {
+        "korean": "손칼등타어리기",
+        "korean_romanized": "Sonkal Dung Taerigi",
+        "english": "Reverse Knife Hand Strike",
+        "phonetic": "/son.kʰal.dɯŋ.tʰa.ʌ.ɾi.ɡi/"
+      },
+      "description": "A striking technique using the back edge of the knife hand, delivered with the reverse side of the traditional knife hand strike. Provides different angle of attack and targeting options.",
+      "execution": {
+        "chamber": "Position hand with back edge facing target",
+        "strike": "Strike with back edge of knife hand in chopping motion",
+        "retraction": "Pull hand back to guard position"
+      },
+      "striking_tool": {
+        "korean": "손칼등",
+        "korean_romanized": "Sonkal Dung",
+        "english": "Reverse Knife Hand",
+        "phonetic": "/son.kʰal.dɯŋ/"
+      },
+      "target_areas": [
+        "temple",
+        "neck",
+        "collar bone",
+        "jaw"
+      ],
+      "applicable_stances": [
+        "gojung_sogi",
+        "gunnun_sogi"
+      ],
+      "belt_levels": [
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "intermediate",
+      "tags": [
+        "knife_hand",
+        "reverse",
+        "back_edge",
+        "chop"
+      ],
+      "variations": [
+        "sonkal_taerigi",
+        "sonkal_anaero_taerigi"
+      ],
+      "images": [
+        "sonkal_dung_chamber.jpg",
+        "sonkal_dung_strike.jpg",
+        "sonkal_dung_detail.jpg"
+      ],
+      "common_mistakes": [
+        "Wrong edge contact",
+        "Poor hand conditioning",
+        "Incorrect angle"
+      ]
+    },
+    {
+      "id": "strike_reverse_knifehand_inward_high_strike",
+      "names": {
+        "english": "Reverse Knifehand Inward High Strike",
+        "korean_romanized": "Nopunde Sonkal Dung Anaero Taerigi",
+        "korean_hangul": "높은데 손칼 등 안으로 태리기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "bandae_jirugi",
+      "names": {
+        "korean": "반대지르기",
+        "korean_romanized": "Bandae Jirugi",
+        "english": "Reverse Punch",
+        "phonetic": "/pan.de.tʃi.ɾɯ.ɡi/"
+      },
+      "description": "A punch executed with the opposite hand to the forward leg, generating power through hip rotation and body mechanics.",
+      "execution": {
+        "chamber": "Rear fist at hip level, palm facing up",
+        "strike": "Drive rear fist forward with hip rotation",
+        "retraction": "Pull fist back to hip with reverse rotation"
+      },
+      "striking_tool": {
+        "korean": "주먹",
+        "korean_romanized": "Joomuk",
+        "english": "Fist",
+        "phonetic": "/tʃu.mʌk/"
+      },
+      "target_areas": [
+        "solar plexus",
+        "chest",
+        "abdomen",
+        "face"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "ap_koobi_seogi"
+      ],
+      "belt_levels": [
+        "10th_keup",
+        "9th_keup",
+        "8th_keup",
+        "7th_keup",
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "basic",
+      "tags": [
+        "reverse",
+        "fundamental",
+        "rotation",
+        "power"
+      ],
+      "variations": [
+        "doo_jirugi"
+      ],
+      "images": [
+        "bandae_jirugi_chamber.jpg",
+        "bandae_jirugi_rotation.jpg",
+        "bandae_jirugi_impact.jpg"
+      ],
+      "common_mistakes": [
+        "Poor hip rotation",
+        "Wrong timing",
+        "Weak rear hand"
+      ]
+    },
+    {
+      "id": "yop_palkup_tulgi",
+      "names": {
+        "korean": "옭팔꿈치뛷기",
+        "korean_romanized": "Yop Palkup Tulgi",
+        "english": "Side Elbow Thrust",
+        "phonetic": "/jʌp.pʰal.k͈um.tʃʰi.tʰul.ɡi/"
+      },
+      "description": "A thrusting attack using the elbow delivered to the side, effective in close quarters and clinch situations.",
+      "execution": {
+        "chamber": "Position elbow to side of body",
+        "strike": "Thrust elbow horizontally into target",
+        "retraction": "Pull elbow back to guard position"
+      },
+      "striking_tool": {
+        "korean": "팔꿈치",
+        "korean_romanized": "Palkup",
+        "english": "Elbow",
+        "phonetic": "/pʰal.k͈um.tʃʰi/"
+      },
+      "target_areas": [
+        "ribs",
+        "kidney",
+        "solar plexus"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "intermediate",
+      "tags": [
+        "elbow",
+        "side",
+        "thrusting",
+        "close_range"
+      ],
+      "variations": [
+        "palkup_ap_taerigi"
+      ],
+      "images": [
+        "yop_palkup_chamber.jpg",
+        "yop_palkup_thrust.jpg",
+        "yop_palkup_impact.jpg"
+      ],
+      "common_mistakes": [
+        "Poor horizontal motion",
+        "Insufficient power",
+        "Wrong range"
+      ]
+    },
+    {
+      "id": "yop_joomuk_taerigi",
+      "names": {
+        "korean": "옭주멙타어리기",
+        "korean_romanized": "Yop Joomuk Taerigi",
+        "english": "Side Fist Strike",
+        "phonetic": "/jʌp.tʃu.mʌk.tʰa.ʌ.ɾi.ɡi/"
+      },
+      "description": "A striking technique using the side of the fist, delivered with the hammer-like edge of the closed hand. Effective for close-range combat and striking hard targets.",
+      "execution": {
+        "chamber": "Position fist with side edge toward target",
+        "strike": "Drive side of fist into target with hammering motion",
+        "retraction": "Pull fist back to guard position"
+      },
+      "striking_tool": {
+        "korean": "옭주멙",
+        "korean_romanized": "Yop Joomuk",
+        "english": "Side Fist",
+        "phonetic": "/jʌp.tʃu.mʌk/"
+      },
+      "target_areas": [
+        "temple",
+        "jaw",
+        "ribs",
+        "collar bone"
+      ],
+      "applicable_stances": [
+        "gojung_sogi",
+        "gunnun_sogi"
+      ],
+      "belt_levels": [
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "intermediate",
+      "tags": [
+        "side_fist",
+        "hammer",
+        "close_range",
+        "hard_target"
+      ],
+      "variations": [
+        "dung_joomuk_taerigi"
+      ],
+      "images": [
+        "yop_joomuk_formation.jpg",
+        "yop_joomuk_strike.jpg",
+        "yop_joomuk_impact.jpg"
+      ],
+      "common_mistakes": [
+        "Wrong fist formation",
+        "Poor striking surface",
+        "Insufficient power"
+      ]
+    },
+    {
+      "id": "yop_jirugi",
+      "names": {
+        "korean": "옆지르기",
+        "korean_romanized": "Yop Jirugi",
+        "english": "Side Punch",
+        "phonetic": "/jʌp.tʃi.ɾɯ.ɡi/"
+      },
+      "description": "Lateral punching technique delivered to the side while body faces forward. Utilizes body rotation and hip engagement for power generation in sideways striking motion.",
+      "execution": {
+        "chamber": "Both fists positioned at hip level, striking fist upside down in relaxed position",
+        "strike": "Punch to the side with body facing front, head turned toward target, fist rotates so palm faces down on impact",
+        "retraction": "Guided hand pulls back while striking hand returns to chamber"
+      },
+      "striking_tool": {
+        "korean": "주먹",
+        "korean_romanized": "Joomuk",
+        "english": "Fist",
+        "phonetic": "/tʃu.mʌk/"
+      },
+      "target_areas": [
+        "solar plexus",
+        "ribs",
+        "face",
+        "navel"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "annun_sogi",
+        "narani_sogi"
+      ],
+      "belt_levels": [
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "intermediate",
+      "tags": [
+        "fundamental",
+        "lateral",
+        "punching",
+        "body_rotation",
+        "side_attack"
+      ],
+      "variations": [
+        "sang_yop_jirugi"
+      ],
+      "images": [
+        "yop_jirugi_chamber.jpg",
+        "yop_jirugi_rotation.jpg",
+        "yop_jirugi_impact.jpg"
+      ],
+      "common_mistakes": [
+        "Striking with only elbow instead of full body",
+        "Poor hip rotation",
+        "Wrong head positioning"
+      ]
+    },
+    {
+      "id": "strike_straight_elbow_downward_thrust",
+      "names": {
+        "english": "Straight Elbow Downward thrust",
+        "korean_romanized": "Sun Palkup Naeryo Tulgi",
+        "korean_hangul": "순 팔굽 내려 틀기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "son_sonkut_tulgi",
+      "names": {
+        "korean": "손손끝뛷기",
+        "korean_romanized": "Son Sonkut Tulgi",
+        "english": "Straight Fingertip Thrust",
+        "phonetic": "/son.son.kɯt.tʰul.ɡi/"
+      },
+      "description": "A direct thrusting attack using the fingertips in a straight line, targeting specific pressure points or soft tissue areas.",
+      "execution": {
+        "chamber": "Fingers extended straight and rigid",
+        "strike": "Drive fingertips straight forward into target",
+        "retraction": "Pull hand back along same line"
+      },
+      "striking_tool": {
+        "korean": "손끝",
+        "korean_romanized": "Sonkut",
+        "english": "Fingertips",
+        "phonetic": "/son.kɯt/"
+      },
+      "target_areas": [
+        "throat",
+        "eyes",
+        "pressure points"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "gojung_sogi"
+      ],
+      "belt_levels": [
+        "7th_keup",
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "advanced",
+      "tags": [
+        "fingertip",
+        "straight",
+        "precise",
+        "dangerous"
+      ],
+      "variations": [
+        "opun_sonkut_tulgi"
+      ],
+      "images": [
+        "son_sonkut_formation.jpg",
+        "son_sonkut_thrust.jpg",
+        "son_sonkut_precision.jpg"
+      ],
+      "common_mistakes": [
+        "Fingers not straight",
+        "Poor targeting",
+        "Insufficient conditioning"
+      ]
+    },
+    {
+      "id": "dollyo_jirugi",
+      "names": {
+        "korean": "돌려지르기",
+        "korean_romanized": "Dollyo Jirugi",
+        "english": "Turning Punch",
+        "phonetic": "/dol.ljʌ.tʃi.ɾɯ.ɡi/"
+      },
+      "description": "A punching technique delivered with turning motion, combining body rotation with the punch for increased power and different angle of attack.",
+      "execution": {
+        "chamber": "Position fist ready for turning motion",
+        "strike": "Execute punch while rotating body for added power",
+        "retraction": "Return to guard with reverse rotation"
+      },
+      "striking_tool": {
+        "korean": "주먹",
+        "korean_romanized": "Joomuk",
+        "english": "Fist",
+        "phonetic": "/tʃu.mʌk/"
+      },
+      "target_areas": [
+        "solar plexus",
+        "ribs",
+        "face",
+        "abdomen"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_sogi"
+      ],
+      "belt_levels": [
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "intermediate",
+      "tags": [
+        "turning",
+        "rotation",
+        "power",
+        "angular"
+      ],
+      "variations": [
+        "bandae_dollyo_jirugi"
+      ],
+      "images": [
+        "dollyo_jirugi_chamber.jpg",
+        "dollyo_jirugi_rotation.jpg",
+        "dollyo_jirugi_impact.jpg"
+      ],
+      "common_mistakes": [
+        "Poor body rotation",
+        "Wrong timing",
+        "Loss of balance"
+      ]
+    },
+    {
+      "id": "strike_twin_fore-knuckle_fist_crescent_strike",
+      "names": {
+        "english": "Twin Fore-knuckle fist Crescent Punch",
+        "korean_romanized": "Sang Inji Joomuk Bandal Jirugi",
+        "korean_hangul": "쌍 인지 주먹 반달 지르기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "strike_twin_knifehand_horizontal_strike",
+      "names": {
+        "english": "Twin Knifehand Horizontal Strike",
+        "korean_romanized": "Sang Sonkal Soopyong Taerigi",
+        "korean_hangul": "쌍 손칼 수평 태리기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "strike_twin_knifehand_inward_strike",
+      "names": {
+        "english": "Twin Knifehand Inward Strike",
+        "korean_romanized": "Sang Sonkal Anaero Taerigi",
+        "korean_hangul": "쌍 손칼 안으로 태리기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "strike_twin_side_elbow_thrust",
+      "names": {
+        "english": "Twin Side Elbow Thrust",
+        "korean_romanized": "Sang Yop Palkup Tulgi",
+        "korean_hangul": "쌍 옆 팔굽 틀기"
+      },
+      "category": "strikes"
     },
     {
       "id": "sang_dwijibo_jirugi",
@@ -683,18 +1399,189 @@
         "english": "Both Fists",
         "phonetic": "/jaŋ.tʃu.mʌk/"
       },
-      "target_areas": ["jaw", "solar plexus", "chest", "guard"],
-      "applicable_stances": ["gojung_sogi", "ap_koobi_seogi"],
-      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "jaw",
+        "solar plexus",
+        "chest",
+        "guard"
+      ],
+      "applicable_stances": [
+        "gojung_sogi",
+        "ap_koobi_seogi"
+      ],
+      "belt_levels": [
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "advanced",
-      "tags": ["twin", "simultaneous", "upward", "upset", "overwhelming"],
-      "variations": ["doo_jirugi", "sang_ollyo_jirugi"],
+      "tags": [
+        "twin",
+        "simultaneous",
+        "upward",
+        "upset",
+        "overwhelming"
+      ],
+      "variations": [
+        "doo_jirugi",
+        "sang_ollyo_jirugi"
+      ],
       "images": [
         "sang_dwijibo_chamber.jpg",
         "sang_dwijibo_upward.jpg",
         "sang_dwijibo_upset.jpg"
       ],
-      "common_mistakes": ["Uneven simultaneous strike", "Poor upward angle", "Weak coordination"]
+      "common_mistakes": [
+        "Uneven simultaneous strike",
+        "Poor upward angle",
+        "Weak coordination"
+      ]
+    },
+    {
+      "id": "strike_twin_vertical_punch",
+      "names": {
+        "english": "Twin Vertical Punch",
+        "korean_romanized": "Sang Sewo Jirugi",
+        "korean_hangul": "쌍 세워 지르기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "wi_palkup_taerigi",
+      "names": {
+        "korean": "위팔꿈치타어리기",
+        "korean_romanized": "Wi Palkup Taerigi",
+        "english": "Upper Elbow Strike",
+        "phonetic": "/wi.pʰal.k͈um.tʃʰi.tʰa.ʌ.ɾi.ɡi/"
+      },
+      "description": "An upward striking technique using the elbow, delivered in a rising motion. Extremely effective in close-range combat, targeting the underside of the jaw or solar plexus from below.",
+      "execution": {
+        "chamber": "Position elbow low for upward striking angle",
+        "strike": "Drive elbow upward with rising motion into target",
+        "retraction": "Lower elbow back to guard position"
+      },
+      "striking_tool": {
+        "korean": "위팔꿈치",
+        "korean_romanized": "Wi Palkup",
+        "english": "Upper Elbow",
+        "phonetic": "/wi.pʰal.k͈um.tʃʰi/"
+      },
+      "target_areas": [
+        "jaw",
+        "chin",
+        "solar plexus",
+        "ribs"
+      ],
+      "applicable_stances": [
+        "gojung_sogi",
+        "gunnun_sogi"
+      ],
+      "belt_levels": [
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "intermediate",
+      "tags": [
+        "elbow",
+        "upward",
+        "rising",
+        "close_range"
+      ],
+      "variations": [
+        "palkup_ap_taerigi",
+        "yop_palkup_tulgi"
+      ],
+      "images": [
+        "wi_palkup_chamber.jpg",
+        "wi_palkup_rising.jpg",
+        "wi_palkup_impact.jpg"
+      ],
+      "common_mistakes": [
+        "Wrong upward angle",
+        "Insufficient rise",
+        "Poor close-range positioning"
+      ]
+    },
+    {
+      "id": "strike_upset_fingertip_thrust",
+      "names": {
+        "english": "Upset Fingertip Thrust",
+        "korean_romanized": "Dwijibo Sonkut Tulgi",
+        "korean_hangul": "뒤집음 손끝 틀기"
+      },
+      "category": "strikes"
+    },
+    {
+      "id": "ollyo_jirugi",
+      "names": {
+        "korean": "올려지르기",
+        "korean_romanized": "Ollyo Jirugi",
+        "english": "Upward Punch",
+        "phonetic": "/ol.ljʌ.tʃi.ɾɯ.ɡi/"
+      },
+      "description": "A punching technique directed upward, typically targeting the underside of the jaw or solar plexus from below.",
+      "execution": {
+        "chamber": "Fist positioned low, ready for upward motion",
+        "strike": "Drive fist upward into target with rising motion",
+        "retraction": "Pull fist back to starting position"
+      },
+      "striking_tool": {
+        "korean": "주먹",
+        "korean_romanized": "Joomuk",
+        "english": "Fist",
+        "phonetic": "/tʃu.mʌk/"
+      },
+      "target_areas": [
+        "jaw",
+        "solar plexus",
+        "ribs"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "ap_koobi_seogi"
+      ],
+      "belt_levels": [
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
+      "difficulty": "intermediate",
+      "tags": [
+        "upward",
+        "rising",
+        "uppercut",
+        "power"
+      ],
+      "variations": [
+        "sang_ollyo_jirugi"
+      ],
+      "images": [
+        "ollyo_jirugi_chamber.jpg",
+        "ollyo_jirugi_rising.jpg",
+        "ollyo_jirugi_impact.jpg"
+      ],
+      "common_mistakes": [
+        "Poor upward angle",
+        "Insufficient power",
+        "Wrong target selection"
+      ]
+    },
+    {
+      "id": "strike_vertical_punch",
+      "names": {
+        "english": "Vertical Punch",
+        "korean_romanized": "Kyocha Jirugi",
+        "korean_hangul": "교차 지르기"
+      },
+      "category": "strikes"
     }
   ]
 }

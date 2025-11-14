@@ -55,7 +55,7 @@
 - **Patterns**: 11 ITF patterns (Chon-Ji → Choong-Moo, 320 moves)
 - **Step Sparring**: 7 sequences (8th keup → 1st keup)
 - **Line Work**: 10 belt levels of exercises
-- **Theory & Techniques**: 67+ techniques, belt-specific theory
+- **Theory & Techniques**: 196+ techniques (34 kicks, 61 blocks, 54 strikes, 12 hand techniques, 35 vocabulary), belt-specific theory
 
 **Study Systems**
 - Flashcard system with spaced repetition

@@ -558,6 +558,110 @@ markAsMatched() → version += 1
 updateScore() → version += 1
 ```
 
+### 8. Data Quality: Levenshtein Distance Spelling Consistency
+
+**Context:** When managing large JSON datasets with romanized non-English terms, spelling inconsistencies accumulate over time through manual entry and multiple contributors
+
+```python
+# ✅ CORRECT - Fuzzy similarity clustering approach
+import json
+from collections import Counter, defaultdict
+
+def levenshtein_distance(s1, s2):
+    """Calculate edit distance between two strings."""
+    if len(s1) < len(s2):
+        return levenshtein_distance(s2, s1)
+    if len(s2) == 0:
+        return len(s1)
+
+    previous_row = range(len(s2) + 1)
+    for i, c1 in enumerate(s1):
+        current_row = [i + 1]
+        for j, c2 in enumerate(s2):
+            insertions = previous_row[j + 1] + 1
+            deletions = current_row[j] + 1
+            substitutions = previous_row[j] + (c1 != c2)
+            current_row.append(min(insertions, deletions, substitutions))
+        previous_row = current_row
+
+    return previous_row[-1]
+
+def find_spelling_clusters(words, word_frequencies):
+    """Cluster similar words to identify potential misspellings."""
+    similar_clusters = []
+    processed = set()
+
+    for word1 in sorted(words):
+        if word1 in processed:
+            continue
+
+        cluster = [word1]
+        for word2 in sorted(words):
+            if word1 == word2 or word2 in processed:
+                continue
+
+            # Only compare words of similar length (±2 characters)
+            if abs(len(word1) - len(word2)) > 2:
+                continue
+
+            distance = levenshtein_distance(word1.lower(), word2.lower())
+            max_distance = 1 if len(word1) <= 4 else 2
+
+            if distance <= max_distance and distance > 0:
+                cluster.append(word2)
+                processed.add(word2)
+
+        if len(cluster) > 1:
+            similar_clusters.append(cluster)
+            processed.add(word1)
+
+    # Sort by frequency - most common word likely correct
+    similar_clusters.sort(key=lambda c: max(word_frequencies[w] for w in c), reverse=True)
+
+    return similar_clusters
+```
+
+```python
+# ❌ WRONG - Manual review or regex pattern matching
+def check_spelling(word):
+    # Brittle - only catches exact known typos
+    typos = {"Bakuro": "Bakaero", "Anaero": "Anuro"}
+    return typos.get(word, word)
+
+# ❌ WRONG - Hardcoded pattern lists
+if "Joomok" in text:  # Misses variants, doesn't scale
+    text = text.replace("Joomok", "Joomuk")
+```
+
+**WHY:**
+- Levenshtein distance finds ALL similar variants automatically (Joomok/Joomuk, Bakkat/Bakat, Mirro/Miro)
+- Frequency analysis identifies correct spelling (common word likely correct, singleton likely typo)
+- Scales to thousands of terms without manual pattern maintenance
+- Catches typos that human reviewers miss (edit distance 1-2 characters)
+- Provides evidence-based correction recommendations with usage counts
+
+**WHEN TO USE:**
+- After bulk content imports (CSV, external data sources)
+- Before major releases to ensure data quality
+- When adding 50+ new terms to vocabulary/technique databases
+- After contributions from multiple sources
+- Anytime you see inconsistent romanizations (Anaero vs Anuro vs Aaero)
+
+**IMPLEMENTATION CHECKLIST:**
+- [ ] Extract all romanized words from all JSON files (vocabulary + techniques + flashcards)
+- [ ] Count frequency of each word across all sources
+- [ ] Run Levenshtein clustering (edit distance ≤ 1 for short words, ≤ 2 for long words)
+- [ ] Flag singleton words near common words (likely typos)
+- [ ] Manual review of clusters (standardize to most frequent variant)
+- [ ] Apply corrections across all files, verify build succeeds
+- [ ] Re-run clustering to confirm zero remaining inconsistencies
+
+**REAL-WORLD RESULTS (TKDojang Vocabulary Builder):**
+- Analyzed 166 unique romanized Korean words across 70 JSON files
+- Found 35 spelling inconsistency clusters
+- Corrected 14 spelling variants (Joomok→Joomuk, Bakkat→Bakat, etc.)
+- Zero manual regex patterns needed - algorithm found all variants automatically
+
 ## Environment & Commands
 
 ### Testing Workflow

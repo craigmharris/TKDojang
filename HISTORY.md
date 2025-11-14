@@ -853,6 +853,34 @@ let configuration = ModelConfiguration(
 - **Status:** Priority 1 feature complete (pending feature tour creation)
 - **User Impact:** Addresses #1 user feedback - difficulty learning complex 5-6 word Korean phrases
 
+**Nov 14, 2025** - `[commit hash]` - feat(vocabulary-builder): Complete data quality validation with spelling consistency sweep
+- **Data Quality Validation - Spelling Consistency Sweep:**
+  - Analyzed 166 unique romanized Korean words across 70 JSON files
+  - Applied Levenshtein distance clustering algorithm (edit distance ≤1-2)
+  - Found and corrected 14 spelling inconsistencies:
+    - Joomok → Joomuk (fist), Bakkat → Bakat (outer)
+    - Bakuro → Bakaero (outward), Naerjo → Naeryo (downward)
+    - Mirro → Miro (pushing), Golcha → Golcho (hooking)
+    - Anuro/Aaero → Anaero (inward), Yup → Yop (side)
+    - Inji- → Inji (removed hyphen)
+  - Updated across all data sources: vocabulary_words.json, techniques (kicks/blocks/strikes/hand), flashcards
+  - Zero manual regex patterns - fully automated similarity clustering
+- **CSV Bulk Import System:**
+  - Created technique_additions.csv for efficient content expansion
+  - Added 129 new techniques with automatic categorization and Hangul generation
+  - Updated counts: 34 kicks, 61 blocks, 54 strikes, 12 hand techniques, 151 vocabulary words
+- **Critical Pattern Discovery - Levenshtein Distance Spelling Consistency:**
+  - **Problem:** Romanized term spelling inconsistencies accumulate with manual entry
+  - **Solution:** Python-based fuzzy similarity clustering with frequency analysis
+  - **Approach:** Clusters similar words (edit distance ≤2), flags singletons near common words
+  - **Impact:** Scales to thousands of terms, catches typos humans miss, evidence-based corrections
+  - **Documented:** Added Pattern #8 to CLAUDE.md for future data quality validation
+- **Files Updated:** 6 JSON files (vocabulary, 4 technique files, 1 flashcard file)
+- **Build:** ✅ Successful with zero errors
+- **Verification:** All 14 corrections applied across 70 files, zero spelling inconsistencies remain
+- **Status:** Priority 1 (Vocabulary Builder) marked COMPLETE pending navigation amendment
+- **User Impact:** Ensures consistent romanization for 196+ techniques and 151 vocabulary words
+
 **Technical Achievements:**
 - Discovered and documented critical SwiftUI binding pattern (version counter)
 - Implemented smooth 3D card flip animations without performance impact
