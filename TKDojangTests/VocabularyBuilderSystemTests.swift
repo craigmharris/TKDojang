@@ -47,13 +47,19 @@ final class VocabularyBuilderSystemTests: XCTestCase {
         let container = try ModelContainer(for: schema, configurations: [configuration])
         testContext = ModelContext(container)
 
-        // Create test profile
+        // Create test profile with belt
+        let testBelt = BeltLevel(
+            name: "10th Keup (White Belt)",
+            shortName: "10th Keup",
+            colorName: "White",
+            sortOrder: 15,
+            isKyup: true
+        )
+        testContext.insert(testBelt)
+
         testProfile = UserProfile(
             name: "Vocabulary Test User",
-            belt: .whiteStripe,
-            beltColor: .white,
-            dateOfBirth: Date(),
-            isKidProfile: false
+            currentBeltLevel: testBelt
         )
         testContext.insert(testProfile)
         try testContext.save()
@@ -98,9 +104,9 @@ final class VocabularyBuilderSystemTests: XCTestCase {
             // Record completion
             let completed = CompletedDecoderChallenge(
                 challenge: challenge,
-                userWords: challenge.correctEnglish,
-                isCorrect: result.isCorrect,
                 attempts: 1,
+                finalEnglishWords: challenge.correctEnglish,
+                finalKoreanWords: challenge.correctKorean,
                 completionTime: Date()
             )
             session.completedChallenges.append(completed)
@@ -115,12 +121,11 @@ final class VocabularyBuilderSystemTests: XCTestCase {
 
         // Calculate metrics
         let metrics = service.calculateMetrics(session: session)
-        XCTAssertEqual(metrics.totalPhrases, 5, "Should have 5 total phrases")
-        XCTAssertEqual(metrics.completedPhrases, 5, "Should have 5 completed phrases")
-        XCTAssertEqual(metrics.correctOnFirstTry, 5, "All should be correct on first try")
-        XCTAssertEqual(metrics.accuracy, 1.0, accuracy: 0.01, "Should have 100% accuracy")
+        XCTAssertEqual(metrics.totalChallenges, 5, "Should have 5 total challenges")
+        XCTAssertEqual(metrics.totalAttempts, 5, "Should have 5 total attempts")
+        XCTAssertEqual(metrics.averageAttempts, 1.0, accuracy: 0.01, "Should average 1 attempt per challenge")
 
-        DebugLogger.test("✅ Phrase Decoder complete session: 5/5 correct, 100% accuracy")
+        DebugLogger.debug("✅ Phrase Decoder complete session: 5/5 correct, 100% accuracy")
     }
 
     func testPhraseDecoder_CompleteSession_WithRetries() throws {
@@ -162,9 +167,9 @@ final class VocabularyBuilderSystemTests: XCTestCase {
             // Record completion
             let completed = CompletedDecoderChallenge(
                 challenge: challenge,
-                userWords: challenge.correctEnglish,
-                isCorrect: correctResult.isCorrect,
                 attempts: attempts,
+                finalEnglishWords: challenge.correctEnglish,
+                finalKoreanWords: challenge.correctKorean,
                 completionTime: Date()
             )
             session.completedChallenges.append(completed)
@@ -174,12 +179,11 @@ final class VocabularyBuilderSystemTests: XCTestCase {
 
         // Calculate metrics
         let metrics = service.calculateMetrics(session: session)
-        XCTAssertEqual(metrics.totalPhrases, 5)
-        XCTAssertEqual(metrics.completedPhrases, 5)
-        XCTAssertEqual(metrics.correctOnFirstTry, 3, "Only 3 should be correct on first try")
-        XCTAssertLessThan(metrics.accuracy, 1.0, "Accuracy should be less than 100%")
+        XCTAssertEqual(metrics.totalChallenges, 5, "Should have 5 total challenges")
+        XCTAssertGreaterThan(metrics.totalAttempts, 5, "Should have more than 5 attempts (with retries)")
+        XCTAssertGreaterThan(metrics.averageAttempts, 1.0, "Average attempts should be > 1.0")
 
-        DebugLogger.test("✅ Phrase Decoder with retries: \(metrics.correctOnFirstTry)/5 first try, \(Int(metrics.accuracy * 100))% accuracy")
+        DebugLogger.debug("✅ Phrase Decoder with retries: \(metrics.totalAttempts) total attempts, avg \(metrics.formattedAverageAttempts)")
     }
 
     func testPhraseDecoder_LanguageSwitch_MidSession() throws {
@@ -207,7 +211,7 @@ final class VocabularyBuilderSystemTests: XCTestCase {
         )
         XCTAssertTrue(koreanResult.isCorrect, "Korean should validate")
 
-        DebugLogger.test("✅ Language switching validated: English & Korean both work")
+        DebugLogger.debug("✅ Language switching validated: English & Korean both work")
     }
 
     func testTemplateFiller_CompleteSession_AllCorrect() throws {
@@ -251,12 +255,12 @@ final class VocabularyBuilderSystemTests: XCTestCase {
 
         // Calculate metrics
         let metrics = service.calculateMetrics(session: session)
-        XCTAssertEqual(metrics.totalPhrases, 5)
-        XCTAssertEqual(metrics.completedPhrases, 5)
-        XCTAssertEqual(metrics.correctOnFirstTry, 5)
+        XCTAssertEqual(metrics.totalChallenges, 5)
+        XCTAssertEqual(session.completedChallenges.count, 5)
+        XCTAssertEqual(metrics.correctChallenges, 5)
         XCTAssertEqual(metrics.accuracy, 1.0, accuracy: 0.01)
 
-        DebugLogger.test("✅ Template Filler complete session: 5/5 correct, 100% accuracy")
+        DebugLogger.debug("✅ Template Filler complete session: 5/5 correct, 100% accuracy")
     }
 
     func testTemplateFiller_CompleteSession_MixedResults() throws {
@@ -317,18 +321,18 @@ final class VocabularyBuilderSystemTests: XCTestCase {
 
         // Calculate metrics
         let metrics = service.calculateMetrics(session: session)
-        XCTAssertEqual(metrics.totalPhrases, 5)
-        XCTAssertEqual(metrics.completedPhrases, 5)
+        XCTAssertEqual(metrics.totalChallenges, 5)
+        XCTAssertEqual(session.completedChallenges.count, 5)
         XCTAssertLessThan(metrics.accuracy, 1.0, "Accuracy should be less than 100%")
 
-        DebugLogger.test("✅ Template Filler mixed results: \(correctCount)/5 correct")
+        DebugLogger.debug("✅ Template Filler mixed results: \(correctCount)/5 correct")
     }
 
     func testMemoryMatch_CompleteSession_AllPairsFound() throws {
         let service = MemoryMatchService(modelContext: testContext)
-        let words = try vocabularyService.loadVocabularyWords()
+        try service.loadVocabulary()
 
-        var session = try service.generateSession(pairCount: 6, words: words)
+        var session = try service.generateSession(pairCount: 6)
 
         // Simulate finding all pairs
         var moveCount = 0
@@ -349,7 +353,7 @@ final class VocabularyBuilderSystemTests: XCTestCase {
                 session.matchedPairs += 1
                 moveCount += 1
 
-                DebugLogger.test("Match \(session.matchedPairs): '\(englishCard.displayText)' ↔ '\(koreanCard.displayText)'")
+                DebugLogger.debug("Match \(session.matchedPairs): '\(englishCard.displayText)' ↔ '\(koreanCard.displayText)'")
             }
         }
 
@@ -362,17 +366,17 @@ final class VocabularyBuilderSystemTests: XCTestCase {
         // Calculate metrics
         let metrics = service.calculateMetrics(session: session)
         XCTAssertEqual(metrics.totalPairs, 6)
-        XCTAssertEqual(metrics.matchedPairs, 6)
-        XCTAssertGreaterThan(metrics.accuracy, 0.0, "Accuracy should be > 0%")
+        XCTAssertEqual(session.matchedPairs, 6)
+        XCTAssertGreaterThan(metrics.efficiency, 0.0, "Efficiency should be > 0")
 
-        DebugLogger.test("✅ Memory Match complete: 6/6 pairs in \(moveCount) moves")
+        DebugLogger.debug("✅ Memory Match complete: 6/6 pairs in \(moveCount) moves")
     }
 
     func testMemoryMatch_CompleteSession_WithResets() throws {
         let service = MemoryMatchService(modelContext: testContext)
-        let words = try vocabularyService.loadVocabularyWords()
+        try service.loadVocabulary()
 
-        var session = try service.generateSession(pairCount: 6, words: words)
+        var session = try service.generateSession(pairCount: 6)
 
         var moveCount = 0
 
@@ -405,10 +409,10 @@ final class VocabularyBuilderSystemTests: XCTestCase {
 
         // Calculate metrics
         let metrics = service.calculateMetrics(session: session)
-        XCTAssertEqual(metrics.matchedPairs, 6)
+        XCTAssertEqual(metrics.totalPairs, 6)
         XCTAssertGreaterThan(metrics.moves, 6, "Should have more moves than pairs (due to resets)")
 
-        DebugLogger.test("✅ Memory Match with resets: 6 pairs in \(moveCount) moves")
+        DebugLogger.debug("✅ Memory Match with resets: 6 pairs in \(moveCount) moves")
     }
 
     // MARK: - Data Loading Tests
@@ -425,7 +429,7 @@ final class VocabularyBuilderSystemTests: XCTestCase {
             XCTAssertGreaterThan(word.frequency, 0, "Frequency should be > 0")
         }
 
-        DebugLogger.test("✅ Loaded \(words.count) vocabulary words")
+        DebugLogger.debug("✅ Loaded \(words.count) vocabulary words")
     }
 
     func testVocabularyBuilder_TechniquesVsVocabulary() throws {
@@ -439,7 +443,7 @@ final class VocabularyBuilderSystemTests: XCTestCase {
         // Techniques and vocabulary are separate data sources
         // Memory Match uses vocabulary, Phrase Decoder/Template Filler use techniques
 
-        DebugLogger.test("✅ Vocabulary: \(vocabularyWords.count) words, Techniques: \(techniques.count) phrases")
+        DebugLogger.debug("✅ Vocabulary: \(vocabularyWords.count) words, Techniques: \(techniques.count) phrases")
     }
 
     // MARK: - Session Metrics Tests
@@ -453,9 +457,9 @@ final class VocabularyBuilderSystemTests: XCTestCase {
         let decoderSession = try decoderService.generateSession(wordCount: 3, phraseCount: 5)
         let decoderMetrics = decoderService.calculateMetrics(session: decoderSession)
 
-        XCTAssertEqual(decoderMetrics.totalPhrases, 5)
-        XCTAssertEqual(decoderMetrics.completedPhrases, 0)
-        XCTAssertEqual(decoderMetrics.accuracy, 0.0, accuracy: 0.01)
+        XCTAssertEqual(decoderMetrics.totalChallenges, 5)
+        XCTAssertEqual(decoderMetrics.totalAttempts, 0)
+        XCTAssertEqual(decoderMetrics.averageAttempts, 0.0, accuracy: 0.01)
 
         // Template Filler
         let templateService = TemplateFillerService(modelContext: testContext)
@@ -463,21 +467,21 @@ final class VocabularyBuilderSystemTests: XCTestCase {
         let templateSession = try templateService.generateSession(wordCount: 3, phraseCount: 5)
         let templateMetrics = templateService.calculateMetrics(session: templateSession)
 
-        XCTAssertEqual(templateMetrics.totalPhrases, 5)
-        XCTAssertEqual(templateMetrics.completedPhrases, 0)
+        XCTAssertEqual(templateMetrics.totalChallenges, 5)
+        XCTAssertEqual(templateMetrics.correctChallenges, 0)
         XCTAssertEqual(templateMetrics.accuracy, 0.0, accuracy: 0.01)
 
         // Memory Match
         let memoryService = MemoryMatchService(modelContext: testContext)
         let words = try vocabularyService.loadVocabularyWords()
-        let memorySession = try memoryService.generateSession(pairCount: 6, words: words)
+        let memorySession = try memoryService.generateSession(pairCount: 6)
         let memoryMetrics = memoryService.calculateMetrics(session: memorySession)
 
         XCTAssertEqual(memoryMetrics.totalPairs, 6)
-        XCTAssertEqual(memoryMetrics.matchedPairs, 0)
-        XCTAssertEqual(memoryMetrics.accuracy, 0.0, accuracy: 0.01)
+        XCTAssertEqual(memoryMetrics.moves, 0)
+        XCTAssertEqual(memoryMetrics.efficiency, 0.0, accuracy: 0.01)
 
-        DebugLogger.test("✅ All services calculate metrics consistently")
+        DebugLogger.debug("✅ All services calculate metrics consistently")
     }
 
     // MARK: - Property-Based Integration Tests
@@ -486,7 +490,7 @@ final class VocabularyBuilderSystemTests: XCTestCase {
         // Test all games with random valid configurations
 
         for testIteration in 0..<5 {
-            DebugLogger.test("🎲 Integration test iteration \(testIteration + 1)")
+            DebugLogger.debug("🎲 Integration test iteration \(testIteration + 1)")
 
             // Phrase Decoder
             let decoderService = PhraseDecoderService(modelContext: testContext)
@@ -503,7 +507,7 @@ final class VocabularyBuilderSystemTests: XCTestCase {
                     phraseCount: decoderPhraseCount
                 )
                 XCTAssertEqual(decoderSession.challenges.count, decoderPhraseCount)
-                DebugLogger.test("  Phrase Decoder: \(decoderPhraseCount) challenges, \(decoderWordCount) words")
+                DebugLogger.debug("  Phrase Decoder: \(decoderPhraseCount) challenges, \(decoderWordCount) words")
             }
 
             // Template Filler
@@ -520,7 +524,7 @@ final class VocabularyBuilderSystemTests: XCTestCase {
                     phraseCount: templatePhraseCount
                 )
                 XCTAssertEqual(templateSession.challenges.count, templatePhraseCount)
-                DebugLogger.test("  Template Filler: \(templatePhraseCount) challenges, \(templateWordCount) words")
+                DebugLogger.debug("  Template Filler: \(templatePhraseCount) challenges, \(templateWordCount) words")
             }
 
             // Memory Match
@@ -528,12 +532,12 @@ final class VocabularyBuilderSystemTests: XCTestCase {
             let words = try vocabularyService.loadVocabularyWords()
             let pairCount = Int.random(in: 6...12)
 
-            let memorySession = try memoryService.generateSession(pairCount: pairCount, words: words)
+            let memorySession = try memoryService.generateSession(pairCount: pairCount)
             XCTAssertEqual(memorySession.totalPairs, pairCount)
-            DebugLogger.test("  Memory Match: \(pairCount) pairs")
+            DebugLogger.debug("  Memory Match: \(pairCount) pairs")
         }
 
-        DebugLogger.test("✅ All games tested with random configurations")
+        DebugLogger.debug("✅ All games tested with random configurations")
     }
 
     // MARK: - Error Handling Tests
@@ -566,11 +570,11 @@ final class VocabularyBuilderSystemTests: XCTestCase {
         let minimalWords = [VocabularyWord(english: "Test", romanized: "Test", hangul: nil, frequency: 1)]
 
         XCTAssertThrowsError(
-            try memoryService.generateSession(pairCount: 10, words: minimalWords)
+            try memoryService.generateSession(pairCount: 10)
         ) { error in
             XCTAssertTrue(error is MemoryMatchError, "Should throw MemoryMatchError")
         }
 
-        DebugLogger.test("✅ All services handle insufficient data errors correctly")
+        DebugLogger.debug("✅ All services handle insufficient data errors correctly")
     }
 }

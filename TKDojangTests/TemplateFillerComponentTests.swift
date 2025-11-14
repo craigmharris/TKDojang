@@ -73,7 +73,7 @@ final class TemplateFillerComponentTests: XCTestCase {
         XCTAssertEqual(session.totalChallenges, 5, "Session should have requested challenges")
         XCTAssertEqual(session.challenges.count, 5, "Should generate requested challenges")
 
-        DebugLogger.test("✅ Service loaded techniques and generated session")
+        DebugLogger.debug("✅ Service loaded techniques and generated session")
     }
 
     func testTemplateFillerService_GeneratesChallenge_WithMultipleBlanks() throws {
@@ -92,7 +92,7 @@ final class TemplateFillerComponentTests: XCTestCase {
                 XCTAssertLessThan(blank.position, challenge.englishWords.count, "Blank position should be valid")
             }
 
-            DebugLogger.test("Challenge has \(challenge.blanks.count) blanks in \(challenge.englishWords.count)-word phrase")
+            DebugLogger.debug("Challenge has \(challenge.blanks.count) blanks in \(challenge.englishWords.count)-word phrase")
         }
     }
 
@@ -105,7 +105,7 @@ final class TemplateFillerComponentTests: XCTestCase {
             let filtered = TechniquePhraseLoader.filterByWordCount(allTechniques, wordCount: wordCount)
 
             guard filtered.count >= 5 else {
-                DebugLogger.test("⏭️ Skipping wordCount=\(wordCount): insufficient techniques")
+                DebugLogger.debug("⏭️ Skipping wordCount=\(wordCount): insufficient techniques")
                 continue
             }
 
@@ -139,7 +139,7 @@ final class TemplateFillerComponentTests: XCTestCase {
                 }
             }
 
-            DebugLogger.test("✅ Blank generation validated for \(wordCount)-word phrases")
+            DebugLogger.debug("✅ Blank generation validated for \(wordCount)-word phrases")
         }
     }
 
@@ -164,11 +164,11 @@ final class TemplateFillerComponentTests: XCTestCase {
                     )
                 }
 
-                DebugLogger.test("Blank \(blank.blankNumber): All \(blank.choices.count) choices valid for position \(blank.position)")
+                DebugLogger.debug("Blank \(blank.blankNumber): All \(blank.choices.count) choices valid for position \(blank.position)")
             }
         }
 
-        DebugLogger.test("✅ All distractors are positionally valid")
+        DebugLogger.debug("✅ All distractors are positionally valid")
     }
 
     func testTemplateFillerService_PositionalDistractors_AdaptiveCount() throws {
@@ -196,11 +196,11 @@ final class TemplateFillerComponentTests: XCTestCase {
                     "All choices should be unique"
                 )
 
-                DebugLogger.test("Blank has \(blank.choices.count) unique choices including correct answer")
+                DebugLogger.debug("Blank has \(blank.choices.count) unique choices including correct answer")
             }
         }
 
-        DebugLogger.test("✅ Adaptive distractor generation validated")
+        DebugLogger.debug("✅ Adaptive distractor generation validated")
     }
 
     func testTemplateFillerService_Validation_ChecksAllBlanks() throws {
@@ -245,7 +245,7 @@ final class TemplateFillerComponentTests: XCTestCase {
             }
         }
 
-        DebugLogger.test("✅ Validation correctly checks all blanks")
+        DebugLogger.debug("✅ Validation correctly checks all blanks")
     }
 
     func testTemplateFillerService_SessionGeneration_PropertyBased() throws {
@@ -261,7 +261,7 @@ final class TemplateFillerComponentTests: XCTestCase {
             let filtered = TechniquePhraseLoader.filterByWordCount(allTechniques, wordCount: wordCount)
 
             guard filtered.count >= phraseCount else {
-                DebugLogger.test("⏭️ Skipping: insufficient techniques for wordCount=\(wordCount), phraseCount=\(phraseCount)")
+                DebugLogger.debug("⏭️ Skipping: insufficient techniques for wordCount=\(wordCount), phraseCount=\(phraseCount)")
                 continue
             }
 
@@ -278,7 +278,7 @@ final class TemplateFillerComponentTests: XCTestCase {
                 XCTAssertGreaterThan(challenge.blanks.count, 0, "Should have at least 1 blank")
             }
 
-            DebugLogger.test("✅ Property-based test passed: wordCount=\(wordCount), phraseCount=\(phraseCount)")
+            DebugLogger.debug("✅ Property-based test passed: wordCount=\(wordCount), phraseCount=\(phraseCount)")
         }
     }
 
@@ -293,13 +293,12 @@ final class TemplateFillerComponentTests: XCTestCase {
             let metrics = service.calculateMetrics(session: session)
 
             // Properties that must hold
-            XCTAssertEqual(metrics.totalPhrases, phraseCount, "Total should match session size")
-            XCTAssertEqual(metrics.completedPhrases, 0, "New session should have 0 completed")
-            XCTAssertEqual(metrics.correctOnFirstTry, 0, "New session should have 0 correct on first try")
+            XCTAssertEqual(metrics.totalChallenges, phraseCount, "Total should match session size")
+            XCTAssertEqual(metrics.correctChallenges, 0, "New session should have 0 correct challenges")
             XCTAssertEqual(metrics.accuracy, 0.0, accuracy: 0.01, "New session should have 0% accuracy")
         }
 
-        DebugLogger.test("✅ Metrics calculation validated")
+        DebugLogger.debug("✅ Metrics calculation validated")
     }
 
     // MARK: - Data Structure Tests
@@ -321,10 +320,10 @@ final class TemplateFillerComponentTests: XCTestCase {
             // English has blanks
             XCTAssertGreaterThan(challenge.blanks.count, 0, "English should have blanks to fill")
 
-            DebugLogger.test("Korean reference: '\(koreanPhrase)' with \(challenge.blanks.count) English blank(s)")
+            DebugLogger.debug("Korean reference: '\(koreanPhrase)' with \(challenge.blanks.count) English blank(s)")
         }
 
-        DebugLogger.test("✅ All challenges show full Korean reference")
+        DebugLogger.debug("✅ All challenges show full Korean reference")
     }
 
     func testTemplateFillerService_UniqueChallenges() throws {
@@ -342,7 +341,7 @@ final class TemplateFillerComponentTests: XCTestCase {
             "All challenges should use unique techniques"
         )
 
-        DebugLogger.test("✅ Session has \(uniqueIds.count) unique techniques")
+        DebugLogger.debug("✅ Session has \(uniqueIds.count) unique techniques")
     }
 
     func testTemplateFillerService_BlankNumbering() throws {
@@ -357,10 +356,10 @@ final class TemplateFillerComponentTests: XCTestCase {
 
             XCTAssertEqual(actualNumbers, expectedNumbers, "Blanks should be numbered 1, 2, 3...")
 
-            DebugLogger.test("Challenge has blanks numbered: \(actualNumbers)")
+            DebugLogger.debug("Challenge has blanks numbered: \(actualNumbers)")
         }
 
-        DebugLogger.test("✅ Blank numbering validated")
+        DebugLogger.debug("✅ Blank numbering validated")
     }
 
     // MARK: - Edge Cases
@@ -381,10 +380,10 @@ final class TemplateFillerComponentTests: XCTestCase {
             // 2-word phrases should have exactly 1 blank (can't blank both)
             XCTAssertEqual(challenge.blanks.count, 1, "2-word phrases should have exactly 1 blank")
 
-            DebugLogger.test("2-word phrase has 1 blank at position \(challenge.blanks[0].position)")
+            DebugLogger.debug("2-word phrase has 1 blank at position \(challenge.blanks[0].position)")
         }
 
-        DebugLogger.test("✅ 2-word phrases correctly have only 1 blank")
+        DebugLogger.debug("✅ 2-word phrases correctly have only 1 blank")
     }
 
     func testTemplateFillerService_InsufficientTechniques_Throws() throws {
@@ -407,6 +406,6 @@ final class TemplateFillerComponentTests: XCTestCase {
             }
         }
 
-        DebugLogger.test("✅ Service correctly throws for insufficient techniques")
+        DebugLogger.debug("✅ Service correctly throws for insufficient techniques")
     }
 }

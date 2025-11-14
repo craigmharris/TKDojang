@@ -76,7 +76,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
         XCTAssertTrue(categories.contains(.strikes), "Should load strikes")
         XCTAssertTrue(categories.contains(.handTechniques), "Should load hand techniques")
 
-        DebugLogger.test("✅ Loaded \(techniques.count) techniques from production JSON")
+        DebugLogger.debug("✅ Loaded \(techniques.count) techniques from production JSON")
     }
 
     func testTechniquePhraseLoader_LoadsFromBlocks() throws {
@@ -93,7 +93,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
             XCTAssertGreaterThan(firstBlock.koreanWords.count, 0, "Should have Korean words")
         }
 
-        DebugLogger.test("✅ Loaded \(blocks.count) block techniques")
+        DebugLogger.debug("✅ Loaded \(blocks.count) block techniques")
     }
 
     func testTechniquePhraseLoader_LoadsFromKicks() throws {
@@ -102,7 +102,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
 
         XCTAssertGreaterThan(kicks.count, 0, "Should load kick techniques")
 
-        DebugLogger.test("✅ Loaded \(kicks.count) kick techniques")
+        DebugLogger.debug("✅ Loaded \(kicks.count) kick techniques")
     }
 
     func testTechniquePhraseLoader_LoadsFromStrikes() throws {
@@ -111,7 +111,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
 
         XCTAssertGreaterThan(strikes.count, 0, "Should load strike techniques")
 
-        DebugLogger.test("✅ Loaded \(strikes.count) strike techniques")
+        DebugLogger.debug("✅ Loaded \(strikes.count) strike techniques")
     }
 
     func testTechniquePhraseLoader_LoadsFromHandTechniques() throws {
@@ -120,7 +120,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
 
         XCTAssertGreaterThan(handTechniques.count, 0, "Should load hand techniques")
 
-        DebugLogger.test("✅ Loaded \(handTechniques.count) hand techniques")
+        DebugLogger.debug("✅ Loaded \(handTechniques.count) hand techniques")
     }
 
     func testTechniquePhraseLoader_WordArrays_SplitCorrectly() throws {
@@ -142,7 +142,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
             XCTAssertEqual(reconstructedKorean, technique.koreanRomanized, "Korean word array should reconstruct original")
         }
 
-        DebugLogger.test("✅ All \(techniques.count) techniques have correctly split word arrays")
+        DebugLogger.debug("✅ All \(techniques.count) techniques have correctly split word arrays")
     }
 
     func testTechniquePhraseLoader_WordCount_CalculatesCorrectly() throws {
@@ -155,7 +155,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
             XCTAssertEqual(technique.koreanWords.count, expectedCount)
         }
 
-        DebugLogger.test("✅ All techniques have correct word counts")
+        DebugLogger.debug("✅ All techniques have correct word counts")
     }
 
     func testTechniquePhraseLoader_FiltersByWordCount() throws {
@@ -173,7 +173,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
                 )
             }
 
-            DebugLogger.test("✅ Found \(filtered.count) techniques with \(targetWordCount) words")
+            DebugLogger.debug("✅ Found \(filtered.count) techniques with \(targetWordCount) words")
         }
     }
 
@@ -190,7 +190,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
         XCTAssertEqual(session.totalChallenges, 5, "Session should have requested number of challenges")
         XCTAssertEqual(session.challenges.count, 5, "Should generate requested challenges")
 
-        DebugLogger.test("✅ Service loaded techniques and generated session")
+        DebugLogger.debug("✅ Service loaded techniques and generated session")
     }
 
     func testPhraseDecoderService_FiltersByWordCount() throws {
@@ -218,7 +218,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
                 )
             }
 
-            DebugLogger.test("✅ All challenges have \(wordCount) words")
+            DebugLogger.debug("✅ All challenges have \(wordCount) words")
         }
     }
 
@@ -237,7 +237,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
         // Verify start time is recent
         XCTAssertLessThan(Date().timeIntervalSince(session.startTime), 1.0)
 
-        DebugLogger.test("✅ Session generated successfully with 10 challenges")
+        DebugLogger.debug("✅ Session generated successfully with 10 challenges")
     }
 
     func testPhraseDecoderService_GeneratesSession_ThrowsWhenInsufficient() throws {
@@ -260,7 +260,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
             }
         }
 
-        DebugLogger.test("✅ Service correctly throws error for insufficient techniques")
+        DebugLogger.debug("✅ Service correctly throws error for insufficient techniques")
     }
 
     func testPhraseDecoderService_ScramblesTechniques_DifferentFromOriginal() throws {
@@ -287,7 +287,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
             "Most challenges should have scrambled word order"
         )
 
-        DebugLogger.test("✅ Challenges are scrambled from original order")
+        DebugLogger.debug("✅ Challenges are scrambled from original order")
     }
 
     func testPhraseDecoderService_ScramblesBothLanguages() throws {
@@ -310,7 +310,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
             XCTAssertEqual(correctKoreanSet, scrambledKoreanSet, "Scrambled should contain same Korean words")
         }
 
-        DebugLogger.test("✅ Both languages scrambled correctly")
+        DebugLogger.debug("✅ Both languages scrambled correctly")
     }
 
     func testPhraseDecoderService_ValidatesCorrectOrder() throws {
@@ -327,7 +327,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
         )
 
         XCTAssertTrue(englishResult.isCorrect, "Correct English order should validate")
-        XCTAssertEqual(englishResult.correctPositions, 3, "All positions should be correct")
+        XCTAssertEqual(englishResult.correctPositions.count, 3, "All positions should be correct")
         XCTAssertTrue(englishResult.feedback.contains("Perfect"), "Feedback should indicate success")
 
         // Test Korean validation
@@ -338,9 +338,9 @@ final class PhraseDecoderComponentTests: XCTestCase {
         )
 
         XCTAssertTrue(koreanResult.isCorrect, "Correct Korean order should validate")
-        XCTAssertEqual(koreanResult.correctPositions, 3, "All positions should be correct")
+        XCTAssertEqual(koreanResult.correctPositions.count, 3, "All positions should be correct")
 
-        DebugLogger.test("✅ Correct phrase order validates successfully")
+        DebugLogger.debug("✅ Correct phrase order validates successfully")
     }
 
     func testPhraseDecoderService_ValidatesPartialCorrectness() throws {
@@ -362,11 +362,11 @@ final class PhraseDecoderComponentTests: XCTestCase {
         )
 
         XCTAssertFalse(result.isCorrect, "Partially correct should not fully validate")
-        XCTAssertGreaterThan(result.correctPositions, 0, "Should have some correct positions")
-        XCTAssertLessThan(result.correctPositions, challenge.correctEnglish.count, "Should not be fully correct")
+        XCTAssertGreaterThan(result.correctPositions.count, 0, "Should have some correct positions")
+        XCTAssertLessThan(result.correctPositions.count, challenge.correctEnglish.count, "Should not be fully correct")
         XCTAssertTrue(result.feedback.contains("position"), "Feedback should mention positions")
 
-        DebugLogger.test("✅ Partial correctness detected: \(result.correctPositions)/\(challenge.correctEnglish.count) correct")
+        DebugLogger.debug("✅ Partial correctness detected: \(result.correctPositions.count)/\(challenge.correctEnglish.count) correct")
     }
 
     func testPhraseDecoderService_CalculatesMetrics_PropertyBased() throws {
@@ -380,13 +380,12 @@ final class PhraseDecoderComponentTests: XCTestCase {
             let metrics = service.calculateMetrics(session: session)
 
             // Properties that must hold
-            XCTAssertEqual(metrics.totalPhrases, phraseCount, "Total phrases should match session size")
-            XCTAssertEqual(metrics.completedPhrases, 0, "New session should have 0 completed")
-            XCTAssertEqual(metrics.correctOnFirstTry, 0, "New session should have 0 correct on first try")
-            XCTAssertEqual(metrics.accuracy, 0.0, accuracy: 0.01, "New session should have 0% accuracy")
+            XCTAssertEqual(metrics.totalChallenges, phraseCount, "Total challenges should match session size")
+            XCTAssertEqual(metrics.totalAttempts, 0, "New session should have 0 attempts")
+            XCTAssertEqual(metrics.averageAttempts, 0.0, accuracy: 0.01, "New session should have 0 average attempts")
         }
 
-        DebugLogger.test("✅ Metrics calculation validated with property-based testing")
+        DebugLogger.debug("✅ Metrics calculation validated with property-based testing")
     }
 
     // MARK: - Property-Based Tests
@@ -404,7 +403,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
             let filtered = TechniquePhraseLoader.filterByWordCount(allTechniques, wordCount: wordCount)
 
             guard filtered.count >= phraseCount else {
-                DebugLogger.test("⏭️ Skipping test: insufficient techniques for wordCount=\(wordCount), phraseCount=\(phraseCount)")
+                DebugLogger.debug("⏭️ Skipping test: insufficient techniques for wordCount=\(wordCount), phraseCount=\(phraseCount)")
                 continue
             }
 
@@ -422,7 +421,7 @@ final class PhraseDecoderComponentTests: XCTestCase {
                 XCTAssertEqual(challenge.scrambledKorean.count, wordCount, "Scrambled Korean should have correct word count")
             }
 
-            DebugLogger.test("✅ Property-based test passed: wordCount=\(wordCount), phraseCount=\(phraseCount)")
+            DebugLogger.debug("✅ Property-based test passed: wordCount=\(wordCount), phraseCount=\(phraseCount)")
         }
     }
 
@@ -441,6 +440,6 @@ final class PhraseDecoderComponentTests: XCTestCase {
             "All challenges should use unique techniques (no duplicates)"
         )
 
-        DebugLogger.test("✅ Session has \(uniqueIds.count) unique techniques")
+        DebugLogger.debug("✅ Session has \(uniqueIds.count) unique techniques")
     }
 }
