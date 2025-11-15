@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>method</key>
+	<string>app-store</string>
+	<key>signingStyle</key>
+	<string>automatic</string>
+	<key>teamID</key>
+	<string>49BD3BH5</string>
+	<key>uploadSymbols</key>
+	<true/>
+	<key>uploadBitcode</key>
+	<false/>
+	<key>manageAppVersionAndBuildNumber</key>
+	<false/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>destination</key>
+	<string>upload</string>
+	<key>provisioningProfiles</key>
+	<dict>
+		<key>com.cmh.tkdojang.TKDojang</key>
+		<string>match AppStore com.cmh.tkdojang.TKDojang</string>
+	</dict>
+	<key>compileBitcode</key>
+	<false/>
+	<key>stripSwiftSymbols</key>
+	<true/>
+	<key>testFlightInternalTestingOnly</key>
+	<false/>
+</dict>
+</plist>
