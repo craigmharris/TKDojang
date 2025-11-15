@@ -300,9 +300,17 @@ final class PhraseDecoderComponentTests: XCTestCase {
         let session = try service.generateSession(wordCount: 4, phraseCount: 5)
 
         for challenge in session.challenges {
-            // Verify both languages have scrambled arrays
+            // Verify English has correct word count (matches requested wordCount)
             XCTAssertEqual(challenge.scrambledEnglish.count, 4, "Scrambled English should have 4 words")
-            XCTAssertEqual(challenge.scrambledKorean.count, 4, "Scrambled Korean should have 4 words")
+
+            // Korean may have different word count due to compound words
+            // Just verify it has at least 1 word and matches the correct Korean count
+            XCTAssertGreaterThan(challenge.scrambledKorean.count, 0, "Scrambled Korean should have at least 1 word")
+            XCTAssertEqual(
+                challenge.scrambledKorean.count,
+                challenge.correctKorean.count,
+                "Scrambled Korean should match correct Korean word count"
+            )
 
             // Verify arrays contain same words (just reordered)
             let correctEnglishSet = Set(challenge.correctEnglish)

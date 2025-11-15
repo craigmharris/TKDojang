@@ -610,11 +610,13 @@ final class PatternPracticeComponentTests: XCTestCase {
     }
 
     /**
-     * PROPERTY: Struggling moves list must accumulate unique moves
+     * PROPERTY: Struggling moves list reflects latest session difficulties
      *
-     * Tests struggling moves tracking
+     * Tests struggling moves tracking - uses replacement strategy where latest
+     * session's struggling moves are authoritative (not accumulated across sessions).
+     * WHY: Prevents stale data - if user mastered move 1, it shouldn't persist forever.
      */
-    func testUserProgress_PropertyBased_StrugglingMovesAccumulate() throws {
+    func testUserProgress_PropertyBased_StrugglingMovesReflectLatestSession() throws {
         // Arrange: Create user and pattern
         let profile = try createTestProfile()
         let allPatterns = try testContext.fetch(FetchDescriptor<Pattern>())
@@ -639,13 +641,15 @@ final class PatternPracticeComponentTests: XCTestCase {
             strugglingMoves: [3, 7, 9]
         )
 
-        // Assert: PROPERTY - Struggling moves should accumulate uniquely
+        // Assert: PROPERTY - Struggling moves reflect LATEST session only (replacement strategy)
+        // Session 2 reported [3, 7, 9], so moves 1 and 5 should NOT persist
         let strugglingMoves = Set(progress.strugglingMoves)
-        XCTAssertTrue(strugglingMoves.contains(1), "Should contain move 1")
-        XCTAssertTrue(strugglingMoves.contains(3), "Should contain move 3")
-        XCTAssertTrue(strugglingMoves.contains(5), "Should contain move 5")
-        XCTAssertTrue(strugglingMoves.contains(7), "Should contain move 7")
-        XCTAssertTrue(strugglingMoves.contains(9), "Should contain move 9")
+        XCTAssertFalse(strugglingMoves.contains(1), "Should NOT contain move 1 (from previous session)")
+        XCTAssertTrue(strugglingMoves.contains(3), "Should contain move 3 (in latest session)")
+        XCTAssertFalse(strugglingMoves.contains(5), "Should NOT contain move 5 (from previous session)")
+        XCTAssertTrue(strugglingMoves.contains(7), "Should contain move 7 (in latest session)")
+        XCTAssertTrue(strugglingMoves.contains(9), "Should contain move 9 (in latest session)")
+        XCTAssertEqual(strugglingMoves.count, 3, "Should have exactly 3 struggling moves from latest session")
     }
 
     /**

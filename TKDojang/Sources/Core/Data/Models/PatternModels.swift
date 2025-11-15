@@ -248,8 +248,10 @@ final class UserPatternProgress {
             consecutiveCorrectRuns = 0
         }
         
-        // Update struggling moves
-        strugglingMoves = Array(Set(strugglingMoves + strugglingMoveNumbers))
+        // Update struggling moves - use latest session as authoritative
+        // WHY: Each practice session reports current difficulties. Previous implementation
+        // accumulated moves but never removed them, causing stale data to persist.
+        strugglingMoves = strugglingMoveNumbers
         
         // Update mastery level based on performance
         updateMasteryLevel()

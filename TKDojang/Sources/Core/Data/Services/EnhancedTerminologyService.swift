@@ -170,6 +170,12 @@ class EnhancedTerminologyService {
         do {
             let allTerms = try terminologyService.modelContextForLoading.fetch(descriptor)
             // Filter in-memory for safety
+            // WHY: sortOrder goes high (beginners) → low (advanced)
+            // "Up to belt" means current + all prior (earlier achieved) belts
+            // Prior belts have HIGHER sortOrder values (8th Keup=13, 1st Keup=7)
+            // For mastery at 1st Keup (sortOrder=7), we want: 1st Keup, 2nd Keup, 3rd Keup... 8th Keup
+            // Those sortOrders are: 7, 8, 9, 10, 11, 12, 13
+            // Formula: sortOrder >= currentBeltSortOrder
             let filteredTerms = allTerms.filter { entry in
                 entry.beltLevel.sortOrder >= beltSortOrder
             }
