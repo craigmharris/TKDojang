@@ -47,72 +47,64 @@ struct VocabularyBuilderView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            ZStack {
-                if isLoading {
-                    VStack {
-                        ProgressView()
-                        Text("Loading vocabulary...")
-                            .foregroundColor(.secondary)
-                    }
-                } else if let error = errorMessage {
-                    VStack(spacing: 16) {
-                        Image(systemName: "exclamationmark.triangle")
-                            .font(.system(size: 48))
-                            .foregroundColor(.orange)
-
-                        Text("Error Loading Vocabulary")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-
-                        Text(error)
-                            .font(.body)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal)
-
-                        Button("Try Again") {
-                            loadVocabulary()
-                        }
-                        .buttonStyle(.borderedProminent)
-                    }
-                    .padding()
-                } else {
-                    modeSelectionView
+        ZStack {
+            if isLoading {
+                VStack {
+                    ProgressView()
+                    Text("Loading vocabulary...")
+                        .foregroundColor(.secondary)
                 }
-            }
-            .navigationTitle("Vocabulary Builder")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                }
+            } else if let error = errorMessage {
+                VStack(spacing: 16) {
+                    Image(systemName: "exclamationmark.triangle")
+                        .font(.system(size: 48))
+                        .foregroundColor(.orange)
 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showingTour = true
-                    } label: {
-                        Label("Help", systemImage: "questionmark.circle")
+                    Text("Error Loading Vocabulary")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+
+                    Text(error)
+                        .font(.body)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+
+                    Button("Try Again") {
+                        loadVocabulary()
                     }
-                    .accessibilityIdentifier("vocabularyBuilder-help-button")
-                    .accessibilityLabel("Show Vocabulary Builder tour")
+                    .buttonStyle(.borderedProminent)
                 }
+                .padding()
+            } else {
+                modeSelectionView
             }
-            .sheet(isPresented: $showingTour) {
-                FeatureTourView(
-                    feature: .vocabularyBuilder,
-                    onComplete: {
-                        onboardingCoordinator.completeFeatureTour(.vocabularyBuilder, profile: userProfile)
-                        showingTour = false
-                    },
-                    onSkip: {
-                        onboardingCoordinator.completeFeatureTour(.vocabularyBuilder, profile: userProfile)
-                        showingTour = false
-                    }
-                )
+        }
+        .navigationTitle("Vocabulary Builder")
+        .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    showingTour = true
+                } label: {
+                    Label("Help", systemImage: "questionmark.circle")
+                }
+                .accessibilityIdentifier("vocabularyBuilder-help-button")
+                .accessibilityLabel("Show Vocabulary Builder tour")
             }
+        }
+        .sheet(isPresented: $showingTour) {
+            FeatureTourView(
+                feature: .vocabularyBuilder,
+                onComplete: {
+                    onboardingCoordinator.completeFeatureTour(.vocabularyBuilder, profile: userProfile)
+                    showingTour = false
+                },
+                onSkip: {
+                    onboardingCoordinator.completeFeatureTour(.vocabularyBuilder, profile: userProfile)
+                    showingTour = false
+                }
+            )
         }
         .onAppear {
             loadVocabulary()
@@ -137,85 +129,43 @@ struct VocabularyBuilderView: View {
                 }
                 .padding(.top)
 
-                // Game modes (6 complementary approaches)
-                VStack(spacing: 16) {
-                    // AVAILABLE: Word Matching
-                    GameModeCard(
-                        icon: VocabularyGameMode.wordMatching.icon,
-                        title: VocabularyGameMode.wordMatching.displayName,
-                        description: VocabularyGameMode.wordMatching.description,
-                        difficulty: VocabularyGameMode.wordMatching.difficulty,
-                        estimatedTime: VocabularyGameMode.wordMatching.estimatedTime,
-                        isAvailable: VocabularyGameMode.wordMatching.isAvailable,
-                        accessibilityId: "vocab-game-word-matching-card"
-                    ) {
-                        selectedMode = .wordMatching
-                    }
+                // Game modes in 2x3 grid layout
+                LazyVGrid(columns: [
+                    GridItem(.flexible(), spacing: 16),
+                    GridItem(.flexible(), spacing: 16)
+                ], spacing: 16) {
+                    // Row 1: Word Matching, Slot Builder
+                    VocabularyGameTile(
+                        mode: .wordMatching,
+                        action: { selectedMode = .wordMatching }
+                    )
 
-                    // AVAILABLE: Slot Builder
-                    GameModeCard(
-                        icon: VocabularyGameMode.slotBuilder.icon,
-                        title: VocabularyGameMode.slotBuilder.displayName,
-                        description: VocabularyGameMode.slotBuilder.description,
-                        difficulty: VocabularyGameMode.slotBuilder.difficulty,
-                        estimatedTime: VocabularyGameMode.slotBuilder.estimatedTime,
-                        isAvailable: VocabularyGameMode.slotBuilder.isAvailable,
-                        accessibilityId: "vocab-game-slot-builder-card"
-                    ) {
-                        selectedMode = .slotBuilder
-                    }
+                    VocabularyGameTile(
+                        mode: .slotBuilder,
+                        action: { selectedMode = .slotBuilder }
+                    )
 
-                    // AVAILABLE: Template Filler
-                    GameModeCard(
-                        icon: VocabularyGameMode.templateFiller.icon,
-                        title: VocabularyGameMode.templateFiller.displayName,
-                        description: VocabularyGameMode.templateFiller.description,
-                        difficulty: VocabularyGameMode.templateFiller.difficulty,
-                        estimatedTime: VocabularyGameMode.templateFiller.estimatedTime,
-                        isAvailable: VocabularyGameMode.templateFiller.isAvailable,
-                        accessibilityId: "vocab-game-template-filler-card"
-                    ) {
-                        selectedMode = .templateFiller
-                    }
+                    // Row 2: Template Filler, Phrase Decoder
+                    VocabularyGameTile(
+                        mode: .templateFiller,
+                        action: { selectedMode = .templateFiller }
+                    )
 
-                    // AVAILABLE: Phrase Decoder
-                    GameModeCard(
-                        icon: VocabularyGameMode.phraseDecoder.icon,
-                        title: VocabularyGameMode.phraseDecoder.displayName,
-                        description: VocabularyGameMode.phraseDecoder.description,
-                        difficulty: VocabularyGameMode.phraseDecoder.difficulty,
-                        estimatedTime: VocabularyGameMode.phraseDecoder.estimatedTime,
-                        isAvailable: VocabularyGameMode.phraseDecoder.isAvailable,
-                        accessibilityId: "vocab-game-phrase-decoder-card"
-                    ) {
-                        selectedMode = .phraseDecoder
-                    }
+                    VocabularyGameTile(
+                        mode: .phraseDecoder,
+                        action: { selectedMode = .phraseDecoder }
+                    )
 
-                    // AVAILABLE: Memory Match
-                    GameModeCard(
-                        icon: VocabularyGameMode.memoryMatch.icon,
-                        title: VocabularyGameMode.memoryMatch.displayName,
-                        description: VocabularyGameMode.memoryMatch.description,
-                        difficulty: VocabularyGameMode.memoryMatch.difficulty,
-                        estimatedTime: VocabularyGameMode.memoryMatch.estimatedTime,
-                        isAvailable: VocabularyGameMode.memoryMatch.isAvailable,
-                        accessibilityId: "vocab-game-memory-match-card"
-                    ) {
-                        selectedMode = .memoryMatch
-                    }
+                    // Row 3: Memory Match, Creative Sandbox
+                    VocabularyGameTile(
+                        mode: .memoryMatch,
+                        action: { selectedMode = .memoryMatch }
+                    )
 
-                    // AVAILABLE: Creative Sandbox
-                    GameModeCard(
-                        icon: VocabularyGameMode.creativeSandbox.icon,
-                        title: VocabularyGameMode.creativeSandbox.displayName,
-                        description: VocabularyGameMode.creativeSandbox.description,
-                        difficulty: VocabularyGameMode.creativeSandbox.difficulty,
-                        estimatedTime: VocabularyGameMode.creativeSandbox.estimatedTime,
-                        isAvailable: VocabularyGameMode.creativeSandbox.isAvailable,
-                        accessibilityId: "vocab-game-creative-sandbox-card"
-                    ) {
-                        selectedMode = .creativeSandbox
-                    }
+                    VocabularyGameTile(
+                        mode: .creativeSandbox,
+                        action: { selectedMode = .creativeSandbox }
+                    )
                 }
                 .padding(.horizontal)
             }
@@ -392,6 +342,75 @@ private struct ComingSoonView: View {
         }
         .navigationTitle(gameMode.displayName)
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+// MARK: - Vocabulary Game Tile Component
+
+struct VocabularyGameTile: View {
+    let mode: VocabularyGameMode
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 12) {
+                Image(systemName: mode.icon)
+                    .font(.system(size: 32))
+                    .foregroundColor(tileColor)
+
+                Text(mode.displayName)
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.primary)
+
+                Text(mode.shortDescription)
+                    .font(.caption)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary)
+                    .lineLimit(2)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, minHeight: 140, maxHeight: 140)
+            .background(Color(.systemBackground))
+            .cornerRadius(12)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(tileColor.opacity(0.3), lineWidth: 1)
+            )
+        }
+        .buttonStyle(PlainButtonStyle())
+        .accessibilityIdentifier("vocab-game-\(mode.rawValue)-tile")
+    }
+
+    private var tileColor: Color {
+        switch mode {
+        case .wordMatching: return .blue
+        case .slotBuilder: return .orange
+        case .templateFiller: return .green
+        case .phraseDecoder: return .purple
+        case .memoryMatch: return .pink
+        case .creativeSandbox: return .indigo
+        }
+    }
+}
+
+extension VocabularyGameMode {
+    var shortDescription: String {
+        switch self {
+        case .wordMatching:
+            return "Match English to Korean"
+        case .slotBuilder:
+            return "Build phrases step-by-step"
+        case .templateFiller:
+            return "Complete phrase patterns"
+        case .phraseDecoder:
+            return "Arrange scrambled words"
+        case .memoryMatch:
+            return "Match word pairs"
+        case .creativeSandbox:
+            return "Explore freely"
+        }
     }
 }
 

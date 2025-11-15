@@ -444,90 +444,59 @@ struct LearnView: View {
                 Image(systemName: "book.fill")
                     .font(.system(size: 60))
                     .foregroundColor(.blue)
-                
+
                 Text("Learning Center")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                
+
                 Text("Master Korean terminology, theory knowledge, and test your understanding")
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
                     .padding(.horizontal)
-                
-                Spacer()
-                
-                VStack(spacing: 16) {
-                    NavigationLink(destination: FlashcardConfigurationView(specificTerms: nil)) {
-                        HStack {
-                            Image(systemName: "rectangle.on.rectangle")
-                                .frame(width: 24)
-                            Text("Flashcards")
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.secondary)
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue.opacity(0.1))
-                        .cornerRadius(12)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    .accessibilityIdentifier("learn-flashcards-button")
 
+                // 2x2 Grid Layout
+                LazyVGrid(columns: [
+                    GridItem(.flexible(), spacing: 16),
+                    GridItem(.flexible(), spacing: 16)
+                ], spacing: 16) {
+                    // Row 1: Vocabulary Builder, Flashcards
                     if let profile = userProfile {
-                        NavigationLink(destination: VocabularyBuilderView(modelContext: modelContext, userProfile: profile)) {
-                            HStack {
-                                Image(systemName: "character.book.closed")
-                                    .frame(width: 24)
-                                Text("Vocabulary Builder")
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(.secondary)
-                            }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.orange.opacity(0.1))
-                            .cornerRadius(12)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        .accessibilityIdentifier("learn-vocabulary-button")
+                        LearnMenuCard(
+                            title: "Vocabulary Builder",
+                            description: "Interactive games for phrase grammar",
+                            icon: "character.book.closed",
+                            color: .orange,
+                            destination: AnyView(VocabularyBuilderView(modelContext: modelContext, userProfile: profile))
+                        )
                     }
 
-                    NavigationLink(destination: MultipleChoiceConfigurationView()) {
-                        HStack {
-                            Image(systemName: "checkmark.circle")
-                                .frame(width: 24)
-                            Text("Tests")
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.secondary)
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.green.opacity(0.1))
-                        .cornerRadius(12)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    .accessibilityIdentifier("learn-tests-button")
-                    
-                    NavigationLink(destination: TheoryView()) {
-                        HStack {
-                            Image(systemName: "graduationcap")
-                                .frame(width: 24)
-                            Text("Theory")
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.secondary)
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.purple.opacity(0.1))
-                        .cornerRadius(12)
-                    }
-                    .buttonStyle(PlainButtonStyle())
+                    LearnMenuCard(
+                        title: "Flashcards",
+                        description: "Study Korean terminology",
+                        icon: "rectangle.on.rectangle",
+                        color: .blue,
+                        destination: AnyView(FlashcardConfigurationView(specificTerms: nil))
+                    )
+
+                    // Row 2: Tests, Theory
+                    LearnMenuCard(
+                        title: "Tests",
+                        description: "Multiple choice assessments",
+                        icon: "checkmark.circle",
+                        color: .green,
+                        destination: AnyView(MultipleChoiceConfigurationView())
+                    )
+
+                    LearnMenuCard(
+                        title: "Theory",
+                        description: "Belt-specific knowledge",
+                        icon: "graduationcap",
+                        color: .purple,
+                        destination: AnyView(TheoryView())
+                    )
                 }
                 .padding(.horizontal)
-                
+
                 Spacer()
             }
             .navigationTitle("Learn")
@@ -538,6 +507,51 @@ struct LearnView: View {
                 }
             }
         }
+    }
+}
+
+// MARK: - Learn Menu Card Component
+
+struct LearnMenuCard: View {
+    let title: String
+    let description: String
+    let icon: String
+    let color: Color
+    let destination: AnyView
+    var accessibilityId: String {
+        "learn-\(title.lowercased().replacingOccurrences(of: " ", with: "-"))-button"
+    }
+
+    var body: some View {
+        NavigationLink(destination: destination) {
+            VStack(spacing: 12) {
+                Image(systemName: icon)
+                    .font(.system(size: 32))
+                    .foregroundColor(color)
+
+                Text(title)
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.primary)
+
+                Text(description)
+                    .font(.caption)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary)
+                    .lineLimit(2)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, minHeight: 140, maxHeight: 140)
+            .background(Color(.systemBackground))
+            .cornerRadius(12)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(color.opacity(0.3), lineWidth: 1)
+            )
+        }
+        .buttonStyle(PlainButtonStyle())
+        .accessibilityIdentifier(accessibilityId)
     }
 }
 
