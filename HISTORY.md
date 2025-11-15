@@ -925,6 +925,23 @@ let configuration = ModelConfiguration(
 - Fixed ProfileDataTests pattern availability (skip when unavailable)
 - Improved test resilience for data-dependent scenarios
 
+**Nov 15, 2025** - `d015859` - refactor(ui): Redesign Learn and Vocabulary Builder menus to grid layouts
+- **UI Consistency Overhaul:**
+  - Learn menu: Vertical strips → 2x2 grid (Vocabulary Builder, Flashcards, Tests, Theory)
+  - Vocabulary Builder: Vertical cards → 2x3 grid (6 game modes)
+  - Created LearnMenuCard component matching Practice menu design pattern
+  - Created VocabularyGameTile component with simplified layout (icon, title, subtitle)
+- **Navigation Bug Fix:**
+  - Removed nested NavigationStack from VocabularyBuilderView
+  - Games now correctly return to Vocabulary Builder (not Learn menu)
+  - Improved navigation clarity and user experience
+- **Technical Details:**
+  - LazyVGrid with 16px spacing, 140pt card height (consistent across menus)
+  - Color-coded borders: orange, blue, green, purple, pink, indigo
+  - Accessibility identifiers preserved (no test updates required)
+- **Build:** ✅ Successful with zero errors
+- **Status:** Priority 1 (Vocabulary Builder) navigation amendment complete
+
 ---
 
 ## Lessons Learned
