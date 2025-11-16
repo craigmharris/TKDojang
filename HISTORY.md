@@ -722,14 +722,23 @@ let configuration = ModelConfiguration(
   - Covers category browsing (Blocks, Kicks, Punches, Stances, etc.)
   - Details advanced filtering (belt level, difficulty, tags)
   - Describes technique detail views with comprehensive information
-  - Integrated with (?) button in TechniquesView toolbar (.principal placement)
-- **Consistent Help Sheet Pattern:**
-  - Single-page overlay with NavigationStack
-  - Sections: helpSection() for content areas, tipRow() for quick tips
-  - Standard structure: Header → Divider → Content Sections → Quick Tips
-  - Toolbar with "Done" button (.navigationBarTrailing)
-- **Build:** ✅ Successful with zero errors
-- **Status:** Phase 2 Day 6 partially complete (Theory & Techniques help)
+
+### Data Quality & UI Refinements (Nov 16, 2025)
+
+**Nov 16, 2025** - `f252bc6` - fix(ui): resolve Step Sparring black screen and Phrase Decoder drag offset issues
+- **Critical UI Bug Fixes:**
+  - **Step Sparring Black Screen:** Fixed async loading race condition with loading state indicator
+  - **Phrase Decoder Drag Offset:** Adjusted dragged item positioning to center under finger (-40px offset)
+- **Terminology JSON Standardization:**
+  - Migrated 4th_keup_basics.json and 8th_keup_basics.json to new format (with metadata, proper field names)
+  - Removed dual format support from ModularContentLoader.swift
+  - 100% format consistency across all 19 terminology files
+- **Vocabulary Data Quality Cleanup:**
+  - Deduplicated 27 entries (182 → 155 unique words)
+  - Fixed English/Korean field swaps ("Ap"/"Front", "Soopyong"/"Horizontal")
+  - Filled all missing Korean hangul (70+ null values → proper 한글)
+  - Merged frequency counts for duplicates (Crescent: 11, Turning: 13, High: 15, etc.)
+- **Impact:** Improved UX with no black screens, natural drag behavior, and consistent data quality for vocabulary features
 
 **Nov 8, 2025** - `ad62092` - docs(onboarding): Complete Priority 1 - Onboarding & First-Time User Experience
 - **Priority 1 Complete:** Full onboarding system with comprehensive help coverage
