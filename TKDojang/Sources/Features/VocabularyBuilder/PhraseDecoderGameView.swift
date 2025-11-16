@@ -43,6 +43,7 @@ struct PhraseDecoderGameView: View {
     @State private var draggedWordIndex: Int? = nil
     @State private var hoverTargetIndex: Int? = nil  // Index being hovered over during drag
     @State private var dragOffset: CGSize = .zero  // Current drag offset
+    @State private var dragStartLocation: CGPoint = .zero  // Where user initially touched within the item
     @State private var validationResult: DecoderValidationResult?
     @State private var attempts: Int = 0
     @State private var showingResults: Bool = false
@@ -195,6 +196,7 @@ struct PhraseDecoderGameView: View {
                                 if draggedWordIndex == nil {
                                     draggedWordIndex = index
                                     hoverTargetIndex = index
+                                    dragStartLocation = value.startLocation
                                     DebugLogger.ui("🎯 Started dragging word at index \(index)")
                                 }
 
@@ -232,6 +234,7 @@ struct PhraseDecoderGameView: View {
                                     draggedWordIndex = nil
                                     hoverTargetIndex = nil
                                     dragOffset = .zero
+                                    dragStartLocation = .zero
                                 }
                             }
                     )
@@ -258,7 +261,7 @@ struct PhraseDecoderGameView: View {
                     isCorrect: validationResult?.correctPositions.contains(draggedIdx),
                     isDropTarget: false
                 )
-                .offset(y: dragOffset.height)
+                .offset(y: dragOffset.height - 40)  // Subtract ~half item height to center under finger
                 .opacity(0.95)
                 .shadow(color: .black.opacity(0.3), radius: 12, y: 8)
                 .allowsHitTesting(false)  // Pass touches through to underlying items
@@ -272,6 +275,7 @@ struct PhraseDecoderGameView: View {
             draggedWordIndex = nil
             hoverTargetIndex = nil
             dragOffset = .zero
+            dragStartLocation = .zero
         }
     }
 
@@ -391,6 +395,7 @@ struct PhraseDecoderGameView: View {
         draggedWordIndex = nil
         hoverTargetIndex = nil
         dragOffset = .zero
+        dragStartLocation = .zero
         validationResult = nil
         attempts = 0
         selectedLanguage = .english // Default to English
@@ -474,6 +479,7 @@ struct PhraseDecoderGameView: View {
             draggedWordIndex = nil
             hoverTargetIndex = nil
             dragOffset = .zero
+            dragStartLocation = .zero
         }
     }
 

@@ -6,7 +6,11 @@
       "Bash(xcodebuild:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(xcrun xcresulttool:*)",
+      "Bash(cat:*)",
+      "Bash(source:*)",
+      "Bash(export TEST_DEVICE_ID:*)"
     ],
     "deny": [],
     "ask": [],

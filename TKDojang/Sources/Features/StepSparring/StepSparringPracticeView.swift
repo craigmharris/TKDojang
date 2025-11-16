@@ -29,7 +29,8 @@ struct StepSparringPracticeView: View {
     @State private var showingCompletion = false
     @State private var showingTour = false
     @State private var sessionCompleted = false
-    
+    @State private var isLoadingData = true
+
     // Ensure steps are always sorted by stepNumber (SwiftData relationships don't guarantee order)
     private var sortedSteps: [StepSparringStep] {
         sequence.steps.sorted { $0.stepNumber < $1.stepNumber }
@@ -108,31 +109,44 @@ struct StepSparringPracticeView: View {
     
     
     var body: some View {
-        VStack(spacing: 0) {
-            // Header with progress
-            practiceHeader
-            
-            // Main content area
-            ScrollView {
-                VStack(spacing: 24) {
-                    // Current technique display
-                    if let step = currentStep {
-                        techniqueDisplayCard(for: step)
-                    }
-                    
-                    // Navigation controls
-                    navigationControls
-                    
-                    // Step summary (key points and common mistakes)
-                    if let step = currentStep {
-                        stepGuidanceCard(for: step)
-                    }
+        ZStack {
+            if isLoadingData || sortedSteps.isEmpty {
+                // Loading state to prevent black screen
+                VStack(spacing: 16) {
+                    ProgressView()
+                    Text("Loading sequence...")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
                 }
-                .padding()
+            } else {
+                // Main content
+                VStack(spacing: 0) {
+                    // Header with progress
+                    practiceHeader
+
+                    // Main content area
+                    ScrollView {
+                        VStack(spacing: 24) {
+                            // Current technique display
+                            if let step = currentStep {
+                                techniqueDisplayCard(for: step)
+                            }
+
+                            // Navigation controls
+                            navigationControls
+
+                            // Step summary (key points and common mistakes)
+                            if let step = currentStep {
+                                stepGuidanceCard(for: step)
+                            }
+                        }
+                        .padding()
+                    }
+
+                    // Bottom action bar
+                    bottomActionBar
+                }
             }
-            
-            // Bottom action bar
-            bottomActionBar
         }
         .navigationTitle(sequence.name)
         .navigationBarTitleDisplayMode(.inline)
@@ -416,15 +430,18 @@ struct StepSparringPracticeView: View {
         // Clear existing data to prevent holding stale references
         userProfile = nil
         progress = nil
-        
+
         userProfile = dataServices.profileService.getActiveProfile()
         if userProfile == nil {
             userProfile = dataServices.getOrCreateDefaultUserProfile()
         }
-        
+
         if let profile = userProfile {
             progress = dataServices.stepSparringService.getUserProgress(for: sequence, userProfile: profile)
         }
+
+        // Mark loading complete - this prevents black screen
+        isLoadingData = false
     }
     
     private func recordPracticeSession() {

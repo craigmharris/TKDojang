@@ -1,47 +1,66 @@
 {
-  "belt_level": "4th_keup",
-  "category": "basics", 
-  "description": "Blue Belt advanced commands and terminology",
-  "terms": [
+  "belt_level" : "4th_keup",
+  "category" : "basics",
+  "metadata" : {
+    "created_at" : "2025-11-15T00:00:00Z",
+    "source" : "Format Migration",
+    "total_count" : 5
+  },
+  "terminology" : [
     {
-      "english": "Sparring",
-      "korean": "겨루기",
-      "pronunciation": "gyeo-ru-gi",
-      "phonetic": "/kjʌˈɾuɡi/",
-      "definition": "Free fighting practice with controlled contact",
-      "difficulty": 3
+      "belt_level" : "4th_keup",
+      "category" : "basics",
+      "created_at" : "2025-11-15T00:00:00Z",
+      "definition" : "Free fighting practice with controlled contact",
+      "difficulty" : 3,
+      "english_term" : "Sparring",
+      "korean_hangul" : "겨루기",
+      "phonetic_pronunciation" : "/kjʌˈɾuɡi/",
+      "romanized_pronunciation" : "Kyorugi"
     },
     {
-      "english": "Self Defense",
-      "korean": "호신술",
-      "pronunciation": "ho-sin-sul",
-      "phonetic": "/hoˈɕinsul/",
-      "definition": "Techniques for protecting oneself from attack",
-      "difficulty": 3
+      "belt_level" : "4th_keup",
+      "category" : "basics",
+      "created_at" : "2025-11-15T00:00:00Z",
+      "definition" : "Techniques for protecting oneself from attack",
+      "difficulty" : 3,
+      "english_term" : "Self Defense",
+      "korean_hangul" : "호신술",
+      "phonetic_pronunciation" : "/hoˈɕinsul/",
+      "romanized_pronunciation" : "Hosinsool"
     },
     {
-      "english": "Breaking",
-      "korean": "격파",
-      "pronunciation": "gyeok-pa",
-      "phonetic": "/kjʌkˈpʰa/",
-      "definition": "Breaking boards or tiles to demonstrate power",
-      "difficulty": 3
+      "belt_level" : "4th_keup",
+      "category" : "basics",
+      "created_at" : "2025-11-15T00:00:00Z",
+      "definition" : "Breaking boards or tiles to demonstrate power",
+      "difficulty" : 3,
+      "english_term" : "Breaking",
+      "korean_hangul" : "격파",
+      "phonetic_pronunciation" : "/kjʌkˈpʰa/",
+      "romanized_pronunciation" : "Gyeok-pa"
     },
     {
-      "english": "Focus",
-      "korean": "집중",
-      "pronunciation": "jip-jung",
-      "phonetic": "/tɕipˈtɕuŋ/",
-      "definition": "Mental concentration and attention",
-      "difficulty": 3
+      "belt_level" : "4th_keup",
+      "category" : "basics",
+      "created_at" : "2025-11-15T00:00:00Z",
+      "definition" : "Mental concentration and attention",
+      "difficulty" : 3,
+      "english_term" : "Focus",
+      "korean_hangul" : "집중",
+      "phonetic_pronunciation" : "/tɕipˈtɕuŋ/",
+      "romanized_pronunciation" : "Jip-jung"
     },
     {
-      "english": "Power",
-      "korean": "힘",
-      "pronunciation": "him",
-      "phonetic": "/him/",
-      "definition": "Physical force and strength in techniques",
-      "difficulty": 3
+      "belt_level" : "4th_keup",
+      "category" : "basics",
+      "created_at" : "2025-11-15T00:00:00Z",
+      "definition" : "Physical force and strength in techniques",
+      "difficulty" : 3,
+      "english_term" : "Power",
+      "korean_hangul" : "힘",
+      "phonetic_pronunciation" : "/him/",
+      "romanized_pronunciation" : "Him"
     }
   ]
 }

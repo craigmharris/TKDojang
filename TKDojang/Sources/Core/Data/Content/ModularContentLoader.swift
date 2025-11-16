@@ -180,59 +180,40 @@ class ModularContentLoader {
      */
     private func loadCategoryContent(from url: URL, belt: BeltLevel, category: TerminologyCategory) throws {
         let data = try Data(contentsOf: url)
-        
+
         do {
             let _ = try JSONDecoder().decode(CategoryContent.self, from: data)
         } catch {
             DebugLogger.data("❌ Failed to decode \(url.lastPathComponent): \(error)")
             throw error
         }
-        
+
         let content = try JSONDecoder().decode(CategoryContent.self, from: data)
-        
+
         // Create expected belt level ID from belt short name
         let expectedBeltId = belt.shortName.replacingOccurrences(of: " ", with: "_").lowercased()
-        
+
         // Validate that file matches expected belt level
         guard content.beltLevel == expectedBeltId else {
             DebugLogger.data("⚠️ Belt level mismatch in \(url.lastPathComponent): expected \(expectedBeltId), got \(content.beltLevel)")
             return
         }
-        
-        // Handle both old and new format
-        if let newTerms = content.terminology {
-            // New format (from CSV tool)
-            for term in newTerms {
-                _ = dataService.addTerminologyEntry(
-                    englishTerm: term.englishTerm,
-                    koreanHangul: term.koreanHangul,
-                    romanizedPronunciation: term.romanizedPronunciation,
-                    beltLevel: belt,
-                    category: category,
-                    difficulty: term.difficulty,
-                    phoneticPronunciation: term.phoneticPronunciation,
-                    definition: term.definition,
-                    notes: nil
-                )
-            }
-            
-        } else if let oldTerms = content.terms {
-            // Old format (existing files)
-            for term in oldTerms {
-                _ = dataService.addTerminologyEntry(
-                    englishTerm: term.english,
-                    koreanHangul: term.korean,
-                    romanizedPronunciation: term.pronunciation,
-                    beltLevel: belt,
-                    category: category,
-                    difficulty: term.difficulty ?? 1,
-                    phoneticPronunciation: term.phonetic,
-                    definition: term.definition,
-                    notes: term.notes
-                )
-            }
+
+        // Load terminology entries (standardized format)
+        for term in content.terminology {
+            _ = dataService.addTerminologyEntry(
+                englishTerm: term.englishTerm,
+                koreanHangul: term.koreanHangul,
+                romanizedPronunciation: term.romanizedPronunciation,
+                beltLevel: belt,
+                category: category,
+                difficulty: term.difficulty,
+                phoneticPronunciation: term.phoneticPronunciation,
+                definition: term.definition,
+                notes: nil
+            )
         }
-        
+
         // Successfully loaded terms
     }
 }
@@ -290,19 +271,18 @@ struct BeltConfig: Codable {
 }
 
 /**
- * Individual category content file (supports both old and new formats)
+ * Individual category content file (standardized format)
  */
 struct CategoryContent: Codable {
     let beltLevel: String
     let category: String
-    let terminology: [TerminologyEntryJSON]?
-    let terms: [TerminologyItemOld]?
+    let terminology: [TerminologyEntryJSON]
     let metadata: ContentMetadata?
     let description: String?
-    
+
     private enum CodingKeys: String, CodingKey {
         case beltLevel = "belt_level"
-        case category, terminology, terms, metadata, description
+        case category, terminology, metadata, description
     }
 }
 
@@ -319,7 +299,7 @@ struct ContentMetadata: Codable {
 }
 
 /**
- * Individual terminology item (new format from CSV tool)
+ * Individual terminology item (standardized format)
  */
 struct TerminologyEntryJSON: Codable {
     let englishTerm: String
@@ -331,7 +311,7 @@ struct TerminologyEntryJSON: Codable {
     let difficulty: Int
     let beltLevel: String
     let createdAt: String
-    
+
     private enum CodingKeys: String, CodingKey {
         case englishTerm = "english_term"
         case koreanHangul = "korean_hangul"
@@ -341,19 +321,6 @@ struct TerminologyEntryJSON: Codable {
         case beltLevel = "belt_level"
         case createdAt = "created_at"
     }
-}
-
-/**
- * Individual terminology item (old format)
- */
-struct TerminologyItemOld: Codable {
-    let english: String
-    let korean: String
-    let pronunciation: String
-    let phonetic: String?
-    let definition: String?
-    let notes: String?
-    let difficulty: Int?
 }
 
 /**
