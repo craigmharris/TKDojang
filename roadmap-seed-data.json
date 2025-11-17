@@ -1,0 +1,116 @@
+{
+  "records": [
+    {
+      "recordType": "RoadmapItem",
+      "fields": {
+        "itemID": { "value": "roadmap-001" },
+        "title": { "value": "Expanded Photography and Visual Content" },
+        "description": { "value": "High-quality technique photos with multiple angles, visual progression guides for belt levels, and zoom functionality for detailed form analysis" },
+        "priority": { "value": 1 },
+        "estimatedRelease": { "value": "v1.1 - January 2026" },
+        "status": { "value": "Planned" },
+        "voteCount": { "value": 0 },
+        "category": { "value": "Content" },
+        "isNew": { "value": 1 }
+      }
+    },
+    {
+      "recordType": "RoadmapItem",
+      "fields": {
+        "itemID": { "value": "roadmap-002" },
+        "title": { "value": "Additional Pattern and Step Sparring Learning Modes" },
+        "description": { "value": "Alternative practice modes including timed drills, random challenges, progressive difficulty settings, and mastery-based unlocking" },
+        "priority": { "value": 2 },
+        "estimatedRelease": { "value": "v1.2 - March 2026" },
+        "status": { "value": "Planned" },
+        "voteCount": { "value": 0 },
+        "category": { "value": "Feature" },
+        "isNew": { "value": 1 }
+      }
+    },
+    {
+      "recordType": "RoadmapItem",
+      "fields": {
+        "itemID": { "value": "roadmap-003" },
+        "title": { "value": "Video Integration" },
+        "description": { "value": "Slow-motion technique demonstrations, common mistakes highlighted, and Korean pronunciation audio" },
+        "priority": { "value": 3 },
+        "estimatedRelease": { "value": "v1.2 - March 2026" },
+        "status": { "value": "Planned" },
+        "voteCount": { "value": 0 },
+        "category": { "value": "Content" },
+        "isNew": { "value": 1 }
+      }
+    },
+    {
+      "recordType": "RoadmapItem",
+      "fields": {
+        "itemID": { "value": "roadmap-004" },
+        "title": { "value": "Free Sparring Tools" },
+        "description": { "value": "Customizable round timer with audio alerts, point counter for scoring, and match history tracking" },
+        "priority": { "value": 4 },
+        "estimatedRelease": { "value": "v1.3 - May 2026" },
+        "status": { "value": "Planned" },
+        "voteCount": { "value": 0 },
+        "category": { "value": "Feature" },
+        "isNew": { "value": 1 }
+      }
+    },
+    {
+      "recordType": "RoadmapItem",
+      "fields": {
+        "itemID": { "value": "roadmap-005" },
+        "title": { "value": "Club/Dojang Membership and Leaderboards" },
+        "description": { "value": "Instructor accounts with student management, club-based leaderboards (opt-in), and progress sharing with instructors" },
+        "priority": { "value": 5 },
+        "estimatedRelease": { "value": "v1.4 - Future" },
+        "status": { "value": "Planned" },
+        "voteCount": { "value": 0 },
+        "category": { "value": "Feature" },
+        "isNew": { "value": 0 }
+      }
+    },
+    {
+      "recordType": "RoadmapItem",
+      "fields": {
+        "itemID": { "value": "roadmap-006" },
+        "title": { "value": "Instructor Accounts" },
+        "description": { "value": "Assign content to students, track student progress, and create custom study sets" },
+        "priority": { "value": 6 },
+        "estimatedRelease": { "value": "v1.4+ - Future" },
+        "status": { "value": "Planned" },
+        "voteCount": { "value": 0 },
+        "category": { "value": "Feature" },
+        "isNew": { "value": 0 }
+      }
+    },
+    {
+      "recordType": "RoadmapItem",
+      "fields": {
+        "itemID": { "value": "roadmap-007" },
+        "title": { "value": "Mock Gradings" },
+        "description": { "value": "Simulated belt test environments with randomized test generation, performance feedback, and scoring" },
+        "priority": { "value": 7 },
+        "estimatedRelease": { "value": "v1.4+ - Future" },
+        "status": { "value": "Planned" },
+        "voteCount": { "value": 0 },
+        "category": { "value": "Feature" },
+        "isNew": { "value": 0 }
+      }
+    },
+    {
+      "recordType": "RoadmapItem",
+      "fields": {
+        "itemID": { "value": "roadmap-008" },
+        "title": { "value": "Dan Grade Content" },
+        "description": { "value": "Advanced patterns (Kwang-Gae through Tong-Il), Dan-level theory and philosophy, and leadership teaching principles" },
+        "priority": { "value": 8 },
+        "estimatedRelease": { "value": "v1.5+ - Future" },
+        "status": { "value": "Planned" },
+        "voteCount": { "value": 0 },
+        "category": { "value": "Content" },
+        "isNew": { "value": 0 }
+      }
+    }
+  ]
+}

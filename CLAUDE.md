@@ -558,7 +558,115 @@ markAsMatched() → version += 1
 updateScore() → version += 1
 ```
 
-### 8. Data Quality: Levenshtein Distance Spelling Consistency
+### 8. CloudKit: System Field Indexing Requirement
+
+**Context:** CloudKit queries fail with "Field 'recordName' is not marked queryable" error despite correct schema definition
+
+```swift
+// Query fails with system field error
+let query = CKQuery(recordType: "RoadmapItem", predicate: NSPredicate(value: true))
+let results = try await publicDatabase.records(matching: query)
+// Error: Field 'recordName' is not marked queryable
+```
+
+**Solution:** Add `___recordID` (three underscores) QUERYABLE index in CloudKit Console:
+
+1. Navigate to: **Schema → Indexes** (in CloudKit Dashboard)
+2. Select record type (e.g., RoadmapItem)
+3. Click **"+ Add Index"**
+4. **Field Name**: `___recordID` (system field for recordName)
+5. **Index Type**: QUERYABLE
+6. **Save**
+
+**WHY:**
+- `___recordID` is CloudKit's internal system field name for `recordName`
+- Schema imports don't automatically create system field indexes
+- CloudKit uses system fields internally for result ordering/pagination
+- Without this index, ALL queries fail (not just sorted queries)
+
+**WHEN TO USE:** Add `___recordID` QUERYABLE index to EVERY CloudKit record type that will be queried
+
+**Alternative:** Explicit field selection avoids system field issues:
+```swift
+let desiredKeys = ["itemID", "title", "description", "priority", "status"]
+let results = try await publicDatabase.records(matching: query, desiredKeys: desiredKeys)
+```
+
+### 9. CloudKit: Predicate Limitations and Security Roles
+
+**Context:** CloudKit has predicate syntax limitations and requires careful permission configuration
+
+**Predicate Limitations:**
+```swift
+// ❌ NOT SUPPORTED - CloudKit rejects != nil predicates
+let predicate = NSPredicate(format: "developerResponse != nil")
+
+// ✅ CORRECT - Subscribe to all updates, filter in notification handler
+let predicate = NSPredicate(format: "feedbackID == %@", feedbackID)
+let subscription = CKQuerySubscription(
+    recordType: "Feedback",
+    predicate: predicate,
+    options: [.firesOnRecordUpdate] // Only updates, not creation
+)
+```
+
+**Security Roles (Built-in):**
+- `_world`: Unauthenticated users (read-only public data)
+- `_icloud`: Authenticated iCloud users (can CREATE records)
+- `_creator`: User who created a specific record (can WRITE their own records)
+
+**Permission Pattern for User-Generated Content:**
+```
+Record Type: Feedback / FeatureSuggestion / RoadmapVote
+
+_world:
+  Create: ☐
+  Read: ✓
+  Write: ☐
+
+_icloud:
+  Create: ✓  (any signed-in user can submit)
+  Read: ✓
+  Write: ☐  (can't edit others' records)
+
+_creator:
+  Create: ☐  (redundant with _icloud)
+  Read: ✓
+  Write: ✓  (can only edit their own records)
+```
+
+**Permission Pattern for Developer-Controlled Content:**
+```
+Record Type: RoadmapItem / DeveloperAnnouncement
+
+_world:
+  Create: ☐
+  Read: ✓
+  Write: ☐
+
+_icloud:
+  Create: ☐  (users can't create roadmap items)
+  Read: ✓
+  Write: ☐
+
+_creator:
+  Create: ☐  (developer creates manually)
+  Read: ✓
+  Write: ✓  (only creator/developer can edit)
+```
+
+**WHY:**
+- CloudKit predicates don't support NULL checks with `!= nil` syntax
+- Security roles use CREATE/READ/WRITE separately (not just read/write)
+- `_creator` automatically grants permissions to whoever created each record
+- Proper permissions prevent users from editing others' submissions
+
+**WHEN TO USE:**
+- Always configure security roles in CloudKit Dashboard before deployment
+- Use `_icloud` CREATE permission for user-submitted content
+- Use `_creator` WRITE permission to allow users to edit only their own records
+
+### 10. Data Quality: Levenshtein Distance Spelling Consistency
 
 **Context:** When managing large JSON datasets with romanized non-English terms, spelling inconsistencies accumulate over time through manual entry and multiple contributors
 

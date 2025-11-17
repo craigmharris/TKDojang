@@ -1,0 +1,60 @@
+DEFINE SCHEMA
+
+RECORD TYPE Feedback (
+  feedbackID STRING QUERYABLE,
+  category STRING QUERYABLE,
+  feedbackText STRING QUERYABLE,
+  timestamp TIMESTAMP QUERYABLE,
+  userRecordID REFERENCE QUERYABLE,
+  beltLevel STRING QUERYABLE,
+  learningMode STRING QUERYABLE,
+  mostUsedFeature STRING QUERYABLE,
+  totalSessions INT64 QUERYABLE,
+  deviceInfo STRING QUERYABLE,
+  developerResponse STRING QUERYABLE,
+  responseTimestamp TIMESTAMP QUERYABLE,
+  responseStatus STRING QUERYABLE,
+  targetVersion STRING QUERYABLE
+);
+
+RECORD TYPE RoadmapItem (
+  itemID STRING QUERYABLE,
+  title STRING QUERYABLE,
+  description STRING QUERYABLE,
+  priority INT64 QUERYABLE,
+  estimatedRelease STRING QUERYABLE,
+  status STRING QUERYABLE,
+  voteCount INT64 QUERYABLE,
+  category STRING QUERYABLE,
+  completionPercentage DOUBLE QUERYABLE,
+  releaseDate TIMESTAMP QUERYABLE,
+  isNew INT64 QUERYABLE
+);
+
+RECORD TYPE RoadmapVote (
+  voteID STRING QUERYABLE,
+  roadmapItemID REFERENCE QUERYABLE,
+  userRecordID REFERENCE QUERYABLE,
+  votedAt TIMESTAMP QUERYABLE
+);
+
+RECORD TYPE FeatureSuggestion (
+  suggestionID STRING QUERYABLE,
+  title STRING QUERYABLE,
+  description STRING QUERYABLE,
+  submittedBy REFERENCE QUERYABLE,
+  submittedAt TIMESTAMP QUERYABLE,
+  status STRING QUERYABLE,
+  upvoteCount INT64 QUERYABLE,
+  developerNote STRING QUERYABLE,
+  addedToRoadmapItemID STRING QUERYABLE
+);
+
+RECORD TYPE DeveloperAnnouncement (
+  announcementID STRING QUERYABLE,
+  title STRING QUERYABLE,
+  message STRING QUERYABLE,
+  postedAt TIMESTAMP QUERYABLE,
+  category STRING QUERYABLE,
+  relatedVersion STRING QUERYABLE
+);

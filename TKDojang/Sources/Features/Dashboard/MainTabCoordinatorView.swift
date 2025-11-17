@@ -11,6 +11,7 @@ struct MainTabCoordinatorView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject private var onboardingCoordinator = OnboardingCoordinator()
     @State private var selectedTab = 0
+    @State private var showingWhatsNew = false
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -56,6 +57,13 @@ struct MainTabCoordinatorView: View {
         }
         .environmentObject(onboardingCoordinator)
         .accentColor(.blue)
+        .onAppear {
+            // Check if we should show What's New
+            showingWhatsNew = WhatsNewView.shouldShow()
+        }
+        .sheet(isPresented: $showingWhatsNew) {
+            WhatsNewView()
+        }
     }
 }
 
@@ -1773,6 +1781,15 @@ struct ProfileView: View {
                             UserSettingsView()
                         }
                         .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        .frame(maxWidth: .infinity)
+
+                        NavigationLink {
+                            AboutCommunityHubView(userProfile: userProfile)
+                        } label: {
+                            Label("Community Hub", systemImage: "person.3.fill")
+                        }
+                        .buttonStyle(.borderedProminent)
                         .controlSize(.large)
                         .frame(maxWidth: .infinity)
 

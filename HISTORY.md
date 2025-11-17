@@ -723,6 +723,77 @@ let configuration = ModelConfiguration(
   - Details advanced filtering (belt level, difficulty, tags)
   - Describes technique detail views with comprehensive information
 
+### CloudKit Community Features Implementation (Nov 17, 2025)
+
+**Nov 17, 2025** - `PENDING` - feat(community): CloudKit-based feedback, roadmap voting, and feature suggestions
+- **CloudKit Foundation:**
+  - Enabled CloudKit capability (container: `iCloud.com.craigmatthewharris.TKDojang`)
+  - Created 5 record types via schema import: Feedback, RoadmapItem, RoadmapVote, FeatureSuggestion, DeveloperAnnouncement
+  - Configured security roles (_world, _icloud, _creator) with proper CREATE/READ/WRITE permissions
+  - Added `___recordID` system field QUERYABLE indexes (resolved "recordName not queryable" error)
+- **Core Services Implemented (3 files, ~800 lines):**
+  - CloudKitFeedbackService.swift: Feedback submission + push notification subscriptions
+  - CloudKitRoadmapService.swift: Roadmap voting with double-vote prevention
+  - CloudKitSuggestionService.swift: User feature suggestions with upvoting
+- **UI Components Created (7 files, ~1400 lines):**
+  - FeedbackView.swift: Category selection, privacy controls, demographic opt-in
+  - MyFeedbackView.swift: User's feedback history with developer response tracking
+  - RoadmapView.swift: 9 priority roadmap items with voting UI
+  - FeatureSuggestionView.swift: Community suggestions browser with submission form
+  - WhatsNewView.swift: Version changelog with auto-show on first launch
+  - AboutCommunityHubView.swift: Redesigned About page as community navigation hub
+  - CommunityInsightsView.swift: Anonymous aggregate demographics display
+- **Integration:**
+  - Community Hub accessible from ProfileView → Settings & Actions
+  - WhatsNewView presents automatically on version update
+  - Navigation modal dismissal with Done buttons
+- **Roadmap Data Seeded (9 items in priority order):**
+  1. Pattern Diagram Refresh with Footprint Indicators (v1.1 Dec 2025)
+  2. Expanded Photography and Visual Content (v1.1 Jan 2026)
+  3. Additional Pattern/Step Sparring Learning Modes (v1.2 Mar 2026)
+  4. Video Integration (v1.2 Mar 2026)
+  5. Free Sparring Tools (v1.3 May 2026)
+  6. Club/Dojang Membership & Progress Sharing (v1.4+)
+  7. Instructor Account & Club Management (v1.4+)
+  8. Mock Grading Simulations (v1.4+)
+  9. Dan Grade Content & Advanced Patterns (v1.5+)
+- **Critical Technical Discoveries:**
+  - **`___recordID` System Field:** CloudKit requires 3-underscore QUERYABLE index on all record types for queries to work
+  - **CloudKit Predicate Limitation:** `!= nil` predicates NOT supported - use subscription filtering instead
+  - **Explicit Field Selection:** Using `desiredKeys` parameter avoids system field query issues
+  - **Security Role Granularity:** CREATE/READ/WRITE permissions are separate (not just read/write)
+- **Testing Results:**
+  - ✅ Roadmap loads 9 items correctly
+  - ✅ Voting increments counts in CloudKit
+  - ✅ Feedback submission working
+  - ✅ My Feedback displays submitted items
+  - ✅ Community Hub navigation functional
+- **Known Issues:**
+  - Navigation polish needed (minor UX improvements)
+  - Push notifications require certificate configuration
+  - Error messages show raw CloudKit errors (need user-friendly wrappers)
+- **Build Status:** ✅ Zero compilation errors
+- **Files Modified:** 2 (TKDojang.entitlements, MainTabCoordinatorView.swift)
+- **Files Created:** 10 (3 services + 7 UI components)
+- **Schema Files:** cloudkit-schema.ckdb, roadmap-seed-data.json
+- **Impact:** Foundation for transparent development with community-driven feature prioritization
+
+**Technical Decisions:**
+- **CloudKit Public Database:** Zero infrastructure cost, Apple-managed GDPR compliance, built-in push notifications
+- **Anonymous by Default:** CloudKit user IDs (not Apple IDs) for privacy
+- **World-Readable:** All data public for transparency (feedback, votes, suggestions visible to all)
+- **Creator-Writable:** Users can only edit their own submissions
+- **Developer-Controlled Roadmap:** 9 curated items vs. open-ended user suggestions
+- **Opt-in Demographics:** Users choose whether to share belt level/learning mode with feedback
+
+**Why Community Features Now:**
+- Market validation needed before expensive content investment (photography, video)
+- Transparent roadmap builds trust with early adopters at £2.99 launch price
+- User feedback drives feature prioritization (avoid assumption-based development)
+- Foundation for iterative development based on real user needs
+
+**Status:** ✅ FEATURE COMPLETE - Primary implementation done, polish work pending
+
 ### Data Quality & UI Refinements (Nov 16, 2025)
 
 **Nov 16, 2025** - `f252bc6` - fix(ui): resolve Step Sparring black screen and Phrase Decoder drag offset issues
