@@ -1750,85 +1750,100 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 24) {
-                    // Current Profile Header
-                    if let profile = userProfile {
+            List {
+                // Current Profile Header
+                if let profile = userProfile {
+                    Section {
                         ProfileHeaderCard(profile: profile)
-                    }
-                    
-                    // Profile Management Section
-                    VStack(spacing: 16) {
-                        HStack {
-                            Text("Family Profiles")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                            Spacer()
-                            Text("\(allProfiles.count)/6")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        ProfileGridView(profiles: allProfiles, currentProfile: userProfile, onProfileSwitch: switchToProfile)
-                        
-                        if allProfiles.count < 6 {
-                            Button("Add New Profile") {
-                                showingProfileManagement = true
-                            }
-                            .buttonStyle(.borderedProminent)
-                            .controlSize(.large)
-                            .frame(maxWidth: .infinity)
-                        }
-                    }
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(16)
-                    
-                    // Settings & Actions
-                    VStack(spacing: 12) {
-                        NavigationLink("Learning Settings") {
-                            UserSettingsView()
-                        }
-                        .buttonStyle(.bordered)
-                        .controlSize(.large)
-                        .frame(maxWidth: .infinity)
-
-                        NavigationLink {
-                            AboutCommunityHubView(userProfile: userProfile)
-                        } label: {
-                            Label("Community Hub", systemImage: "person.3.fill")
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.large)
-                        .frame(maxWidth: .infinity)
-
-                        NavigationLink("About TKDojang") {
-                            AboutView()
-                        }
-                        .buttonStyle(.bordered)
-                        .controlSize(.large)
-                        .frame(maxWidth: .infinity)
-
-                        Button {
-                            replayWelcomeTour()
-                        } label: {
-                            Label("Replay Welcome Tour", systemImage: "questionmark.circle")
-                        }
-                        .buttonStyle(.bordered)
-                        .controlSize(.large)
-                        .frame(maxWidth: .infinity)
-
-                        Button("Manage All Profiles") {
-                            showingProfileManagement = true
-                        }
-                        .buttonStyle(.bordered)
-                        .controlSize(.large)
-                        .frame(maxWidth: .infinity)
+                            .listRowInsets(EdgeInsets())
+                            .listRowBackground(Color.clear)
                     }
                 }
-                .padding()
+
+                // Profile Management Section
+                Section {
+                    HStack {
+                        Text("Family Profiles")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                        Spacer()
+                        Text("\(allProfiles.count)/6")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+
+                    ProfileGridView(profiles: allProfiles, currentProfile: userProfile, onProfileSwitch: switchToProfile)
+                        .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+
+                    if allProfiles.count < 6 {
+                        Button {
+                            showingProfileManagement = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "plus.circle.fill")
+                                Text("Add New Profile")
+                                Spacer()
+                            }
+                            .foregroundStyle(.blue)
+                        }
+                    }
+
+                    ProfileNavigationRow(
+                        icon: "person.2.fill",
+                        iconColor: .purple,
+                        title: "Manage All Profiles",
+                        subtitle: "Edit, delete, or switch profiles"
+                    ) {
+                        showingProfileManagement = true
+                    }
+                }
+
+                // Settings Section
+                Section("Settings") {
+                    ProfileNavigationLink(
+                        icon: "gearshape.fill",
+                        iconColor: .gray,
+                        title: "Learning Settings",
+                        subtitle: "Customize your learning experience"
+                    ) {
+                        UserSettingsView()
+                    }
+                }
+
+                // Community Section
+                Section("Community") {
+                    ProfileNavigationLink(
+                        icon: "person.3.fill",
+                        iconColor: .blue,
+                        title: "Community Hub",
+                        subtitle: "Feedback, roadmap, and insights"
+                    ) {
+                        AboutCommunityHubView(userProfile: userProfile)
+                    }
+                }
+
+                // About Section
+                Section("About") {
+                    ProfileNavigationLink(
+                        icon: "info.circle.fill",
+                        iconColor: .orange,
+                        title: "About TKDojang",
+                        subtitle: "Mission, credits, and privacy"
+                    ) {
+                        AboutView()
+                    }
+
+                    ProfileNavigationRow(
+                        icon: "arrow.clockwise.circle.fill",
+                        iconColor: .green,
+                        title: "Replay Welcome Tour",
+                        subtitle: "See the onboarding tutorial again"
+                    ) {
+                        replayWelcomeTour()
+                    }
+                }
             }
-            .navigationTitle("Profiles")
+            .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.large)
             .onAppear {
                 loadProfiles()
