@@ -70,6 +70,14 @@
   - Creative Sandbox (free phrase exploration)
 - Comprehensive progress analytics
 
+**Community & Feedback**
+- CloudKit-powered feedback system with anonymous submissions
+- Feature roadmap with community voting
+- Push notifications for developer responses
+- Deep linking to specific feedback items
+- Contextual notification permission requests
+- Non-destructive navigation testing (24 tests)
+
 ### Technical Highlights
 
 - **Architecture**: MVVM-C + Services pattern

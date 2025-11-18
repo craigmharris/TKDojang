@@ -725,7 +725,7 @@ let configuration = ModelConfiguration(
 
 ### CloudKit Community Features Implementation (Nov 17, 2025)
 
-**Nov 17, 2025** - `PENDING` - feat(community): CloudKit-based feedback, roadmap voting, and feature suggestions
+**Nov 17, 2025** - `747a093` - feat(community): CloudKit-based feedback, roadmap voting, and feature suggestions
 - **CloudKit Foundation:**
   - Enabled CloudKit capability (container: `iCloud.com.craigmatthewharris.TKDojang`)
   - Created 5 record types via schema import: Feedback, RoadmapItem, RoadmapVote, FeatureSuggestion, DeveloperAnnouncement
@@ -793,6 +793,70 @@ let configuration = ModelConfiguration(
 - Foundation for iterative development based on real user needs
 
 **Status:** ✅ FEATURE COMPLETE - Primary implementation done, polish work pending
+
+**Nov 18, 2025** - Production-Ready Notification System for CloudKit Feedback
+- **User-Friendly Error Messaging:**
+  - Created CloudKitErrorHandler.swift (~250 lines) with 15+ CloudKit error mappings
+  - Transforms raw errors into actionable guidance ("Sign in to iCloud in Settings")
+  - Integrated across all 5 community feature views (Feedback, Roadmap, Suggestions, MyFeedback)
+- **Push Notification Permission Flow:**
+  - NotificationPermissionManager.swift (~145 lines) - centralized permission state tracking
+  - Contextual permission request on first feedback submission (Option A pattern)
+  - Custom explanation alert before system prompt ("Get Notified of Responses")
+  - UserSettingsView Notifications section with Settings deep link
+  - Graceful degradation if user denies permission
+- **Deep Linking to Specific Feedback:**
+  - AppDelegate.swift (~155 lines) - UIKit notification handling bridge
+  - Parses CloudKit nested payload structure (`userInfo["ck"]["qry"]["sid"]`)
+  - NotificationCenter event bus triggers MyFeedbackView modal
+  - ScrollViewReader scrolls to feedback item with blue highlight animation
+  - Badge clears on notification tap (UIApplication.applicationIconBadgeNumber)
+- **Badge Management:**
+  - Dynamic badge updates reflecting actual unread response count
+  - Clears on app activation (applicationDidBecomeActive)
+  - Clears on notification tap (userNotificationCenter didReceive)
+  - Updates when user reads response in MyFeedbackView
+- **Navigation Testing (24 tests):**
+  - CommunityFeaturesNavigationTests.swift - non-destructive navigation validation
+  - Tests modal presentation, view hierarchy, no inadvertent CloudKit writes
+  - Validates complete navigation flow (ProfileView → Community Hub → 4 features)
+- **Enhanced UI Components:**
+  - WhatsNewView.swift: Added "Getting Started" tip box and "What's Coming Next" roadmap preview
+  - AboutCommunityHubView.swift: GitHub link for Developer Info (clickable)
+- **Critical Technical Discoveries:**
+  - **CloudKit Payload Nesting:** `userInfo["ck"]["qry"]["sid"]` NOT `userInfo["ck"]["sid"]`
+  - **3-Tier Fallback Parsing:** Subscription ID → Record fields → Direct key
+  - **UIApplicationDelegateAdaptor Pattern:** Bridge UIKit notification handling to SwiftUI App lifecycle
+  - **NotificationCenter Event Bus:** Decouple AppDelegate from view navigation logic
+- **Documentation:**
+  - PUSH_NOTIFICATION_SETUP.md - comprehensive Apple Developer Portal certificate guide
+  - Updated CloudKitFeedbackService.swift with `desiredKeys: ["feedbackID"]` for payload inclusion
+- **Testing Results:**
+  - ✅ Notifications permission request flow working
+  - ✅ Deep linking to specific feedback items functional
+  - ✅ Badge counts update dynamically (1, 2, 3... then clear)
+  - ✅ Graceful degradation if permission denied
+  - ✅ Settings management UI operational
+  - ✅ All 24 navigation tests passing
+- **Build Status:** ✅ Zero compilation errors
+- **Files Created:** 3 (CloudKitErrorHandler.swift, NotificationPermissionManager.swift, AppDelegate.swift)
+- **Files Modified:** 8 (TKDojangApp.swift, FeedbackView.swift, MyFeedbackView.swift, MainTabCoordinatorView.swift, UserSettingsView.swift, CloudKitFeedbackService.swift, RoadmapView.swift, FeatureSuggestionView.swift)
+- **Impact:** Production-ready notification system enabling developer-to-user communication for feedback responses
+
+**Technical Decisions:**
+- **Contextual Permission Request (Option A):** Ask on first feedback submission with custom explanation
+- **UIApplicationDelegateAdaptor:** Required for UNUserNotificationCenterDelegate (not available in SwiftUI App)
+- **NotificationCenter Event Bus:** Clean separation between AppDelegate and SwiftUI navigation
+- **ScrollViewReader + Highlight:** Visual feedback for deep-linked feedback items
+- **Three-Tier Parsing:** Robust fallback for CloudKit payload variations
+
+**Why Notification System Now:**
+- Completes community feature loop (submission → developer response → user notification)
+- Essential for user engagement (users need to know when feedback addressed)
+- Foundation for future CloudKit notifications (feature launches, announcements)
+- Professional UX expected by users at £2.99 price point
+
+**Status:** ✅ PRODUCTION READY - Notification system complete and tested
 
 ### Data Quality & UI Refinements (Nov 16, 2025)
 
