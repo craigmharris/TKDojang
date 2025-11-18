@@ -4,53 +4,54 @@
   "belt_color": "white",
   "line_work_exercises": [
     {
-    "id": "static_walking_front_punch",
-    "movement_type": "STATIC",
-    "order": 1,
-    "name": "Sitting stance, front punch",
-    "techniques": [
+      "id": "static_walking_front_punch",
+      "movement_type": "STATIC",
+      "order": 1,
+      "name": "Sitting stance, front punch",
+      "techniques": [
         {
-        "id": "sitting_stance",
-        "english": "Sitting Stance",
-        "romanised": "Annun Sogi",
-        "hangul": "걷는서기",
-        "category": "Stances",
-        "target_area": null,
-        "description": "Feet placed one and a hlaf shoulder's width apart, with the weight evenly distributed"
+          "id": "sitting_stance",
+          "english": "Sitting Stance",
+          "romanised": "Annun Sogi",
+          "hangul": "걷는서기",
+          "category": "Stances",
+          "target_area": null,
+          "description": "Feet placed one and a hlaf shoulder's width apart, with the weight evenly distributed"
         },
         {
-        "id": "front_punch",
-        "english": "Front Punch",
-        "romanised": "Ap Jirugi",
-        "hangul": "준비서기",
-        "category": "Striking",
-        "target_area": "Solar Plexus",
-        "description": "Drop into the stance as the arm extends, before rising slightly. Kihap. Ensure reaction hand returns, upturned, to the belt."
+          "id": "front_punch",
+          "english": "Front Punch",
+          "romanised": "Ap Jirugi",
+          "hangul": "준비서기",
+          "category": "Striking",
+          "target_area": "Solar Plexus",
+          "description": "Drop into the stance as the arm extends, before rising slightly. Kihap. Ensure reaction hand returns, upturned, to the belt."
         }
-    ],
-    "execution": {
+      ],
+      "execution": {
         "direction": "static",
         "repetitions": 10,
         "movement_pattern": "Stand in sitting stance, assume ready position with proper posture",
         "key_points": [
-        "Correct sitting stance width and length",
-        "Proper hand positioning at belt level",
-        "Relaxed but alert posture"
+          "Correct sitting stance width and length",
+          "Proper hand positioning at belt level",
+          "Relaxed but alert posture"
         ],
         "common_mistakes": [
-        "Stance too narrow",
-        "Punching too high or low",
-        "Reaction hand not at belt"
+          "Stance too narrow",
+          "Punching too high or low",
+          "Reaction hand not at belt"
         ],
         "execution_tips": [
-        "Focus on balance",
-        "Keep eyes forward",
-        "Use hip twist to ensure power"
+          "Focus on balance",
+          "Keep eyes forward",
+          "Use hip twist to ensure power"
         ]
-    },
-    "categories": [
-        "Stances", "Striking"
-    ]
+      },
+      "categories": [
+        "Stances",
+        "Striking"
+      ]
     },
     {
       "id": "static_walking_stance_front_rising_kick",
@@ -58,7 +59,7 @@
       "order": 2,
       "name": "Walking ready stance, front rising kick",
       "techniques": [
-          {
+        {
           "id": "walking_stance",
           "english": "Walking Stance",
           "romanised": "Gunnun Sogi",
@@ -66,8 +67,8 @@
           "category": "Stances",
           "target_area": null,
           "description": "Natural forward walking stance with weight evenly distributed, foundation stance of Taekwondo"
-          },
-          {
+        },
+        {
           "id": "front_rising_kick",
           "english": "Front Rising Kick",
           "romanised": "Ap Chaolligi",
@@ -75,67 +76,67 @@
           "category": "Kicks",
           "target_area": "Waist height or higher",
           "description": "This kick primarily stretches the hamstrings and demonstrates balance and control"
-          }
+        }
       ],
       "execution": {
-          "direction": "static",
-          "repetitions": 10,
-          "movement_pattern": "Stand in walking ready stance, with arms down and clear of the kicking position",
-          "key_points": [
+        "direction": "static",
+        "repetitions": 10,
+        "movement_pattern": "Stand in walking ready stance, with arms down and clear of the kicking position",
+        "key_points": [
           "Correct walking stance width and length",
           "Raise hands to target kick level and drop these to retain balance as leg swings upward",
           "Relaxed but alert posture"
-          ],
-          "common_mistakes": [
+        ],
+        "common_mistakes": [
           "Kicking too low, driven by looking down",
           "Not returning back to the correct stance",
           "Failing to block with arms while returning to ready position"
-          ],
-          "execution_tips": [
+        ],
+        "execution_tips": [
           "Focus on balance",
           "Keep eyes forward",
           "Breathe naturally"
-          ]
+        ]
       },
       "categories": [
-          "Stances"
+        "Stances"
       ]
+    },
+    {
+      "id": "press_ups",
+      "movement_type": "STATIC",
+      "order": 3,
+      "name": "Press Ups",
+      "techniques": [
+        {
+          "id": "press_ups",
+          "english": "Press Ups",
+          "romanised": "Momtong Bachia",
+          "hangul": "걷는서기",
+          "category": "Exercises",
+          "target_area": null,
+          "description": "Exercise a press up with hands at shoulder position, dropping to the chin at floor level"
+        }
+      ],
+      "execution": {
+        "direction": "static",
+        "repetitions": 10,
+        "movement_pattern": null,
+        "key_points": [
+          "Keep the back straight"
+        ],
+        "common_mistakes": [
+          "Sagging back",
+          "Not falling to the correct height position"
+        ],
+        "execution_tips": [
+          "Control the descent rather than letting the body fall"
+        ]
       },
-    {
-    "id": "press_ups",
-    "movement_type": "STATIC",
-    "order": 3,
-    "name": "Press Ups",
-    "techniques": [
-    {
-        "id": "press_ups",
-        "english": "Press Ups",
-        "romanised": "Momtong Bachia",
-        "hangul": "걷는서기",
-        "category": "Exercises",
-        "target_area": null,
-        "description": "Exercise a press up with hands at shoulder position, dropping to the chin at floor level"
+      "categories": [
+        "Exercises"
+      ]
     },
-    ],
-    "execution": {
-    "direction": "static",
-    "repetitions": 10,
-    "movement_pattern": null,
-    "key_points": [
-        "Keep the back straight"
-    ],
-    "common_mistakes": [
-        "Sagging back",
-        "Not falling to the correct height position"
-    ],
-    "execution_tips": [
-        "Control the descent rather than letting the body fall"
-    ]
-    },
-    "categories": [
-    "Exercises"
-    ]
-},
     {
       "id": "fwd_bwd_middle_punch",
       "movement_type": "FWD & BWD",

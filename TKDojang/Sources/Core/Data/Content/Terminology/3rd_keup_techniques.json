@@ -1,66 +1,66 @@
 {
-  "belt_level" : "3rd_keup",
-  "category" : "techniques",
-  "metadata" : {
-    "created_at" : "2025-08-17T09:28:54Z",
-    "source" : "CSV Import Tool",
-    "total_count" : 5
+  "belt_level": "3rd_keup",
+  "category": "techniques",
+  "metadata": {
+    "created_at": "2025-08-17T09:28:54Z",
+    "source": "CSV Import Tool",
+    "total_count": 5
   },
-  "terminology" : [
+  "terminology": [
     {
-      "belt_level" : "3rd_keup",
-      "category" : "techniques",
-      "created_at" : "2025-08-17T09:28:54Z",
-      "definition" : "Striking technique using the back of the fist",
-      "difficulty" : 1,
-      "english_term" : "Back Fist Strike",
-      "korean_hangul" : "등주멩타어리기",
-      "phonetic_pronunciation" : "/dɯŋ.tʃu.mʌk.tʰa.ʌ.ɾi.ɡi/",
-      "romanized_pronunciation" : "Dung Joomuk Taerigi"
+      "belt_level": "3rd_keup",
+      "category": "techniques",
+      "created_at": "2025-08-17T09:28:54Z",
+      "definition": "Striking technique using the back of the fist",
+      "difficulty": 1,
+      "english": "Back Fist Strike",
+      "romanised": "Dung Joomuk Taerigi",
+      "hangul": "등주멩타어리기",
+      "phonetic": "/dɯŋ.tʃu.mʌk.tʰa.ʌ.ɾi.ɡi/"
     },
     {
-      "belt_level" : "3rd_keup",
-      "category" : "techniques",
-      "created_at" : "2025-08-17T09:28:54Z",
-      "definition" : "Pushing block technique using both forearms",
-      "difficulty" : 1,
-      "english_term" : "Double Forearm Pushing Block",
-      "korean_hangul" : "두팔목밀어막기",
-      "phonetic_pronunciation" : "/tu.pʰal.mok.mi.ɾʌ.mak.ɡi/",
-      "romanized_pronunciation" : "Doo Palmok Miro Makgi"
+      "belt_level": "3rd_keup",
+      "category": "techniques",
+      "created_at": "2025-08-17T09:28:54Z",
+      "definition": "Pushing block technique using both forearms",
+      "difficulty": 1,
+      "english": "Double Forearm Pushing Block",
+      "romanised": "Doo Palmok Miro Makgi",
+      "hangul": "두팔목밀어막기",
+      "phonetic": "/tu.pʰal.mok.mi.ɾʌ.mak.ɡi/"
     },
     {
-      "belt_level" : "3rd_keup",
-      "category" : "techniques",
-      "created_at" : "2025-08-17T09:28:54Z",
-      "definition" : "Low-level guarding block using knife hand",
-      "difficulty" : 1,
-      "english_term" : "Knife Hand Low Guarding Block",
-      "korean_hangul" : "손칼낮은데대비막기",
-      "phonetic_pronunciation" : "/son.kʰal.na.tɯn.de.de.bi.mak.ɡi/",
-      "romanized_pronunciation" : "Sonkal Najunde Daebi Makgi"
+      "belt_level": "3rd_keup",
+      "category": "techniques",
+      "created_at": "2025-08-17T09:28:54Z",
+      "definition": "Low-level guarding block using knife hand",
+      "difficulty": 1,
+      "english": "Knife Hand Low Guarding Block",
+      "romanised": "Sonkal Najunde Daebi Makgi",
+      "hangul": "손칼낮은데대비막기",
+      "phonetic": "/son.kʰal.na.tɯn.de.de.bi.mak.ɡi/"
     },
     {
-      "belt_level" : "3rd_keup",
-      "category" : "techniques",
-      "created_at" : "2025-08-17T09:28:54Z",
-      "definition" : "W-shaped blocking technique using outer forearm",
-      "difficulty" : 1,
-      "english_term" : "Outer Forearm W Shaped Block",
-      "korean_hangul" : "바깥팔목산막기",
-      "phonetic_pronunciation" : "/pa.k͈at.pʰal.mok.san.mak.ɡi/",
-      "romanized_pronunciation" : "Bakat Palmok San Makgi"
+      "belt_level": "3rd_keup",
+      "category": "techniques",
+      "created_at": "2025-08-17T09:28:54Z",
+      "definition": "W-shaped blocking technique using outer forearm",
+      "difficulty": 1,
+      "english": "Outer Forearm W Shaped Block",
+      "romanised": "Bakat Palmok San Makgi",
+      "hangul": "바깥팔목산막기",
+      "phonetic": "/pa.k͈at.pʰal.mok.san.mak.ɡi/"
     },
     {
-      "belt_level" : "3rd_keup",
-      "category" : "techniques",
-      "created_at" : "2025-08-17T09:28:54Z",
-      "definition" : "Upward thrusting technique using fingertips",
-      "difficulty" : 1,
-      "english_term" : "Upset Fingertip Thrust",
-      "korean_hangul" : "뒤지벘손끝뛷기",
-      "phonetic_pronunciation" : "/twi.dʑi.bʌn.son.kɯt.tʰul.ɡi/",
-      "romanized_pronunciation" : "Dwijibun Sonkut Tulgi"
+      "belt_level": "3rd_keup",
+      "category": "techniques",
+      "created_at": "2025-08-17T09:28:54Z",
+      "definition": "Upward thrusting technique using fingertips",
+      "difficulty": 1,
+      "english": "Upset Fingertip Thrust",
+      "romanised": "Dwijibun Sonkut Tulgi",
+      "hangul": "뒤지벘손끝뛷기",
+      "phonetic": "/twi.dʑi.bʌn.son.kɯt.tʰul.ɡi/"
     }
   ]
 }

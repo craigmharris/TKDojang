@@ -119,7 +119,8 @@ final class TerminologyEntry {
     var id: UUID
     var englishTerm: String           // e.g., "Front kick"
     var koreanHangul: String          // e.g., "앞차기"
-    var romanizedPronunciation: String // e.g., "ap chagi"
+    @Attribute(originalName: "romanizedPronunciation")
+    var romanisedPronunciation: String // e.g., "ap chagi"
     var phoneticPronunciation: String? // IPA or simplified phonetic
     var audioFileName: String?        // Future: audio file reference
     var imageFileName: String?        // Optional technique illustration
@@ -135,12 +136,12 @@ final class TerminologyEntry {
     @Relationship(deleteRule: .cascade) 
     var userProgress: [UserTerminologyProgress] = []
     
-    init(englishTerm: String, koreanHangul: String, romanizedPronunciation: String, 
+    init(englishTerm: String, koreanHangul: String, romanisedPronunciation: String, 
          beltLevel: BeltLevel, category: TerminologyCategory, difficulty: Int = 1) {
         self.id = UUID()
         self.englishTerm = englishTerm
         self.koreanHangul = koreanHangul
-        self.romanizedPronunciation = romanizedPronunciation
+        self.romanisedPronunciation = romanisedPronunciation
         self.beltLevel = beltLevel
         self.category = category
         self.difficulty = difficulty

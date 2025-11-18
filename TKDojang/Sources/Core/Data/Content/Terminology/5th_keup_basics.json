@@ -1,55 +1,55 @@
 {
-  "belt_level" : "5th_keup",
-  "category" : "basics",
-  "metadata" : {
-    "created_at" : "2025-08-17T09:28:54Z",
-    "source" : "CSV Import Tool",
-    "total_count" : 4
+  "belt_level": "5th_keup",
+  "category": "basics",
+  "metadata": {
+    "created_at": "2025-08-17T09:28:54Z",
+    "source": "CSV Import Tool",
+    "total_count": 4
   },
-  "terminology" : [
+  "terminology": [
     {
-      "belt_level" : "5th_keup",
-      "category" : "basics",
-      "created_at" : "2025-08-17T09:28:54Z",
-      "definition" : "The heel of the back leg used for striking",
-      "difficulty" : 1,
-      "english_term" : "Back Heel",
-      "korean_hangul" : "뒤축",
-      "phonetic_pronunciation" : "/twi.tʃʰuk/",
-      "romanized_pronunciation" : "Dwit Chook"
+      "belt_level": "5th_keup",
+      "category": "basics",
+      "created_at": "2025-08-17T09:28:54Z",
+      "definition": "The heel of the back leg used for striking",
+      "difficulty": 1,
+      "english": "Back Heel",
+      "romanised": "Dwit Chook",
+      "hangul": "뒤축",
+      "phonetic": "/twi.tʃʰuk/"
     },
     {
-      "belt_level" : "5th_keup",
-      "category" : "basics",
-      "created_at" : "2025-08-17T09:28:54Z",
-      "definition" : "Joint between upper arm and forearm used for striking",
-      "difficulty" : 1,
-      "english_term" : "Elbow",
-      "korean_hangul" : "팔꿈치",
-      "phonetic_pronunciation" : "/pʰal.k͈um.tʃʰi/",
-      "romanized_pronunciation" : "Palkup"
+      "belt_level": "5th_keup",
+      "category": "basics",
+      "created_at": "2025-08-17T09:28:54Z",
+      "definition": "Joint between upper arm and forearm used for striking",
+      "difficulty": 1,
+      "english": "Elbow",
+      "romanised": "Palkup",
+      "hangul": "팔꿈치",
+      "phonetic": "/pʰal.k͈um.tʃʰi/"
     },
     {
-      "belt_level" : "5th_keup",
-      "category" : "basics",
-      "created_at" : "2025-08-17T09:28:54Z",
-      "definition" : "The head, used as a target area or striking weapon",
-      "difficulty" : 1,
-      "english_term" : "Head",
-      "korean_hangul" : "머리",
-      "phonetic_pronunciation" : "/mʌ.ɾi/",
-      "romanized_pronunciation" : "Mori"
+      "belt_level": "5th_keup",
+      "category": "basics",
+      "created_at": "2025-08-17T09:28:54Z",
+      "definition": "The head, used as a target area or striking weapon",
+      "difficulty": 1,
+      "english": "Head",
+      "romanised": "Mori",
+      "hangul": "머리",
+      "phonetic": "/mʌ.ɾi/"
     },
     {
-      "belt_level" : "5th_keup",
-      "category" : "basics",
-      "created_at" : "2025-08-17T09:28:54Z",
-      "definition" : "Joint in the middle of the leg used for striking",
-      "difficulty" : 1,
-      "english_term" : "Knee",
-      "korean_hangul" : "무릎",
-      "phonetic_pronunciation" : "/mu.ɾɯp/",
-      "romanized_pronunciation" : "Moorup"
+      "belt_level": "5th_keup",
+      "category": "basics",
+      "created_at": "2025-08-17T09:28:54Z",
+      "definition": "Joint in the middle of the leg used for striking",
+      "difficulty": 1,
+      "english": "Knee",
+      "romanised": "Moorup",
+      "hangul": "무릎",
+      "phonetic": "/mu.ɾɯp/"
     }
   ]
 }

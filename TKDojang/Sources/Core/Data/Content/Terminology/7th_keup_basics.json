@@ -1,66 +1,66 @@
 {
-  "belt_level" : "7th_keup",
-  "category" : "basics",
-  "metadata" : {
-    "created_at" : "2025-08-16T23:26:59Z",
-    "source" : "CSV Import Tool",
-    "total_count" : 5
+  "belt_level": "7th_keup",
+  "category": "basics",
+  "metadata": {
+    "created_at": "2025-08-16T23:26:59Z",
+    "source": "CSV Import Tool",
+    "total_count": 5
   },
-  "terminology" : [
+  "terminology": [
     {
-      "belt_level" : "7th_keup",
-      "category" : "basics",
-      "created_at" : "2025-08-16T23:26:59Z",
-      "definition" : "Back of the closed fist used for striking",
-      "difficulty" : 1,
-      "english_term" : "Back Fist",
-      "korean_hangul" : "등주먹",
-      "phonetic_pronunciation" : "/dɯŋ.tʃu.mʌk/",
-      "romanized_pronunciation" : "Dung Joomuk"
+      "belt_level": "7th_keup",
+      "category": "basics",
+      "created_at": "2025-08-16T23:26:59Z",
+      "definition": "Back of the closed fist used for striking",
+      "difficulty": 1,
+      "english": "Back Fist",
+      "romanised": "Dung Joomuk",
+      "hangul": "등주먹",
+      "phonetic": "/dɯŋ.tʃu.mʌk/"
     },
     {
-      "belt_level" : "7th_keup",
-      "category" : "basics",
-      "created_at" : "2025-08-16T23:26:59Z",
-      "definition" : "Tips of fingers used for precise striking",
-      "difficulty" : 1,
-      "english_term" : "Fingertip",
-      "korean_hangul" : "손끝",
-      "phonetic_pronunciation" : "/son.kɯt/",
-      "romanized_pronunciation" : "Sonkut"
+      "belt_level": "7th_keup",
+      "category": "basics",
+      "created_at": "2025-08-16T23:26:59Z",
+      "definition": "Tips of fingers used for precise striking",
+      "difficulty": 1,
+      "english": "Fingertip",
+      "romanised": "Sonkut",
+      "hangul": "손끝",
+      "phonetic": "/son.kɯt/"
     },
     {
-      "belt_level" : "7th_keup",
-      "category" : "basics",
-      "created_at" : "2025-08-16T23:26:59Z",
-      "definition" : "Edge of the foot used for cutting kicks",
-      "difficulty" : 1,
-      "english_term" : "Foot Sword",
-      "korean_hangul" : "발칼",
-      "phonetic_pronunciation" : "/bal.kʰal/",
-      "romanized_pronunciation" : "Balkal"
+      "belt_level": "7th_keup",
+      "category": "basics",
+      "created_at": "2025-08-16T23:26:59Z",
+      "definition": "Edge of the foot used for cutting kicks",
+      "difficulty": 1,
+      "english": "Foot Sword",
+      "romanised": "Balkal",
+      "hangul": "발칼",
+      "phonetic": "/bal.kʰal/"
     },
     {
-      "belt_level" : "7th_keup",
-      "category" : "basics",
-      "created_at" : "2025-08-16T23:26:59Z",
-      "definition" : "Smooth gliding movement across the floor",
-      "difficulty" : 1,
-      "english_term" : "Sliding",
-      "korean_hangul" : "미끄기",
-      "phonetic_pronunciation" : "/mi.kɯl.ɡi/",
-      "romanized_pronunciation" : "Mikulgi"
+      "belt_level": "7th_keup",
+      "category": "basics",
+      "created_at": "2025-08-16T23:26:59Z",
+      "definition": "Smooth gliding movement across the floor",
+      "difficulty": 1,
+      "english": "Sliding",
+      "romanised": "Mikulgi",
+      "hangul": "미끄기",
+      "phonetic": "/mi.kɯl.ɡi/"
     },
     {
-      "belt_level" : "7th_keup",
-      "category" : "basics",
-      "created_at" : "2025-08-16T23:26:59Z",
-      "definition" : "Turning in place without moving from current position",
-      "difficulty" : 1,
-      "english_term" : "Spot Turn",
-      "korean_hangul" : "그자리돌기",
-      "phonetic_pronunciation" : "/kɯ.dʑa.ɾi.tol.ɡi/",
-      "romanized_pronunciation" : "Gujari Dolgi"
+      "belt_level": "7th_keup",
+      "category": "basics",
+      "created_at": "2025-08-16T23:26:59Z",
+      "definition": "Turning in place without moving from current position",
+      "difficulty": 1,
+      "english": "Spot Turn",
+      "romanised": "Gujari Dolgi",
+      "hangul": "그자리돌기",
+      "phonetic": "/kɯ.dʑa.ɾi.tol.ɡi/"
     }
   ]
 }

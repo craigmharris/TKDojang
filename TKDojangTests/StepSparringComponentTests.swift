@@ -103,8 +103,8 @@ final class StepSparringComponentTests: XCTestCase {
     }
 
     private struct StepSparringJSONAction: Codable {
-        let technique: String
-        let korean_name: String
+        let english: String
+        let romanised: String
         let stance: String
         let target: String
         let hand: String
@@ -188,15 +188,15 @@ final class StepSparringComponentTests: XCTestCase {
                 for stepJSON in sequenceJSON.steps.sorted(by: { $0.step_number < $1.step_number }) {
                     // Create actions with EXACT production mapping (line 241-250)
                     let attackAction = StepSparringAction(
-                        technique: stepJSON.attack.technique,
-                        koreanName: stepJSON.attack.korean_name,
+                        technique: stepJSON.attack.english,
+                        koreanName: stepJSON.attack.romanised,
                         execution: "\(stepJSON.attack.hand) \(stepJSON.attack.stance) to \(stepJSON.attack.target)",
                         actionDescription: stepJSON.attack.description
                     )
 
                     let defenseAction = StepSparringAction(
-                        technique: stepJSON.defense.technique,
-                        koreanName: stepJSON.defense.korean_name,
+                        technique: stepJSON.defense.english,
+                        koreanName: stepJSON.defense.romanised,
                         execution: "\(stepJSON.defense.hand) \(stepJSON.defense.stance) to \(stepJSON.defense.target)",
                         actionDescription: stepJSON.defense.description
                     )
@@ -214,8 +214,8 @@ final class StepSparringComponentTests: XCTestCase {
                     // Add counter-attack if present (matches production line 222-233)
                     if let counterJSON = stepJSON.counter {
                         let counterAction = StepSparringAction(
-                            technique: counterJSON.technique,
-                            koreanName: counterJSON.korean_name,
+                            technique: counterJSON.english,
+                            koreanName: counterJSON.romanised,
                             execution: "\(counterJSON.hand) \(counterJSON.stance) to \(counterJSON.target)",
                             actionDescription: counterJSON.description
                         )

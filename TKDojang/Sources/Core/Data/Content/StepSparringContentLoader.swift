@@ -317,10 +317,10 @@ struct StepSparringActionData: Codable {
     let target: String
     let hand: String
     let description: String
-    
+
     enum CodingKeys: String, CodingKey {
-        case technique
-        case koreanName = "korean_name"
+        case technique = "english"
+        case koreanName = "romanised"
         case stance
         case target
         case hand

@@ -1,0 +1,302 @@
+"recordTypes": [
+    {
+      "name": "Feedback",
+      "fields": [
+        {
+          "name": "feedbackID",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "feedbackText",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP",
+          "required": true
+        },
+        {
+          "name": "userRecordID",
+          "type": "REFERENCE",
+          "required": true
+        },
+        {
+          "name": "beltLevel",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "learningMode",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "mostUsedFeature",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "totalSessions",
+          "type": "INT64",
+          "required": false
+        },
+        {
+          "name": "deviceInfo",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "developerResponse",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "responseTimestamp",
+          "type": "TIMESTAMP",
+          "required": false
+        },
+        {
+          "name": "responseStatus",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "targetVersion",
+          "type": "STRING",
+          "required": false
+        }
+      ],
+      "indexes": [
+        {
+          "fields": ["feedbackID"]
+        },
+        {
+          "fields": ["timestamp"]
+        },
+        {
+          "fields": ["userRecordID"]
+        }
+      ]
+    },
+    {
+      "name": "RoadmapItem",
+      "fields": [
+        {
+          "name": "itemID",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "priority",
+          "type": "INT64",
+          "required": true
+        },
+        {
+          "name": "estimatedRelease",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "voteCount",
+          "type": "INT64",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "completionPercentage",
+          "type": "DOUBLE",
+          "required": false
+        },
+        {
+          "name": "releaseDate",
+          "type": "TIMESTAMP",
+          "required": false
+        },
+        {
+          "name": "isNew",
+          "type": "INT64",
+          "required": true
+        }
+      ],
+      "indexes": [
+        {
+          "fields": ["itemID"]
+        },
+        {
+          "fields": ["priority"]
+        },
+        {
+          "fields": ["status"]
+        }
+      ]
+    },
+    {
+      "name": "RoadmapVote",
+      "fields": [
+        {
+          "name": "voteID",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "roadmapItemID",
+          "type": "REFERENCE",
+          "required": true
+        },
+        {
+          "name": "userRecordID",
+          "type": "REFERENCE",
+          "required": true
+        },
+        {
+          "name": "votedAt",
+          "type": "TIMESTAMP",
+          "required": true
+        }
+      ],
+      "indexes": [
+        {
+          "fields": ["voteID"]
+        },
+        {
+          "fields": ["roadmapItemID"]
+        },
+        {
+          "fields": ["userRecordID"]
+        },
+        {
+          "fields": ["roadmapItemID", "userRecordID"]
+        }
+      ]
+    },
+    {
+      "name": "FeatureSuggestion",
+      "fields": [
+        {
+          "name": "suggestionID",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "submittedBy",
+          "type": "REFERENCE",
+          "required": true
+        },
+        {
+          "name": "submittedAt",
+          "type": "TIMESTAMP",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "upvoteCount",
+          "type": "INT64",
+          "required": true
+        },
+        {
+          "name": "developerNote",
+          "type": "STRING",
+          "required": false
+        },
+        {
+          "name": "addedToRoadmapItemID",
+          "type": "STRING",
+          "required": false
+        }
+      ],
+      "indexes": [
+        {
+          "fields": ["suggestionID"]
+        },
+        {
+          "fields": ["submittedBy"]
+        },
+        {
+          "fields": ["submittedAt"]
+        }
+      ]
+    },
+    {
+      "name": "DeveloperAnnouncement",
+      "fields": [
+        {
+          "name": "announcementID",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "message",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "postedAt",
+          "type": "TIMESTAMP",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "STRING",
+          "required": true
+        },
+        {
+          "name": "relatedVersion",
+          "type": "STRING",
+          "required": false
+        }
+      ],
+      "indexes": [
+        {
+          "fields": ["announcementID"]
+        },
+        {
+          "fields": ["postedAt"]
+        }
+      ]
+    }
+  ]

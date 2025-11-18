@@ -2,819 +2,819 @@
   "words": [
     {
       "english": "Block",
-      "romanized": "Makgi",
       "hangul": "막기",
-      "frequency": 27
+      "frequency": 27,
+      "romanised": "Makgi"
     },
     {
       "english": "Forearm",
-      "romanized": "Palmok",
       "hangul": "팔목",
-      "frequency": 18
+      "frequency": 18,
+      "romanised": "Palmok"
     },
     {
       "english": "High",
-      "romanized": "Nopunde",
       "hangul": "높은데",
-      "frequency": 15
+      "frequency": 15,
+      "romanised": "Nopunde"
     },
     {
       "english": "Consecutive",
-      "romanized": "Yonsok",
       "hangul": "연속",
-      "frequency": 15
+      "frequency": 15,
+      "romanised": "Yonsok"
     },
     {
       "english": "Dodging",
-      "romanized": "Pihamyo",
       "hangul": "피하며",
-      "frequency": 15
+      "frequency": 15,
+      "romanised": "Pihamyo"
     },
     {
       "english": "Stamping",
-      "romanized": "Busigi",
       "hangul": "부시기",
-      "frequency": 15
+      "frequency": 15,
+      "romanised": "Busigi"
     },
     {
       "english": "Sweeping",
-      "romanized": "Goro",
       "hangul": "고로",
-      "frequency": 15
+      "frequency": 15,
+      "romanised": "Goro"
     },
     {
       "english": "Twisting",
-      "romanized": "Bituro",
       "hangul": "비투로",
-      "frequency": 15
+      "frequency": 15,
+      "romanised": "Bituro"
     },
     {
       "english": "Kick",
-      "romanized": "Chagi",
       "hangul": "차기",
-      "frequency": 14
+      "frequency": 14,
+      "romanised": "Chagi"
     },
     {
       "english": "Stance",
-      "romanized": "Sogi",
       "hangul": "서기",
-      "frequency": 14
+      "frequency": 14,
+      "romanised": "Sogi"
     },
     {
       "english": "Knife Hand",
-      "romanized": "Sonkal",
       "hangul": "손칼",
-      "frequency": 13
+      "frequency": 13,
+      "romanised": "Sonkal"
     },
     {
       "english": "Turning",
-      "romanized": "Dollyo",
       "hangul": "돌려",
-      "frequency": 13
+      "frequency": 13,
+      "romanised": "Dollyo"
     },
     {
       "english": "Horizontal",
-      "romanized": "Soopyong",
       "hangul": "수평",
-      "frequency": 12
+      "frequency": 12,
+      "romanised": "Soopyong"
     },
     {
       "english": "Low",
-      "romanized": "Najunde",
       "hangul": "낮은데",
-      "frequency": 12
+      "frequency": 12,
+      "romanised": "Najunde"
     },
     {
       "english": "Back",
-      "romanized": "Dwit",
       "hangul": "뒤",
-      "frequency": 12
+      "frequency": 12,
+      "romanised": "Dwit"
     },
     {
       "english": "Straight",
-      "romanized": "Sun",
       "hangul": "선",
-      "frequency": 12
+      "frequency": 12,
+      "romanised": "Sun"
     },
     {
       "english": "Fist",
-      "romanized": "Joomuk",
       "hangul": "주먹",
-      "frequency": 11
+      "frequency": 11,
+      "romanised": "Joomuk"
     },
     {
       "english": "Strike",
-      "romanized": "Taerigi",
       "hangul": "때리기",
-      "frequency": 11
+      "frequency": 11,
+      "romanised": "Taerigi"
     },
     {
       "english": "Crescent",
-      "romanized": "Bandal",
       "hangul": "반달",
-      "frequency": 11
+      "frequency": 11,
+      "romanised": "Bandal"
     },
     {
       "english": "U-Shape",
-      "romanized": "Digutja",
       "hangul": "디귿자",
-      "frequency": 11
+      "frequency": 11,
+      "romanised": "Digutja"
     },
     {
       "english": "Front",
-      "romanized": "Ap",
       "hangul": "앞",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Ap"
     },
     {
       "english": "Back Heel",
-      "romanized": "Dwitchook",
       "hangul": "뒤축",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Dwitchook"
     },
     {
       "english": "Backhand",
-      "romanized": "Sondung",
       "hangul": "손등",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Sondung"
     },
     {
       "english": "Ball of Foot",
-      "romanized": "Apkumchi",
       "hangul": "앞꿈치",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Apkumchi"
     },
     {
       "english": "Bearhand",
-      "romanized": "Komson",
       "hangul": "곰손",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Komson"
     },
     {
       "english": "Courtesy",
-      "romanized": "Ye Ui",
       "hangul": "예의",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Ye Ui"
     },
     {
       "english": "Cross Cut",
-      "romanized": "Gutgi",
       "hangul": "긋기",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Gutgi"
     },
     {
       "english": "Outer",
-      "romanized": "Bakat",
       "hangul": "바깥",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Bakat"
     },
     {
       "english": "Forefist",
-      "romanized": "Ap Joomuk",
       "hangul": "앞주먹",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Ap Joomuk"
     },
     {
       "english": "Indomitable Spirit",
-      "romanized": "Baekjul Boolgool",
       "hangul": "백절불굴",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Baekjul Boolgool"
     },
     {
       "english": "Instep",
-      "romanized": "Baldung",
       "hangul": "발등",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Baldung"
     },
     {
       "english": "Integrity",
-      "romanized": "Yom Chi",
       "hangul": "염치",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Yom Chi"
     },
     {
       "english": "Double Side",
-      "romanized": "Jau",
       "hangul": "자우",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Jau"
     },
     {
       "english": "Fore Knuckle",
-      "romanized": "Inji",
       "hangul": "인지",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Inji"
     },
     {
       "english": "Palm",
-      "romanized": "Sonbadak",
       "hangul": "손바닥",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Sonbadak"
     },
     {
       "english": "Perseverance",
-      "romanized": "In Nae",
       "hangul": "인내",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "In Nae"
     },
     {
       "english": "Release Movement",
-      "romanized": "Dai-te",
       "hangul": "대태",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Dai-te"
     },
     {
       "english": "Scooping",
-      "romanized": "Duro",
       "hangul": "두로",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Duro"
     },
     {
       "english": "Self-Control",
-      "romanized": "Guk Gi",
       "hangul": "극기",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Guk Gi"
     },
     {
       "english": "Sole of Foot",
-      "romanized": "Balbadak",
       "hangul": "발바닥",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Balbadak"
     },
     {
       "english": "Toes",
-      "romanized": "Balk Kut",
       "hangul": "발끝",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Balk Kut"
     },
     {
       "english": "Twin Side",
-      "romanized": "Sang Yop",
       "hangul": "쌍옆",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Sang Yop"
     },
     {
       "english": "Punch",
-      "romanized": "Jirugi",
       "hangul": "지르기",
-      "frequency": 10
+      "frequency": 10,
+      "romanised": "Jirugi"
     },
     {
       "english": "Reverse",
-      "romanized": "Bandae",
       "hangul": "반대",
-      "frequency": 8
+      "frequency": 8,
+      "romanised": "Bandae"
     },
     {
       "english": "Side",
-      "romanized": "Yop",
       "hangul": "옆",
-      "frequency": 8
+      "frequency": 8,
+      "romanised": "Yop"
     },
     {
       "english": "Guarding",
-      "romanized": "Daebi",
       "hangul": "대비",
-      "frequency": 7
+      "frequency": 7,
+      "romanised": "Daebi"
     },
     {
       "english": "Inward",
-      "romanized": "Anaero",
       "hangul": "안으로",
-      "frequency": 6
+      "frequency": 6,
+      "romanised": "Anaero"
     },
     {
       "english": "Twin",
-      "romanized": "Sang",
       "hangul": "쌍",
-      "frequency": 6
+      "frequency": 6,
+      "romanised": "Sang"
     },
     {
       "english": "Ready",
-      "romanized": "Chunbi",
       "hangul": "준비",
-      "frequency": 5
+      "frequency": 5,
+      "romanised": "Chunbi"
     },
     {
       "english": "Sparring",
-      "romanized": "Matsoki",
       "hangul": "맞서기",
-      "frequency": 5
+      "frequency": 5,
+      "romanised": "Matsoki"
     },
     {
       "english": "Elbow",
-      "romanized": "Palkup",
       "hangul": "팔굽",
-      "frequency": 4
+      "frequency": 4,
+      "romanised": "Palkup"
     },
     {
       "english": "Fingertip",
-      "romanized": "Sonkut",
       "hangul": "손끝",
-      "frequency": 4
+      "frequency": 4,
+      "romanised": "Sonkut"
     },
     {
       "english": "Thrust",
-      "romanized": "Tulgi",
       "hangul": "뚫기",
-      "frequency": 4
+      "frequency": 4,
+      "romanised": "Tulgi"
     },
     {
       "english": "Upward",
-      "romanized": "Ollyo",
       "hangul": "올려",
-      "frequency": 4
+      "frequency": 4,
+      "romanised": "Ollyo"
     },
     {
       "english": "X",
-      "romanized": "Kyocha",
       "hangul": "교차",
-      "frequency": 4
+      "frequency": 4,
+      "romanised": "Kyocha"
     },
     {
       "english": "Double",
-      "romanized": "Doo",
       "hangul": "두",
-      "frequency": 3
+      "frequency": 3,
+      "romanised": "Doo"
     },
     {
       "english": "Downward",
-      "romanized": "Naeryo",
       "hangul": "내려",
-      "frequency": 3
+      "frequency": 3,
+      "romanised": "Naeryo"
     },
     {
       "english": "Flying",
-      "romanized": "Twimyo",
       "hangul": "뛰며",
-      "frequency": 3
+      "frequency": 3,
+      "romanised": "Twimyo"
     },
     {
       "english": "Footsword",
-      "romanized": "Balkal",
       "hangul": "발칼",
-      "frequency": 3
+      "frequency": 3,
+      "romanised": "Balkal"
     },
     {
       "english": "Inner",
-      "romanized": "An",
       "hangul": "안",
-      "frequency": 3
+      "frequency": 3,
+      "romanised": "An"
     },
     {
       "english": "Middle",
-      "romanized": "Kaunde",
       "hangul": "가운데",
-      "frequency": 3
+      "frequency": 3,
+      "romanised": "Kaunde"
     },
     {
       "english": "Outward",
-      "romanized": "Bakaero",
       "hangul": "바깥으로",
-      "frequency": 3
+      "frequency": 3,
+      "romanised": "Bakaero"
     },
     {
       "english": "Pushing",
-      "romanized": "Miro",
       "hangul": "밀어",
-      "frequency": 3
+      "frequency": 3,
+      "romanised": "Miro"
     },
     {
       "english": "Rising",
-      "romanized": "Chookyo",
       "hangul": "축여",
-      "frequency": 3
+      "frequency": 3,
+      "romanised": "Chookyo"
     },
     {
       "english": "Turn",
-      "romanized": "Torro",
       "hangul": "돌아",
-      "frequency": 3
+      "frequency": 3,
+      "romanised": "Torro"
     },
     {
       "english": "Waist",
-      "romanized": "Hori",
       "hangul": "허리",
-      "frequency": 3
+      "frequency": 3,
+      "romanised": "Hori"
     },
     {
       "english": "Upset",
-      "romanized": "Dwijibo",
       "hangul": "뒤집어",
-      "frequency": 3
+      "frequency": 3,
+      "romanised": "Dwijibo"
     },
     {
       "english": "3-Step",
-      "romanized": "Sambo",
       "hangul": "삼보",
-      "frequency": 2
+      "frequency": 2,
+      "romanised": "Sambo"
     },
     {
       "english": "Attention",
-      "romanized": "Charyot",
       "hangul": "차렷",
-      "frequency": 2
+      "frequency": 2,
+      "romanised": "Charyot"
     },
     {
       "english": "Checking",
-      "romanized": "Momchau",
       "hangul": "멈춰",
-      "frequency": 2
+      "frequency": 2,
+      "romanised": "Momchau"
     },
     {
       "english": "Four",
-      "romanized": "Net",
       "hangul": "넷",
-      "frequency": 2
+      "frequency": 2,
+      "romanised": "Net"
     },
     {
       "english": "Hooking",
-      "romanized": "Golcho",
       "hangul": "걸쳐",
-      "frequency": 2
+      "frequency": 2,
+      "romanised": "Golcho"
     },
     {
       "english": "Knee",
-      "romanized": "Moorup",
       "hangul": "무릎",
-      "frequency": 2
+      "frequency": 2,
+      "romanised": "Moorup"
     },
     {
       "english": "Parallel",
-      "romanized": "Narani",
       "hangul": "나란히",
-      "frequency": 2
+      "frequency": 2,
+      "romanised": "Narani"
     },
     {
       "english": "Pressing",
-      "romanized": "Noollo",
       "hangul": "눌러",
-      "frequency": 2
+      "frequency": 2,
+      "romanised": "Noollo"
     },
     {
       "english": "Rear",
-      "romanized": "Dwit",
       "hangul": "뒤",
-      "frequency": 2
+      "frequency": 2,
+      "romanised": "Dwit"
     },
     {
       "english": "Uniform",
-      "romanized": "Dobok",
       "hangul": "도복",
-      "frequency": 2
+      "frequency": 2,
+      "romanised": "Dobok"
     },
     {
       "english": "Vertical",
-      "romanized": "Soo",
       "hangul": "수",
-      "frequency": 2
+      "frequency": 2,
+      "romanised": "Soo"
     },
     {
       "english": "Walking",
-      "romanized": "Gunnun",
       "hangul": "걷는",
-      "frequency": 2
+      "frequency": 2,
+      "romanised": "Gunnun"
     },
     {
       "english": "1-Step",
-      "romanized": "Ilbo",
       "hangul": "일보",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Ilbo"
     },
     {
       "english": "2-Step",
-      "romanized": "Ibo",
       "hangul": "이보",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Ibo"
     },
     {
       "english": "4-Directional",
-      "romanized": "Sajo",
       "hangul": "사조",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Sajo"
     },
     {
       "english": "Press Ups",
-      "romanized": "Bachia",
       "hangul": "받치아",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Bachia"
     },
     {
       "english": "About",
-      "romanized": "Dwiyro",
       "hangul": "뒤로",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Dwiyro"
     },
     {
       "english": "Backward",
-      "romanized": "Dwit",
       "hangul": "뒤로",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Dwit"
     },
     {
       "english": "Belt",
-      "romanized": "Ti",
       "hangul": "띠",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Ti"
     },
     {
       "english": "Bending",
-      "romanized": "Guburyo",
       "hangul": "굽혀",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Guburyo"
     },
     {
       "english": "Bow",
-      "romanized": "Kyong-Ye",
       "hangul": "경례",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Kyong-Ye"
     },
     {
       "english": "Break",
-      "romanized": "Hechyo",
       "hangul": "해쳐",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Hechyo"
     },
     {
       "english": "Circular",
-      "romanized": "Dollimyo",
       "hangul": "돌리며",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Dollimyo"
     },
     {
       "english": "Closed",
-      "romanized": "Moa",
       "hangul": "모아",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Moa"
     },
     {
       "english": "Dismiss",
-      "romanized": "Haessan",
       "hangul": "해산",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Haessan"
     },
     {
       "english": "Eight",
-      "romanized": "Yodoll",
       "hangul": "여덟",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Yodoll"
     },
     {
       "english": "Five",
-      "romanized": "Dasaul",
       "hangul": "다섯",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Dasaul"
     },
     {
       "english": "Fixed",
-      "romanized": "Gojung",
       "hangul": "고정",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Gojung"
     },
     {
       "english": "Flat",
-      "romanized": "Opun",
       "hangul": "편",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Opun"
     },
     {
       "english": "Fore",
-      "romanized": "Ap",
       "hangul": "앞",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Ap"
     },
     {
       "english": "Forward",
-      "romanized": "Apro",
       "hangul": "앞으로",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Apro"
     },
     {
       "english": "Free",
-      "romanized": "Jayoo",
       "hangul": "자유",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Jayoo"
     },
     {
       "english": "Grasping",
-      "romanized": "Butjuba",
       "hangul": "붙잡아",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Butjuba"
     },
     {
       "english": "Head",
-      "romanized": "Mori",
       "hangul": "머리",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Mori"
     },
     {
       "english": "Heel",
-      "romanized": "Chook",
       "hangul": "축",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Chook"
     },
     {
       "english": "Hook",
-      "romanized": "Dollyo",
       "hangul": "돌려",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Dollyo"
     },
     {
       "english": "Instructor",
-      "romanized": "Sabum",
       "hangul": "사범",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Sabum"
     },
     {
       "english": "Jumping",
-      "romanized": "Twigi",
       "hangul": "뛰기",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Twigi"
     },
     {
       "english": "L",
-      "romanized": "Niunja",
       "hangul": "니은자",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Niunja"
     },
     {
       "english": "Left",
-      "romanized": "Wen",
       "hangul": "왼",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Wen"
     },
     {
       "english": "Move",
-      "romanized": "Tasol",
       "hangul": "다솔",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Tasol"
     },
     {
       "english": "Nine",
-      "romanized": "Ahop",
       "hangul": "아홉",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Ahop"
     },
     {
       "english": "Obverse",
-      "romanized": "Baro",
       "hangul": "바로",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Baro"
     },
     {
       "english": "One",
-      "romanized": "Hana",
       "hangul": "하나",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Hana"
     },
     {
       "english": "Pattern",
-      "romanized": "Tul",
       "hangul": "틀",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Tul"
     },
     {
       "english": "Piercing",
-      "romanized": "Cha",
       "hangul": "차",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Cha"
     },
     {
       "english": "Release",
-      "romanized": "Jap",
       "hangul": "잡",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Jap"
     },
     {
       "english": "Return",
-      "romanized": "Barrol",
       "hangul": "바로",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Barrol"
     },
     {
       "english": "Right",
-      "romanized": "Orun",
       "hangul": "오른",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Orun"
     },
     {
       "english": "Semi-Free",
-      "romanized": "Ban Jayoo",
       "hangul": "반자유",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Ban Jayoo"
     },
     {
       "english": "Seven",
-      "romanized": "Ilgop",
       "hangul": "일곱",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Ilgop"
     },
     {
       "english": "Shifting",
-      "romanized": "Bal",
       "hangul": "발",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Bal"
     },
     {
       "english": "Shout",
-      "romanized": "Kihap",
       "hangul": "기합",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Kihap"
     },
     {
       "english": "Sitting",
-      "romanized": "Annun",
       "hangul": "앉는",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Annun"
     },
     {
       "english": "Six",
-      "romanized": "Yosaul",
       "hangul": "여섯",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Yosaul"
     },
     {
       "english": "Sliding",
-      "romanized": "Mikulgi",
       "hangul": "미끄러지",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Mikulgi"
     },
     {
       "english": "Snap",
-      "romanized": "Cha",
       "hangul": "차",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Cha"
     },
     {
       "english": "Sole",
-      "romanized": "Kumchi",
       "hangul": "꿈치",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Kumchi"
     },
     {
       "english": "Spot",
-      "romanized": "Gujari",
       "hangul": "구자리",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Gujari"
     },
     {
       "english": "Start/Begin",
-      "romanized": "Si-Jak",
       "hangul": "시작",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Sijak"
     },
     {
       "english": "Step",
-      "romanized": "Omgyo",
       "hangul": "옮겨",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Omgyo"
     },
     {
       "english": "Stop",
-      "romanized": "Goman",
       "hangul": "그만",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Goman"
     },
     {
       "english": "Student",
-      "romanized": "Jeja",
       "hangul": "제자",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Jeja"
     },
     {
       "english": "Ten",
-      "romanized": "Yoll",
       "hangul": "열",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Yoll"
     },
     {
       "english": "Three",
-      "romanized": "Set",
       "hangul": "셋",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Set"
     },
     {
       "english": "Two",
-      "romanized": "Dool",
       "hangul": "둘",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Dool"
     },
     {
       "english": "Upper",
-      "romanized": "Wi",
       "hangul": "위",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Wi"
     },
     {
       "english": "W-Shaped",
-      "romanized": "San",
       "hangul": "산",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "San"
     },
     {
       "english": "Wedging",
-      "romanized": "Hechyo",
       "hangul": "해쳐",
-      "frequency": 1
+      "frequency": 1,
+      "romanised": "Hechyo"
     }
   ]
 }

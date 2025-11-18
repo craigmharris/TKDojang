@@ -10,9 +10,7 @@
   },
   "patterns": [
     {
-      "name": "Joong-Gun",
       "hangul": "중근",
-      "pronunciation": "joong-gun",
       "phonetic": "/tʃuŋ.gun/",
       "english_meaning": "Heavy Roots",
       "significance": "Named after the patriot Ahn Joong-Gun who assassinated Hiro-Bumi Ito, the first Japanese governor-general of Korea, known as the man who played the leading part in the Korea-Japan merger. The 32 movements in this pattern represent Mr. Ahn's age when he was executed at Lui-Shung prison in 1910.",
@@ -30,8 +28,6 @@
         {
           "move_number": 1,
           "stance": "L-stance",
-          "technique": "Reverse Knife Hand Block",
-          "korean_technique": "Sonkal daebi makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Strong L-stance foundation",
@@ -41,13 +37,13 @@
           "image2URL": "joong-gun-1-technique",
           "image3URL": "joong-gun-1-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Reverse Knife Hand Block",
+          "romanised": "Sonkal daebi makgi"
         },
         {
           "move_number": 2,
           "stance": "-",
-          "technique": "Front Snap Kick",
-          "korean_technique": "Ap Cha Busigi",
           "direction": "A",
           "target": "Low Section",
           "key_points": "Sharp knife hand technique",
@@ -57,13 +53,13 @@
           "image2URL": "joong-gun-2-technique",
           "image3URL": "joong-gun-2-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Front Snap Kick",
+          "romanised": "Ap Cha Busigi"
         },
         {
           "move_number": 3,
           "stance": "Right Foot Stance",
-          "technique": "Palm Upward Block",
-          "korean_technique": "Sonkal daebi makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Mirror of opening move",
@@ -73,13 +69,13 @@
           "image2URL": "joong-gun-3-technique",
           "image3URL": "joong-gun-3-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Palm Upward Block",
+          "romanised": "Sonkal daebi makgi"
         },
         {
           "move_number": 4,
           "stance": "L-stance",
-          "technique": "Reverse Knife Hand Block",
-          "korean_technique": "Sonkal dung taerigi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Bilateral technique consistency",
@@ -89,13 +85,13 @@
           "image2URL": "joong-gun-4-technique",
           "image3URL": "joong-gun-4-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Reverse Knife Hand Block",
+          "romanised": "Sonkal dung taerigi"
         },
         {
           "move_number": 5,
           "stance": "-",
-          "technique": "Front Snap Kick",
-          "korean_technique": "Ap Cha Busigi",
           "direction": "A",
           "target": "Low Section",
           "key_points": "Strong northward advance",
@@ -105,13 +101,13 @@
           "image2URL": "joong-gun-5-technique",
           "image3URL": "joong-gun-5-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Front Snap Kick",
+          "romanised": "Ap Cha Busigi"
         },
         {
           "move_number": 6,
           "stance": "Right Foot Stance",
-          "technique": "Palm Upward Block",
-          "korean_technique": "Nopunde jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Continue northern advance",
@@ -121,13 +117,13 @@
           "image2URL": "joong-gun-6-technique",
           "image3URL": "joong-gun-6-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Palm Upward Block",
+          "romanised": "Nopunde jirugi"
         },
         {
           "move_number": 7,
           "stance": "L-stance",
-          "technique": "Knife Hand Guarding Block",
-          "korean_technique": "Sonkal Daebi Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Build rhythm and power",
@@ -137,13 +133,13 @@
           "image2URL": "joong-gun-7-technique",
           "image3URL": "joong-gun-7-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Knife Hand Guarding Block",
+          "romanised": "Sonkal Daebi Makgi"
         },
         {
           "move_number": 8,
           "stance": "Walking Stance",
-          "technique": "Upward Elbow Strike",
-          "korean_technique": "Kaunde sonkal makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Transition to defensive technique",
@@ -153,13 +149,13 @@
           "image2URL": "joong-gun-8-technique",
           "image3URL": "joong-gun-8-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Upward Elbow Strike",
+          "romanised": "Kaunde sonkal makgi"
         },
         {
           "move_number": 9,
           "stance": "L-stance",
-          "technique": "Knife Hand Guarding Block",
-          "korean_technique": "Sonkal Daebi Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Immediate counter-attack",
@@ -169,13 +165,13 @@
           "image2URL": "joong-gun-9-technique",
           "image3URL": "joong-gun-9-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Knife Hand Guarding Block",
+          "romanised": "Sonkal Daebi Makgi"
         },
         {
           "move_number": 10,
           "stance": "Walking Stance",
-          "technique": "Upward Elbow Strike",
-          "korean_technique": "Kaunde sonkal makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Defensive pattern continuation",
@@ -185,13 +181,13 @@
           "image2URL": "joong-gun-10-technique",
           "image3URL": "joong-gun-10-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Upward Elbow Strike",
+          "romanised": "Kaunde sonkal makgi"
         },
         {
           "move_number": 11,
           "stance": "Walking Stance",
-          "technique": "Twin Vertical Punch",
-          "korean_technique": "Sang Sewo Jirugi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Alternating attack pattern",
@@ -201,13 +197,13 @@
           "image2URL": "joong-gun-11-technique",
           "image3URL": "joong-gun-11-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Twin Vertical Punch",
+          "romanised": "Sang Sewo Jirugi"
         },
         {
           "move_number": 12,
           "stance": "Walking Stance",
-          "technique": "Twin Upset Punch",
-          "korean_technique": "Sang palmok makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Strong twin arm blocking",
@@ -217,13 +213,13 @@
           "image2URL": "joong-gun-12-technique",
           "image3URL": "joong-gun-12-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Twin Upset Punch",
+          "romanised": "Sang palmok makgi"
         },
         {
           "move_number": 13,
           "stance": "Walking Stance",
-          "technique": "X-fist Rising Block",
-          "korean_technique": "Nopunde jirugi",
           "direction": "A",
           "target": "High Section",
           "key_points": "180-degree turn precision",
@@ -233,13 +229,13 @@
           "image2URL": "joong-gun-13-technique",
           "image3URL": "joong-gun-13-progress",
           "execution_speed": "normal",
-          "movement": "Left 180°"
+          "movement": "Left 180°",
+          "english": "X-fist Rising Block",
+          "romanised": "Nopunde jirugi"
         },
         {
           "move_number": 14,
           "stance": "L-stance",
-          "technique": "Back Fist Side Strike",
-          "korean_technique": "Dung Joomuk Yop Taerigi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Begin southern sequence",
@@ -249,13 +245,13 @@
           "image2URL": "joong-gun-14-technique",
           "image3URL": "joong-gun-14-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Back Fist Side Strike",
+          "romanised": "Dung Joomuk Yop Taerigi"
         },
         {
           "move_number": 15,
           "stance": "Walking Stance",
-          "technique": "Release Move",
-          "korean_technique": "Nohgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Mirror northern sequence",
@@ -265,13 +261,13 @@
           "image2URL": "joong-gun-15-technique",
           "image3URL": "joong-gun-15-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Release Move",
+          "romanised": "Nohgi"
         },
         {
           "move_number": 16,
           "stance": "Walking Stance",
-          "technique": "Reverse Punch",
-          "korean_technique": "Bandae Jirugi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Defensive transition",
@@ -281,13 +277,13 @@
           "image2URL": "joong-gun-16-technique",
           "image3URL": "joong-gun-16-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Reverse Punch",
+          "romanised": "Bandae Jirugi"
         },
         {
           "move_number": 17,
           "stance": "L-stance",
-          "technique": "Back Fist Side Strike",
-          "korean_technique": "Dung Joomuk Yop Taerigi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Counter-attack pattern",
@@ -297,13 +293,13 @@
           "image2URL": "joong-gun-17-technique",
           "image3URL": "joong-gun-17-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Back Fist Side Strike",
+          "romanised": "Dung Joomuk Yop Taerigi"
         },
         {
           "move_number": 18,
           "stance": "Walking Stance",
-          "technique": "Release Move",
-          "korean_technique": "Nohgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Continue defensive pattern",
@@ -313,13 +309,13 @@
           "image2URL": "joong-gun-18-technique",
           "image3URL": "joong-gun-18-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Release Move",
+          "romanised": "Nohgi"
         },
         {
           "move_number": 19,
           "stance": "Walking Stance",
-          "technique": "Reverse Punch",
-          "korean_technique": "Bandae Jirugi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Alternating attack pattern",
@@ -329,13 +325,13 @@
           "image2URL": "joong-gun-19-technique",
           "image3URL": "joong-gun-19-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Reverse Punch",
+          "romanised": "Bandae Jirugi"
         },
         {
           "move_number": 20,
           "stance": "Walking Stance",
-          "technique": "Double Forearm Block",
-          "korean_technique": "Doo Palmok Makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Strong twin arm blocking",
@@ -345,13 +341,13 @@
           "image2URL": "joong-gun-20-technique",
           "image3URL": "joong-gun-20-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Double Forearm Block",
+          "romanised": "Doo Palmok Makgi"
         },
         {
           "move_number": 21,
           "stance": "L-stance",
-          "technique": "Side Punch",
-          "korean_technique": "Yop palkup taerigi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Introduction of elbow techniques",
@@ -361,13 +357,13 @@
           "image2URL": "joong-gun-21-technique",
           "image3URL": "joong-gun-21-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Side Punch",
+          "romanised": "Yop palkup taerigi"
         },
         {
           "move_number": 22,
           "stance": "-",
-          "technique": "Side Piercing Kick",
-          "korean_technique": "Yop Cha Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Mirror elbow technique",
@@ -377,13 +373,13 @@
           "image2URL": "joong-gun-22-technique",
           "image3URL": "joong-gun-22-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Side Piercing Kick",
+          "romanised": "Yop Cha Jirugi"
         },
         {
           "move_number": 23,
           "stance": "Walking Stance",
-          "technique": "Double Forearm Block",
-          "korean_technique": "Doo Palmok Makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Return to fundamental blocking",
@@ -393,13 +389,13 @@
           "image2URL": "joong-gun-23-technique",
           "image3URL": "joong-gun-23-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Double Forearm Block",
+          "romanised": "Doo Palmok Makgi"
         },
         {
           "move_number": 24,
           "stance": "L-stance",
-          "technique": "Side Punch",
-          "korean_technique": "Nopunde jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Return to basic combination",
@@ -409,13 +405,13 @@
           "image2URL": "joong-gun-24-technique",
           "image3URL": "joong-gun-24-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Side Punch",
+          "romanised": "Nopunde jirugi"
         },
         {
           "move_number": 25,
           "stance": "-",
-          "technique": "Side Piercing Kick",
-          "korean_technique": "Yop Cha Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Mirror basic combination",
@@ -425,13 +421,13 @@
           "image2URL": "joong-gun-25-technique",
           "image3URL": "joong-gun-25-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Side Piercing Kick",
+          "romanised": "Yop Cha Jirugi"
         },
         {
           "move_number": 26,
           "stance": "L-stance",
-          "technique": "Forearm Guarding Block",
-          "korean_technique": "Palmok Daebi Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Southern basic sequence",
@@ -441,13 +437,13 @@
           "image2URL": "joong-gun-26-technique",
           "image3URL": "joong-gun-26-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Forearm Guarding Block",
+          "romanised": "Palmok Daebi Makgi"
         },
         {
           "move_number": 27,
           "stance": "Low Stance",
-          "technique": "Palm Pressing Block",
-          "korean_technique": "Sonkal daebi makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Return to opening technique",
@@ -457,13 +453,13 @@
           "image2URL": "joong-gun-27-technique",
           "image3URL": "joong-gun-27-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Palm Pressing Block",
+          "romanised": "Sonkal daebi makgi"
         },
         {
           "move_number": 28,
           "stance": "L-stance",
-          "technique": "Forearm Guarding Block",
-          "korean_technique": "Palmok Daebi Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Mirror opening combination",
@@ -473,13 +469,13 @@
           "image2URL": "joong-gun-28-technique",
           "image3URL": "joong-gun-28-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Forearm Guarding Block",
+          "romanised": "Palmok Daebi Makgi"
         },
         {
           "move_number": 29,
           "stance": "Low Stance",
-          "technique": "Palm Pressing Block",
-          "korean_technique": "Sonkal daebi makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Final L-stance technique",
@@ -489,13 +485,13 @@
           "image2URL": "joong-gun-29-technique",
           "image3URL": "joong-gun-29-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Palm Pressing Block",
+          "romanised": "Sonkal daebi makgi"
         },
         {
           "move_number": 30,
           "stance": "Closed Stance",
-          "technique": "Turning Punch",
-          "korean_technique": "Sonkal dung taerigi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Final knife hand technique",
@@ -505,13 +501,13 @@
           "image2URL": "joong-gun-30-technique",
           "image3URL": "joong-gun-30-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Turning Punch",
+          "romanised": "Sonkal dung taerigi"
         },
         {
           "move_number": 31,
           "stance": "Fixed Stance",
-          "technique": "U-shape Block",
-          "korean_technique": "Digutja Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Penultimate technique",
@@ -521,13 +517,13 @@
           "image2URL": "joong-gun-31-technique",
           "image3URL": "joong-gun-31-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "U-shape Block",
+          "romanised": "Digutja Makgi"
         },
         {
           "move_number": 32,
           "stance": "Fixed Stance",
-          "technique": "U-shape Block",
-          "korean_technique": "Digutja Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Sharp return to attention",
@@ -537,9 +533,13 @@
           "image2URL": "joong-gun-32-technique",
           "image3URL": "joong-gun-32-progress",
           "execution_speed": "normal",
-          "movement": "Foot to Foot (Left 180)°"
+          "movement": "Foot to Foot (Left 180)°",
+          "english": "U-shape Block",
+          "romanised": "Digutja Makgi"
         }
-      ]
+      ],
+      "english": "Joong-Gun",
+      "romanised": "joong-gun"
     }
   ]
 }

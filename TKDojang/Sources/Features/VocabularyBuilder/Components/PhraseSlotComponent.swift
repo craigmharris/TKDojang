@@ -79,7 +79,7 @@ struct PhraseSlotComponent: View {
                             .fontWeight(.semibold)
                             .foregroundColor(.primary)
 
-                        Text(word.romanized)
+                        Text(word.romanised)
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -195,7 +195,7 @@ struct PhraseSlotComponent: View {
         category: .tool,
         selectedWord: CategorizedWord(
             english: "Forearm",
-            romanized: "Palmok",
+            romanised: "Palmok",
             category: .tool,
             frequency: 18
         ),
@@ -211,7 +211,7 @@ struct PhraseSlotComponent: View {
         category: .direction,
         selectedWord: CategorizedWord(
             english: "Outer",
-            romanized: "Bakat",
+            romanised: "Bakat",
             category: .direction,
             frequency: 10
         ),
@@ -230,7 +230,7 @@ struct PhraseSlotComponent: View {
                     category: category,
                     selectedWord: CategorizedWord(
                         english: "Example",
-                        romanized: "Example",
+                        romanised: "Example",
                         category: category,
                         frequency: 1
                     ),

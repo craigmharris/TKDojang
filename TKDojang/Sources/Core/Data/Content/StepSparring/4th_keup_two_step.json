@@ -1,6 +1,6 @@
 {
   "belt_level": "4th_keup",
-  "category": "step_sparring", 
+  "category": "step_sparring",
   "type": "two_step",
   "description": "Two-step sparring sequences for 4th keup students (sequences 5-8)",
   "sequences": [
@@ -10,7 +10,12 @@
       "description": "Side kick and back fist with advanced blocking",
       "difficulty": 3,
       "key_learning_points": "Linear and circular attack combinations",
-      "applicable_belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
+      "applicable_belt_levels": [
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup"
+      ],
       "steps": [
         {
           "step_number": 1,
@@ -18,20 +23,20 @@
           "key_points": "Double block formation, strong defense",
           "common_mistakes": "Weak double block, poor stance",
           "attack": {
-            "technique": "Side kick",
-            "korean_name": "Yop chagi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Execute side kick to middle section"
+            "description": "Execute side kick to middle section",
+            "english": "Side kick",
+            "romanised": "Yop chagi"
           },
           "defense": {
-            "technique": "Double forearm block",
-            "korean_name": "Doo palmok makgi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "both",
-            "description": "Counter with double forearm block"
+            "description": "Counter with double forearm block",
+            "english": "Double forearm block",
+            "romanised": "Doo palmok makgi"
           }
         },
         {
@@ -40,28 +45,28 @@
           "key_points": "Quick rising block, circular counter",
           "common_mistakes": "Slow block, poor hook technique",
           "attack": {
-            "technique": "Back fist",
-            "korean_name": "Dung joomok",
             "stance": "walking stance",
             "target": "high section",
             "hand": "right",
-            "description": "Execute back fist as follow-up attack"
+            "description": "Execute back fist as follow-up attack",
+            "english": "Back fist",
+            "romanised": "Dung joomok"
           },
           "defense": {
-            "technique": "Rising block",
-            "korean_name": "Chookyo makgi",
             "stance": "walking stance",
             "target": "high section",
             "hand": "left",
-            "description": "Execute rising block"
+            "description": "Execute rising block",
+            "english": "Rising block",
+            "romanised": "Chookyo makgi"
           },
           "counter": {
-            "technique": "Hook kick",
-            "korean_name": "Goro chagi",
             "stance": "walking stance",
             "target": "high section",
             "hand": "right",
-            "description": "Immediate counter with hook kick"
+            "description": "Immediate counter with hook kick",
+            "english": "Hook kick",
+            "romanised": "Goro chagi"
           }
         }
       ]
@@ -72,7 +77,12 @@
       "description": "Hook kick and elbow strike with wedging blocks",
       "difficulty": 3,
       "key_learning_points": "Close-range combat and spreading defenses",
-      "applicable_belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
+      "applicable_belt_levels": [
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup"
+      ],
       "steps": [
         {
           "step_number": 1,
@@ -80,20 +90,20 @@
           "key_points": "Spreading motion, effective defense",
           "common_mistakes": "Poor spreading, weak defense",
           "attack": {
-            "technique": "Hook kick",
-            "korean_name": "Goro chagi",
             "stance": "walking stance",
             "target": "high section",
             "hand": "right",
-            "description": "Execute hook kick to high section"
+            "description": "Execute hook kick to high section",
+            "english": "Hook kick",
+            "romanised": "Goro chagi"
           },
           "defense": {
-            "technique": "Wedging block",
-            "korean_name": "Hechyo makgi",
             "stance": "walking stance",
             "target": "high section",
             "hand": "both",
-            "description": "Counter with wedging block"
+            "description": "Counter with wedging block",
+            "english": "Wedging block",
+            "romanised": "Hechyo makgi"
           }
         },
         {
@@ -102,28 +112,28 @@
           "key_points": "Strong X-block, powerful back kick",
           "common_mistakes": "Weak X formation, poor back kick",
           "attack": {
-            "technique": "Elbow strike",
-            "korean_name": "Palkup taerigi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Execute elbow strike as close-range follow-up"
+            "description": "Execute elbow strike as close-range follow-up",
+            "english": "Elbow strike",
+            "romanised": "Palkup taerigi"
           },
           "defense": {
-            "technique": "X-block",
-            "korean_name": "Kyocha makgi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "both",
-            "description": "Execute X-block against elbow strike"
+            "description": "Execute X-block against elbow strike",
+            "english": "X-block",
+            "romanised": "Kyocha makgi"
           },
           "counter": {
-            "technique": "Back kick",
-            "korean_name": "Dwit chagi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Immediate counter with back kick"
+            "description": "Immediate counter with back kick",
+            "english": "Back kick",
+            "romanised": "Dwit chagi"
           }
         }
       ]
@@ -134,7 +144,12 @@
       "description": "Back kick and knife-hand strike sequence",
       "difficulty": 3,
       "key_learning_points": "Power techniques and precise hand strikes",
-      "applicable_belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
+      "applicable_belt_levels": [
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup"
+      ],
       "steps": [
         {
           "step_number": 1,
@@ -142,20 +157,20 @@
           "key_points": "Side stepping technique, effective block",
           "common_mistakes": "Poor side step, weak block",
           "attack": {
-            "technique": "Back kick",
-            "korean_name": "Dwit chagi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Execute back kick to middle section"
+            "description": "Execute back kick to middle section",
+            "english": "Back kick",
+            "romanised": "Dwit chagi"
           },
           "defense": {
-            "technique": "Side stepping block",
-            "korean_name": "Yop makgi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "left",
-            "description": "Counter with side stepping block"
+            "description": "Counter with side stepping block",
+            "english": "Side stepping block",
+            "romanised": "Yop makgi"
           }
         },
         {
@@ -164,28 +179,28 @@
           "key_points": "U-shape formation, piercing counter",
           "common_mistakes": "Poor U formation, weak piercing kick",
           "attack": {
-            "technique": "Knife-hand strike",
-            "korean_name": "Sonnal taerigi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Execute knife-hand strike as follow-up"
+            "description": "Execute knife-hand strike as follow-up",
+            "english": "Knife-hand strike",
+            "romanised": "Sonnal taerigi"
           },
           "defense": {
-            "technique": "U-shape block",
-            "korean_name": "Digutja makgi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "both",
-            "description": "Execute U-shape block"
+            "description": "Execute U-shape block",
+            "english": "U-shape block",
+            "romanised": "Digutja makgi"
           },
           "counter": {
-            "technique": "Side piercing kick",
-            "korean_name": "Yop cha jirugi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Immediate counter with side piercing kick"
+            "description": "Immediate counter with side piercing kick",
+            "english": "Side piercing kick",
+            "romanised": "Yop cha jirugi"
           }
         }
       ]
@@ -196,7 +211,12 @@
       "description": "Advanced combination with multiple techniques",
       "difficulty": 3,
       "key_learning_points": "Complex attack patterns and flowing defense",
-      "applicable_belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
+      "applicable_belt_levels": [
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup"
+      ],
       "steps": [
         {
           "step_number": 1,
@@ -204,20 +224,20 @@
           "key_points": "Double X formation, strong structure",
           "common_mistakes": "Poor double X, weak defense",
           "attack": {
-            "technique": "Reverse turning kick",
-            "korean_name": "Bandae dollyo chagi",
             "stance": "walking stance",
             "target": "high section",
             "hand": "left",
-            "description": "Execute reverse turning kick to high section"
+            "description": "Execute reverse turning kick to high section",
+            "english": "Reverse turning kick",
+            "romanised": "Bandae dollyo chagi"
           },
           "defense": {
-            "technique": "Double X-block",
-            "korean_name": "Doo kyocha makgi",
             "stance": "walking stance",
             "target": "high section",
             "hand": "both",
-            "description": "Counter with double X-block"
+            "description": "Counter with double X-block",
+            "english": "Double X-block",
+            "romanised": "Doo kyocha makgi"
           }
         },
         {
@@ -226,28 +246,28 @@
           "key_points": "Pressing motion, reverse spinning counter",
           "common_mistakes": "Weak pressing block, poor spinning technique",
           "attack": {
-            "technique": "Ridge hand strike",
-            "korean_name": "Sondeung taerigi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Execute ridge hand strike as follow-up"
+            "description": "Execute ridge hand strike as follow-up",
+            "english": "Ridge hand strike",
+            "romanised": "Sondeung taerigi"
           },
           "defense": {
-            "technique": "Pressing block",
-            "korean_name": "Nulleo makgi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "both",
-            "description": "Execute pressing block"
+            "description": "Execute pressing block",
+            "english": "Pressing block",
+            "romanised": "Nulleo makgi"
           },
           "counter": {
-            "technique": "Reverse turning kick",
-            "korean_name": "Bandae dollyo chagi",
             "stance": "walking stance",
             "target": "high section",
             "hand": "left",
-            "description": "Immediate counter with reverse turning kick"
+            "description": "Immediate counter with reverse turning kick",
+            "english": "Reverse turning kick",
+            "romanised": "Bandae dollyo chagi"
           }
         }
       ]

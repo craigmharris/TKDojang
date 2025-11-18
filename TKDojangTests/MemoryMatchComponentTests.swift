@@ -99,7 +99,7 @@ final class MemoryMatchComponentTests: XCTestCase {
         for englishCard in englishCards {
             let matchingKorean = koreanCards.first { koreanCard in
                 koreanCard.word.english == englishCard.word.english &&
-                koreanCard.word.romanized == englishCard.word.romanized
+                koreanCard.word.romanised == englishCard.word.romanised
             }
 
             XCTAssertNotNil(matchingKorean, "Each English card should have matching Korean card for: \(englishCard.word.english)")

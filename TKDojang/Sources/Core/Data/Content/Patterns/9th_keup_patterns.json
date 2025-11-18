@@ -10,9 +10,7 @@
   },
   "patterns": [
     {
-      "name": "Chon-Ji",
       "hangul": "천지",
-      "pronunciation": "chon-ji",
       "phonetic": "/tʃʰon.dʑi/",
       "english_meaning": "Heaven and Earth",
       "significance": "In the Orient, it is interpreted as the creation of the world or the beginning of human history. Therefore, it is the initial pattern played by the beginner. This pattern consists of two similar parts; one representing Heaven and the other the Earth.",
@@ -30,8 +28,6 @@
         {
           "move_number": 1,
           "stance": "Walking Stance",
-          "technique": "Outer Forearm Block",
-          "korean_technique": "Bakat Palmok Makgi",
           "direction": "B",
           "target": "Low Section",
           "key_points": "Keep shoulders square, bend knees properly",
@@ -41,13 +37,13 @@
           "image2URL": "chon-ji-1-technique",
           "image3URL": "chon-ji-1-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Outer Forearm Block",
+          "romanised": "Bakat Palmok Makgi"
         },
         {
           "move_number": 2,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "B",
           "target": "Middle Section",
           "key_points": "Twist fist on impact, keep elbow close",
@@ -57,13 +53,13 @@
           "image2URL": "chon-ji-2-technique",
           "image3URL": "chon-ji-2-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 3,
           "stance": "Walking Stance",
-          "technique": "Outer Forearm Block",
-          "korean_technique": "Bakat Palmok Makgi",
           "direction": "C",
           "target": "Low Section",
           "key_points": "Mirror image of move 1",
@@ -73,13 +69,13 @@
           "image2URL": "chon-ji-3-technique",
           "image3URL": "chon-ji-3-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Outer Forearm Block",
+          "romanised": "Bakat Palmok Makgi"
         },
         {
           "move_number": 4,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "C",
           "target": "Middle Section",
           "key_points": "Same technique as move 2",
@@ -89,13 +85,13 @@
           "image2URL": "chon-ji-4-technique",
           "image3URL": "chon-ji-4-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 5,
           "stance": "Walking Stance",
-          "technique": "Outer Forearm Block",
-          "korean_technique": "Bakat Palmok Makgi",
           "direction": "A",
           "target": "Low Section",
           "key_points": "Turn 90 degrees left",
@@ -105,13 +101,13 @@
           "image2URL": "chon-ji-5-technique",
           "image3URL": "chon-ji-5-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Outer Forearm Block",
+          "romanised": "Bakat Palmok Makgi"
         },
         {
           "move_number": 6,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Step forward with power",
@@ -121,13 +117,13 @@
           "image2URL": "chon-ji-6-technique",
           "image3URL": "chon-ji-6-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 7,
           "stance": "Walking Stance",
-          "technique": "Outer Forearm Block",
-          "korean_technique": "Bakat Palmok Makgi",
           "direction": "D",
           "target": "Low Section",
           "key_points": "Continue forward momentum",
@@ -137,13 +133,13 @@
           "image2URL": "chon-ji-7-technique",
           "image3URL": "chon-ji-7-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Outer Forearm Block",
+          "romanised": "Bakat Palmok Makgi"
         },
         {
           "move_number": 8,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "D",
           "target": "Middle Section",
           "key_points": "Maintain steady rhythm",
@@ -153,13 +149,13 @@
           "image2URL": "chon-ji-8-technique",
           "image3URL": "chon-ji-8-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 9,
           "stance": "L-stance",
-          "technique": "Inner Forearm Block",
-          "korean_technique": "An Palmok Makgi",
           "direction": "C",
           "target": "Middle Section",
           "key_points": "Full extension on punch",
@@ -169,13 +165,13 @@
           "image2URL": "chon-ji-9-technique",
           "image3URL": "chon-ji-9-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Inner Forearm Block",
+          "romanised": "An Palmok Makgi"
         },
         {
           "move_number": 10,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "C",
           "target": "Middle Section",
           "key_points": "Turn 180 degrees",
@@ -185,13 +181,13 @@
           "image2URL": "chon-ji-10-technique",
           "image3URL": "chon-ji-10-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 11,
           "stance": "L-stance",
-          "technique": "Inner Forearm Block",
-          "korean_technique": "An Palmok Makgi",
           "direction": "B",
           "target": "Middle Section",
           "key_points": "Same as northern sequence",
@@ -201,13 +197,13 @@
           "image2URL": "chon-ji-11-technique",
           "image3URL": "chon-ji-11-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Inner Forearm Block",
+          "romanised": "An Palmok Makgi"
         },
         {
           "move_number": 12,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "B",
           "target": "Middle Section",
           "key_points": "Maintain form under fatigue",
@@ -217,13 +213,13 @@
           "image2URL": "chon-ji-12-technique",
           "image3URL": "chon-ji-12-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 13,
           "stance": "L-stance",
-          "technique": "Inner Forearm Block",
-          "korean_technique": "An Palmok Makgi",
           "direction": "D",
           "target": "Middle Section",
           "key_points": "Keep shoulders level",
@@ -233,13 +229,13 @@
           "image2URL": "chon-ji-13-technique",
           "image3URL": "chon-ji-13-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Inner Forearm Block",
+          "romanised": "An Palmok Makgi"
         },
         {
           "move_number": 14,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "D",
           "target": "Middle Section",
           "key_points": "Strong finishing sequence",
@@ -249,13 +245,13 @@
           "image2URL": "chon-ji-14-technique",
           "image3URL": "chon-ji-14-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 15,
           "stance": "L-stance",
-          "technique": "Inner Forearm Block",
-          "korean_technique": "An Palmok Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Turn 90 degrees right",
@@ -265,13 +261,13 @@
           "image2URL": "chon-ji-15-technique",
           "image3URL": "chon-ji-15-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Inner Forearm Block",
+          "romanised": "An Palmok Makgi"
         },
         {
           "move_number": 16,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Return to middle level",
@@ -281,13 +277,13 @@
           "image2URL": "chon-ji-16-technique",
           "image3URL": "chon-ji-16-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 17,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Final direction change",
@@ -297,13 +293,13 @@
           "image2URL": "chon-ji-17-technique",
           "image3URL": "chon-ji-17-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 18,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Maintain power to end",
@@ -313,13 +309,13 @@
           "image2URL": "chon-ji-18-technique",
           "image3URL": "chon-ji-18-progress",
           "execution_speed": "normal",
-          "movement": "Backward"
+          "movement": "Backward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 19,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Sharp return to attention",
@@ -329,9 +325,13 @@
           "image2URL": "chon-ji-19-technique",
           "image3URL": "chon-ji-19-progress",
           "execution_speed": "normal",
-          "movement": "Backward"
+          "movement": "Backward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         }
-      ]
+      ],
+      "english": "Chon-Ji",
+      "romanised": "chon-ji"
     }
   ]
 }

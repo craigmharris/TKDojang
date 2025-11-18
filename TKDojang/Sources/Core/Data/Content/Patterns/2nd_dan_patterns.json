@@ -10,9 +10,7 @@
   },
   "patterns": [
     {
-      "name": "Ge-Baek",
       "hangul": "계백",
-      "pronunciation": "ge-baek",
       "phonetic": "/ke.bɛk/",
       "english_meaning": "Loyal Subject",
       "significance": "Named after Ge-Baek, a great general in the Baek Je Dynasty (660 A.D.). The diagram represents his severe and strict military discipline. The 44 movements refer to his times as the commanding general.",
@@ -29,8 +27,6 @@
         {
           "move_number": 1,
           "stance": "Left L-stance",
-          "technique": "Knife hand guarding block",
-          "korean_technique": "Sonkal daebi makgi",
           "direction": "West",
           "target": "Middle section",
           "key_points": "Strong L-stance foundation",
@@ -38,13 +34,13 @@
           "execution_notes": "Turn 90 degrees left from ready stance into L-stance",
           "image_url": "https://example.com/moves/ge-baek-1.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Knife hand guarding block",
+          "romanised": "Sonkal daebi makgi"
         },
         {
           "move_number": 2,
           "stance": "Left Walking Stance",
-          "technique": "Spear finger thrust",
-          "korean_technique": "Sonkut tulgi",
           "direction": "West",
           "target": "Middle section",
           "key_points": "Precise finger formation",
@@ -52,13 +48,13 @@
           "execution_notes": "Step forward with spear finger thrust",
           "image_url": "https://example.com/moves/ge-baek-2.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Spear finger thrust",
+          "romanised": "Sonkut tulgi"
         },
         {
           "move_number": 3,
           "stance": "Right L-stance",
-          "technique": "Knife hand guarding block",
-          "korean_technique": "Sonkal daebi makgi",
           "direction": "East",
           "target": "Middle section",
           "key_points": "Mirror opening technique",
@@ -66,13 +62,13 @@
           "execution_notes": "180-degree turn into L-stance",
           "image_url": "https://example.com/moves/ge-baek-3.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Knife hand guarding block",
+          "romanised": "Sonkal daebi makgi"
         },
         {
           "move_number": 4,
           "stance": "Right Walking Stance",
-          "technique": "Spear finger thrust",
-          "korean_technique": "Sonkut tulgi",
           "direction": "East",
           "target": "Middle section",
           "key_points": "Bilateral technique consistency",
@@ -80,13 +76,13 @@
           "execution_notes": "Step forward with spear finger thrust",
           "image_url": "https://example.com/moves/ge-baek-4.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Spear finger thrust",
+          "romanised": "Sonkut tulgi"
         },
         {
           "move_number": 5,
           "stance": "Left Walking Stance",
-          "technique": "Pressing block",
-          "korean_technique": "Noollo makgi",
           "direction": "North",
           "target": "Lower section",
           "key_points": "Introduction of pressing block",
@@ -94,13 +90,13 @@
           "execution_notes": "90-degree turn with pressing block",
           "image_url": "https://example.com/moves/ge-baek-5.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Pressing block",
+          "romanised": "Noollo makgi"
         },
         {
           "move_number": 6,
           "stance": "Right Walking Stance",
-          "technique": "Pressing block",
-          "korean_technique": "Noollo makgi",
           "direction": "North",
           "target": "Lower section",
           "key_points": "Continue pressing sequence",
@@ -108,13 +104,13 @@
           "execution_notes": "Step forward with pressing block",
           "image_url": "https://example.com/moves/ge-baek-6.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Pressing block",
+          "romanised": "Noollo makgi"
         },
         {
           "move_number": 7,
           "stance": "Left Walking Stance",
-          "technique": "Pressing block",
-          "korean_technique": "Noollo makgi",
           "direction": "North",
           "target": "Lower section",
           "key_points": "Peak of northern pressing",
@@ -122,13 +118,13 @@
           "execution_notes": "Step forward with pressing block",
           "image_url": "https://example.com/moves/ge-baek-7.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Pressing block",
+          "romanised": "Noollo makgi"
         },
         {
           "move_number": 8,
           "stance": "Right Walking Stance",
-          "technique": "Pressing block",
-          "korean_technique": "Noollo makgi",
           "direction": "South",
           "target": "Lower section",
           "key_points": "Mirror northern pressing",
@@ -136,13 +132,13 @@
           "execution_notes": "180-degree turn with pressing block",
           "image_url": "https://example.com/moves/ge-baek-8.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Pressing block",
+          "romanised": "Noollo makgi"
         },
         {
           "move_number": 9,
           "stance": "Left Walking Stance",
-          "technique": "Pressing block",
-          "korean_technique": "Noollo makgi",
           "direction": "South",
           "target": "Lower section",
           "key_points": "Continue southern pressing",
@@ -150,13 +146,13 @@
           "execution_notes": "Step forward with pressing block",
           "image_url": "https://example.com/moves/ge-baek-9.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Pressing block",
+          "romanised": "Noollo makgi"
         },
         {
           "move_number": 10,
           "stance": "Right Walking Stance",
-          "technique": "Pressing block",
-          "korean_technique": "Noollo makgi",
           "direction": "South",
           "target": "Lower section",
           "key_points": "Peak southern pressing",
@@ -164,13 +160,13 @@
           "execution_notes": "Step forward with pressing block",
           "image_url": "https://example.com/moves/ge-baek-10.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Pressing block",
+          "romanised": "Noollo makgi"
         },
         {
           "move_number": 11,
           "stance": "Left Walking Stance",
-          "technique": "Upset fingertip thrust",
-          "korean_technique": "Dwijibo sonkut tulgi",
           "direction": "West",
           "target": "Solar plexus",
           "key_points": "Upward fingertip technique",
@@ -178,13 +174,13 @@
           "execution_notes": "90-degree turn with upset fingertip",
           "image_url": "https://example.com/moves/ge-baek-11.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Upset fingertip thrust",
+          "romanised": "Dwijibo sonkut tulgi"
         },
         {
           "move_number": 12,
           "stance": "Right Walking Stance",
-          "technique": "Upset fingertip thrust",
-          "korean_technique": "Dwijibo sonkut tulgi",
           "direction": "East",
           "target": "Solar plexus",
           "key_points": "Mirror fingertip technique",
@@ -192,13 +188,13 @@
           "execution_notes": "180-degree turn with upset fingertip",
           "image_url": "https://example.com/moves/ge-baek-12.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Upset fingertip thrust",
+          "romanised": "Dwijibo sonkut tulgi"
         },
         {
           "move_number": 13,
           "stance": "Left Walking Stance",
-          "technique": "Inner forearm block",
-          "korean_technique": "An palmok makgi",
           "direction": "North",
           "target": "Middle section",
           "key_points": "Inner forearm blocking technique",
@@ -206,13 +202,13 @@
           "execution_notes": "90-degree turn with inner forearm block",
           "image_url": "https://example.com/moves/ge-baek-13.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Inner forearm block",
+          "romanised": "An palmok makgi"
         },
         {
           "move_number": 14,
           "stance": "Right Walking Stance",
-          "technique": "Inner forearm block",
-          "korean_technique": "An palmok makgi",
           "direction": "North",
           "target": "Middle section",
           "key_points": "Continue inner forearm sequence",
@@ -220,13 +216,13 @@
           "execution_notes": "Step forward with inner forearm block",
           "image_url": "https://example.com/moves/ge-baek-14.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Inner forearm block",
+          "romanised": "An palmok makgi"
         },
         {
           "move_number": 15,
           "stance": "Left Walking Stance",
-          "technique": "Inner forearm block",
-          "korean_technique": "An palmok makgi",
           "direction": "North",
           "target": "Middle section",
           "key_points": "Peak northern inner forearm",
@@ -234,13 +230,13 @@
           "execution_notes": "Step forward with inner forearm block",
           "image_url": "https://example.com/moves/ge-baek-15.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Inner forearm block",
+          "romanised": "An palmok makgi"
         },
         {
           "move_number": 16,
           "stance": "Right Walking Stance",
-          "technique": "Inner forearm block",
-          "korean_technique": "An palmok makgi",
           "direction": "South",
           "target": "Middle section",
           "key_points": "Mirror northern sequence",
@@ -248,13 +244,13 @@
           "execution_notes": "180-degree turn with inner forearm block",
           "image_url": "https://example.com/moves/ge-baek-16.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Inner forearm block",
+          "romanised": "An palmok makgi"
         },
         {
           "move_number": 17,
           "stance": "Left Walking Stance",
-          "technique": "Inner forearm block",
-          "korean_technique": "An palmok makgi",
           "direction": "South",
           "target": "Middle section",
           "key_points": "Continue southern sequence",
@@ -262,13 +258,13 @@
           "execution_notes": "Step forward with inner forearm block",
           "image_url": "https://example.com/moves/ge-baek-17.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Inner forearm block",
+          "romanised": "An palmok makgi"
         },
         {
           "move_number": 18,
           "stance": "Right Walking Stance",
-          "technique": "Inner forearm block",
-          "korean_technique": "An palmok makgi",
           "direction": "South",
           "target": "Middle section",
           "key_points": "Peak southern inner forearm",
@@ -276,13 +272,13 @@
           "execution_notes": "Step forward with inner forearm block",
           "image_url": "https://example.com/moves/ge-baek-18.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Inner forearm block",
+          "romanised": "An palmok makgi"
         },
         {
           "move_number": 19,
           "stance": "Left bending ready stance",
-          "technique": "Palm pushing block",
-          "korean_technique": "Sonbadak miro makgi",
           "direction": "West",
           "target": "Middle section",
           "key_points": "Introduction of bending ready with palm push",
@@ -290,13 +286,13 @@
           "execution_notes": "90-degree turn into bending ready stance",
           "image_url": "https://example.com/moves/ge-baek-19.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Palm pushing block",
+          "romanised": "Sonbadak miro makgi"
         },
         {
           "move_number": 20,
           "stance": "Right bending ready stance",
-          "technique": "Palm pushing block",
-          "korean_technique": "Sonbadak miro makgi",
           "direction": "East",
           "target": "Middle section",
           "key_points": "Mirror bending ready with palm push",
@@ -304,13 +300,13 @@
           "execution_notes": "180-degree turn into bending ready stance",
           "image_url": "https://example.com/moves/ge-baek-20.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Palm pushing block",
+          "romanised": "Sonbadak miro makgi"
         },
         {
           "move_number": 21,
           "stance": "Left Walking Stance",
-          "technique": "Circular block",
-          "korean_technique": "Dollimyo makgi",
           "direction": "North",
           "target": "Middle section",
           "key_points": "Introduction of circular blocking",
@@ -318,13 +314,13 @@
           "execution_notes": "90-degree turn with circular block",
           "image_url": "https://example.com/moves/ge-baek-21.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Circular block",
+          "romanised": "Dollimyo makgi"
         },
         {
           "move_number": 22,
           "stance": "Right Walking Stance",
-          "technique": "Reverse punch",
-          "korean_technique": "Bandae jirugi",
           "direction": "North",
           "target": "Solar plexus",
           "key_points": "Powerful reverse punching technique",
@@ -332,13 +328,13 @@
           "execution_notes": "Step forward with reverse punch",
           "image_url": "https://example.com/moves/ge-baek-22.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Reverse punch",
+          "romanised": "Bandae jirugi"
         },
         {
           "move_number": 23,
           "stance": "Right Walking Stance",
-          "technique": "Circular block",
-          "korean_technique": "Dollimyo makgi",
           "direction": "South",
           "target": "Middle section",
           "key_points": "Mirror circular blocking",
@@ -346,13 +342,13 @@
           "execution_notes": "180-degree turn with circular block",
           "image_url": "https://example.com/moves/ge-baek-23.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Circular block",
+          "romanised": "Dollimyo makgi"
         },
         {
           "move_number": 24,
           "stance": "Left Walking Stance",
-          "technique": "Reverse punch",
-          "korean_technique": "Bandae jirugi",
           "direction": "South",
           "target": "Solar plexus",
           "key_points": "Mirror reverse punching",
@@ -360,13 +356,13 @@
           "execution_notes": "Step forward with reverse punch",
           "image_url": "https://example.com/moves/ge-baek-24.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Reverse punch",
+          "romanised": "Bandae jirugi"
         },
         {
           "move_number": 25,
           "stance": "Sitting stance",
-          "technique": "Side elbow thrust",
-          "korean_technique": "Yop palkup taerigi",
           "direction": "West",
           "target": "Solar plexus",
           "key_points": "Sitting stance with side elbow",
@@ -374,13 +370,13 @@
           "execution_notes": "90-degree turn into sitting stance",
           "image_url": "https://example.com/moves/ge-baek-25.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Side elbow thrust",
+          "romanised": "Yop palkup taerigi"
         },
         {
           "move_number": 26,
           "stance": "Sitting stance",
-          "technique": "Side elbow thrust",
-          "korean_technique": "Yop palkup taerigi",
           "direction": "East",
           "target": "Solar plexus",
           "key_points": "Maintain sitting stance",
@@ -388,13 +384,13 @@
           "execution_notes": "Elbow thrust to opposite direction",
           "image_url": "https://example.com/moves/ge-baek-26.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Side elbow thrust",
+          "romanised": "Yop palkup taerigi"
         },
         {
           "move_number": 27,
           "stance": "Left Walking Stance",
-          "technique": "W-shape block",
-          "korean_technique": "San makgi",
           "direction": "North",
           "target": "Middle section",
           "key_points": "Advanced W-shape blocking technique",
@@ -402,13 +398,13 @@
           "execution_notes": "Rise into walking stance with W-shape block",
           "image_url": "https://example.com/moves/ge-baek-27.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "W-shape block",
+          "romanised": "San makgi"
         },
         {
           "move_number": 28,
           "stance": "Right Walking Stance",
-          "technique": "W-shape block",
-          "korean_technique": "San makgi",
           "direction": "North",
           "target": "Middle section",
           "key_points": "Continue W-shape sequence",
@@ -416,13 +412,13 @@
           "execution_notes": "Step forward with W-shape block",
           "image_url": "https://example.com/moves/ge-baek-28.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "W-shape block",
+          "romanised": "San makgi"
         },
         {
           "move_number": 29,
           "stance": "Left Walking Stance",
-          "technique": "W-shape block",
-          "korean_technique": "San makgi",
           "direction": "North",
           "target": "Middle section",
           "key_points": "Peak northern W-shape",
@@ -430,13 +426,13 @@
           "execution_notes": "Step forward with W-shape block",
           "image_url": "https://example.com/moves/ge-baek-29.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "W-shape block",
+          "romanised": "San makgi"
         },
         {
           "move_number": 30,
           "stance": "Right Walking Stance",
-          "technique": "W-shape block",
-          "korean_technique": "San makgi",
           "direction": "South",
           "target": "Middle section",
           "key_points": "Mirror northern W-shape",
@@ -444,13 +440,13 @@
           "execution_notes": "180-degree turn with W-shape block",
           "image_url": "https://example.com/moves/ge-baek-30.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "W-shape block",
+          "romanised": "San makgi"
         },
         {
           "move_number": 31,
           "stance": "Left Walking Stance",
-          "technique": "W-shape block",
-          "korean_technique": "San makgi",
           "direction": "South",
           "target": "Middle section",
           "key_points": "Continue southern W-shape",
@@ -458,13 +454,13 @@
           "execution_notes": "Step forward with W-shape block",
           "image_url": "https://example.com/moves/ge-baek-31.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "W-shape block",
+          "romanised": "San makgi"
         },
         {
           "move_number": 32,
           "stance": "Right Walking Stance",
-          "technique": "W-shape block",
-          "korean_technique": "San makgi",
           "direction": "South",
           "target": "Middle section",
           "key_points": "Peak southern W-shape",
@@ -472,13 +468,13 @@
           "execution_notes": "Step forward with W-shape block",
           "image_url": "https://example.com/moves/ge-baek-32.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "W-shape block",
+          "romanised": "San makgi"
         },
         {
           "move_number": 33,
           "stance": "Left Walking Stance",
-          "technique": "Twin elbow thrust",
-          "korean_technique": "Sang palkup taerigi",
           "direction": "West",
           "target": "Solar plexus",
           "key_points": "Advanced twin elbow technique",
@@ -486,13 +482,13 @@
           "execution_notes": "90-degree turn with twin elbow thrust",
           "image_url": "https://example.com/moves/ge-baek-33.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Twin elbow thrust",
+          "romanised": "Sang palkup taerigi"
         },
         {
           "move_number": 34,
           "stance": "Right Walking Stance",
-          "technique": "Twin elbow thrust",
-          "korean_technique": "Sang palkup taerigi",
           "direction": "East",
           "target": "Solar plexus",
           "key_points": "Mirror twin elbow technique",
@@ -500,13 +496,13 @@
           "execution_notes": "180-degree turn with twin elbow thrust",
           "image_url": "https://example.com/moves/ge-baek-34.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Twin elbow thrust",
+          "romanised": "Sang palkup taerigi"
         },
         {
           "move_number": 35,
           "stance": "Left Walking Stance",
-          "technique": "Double arc-hand block",
-          "korean_technique": "Sang bandalson makgi",
           "direction": "North",
           "target": "Upper section",
           "key_points": "Advanced double arc-hand technique",
@@ -514,13 +510,13 @@
           "execution_notes": "90-degree turn with double arc-hand block",
           "image_url": "https://example.com/moves/ge-baek-35.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Double arc-hand block",
+          "romanised": "Sang bandalson makgi"
         },
         {
           "move_number": 36,
           "stance": "Right Walking Stance",
-          "technique": "Double arc-hand block",
-          "korean_technique": "Sang bandalson makgi",
           "direction": "North",
           "target": "Upper section",
           "key_points": "Continue arc-hand sequence",
@@ -528,13 +524,13 @@
           "execution_notes": "Step forward with double arc-hand block",
           "image_url": "https://example.com/moves/ge-baek-36.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Double arc-hand block",
+          "romanised": "Sang bandalson makgi"
         },
         {
           "move_number": 37,
           "stance": "Left Walking Stance",
-          "technique": "Double arc-hand block",
-          "korean_technique": "Sang bandalson makgi",
           "direction": "North",
           "target": "Upper section",
           "key_points": "Peak arc-hand technique",
@@ -542,13 +538,13 @@
           "execution_notes": "Step forward with double arc-hand block",
           "image_url": "https://example.com/moves/ge-baek-37.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Double arc-hand block",
+          "romanised": "Sang bandalson makgi"
         },
         {
           "move_number": 38,
           "stance": "Left L-stance",
-          "technique": "Knife hand guarding block",
-          "korean_technique": "Sonkal daebi makgi",
           "direction": "West",
           "target": "Middle section",
           "key_points": "Return to opening technique",
@@ -556,13 +552,13 @@
           "execution_notes": "90-degree turn into L-stance",
           "image_url": "https://example.com/moves/ge-baek-38.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Knife hand guarding block",
+          "romanised": "Sonkal daebi makgi"
         },
         {
           "move_number": 39,
           "stance": "Left Walking Stance",
-          "technique": "Spear finger thrust",
-          "korean_technique": "Sonkut tulgi",
           "direction": "West",
           "target": "Middle section",
           "key_points": "Mirror opening combination",
@@ -570,13 +566,13 @@
           "execution_notes": "Step forward with spear finger thrust",
           "image_url": "https://example.com/moves/ge-baek-39.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Spear finger thrust",
+          "romanised": "Sonkut tulgi"
         },
         {
           "move_number": 40,
           "stance": "Right L-stance",
-          "technique": "Knife hand guarding block",
-          "korean_technique": "Sonkal daebi makgi",
           "direction": "East",
           "target": "Middle section",
           "key_points": "Final L-stance technique",
@@ -584,13 +580,13 @@
           "execution_notes": "180-degree turn into L-stance",
           "image_url": "https://example.com/moves/ge-baek-40.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Knife hand guarding block",
+          "romanised": "Sonkal daebi makgi"
         },
         {
           "move_number": 41,
           "stance": "Right Walking Stance",
-          "technique": "Spear finger thrust",
-          "korean_technique": "Sonkut tulgi",
           "direction": "East",
           "target": "Middle section",
           "key_points": "Final spear finger technique",
@@ -598,13 +594,13 @@
           "execution_notes": "Step forward with spear finger thrust",
           "image_url": "https://example.com/moves/ge-baek-41.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Spear finger thrust",
+          "romanised": "Sonkut tulgi"
         },
         {
           "move_number": 42,
           "stance": "Left Walking Stance",
-          "technique": "Double arc-hand block",
-          "korean_technique": "Sang bandalson makgi",
           "direction": "North",
           "target": "Upper section",
           "key_points": "Return to advanced technique",
@@ -612,13 +608,13 @@
           "execution_notes": "90-degree turn with double arc-hand block",
           "image_url": "https://example.com/moves/ge-baek-42.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Double arc-hand block",
+          "romanised": "Sang bandalson makgi"
         },
         {
           "move_number": 43,
           "stance": "Right Walking Stance",
-          "technique": "Double arc-hand block",
-          "korean_technique": "Sang bandalson makgi",
           "direction": "North",
           "target": "Upper section",
           "key_points": "Penultimate technique",
@@ -626,13 +622,13 @@
           "execution_notes": "Step forward with double arc-hand block",
           "image_url": "https://example.com/moves/ge-baek-43.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Double arc-hand block",
+          "romanised": "Sang bandalson makgi"
         },
         {
           "move_number": 44,
           "stance": "Parallel ready stance",
-          "technique": "Return to ready",
-          "korean_technique": "Junbi",
           "direction": "North",
           "target": null,
           "key_points": "Sharp return to attention",
@@ -640,9 +636,13 @@
           "execution_notes": "Crisp, respectful return to starting position",
           "image_url": "https://example.com/moves/ge-baek-44.jpg",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Return to ready",
+          "romanised": "Junbi"
         }
-      ]
+      ],
+      "english": "Ge-Baek",
+      "romanised": "ge-baek"
     }
   ]
 }

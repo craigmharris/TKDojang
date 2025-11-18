@@ -94,7 +94,7 @@ struct PhraseSlot: Identifiable {
 struct PhraseExample: Identifiable {
     let id = UUID()
     let english: String
-    let romanized: String
+    let romanised: String
     let breakdown: [String] // Word-by-word breakdown with categories
 }
 
@@ -160,12 +160,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Forearm Block",
-                        romanized: "Palmok Makgi",
+                        romanised: "Palmok Makgi",
                         breakdown: ["Tool: Forearm", "Action: Block"]
                     ),
                     PhraseExample(
                         english: "Fist Punch",
-                        romanized: "Joomuk Jirugi",
+                        romanised: "Joomuk Jirugi",
                         breakdown: ["Tool: Fist", "Action: Punch"]
                     )
                 ],
@@ -197,12 +197,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Pressing Block",
-                        romanized: "Noollo Makgi",
+                        romanised: "Noollo Makgi",
                         breakdown: ["Execution: Pressing", "Action: Block"]
                     ),
                     PhraseExample(
                         english: "Snap Kick",
-                        romanized: "Bituro Chagi",
+                        romanised: "Bituro Chagi",
                         breakdown: ["Execution: Snap", "Action: Kick"]
                     )
                 ],
@@ -234,12 +234,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Rising Block",
-                        romanized: "Chookyo Makgi",
+                        romanised: "Chookyo Makgi",
                         breakdown: ["Direction: Rising", "Action: Block"]
                     ),
                     PhraseExample(
                         english: "Turning Kick",
-                        romanized: "Dollyo Chagi",
+                        romanised: "Dollyo Chagi",
                         breakdown: ["Direction: Turning", "Action: Kick"]
                     )
                 ],
@@ -284,12 +284,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Outer Forearm Block",
-                        romanized: "Bakat Palmok Makgi",
+                        romanised: "Bakat Palmok Makgi",
                         breakdown: ["Position: Outer", "Tool: Forearm", "Action: Block"]
                     ),
                     PhraseExample(
                         english: "Back Fist Strike",
-                        romanized: "Dung Joomuk Taerigi",
+                        romanised: "Dung Joomuk Taerigi",
                         breakdown: ["Position: Back", "Tool: Fist", "Action: Strike"]
                     )
                 ],
@@ -328,12 +328,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Knife Checking Block",
-                        romanized: "Sonkal Momchau Makgi",
+                        romanised: "Sonkal Momchau Makgi",
                         breakdown: ["Tool: Knife", "Execution: Checking", "Action: Block"]
                     ),
                     PhraseExample(
                         english: "Palm Pressing Block",
-                        romanized: "Sonbadak Noollo Makgi",
+                        romanised: "Sonbadak Noollo Makgi",
                         breakdown: ["Tool: Palm", "Execution: Pressing", "Action: Block"]
                     )
                 ],
@@ -372,12 +372,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Fist Middle Punch",
-                        romanized: "Joomuk Kaunde Jirugi",
+                        romanised: "Joomuk Kaunde Jirugi",
                         breakdown: ["Tool: Fist", "Target: Middle", "Action: Punch"]
                     ),
                     PhraseExample(
                         english: "Foot High Kick",
-                        romanized: "Balkal Nopunde Chagi",
+                        romanised: "Balkal Nopunde Chagi",
                         breakdown: ["Tool: Foot", "Target: High", "Action: Kick"]
                     )
                 ],
@@ -416,12 +416,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Twin Fist Punch",
-                        romanized: "Sang Joomuk Jirugi",
+                        romanised: "Sang Joomuk Jirugi",
                         breakdown: ["Technique Modifier: Twin", "Tool: Fist", "Action: Punch"]
                     ),
                     PhraseExample(
                         english: "Double Knife Strike",
-                        romanized: "Doo Sonkal Taerigi",
+                        romanised: "Doo Sonkal Taerigi",
                         breakdown: ["Technique Modifier: Double", "Tool: Knife", "Action: Strike"]
                     )
                 ],
@@ -460,12 +460,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Rising Elbow Strike",
-                        romanized: "Chookyo Palkup Taerigi",
+                        romanised: "Chookyo Palkup Taerigi",
                         breakdown: ["Direction: Rising", "Tool: Elbow", "Action: Strike"]
                     ),
                     PhraseExample(
                         english: "Turning Knife Strike",
-                        romanized: "Dollyo Sonkal Taerigi",
+                        romanised: "Dollyo Sonkal Taerigi",
                         breakdown: ["Direction: Turning", "Tool: Knife", "Action: Strike"]
                     )
                 ],
@@ -517,12 +517,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Outer Forearm Inward Block",
-                        romanized: "Bakat Palmok Anaero Makgi",
+                        romanised: "Bakat Palmok Anaero Makgi",
                         breakdown: ["Position: Outer", "Tool: Forearm", "Direction: Inward", "Action: Block"]
                     ),
                     PhraseExample(
                         english: "Inner Knife Outward Strike",
-                        romanized: "An Sonkal Bakuro Taerigi",
+                        romanised: "An Sonkal Bakuro Taerigi",
                         breakdown: ["Position: Inner", "Tool: Knife", "Direction: Outward", "Action: Strike"]
                     )
                 ],
@@ -568,12 +568,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Outer Forearm High Block",
-                        romanized: "Bakat Palmok Nopunde Makgi",
+                        romanised: "Bakat Palmok Nopunde Makgi",
                         breakdown: ["Position: Outer", "Tool: Forearm", "Target: High", "Action: Block"]
                     ),
                     PhraseExample(
                         english: "Inner Knife Middle Strike",
-                        romanized: "An Sonkal Kaunde Taerigi",
+                        romanised: "An Sonkal Kaunde Taerigi",
                         breakdown: ["Position: Inner", "Tool: Knife", "Target: Middle", "Action: Strike"]
                     )
                 ],
@@ -619,12 +619,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Knife Inward High Block",
-                        romanized: "Sonkal Anaero Nopunde Makgi",
+                        romanised: "Sonkal Anaero Nopunde Makgi",
                         breakdown: ["Tool: Knife", "Direction: Inward", "Target: High", "Action: Block"]
                     ),
                     PhraseExample(
                         english: "Fist Front Middle Punch",
-                        romanized: "Joomuk Apuro Kaunde Jirugi",
+                        romanised: "Joomuk Apuro Kaunde Jirugi",
                         breakdown: ["Tool: Fist", "Direction: Front", "Target: Middle", "Action: Punch"]
                     )
                 ],
@@ -670,12 +670,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Twin Knife Guarding Block",
-                        romanized: "Sang Sonkal Daebi Makgi",
+                        romanised: "Sang Sonkal Daebi Makgi",
                         breakdown: ["Technique Modifier: Twin", "Tool: Knife", "Execution: Guarding", "Action: Block"]
                     ),
                     PhraseExample(
                         english: "X Knife Checking Block",
-                        romanized: "Kyocha Sonkal Momchau Makgi",
+                        romanised: "Kyocha Sonkal Momchau Makgi",
                         breakdown: ["Technique Modifier: X", "Tool: Knife", "Execution: Checking", "Action: Block"]
                     )
                 ],
@@ -721,12 +721,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Front Knife High Strike",
-                        romanized: "Apuro Sonkal Nopunde Taerigi",
+                        romanised: "Apuro Sonkal Nopunde Taerigi",
                         breakdown: ["Direction: Front", "Tool: Knife", "Target: High", "Action: Strike"]
                     ),
                     PhraseExample(
                         english: "Rising Fist Middle Punch",
-                        romanized: "Chookyo Joomuk Kaunde Jirugi",
+                        romanised: "Chookyo Joomuk Kaunde Jirugi",
                         breakdown: ["Direction: Rising", "Tool: Fist", "Target: Middle", "Action: Punch"]
                     )
                 ],
@@ -772,12 +772,12 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Knife High Checking Block",
-                        romanized: "Sonkal Nopunde Momchau Makgi",
+                        romanised: "Sonkal Nopunde Momchau Makgi",
                         breakdown: ["Tool: Knife", "Target: High", "Execution: Checking", "Action: Block"]
                     ),
                     PhraseExample(
                         english: "Palm Middle Pressing Block",
-                        romanized: "Sonbadak Kaunde Noollo Makgi",
+                        romanised: "Sonbadak Kaunde Noollo Makgi",
                         breakdown: ["Tool: Palm", "Target: Middle", "Execution: Pressing", "Action: Block"]
                     )
                 ],
@@ -836,7 +836,7 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Twin Outer Forearm High Block",
-                        romanized: "Sang Bakat Palmok Nopunde Makgi",
+                        romanised: "Sang Bakat Palmok Nopunde Makgi",
                         breakdown: [
                             "Technique Modifier: Twin",
                             "Position: Outer",
@@ -847,7 +847,7 @@ class PhraseGrammar {
                     ),
                     PhraseExample(
                         english: "Double Inner Knife Middle Strike",
-                        romanized: "Doo An Sonkal Kaunde Taerigi",
+                        romanised: "Doo An Sonkal Kaunde Taerigi",
                         breakdown: [
                             "Technique Modifier: Double",
                             "Position: Inner",
@@ -906,7 +906,7 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Outer Forearm Inward High Block",
-                        romanized: "Bakat Palmok Anaero Nopunde Makgi",
+                        romanised: "Bakat Palmok Anaero Nopunde Makgi",
                         breakdown: [
                             "Position: Outer",
                             "Tool: Forearm",
@@ -917,7 +917,7 @@ class PhraseGrammar {
                     ),
                     PhraseExample(
                         english: "Inner Knife Outward Middle Strike",
-                        romanized: "An Sonkal Bakuro Kaunde Taerigi",
+                        romanised: "An Sonkal Bakuro Kaunde Taerigi",
                         breakdown: [
                             "Position: Inner",
                             "Tool: Knife",
@@ -976,7 +976,7 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Knife Inward High Checking Block",
-                        romanized: "Sonkal Anaero Nopunde Momchau Makgi",
+                        romanised: "Sonkal Anaero Nopunde Momchau Makgi",
                         breakdown: [
                             "Tool: Knife",
                             "Direction: Inward",
@@ -987,7 +987,7 @@ class PhraseGrammar {
                     ),
                     PhraseExample(
                         english: "Palm Downward Middle Pressing Block",
-                        romanized: "Sonbadak Naeryo Kaunde Noollo Makgi",
+                        romanised: "Sonbadak Naeryo Kaunde Noollo Makgi",
                         breakdown: [
                             "Tool: Palm",
                             "Direction: Downward",
@@ -1046,7 +1046,7 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Twin Outer Forearm Inward Block",
-                        romanized: "Sang Bakat Palmok Anaero Makgi",
+                        romanised: "Sang Bakat Palmok Anaero Makgi",
                         breakdown: [
                             "Technique Modifier: Twin",
                             "Position: Outer",
@@ -1057,7 +1057,7 @@ class PhraseGrammar {
                     ),
                     PhraseExample(
                         english: "X Inner Knife Outward Strike",
-                        romanized: "Kyocha An Sonkal Bakuro Taerigi",
+                        romanised: "Kyocha An Sonkal Bakuro Taerigi",
                         breakdown: [
                             "Technique Modifier: X",
                             "Position: Inner",
@@ -1129,7 +1129,7 @@ class PhraseGrammar {
                 examples: [
                     PhraseExample(
                         english: "Twin Outer Forearm Inward High Block",
-                        romanized: "Sang Bakat Palmok Anaero Nopunde Makgi",
+                        romanised: "Sang Bakat Palmok Anaero Nopunde Makgi",
                         breakdown: [
                             "Technique Modifier: Twin",
                             "Position: Outer",
@@ -1141,7 +1141,7 @@ class PhraseGrammar {
                     ),
                     PhraseExample(
                         english: "Double Inner Knife Outward Middle Strike",
-                        romanized: "Doo An Sonkal Bakuro Kaunde Taerigi",
+                        romanised: "Doo An Sonkal Bakuro Kaunde Taerigi",
                         breakdown: [
                             "Technique Modifier: Double",
                             "Position: Inner",

@@ -308,7 +308,7 @@ final class FlashcardComponentTests: XCTestCase {
         let term1 = TerminologyEntry(
             englishTerm: "Test",
             koreanHangul: "테스트",
-            romanizedPronunciation: "teseuteu",
+            romanisedPronunciation: "teseuteu",
             beltLevel: belt,
             category: category,
             difficulty: 1

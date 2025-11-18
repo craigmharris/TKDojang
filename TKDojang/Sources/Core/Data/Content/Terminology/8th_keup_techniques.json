@@ -1,88 +1,88 @@
 {
-  "belt_level" : "8th_keup",
-  "category" : "techniques",
-  "metadata" : {
-    "created_at" : "2025-08-16T23:26:59Z",
-    "source" : "CSV Import Tool",
-    "total_count" : 7
+  "belt_level": "8th_keup",
+  "category": "techniques",
+  "metadata": {
+    "created_at": "2025-08-16T23:26:59Z",
+    "source": "CSV Import Tool",
+    "total_count": 7
   },
-  "terminology" : [
+  "terminology": [
     {
-      "belt_level" : "8th_keup",
-      "category" : "techniques",
-      "created_at" : "2025-08-16T23:26:59Z",
-      "definition" : "Controlled sparring exercise with three predetermined movements",
-      "difficulty" : 1,
-      "english_term" : "3-step Sparring",
-      "korean_hangul" : "삼보맞서기",
-      "phonetic_pronunciation" : "/sam.bo.mat.sʌ.ɡi/",
-      "romanized_pronunciation" : "Sambo Matsoki"
+      "belt_level": "8th_keup",
+      "category": "techniques",
+      "created_at": "2025-08-16T23:26:59Z",
+      "definition": "Controlled sparring exercise with three predetermined movements",
+      "difficulty": 1,
+      "english": "3-step Sparring",
+      "romanised": "Sambo Matsoki",
+      "hangul": "삼보맞서기",
+      "phonetic": "/sam.bo.mat.sʌ.ɡi/"
     },
     {
-      "belt_level" : "8th_keup",
-      "category" : "techniques",
-      "created_at" : "2025-08-16T23:26:59Z",
-      "definition" : "Downward striking motion using back of fist from front",
-      "difficulty" : 1,
-      "english_term" : "Back Fist Front Downward Strike",
-      "korean_hangul" : "등주먹앙내려타어리기",
-      "phonetic_pronunciation" : "/dɯŋ.tʃu.mʌk.ap.ne.ɾjʌ.tʰa.ʌ.ɾi.ɡi/",
-      "romanized_pronunciation" : "Dung Joomuk Ap Naeryo Taerigi"
+      "belt_level": "8th_keup",
+      "category": "techniques",
+      "created_at": "2025-08-16T23:26:59Z",
+      "definition": "Downward striking motion using back of fist from front",
+      "difficulty": 1,
+      "english": "Back Fist Front Downward Strike",
+      "romanised": "Dung Joomuk Ap Naeryo Taerigi",
+      "hangul": "등주먹앙내려타어리기",
+      "phonetic": "/dɯŋ.tʃu.mʌk.ap.ne.ɾjʌ.tʰa.ʌ.ɾi.ɡi/"
     },
     {
-      "belt_level" : "8th_keup",
-      "category" : "techniques",
-      "created_at" : "2025-08-16T23:26:59Z",
-      "definition" : "Quick snapping kick delivered to the front",
-      "difficulty" : 1,
-      "english_term" : "Front Snap Kick",
-      "korean_hangul" : "앙차부시기",
-      "phonetic_pronunciation" : "/ap.tʃʰa.bu.ɕi.ɡi/",
-      "romanized_pronunciation" : "Ap Cha Busigi"
+      "belt_level": "8th_keup",
+      "category": "techniques",
+      "created_at": "2025-08-16T23:26:59Z",
+      "definition": "Quick snapping kick delivered to the front",
+      "difficulty": 1,
+      "english": "Front Snap Kick",
+      "romanised": "Ap Cha Busigi",
+      "hangul": "앙차부시기",
+      "phonetic": "/ap.tʃʰa.bu.ɕi.ɡi/"
     },
     {
-      "belt_level" : "8th_keup",
-      "category" : "techniques",
-      "created_at" : "2025-08-16T23:26:59Z",
-      "definition" : "Protective blocking technique using edge of hand",
-      "difficulty" : 1,
-      "english_term" : "Knife Hand Guarding Block",
-      "korean_hangul" : "손칼대비막기",
-      "phonetic_pronunciation" : "/son.kʰal.de.bi.mak.ɡi/",
-      "romanized_pronunciation" : "Sonkal Daebi Makgi"
+      "belt_level": "8th_keup",
+      "category": "techniques",
+      "created_at": "2025-08-16T23:26:59Z",
+      "definition": "Protective blocking technique using edge of hand",
+      "difficulty": 1,
+      "english": "Knife Hand Guarding Block",
+      "romanised": "Sonkal Daebi Makgi",
+      "hangul": "손칼대비막기",
+      "phonetic": "/son.kʰal.de.bi.mak.ɡi/"
     },
     {
-      "belt_level" : "8th_keup",
-      "category" : "techniques",
-      "created_at" : "2025-08-16T23:26:59Z",
-      "definition" : "Inward blocking motion using outer forearm",
-      "difficulty" : 1,
-      "english_term" : "Outer Forearm Inward Block",
-      "korean_hangul" : "바깥팔목안으로막기",
-      "phonetic_pronunciation" : "/pa.k͈at.pʰal.mok.a.nɯ.ɾo.mak.ɡi/",
-      "romanized_pronunciation" : "Bakat Palmok Anaero Makgi"
+      "belt_level": "8th_keup",
+      "category": "techniques",
+      "created_at": "2025-08-16T23:26:59Z",
+      "definition": "Inward blocking motion using outer forearm",
+      "difficulty": 1,
+      "english": "Outer Forearm Inward Block",
+      "romanised": "Bakat Palmok Anaero Makgi",
+      "hangul": "바깥팔목안으로막기",
+      "phonetic": "/pa.k͈at.pʰal.mok.a.nɯ.ɾo.mak.ɡi/"
     },
     {
-      "belt_level" : "8th_keup",
-      "category" : "techniques",
-      "created_at" : "2025-08-16T23:26:59Z",
-      "definition" : "Circular kicking technique using turning motion",
-      "difficulty" : 1,
-      "english_term" : "Turning Kick",
-      "korean_hangul" : "돌려차기",
-      "phonetic_pronunciation" : "/tol.ɾjʌ.tʃʰa.ɡi/",
-      "romanized_pronunciation" : "Dollyo Chagi"
+      "belt_level": "8th_keup",
+      "category": "techniques",
+      "created_at": "2025-08-16T23:26:59Z",
+      "definition": "Circular kicking technique using turning motion",
+      "difficulty": 1,
+      "english": "Turning Kick",
+      "romanised": "Dollyo Chagi",
+      "hangul": "돌려차기",
+      "phonetic": "/tol.ɾjʌ.tʃʰa.ɡi/"
     },
     {
-      "belt_level" : "8th_keup",
-      "category" : "techniques",
-      "created_at" : "2025-08-16T23:26:59Z",
-      "definition" : "Simultaneous blocking technique using both outer forearms",
-      "difficulty" : 1,
-      "english_term" : "Twin Outer Forearm Block",
-      "korean_hangul" : "상바깥팔목막기",
-      "phonetic_pronunciation" : "/saŋ.pa.k͈at.pʰal.mok.mak.ɡi/",
-      "romanized_pronunciation" : "Sang Bakat Palmok Makgi"
+      "belt_level": "8th_keup",
+      "category": "techniques",
+      "created_at": "2025-08-16T23:26:59Z",
+      "definition": "Simultaneous blocking technique using both outer forearms",
+      "difficulty": 1,
+      "english": "Twin Outer Forearm Block",
+      "romanised": "Sang Bakat Palmok Makgi",
+      "hangul": "상바깥팔목막기",
+      "phonetic": "/saŋ.pa.k͈at.pʰal.mok.mak.ɡi/"
     }
   ]
 }

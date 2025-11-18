@@ -235,7 +235,7 @@ class TestDataFactory {
             let entry = TerminologyEntry(
                 englishTerm: term.0,
                 koreanHangul: term.1,
-                romanizedPronunciation: term.2,
+                romanisedPronunciation: term.2,
                 beltLevel: belt,
                 category: category,
                 difficulty: Int.random(in: 1...3)
@@ -730,7 +730,7 @@ class TKDojangAssertions {
     static func assertValidTerminologyEntry(_ entry: TerminologyEntry, file: StaticString = #file, line: UInt = #line) {
         XCTAssertFalse(entry.englishTerm.isEmpty, "English term should not be empty", file: file, line: line)
         XCTAssertFalse(entry.koreanHangul.isEmpty, "Korean hangul should not be empty", file: file, line: line)
-        XCTAssertFalse(entry.romanizedPronunciation.isEmpty, "Romanized pronunciation should not be empty", file: file, line: line)
+        XCTAssertFalse(entry.romanisedPronunciation.isEmpty, "Romanized pronunciation should not be empty", file: file, line: line)
         XCTAssertNotNil(entry.beltLevel, "Entry should have belt level", file: file, line: line)
         XCTAssertNotNil(entry.category, "Entry should have category", file: file, line: line)
         XCTAssertGreaterThan(entry.difficulty, 0, "Difficulty should be positive", file: file, line: line)

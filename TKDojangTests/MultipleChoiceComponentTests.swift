@@ -96,10 +96,10 @@ final class MultipleChoiceComponentTests: XCTestCase {
         let created_at: String
         let definition: String
         let difficulty: Int
-        let english_term: String
-        let korean_hangul: String
-        let phonetic_pronunciation: String
-        let romanized_pronunciation: String
+        let english: String
+        let hangul: String
+        let phonetic: String
+        let romanised: String
     }
 
     /// Get known terminology JSON files
@@ -184,15 +184,15 @@ final class MultipleChoiceComponentTests: XCTestCase {
             // Create terminology entries
             for termJSON in jsonData.terminology {
                 let entry = TerminologyEntry(
-                    englishTerm: termJSON.english_term,
-                    koreanHangul: termJSON.korean_hangul,
-                    romanizedPronunciation: termJSON.romanized_pronunciation,
+                    englishTerm: termJSON.english,
+                    koreanHangul: termJSON.hangul,
+                    romanisedPronunciation: termJSON.romanised,
                     beltLevel: belt,
                     category: category,
                     difficulty: termJSON.difficulty
                 )
                 // Set optional fields
-                entry.phoneticPronunciation = termJSON.phonetic_pronunciation
+                entry.phoneticPronunciation = termJSON.phonetic
                 entry.definition = termJSON.definition
                 testContext.insert(entry)
             }
@@ -336,7 +336,7 @@ final class MultipleChoiceComponentTests: XCTestCase {
 
             if question.questionType == .englishToKorean {
                 distractorEntries = allTerms.filter {
-                    question.options.contains($0.romanizedPronunciation) &&
+                    question.options.contains($0.romanisedPronunciation) &&
                     $0.id != sourceEntry.id
                 }
             } else {
@@ -1014,7 +1014,7 @@ final class MultipleChoiceComponentTests: XCTestCase {
         let correctIndex = Int.random(in: 0...3)
 
         if type == .englishToKorean {
-            options = ["Option 1", "Option 2", "Option 3", term.romanizedPronunciation]
+            options = ["Option 1", "Option 2", "Option 3", term.romanisedPronunciation]
                 .shuffled()
         } else {
             options = ["Option 1", "Option 2", "Option 3", term.englishTerm]

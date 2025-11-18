@@ -10,9 +10,7 @@
   },
   "patterns": [
     {
-      "name": "Choong-Moo",
       "hangul": "충무",
-      "pronunciation": "choong-moo",
       "phonetic": "/tʃʰuŋ.mu/",
       "english_meaning": "Martial Loyalty",
       "significance": "Named after the late Admiral Yi Sun-Sin of the Lee Dynasty. He was reputed to have invented the first armoured battleship (Kobukson) in 1592, which is said to be the precursor of the present day submarine. The reason why this pattern ends with a left hand attack is to symbolize his regrettable death, having no chance to show his unrestrained potentiality checked by the forced reservation of his loyalty to the king.",
@@ -30,8 +28,6 @@
         {
           "move_number": 1,
           "stance": "L-stance",
-          "technique": "Twin Knife Hand Block",
-          "korean_technique": "Sang Sonkal Makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Strong L-stance foundation with both hands",
@@ -41,13 +37,13 @@
           "image2URL": "choong-moo-1-technique",
           "image3URL": "choong-moo-1-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Twin Knife Hand Block",
+          "romanised": "Sang Sonkal Makgi"
         },
         {
           "move_number": 2,
           "stance": "Walking Stance",
-          "technique": "Inward Knife Hand Strike",
-          "korean_technique": "Anaero Sonkal Taerigi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Powerful stepping punch",
@@ -57,13 +53,13 @@
           "image2URL": "choong-moo-2-technique",
           "image3URL": "choong-moo-2-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Inward Knife Hand Strike",
+          "romanised": "Anaero Sonkal Taerigi"
         },
         {
           "move_number": 3,
           "stance": "L-stance",
-          "technique": "Knife Hand Guarding Block",
-          "korean_technique": "Sonkal Daebi Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Mirror opening technique",
@@ -73,13 +69,13 @@
           "image2URL": "choong-moo-3-technique",
           "image3URL": "choong-moo-3-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Knife Hand Guarding Block",
+          "romanised": "Sonkal Daebi Makgi"
         },
         {
           "move_number": 4,
           "stance": "Walking Stance",
-          "technique": "Flat Fingertip Thrust",
-          "korean_technique": "Opun Sonkut Tulgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Bilateral technique consistency",
@@ -89,13 +85,13 @@
           "image2URL": "choong-moo-4-technique",
           "image3URL": "choong-moo-4-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Flat Fingertip Thrust",
+          "romanised": "Opun Sonkut Tulgi"
         },
         {
           "move_number": 5,
           "stance": "L-stance",
-          "technique": "Knife Hand Guarding Block",
-          "korean_technique": "Sonkal Daebi Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Introduction of slow motion technique",
@@ -105,13 +101,13 @@
           "image2URL": "choong-moo-5-technique",
           "image3URL": "choong-moo-5-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Knife Hand Guarding Block",
+          "romanised": "Sonkal Daebi Makgi"
         },
         {
           "move_number": 6,
           "stance": "Bending Ready Stance",
-          "technique": "Forearm Guarding Block",
-          "korean_technique": "Palmok Daebi Makgi",
           "direction": "A",
           "target": "- Section",
           "key_points": "Return to normal speed",
@@ -121,13 +117,13 @@
           "image2URL": "choong-moo-6-technique",
           "image3URL": "choong-moo-6-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Forearm Guarding Block",
+          "romanised": "Palmok Daebi Makgi"
         },
         {
           "move_number": 7,
           "stance": "-",
-          "technique": "Side Piercing Kick to Rear",
-          "korean_technique": "Dwi Yop Cha Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Quick counter-attack",
@@ -137,13 +133,13 @@
           "image2URL": "choong-moo-7-technique",
           "image3URL": "choong-moo-7-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Side Piercing Kick to Rear",
+          "romanised": "Dwi Yop Cha Jirugi"
         },
         {
           "move_number": 8,
           "stance": "L-stance",
-          "technique": "Knife Hand Guarding Block",
-          "korean_technique": "Sonkal Daebi Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Alternating block-punch pattern",
@@ -153,13 +149,13 @@
           "image2URL": "choong-moo-8-technique",
           "image3URL": "choong-moo-8-progress",
           "execution_speed": "normal",
-          "movement": "Left 180°"
+          "movement": "Left 180°",
+          "english": "Knife Hand Guarding Block",
+          "romanised": "Sonkal Daebi Makgi"
         },
         {
           "move_number": 9,
           "stance": "L-stance",
-          "technique": "Flying Side Piercing Kick / Knife Hand Guarding Block",
-          "korean_technique": "Twimyo Yop Cha Jirugi/Sonkal Daebi Makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Maintain alternating pattern",
@@ -169,13 +165,13 @@
           "image2URL": "choong-moo-9-technique",
           "image3URL": "choong-moo-9-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Flying Side Piercing Kick / Knife Hand Guarding Block",
+          "romanised": "Twimyo Yop Cha Jirugi/Sonkal Daebi Makgi"
         },
         {
           "move_number": 10,
           "stance": "L-stance",
-          "technique": "Outer Forearm Block",
-          "korean_technique": "Bakat Palmok Makgi",
           "direction": "A",
           "target": "Low Section",
           "key_points": "Peak of northern sequence",
@@ -185,13 +181,13 @@
           "image2URL": "choong-moo-10-technique",
           "image3URL": "choong-moo-10-progress",
           "execution_speed": "normal",
-          "movement": "Left 270°"
+          "movement": "Left 270°",
+          "english": "Outer Forearm Block",
+          "romanised": "Bakat Palmok Makgi"
         },
         {
           "move_number": 11,
           "stance": "Walking Stance",
-          "technique": "Grab (Opponent's Head)",
-          "korean_technique": "Meori Japgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Climax of northern advance",
@@ -201,13 +197,13 @@
           "image2URL": "choong-moo-11-technique",
           "image3URL": "choong-moo-11-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Grab (Opponent's Head)",
+          "romanised": "Meori Japgi"
         },
         {
           "move_number": 12,
           "stance": "-",
-          "technique": "Knee Kick",
-          "korean_technique": "Moorup Chagi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Return to slow motion technique",
@@ -217,13 +213,13 @@
           "image2URL": "choong-moo-12-technique",
           "image3URL": "choong-moo-12-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Knee Kick",
+          "romanised": "Moorup Chagi"
         },
         {
           "move_number": 13,
           "stance": "Walking Stance",
-          "technique": "Reverse Knife Hand Strike",
-          "korean_technique": "Bandae Sonkal Taerigi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Begin southern sequence",
@@ -233,13 +229,13 @@
           "image2URL": "choong-moo-13-technique",
           "image3URL": "choong-moo-13-progress",
           "execution_speed": "normal",
-          "movement": "Left180°"
+          "movement": "Left180°",
+          "english": "Reverse Knife Hand Strike",
+          "romanised": "Bandae Sonkal Taerigi"
         },
         {
           "move_number": 14,
           "stance": "-",
-          "technique": "Turning Kick",
-          "korean_technique": "Dollyo Chagi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Mirror northern pattern",
@@ -249,13 +245,13 @@
           "image2URL": "choong-moo-14-technique",
           "image3URL": "choong-moo-14-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Turning Kick",
+          "romanised": "Dollyo Chagi"
         },
         {
           "move_number": 15,
           "stance": "-",
-          "technique": "Reverse Side Kick",
-          "korean_technique": "Bandae Yop Chagi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Continue alternating pattern",
@@ -265,13 +261,13 @@
           "image2URL": "choong-moo-15-technique",
           "image3URL": "choong-moo-15-progress",
           "execution_speed": "normal",
-          "movement": "Backward"
+          "movement": "Backward",
+          "english": "Reverse Side Kick",
+          "romanised": "Bandae Yop Chagi"
         },
         {
           "move_number": 16,
           "stance": "L-stance",
-          "technique": "Forearm Guarding Block",
-          "korean_technique": "Palmok Daebi Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Southern sequence building",
@@ -281,13 +277,13 @@
           "image2URL": "choong-moo-16-technique",
           "image3URL": "choong-moo-16-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Forearm Guarding Block",
+          "romanised": "Palmok Daebi Makgi"
         },
         {
           "move_number": 17,
           "stance": "-",
-          "technique": "Turning Kick",
-          "korean_technique": "Dollyo Chagi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Peak southern intensity",
@@ -297,13 +293,13 @@
           "image2URL": "choong-moo-17-technique",
           "image3URL": "choong-moo-17-progress",
           "execution_speed": "normal",
-          "movement": "To 45°"
+          "movement": "To 45°",
+          "english": "Turning Kick",
+          "romanised": "Dollyo Chagi"
         },
         {
           "move_number": 18,
           "stance": "Fixed Stance",
-          "technique": "U-shape Block",
-          "korean_technique": "Digutja Makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Climax of southern sequence",
@@ -313,13 +309,13 @@
           "image2URL": "choong-moo-18-technique",
           "image3URL": "choong-moo-18-progress",
           "execution_speed": "normal",
-          "movement": "Right 135°"
+          "movement": "Right 135°",
+          "english": "U-shape Block",
+          "romanised": "Digutja Makgi"
         },
         {
           "move_number": 19,
           "stance": "L-stance",
-          "technique": "Jump 360 to Knife Hand Guarding Block",
-          "korean_technique": "360 Twimyo Sonkal Daebi Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "90-degree turn to fundamentals",
@@ -329,13 +325,13 @@
           "image2URL": "choong-moo-19-technique",
           "image3URL": "choong-moo-19-progress",
           "execution_speed": "normal",
-          "movement": "Left 360°"
+          "movement": "Left 360°",
+          "english": "Jump 360 to Knife Hand Guarding Block",
+          "romanised": "360 Twimyo Sonkal Daebi Makgi"
         },
         {
           "move_number": 20,
           "stance": "Walking Stance",
-          "technique": "Upset Fingertip Thrust",
-          "korean_technique": "Dwijibo Sonkut Tulgi",
           "direction": "A",
           "target": "Low Section",
           "key_points": "Mirror western technique",
@@ -345,13 +341,13 @@
           "image2URL": "choong-moo-20-technique",
           "image3URL": "choong-moo-20-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Upset Fingertip Thrust",
+          "romanised": "Dwijibo Sonkut Tulgi"
         },
         {
           "move_number": 21,
           "stance": "L-stance",
-          "technique": "Back Fist Strike / Outer Forearm Low Block",
-          "korean_technique": "Dung Joomuk Taerigi/Bakat Palmok Najunde Makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Return to north direction",
@@ -361,13 +357,13 @@
           "image2URL": "choong-moo-21-technique",
           "image3URL": "choong-moo-21-progress",
           "execution_speed": "normal",
-          "movement": "Backward"
+          "movement": "Backward",
+          "english": "Back Fist Strike / Outer Forearm Low Block",
+          "romanised": "Dung Joomuk Taerigi/Bakat Palmok Najunde Makgi"
         },
         {
           "move_number": 22,
           "stance": "Walking Stance",
-          "technique": "Straight Fingertip Thrust",
-          "korean_technique": "Sun Sonkut Tulgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Introduction of X-block technique",
@@ -377,13 +373,13 @@
           "image2URL": "choong-moo-22-technique",
           "image3URL": "choong-moo-22-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Straight Fingertip Thrust",
+          "romanised": "Sun Sonkut Tulgi"
         },
         {
           "move_number": 23,
           "stance": "Walking Stance",
-          "technique": "Doule Forearm Block",
-          "korean_technique": "Ap chagi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Kick following X-block",
@@ -393,13 +389,13 @@
           "image2URL": "choong-moo-23-technique",
           "image3URL": "choong-moo-23-progress",
           "execution_speed": "normal",
-          "movement": "Left 270°"
+          "movement": "Left 270°",
+          "english": "Doule Forearm Block",
+          "romanised": "Ap chagi"
         },
         {
           "move_number": 24,
           "stance": "Sitting Stance",
-          "technique": "Front Outer Forearm Block / Back Fist Side Strike",
-          "korean_technique": "Ap Bakat Palmok Makgi/Dung Joomuk Yop Taerigi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Land from kick with punch",
@@ -409,13 +405,13 @@
           "image2URL": "choong-moo-24-technique",
           "image3URL": "choong-moo-24-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Front Outer Forearm Block / Back Fist Side Strike",
+          "romanised": "Ap Bakat Palmok Makgi/Dung Joomuk Yop Taerigi"
         },
         {
           "move_number": 25,
           "stance": "-",
-          "technique": "Side Piercing Kick",
-          "korean_technique": "Yop Cha Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Mirror X-block technique",
@@ -425,13 +421,13 @@
           "image2URL": "choong-moo-25-technique",
           "image3URL": "choong-moo-25-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Side Piercing Kick",
+          "romanised": "Yop Cha Jirugi"
         },
         {
           "move_number": 26,
           "stance": "-",
-          "technique": "Side Piercing Kick",
-          "korean_technique": "Yop Cha Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Bilateral kick consistency",
@@ -441,13 +437,13 @@
           "image2URL": "choong-moo-26-technique",
           "image3URL": "choong-moo-26-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Side Piercing Kick",
+          "romanised": "Yop Cha Jirugi"
         },
         {
           "move_number": 27,
           "stance": "L-stance",
-          "technique": "X Knife Hand Checking Block",
-          "korean_technique": "Kyocha Sonkal Momchau Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Final kick-punch combination",
@@ -457,13 +453,13 @@
           "image2URL": "choong-moo-27-technique",
           "image3URL": "choong-moo-27-progress",
           "execution_speed": "normal",
-          "movement": "Right 135°"
+          "movement": "Right 135°",
+          "english": "X Knife Hand Checking Block",
+          "romanised": "Kyocha Sonkal Momchau Makgi"
         },
         {
           "move_number": 28,
           "stance": "Walking Stance",
-          "technique": "Twin Upward Palm Block",
-          "korean_technique": "Sang Sonbadak Ollyo Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Return to opening technique",
@@ -473,13 +469,13 @@
           "image2URL": "choong-moo-28-technique",
           "image3URL": "choong-moo-28-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Twin Upward Palm Block",
+          "romanised": "Sang Sonbadak Ollyo Makgi"
         },
         {
           "move_number": 29,
           "stance": "Walking Stance",
-          "technique": "Forearm Rising Block",
-          "korean_technique": "Palmok Chookyo Makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Penultimate technique",
@@ -489,13 +485,13 @@
           "image2URL": "choong-moo-29-technique",
           "image3URL": "choong-moo-29-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Forearm Rising Block",
+          "romanised": "Palmok Chookyo Makgi"
         },
         {
           "move_number": 30,
           "stance": "Walking Stance",
-          "technique": "Reverse Punch",
-          "korean_technique": "Bandae Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Final left-hand attack symbolizing Admiral Yi's death",
@@ -505,9 +501,13 @@
           "image2URL": "choong-moo-30-technique",
           "image3URL": "choong-moo-30-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Reverse Punch",
+          "romanised": "Bandae Jirugi"
         }
-      ]
+      ],
+      "english": "Choong-Moo",
+      "romanised": "choong-moo"
     }
   ]
 }

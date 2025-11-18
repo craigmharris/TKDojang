@@ -7,8 +7,8 @@
       "id": "block_360_spinning_knifehand_guarding_block",
       "names": {
         "english": "360 Spinning Knifehand Guarding Block",
-        "korean_romanized": "Twimyo Dollimyo Sonkal Daebi Makgi",
-        "korean_hangul": "뛰며 돌리며 손칼 대비 막기"
+        "romanised": "Twimyo Dollimyo Sonkal Daebi Makgi",
+        "hangul": "뛰며 돌리며 손칼 대비 막기"
       },
       "category": "blocks"
     },
@@ -16,8 +16,8 @@
       "id": "block_9_shape_block",
       "names": {
         "english": "9 Shape Block",
-        "korean_romanized": "Gutja Makgi",
-        "korean_hangul": "굿자 막기"
+        "romanised": "Gutja Makgi",
+        "hangul": "굿자 막기"
       },
       "category": "blocks"
     },
@@ -25,18 +25,18 @@
       "id": "block_double_arc_hand_high_block",
       "names": {
         "english": "Double Arc Hand High Block",
-        "korean_romanized": "Doo Bandalson Nopunde Makgi",
-        "korean_hangul": "두 반달손 높은데 막기"
+        "romanised": "Doo Bandalson Nopunde Makgi",
+        "hangul": "두 반달손 높은데 막기"
       },
       "category": "blocks"
     },
     {
       "id": "doo_palmok_makgi",
       "names": {
-        "korean": "두팔목막기",
-        "korean_romanized": "Doo Palmok Makgi",
         "english": "Double Forearm Block",
-        "phonetic": "/tu.pʰal.mok.mak.ɡi/"
+        "phonetic": "/tu.pʰal.mok.mak.ɡi/",
+        "romanised": "Doo Palmok Makgi",
+        "hangul": "두팔목막기"
       },
       "description": "A defensive block using both forearms simultaneously to create maximum protection against powerful or multiple attacks.",
       "execution": {
@@ -45,8 +45,8 @@
         "finish": "Maintain strong structure with both arms engaged"
       },
       "blocking_tool": {
-        "korean": "양팔목",
-        "korean_romanized": "Yang Palmok",
+        "hangul": "양팔목",
+        "romanised": "Yang Palmok",
         "english": "Both Forearms",
         "phonetic": "/jaŋ.pʰal.mok/"
       },
@@ -93,18 +93,18 @@
       "id": "block_double_forearm_low_pushing_block",
       "names": {
         "english": "Double Forearm Low Pushing Block",
-        "korean_romanized": "Doo Palmok Najunde Miro Makgi",
-        "korean_hangul": "두 팔목 낮은데 밀어 막기"
+        "romanised": "Doo Palmok Najunde Miro Makgi",
+        "hangul": "두 팔목 낮은데 밀어 막기"
       },
       "category": "blocks"
     },
     {
       "id": "palmok_daebi_makgi",
       "names": {
-        "korean": "팔목대비막기",
-        "korean_romanized": "Palmok Daebi Makgi",
         "english": "Forearm Guarding Block",
-        "phonetic": "/pʰal.mok.de.bi.mak.ɡi/"
+        "phonetic": "/pʰal.mok.de.bi.mak.ɡi/",
+        "romanised": "Palmok Daebi Makgi",
+        "hangul": "팔목대비막기"
       },
       "description": "A defensive block using the forearm to create a strong barrier, often used against powerful attacks or when maximum protection is needed.",
       "execution": {
@@ -113,8 +113,8 @@
         "finish": "Maintain strong structure with forearm engaged"
       },
       "blocking_tool": {
-        "korean": "팔목",
-        "korean_romanized": "Palmok",
+        "hangul": "팔목",
+        "romanised": "Palmok",
         "english": "Forearm",
         "phonetic": "/pʰal.mok/"
       },
@@ -164,10 +164,10 @@
     {
       "id": "palmok_chookyo_makgi",
       "names": {
-        "korean": "팔목추켜막기",
-        "korean_romanized": "Palmok Chookyo Makgi",
         "english": "Forearm Rising Block",
-        "phonetic": "/pʰal.mok.tʃʰu.kʌ.mak.ɡi/"
+        "phonetic": "/pʰal.mok.tʃʰu.kʌ.mak.ɡi/",
+        "romanised": "Palmok Chookyo Makgi",
+        "hangul": "팔목추켜막기"
       },
       "description": "A high-level defensive technique that blocks attacks to the head and upper body by raising the forearm upward and outward. Protects against overhead and high attacks.",
       "execution": {
@@ -176,8 +176,8 @@
         "finish": "End with forearm angled above forehead, protecting head"
       },
       "blocking_tool": {
-        "korean": "팔목",
-        "korean_romanized": "Palmok",
+        "hangul": "팔목",
+        "romanised": "Palmok",
         "english": "Forearm",
         "phonetic": "/pʰal.mok/"
       },
@@ -231,8 +231,8 @@
       "id": "block_high_double_forearm_block",
       "names": {
         "english": "High Double Forearm Block",
-        "korean_romanized": "Nopunde Doo Palmok Makgi",
-        "korean_hangul": "높은데 두 팔목 막기"
+        "romanised": "Nopunde Doo Palmok Makgi",
+        "hangul": "높은데 두 팔목 막기"
       },
       "category": "blocks"
     },
@@ -240,8 +240,8 @@
       "id": "block_high_inner_forearm_block",
       "names": {
         "english": "High Inner Forearm Block",
-        "korean_romanized": "Nopunde An Palmok Makgi",
-        "korean_hangul": "높은데 안 팔목 막기"
+        "romanised": "Nopunde An Palmok Makgi",
+        "hangul": "높은데 안 팔목 막기"
       },
       "category": "blocks"
     },
@@ -249,8 +249,8 @@
       "id": "block_high_outer_forearm_side_block",
       "names": {
         "english": "High Outer Forearm Side Block",
-        "korean_romanized": "Nopunde Bakat Palmok Yop Makgi",
-        "korean_hangul": "높은데 바깥 팔목 옆 막기"
+        "romanised": "Nopunde Bakat Palmok Yop Makgi",
+        "hangul": "높은데 바깥 팔목 옆 막기"
       },
       "category": "blocks"
     },
@@ -258,18 +258,18 @@
       "id": "block_high_outer_forearm_wedging_block",
       "names": {
         "english": "High Outer Forearm Wedging Block",
-        "korean_romanized": "Nopunde Bakat Palmok Hechyo Makgi",
-        "korean_hangul": "높은데 바깥 팔목 헤쳐 막기"
+        "romanised": "Nopunde Bakat Palmok Hechyo Makgi",
+        "hangul": "높은데 바깥 팔목 헤쳐 막기"
       },
       "category": "blocks"
     },
     {
       "id": "an_palmok_dollimyo_makgi",
       "names": {
-        "korean": "안팔목돌리며막기",
-        "korean_romanized": "An Palmok Dollimyo Makgi",
         "english": "Inner Forearm Circular Block",
-        "phonetic": "/an.pʰal.mok.tol.li.mjʌ.mak.ɡi/"
+        "phonetic": "/an.pʰal.mok.tol.li.mjʌ.mak.ɡi/",
+        "romanised": "An Palmok Dollimyo Makgi",
+        "hangul": "안팔목돌리며막기"
       },
       "description": "A circular blocking motion using the inner forearm, deflecting attacks through rotational movement. The forearm moves in a circular arc to redirect incoming strikes.",
       "execution": {
@@ -278,8 +278,8 @@
         "recovery": "Complete circle and return to guard"
       },
       "blocking_tool": {
-        "korean": "안팔목",
-        "korean_romanized": "An Palmok",
+        "hangul": "안팔목",
+        "romanised": "An Palmok",
         "english": "Inner Forearm",
         "phonetic": "/an.pʰal.mok/"
       },
@@ -328,18 +328,18 @@
       "id": "block_inner_forearm_high_side_front_block",
       "names": {
         "english": "Inner Forearm High Side Front Block",
-        "korean_romanized": "An Palmok Nopunde Yop Ap Makgi",
-        "korean_hangul": "안 팔목 높은데 옆 앞 막기"
+        "romanised": "An Palmok Nopunde Yop Ap Makgi",
+        "hangul": "안 팔목 높은데 옆 앞 막기"
       },
       "category": "blocks"
     },
     {
       "id": "an_palmok_kaunde_makgi",
       "names": {
-        "korean": "안팔목가운데막기",
-        "korean_romanized": "An Palmok Kaunde Makgi",
         "english": "Inner Forearm Middle Block",
-        "phonetic": "/an.pʰal.mok.ka.un.de.mak.ɡi/"
+        "phonetic": "/an.pʰal.mok.ka.un.de.mak.ɡi/",
+        "romanised": "An Palmok Kaunde Makgi",
+        "hangul": "안팔목가운데막기"
       },
       "description": "A middle-level block that deflects attacks to the torso area using the inner edge of the forearm. The block moves from outside to inside across the body.",
       "execution": {
@@ -348,8 +348,8 @@
         "finish": "End with inner forearm protecting center line"
       },
       "blocking_tool": {
-        "korean": "안팔목",
-        "korean_romanized": "An Palmok",
+        "hangul": "안팔목",
+        "romanised": "An Palmok",
         "english": "Inner Forearm",
         "phonetic": "/an.pʰal.mok/"
       },
@@ -403,18 +403,18 @@
       "id": "block_inner_forearm_parallel_block",
       "names": {
         "english": "Inner Forearm parallel Block",
-        "korean_romanized": "An Palmok Narani Makgi",
-        "korean_hangul": "안 팔목 나란히 막기"
+        "romanised": "An Palmok Narani Makgi",
+        "hangul": "안 팔목 나란히 막기"
       },
       "category": "blocks"
     },
     {
       "id": "sonkal_daebi_makgi",
       "names": {
-        "korean": "손칼대비막기",
-        "korean_romanized": "Sonkal Daebi Makgi",
         "english": "Knife Hand Guarding Block",
-        "phonetic": "/son.kʰal.de.bi.mak.ɡi/"
+        "phonetic": "/son.kʰal.de.bi.mak.ɡi/",
+        "romanised": "Sonkal Daebi Makgi",
+        "hangul": "손칼대비막기"
       },
       "description": "A block using the edge of the open hand (knife hand), typically performed from a back stance. The non-blocking hand supports at the solar plexus level.",
       "execution": {
@@ -423,8 +423,8 @@
         "finish": "End with knife hand extended, supporting hand firm"
       },
       "blocking_tool": {
-        "korean": "손칼",
-        "korean_romanized": "Sonkal",
+        "hangul": "손칼",
+        "romanised": "Sonkal",
         "english": "Knife Hand",
         "phonetic": "/son.kʰal/"
       },
@@ -473,10 +473,10 @@
     {
       "id": "sonkal_bakaero_makgi",
       "names": {
-        "korean": "손칼바깥으로막기",
-        "korean_romanized": "Sonkal Bakaero Makgi",
         "english": "Knife Hand Outward Block",
-        "phonetic": "/son.kʰal.pa.k͈a.nɯ.ɾo.mak.ɡi/"
+        "phonetic": "/son.kʰal.pa.k͈a.nɯ.ɾo.mak.ɡi/",
+        "romanised": "Sonkal Bakaero Makgi",
+        "hangul": "손칼바깥으로막기"
       },
       "description": "An outward blocking motion using the edge of the hand, deflecting attacks from the inside to the outside of the body's centerline.",
       "execution": {
@@ -485,8 +485,8 @@
         "finish": "End with knife hand extended outward, protecting outside line"
       },
       "blocking_tool": {
-        "korean": "손칼",
-        "korean_romanized": "Sonkal",
+        "hangul": "손칼",
+        "romanised": "Sonkal",
         "english": "Knife Hand",
         "phonetic": "/son.kʰal/"
       },
@@ -536,8 +536,8 @@
       "id": "block_knifehand_low_outward_block",
       "names": {
         "english": "Knifehand Low Outward Block",
-        "korean_romanized": "Sonkal Najunde Bakaero Makgi",
-        "korean_hangul": "손칼 낮은데 바깥으로 막기"
+        "romanised": "Sonkal Najunde Bakaero Makgi",
+        "hangul": "손칼 낮은데 바깥으로 막기"
       },
       "category": "blocks"
     },
@@ -545,8 +545,8 @@
       "id": "block_knifehand_low_section_inward_block",
       "names": {
         "english": "Knifehand low section inward Block",
-        "korean_romanized": "Sonkal Najunde Anaero Makgi",
-        "korean_hangul": "손칼 낮은데 안으로 막기"
+        "romanised": "Sonkal Najunde Anaero Makgi",
+        "hangul": "손칼 낮은데 안으로 막기"
       },
       "category": "blocks"
     },
@@ -554,8 +554,8 @@
       "id": "block_knifehand_middle_wedging_block",
       "names": {
         "english": "Knifehand Middle Wedging Block",
-        "korean_romanized": "Sonkal Kaunde Hechyo Makgi",
-        "korean_hangul": "손칼 가운데 헤쳐 막기"
+        "romanised": "Sonkal Kaunde Hechyo Makgi",
+        "hangul": "손칼 가운데 헤쳐 막기"
       },
       "category": "blocks"
     },
@@ -563,8 +563,8 @@
       "id": "block_low_outer_forearm_block",
       "names": {
         "english": "Low Outer Forearm Block",
-        "korean_romanized": "Najunde Bakat Palmok Makgi",
-        "korean_hangul": "낮은데 바깥 팔목 막기"
+        "romanised": "Najunde Bakat Palmok Makgi",
+        "hangul": "낮은데 바깥 팔목 막기"
       },
       "category": "blocks"
     },
@@ -572,8 +572,8 @@
       "id": "block_middle_forearm_guarding_block",
       "names": {
         "english": "Middle forearm Guarding Block",
-        "korean_romanized": "Kaunde Palmok Daebi Makgi",
-        "korean_hangul": "가운데 팔목 대비 막기"
+        "romanised": "Kaunde Palmok Daebi Makgi",
+        "hangul": "가운데 팔목 대비 막기"
       },
       "category": "blocks"
     },
@@ -581,8 +581,8 @@
       "id": "block_middle_inner_forearm_block",
       "names": {
         "english": "Middle Inner Forearm Block",
-        "korean_romanized": "Kaunde An Palmok Makgi",
-        "korean_hangul": "가운데 안 팔목 막기"
+        "romanised": "Kaunde An Palmok Makgi",
+        "hangul": "가운데 안 팔목 막기"
       },
       "category": "blocks"
     },
@@ -590,8 +590,8 @@
       "id": "block_middle_knifehand_guarding_block",
       "names": {
         "english": "Middle Knifehand Guarding Block",
-        "korean_romanized": "Kaunde Sonkal Daebi Makgi",
-        "korean_hangul": "가운데 손칼 대비 막기"
+        "romanised": "Kaunde Sonkal Daebi Makgi",
+        "hangul": "가운데 손칼 대비 막기"
       },
       "category": "blocks"
     },
@@ -599,18 +599,18 @@
       "id": "block_outer_forearm_downward_block",
       "names": {
         "english": "Outer Forearm Downward Block",
-        "korean_romanized": "Bakat Palmok Naeryo Makgi",
-        "korean_hangul": "바깥 팔목 내려 막기"
+        "romanised": "Bakat Palmok Naeryo Makgi",
+        "hangul": "바깥 팔목 내려 막기"
       },
       "category": "blocks"
     },
     {
       "id": "bakat_palmok_najunde_makgi",
       "names": {
-        "korean": "바깥팔목낮은데막기",
-        "korean_romanized": "Bakat Palmok Najunde Makgi",
         "english": "Outer Forearm Low Block",
-        "phonetic": "/pa.k͈at.pʰal.mok.na.tɯn.de.mak.ɡi/"
+        "phonetic": "/pa.k͈at.pʰal.mok.na.tɯn.de.mak.ɡi/",
+        "romanised": "Bakat Palmok Najunde Makgi",
+        "hangul": "바깥팔목낮은데막기"
       },
       "description": "A fundamental defensive technique that blocks low attacks by sweeping the outer forearm downward and outward. The block protects the lower body from kicks and low punches.",
       "execution": {
@@ -619,8 +619,8 @@
         "finish": "End with outer forearm angled downward, fist at hip level"
       },
       "blocking_tool": {
-        "korean": "바깥팔목",
-        "korean_romanized": "Bakat Palmok",
+        "hangul": "바깥팔목",
+        "romanised": "Bakat Palmok",
         "english": "Outer Forearm",
         "phonetic": "/pa.k͈at.pʰal.mok/"
       },
@@ -674,8 +674,8 @@
       "id": "block_outer_forearm_obverse_high_front_block",
       "names": {
         "english": "Outer Forearm Obverse High Front Block",
-        "korean_romanized": "Bakat Palmok Nopunde Bara Ap Makgi",
-        "korean_hangul": "바깥 팔목 높은데 바라 앞 막기"
+        "romanised": "Bakat Palmok Nopunde Bara Ap Makgi",
+        "hangul": "바깥 팔목 높은데 바라 앞 막기"
       },
       "category": "blocks"
     },
@@ -683,8 +683,8 @@
       "id": "block_outer_forearm_reverse_high_side_block",
       "names": {
         "english": "Outer Forearm reverse High Side Block",
-        "korean_romanized": "Bakat Palmok Nopunde Bandae Yop Makgi",
-        "korean_hangul": "바깥 팔목 높은데 반대 옆 막기"
+        "romanised": "Bakat Palmok Nopunde Bandae Yop Makgi",
+        "hangul": "바깥 팔목 높은데 반대 옆 막기"
       },
       "category": "blocks"
     },
@@ -692,8 +692,8 @@
       "id": "block_outer_forearm_rising_block",
       "names": {
         "english": "Outer Forearm Rising Block",
-        "korean_romanized": "Bakat Palmok Chookyo Makgi",
-        "korean_hangul": "바깥 팔목 축여 막기"
+        "romanised": "Bakat Palmok Chookyo Makgi",
+        "hangul": "바깥 팔목 축여 막기"
       },
       "category": "blocks"
     },
@@ -701,18 +701,18 @@
       "id": "block_outer_forearm_w_block",
       "names": {
         "english": "Outer Forearm W-Shape Block",
-        "korean_romanized": "Bakat Palmok San Makgi",
-        "korean_hangul": "바깥 팔목 산 막기"
+        "romanised": "Bakat Palmok San Makgi",
+        "hangul": "바깥 팔목 산 막기"
       },
       "category": "blocks"
     },
     {
       "id": "bakat_palmok_hori_makgi",
       "names": {
-        "korean": "바깥팔목허리막기",
-        "korean_romanized": "Bakat Palmok Hori Makgi",
         "english": "Outer Forearm Waist Block",
-        "phonetic": "/pa.k͈at.pʰal.mok.hʌ.ɾi.mak.ɡi/"
+        "phonetic": "/pa.k͈at.pʰal.mok.hʌ.ɾi.mak.ɡi/",
+        "romanised": "Bakat Palmok Hori Makgi",
+        "hangul": "바깥팔목허리막기"
       },
       "description": "A defensive block at waist level using the outer forearm, protecting the midsection from middle-level attacks. The outer edge of the forearm intercepts strikes to the body.",
       "execution": {
@@ -721,8 +721,8 @@
         "recovery": "Return forearm to guard position"
       },
       "blocking_tool": {
-        "korean": "바깥팔목",
-        "korean_romanized": "Bakat Palmok",
+        "hangul": "바깥팔목",
+        "romanised": "Bakat Palmok",
         "english": "Outer Forearm",
         "phonetic": "/pa.k͈at.pʰal.mok/"
       },
@@ -770,10 +770,10 @@
     {
       "id": "bakat_palmok_hechyo_makgi",
       "names": {
-        "korean": "바깥팔목해쳐막기",
-        "korean_romanized": "Bakat Palmok Hechyo Makgi",
         "english": "Outer Forearm Wedging Block",
-        "phonetic": "/pa.k͈at.pʰal.mok.he.tʃʰjʌ.mak.ɡi/"
+        "phonetic": "/pa.k͈at.pʰal.mok.he.tʃʰjʌ.mak.ɡi/",
+        "romanised": "Bakat Palmok Hechyo Makgi",
+        "hangul": "바깥팔목해쳐막기"
       },
       "description": "A wedge-shaped block using the outer forearm to split attacks, creating an opening while defending against the incoming technique.",
       "execution": {
@@ -782,8 +782,8 @@
         "finish": "End in wedge position, creating defensive opening"
       },
       "blocking_tool": {
-        "korean": "바깥팔목",
-        "korean_romanized": "Bakat Palmok",
+        "hangul": "바깥팔목",
+        "romanised": "Bakat Palmok",
         "english": "Outer Forearm",
         "phonetic": "/pa.k͈at.pʰal.mok/"
       },
@@ -832,18 +832,18 @@
       "id": "block_palm_hooking_block",
       "names": {
         "english": "Palm Hooking Block",
-        "korean_romanized": "Sonbadak Golcho Makgi",
-        "korean_hangul": "Sonbadak 걸차 막기"
+        "romanised": "Sonbadak Golcho Makgi",
+        "hangul": "Sonbadak 걸차 막기"
       },
       "category": "blocks"
     },
     {
       "id": "sonbadak_anaero_miro_makgi",
       "names": {
-        "korean": "손바닥안으로밀어막기",
-        "korean_romanized": "Sonbadak Anaero Miro Makgi",
         "english": "Palm Inward Pushing Block",
-        "phonetic": "/son.ba.dak.a.nɯ.ɾo.mi.ɾo.mak.ɡi/"
+        "phonetic": "/son.ba.dak.a.nɯ.ɾo.mi.ɾo.mak.ɡi/",
+        "romanised": "Sonbadak Anaero Miro Makgi",
+        "hangul": "손바닥안으로밀어막기"
       },
       "description": "An inward pushing block using the palm of the hand, deflecting attacks by pushing them away from the centerline. Combines blocking with redirecting force.",
       "execution": {
@@ -852,8 +852,8 @@
         "recovery": "Return palm to ready position"
       },
       "blocking_tool": {
-        "korean": "손바닥",
-        "korean_romanized": "Sonbadak",
+        "hangul": "손바닥",
+        "romanised": "Sonbadak",
         "english": "Palm",
         "phonetic": "/son.ba.dak/"
       },
@@ -901,10 +901,10 @@
     {
       "id": "sonbadak_noollo_makgi",
       "names": {
-        "korean": "손바닥누를로막기",
-        "korean_romanized": "Sonbadak Noollo Makgi",
         "english": "Palm Pressing Block",
-        "phonetic": "/son.ba.dak.nu.ɾʌl.lo.mak.ɡi/"
+        "phonetic": "/son.ba.dak.nu.ɾʌl.lo.mak.ɡi/",
+        "romanised": "Sonbadak Noollo Makgi",
+        "hangul": "손바닥누를로막기"
       },
       "description": "A defensive block using the palm in a pressing motion, deflecting attacks by applying pressure rather than hard contact. Effective against straight attacks and for redirecting force.",
       "execution": {
@@ -913,8 +913,8 @@
         "recovery": "Return to guard position maintaining palm readiness"
       },
       "blocking_tool": {
-        "korean": "손바닥",
-        "korean_romanized": "Sonbadak",
+        "hangul": "손바닥",
+        "romanised": "Sonbadak",
         "english": "Palm",
         "phonetic": "/son.ba.dak/"
       },
@@ -960,10 +960,10 @@
     {
       "id": "sonbadak_miro_makgi",
       "names": {
-        "korean": "손바닥밀어막기",
-        "korean_romanized": "Sonbadak Miro Makgi",
         "english": "Palm Pushing Block",
-        "phonetic": "/son.ba.dak.mi.ɾʌ.mak.ɡi/"
+        "phonetic": "/son.ba.dak.mi.ɾʌ.mak.ɡi/",
+        "romanised": "Sonbadak Miro Makgi",
+        "hangul": "손바닥밀어막기"
       },
       "description": "A pushing defensive technique using the palm, deflecting attacks by pushing them away rather than hard blocking. Effective for redirecting force and creating distance.",
       "execution": {
@@ -972,8 +972,8 @@
         "recovery": "Return palm to guard position"
       },
       "blocking_tool": {
-        "korean": "손바닥",
-        "korean_romanized": "Sonbadak",
+        "hangul": "손바닥",
+        "romanised": "Sonbadak",
         "english": "Palm",
         "phonetic": "/son.ba.dak/"
       },
@@ -1018,18 +1018,18 @@
       "id": "block_palm_scooping_block",
       "names": {
         "english": "Palm Scooping Block",
-        "korean_romanized": "Sonbadak Duro Makgi",
-        "korean_hangul": "Sonbadak 두로 막기"
+        "romanised": "Sonbadak Duro Makgi",
+        "hangul": "Sonbadak 두로 막기"
       },
       "category": "blocks"
     },
     {
       "id": "sonbadak_ollyo_makgi",
       "names": {
-        "korean": "손바닥올려막기",
-        "korean_romanized": "Sonbadak Ollyo Makgi",
         "english": "Palm Upward Block",
-        "phonetic": "/son.ba.dak.ol.ljo.mak.ɡi/"
+        "phonetic": "/son.ba.dak.ol.ljo.mak.ɡi/",
+        "romanised": "Sonbadak Ollyo Makgi",
+        "hangul": "손바닥올려막기"
       },
       "description": "An upward blocking technique using the palm, deflecting attacks from below or redirecting downward strikes. The palm moves in an ascending arc to intercept and deflect.",
       "execution": {
@@ -1038,8 +1038,8 @@
         "recovery": "Return palm to guard position"
       },
       "blocking_tool": {
-        "korean": "손바닥",
-        "korean_romanized": "Sonbadak",
+        "hangul": "손바닥",
+        "romanised": "Sonbadak",
         "english": "Palm",
         "phonetic": "/son.ba.dak/"
       },
@@ -1085,10 +1085,10 @@
     {
       "id": "sonbadak_hori_makgi",
       "names": {
-        "korean": "손바닥허리막기",
-        "korean_romanized": "Sonbadak Hori Makgi",
         "english": "Palm Waist Block",
-        "phonetic": "/son.ba.dak.hʌ.ɾi.mak.ɡi/"
+        "phonetic": "/son.ba.dak.hʌ.ɾi.mak.ɡi/",
+        "romanised": "Sonbadak Hori Makgi",
+        "hangul": "손바닥허리막기"
       },
       "description": "A waist-level blocking technique using the palm, defending against middle-level attacks to the midsection. The palm intercepts attacks at waist height.",
       "execution": {
@@ -1097,8 +1097,8 @@
         "recovery": "Return to ready position at waist level"
       },
       "blocking_tool": {
-        "korean": "손바닥",
-        "korean_romanized": "Sonbadak",
+        "hangul": "손바닥",
+        "romanised": "Sonbadak",
         "english": "Palm",
         "phonetic": "/son.ba.dak/"
       },
@@ -1144,10 +1144,10 @@
     {
       "id": "sonkal_dung_bandae_makgi",
       "names": {
-        "korean": "손칼등반대막기",
-        "korean_romanized": "Sonkal Dung Bandae Makgi",
         "english": "Reverse Knife Hand Outward Block",
-        "phonetic": "/son.kʰal.dɯŋ.pan.de.mak.ɡi/"
+        "phonetic": "/son.kʰal.dɯŋ.pan.de.mak.ɡi/",
+        "romanised": "Sonkal Dung Bandae Makgi",
+        "hangul": "손칼등반대막기"
       },
       "description": "An outward blocking technique using the reverse knife hand, deflecting attacks away from the body with the back edge of the knife hand formation.",
       "execution": {
@@ -1156,8 +1156,8 @@
         "recovery": "Return to guard position"
       },
       "blocking_tool": {
-        "korean": "손칼등",
-        "korean_romanized": "Sonkal Dung",
+        "hangul": "손칼등",
+        "romanised": "Sonkal Dung",
         "english": "Reverse Knife Hand",
         "phonetic": "/son.kʰal.dɯŋ/"
       },
@@ -1204,8 +1204,8 @@
       "id": "block_reverse_knifehand_circular_block",
       "names": {
         "english": "Reverse Knifehand Circular Block",
-        "korean_romanized": "Sonkal Dung Dollimyo Makgi",
-        "korean_hangul": "손칼 등 돌리며 막기"
+        "romanised": "Sonkal Dung Dollimyo Makgi",
+        "hangul": "손칼 등 돌리며 막기"
       },
       "category": "blocks"
     },
@@ -1213,8 +1213,8 @@
       "id": "block_reverse_knifehand_low_front_block",
       "names": {
         "english": "Reverse Knifehand Low Front Block",
-        "korean_romanized": "Sonkal Dung Najunde Ap Makgi",
-        "korean_hangul": "손칼 등 낮은데 앞 막기"
+        "romanised": "Sonkal Dung Najunde Ap Makgi",
+        "hangul": "손칼 등 낮은데 앞 막기"
       },
       "category": "blocks"
     },
@@ -1222,8 +1222,8 @@
       "id": "block_reverse_knifehand_low_guarding_block",
       "names": {
         "english": "Reverse Knifehand Low Guarding Block",
-        "korean_romanized": "Sonkal Dung Najunde Daebi Makgi",
-        "korean_hangul": "손칼 등 낮은데 대비 막기"
+        "romanised": "Sonkal Dung Najunde Daebi Makgi",
+        "hangul": "손칼 등 낮은데 대비 막기"
       },
       "category": "blocks"
     },
@@ -1231,8 +1231,8 @@
       "id": "block_reverse_knifehand_low_inward_block",
       "names": {
         "english": "Reverse Knifehand Low Inward Block",
-        "korean_romanized": "Sonkal Dung Najunde Anaero Makgi",
-        "korean_hangul": "손칼 등 낮은데 안으로 막기"
+        "romanised": "Sonkal Dung Najunde Anaero Makgi",
+        "hangul": "손칼 등 낮은데 안으로 막기"
       },
       "category": "blocks"
     },
@@ -1240,8 +1240,8 @@
       "id": "block_reverse_knifehand_middle_block",
       "names": {
         "english": "Reverse Knifehand Middle Block",
-        "korean_romanized": "Sonkal Dung Kaunde Makgi",
-        "korean_hangul": "손칼 등 가운데 막기"
+        "romanised": "Sonkal Dung Kaunde Makgi",
+        "hangul": "손칼 등 가운데 막기"
       },
       "category": "blocks"
     },
@@ -1249,8 +1249,8 @@
       "id": "block_reverse_knifehand_rising_block",
       "names": {
         "english": "Reverse Knifehand Rising Block",
-        "korean_romanized": "Sonkal Bandae Chookyo Makgi",
-        "korean_hangul": "손칼 반대 축여 막기"
+        "romanised": "Sonkal Bandae Chookyo Makgi",
+        "hangul": "손칼 반대 축여 막기"
       },
       "category": "blocks"
     },
@@ -1258,8 +1258,8 @@
       "id": "block_twin_arc_hand_u_shape_block",
       "names": {
         "english": "Twin Arc Hand U-Shape Block",
-        "korean_romanized": "Sang Bandalson Digutja Makgi",
-        "korean_hangul": "쌍 반달손 디귿자 막기"
+        "romanised": "Sang Bandalson Digutja Makgi",
+        "hangul": "쌍 반달손 디귿자 막기"
       },
       "category": "blocks"
     },
@@ -1267,8 +1267,8 @@
       "id": "block_twin_forearm_block",
       "names": {
         "english": "Twin Forearm Block",
-        "korean_romanized": "Sang Palmok Makgi",
-        "korean_hangul": "쌍 팔목 막기"
+        "romanised": "Sang Palmok Makgi",
+        "hangul": "쌍 팔목 막기"
       },
       "category": "blocks"
     },
@@ -1276,8 +1276,8 @@
       "id": "block_twin_knifehand_block",
       "names": {
         "english": "Twin Knifehand Block",
-        "korean_romanized": "Sang Sonkal Makgi",
-        "korean_hangul": "쌍 손칼 막기"
+        "romanised": "Sang Sonkal Makgi",
+        "hangul": "쌍 손칼 막기"
       },
       "category": "blocks"
     },
@@ -1285,8 +1285,8 @@
       "id": "block_twin_palm_downward_block",
       "names": {
         "english": "Twin Palm Downward Block",
-        "korean_romanized": "Sang Sonbadak Naeryo Makgi",
-        "korean_hangul": "쌍 Sonbadak 내려 막기"
+        "romanised": "Sang Sonbadak Naeryo Makgi",
+        "hangul": "쌍 Sonbadak 내려 막기"
       },
       "category": "blocks"
     },
@@ -1294,8 +1294,8 @@
       "id": "block_twin_palm_pressing_block",
       "names": {
         "english": "Twin Palm Pressing Block",
-        "korean_romanized": "Sang Sonbadak Noollo Makgi",
-        "korean_hangul": "쌍 Sonbadak 누르로 막기"
+        "romanised": "Sang Sonbadak Noollo Makgi",
+        "hangul": "쌍 Sonbadak 누르로 막기"
       },
       "category": "blocks"
     },
@@ -1303,8 +1303,8 @@
       "id": "block_twin_palm_rising_block",
       "names": {
         "english": "Twin Palm Rising Block",
-        "korean_romanized": "Sang Sonbadak Chookyo Makgi",
-        "korean_hangul": "쌍 Sonbadak 축여 막기"
+        "romanised": "Sang Sonbadak Chookyo Makgi",
+        "hangul": "쌍 Sonbadak 축여 막기"
       },
       "category": "blocks"
     },
@@ -1312,18 +1312,18 @@
       "id": "block_twin_palm_upward_block",
       "names": {
         "english": "Twin Palm Upward Block",
-        "korean_romanized": "Sang Sonbadak Ollyo Makgi",
-        "korean_hangul": "쌍 Sonbadak 올려 막기"
+        "romanised": "Sang Sonbadak Ollyo Makgi",
+        "hangul": "쌍 Sonbadak 올려 막기"
       },
       "category": "blocks"
     },
     {
       "id": "sang_sun_palmok_momchau_makgi",
       "names": {
-        "korean": "상선팔목멈춘막기",
-        "korean_romanized": "Sang Sun Palmok Momchau Makgi",
         "english": "Twin Straight Forearm Checking Block",
-        "phonetic": "/saŋ.sʌn.pʰal.mok.mʌm.tʃʰau.mak.ɡi/"
+        "phonetic": "/saŋ.sʌn.pʰal.mok.mʌm.tʃʰau.mak.ɡi/",
+        "romanised": "Sang Sun Palmok Momchau Makgi",
+        "hangul": "상선팔목멈춘막기"
       },
       "description": "A simultaneous checking block using both forearms straight, stopping attacks through coordinated dual forearm contact. Both arms work together to create a strong defensive barrier.",
       "execution": {
@@ -1332,8 +1332,8 @@
         "recovery": "Return both arms to guard position"
       },
       "blocking_tool": {
-        "korean": "상선팔목",
-        "korean_romanized": "Sang Sun Palmok",
+        "hangul": "상선팔목",
+        "romanised": "Sang Sun Palmok",
         "english": "Twin Straight Forearms",
         "phonetic": "/saŋ.sʌn.pʰal.mok/"
       },
@@ -1379,10 +1379,10 @@
     {
       "id": "digutja_makgi",
       "names": {
-        "korean": "디굿자막기",
-        "korean_romanized": "Digutja Makgi",
         "english": "U-Shape Block",
-        "phonetic": "/di.ɡut.ʃa.mak.ɡi/"
+        "phonetic": "/di.ɡut.ʃa.mak.ɡi/",
+        "romanised": "Digutja Makgi",
+        "hangul": "디굿자막기"
       },
       "description": "A blocking technique forming a U-shape with both arms, creating a defensive barrier that can catch or redirect attacks. The arms form a U formation to trap or deflect incoming strikes.",
       "execution": {
@@ -1391,8 +1391,8 @@
         "recovery": "Maintain U-shape control then return to guard"
       },
       "blocking_tool": {
-        "korean": "두팔",
-        "korean_romanized": "Doo Pal",
+        "hangul": "두팔",
+        "romanised": "Doo Pal",
         "english": "Both Arms",
         "phonetic": "/tu.pʰal/"
       },
@@ -1439,8 +1439,8 @@
       "id": "block_u_shape_grasping_block",
       "names": {
         "english": "U-Shape Grasping Block",
-        "korean_romanized": "Digutja Japgi Makgi",
-        "korean_hangul": "디귿자 잡기 막기"
+        "romanised": "Digutja Japgi Makgi",
+        "hangul": "디귿자 잡기 막기"
       },
       "category": "blocks"
     },
@@ -1448,18 +1448,18 @@
       "id": "block_x_fist_low_pressing_block",
       "names": {
         "english": "X-Fist Low Pressing Block",
-        "korean_romanized": "Kyocha Joomuk Najunde Noollo Makgi",
-        "korean_hangul": "교차 Joomuk 낮은데 누르로 막기"
+        "romanised": "Kyocha Joomuk Najunde Noollo Makgi",
+        "hangul": "교차 Joomuk 낮은데 누르로 막기"
       },
       "category": "blocks"
     },
     {
       "id": "kyocha_joomuk_chookyo_makgi",
       "names": {
-        "korean": "교차주멙추켜막기",
-        "korean_romanized": "Kyocha Joomuk Chookyo Makgi",
         "english": "X-Fist Rising Block",
-        "phonetic": "/kjo.tʃʰa.tʃu.mʌk.tʃʰu.kʌ.mak.ɡi/"
+        "phonetic": "/kjo.tʃʰa.tʃu.mʌk.tʃʰu.kʌ.mak.ɡi/",
+        "romanised": "Kyocha Joomuk Chookyo Makgi",
+        "hangul": "교차주멙추켜막기"
       },
       "description": "A rising blocking technique using crossed fists in an X formation, defending against overhead attacks. Both fists cross to create a strong upward defensive barrier.",
       "execution": {
@@ -1468,8 +1468,8 @@
         "recovery": "Uncross fists and return to guard position"
       },
       "blocking_tool": {
-        "korean": "교차주멙",
-        "korean_romanized": "Kyocha Joomuk",
+        "hangul": "교차주멙",
+        "romanised": "Kyocha Joomuk",
         "english": "Crossed Fists",
         "phonetic": "/kjo.tʃʰa.tʃu.mʌk/"
       },
@@ -1515,10 +1515,10 @@
     {
       "id": "kyocha_sonkal_momchau_makgi",
       "names": {
-        "korean": "교차손칼멈춘막기",
-        "korean_romanized": "Kyocha Sonkal Momchau Makgi",
         "english": "X Knife Hand Checking Block",
-        "phonetic": "/kjo.tʃʰa.son.kʰal.mʌm.tʃʰau.mak.ɡi/"
+        "phonetic": "/kjo.tʃʰa.son.kʰal.mʌm.tʃʰau.mak.ɡi/",
+        "romanised": "Kyocha Sonkal Momchau Makgi",
+        "hangul": "교차손칼멈춘막기"
       },
       "description": "A blocking technique where both knife hands cross to form an X shape, providing strong protection against powerful attacks while checking the opponent's technique.",
       "execution": {
@@ -1527,8 +1527,8 @@
         "finish": "Maintain strong X structure while checking attack"
       },
       "blocking_tool": {
-        "korean": "교차손칼",
-        "korean_romanized": "Kyocha Sonkal",
+        "hangul": "교차손칼",
+        "romanised": "Kyocha Sonkal",
         "english": "Crossed Knife Hands",
         "phonetic": "/kjo.tʃʰa.son.kʰal/"
       },
@@ -1573,8 +1573,8 @@
       "id": "block_x_knifehand_middle_block",
       "names": {
         "english": "X Knifehand Middle Block",
-        "korean_romanized": "Kyocha Sonkal Kaunde Makgi",
-        "korean_hangul": "교차 손칼 가운데 막기"
+        "romanised": "Kyocha Sonkal Kaunde Makgi",
+        "hangul": "교차 손칼 가운데 막기"
       },
       "category": "blocks"
     },
@@ -1582,8 +1582,8 @@
       "id": "block_x-fist_downward_block",
       "names": {
         "english": "X-Fist Downward Block",
-        "korean_romanized": "Kyocha Joomuk Naeryo Makgi",
-        "korean_hangul": "교차 Joomuk 내려 막기"
+        "romanised": "Kyocha Joomuk Naeryo Makgi",
+        "hangul": "교차 Joomuk 내려 막기"
       },
       "category": "blocks"
     }

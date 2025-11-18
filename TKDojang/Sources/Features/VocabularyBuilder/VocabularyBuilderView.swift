@@ -260,7 +260,7 @@ enum VocabularyGameMode: String, CaseIterable, Identifiable {
     var description: String {
         switch self {
         case .wordMatching:
-            return "Match English words to Korean romanized equivalents. Build vocabulary recognition."
+            return "Match English words to Korean romanised equivalents. Build vocabulary recognition."
         case .slotBuilder:
             return "Build phrases slot-by-slot with guided category selection. Learn phrase structure step by step."
         case .templateFiller:

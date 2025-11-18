@@ -6,15 +6,15 @@
     {
       "id": "10th_keup",
       "name": "White Belt",
-      "korean": "십급흰띠",
-      "korean_romanized": "Sip Geup Huin Tti",
+      "hangul": "십급흰띠",
+      "romanised": "Sip Geup Huin Tti",
       "phonetic": "/sip.kɯʔp.hɯin.t͈i/",
       "color_significance": "Innocence and beginning, like a blank canvas ready to learn",
       "minimum_training_time": "3 months or 20 sessions",
       "required_techniques": [
         "saju_jirugi",
         "ap_seogi",
-        "joonbi_seogi", 
+        "joonbi_seogi",
         "moa_seogi",
         "basic_jireugi"
       ],
@@ -32,16 +32,16 @@
       "breaking": "None"
     },
     {
-      "id": "9th_keup", 
+      "id": "9th_keup",
       "name": "White Belt with Yellow Stripe",
-      "korean": "구급흰띠노란줄",
-      "korean_romanized": "Gu Geup Huin Tti Noran Jul",
+      "hangul": "구급흰띠노란줄",
+      "romanised": "Gu Geup Huin Tti Noran Jul",
       "phonetic": "/ku.kɯʔp.hɯin.t͈i.no.ɾan.tʃul/",
-      "color_significance": "First growth, like a plant beginning to sprout", 
+      "color_significance": "First growth, like a plant beginning to sprout",
       "minimum_training_time": "3 months from previous grade",
       "required_techniques": [
         "arae_makgi",
-        "momtong_makgi", 
+        "momtong_makgi",
         "olgul_makgi",
         "ap_koobi_seogi",
         "bandae_jireugi"
@@ -61,9 +61,9 @@
     },
     {
       "id": "8th_keup",
-      "name": "Yellow Belt", 
-      "korean": "팔급노란띠",
-      "korean_romanized": "Pal Geup Noran Tti",
+      "name": "Yellow Belt",
+      "hangul": "팔급노란띠",
+      "romanised": "Pal Geup Noran Tti",
       "phonetic": "/pʰal.kɯʔp.no.ɾan.t͈i/",
       "color_significance": "Earth, where the plant takes root and begins to grow",
       "minimum_training_time": "3 months from previous grade",
@@ -75,7 +75,7 @@
         "naranhi_seogi"
       ],
       "required_fitness": [
-        "20 press ups", 
+        "20 press ups",
         "front kick exercises"
       ],
       "theory_requirements": [
@@ -90,14 +90,14 @@
     {
       "id": "7th_keup",
       "name": "Yellow Belt with Green Stripe",
-      "korean": "칠급노란띠초록줄", 
-      "korean_romanized": "Chil Geup Noran Tti Chorok Jul",
+      "hangul": "칠급노란띠초록줄",
+      "romanised": "Chil Geup Noran Tti Chorok Jul",
       "phonetic": "/tʃʰil.kɯʔp.no.ɾan.t͈i.tʃʰo.rok.tʃul/",
       "color_significance": "Growth continues, plant getting stronger",
       "minimum_training_time": "4 months from previous grade",
       "required_techniques": [
         "dollyo_chagi",
-        "yeop_chagi", 
+        "yeop_chagi",
         "geodeo_sonnal_makgi",
         "dung_joomok_chigi",
         "moorup_chagi"
@@ -119,8 +119,8 @@
     {
       "id": "6th_keup",
       "name": "Green Belt",
-      "korean": "육급초록띠",
-      "korean_romanized": "Yuk Geup Chorok Tti", 
+      "hangul": "육급초록띠",
+      "romanised": "Yuk Geup Chorok Tti",
       "phonetic": "/juk.kɯʔp.tʃʰo.rok.t͈i/",
       "color_significance": "Growth and development, like a healthy plant",
       "minimum_training_time": "4 months from previous grade",
@@ -133,7 +133,7 @@
       ],
       "required_fitness": [
         "30 press ups",
-        "back kick exercises", 
+        "back kick exercises",
         "crescent kick exercises"
       ],
       "theory_requirements": [
@@ -148,11 +148,11 @@
     {
       "id": "5th_keup",
       "name": "Green Belt with Blue Stripe",
-      "korean": "오급초록띠파란줄",
-      "korean_romanized": "O Geup Chorok Tti Paran Jul",
+      "hangul": "오급초록띠파란줄",
+      "romanised": "O Geup Chorok Tti Paran Jul",
       "phonetic": "/o.kɯʔp.tʃʰo.rok.t͈i.pʰa.ɾan.tʃul/",
       "color_significance": "Reaching toward the sky, like a plant growing tall",
-      "minimum_training_time": "5 months from previous grade", 
+      "minimum_training_time": "5 months from previous grade",
       "required_techniques": [
         "naeryo_chagi",
         "guligi_chigi",
@@ -177,8 +177,8 @@
     {
       "id": "4th_keup",
       "name": "Blue Belt",
-      "korean": "사급파란띠",
-      "korean_romanized": "Sa Geup Paran Tti",
+      "hangul": "사급파란띠",
+      "romanised": "Sa Geup Paran Tti",
       "phonetic": "/sa.kɯʔp.pʰa.ɾan.t͈i/",
       "color_significance": "Sky, representing growth toward greater heights",
       "minimum_training_time": "5 months from previous grade",
@@ -200,20 +200,20 @@
         "injury prevention"
       ],
       "pattern": "Joong-Gun (32 movements)",
-      "sparring": "1-step sparring introduction", 
+      "sparring": "1-step sparring introduction",
       "breaking": "Foot breaking introduction"
     },
     {
       "id": "3rd_keup",
       "name": "Blue Belt with Red Stripe",
-      "korean": "삼급파란띠빨간줄",
-      "korean_romanized": "Sam Geup Paran Tti Ppalgan Jul", 
+      "hangul": "삼급파란띠빨간줄",
+      "romanised": "Sam Geup Paran Tti Ppalgan Jul",
       "phonetic": "/sam.kɯʔp.pʰa.ɾan.t͈i.pˤal.ɡan.tʃul/",
       "color_significance": "Moving toward mastery, sky meeting the fire of advanced skill",
       "minimum_training_time": "6 months from previous grade",
       "required_techniques": [
         "twimyo_ap_chagi",
-        "twimyo_yeop_chagi", 
+        "twimyo_yeop_chagi",
         "bandae_dollyo_chagi",
         "sonkkeut_chigi",
         "advanced_footwork"
@@ -235,8 +235,8 @@
     {
       "id": "2nd_keup",
       "name": "Red Belt",
-      "korean": "이급빨간띠",
-      "korean_romanized": "I Geup Ppalgan Tti",
+      "hangul": "이급빨간띠",
+      "romanised": "I Geup Ppalgan Tti",
       "phonetic": "/i.kɯʔp.pˤal.ɡan.t͈i/",
       "color_significance": "Danger, warning that the student is becoming dangerous and must control power",
       "minimum_training_time": "6 months from previous grade",
@@ -264,8 +264,8 @@
     {
       "id": "1st_keup",
       "name": "Red Belt with Black Stripe",
-      "korean": "일급빨간띠검은줄",
-      "korean_romanized": "Il Geup Ppalgan Tti Geomeun Jul",
+      "hangul": "일급빨간띠검은줄",
+      "romanised": "Il Geup Ppalgan Tti Geomeun Jul",
       "phonetic": "/il.kɯʔp.pˤal.ɡan.t͈i.kʌ.mɯn.tʃul/",
       "color_significance": "Approaching mastery, the red of danger begins to be tempered with black wisdom",
       "minimum_training_time": "8 months from previous grade",
@@ -293,8 +293,8 @@
     {
       "id": "1st_dan",
       "name": "1st Degree Black Belt",
-      "korean": "일단검은띠",
-      "korean_romanized": "Il Dan Geomeun Tti",
+      "hangul": "일단검은띠",
+      "romanised": "Il Dan Geomeun Tti",
       "phonetic": "/il.tan.kʌ.mɯn.t͈i/",
       "color_significance": "Opposite of white, showing experience but still learning (beginning of true learning)",
       "minimum_training_time": "1 year from 1st Kup",
@@ -320,9 +320,9 @@
     },
     {
       "id": "2nd_dan",
-      "name": "2nd Degree Black Belt", 
-      "korean": "이단검은띠",
-      "korean_romanized": "I Dan Geomeun Tti",
+      "name": "2nd Degree Black Belt",
+      "hangul": "이단검은띠",
+      "romanised": "I Dan Geomeun Tti",
       "phonetic": "/i.tan.kʌ.mɯn.t͈i/",
       "color_significance": "Deepening knowledge and responsibility",
       "minimum_training_time": "2 years from 1st Dan",

@@ -1,66 +1,66 @@
 {
-  "belt_level" : "8th_keup",
-  "category" : "basics",
-  "metadata" : {
-    "created_at" : "2025-11-15T00:00:00Z",
-    "source" : "Format Migration",
-    "total_count" : 5
+  "belt_level": "8th_keup",
+  "category": "basics",
+  "metadata": {
+    "created_at": "2025-11-15T00:00:00Z",
+    "source": "Format Migration",
+    "total_count": 5
   },
-  "terminology" : [
+  "terminology": [
     {
-      "belt_level" : "8th_keup",
-      "category" : "basics",
-      "created_at" : "2025-11-15T00:00:00Z",
-      "definition" : "Fighting ready position with feet shoulder-width apart",
-      "difficulty" : 2,
-      "english_term" : "Ready Stance",
-      "korean_hangul" : "준비 자세",
-      "phonetic_pronunciation" : "/tʃunˈbi dʑaˈse/",
-      "romanized_pronunciation" : "Chunbi Sogi"
+      "belt_level": "8th_keup",
+      "category": "basics",
+      "created_at": "2025-11-15T00:00:00Z",
+      "definition": "Fighting ready position with feet shoulder-width apart",
+      "difficulty": 2,
+      "english": "Ready Stance",
+      "romanised": "Chunbi Sogi",
+      "hangul": "준비 자세",
+      "phonetic": "/tʃunˈbi dʑaˈse/"
     },
     {
-      "belt_level" : "8th_keup",
-      "category" : "basics",
-      "created_at" : "2025-11-15T00:00:00Z",
-      "definition" : "Return to starting position",
-      "difficulty" : 2,
-      "english_term" : "Return",
-      "korean_hangul" : "바로",
-      "phonetic_pronunciation" : "/paˈɾo/",
-      "romanized_pronunciation" : "Barrol"
+      "belt_level": "8th_keup",
+      "category": "basics",
+      "created_at": "2025-11-15T00:00:00Z",
+      "definition": "Return to starting position",
+      "difficulty": 2,
+      "english": "Return",
+      "romanised": "Barrol",
+      "hangul": "바로",
+      "phonetic": "/paˈɾo/"
     },
     {
-      "belt_level" : "8th_keup",
-      "category" : "basics",
-      "created_at" : "2025-11-15T00:00:00Z",
-      "definition" : "Move in forward direction",
-      "difficulty" : 2,
-      "english_term" : "Forward",
-      "korean_hangul" : "앞으로",
-      "phonetic_pronunciation" : "/apˈɯɾo/",
-      "romanized_pronunciation" : "Apeuro"
+      "belt_level": "8th_keup",
+      "category": "basics",
+      "created_at": "2025-11-15T00:00:00Z",
+      "definition": "Move in forward direction",
+      "difficulty": 2,
+      "english": "Forward",
+      "romanised": "Apeuro",
+      "hangul": "앞으로",
+      "phonetic": "/apˈɯɾo/"
     },
     {
-      "belt_level" : "8th_keup",
-      "category" : "basics",
-      "created_at" : "2025-11-15T00:00:00Z",
-      "definition" : "Move in backward direction",
-      "difficulty" : 2,
-      "english_term" : "Backward",
-      "korean_hangul" : "뒤로",
-      "phonetic_pronunciation" : "/twiˈɾo/",
-      "romanized_pronunciation" : "Dwiro"
+      "belt_level": "8th_keup",
+      "category": "basics",
+      "created_at": "2025-11-15T00:00:00Z",
+      "definition": "Move in backward direction",
+      "difficulty": 2,
+      "english": "Backward",
+      "romanised": "Dwiro",
+      "hangul": "뒤로",
+      "phonetic": "/twiˈɾo/"
     },
     {
-      "belt_level" : "8th_keup",
-      "category" : "basics",
-      "created_at" : "2025-11-15T00:00:00Z",
-      "definition" : "Turn around or change direction",
-      "difficulty" : 2,
-      "english_term" : "Turn",
-      "korean_hangul" : "돌아",
-      "phonetic_pronunciation" : "/toˈɾa/",
-      "romanized_pronunciation" : "Dola"
+      "belt_level": "8th_keup",
+      "category": "basics",
+      "created_at": "2025-11-15T00:00:00Z",
+      "definition": "Turn around or change direction",
+      "difficulty": 2,
+      "english": "About Turn",
+      "romanised": "Dwiro Torro",
+      "hangul": "돌아",
+      "phonetic": "/toˈɾa/"
     }
   ]
 }

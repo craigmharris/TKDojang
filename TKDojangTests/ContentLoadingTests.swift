@@ -96,9 +96,9 @@ final class ContentLoadingTests: XCTestCase {
             },
             "patterns": [
                 {
-                    "name": "Test Pattern",
+                    "english": "Test Pattern",
                     "hangul": "테스트",
-                    "pronunciation": "test",
+                    "romanised": "test",
                     "phonetic": "/test/",
                     "english_meaning": "Test Pattern",
                     "significance": "For testing purposes",
@@ -113,8 +113,8 @@ final class ContentLoadingTests: XCTestCase {
                         {
                             "move_number": 1,
                             "stance": "Test stance",
-                            "technique": "Test technique",
-                            "korean_technique": "테스트",
+                            "english": "Test technique",
+                            "romanised": "테스트",
                             "direction": "North",
                             "target": "Test target",
                             "key_points": "Test key points",
@@ -236,19 +236,19 @@ final class ContentLoadingTests: XCTestCase {
                             "key_points": "Test key points",
                             "common_mistakes": "Test mistakes",
                             "attack": {
-                                "technique": "Test punch",
-                                "korean_name": "테스트",
+                                "english": "Test punch",
+                                "romanised": "테스트",
                                 "stance": "test stance",
                                 "target": "middle section",
                                 "hand": "right",
                                 "description": "Test attack description"
                             },
                             "defense": {
-                                "technique": "Test block",
-                                "korean_name": "테스트막기",
+                                "english": "Test block",
+                                "romanised": "테스트막기",
                                 "stance": "test stance",
                                 "target": "middle section",
-                                "hand": "left", 
+                                "hand": "left",
                                 "description": "Test defense description"
                             }
                         }

@@ -90,7 +90,7 @@ class TerminologyDataService {
     func addTerminologyEntry(
         englishTerm: String,
         koreanHangul: String,
-        romanizedPronunciation: String,
+        romanisedPronunciation: String,
         beltLevel: BeltLevel,
         category: TerminologyCategory,
         difficulty: Int = 1,
@@ -102,7 +102,7 @@ class TerminologyDataService {
         let entry = TerminologyEntry(
             englishTerm: englishTerm,
             koreanHangul: koreanHangul,
-            romanizedPronunciation: romanizedPronunciation,
+            romanisedPronunciation: romanisedPronunciation,
             beltLevel: beltLevel,
             category: category,
             difficulty: difficulty

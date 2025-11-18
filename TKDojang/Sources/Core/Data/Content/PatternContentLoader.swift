@@ -350,9 +350,9 @@ struct PatternJSONData: Codable {
     let moves: [PatternMoveJSONData]
     
     enum CodingKeys: String, CodingKey {
-        case name
+        case name = "english"
         case hangul
-        case pronunciation
+        case pronunciation = "romanised"
         case phonetic
         case englishMeaning = "english_meaning"
         case significance
@@ -387,8 +387,8 @@ struct PatternMoveJSONData: Codable {
     enum CodingKeys: String, CodingKey {
         case moveNumber = "move_number"
         case stance
-        case technique
-        case koreanTechnique = "korean_technique"
+        case technique = "english"
+        case koreanTechnique = "romanised"
         case direction
         case target
         case keyPoints = "key_points"

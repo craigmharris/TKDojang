@@ -10,9 +10,7 @@
   },
   "patterns": [
     {
-      "name": "Dan-Gun",
       "hangul": "단군",
-      "pronunciation": "dan-gun",
       "phonetic": "/tan.gun/",
       "english_meaning": "Holy Dan-Gun",
       "significance": "Named after the legendary founder of Korea, Dan-Gun, in the year 2333 B.C. The 21 movements represent the year 2333 B.C.",
@@ -30,8 +28,6 @@
         {
           "move_number": 1,
           "stance": "L-stance",
-          "technique": "Knife Hand Guarding Block",
-          "korean_technique": "Sonkal Daebi Makgi",
           "direction": "B",
           "target": "Middle Section",
           "key_points": "Keep elbows in correct position",
@@ -41,13 +37,13 @@
           "image2URL": "dan-gun-1-technique",
           "image3URL": "dan-gun-1-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Knife Hand Guarding Block",
+          "romanised": "Sonkal Daebi Makgi"
         },
         {
           "move_number": 2,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "B",
           "target": "High Section",
           "key_points": "Full hip rotation",
@@ -57,13 +53,13 @@
           "image2URL": "dan-gun-2-technique",
           "image3URL": "dan-gun-2-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 3,
           "stance": "L-stance",
-          "technique": "Knife Hand Guarding Block",
-          "korean_technique": "Sonkal Daebi Makgi",
           "direction": "C",
           "target": "High Section",
           "key_points": "Mirror first movement",
@@ -73,13 +69,13 @@
           "image2URL": "dan-gun-3-technique",
           "image3URL": "dan-gun-3-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Knife Hand Guarding Block",
+          "romanised": "Sonkal Daebi Makgi"
         },
         {
           "move_number": 4,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "C",
           "target": "High Section",
           "key_points": "Maintain power",
@@ -89,13 +85,13 @@
           "image2URL": "dan-gun-4-technique",
           "image3URL": "dan-gun-4-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 5,
           "stance": "Walking Stance",
-          "technique": "Outer Forearm Block",
-          "korean_technique": "Bakat Palmok Makgi",
           "direction": "D",
           "target": "Low Section",
           "key_points": "Both arms move together",
@@ -105,13 +101,13 @@
           "image2URL": "dan-gun-5-technique",
           "image3URL": "dan-gun-5-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Outer Forearm Block",
+          "romanised": "Bakat Palmok Makgi"
         },
         {
           "move_number": 6,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "D",
           "target": "High Section",
           "key_points": "Step with conviction",
@@ -121,13 +117,13 @@
           "image2URL": "dan-gun-6-technique",
           "image3URL": "dan-gun-6-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 7,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "D",
           "target": "High Section",
           "key_points": "Continue momentum",
@@ -137,13 +133,13 @@
           "image2URL": "dan-gun-7-technique",
           "image3URL": "dan-gun-7-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 8,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "D",
           "target": "High Section",
           "key_points": "Consistent technique",
@@ -153,13 +149,13 @@
           "image2URL": "dan-gun-8-technique",
           "image3URL": "dan-gun-8-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 9,
           "stance": "L-stance",
-          "technique": "Twin Outer Forearm Block",
-          "korean_technique": "Sang Bakat Palmok Makgi",
           "direction": "E",
           "target": "High Section",
           "key_points": "Strong finish",
@@ -169,13 +165,13 @@
           "image2URL": "dan-gun-9-technique",
           "image3URL": "dan-gun-9-progress",
           "execution_speed": "normal",
-          "movement": "Left 270°"
+          "movement": "Left 270°",
+          "english": "Twin Outer Forearm Block",
+          "romanised": "Sang Bakat Palmok Makgi"
         },
         {
           "move_number": 10,
           "stance": "Walking Stance",
-          "technique": "Outer Forearm Block",
-          "korean_technique": "Bakat Palmok Makgi",
           "direction": "E",
           "target": "High Section",
           "key_points": "Turn with control",
@@ -185,13 +181,13 @@
           "image2URL": "dan-gun-10-technique",
           "image3URL": "dan-gun-10-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Outer Forearm Block",
+          "romanised": "Bakat Palmok Makgi"
         },
         {
           "move_number": 11,
           "stance": "L-stance",
-          "technique": "Twin Outer Forearm Block",
-          "korean_technique": "Sang Bakat Palmok Makgi",
           "direction": "F",
           "target": "High Section",
           "key_points": "Reset technique",
@@ -201,13 +197,13 @@
           "image2URL": "dan-gun-11-technique",
           "image3URL": "dan-gun-11-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Twin Outer Forearm Block",
+          "romanised": "Sang Bakat Palmok Makgi"
         },
         {
           "move_number": 12,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "F",
           "target": "High Section",
           "key_points": "Maintain form",
@@ -217,13 +213,13 @@
           "image2URL": "dan-gun-12-technique",
           "image3URL": "dan-gun-12-progress",
           "execution_speed": "normal",
-          "movement": "Right 270°"
+          "movement": "Right 270°",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 13,
           "stance": "Walking Stance",
-          "technique": "Outer Forearm Block",
-          "korean_technique": "Bakat Palmok Makgi",
           "direction": "A",
           "target": "Low Section",
           "key_points": "Keep shoulders level",
@@ -233,13 +229,13 @@
           "image2URL": "dan-gun-13-technique",
           "image3URL": "dan-gun-13-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Outer Forearm Block",
+          "romanised": "Bakat Palmok Makgi"
         },
         {
           "move_number": 14,
           "stance": "Walking Stance",
-          "technique": "Forearm Rising Block",
-          "korean_technique": "Palmok Chookyo Makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Finish strong",
@@ -249,13 +245,13 @@
           "image2URL": "dan-gun-14-technique",
           "image3URL": "dan-gun-14-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Forearm Rising Block",
+          "romanised": "Palmok Chookyo Makgi"
         },
         {
           "move_number": 15,
           "stance": "Walking Stance",
-          "technique": "Forearm Rising Block",
-          "korean_technique": "Palmok Chookyo Makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Return to blocking",
@@ -265,13 +261,13 @@
           "image2URL": "dan-gun-15-technique",
           "image3URL": "dan-gun-15-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Forearm Rising Block",
+          "romanised": "Palmok Chookyo Makgi"
         },
         {
           "move_number": 16,
           "stance": "Walking Stance",
-          "technique": "Forearm Rising Block",
-          "korean_technique": "Palmok Chookyo Makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Coordinate movement",
@@ -281,13 +277,13 @@
           "image2URL": "dan-gun-16-technique",
           "image3URL": "dan-gun-16-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Forearm Rising Block",
+          "romanised": "Palmok Chookyo Makgi"
         },
         {
           "move_number": 17,
           "stance": "Walking Stance",
-          "technique": "Forearm Rising Block",
-          "korean_technique": "Palmok Chookyo Makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Final direction change",
@@ -297,13 +293,13 @@
           "image2URL": "dan-gun-17-technique",
           "image3URL": "dan-gun-17-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Forearm Rising Block",
+          "romanised": "Palmok Chookyo Makgi"
         },
         {
           "move_number": 18,
           "stance": "Walking Stance",
-          "technique": "Knife Hand Strike",
-          "korean_technique": "Sonkal Taerigi",
           "direction": "B",
           "target": "High Section",
           "key_points": "Finish with power",
@@ -313,13 +309,13 @@
           "image2URL": "dan-gun-18-technique",
           "image3URL": "dan-gun-18-progress",
           "execution_speed": "normal",
-          "movement": "Left 270°"
+          "movement": "Left 270°",
+          "english": "Knife Hand Strike",
+          "romanised": "Sonkal Taerigi"
         },
         {
           "move_number": 19,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "B",
           "target": "High Section",
           "key_points": "Prepare for close",
@@ -329,13 +325,13 @@
           "image2URL": "dan-gun-19-technique",
           "image3URL": "dan-gun-19-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 20,
           "stance": "L-stance",
-          "technique": "Knife Hand Strike",
-          "korean_technique": "Sonkal Taerigi",
           "direction": "C",
           "target": "High Section",
           "key_points": "Penultimate move",
@@ -345,13 +341,13 @@
           "image2URL": "dan-gun-20-technique",
           "image3URL": "dan-gun-20-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Knife Hand Strike",
+          "romanised": "Sonkal Taerigi"
         },
         {
           "move_number": 21,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "C",
           "target": "High Section",
           "key_points": "Sharp return to attention",
@@ -361,9 +357,13 @@
           "image2URL": "dan-gun-21-technique",
           "image3URL": "dan-gun-21-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         }
-      ]
+      ],
+      "english": "Dan-Gun",
+      "romanised": "dan-gun"
     }
   ]
 }

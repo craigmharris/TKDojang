@@ -215,15 +215,15 @@ struct CreativeSandboxView: View {
             }
 
             // Korean romanization
-            Text(romanizedPhrase)
+            Text(romanisedPhrase)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
         }
     }
 
-    private var romanizedPhrase: String {
-        constructedPhrase.map { $0.romanized }.joined(separator: " ")
+    private var romanisedPhrase: String {
+        constructedPhrase.map { $0.romanised }.joined(separator: " ")
     }
 
     // MARK: - Category Selector
@@ -275,7 +275,7 @@ struct CreativeSandboxView: View {
                             VStack(spacing: 4) {
                                 Text(word.english)
                                     .font(.headline)
-                                Text(word.romanized)
+                                Text(word.romanised)
                                     .font(.caption)
                             }
                             .padding(.horizontal, 16)

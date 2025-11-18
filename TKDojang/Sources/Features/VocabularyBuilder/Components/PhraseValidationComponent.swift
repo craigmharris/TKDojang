@@ -9,7 +9,7 @@ import SwiftUI
  * - Success/error visual states
  * - Feedback message explanation
  * - Template name display
- * - Constructed phrase display (English + romanized)
+ * - Constructed phrase display (English + romanised)
  * - Continue button for next challenge
  * - Accessibility support with semantic labels
  *
@@ -75,7 +75,7 @@ struct PhraseValidationComponent: View {
                     .multilineTextAlignment(.center)
 
                 // Romanized phrase
-                Text(romanizedPhrase)
+                Text(romanisedPhrase)
                     .font(.body)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
@@ -131,13 +131,13 @@ struct PhraseValidationComponent: View {
         userPhrase.map { $0.english }.joined(separator: " ")
     }
 
-    private var romanizedPhrase: String {
-        userPhrase.map { $0.romanized }.joined(separator: " ")
+    private var romanisedPhrase: String {
+        userPhrase.map { $0.romanised }.joined(separator: " ")
     }
 
     private var accessibilityLabel: String {
         let result = validationResult.isCorrect ? "Correct" : "Incorrect"
-        return "\(result). \(validationResult.feedback). Your phrase: \(englishPhrase). Romanized: \(romanizedPhrase). Template: \(validationResult.correctTemplate)"
+        return "\(result). \(validationResult.feedback). Your phrase: \(englishPhrase). Romanized: \(romanisedPhrase). Template: \(validationResult.correctTemplate)"
     }
 }
 
@@ -151,9 +151,9 @@ struct PhraseValidationComponent: View {
             correctTemplate: "Direction + Tool + Action"
         ),
         userPhrase: [
-            CategorizedWord(english: "Outer", romanized: "Bakat", category: .direction, frequency: 10),
-            CategorizedWord(english: "Forearm", romanized: "Palmok", category: .tool, frequency: 18),
-            CategorizedWord(english: "Block", romanized: "Makgi", category: .action, frequency: 27)
+            CategorizedWord(english: "Outer", romanised: "Bakat", category: .direction, frequency: 10),
+            CategorizedWord(english: "Forearm", romanised: "Palmok", category: .tool, frequency: 18),
+            CategorizedWord(english: "Block", romanised: "Makgi", category: .action, frequency: 27)
         ]
     )
     .padding()
@@ -167,9 +167,9 @@ struct PhraseValidationComponent: View {
             correctTemplate: "Direction + Tool + Action"
         ),
         userPhrase: [
-            CategorizedWord(english: "Outer", romanized: "Bakat", category: .direction, frequency: 10),
-            CategorizedWord(english: "Block", romanized: "Makgi", category: .action, frequency: 27),
-            CategorizedWord(english: "Forearm", romanized: "Palmok", category: .tool, frequency: 18)
+            CategorizedWord(english: "Outer", romanised: "Bakat", category: .direction, frequency: 10),
+            CategorizedWord(english: "Block", romanised: "Makgi", category: .action, frequency: 27),
+            CategorizedWord(english: "Forearm", romanised: "Palmok", category: .tool, frequency: 18)
         ]
     )
     .padding()
@@ -183,8 +183,8 @@ struct PhraseValidationComponent: View {
             correctTemplate: "Tool + Action"
         ),
         userPhrase: [
-            CategorizedWord(english: "Fist", romanized: "Joomuk", category: .tool, frequency: 11),
-            CategorizedWord(english: "Punch", romanized: "Jirugi", category: .action, frequency: 9)
+            CategorizedWord(english: "Fist", romanised: "Joomuk", category: .tool, frequency: 11),
+            CategorizedWord(english: "Punch", romanised: "Jirugi", category: .action, frequency: 9)
         ]
     )
     .padding()
@@ -198,11 +198,11 @@ struct PhraseValidationComponent: View {
             correctTemplate: "Modifier + Direction + Tool + Section + Action"
         ),
         userPhrase: [
-            CategorizedWord(english: "Twin", romanized: "Sang", category: .techniqueModifier, frequency: 6),
-            CategorizedWord(english: "Outer", romanized: "Bakat", category: .position, frequency: 10),
-            CategorizedWord(english: "Forearm", romanized: "Palmok", category: .tool, frequency: 18),
-            CategorizedWord(english: "High", romanized: "Nopunde", category: .target, frequency: 5),
-            CategorizedWord(english: "Block", romanized: "Makgi", category: .action, frequency: 27)
+            CategorizedWord(english: "Twin", romanised: "Sang", category: .techniqueModifier, frequency: 6),
+            CategorizedWord(english: "Outer", romanised: "Bakat", category: .position, frequency: 10),
+            CategorizedWord(english: "Forearm", romanised: "Palmok", category: .tool, frequency: 18),
+            CategorizedWord(english: "High", romanised: "Nopunde", category: .target, frequency: 5),
+            CategorizedWord(english: "Block", romanised: "Makgi", category: .action, frequency: 27)
         ]
     )
     .padding()
@@ -216,8 +216,8 @@ struct PhraseValidationComponent: View {
             correctTemplate: "Tool + Action"
         ),
         userPhrase: [
-            CategorizedWord(english: "Knife", romanized: "Sonkal", category: .tool, frequency: 13),
-            CategorizedWord(english: "Strike", romanized: "Taerigi", category: .action, frequency: 11)
+            CategorizedWord(english: "Knife", romanised: "Sonkal", category: .tool, frequency: 13),
+            CategorizedWord(english: "Strike", romanised: "Taerigi", category: .action, frequency: 11)
         ],
         isDemo: true
     )

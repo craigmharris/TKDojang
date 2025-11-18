@@ -149,7 +149,7 @@ struct GameModeCard: View {
     GameModeCard(
         icon: "character.book.closed",
         title: "Word Matching",
-        description: "Match English words to Korean romanized equivalents",
+        description: "Match English words to Korean romanised equivalents",
         difficulty: "Beginner",
         estimatedTime: "5-10 min",
         isAvailable: true,

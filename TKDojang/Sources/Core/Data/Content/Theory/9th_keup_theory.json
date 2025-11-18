@@ -3,22 +3,18 @@
   "belt_id": "9th_keup",
   "theory_sections": [
     {
-      "id": "orange_belt_meaning",
-      "title": "Orange Belt Meaning",
+      "id": "yellow_belt_meaning",
+      "title": "Yellow Belt Meaning",
       "category": "Belt Knowledge",
       "content": {
-        "meaning": "Orange Belt represents the sun beginning to rise - the student is starting to see the light of knowledge.",
-        "significance": "Like the early morning sun that brings warmth and light, the orange belt student is beginning to understand basic Taekwondo principles and techniques.",
+        "meaning": "Yellow Belt signifies the earth. As the foundations of Te Kwon Do are laid, the plant takes root and begins to grow.",
+        "significance": "Like the early morning sun that brings warmth and light, the yellow belt student is beginning to understand basic Taekwondo principles and techniques.",
         "symbolism": "Dawn of understanding, emerging knowledge, growing confidence"
       },
       "questions": [
         {
-          "question": "What does the orange belt represent?",
-          "answer": "The sun beginning to rise - the student is starting to see the light of knowledge."
-        },
-        {
-          "question": "How is the orange belt student like the morning sun?",
-          "answer": "They are beginning to understand basic Taekwondo principles and bring warmth to their training."
+          "question": "What does the yellow belt represent?",
+          "answer": "The Earth."
         }
       ]
     },
@@ -53,7 +49,7 @@
         "uniform_care": [
           "Keep your dobok clean and pressed",
           "Tie your belt properly with the correct knot",
-          "Remove jewelry before training for safety",
+          "Remove jewellry before training for safety",
           "Keep fingernails and toenails trimmed"
         ]
       },
@@ -80,50 +76,50 @@
         "class_commands": [
           {
             "english": "Line up",
-            "korean": "Yeol Majchweo",
-            "pronunciation": "YUL-mah-chwo",
-            "usage": "Students form lines for class beginning"
+            "phonetic": "YUL-mah-chwo",
+            "usage": "Students form lines for class beginning",
+            "romanised": "Yeol Majchweo"
           },
           {
             "english": "At ease",
-            "korean": "Shwieo",
-            "pronunciation": "SHWEE-oh",
-            "usage": "Relax from attention position"
+            "phonetic": "SHWEE-oh",
+            "usage": "Relax from attention position",
+            "romanised": "Shwieo"
           },
           {
             "english": "Turn around",
-            "korean": "Dwiro Dora",
-            "pronunciation": "DWEE-roh DOH-rah",
-            "usage": "Turn to face opposite direction"
+            "phonetic": "DWEE-roh DOH-rah",
+            "usage": "Turn to face opposite direction",
+            "romanised": "Dwiro Dora"
           }
         ],
         "counting_extended": [
           {
             "english": "Four",
-            "korean": "Net",
-            "pronunciation": "NET"
+            "phonetic": "NET",
+            "romanised": "Net"
           },
           {
             "english": "Five",
-            "korean": "Daseot",
-            "pronunciation": "DAH-sut"
+            "phonetic": "DAH-sut",
+            "romanised": "Daseot"
           }
         ],
         "basic_techniques": [
           {
             "english": "Punch",
-            "korean": "Jireugi",
-            "pronunciation": "jee-RUH-gee"
+            "phonetic": "jee-RUH-gee",
+            "romanised": "Jireugi"
           },
           {
             "english": "Block",
-            "korean": "Makgi",
-            "pronunciation": "MAHK-gee"
+            "phonetic": "MAHK-gee",
+            "romanised": "Makgi"
           },
           {
             "english": "Stance",
-            "korean": "Sogi",
-            "pronunciation": "SOH-gee"
+            "phonetic": "SOH-gee",
+            "romanised": "Sogi"
           }
         ]
       },

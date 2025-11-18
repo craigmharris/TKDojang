@@ -6,10 +6,10 @@
     {
       "id": "dwit_chagi",
       "names": {
-        "korean": "뒤차기",
-        "korean_romanized": "Dwit Chagi",
         "english": "Back Kick",
-        "phonetic": "/twi.tʃʰa.ɡi/"
+        "phonetic": "/twi.tʃʰa.ɡi/",
+        "romanised": "Dwit Chagi",
+        "hangul": "뒤차기"
       },
       "description": "A powerful linear kick executed backwards, striking with the heel. The practitioner looks over the shoulder to aim while driving the heel straight back into the target.",
       "execution": {
@@ -18,8 +18,8 @@
         "retraction": "Pull foot back to chamber before placing down"
       },
       "striking_tool": {
-        "korean": "뒷축",
-        "korean_romanized": "Dwitchook",
+        "hangul": "뒷축",
+        "romanised": "Dwitchook",
         "english": "Back Heel",
         "phonetic": "/twit.tʃʰuk/"
       },
@@ -69,8 +69,8 @@
       "id": "kick_back_piercing_kick",
       "names": {
         "english": "Back Piercing Kick",
-        "korean_romanized": "Dwit Cha Jirugi",
-        "korean_hangul": "뒤 차 지르기"
+        "romanised": "Dwit Cha Jirugi",
+        "hangul": "뒤 차 지르기"
       },
       "category": "kicks"
     },
@@ -78,8 +78,8 @@
       "id": "kick_checking_kick",
       "names": {
         "english": "Checking Kick",
-        "korean_romanized": "Cha Mum Chagi",
-        "korean_hangul": "차 몸 차기"
+        "romanised": "Cha Mum Chagi",
+        "hangul": "차 몸 차기"
       },
       "category": "kicks"
     },
@@ -87,18 +87,18 @@
       "id": "kick_consecutive_kick",
       "names": {
         "english": "Consecutive Kick",
-        "korean_romanized": "Yonsok Chagi",
-        "korean_hangul": "연속 차기"
+        "romanised": "Yonsok Chagi",
+        "hangul": "연속 차기"
       },
       "category": "kicks"
     },
     {
       "id": "bandal_chagi",
       "names": {
-        "korean": "반달차기",
-        "korean_romanized": "Bandal Chagi",
         "english": "Crescent Kick",
-        "phonetic": "/pan.dal.tʃʰa.ɡi/"
+        "phonetic": "/pan.dal.tʃʰa.ɡi/",
+        "romanised": "Bandal Chagi",
+        "hangul": "반달차기"
       },
       "description": "A sweeping kick that travels in a crescent or semi-circular path, typically used to strike or sweep away an opponent's guard or attack the side of the head.",
       "execution": {
@@ -107,8 +107,8 @@
         "retraction": "Control descent of leg after completing arc"
       },
       "striking_tool": {
-        "korean": "발등",
-        "korean_romanized": "Baldeung",
+        "hangul": "발등",
+        "romanised": "Baldeung",
         "english": "Instep",
         "phonetic": "/pal.dɯŋ/"
       },
@@ -155,18 +155,18 @@
       "id": "kick_dodging_reverse_turning_kick",
       "names": {
         "english": "Dodging Reverse Turning Kick",
-        "korean_romanized": "Pihamyo Bandae Dollyo Chagi",
-        "korean_hangul": "피하며 반대 돌려 차기"
+        "romanised": "Pihamyo Bandae Dollyo Chagi",
+        "hangul": "피하며 반대 돌려 차기"
       },
       "category": "kicks"
     },
     {
       "id": "naeryo_chagi",
       "names": {
-        "korean": "내려차기",
-        "korean_romanized": "Naeryo Chagi",
         "english": "Downward Kick",
-        "phonetic": "/ne.ɾjʌ.tʃʰa.ɡi/"
+        "phonetic": "/ne.ɾjʌ.tʃʰa.ɡi/",
+        "romanised": "Naeryo Chagi",
+        "hangul": "내려차기"
       },
       "description": "A downward striking kick where the leg is raised high and brought down forcefully onto the target, striking with the heel or back heel.",
       "execution": {
@@ -175,8 +175,8 @@
         "retraction": "Control descent and prepare for next technique"
       },
       "striking_tool": {
-        "korean": "뒷축",
-        "korean_romanized": "Dwitchook",
+        "hangul": "뒷축",
+        "romanised": "Dwitchook",
         "english": "Back Heel",
         "phonetic": "/twit.tʃʰuk/"
       },
@@ -222,8 +222,8 @@
       "id": "kick_flying_front_kick",
       "names": {
         "english": "Flying Front Kick",
-        "korean_romanized": "Twimyo Ap Chagi",
-        "korean_hangul": "뛰며 앞 차기"
+        "romanised": "Twimyo Ap Chagi",
+        "hangul": "뛰며 앞 차기"
       },
       "category": "kicks"
     },
@@ -231,18 +231,18 @@
       "id": "kick_flying_high_kick",
       "names": {
         "english": "Flying High Kick",
-        "korean_romanized": "Twimyo Nopi Chagi",
-        "korean_hangul": "뛰며 높이 차기"
+        "romanised": "Twimyo Nopi Chagi",
+        "hangul": "뛰며 높이 차기"
       },
       "category": "kicks"
     },
     {
       "id": "twimyo_chagi",
       "names": {
-        "korean": "뛰며차기",
-        "korean_romanized": "Twimyo Chagi",
         "english": "Flying Kick",
-        "phonetic": "/tʃwi.mjʌ.tʃʰa.ɡi/"
+        "phonetic": "/tʃwi.mjʌ.tʃʰa.ɡi/",
+        "romanised": "Twimyo Chagi",
+        "hangul": "뛰며차기"
       },
       "description": "Any kick performed while airborne. Can be combined with various kick types such as front kick, side kick, or turning kick to increase power and reach.",
       "execution": {
@@ -251,8 +251,8 @@
         "landing": "Land in balanced stance ready for next technique"
       },
       "striking_tool": {
-        "korean": "다양함",
-        "korean_romanized": "Various",
+        "hangul": "다양함",
+        "romanised": "Various",
         "english": "Varies by kick type",
         "phonetic": "/ta.jaŋ.ham/"
       },
@@ -296,10 +296,10 @@
     {
       "id": "twimyo_yop_chagi",
       "names": {
-        "korean": "뛰며옭차기",
-        "korean_romanized": "Twimyo Yop Chagi",
         "english": "Flying Side Kick",
-        "phonetic": "/tʃwi.mjʌ.jʌp.tʃʰa.ɡi/"
+        "phonetic": "/tʃwi.mjʌ.jʌp.tʃʰa.ɡi/",
+        "romanised": "Twimyo Yop Chagi",
+        "hangul": "뛰며옭차기"
       },
       "description": "A jumping side kick performed while airborne, combining the power of a jump with the penetrating force of a side kick.",
       "execution": {
@@ -308,8 +308,8 @@
         "landing": "Land in controlled stance"
       },
       "striking_tool": {
-        "korean": "발칼",
-        "korean_romanized": "Balkal",
+        "hangul": "발칼",
+        "romanised": "Balkal",
         "english": "Footsword",
         "phonetic": "/pal.kʰal/"
       },
@@ -353,8 +353,8 @@
       "id": "kick_flying_side_piercing_kick",
       "names": {
         "english": "Flying Side Piercing Kick",
-        "korean_romanized": "Twimyo Yop Cha Jirugi",
-        "korean_hangul": "뛰며 옆 차 지르기"
+        "romanised": "Twimyo Yop Cha Jirugi",
+        "hangul": "뛰며 옆 차 지르기"
       },
       "category": "kicks"
     },
@@ -362,8 +362,8 @@
       "id": "kick_flying_side_thrusting_kick",
       "names": {
         "english": "Flying Side Thrusting Kick",
-        "korean_romanized": "Twimyo Yop Cha Tulgi",
-        "korean_hangul": "뛰며 옆 차 틀기"
+        "romanised": "Twimyo Yop Cha Tulgi",
+        "hangul": "뛰며 옆 차 틀기"
       },
       "category": "kicks"
     },
@@ -371,8 +371,8 @@
       "id": "kick_flying_turning_kick",
       "names": {
         "english": "Flying turning Kick",
-        "korean_romanized": "Twimyo Dollyo Chagi",
-        "korean_hangul": "뛰며 돌려 차기"
+        "romanised": "Twimyo Dollyo Chagi",
+        "hangul": "뛰며 돌려 차기"
       },
       "category": "kicks"
     },
@@ -380,8 +380,8 @@
       "id": "kick_flying_twisting_kick",
       "names": {
         "english": "Flying Twisting Kick",
-        "korean_romanized": "Twimyo Bituro Chagi",
-        "korean_hangul": "뛰며 비트로 차기"
+        "romanised": "Twimyo Bituro Chagi",
+        "hangul": "뛰며 비트로 차기"
       },
       "category": "kicks"
     },
@@ -389,18 +389,18 @@
       "id": "kick_flying_two_direction_kick_split_kick",
       "names": {
         "english": "Flying Two Direction Kick",
-        "korean_romanized": "Twimyo Sangbang Chagi",
-        "korean_hangul": "뛰며 상방 차기"
+        "romanised": "Twimyo Sangbang Chagi",
+        "hangul": "뛰며 상방 차기"
       },
       "category": "kicks"
     },
     {
       "id": "ap_cha_busigi",
       "names": {
-        "korean": "앙차부시기",
-        "korean_romanized": "Ap Cha Busigi",
         "english": "Front Snap Kick",
-        "phonetic": "/ap.tʃʰa.bu.ɕi.ɡi/"
+        "phonetic": "/ap.tʃʰa.bu.ɕi.ɡi/",
+        "romanised": "Ap Cha Busigi",
+        "hangul": "앙차부시기"
       },
       "description": "A basic linear kick executed by raising the knee and extending the foot forward, striking with the ball of the foot. The knee should be brought up first, then the foot extended forward in a snapping motion.",
       "execution": {
@@ -409,8 +409,8 @@
         "retraction": "Pull foot back to chambered position before placing down"
       },
       "striking_tool": {
-        "korean": "앞꿈치",
-        "korean_romanized": "Apkumchi",
+        "hangul": "앞꿈치",
+        "romanised": "Apkumchi",
         "english": "Ball of Foot",
         "phonetic": "/ap.k͈um.tʃʰi/"
       },
@@ -462,10 +462,10 @@
     {
       "id": "golcho_chagi",
       "names": {
-        "korean": "굴추차기",
-        "korean_romanized": "Golcho Chagi",
         "english": "Hooking Kick",
-        "phonetic": "/ɡol.tʃʰo.tʃʰa.ɡi/"
+        "phonetic": "/ɡol.tʃʰo.tʃʰa.ɡi/",
+        "romanised": "Golcho Chagi",
+        "hangul": "굴추차기"
       },
       "description": "A hooking kick that starts like a side kick but curves inward at the end, striking with the back heel. The foot hooks around to strike the side or back of the target.",
       "execution": {
@@ -474,8 +474,8 @@
         "retraction": "Reverse the hooking motion back to chamber"
       },
       "striking_tool": {
-        "korean": "뒷축",
-        "korean_romanized": "Dwitchook",
+        "hangul": "뒷축",
+        "romanised": "Dwitchook",
         "english": "Back Heel",
         "phonetic": "/twit.tʃʰuk/"
       },
@@ -520,18 +520,18 @@
       "id": "kick_inward_crescent_kick",
       "names": {
         "english": "Inward Crescent Kick",
-        "korean_romanized": "Anaero Bandal Chagi",
-        "korean_hangul": "안으로 반달 차기"
+        "romanised": "Anaero Bandal Chagi",
+        "hangul": "안으로 반달 차기"
       },
       "category": "kicks"
     },
     {
       "id": "moorup_chagi",
       "names": {
-        "korean": "무릎차기",
-        "korean_romanized": "Moorup Chagi",
         "english": "Knee Kick",
-        "phonetic": "/mu.ɾɯp.tʃʰa.ɡi/"
+        "phonetic": "/mu.ɾɯp.tʃʰa.ɡi/",
+        "romanised": "Moorup Chagi",
+        "hangul": "무릎차기"
       },
       "description": "A close-range attack using the knee as the striking surface, typically delivered in an upward motion into the opponent's midsection or ribs.",
       "execution": {
@@ -540,8 +540,8 @@
         "retraction": "Lower leg back to starting position"
       },
       "striking_tool": {
-        "korean": "무릎",
-        "korean_romanized": "Moorup",
+        "hangul": "무릎",
+        "romanised": "Moorup",
         "english": "Knee",
         "phonetic": "/mu.ɾɯp/"
       },
@@ -590,8 +590,8 @@
       "id": "kick_knee_low_front_snap_kick",
       "names": {
         "english": "Knee Low Front Snap Kick",
-        "korean_romanized": "Moorup Ap Cha Busigi",
-        "korean_hangul": "무릎 앞 차 부시기"
+        "romanised": "Moorup Ap Cha Busigi",
+        "hangul": "무릎 앞 차 부시기"
       },
       "category": "kicks"
     },
@@ -599,18 +599,18 @@
       "id": "kick_outward_crescent_kick",
       "names": {
         "english": "Outward Crescent Kick",
-        "korean_romanized": "Bakaero Bandal Chagi",
-        "korean_hangul": "바깥으로 반달 차기"
+        "romanised": "Bakaero Bandal Chagi",
+        "hangul": "바깥으로 반달 차기"
       },
       "category": "kicks"
     },
     {
       "id": "bandae_dollyo_goro_chagi",
       "names": {
-        "korean": "반대돌려걸로차기",
-        "korean_romanized": "Bandae Dollyo Goro Chagi",
         "english": "Reverse Hook Kick",
-        "phonetic": "/pan.de.dol.ljʌ.ɡʌl.lo.tʃʰa.ɡi/"
+        "phonetic": "/pan.de.dol.ljʌ.ɡʌl.lo.tʃʰa.ɡi/",
+        "romanised": "Bandae Dollyo Goro Chagi",
+        "hangul": "반대돌려걸로차기"
       },
       "description": "Hook kick performed in reverse direction - an advanced spinning technique for surprise attacks and counter-attacks that is difficult for opponents to anticipate due to the reverse rotation.",
       "execution": {
@@ -619,8 +619,8 @@
         "recovery": "Complete rotation while maintaining balance, return to fighting stance"
       },
       "striking_tool": {
-        "korean": "뒤꿈치",
-        "korean_romanized": "Dwikkumchi",
+        "hangul": "뒤꿈치",
+        "romanised": "Dwikkumchi",
         "english": "Heel",
         "phonetic": "/twi.k͈ɯm.tʃʰi/"
       },
@@ -667,18 +667,18 @@
       "id": "kick_reverse_hooking_kick",
       "names": {
         "english": "Reverse Hooking Kick",
-        "korean_romanized": "Bandae Golcho Chagi",
-        "korean_hangul": "반대 걸차 차기"
+        "romanised": "Bandae Golcho Chagi",
+        "hangul": "반대 걸차 차기"
       },
       "category": "kicks"
     },
     {
       "id": "bandae_dollyo_chagi",
       "names": {
-        "korean": "반대돌려차기",
-        "korean_romanized": "Bandae Dollyo Chagi",
         "english": "Reverse Turning Kick",
-        "phonetic": "/pan.de.dol.ljʌ.tʃʰa.ɡi/"
+        "phonetic": "/pan.de.dol.ljʌ.tʃʰa.ɡi/",
+        "romanised": "Bandae Dollyo Chagi",
+        "hangul": "반대돌려차기"
       },
       "description": "A reverse circular kick executed by spinning the body in the opposite direction of a regular turning kick, striking with the back heel. Creates deceptive timing and power.",
       "execution": {
@@ -687,8 +687,8 @@
         "retraction": "Control landing and prepare for follow-up"
       },
       "striking_tool": {
-        "korean": "뒷축",
-        "korean_romanized": "Dwitchook",
+        "hangul": "뒷축",
+        "romanised": "Dwitchook",
         "english": "Back Heel",
         "phonetic": "/twit.tʃʰuk/"
       },
@@ -736,10 +736,10 @@
     {
       "id": "ap_cha_olligi",
       "names": {
-        "korean": "앙차올리기",
-        "korean_romanized": "Ap Cha Olligi",
         "english": "Rising Kick",
-        "phonetic": "/ap.tʃʰa.ol.li.ɡi/"
+        "phonetic": "/ap.tʃʰa.ol.li.ɡi/",
+        "romanised": "Ap Cha Olligi",
+        "hangul": "앙차올리기"
       },
       "description": "The fundamental kick in Taekwondo - an upward kicking motion performed as both stretching and power development exercise. Executed as 3-count movement with chamber, extension, and recovery phases.",
       "execution": {
@@ -748,8 +748,8 @@
         "recovery": "Re-chamber the kick and return to ready position (3-count execution)"
       },
       "striking_tool": {
-        "korean": "앞꿈치",
-        "korean_romanized": "Apkumchi",
+        "hangul": "앞꿈치",
+        "romanised": "Apkumchi",
         "english": "Ball of Foot",
         "phonetic": "/ap.kɯm.tʃʰi/"
       },
@@ -801,10 +801,10 @@
     {
       "id": "yop_cha_jirugi",
       "names": {
-        "korean": "옭차지르기",
-        "korean_romanized": "Yop Cha Jirugi",
         "english": "Side Piercing Kick",
-        "phonetic": "/jʌp.tʃʰa.tʃi.ɾɯ.ɡi/"
+        "phonetic": "/jʌp.tʃʰa.tʃi.ɾɯ.ɡi/",
+        "romanised": "Yop Cha Jirugi",
+        "hangul": "옭차지르기"
       },
       "description": "A penetrating side kick delivered with thrusting motion, striking with the footsword to pierce through the target.",
       "execution": {
@@ -813,8 +813,8 @@
         "retraction": "Pull foot back to chamber maintaining balance"
       },
       "striking_tool": {
-        "korean": "발칼",
-        "korean_romanized": "Balkal",
+        "hangul": "발칼",
+        "romanised": "Balkal",
         "english": "Footsword",
         "phonetic": "/pal.kʰal/"
       },
@@ -858,8 +858,8 @@
       "id": "kick_side_rising_kick",
       "names": {
         "english": "Side Rising Kick",
-        "korean_romanized": "Yop Cha Olligi",
-        "korean_hangul": "옆 차 올리기"
+        "romanised": "Yop Cha Olligi",
+        "hangul": "옆 차 올리기"
       },
       "category": "kicks"
     },
@@ -867,8 +867,8 @@
       "id": "kick_side_thrusting_kick",
       "names": {
         "english": "Side Thrusting Kick",
-        "korean_romanized": "Yop Cha Tulgi",
-        "korean_hangul": "옆 차 틀기"
+        "romanised": "Yop Cha Tulgi",
+        "hangul": "옆 차 틀기"
       },
       "category": "kicks"
     },
@@ -876,8 +876,8 @@
       "id": "kick_stamping_kick",
       "names": {
         "english": "Stamping Kick",
-        "korean_romanized": "Cha Busigi",
-        "korean_hangul": "차 부시기"
+        "romanised": "Cha Busigi",
+        "hangul": "차 부시기"
       },
       "category": "kicks"
     },
@@ -885,18 +885,18 @@
       "id": "kick_sweeping_kick",
       "names": {
         "english": "Sweeping Kick",
-        "korean_romanized": "Goro Chagi",
-        "korean_hangul": "고로 차기"
+        "romanised": "Goro Chagi",
+        "hangul": "고로 차기"
       },
       "category": "kicks"
     },
     {
       "id": "dollyo_chagi",
       "names": {
-        "korean": "돌려차기",
-        "korean_romanized": "Dollyo Chagi",
         "english": "Turning Kick",
-        "phonetic": "/tol.ɾjʌ.tʃʰa.ɡi/"
+        "phonetic": "/tol.ɾjʌ.tʃʰa.ɡi/",
+        "romanised": "Dollyo Chagi",
+        "hangul": "돌려차기"
       },
       "description": "A circular kick that travels in an arc, striking with the ball of the foot or instep. The hip rotates to generate power as the leg sweeps in a circular motion to the target.",
       "execution": {
@@ -905,8 +905,8 @@
         "retraction": "Pull foot back along same circular path to chamber"
       },
       "striking_tool": {
-        "korean": "앞꿈치",
-        "korean_romanized": "Apkumchi",
+        "hangul": "앞꿈치",
+        "romanised": "Apkumchi",
         "english": "Ball of Foot",
         "phonetic": "/ap.k͈um.tʃʰi/"
       },
@@ -960,8 +960,8 @@
       "id": "kick_twisting_kick",
       "names": {
         "english": "Twisting Kick",
-        "korean_romanized": "Bituro Chagi",
-        "korean_hangul": "비트로 차기"
+        "romanised": "Bituro Chagi",
+        "hangul": "비트로 차기"
       },
       "category": "kicks"
     },
@@ -969,8 +969,8 @@
       "id": "kick_vertical_kick",
       "names": {
         "english": "Vertical Kick",
-        "korean_romanized": "Sewo Chagi",
-        "korean_hangul": "세워 차기"
+        "romanised": "Sewo Chagi",
+        "hangul": "세워 차기"
       },
       "category": "kicks"
     }

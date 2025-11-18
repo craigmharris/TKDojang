@@ -9,7 +9,7 @@ import SwiftData
  * FEATURES:
  * - Load authentic technique names from JSON files
  * - Scramble real technique phrases for decoding
- * - Support bilingual mode (English ↔ Korean romanized)
+ * - Support bilingual mode (English ↔ Korean romanised)
  * - Validate user's word arrangement
  * - Track attempts and provide feedback
  *

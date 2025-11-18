@@ -401,9 +401,9 @@ final class PatternSystemTests: XCTestCase {
     }
     
     struct PatternJSONPattern: Codable {
-        let name: String
+        let english: String
         let hangul: String
-        let pronunciation: String
+        let romanised: String
         let phonetic: String
         let englishMeaning: String
         let significance: String
@@ -416,9 +416,9 @@ final class PatternSystemTests: XCTestCase {
         let diagramImageUrl: String?
         let startingMoveImageUrl: String?
         let moves: [PatternJSONMove]
-        
+
         enum CodingKeys: String, CodingKey {
-            case name, hangul, pronunciation, phonetic
+            case english, hangul, romanised, phonetic
             case englishMeaning = "english_meaning"
             case significance
             case moveCount = "move_count"
@@ -436,8 +436,8 @@ final class PatternSystemTests: XCTestCase {
     struct PatternJSONMove: Codable {
         let moveNumber: Int
         let stance: String
-        let technique: String
-        let koreanTechnique: String?
+        let english: String
+        let romanised: String?
         let direction: String
         let target: String?
         let keyPoints: String
@@ -451,8 +451,7 @@ final class PatternSystemTests: XCTestCase {
         
         enum CodingKeys: String, CodingKey {
             case moveNumber = "move_number"
-            case stance, technique
-            case koreanTechnique = "korean_technique"
+            case stance, english, romanised
             case direction, target
             case keyPoints = "key_points"
             case commonMistakes = "common_mistakes"
@@ -573,7 +572,7 @@ final class PatternSystemTests: XCTestCase {
         for (fileName, jsonData) in jsonFiles {
             for pattern in jsonData.patterns {
                 XCTAssertGreaterThan(pattern.applicableBeltLevels.count, 0, 
-                                   "Pattern '\(pattern.name)' in \(fileName) should have applicable belt levels")
+                                   "Pattern '\(pattern.english)' in \(fileName) should have applicable belt levels")
                 
                 // Validate belt level format
                 for beltLevel in pattern.applicableBeltLevels {
@@ -601,7 +600,7 @@ final class PatternSystemTests: XCTestCase {
         for (_, jsonData) in jsonFiles {
             for pattern in jsonData.patterns {
                 XCTAssertEqual(pattern.moves.count, pattern.moveCount, 
-                             "Pattern '\(pattern.name)' move count should match moves array length")
+                             "Pattern '\(pattern.english)' move count should match moves array length")
                 
                 // Validate move sequence
                 let sortedMoves = pattern.moves.sorted { $0.moveNumber < $1.moveNumber }
@@ -609,7 +608,7 @@ final class PatternSystemTests: XCTestCase {
                     XCTAssertEqual(move.moveNumber, index + 1, 
                                  "Move numbers should be sequential starting from 1")
                     XCTAssertFalse(move.stance.isEmpty, "Move \(move.moveNumber) should have stance")
-                    XCTAssertFalse(move.technique.isEmpty, "Move \(move.moveNumber) should have technique")
+                    XCTAssertFalse(move.english.isEmpty, "Move \(move.moveNumber) should have technique")
                 }
             }
         }
@@ -639,12 +638,12 @@ final class PatternSystemTests: XCTestCase {
             
             for pattern in jsonData.patterns {
                 // Check for duplicate patterns
-                XCTAssertFalse(allPatternNames.contains(pattern.name), 
-                             "Pattern '\(pattern.name)' should not be duplicated across files")
-                allPatternNames.insert(pattern.name)
+                XCTAssertFalse(allPatternNames.contains(pattern.english), 
+                             "Pattern '\(pattern.english)' should not be duplicated across files")
+                allPatternNames.insert(pattern.english)
                 
                 // Validate pattern completeness
-                XCTAssertFalse(pattern.name.isEmpty, "Pattern name should not be empty")
+                XCTAssertFalse(pattern.english.isEmpty, "Pattern name should not be empty")
                 XCTAssertFalse(pattern.hangul.isEmpty, "Pattern hangul should not be empty")
                 XCTAssertFalse(pattern.significance.isEmpty, "Pattern significance should not be empty")
                 XCTAssertGreaterThan(pattern.moveCount, 0, "Pattern should have moves")
@@ -724,7 +723,7 @@ final class PatternSystemTests: XCTestCase {
         // Create patterns from JSON data for service testing
         for patternData in jsonData.patterns.prefix(1) { // Test with first pattern from JSON
             let pattern = Pattern(
-                name: patternData.name,
+                name: patternData.english,
                 hangul: patternData.hangul,
                 englishMeaning: patternData.englishMeaning,
                 significance: patternData.significance,
@@ -734,14 +733,14 @@ final class PatternSystemTests: XCTestCase {
             )
             pattern.beltLevels.append(testBelts.first!)
             testContext.insert(pattern)
-            
+
             // Create moves from JSON data
             for moveData in patternData.moves.prefix(3) { // Test with first 3 moves from JSON
                 let move = PatternMove(
                     moveNumber: moveData.moveNumber,
                     stance: moveData.stance,
-                    technique: moveData.technique,
-                    koreanTechnique: moveData.koreanTechnique ?? "",
+                    technique: moveData.english,
+                    koreanTechnique: moveData.romanised ?? "",
                     direction: moveData.direction,
                     target: moveData.target,
                     keyPoints: moveData.keyPoints,
@@ -765,7 +764,7 @@ final class PatternSystemTests: XCTestCase {
         // Validate pattern data matches JSON expectations
         if let pattern = availablePatterns.first,
            let jsonPattern = jsonData.patterns.first {
-            XCTAssertEqual(pattern.name, jsonPattern.name, "Pattern name should match JSON")
+            XCTAssertEqual(pattern.name, jsonPattern.english, "Pattern name should match JSON")
             XCTAssertEqual(pattern.moveCount, jsonPattern.moveCount, "Move count should match JSON")
             XCTAssertEqual(pattern.hangul, jsonPattern.hangul, "Hangul should match JSON")
             XCTAssertEqual(pattern.significance, jsonPattern.significance, "Significance should match JSON")

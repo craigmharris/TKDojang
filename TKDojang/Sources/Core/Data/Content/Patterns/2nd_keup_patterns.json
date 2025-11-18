@@ -10,9 +10,7 @@
   },
   "patterns": [
     {
-      "name": "Hwa-Rang",
       "hangul": "화랑",
-      "pronunciation": "hwa-rang",
       "phonetic": "/hwa.raŋ/",
       "english_meaning": "Flowering Youth",
       "significance": "Named after the Hwa-Rang youth group which originated in the Silla Dynasty in the early 7th century. The 29 movements refer to the 29th Infantry Division, where Taekwondo developed into maturity.",
@@ -30,8 +28,6 @@
         {
           "move_number": 1,
           "stance": "Sitting Stance",
-          "technique": "Palm Pushing Block",
-          "korean_technique": "Sonbadak Mireo Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Strong L-stance foundation",
@@ -41,13 +37,13 @@
           "image2URL": "hwa-rang-1-technique",
           "image3URL": "hwa-rang-1-progress",
           "execution_speed": "normal",
-          "movement": "Left Slide"
+          "movement": "Left Slide",
+          "english": "Palm Pushing Block",
+          "romanised": "Sonbadak Mireo Makgi"
         },
         {
           "move_number": 2,
           "stance": "Sitting Stance",
-          "technique": "Double Punch",
-          "korean_technique": "Doo Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Mirror technique with precision",
@@ -57,13 +53,13 @@
           "image2URL": "hwa-rang-2-technique",
           "image3URL": "hwa-rang-2-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Double Punch",
+          "romanised": "Doo Jirugi"
         },
         {
           "move_number": 3,
           "stance": "L-stance",
-          "technique": "Twin Outer Forearm Block",
-          "korean_technique": "Sang Bakat Palmok Makgi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Strong northward foundation",
@@ -73,13 +69,13 @@
           "image2URL": "hwa-rang-3-technique",
           "image3URL": "hwa-rang-3-progress",
           "execution_speed": "normal",
-          "movement": "Right 90°"
+          "movement": "Right 90°",
+          "english": "Twin Outer Forearm Block",
+          "romanised": "Sang Bakat Palmok Makgi"
         },
         {
           "move_number": 4,
           "stance": "L-stance",
-          "technique": "Upward Punch",
-          "korean_technique": "Kaunde jirugi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Strong offensive technique",
@@ -89,13 +85,13 @@
           "image2URL": "hwa-rang-4-technique",
           "image3URL": "hwa-rang-4-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Upward Punch",
+          "romanised": "Kaunde jirugi"
         },
         {
           "move_number": 5,
           "stance": "Fixed Stance",
-          "technique": "Sliding Side Punch",
-          "korean_technique": "Najunde makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "180-degree turn precision",
@@ -105,13 +101,13 @@
           "image2URL": "hwa-rang-5-technique",
           "image3URL": "hwa-rang-5-progress",
           "execution_speed": "normal",
-          "movement": "Right Slide"
+          "movement": "Right Slide",
+          "english": "Sliding Side Punch",
+          "romanised": "Najunde makgi"
         },
         {
           "move_number": 6,
           "stance": "Vertical Stance",
-          "technique": "Knife Hand Downward Strike",
-          "korean_technique": "Naeryo Sonkal Taerigi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Mirror northern technique",
@@ -121,13 +117,13 @@
           "image2URL": "hwa-rang-6-technique",
           "image3URL": "hwa-rang-6-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Knife Hand Downward Strike",
+          "romanised": "Naeryo Sonkal Taerigi"
         },
         {
           "move_number": 7,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Return to north direction",
@@ -137,13 +133,13 @@
           "image2URL": "hwa-rang-7-technique",
           "image3URL": "hwa-rang-7-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 8,
           "stance": "Walking Stance",
-          "technique": "Outer Forearm Block",
-          "korean_technique": "Bakat Palmok Makgi",
           "direction": "A",
           "target": "Low Section",
           "key_points": "Strong defensive technique",
@@ -153,13 +149,13 @@
           "image2URL": "hwa-rang-8-technique",
           "image3URL": "hwa-rang-8-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Outer Forearm Block",
+          "romanised": "Bakat Palmok Makgi"
         },
         {
           "move_number": 9,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Continue defensive pattern",
@@ -169,13 +165,13 @@
           "image2URL": "hwa-rang-9-technique",
           "image3URL": "hwa-rang-9-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 10,
           "stance": "Walking Stance",
-          "technique": "Release Move",
-          "korean_technique": "Nohgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Peak of northern blocking sequence",
@@ -185,13 +181,13 @@
           "image2URL": "hwa-rang-10-technique",
           "image3URL": "hwa-rang-10-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Release Move",
+          "romanised": "Nohgi"
         },
         {
           "move_number": 11,
           "stance": "-",
-          "technique": "Side Piercing Kick",
-          "korean_technique": "Yop Cha Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "180-degree turn with block",
@@ -201,13 +197,13 @@
           "image2URL": "hwa-rang-11-technique",
           "image3URL": "hwa-rang-11-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Side Piercing Kick",
+          "romanised": "Yop Cha Jirugi"
         },
         {
           "move_number": 12,
           "stance": "L-stance",
-          "technique": "Knife Hand Strike",
-          "korean_technique": "Sonkal Taerigi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Mirror northern blocking",
@@ -217,13 +213,13 @@
           "image2URL": "hwa-rang-12-technique",
           "image3URL": "hwa-rang-12-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Knife Hand Strike",
+          "romanised": "Sonkal Taerigi"
         },
         {
           "move_number": 13,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Continue southern blocking",
@@ -233,13 +229,13 @@
           "image2URL": "hwa-rang-13-technique",
           "image3URL": "hwa-rang-13-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 14,
           "stance": "Walking Stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Peak southern blocking",
@@ -249,13 +245,13 @@
           "image2URL": "hwa-rang-14-technique",
           "image3URL": "hwa-rang-14-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 15,
           "stance": "L-stance",
-          "technique": "Knife Hand Guarding Block",
-          "korean_technique": "Sonkal Daebi Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "90-degree turn with punch",
@@ -265,13 +261,13 @@
           "image2URL": "hwa-rang-15-technique",
           "image3URL": "hwa-rang-15-progress",
           "execution_speed": "normal",
-          "movement": "Left 270°"
+          "movement": "Left 270°",
+          "english": "Knife Hand Guarding Block",
+          "romanised": "Sonkal Daebi Makgi"
         },
         {
           "move_number": 16,
           "stance": "Walking Stance",
-          "technique": "Straight Fingertip Thrust",
-          "korean_technique": "Sun Sonkut Tulgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Mirror western technique",
@@ -281,13 +277,13 @@
           "image2URL": "hwa-rang-16-technique",
           "image3URL": "hwa-rang-16-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Straight Fingertip Thrust",
+          "romanised": "Sun Sonkut Tulgi"
         },
         {
           "move_number": 17,
           "stance": "L-stance",
-          "technique": "Knife Hand Guarding Block",
-          "korean_technique": "Sonkal Daebi Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Return to fundamental blocking",
@@ -297,13 +293,13 @@
           "image2URL": "hwa-rang-17-technique",
           "image3URL": "hwa-rang-17-progress",
           "execution_speed": "normal",
-          "movement": "Left 180°"
+          "movement": "Left 180°",
+          "english": "Knife Hand Guarding Block",
+          "romanised": "Sonkal Daebi Makgi"
         },
         {
           "move_number": 18,
           "stance": "-",
-          "technique": "Turning Kick",
-          "korean_technique": "Dollyo Chagi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Introduction of side piercing kick",
@@ -313,13 +309,13 @@
           "image2URL": "hwa-rang-18-technique",
           "image3URL": "hwa-rang-18-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Turning Kick",
+          "romanised": "Dollyo Chagi"
         },
         {
           "move_number": 19,
           "stance": "-",
-          "technique": "Turning Kick",
-          "korean_technique": "Dollyo Chagi",
           "direction": "A",
           "target": "High Section",
           "key_points": "Land from kick with knife hand",
@@ -329,13 +325,13 @@
           "image2URL": "hwa-rang-19-technique",
           "image3URL": "hwa-rang-19-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Turning Kick",
+          "romanised": "Dollyo Chagi"
         },
         {
           "move_number": 20,
           "stance": "Walking Stance",
-          "technique": "Outer Forearm Block",
-          "korean_technique": "Bakat Palmok Makgi",
           "direction": "A",
           "target": "Low Section",
           "key_points": "Mirror side piercing kick",
@@ -345,13 +341,13 @@
           "image2URL": "hwa-rang-20-technique",
           "image3URL": "hwa-rang-20-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Outer Forearm Block",
+          "romanised": "Bakat Palmok Makgi"
         },
         {
           "move_number": 21,
           "stance": "L-stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Bilateral kick-strike consistency",
@@ -361,13 +357,13 @@
           "image2URL": "hwa-rang-21-technique",
           "image3URL": "hwa-rang-21-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 22,
           "stance": "L-stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Return to basic techniques",
@@ -377,13 +373,13 @@
           "image2URL": "hwa-rang-22-technique",
           "image3URL": "hwa-rang-22-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 23,
           "stance": "L-stance",
-          "technique": "Obverse Punch",
-          "korean_technique": "Baro Jirugi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Return to basic combination",
@@ -393,13 +389,13 @@
           "image2URL": "hwa-rang-23-technique",
           "image3URL": "hwa-rang-23-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Obverse Punch",
+          "romanised": "Baro Jirugi"
         },
         {
           "move_number": 24,
           "stance": "Walking Stance",
-          "technique": "X-Fist Pressing Block",
-          "korean_technique": "Kyocha Joomuk Noollo Makgi",
           "direction": "A",
           "target": "Low Section",
           "key_points": "Mirror basic combination",
@@ -409,13 +405,13 @@
           "image2URL": "hwa-rang-24-technique",
           "image3URL": "hwa-rang-24-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "X-Fist Pressing Block",
+          "romanised": "Kyocha Joomuk Noollo Makgi"
         },
         {
           "move_number": 25,
           "stance": "L-stance",
-          "technique": "Side Elbow Thrust",
-          "korean_technique": "Yop Palkup Taerigi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Southern basic sequence",
@@ -425,13 +421,13 @@
           "image2URL": "hwa-rang-25-technique",
           "image3URL": "hwa-rang-25-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Side Elbow Thrust",
+          "romanised": "Yop Palkup Taerigi"
         },
         {
           "move_number": 26,
           "stance": "Closed Stance",
-          "technique": "Inner Forearm Block / Outer Forearm Block",
-          "korean_technique": "An Palmok Makgi/Bakat Palmok Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Return to opening technique",
@@ -441,13 +437,13 @@
           "image2URL": "hwa-rang-26-technique",
           "image3URL": "hwa-rang-26-progress",
           "execution_speed": "normal",
-          "movement": "Left 90°"
+          "movement": "Left 90°",
+          "english": "Inner Forearm Block / Outer Forearm Block",
+          "romanised": "An Palmok Makgi/Bakat Palmok Makgi"
         },
         {
           "move_number": 27,
           "stance": "Closed Stance",
-          "technique": "Inner Forearm Block / Outer Forearm Block",
-          "korean_technique": "An Palmok Makgi/Bakat Palmok Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Final L-stance technique",
@@ -457,13 +453,13 @@
           "image2URL": "hwa-rang-27-technique",
           "image3URL": "hwa-rang-27-progress",
           "execution_speed": "normal",
-          "movement": "-"
+          "movement": "-",
+          "english": "Inner Forearm Block / Outer Forearm Block",
+          "romanised": "An Palmok Makgi/Bakat Palmok Makgi"
         },
         {
           "move_number": 28,
           "stance": "L-stance",
-          "technique": "Knife Hand Guarding Block",
-          "korean_technique": "Sonkal Daebi Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Penultimate technique",
@@ -473,13 +469,13 @@
           "image2URL": "hwa-rang-28-technique",
           "image3URL": "hwa-rang-28-progress",
           "execution_speed": "normal",
-          "movement": "Forward"
+          "movement": "Forward",
+          "english": "Knife Hand Guarding Block",
+          "romanised": "Sonkal Daebi Makgi"
         },
         {
           "move_number": 29,
           "stance": "L-stance",
-          "technique": "Knife Hand Guarding Block",
-          "korean_technique": "Sonkal Daebi Makgi",
           "direction": "A",
           "target": "Middle Section",
           "key_points": "Sharp return to attention",
@@ -489,9 +485,13 @@
           "image2URL": "hwa-rang-29-technique",
           "image3URL": "hwa-rang-29-progress",
           "execution_speed": "normal",
-          "movement": "Right 180°"
+          "movement": "Right 180°",
+          "english": "Knife Hand Guarding Block",
+          "romanised": "Sonkal Daebi Makgi"
         }
-      ]
+      ],
+      "english": "Hwa-Rang",
+      "romanised": "hwa-rang"
     }
   ]
 }

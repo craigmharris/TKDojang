@@ -10,7 +10,8 @@
       "Bash(xcrun xcresulttool:*)",
       "Bash(cat:*)",
       "Bash(source:*)",
-      "Bash(export TEST_DEVICE_ID:*)"
+      "Bash(export TEST_DEVICE_ID:*)",
+      "Bash(xcrun simctl:*)"
     ],
     "deny": [],
     "ask": [],

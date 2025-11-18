@@ -183,7 +183,7 @@ struct MemoryCard: Identifiable, Equatable {
         case .english:
             return word.english
         case .korean:
-            return word.romanized
+            return word.romanised
         }
     }
 

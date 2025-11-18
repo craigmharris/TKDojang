@@ -7,7 +7,7 @@ import Foundation
  *
  * FEATURES:
  * - Loads techniques from blocks.json, kicks.json, strikes.json, hand_techniques.json
- * - Extracts English and Korean romanized names
+ * - Extracts English and Korean romanised names
  * - Provides technique phrase pairs for vocabulary learning
  *
  * ARCHITECTURE:
@@ -29,7 +29,7 @@ struct TechniquePhrase: Identifiable {
         english.components(separatedBy: " ")
     }
 
-    /// Get Korean romanized words as array
+    /// Get Korean romanised words as array
     var koreanWords: [String] {
         koreanRomanized.components(separatedBy: " ")
     }
@@ -78,11 +78,11 @@ private struct TechniqueJSONData: Codable {
 
 private struct TechniqueJSONNames: Codable {
     let english: String
-    let korean_romanized: String
+    let koreanRomanised: String
 
     enum CodingKeys: String, CodingKey {
         case english
-        case korean_romanized
+        case koreanRomanised = "romanised"
     }
 }
 
@@ -134,7 +134,7 @@ class TechniquePhraseLoader {
             TechniquePhrase(
                 id: technique.id,
                 english: technique.names.english,
-                koreanRomanized: technique.names.korean_romanized,
+                koreanRomanized: technique.names.koreanRomanised,
                 category: category
             )
         }

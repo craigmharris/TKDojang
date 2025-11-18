@@ -889,10 +889,10 @@ final class StepSparringSystemTests: XCTestCase {
         let target: String
         let hand: String
         let description: String
-        
+
         enum CodingKeys: String, CodingKey {
-            case technique
-            case koreanName = "korean_name"
+            case technique = "english"
+            case koreanName = "romanised"
             case stance, target, hand, description
         }
     }

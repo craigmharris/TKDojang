@@ -281,7 +281,7 @@ private struct MemoryCardView: View {
     // Look up current card state from session on EACH render
     private var card: MemoryCard {
         session.cards.first(where: { $0.id == cardID }) ?? MemoryCard(
-            word: VocabularyWord(english: "", romanized: "", hangul: nil, frequency: 0),
+            word: VocabularyWord(english: "", romanised: "", hangul: nil, frequency: 0),
             language: .english,
             position: 0
         )
@@ -437,32 +437,32 @@ private struct MemoryCardView: View {
         totalPairs: 6,
         cards: [
             MemoryCard(
-                word: VocabularyWord(english: "Block", romanized: "Makgi", hangul: nil, frequency: 27),
+                word: VocabularyWord(english: "Block", romanised: "Makgi", hangul: nil, frequency: 27),
                 language: .english,
                 position: 0
             ),
             MemoryCard(
-                word: VocabularyWord(english: "Block", romanized: "Makgi", hangul: nil, frequency: 27),
+                word: VocabularyWord(english: "Block", romanised: "Makgi", hangul: nil, frequency: 27),
                 language: .korean,
                 position: 1
             ),
             MemoryCard(
-                word: VocabularyWord(english: "Kick", romanized: "Chagi", hangul: nil, frequency: 14),
+                word: VocabularyWord(english: "Kick", romanised: "Chagi", hangul: nil, frequency: 14),
                 language: .english,
                 position: 2
             ),
             MemoryCard(
-                word: VocabularyWord(english: "Kick", romanized: "Chagi", hangul: nil, frequency: 14),
+                word: VocabularyWord(english: "Kick", romanised: "Chagi", hangul: nil, frequency: 14),
                 language: .korean,
                 position: 3
             ),
             MemoryCard(
-                word: VocabularyWord(english: "Punch", romanized: "Jirugi", hangul: nil, frequency: 9),
+                word: VocabularyWord(english: "Punch", romanised: "Jirugi", hangul: nil, frequency: 9),
                 language: .english,
                 position: 4
             ),
             MemoryCard(
-                word: VocabularyWord(english: "Punch", romanized: "Jirugi", hangul: nil, frequency: 9),
+                word: VocabularyWord(english: "Punch", romanised: "Jirugi", hangul: nil, frequency: 9),
                 language: .korean,
                 position: 5
             )

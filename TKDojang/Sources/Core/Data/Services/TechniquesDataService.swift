@@ -117,10 +117,10 @@ struct TechniqueNames: Codable {
     let koreanRomanized: String
     let english: String
     let phonetic: String
-    
+
     private enum CodingKeys: String, CodingKey {
-        case korean
-        case koreanRomanized = "korean_romanized"
+        case korean = "hangul"
+        case koreanRomanized = "romanised"
         case english
         case phonetic
     }
@@ -186,7 +186,7 @@ struct TechniqueCategory: Identifiable, Codable {
     
     private enum CodingKeys: String, CodingKey {
         case id, name, korean, description, file, icon, subcategories
-        case koreanRomanized = "korean_romanized"
+        case koreanRomanized = "korean_romanised"
         case phonetic
         case techniqueCount = "technique_count"
     }
@@ -209,7 +209,7 @@ struct TargetArea: Identifiable, Codable {
     
     private enum CodingKeys: String, CodingKey {
         case id, region, korean, targets
-        case koreanRomanized = "korean_romanized"
+        case koreanRomanized = "korean_romanised"
         case phonetic
     }
 }
@@ -227,7 +227,7 @@ struct TargetPoint: Identifiable, Codable {
     
     private enum CodingKeys: String, CodingKey {
         case id, name, korean, description
-        case koreanRomanized = "korean_romanized"
+        case koreanRomanized = "korean_romanised"
         case phonetic
         case effectiveTechniques = "effective_techniques"
         case cautionLevel = "caution_level"
@@ -661,7 +661,7 @@ struct BeltRequirement: Codable {
     
     private enum CodingKeys: String, CodingKey {
         case id, name, korean, pattern, sparring, breaking
-        case koreanRomanized = "korean_romanized"
+        case koreanRomanized = "korean_romanised"
         case phonetic
         case colorSignificance = "color_significance"
         case minimumTrainingTime = "minimum_training_time"

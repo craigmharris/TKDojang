@@ -81,19 +81,19 @@ final class FlashcardUIIntegrationTests: XCTestCase {
         let beltLevel: String
         let category: String
         let description: String?
-        let terms: [TerminologyJSONTerm]
-        
+        let terminology: [TerminologyJSONTerm]
+
         enum CodingKeys: String, CodingKey {
             case beltLevel = "belt_level"
-            case category, description, terms
+            case category, description, terminology
         }
     }
-    
+
     struct TerminologyJSONTerm: Codable {
         let english: String
-        let korean: String
-        let pronunciation: String
-        let phonetic: String
+        let hangul: String
+        let romanised: String
+        let phonetic: String?
         let definition: String
         let difficulty: Int
     }
@@ -185,12 +185,12 @@ final class FlashcardUIIntegrationTests: XCTestCase {
         for (fileName, jsonData) in jsonFiles {
             XCTAssertFalse(jsonData.beltLevel.isEmpty, "\(fileName) should have belt_level")
             XCTAssertTrue(jsonData.category == "techniques" || jsonData.category == "basics", "\(fileName) should be techniques or basics category")
-            XCTAssertGreaterThan(jsonData.terms.count, 0, "\(fileName) should contain terms array")
+            XCTAssertGreaterThan(jsonData.terminology.count, 0, "\(fileName) should contain terms array")
             
             // Validate term completeness
-            for term in jsonData.terms {
+            for term in jsonData.terminology {
                 XCTAssertFalse(term.english.isEmpty, "\(fileName): Term should have English name")
-                XCTAssertFalse(term.korean.isEmpty, "\(fileName): Term should have Korean name")
+                XCTAssertFalse(term.hangul.isEmpty, "\(fileName): Term should have Korean name")
                 XCTAssertFalse(term.definition.isEmpty, "\(fileName): Term should have definition")
                 XCTAssertGreaterThan(term.difficulty, 0, "\(fileName): Term should have difficulty rating")
             }
@@ -219,7 +219,7 @@ final class FlashcardUIIntegrationTests: XCTestCase {
             XCTAssertFalse(jsonData.beltLevel.isEmpty, "\(fileName) should have belt_level")
             XCTAssertTrue(["techniques", "basics"].contains(jsonData.category), "\(fileName) should be valid category")
             
-            for term in jsonData.terms {
+            for term in jsonData.terminology {
                 // Check for duplicate terms within reasonable bounds
                 let termKey = "\(term.english)_\(jsonData.beltLevel)"
                 XCTAssertFalse(allTermNames.contains(termKey), 
@@ -231,7 +231,7 @@ final class FlashcardUIIntegrationTests: XCTestCase {
                 
                 // Validate term completeness
                 XCTAssertFalse(term.english.isEmpty, "Term English should not be empty")
-                XCTAssertFalse(term.korean.isEmpty, "Term Korean should not be empty")
+                XCTAssertFalse(term.hangul.isEmpty, "Term Korean should not be empty")
                 XCTAssertFalse(term.definition.isEmpty, "Term definition should not be empty")
                 XCTAssertTrue(term.difficulty > 0 && term.difficulty <= 5, "Term difficulty should be 1-5")
             }
@@ -255,7 +255,7 @@ final class FlashcardUIIntegrationTests: XCTestCase {
         let firstTerm = terminology.first!
         XCTAssertFalse(firstTerm.englishTerm.isEmpty)
         XCTAssertFalse(firstTerm.koreanHangul.isEmpty)
-        XCTAssertFalse(firstTerm.romanizedPronunciation.isEmpty)
+        XCTAssertFalse(firstTerm.romanisedPronunciation.isEmpty)
         XCTAssertNotNil(firstTerm.beltLevel)
         XCTAssertNotNil(firstTerm.category)
     }
@@ -535,7 +535,7 @@ final class FlashcardUIIntegrationTests: XCTestCase {
                         "Belt level '\(jsonData.beltLevel)' should follow expected format")
             
             // Validate terms are appropriate for belt level
-            for term in jsonData.terms {
+            for term in jsonData.terminology {
                 XCTAssertTrue(term.difficulty > 0 && term.difficulty <= 5, 
                             "\(fileName): Term '\(term.english)' difficulty should be 1-5")
             }
@@ -559,12 +559,12 @@ final class FlashcardUIIntegrationTests: XCTestCase {
         var categoryGroups: [String: Int] = [:]
         
         for (fileName, jsonData) in jsonFiles {
-            categoryGroups[jsonData.category, default: 0] += jsonData.terms.count
+            categoryGroups[jsonData.category, default: 0] += jsonData.terminology.count
             
             // Validate category consistency within file
-            for term in jsonData.terms {
+            for term in jsonData.terminology {
                 XCTAssertFalse(term.english.isEmpty, "\(fileName): Term should have English name")
-                XCTAssertFalse(term.korean.isEmpty, "\(fileName): Term should have Korean name")
+                XCTAssertFalse(term.hangul.isEmpty, "\(fileName): Term should have Korean name")
             }
         }
         
@@ -591,15 +591,17 @@ final class FlashcardUIIntegrationTests: XCTestCase {
         
         for (fileName, jsonData) in jsonFiles {
             // Validate JSON structure for flashcard suitability
-            for term in jsonData.terms {
+            for term in jsonData.terminology {
                 // Flashcard requirements: question (English), answer (Korean + definition)
                 XCTAssertFalse(term.english.isEmpty, "\(fileName): English term needed for flashcard front")
-                XCTAssertFalse(term.korean.isEmpty, "\(fileName): Korean term needed for flashcard back")
+                XCTAssertFalse(term.hangul.isEmpty, "\(fileName): Korean term needed for flashcard back")
                 XCTAssertFalse(term.definition.isEmpty, "\(fileName): Definition needed for flashcard context")
                 
                 // Pronunciation validation for learning
-                XCTAssertFalse(term.pronunciation.isEmpty, "\(fileName): Pronunciation needed for learning")
-                XCTAssertFalse(term.phonetic.isEmpty, "\(fileName): Phonetic needed for accurate pronunciation")
+                XCTAssertFalse(term.romanised.isEmpty, "\(fileName): Romanised pronunciation needed for learning")
+                if let phonetic = term.phonetic {
+                    XCTAssertFalse(phonetic.isEmpty, "\(fileName): Phonetic should not be empty if present")
+                }
                 
                 // Difficulty for spaced repetition
                 XCTAssertTrue(term.difficulty >= 1 && term.difficulty <= 5, 

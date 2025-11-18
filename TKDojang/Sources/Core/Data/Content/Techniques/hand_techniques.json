@@ -6,10 +6,10 @@
     {
       "id": "dugum_ji_chigi",
       "names": {
-        "korean": "둘째손가락치기",
-        "korean_romanized": "Dugum Ji Chigi",
         "english": "Arc Hand Strike",
-        "phonetic": "/tu.ɡɯm.dʑi.tʃʰi.ɡi/"
+        "phonetic": "/tu.ɡɯm.dʑi.tʃʰi.ɡi/",
+        "romanised": "Dugum Ji Chigi",
+        "hangul": "둘째손가락치기"
       },
       "description": "A strike using the arc formed by the index finger and thumb, targeting specific pressure points or small areas with precision.",
       "execution": {
@@ -18,8 +18,8 @@
         "retraction": "Pull hand back while maintaining arc formation"
       },
       "striking_tool": {
-        "korean": "둘째손가락",
-        "korean_romanized": "Dugum Ji",
+        "hangul": "둘째손가락",
+        "romanised": "Dugum Ji",
         "english": "Arc Hand",
         "phonetic": "/tu.ɡɯm.dʑi/"
       },
@@ -65,8 +65,8 @@
       "id": "hand_back_fist",
       "names": {
         "english": "Back Fist",
-        "korean_romanized": "Dung Joomuk",
-        "korean_hangul": "등 주먹"
+        "romanised": "Dung Joomuk",
+        "hangul": "등 주먹"
       },
       "category": "hand_techniques"
     },
@@ -74,8 +74,8 @@
       "id": "hand_back_forearm",
       "names": {
         "english": "Back Forearm",
-        "korean_romanized": "Dung Palmok",
-        "korean_hangul": "등 팔목"
+        "romanised": "Dung Palmok",
+        "hangul": "등 팔목"
       },
       "category": "hand_techniques"
     },
@@ -83,8 +83,8 @@
       "id": "hand_back_sole",
       "names": {
         "english": "Back Sole",
-        "korean_romanized": "Dwit Kumchi",
-        "korean_hangul": "뒤 꿈치"
+        "romanised": "Dwit Kumchi",
+        "hangul": "뒤 꿈치"
       },
       "category": "hand_techniques"
     },
@@ -92,18 +92,18 @@
       "id": "hand_hammer_fist",
       "names": {
         "english": "Hammer Fist",
-        "korean_romanized": "Yop Joomuk",
-        "korean_hangul": "엽 주먹"
+        "romanised": "Yop Joomuk",
+        "hangul": "엽 주먹"
       },
       "category": "hand_techniques"
     },
     {
       "id": "an_palmok_chigi",
       "names": {
-        "korean": "안팔목치기",
-        "korean_romanized": "An Palmok Chigi",
         "english": "Inner Forearm Strike",
-        "phonetic": "/an.pʰal.mok.tʃʰi.ɡi/"
+        "phonetic": "/an.pʰal.mok.tʃʰi.ɡi/",
+        "romanised": "An Palmok Chigi",
+        "hangul": "안팔목치기"
       },
       "description": "A strike using the inner edge of the forearm, typically delivered in a horizontal motion across the body to strike the opponent's neck or chest area.",
       "execution": {
@@ -112,8 +112,8 @@
         "retraction": "Pull arm back to guard position"
       },
       "striking_tool": {
-        "korean": "안팔목",
-        "korean_romanized": "An Palmok",
+        "hangul": "안팔목",
+        "romanised": "An Palmok",
         "english": "Inner Forearm",
         "phonetic": "/an.pʰal.mok/"
       },
@@ -162,18 +162,18 @@
       "id": "hand_middle_knuckle_fist",
       "names": {
         "english": "Middle Knuckle Fist",
-        "korean_romanized": "Joongi Joomuk",
-        "korean_hangul": "중기 주먹"
+        "romanised": "Joongi Joomuk",
+        "hangul": "중기 주먹"
       },
       "category": "hand_techniques"
     },
     {
       "id": "bakkat_palmok_chigi",
       "names": {
-        "korean": "바깥팔목치기",
-        "korean_romanized": "Bakat Palmok Chigi",
         "english": "Outer Forearm Strike",
-        "phonetic": "/pa.k͈at.pʰal.mok.tʃʰi.ɡi/"
+        "phonetic": "/pa.k͈at.pʰal.mok.tʃʰi.ɡi/",
+        "romanised": "Bakat Palmok Chigi",
+        "hangul": "바깥팔목치기"
       },
       "description": "A strike using the outer edge of the forearm, delivered from outside to inside across the body, effective against the side of the head or ribs.",
       "execution": {
@@ -182,8 +182,8 @@
         "retraction": "Return arm to guard or ready position"
       },
       "striking_tool": {
-        "korean": "바깥팔목",
-        "korean_romanized": "Bakat Palmok",
+        "hangul": "바깥팔목",
+        "romanised": "Bakat Palmok",
         "english": "Outer Forearm",
         "phonetic": "/pa.k͈at.pʰal.mok/"
       },
@@ -232,18 +232,18 @@
       "id": "hand_palm_heel",
       "names": {
         "english": "Palm Heel",
-        "korean_romanized": "Pyon Joomuk",
-        "korean_hangul": "편 주먹"
+        "romanised": "Pyon Joomuk",
+        "hangul": "편 주먹"
       },
       "category": "hand_techniques"
     },
     {
       "id": "jipge_son_chigi",
       "names": {
-        "korean": "집게손치기",
-        "korean_romanized": "Jipge Son Chigi",
         "english": "Pincer Hand Strike",
-        "phonetic": "/tʃip.ɡe.son.tʃʰi.ɡi/"
+        "phonetic": "/tʃip.ɡe.son.tʃʰi.ɡi/",
+        "romanised": "Jipge Son Chigi",
+        "hangul": "집게손치기"
       },
       "description": "A grasping strike where the hand forms a pincer shape to grab and strike simultaneously, used against soft tissue areas or pressure points.",
       "execution": {
@@ -252,8 +252,8 @@
         "retraction": "Release and pull hand back to guard"
       },
       "striking_tool": {
-        "korean": "집게손",
-        "korean_romanized": "Jipge Son",
+        "hangul": "집게손",
+        "romanised": "Jipge Son",
         "english": "Pincer Hand",
         "phonetic": "/tʃip.ɡe.son/"
       },
@@ -300,8 +300,8 @@
       "id": "hand_reverse_knifehand",
       "names": {
         "english": "Reverse Knifehand",
-        "korean_romanized": "Sonkal Dung",
-        "korean_hangul": "손칼 등"
+        "romanised": "Sonkal Dung",
+        "hangul": "손칼 등"
       },
       "category": "hand_techniques"
     },
@@ -309,8 +309,8 @@
       "id": "hand_side_instep",
       "names": {
         "english": "Side Instep",
-        "korean_romanized": "Yop Baldung",
-        "korean_hangul": "옆 발등"
+        "romanised": "Yop Baldung",
+        "hangul": "옆 발등"
       },
       "category": "hand_techniques"
     }

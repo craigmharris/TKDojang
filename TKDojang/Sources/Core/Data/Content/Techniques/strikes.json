@@ -6,10 +6,10 @@
     {
       "id": "bandal_son_taerigi",
       "names": {
-        "korean": "반달손타어리기",
-        "korean_romanized": "Bandal Son Taerigi",
         "english": "Arc Hand Strike",
-        "phonetic": "/pan.dal.son.tʰa.ʌ.ɾi.ɡi/"
+        "phonetic": "/pan.dal.son.tʰa.ʌ.ɾi.ɡi/",
+        "romanised": "Bandal Son Taerigi",
+        "hangul": "반달손타어리기"
       },
       "description": "A curved striking technique using the arc-shaped hand formation. The hand forms a crescent shape to deliver strikes in a sweeping motion, targeting vulnerable areas with the curved edge.",
       "execution": {
@@ -18,8 +18,8 @@
         "retraction": "Pull hand back maintaining arc formation"
       },
       "striking_tool": {
-        "korean": "반달손",
-        "korean_romanized": "Bandal Son",
+        "hangul": "반달손",
+        "romanised": "Bandal Son",
         "english": "Arc Hand",
         "phonetic": "/pan.dal.son/"
       },
@@ -66,8 +66,8 @@
       "id": "strike_arc-hand_crescent_strike",
       "names": {
         "english": "Arc-hand Crescent Strike",
-        "korean_romanized": "Bandalson Bandal Taerigi",
-        "korean_hangul": "반달손 반달 태리기"
+        "romanised": "Bandalson Bandal Taerigi",
+        "hangul": "반달손 반달 태리기"
       },
       "category": "strikes"
     },
@@ -75,8 +75,8 @@
       "id": "strike_arc-hand_high_reverse_strike",
       "names": {
         "english": "Arc-hand High Reverse Strike",
-        "korean_romanized": "Bandalson Nopunde Bandae Taerigi",
-        "korean_hangul": "반달손 높은데 반대 태리기"
+        "romanised": "Bandalson Nopunde Bandae Taerigi",
+        "hangul": "반달손 높은데 반대 태리기"
       },
       "category": "strikes"
     },
@@ -84,8 +84,8 @@
       "id": "strike_back_fist",
       "names": {
         "english": "Back Fist",
-        "korean_romanized": "Dung Joomuk",
-        "korean_hangul": "등 주먹"
+        "romanised": "Dung Joomuk",
+        "hangul": "등 주먹"
       },
       "category": "strikes"
     },
@@ -93,8 +93,8 @@
       "id": "strike_back_fist_downward_strike",
       "names": {
         "english": "Back Fist Downward Strike",
-        "korean_romanized": "Dung Joomuk Naeryo Taerigi",
-        "korean_hangul": "등 주먹 내려 태리기"
+        "romanised": "Dung Joomuk Naeryo Taerigi",
+        "hangul": "등 주먹 내려 태리기"
       },
       "category": "strikes"
     },
@@ -102,8 +102,8 @@
       "id": "strike_back_fist_front_strike",
       "names": {
         "english": "Back Fist Front Strike",
-        "korean_romanized": "Dung Joomuk Ap Taerigi",
-        "korean_hangul": "등 주먹 앞 태리기"
+        "romanised": "Dung Joomuk Ap Taerigi",
+        "hangul": "등 주먹 앞 태리기"
       },
       "category": "strikes"
     },
@@ -111,8 +111,8 @@
       "id": "strike_back_fist_high_side_strike",
       "names": {
         "english": "Back Fist High Side Strike",
-        "korean_romanized": "Dung Joomuk Nopunde Yop Taerigi",
-        "korean_hangul": "등 주먹 높은데 옆 태리기"
+        "romanised": "Dung Joomuk Nopunde Yop Taerigi",
+        "hangul": "등 주먹 높은데 옆 태리기"
       },
       "category": "strikes"
     },
@@ -120,18 +120,18 @@
       "id": "strike_back_fist_side_back_strike",
       "names": {
         "english": "Back Fist Side Back Strike",
-        "korean_romanized": "Dung Joomuk Yop Dwit Taerigi",
-        "korean_hangul": "등 주먹 옆 뒤 태리기"
+        "romanised": "Dung Joomuk Yop Dwit Taerigi",
+        "hangul": "등 주먹 옆 뒤 태리기"
       },
       "category": "strikes"
     },
     {
       "id": "dung_joomuk_taerigi",
       "names": {
-        "korean": "등주멩타어리기",
-        "korean_romanized": "Dung Joomuk Taerigi",
         "english": "Back Fist Strike",
-        "phonetic": "/dɯŋ.tʃu.mʌk.tʰa.ʌ.ɾi.ɡi/"
+        "phonetic": "/dɯŋ.tʃu.mʌk.tʰa.ʌ.ɾi.ɡi/",
+        "romanised": "Dung Joomuk Taerigi",
+        "hangul": "등주멩타어리기"
       },
       "description": "A strike using the back of the fist, delivered in a whipping motion. The arm swings in an arc, striking with the back two knuckles of the fist.",
       "execution": {
@@ -140,8 +140,8 @@
         "retraction": "Return fist to guard or chamber position"
       },
       "striking_tool": {
-        "korean": "등주먹",
-        "korean_romanized": "Dung Joomuk",
+        "hangul": "등주먹",
+        "romanised": "Dung Joomuk",
         "english": "Back Fist",
         "phonetic": "/dɯŋ.tʃu.mʌk/"
       },
@@ -189,18 +189,18 @@
       "id": "strike_double_finger_thrust",
       "names": {
         "english": "Double Finger Thrust",
-        "korean_romanized": "Doo Songarak Tulgi",
-        "korean_hangul": "두 손가락 틀기"
+        "romanised": "Doo Songarak Tulgi",
+        "hangul": "두 손가락 틀기"
       },
       "category": "strikes"
     },
     {
       "id": "doo_jirugi",
       "names": {
-        "korean": "두지르기",
-        "korean_romanized": "Doo Jirugi",
         "english": "Double Punch",
-        "phonetic": "/tu.tʃi.ɾɯ.ɡi/"
+        "phonetic": "/tu.tʃi.ɾɯ.ɡi/",
+        "romanised": "Doo Jirugi",
+        "hangul": "두지르기"
       },
       "description": "Two consecutive punches delivered in sequence, typically combining obverse and reverse punches for rapid striking.",
       "execution": {
@@ -209,8 +209,8 @@
         "retraction": "Return both fists to starting position"
       },
       "striking_tool": {
-        "korean": "양주먹",
-        "korean_romanized": "Yang Joomuk",
+        "hangul": "양주먹",
+        "romanised": "Yang Joomuk",
         "english": "Both Fists",
         "phonetic": "/jaŋ.tʃu.mʌk/"
       },
@@ -260,10 +260,10 @@
     {
       "id": "palkup_ap_taerigi",
       "names": {
-        "korean": "팔꿈치앞타어리기",
-        "korean_romanized": "Palkup Ap Taerigi",
         "english": "Elbow Front Strike",
-        "phonetic": "/pʰal.k͈um.tʃʰi.ap.tʰa.ʌ.ɾi.ɡi/"
+        "phonetic": "/pʰal.k͈um.tʃʰi.ap.tʰa.ʌ.ɾi.ɡi/",
+        "romanised": "Palkup Ap Taerigi",
+        "hangul": "팔꿈치앞타어리기"
       },
       "description": "A close-range strike using the point of the elbow, delivered forward into the target. Extremely powerful due to the bone structure and close-range application.",
       "execution": {
@@ -272,8 +272,8 @@
         "retraction": "Pull elbow back to guard position"
       },
       "striking_tool": {
-        "korean": "팔꿈치",
-        "korean_romanized": "Palkup",
+        "hangul": "팔꿈치",
+        "romanised": "Palkup",
         "english": "Elbow",
         "phonetic": "/pʰal.k͈um.tʃʰi/"
       },
@@ -322,8 +322,8 @@
       "id": "strike_flat_fingertip_high_reverse_thrust",
       "names": {
         "english": "Flat Fingertip High reverse Thrust",
-        "korean_romanized": "Opun Sonkut Nopunde Bandae Tulgi",
-        "korean_hangul": "엎은 손끝 높은데 반대 틀기"
+        "romanised": "Opun Sonkut Nopunde Bandae Tulgi",
+        "hangul": "엎은 손끝 높은데 반대 틀기"
       },
       "category": "strikes"
     },
@@ -331,18 +331,18 @@
       "id": "strike_flat_fingertip_outward_cross_cut",
       "names": {
         "english": "Flat Fingertip Outward Cross Cut",
-        "korean_romanized": "Opun Sonkut Bakaero Gutgi",
-        "korean_hangul": "엎은 손끝 바깥으로 긋기"
+        "romanised": "Opun Sonkut Bakaero Gutgi",
+        "hangul": "엎은 손끝 바깥으로 긋기"
       },
       "category": "strikes"
     },
     {
       "id": "opun_sonkut_tulgi",
       "names": {
-        "korean": "업은손끝뛷기",
-        "korean_romanized": "Opun Sonkut Tulgi",
         "english": "Flat Fingertip Thrust",
-        "phonetic": "/o.pɯn.son.kɯt.tʰul.ɡi/"
+        "phonetic": "/o.pɯn.son.kɯt.tʰul.ɡi/",
+        "romanised": "Opun Sonkut Tulgi",
+        "hangul": "업은손끝뛷기"
       },
       "description": "A penetrating strike using the fingertips held flat, targeting soft areas and pressure points with precise penetration.",
       "execution": {
@@ -351,8 +351,8 @@
         "retraction": "Pull hand back while maintaining finger position"
       },
       "striking_tool": {
-        "korean": "업은손끝",
-        "korean_romanized": "Opun Sonkut",
+        "hangul": "업은손끝",
+        "romanised": "Opun Sonkut",
         "english": "Flat Fingertips",
         "phonetic": "/o.pɯn.son.kɯt/"
       },
@@ -399,8 +399,8 @@
       "id": "strike_flying_consecutive_punch",
       "names": {
         "english": "Flying Consecutive Punch",
-        "korean_romanized": "Twimyo Yonsok Jirugi",
-        "korean_hangul": "뛰며 연속 지르기"
+        "romanised": "Twimyo Yonsok Jirugi",
+        "hangul": "뛰며 연속 지르기"
       },
       "category": "strikes"
     },
@@ -408,8 +408,8 @@
       "id": "strike_forefist_punch",
       "names": {
         "english": "Forefist Punch",
-        "korean_romanized": "Ap Joomuk Jirugi",
-        "korean_hangul": "앞 주먹 지르기"
+        "romanised": "Ap Joomuk Jirugi",
+        "hangul": "앞 주먹 지르기"
       },
       "category": "strikes"
     },
@@ -417,8 +417,8 @@
       "id": "strike_forefist_upward_punch",
       "names": {
         "english": "Forefist Upward Punch",
-        "korean_romanized": "Ap Joomuk Ollyo Jirugi",
-        "korean_hangul": "앞 주먹 올려 지르기"
+        "romanised": "Ap Joomuk Ollyo Jirugi",
+        "hangul": "앞 주먹 올려 지르기"
       },
       "category": "strikes"
     },
@@ -426,8 +426,8 @@
       "id": "strike_front_punch",
       "names": {
         "english": "Front Punch",
-        "korean_romanized": "Ap Jirugi",
-        "korean_hangul": "앞 지르기"
+        "romanised": "Ap Jirugi",
+        "hangul": "앞 지르기"
       },
       "category": "strikes"
     },
@@ -435,8 +435,8 @@
       "id": "strike_high_crescent_punch",
       "names": {
         "english": "High Crescent Punch",
-        "korean_romanized": "Nopunde Bandal Jirugi",
-        "korean_hangul": "높은데 반달 지르기"
+        "romanised": "Nopunde Bandal Jirugi",
+        "hangul": "높은데 반달 지르기"
       },
       "category": "strikes"
     },
@@ -444,18 +444,18 @@
       "id": "strike_horizontal_punch",
       "names": {
         "english": "Horizontal Punch",
-        "korean_romanized": "Soopyong Jirugi",
-        "korean_hangul": "수평 지르기"
+        "romanised": "Soopyong Jirugi",
+        "hangul": "수평 지르기"
       },
       "category": "strikes"
     },
     {
       "id": "sonkal_naeryo_taerigi",
       "names": {
-        "korean": "손칼내려타어리기",
-        "korean_romanized": "Sonkal Naeryo Taerigi",
         "english": "Knife Hand Downward Strike",
-        "phonetic": "/son.kʰal.ne.ɾjʌ.tʰa.ʌ.ɾi.ɡi/"
+        "phonetic": "/son.kʰal.ne.ɾjʌ.tʰa.ʌ.ɾi.ɡi/",
+        "romanised": "Sonkal Naeryo Taerigi",
+        "hangul": "손칼내려타어리기"
       },
       "description": "A downward striking technique using the knife hand, delivered from above in a chopping motion. Targets the top of the head, shoulder, or collar bone area.",
       "execution": {
@@ -464,8 +464,8 @@
         "retraction": "Pull hand back to guard position"
       },
       "striking_tool": {
-        "korean": "손칼",
-        "korean_romanized": "Sonkal",
+        "hangul": "손칼",
+        "romanised": "Sonkal",
         "english": "Knife Hand",
         "phonetic": "/son.kʰal/"
       },
@@ -510,10 +510,10 @@
     {
       "id": "sonkal_anaero_taerigi",
       "names": {
-        "korean": "손칼안으로타어리기",
-        "korean_romanized": "Sonkal Anaero Taerigi",
         "english": "Knife Hand Inward Strike",
-        "phonetic": "/son.kʰal.a.nɯ.ɾo.tʰa.ʌ.ɾi.ɡi/"
+        "phonetic": "/son.kʰal.a.nɯ.ɾo.tʰa.ʌ.ɾi.ɡi/",
+        "romanised": "Sonkal Anaero Taerigi",
+        "hangul": "손칼안으로타어리기"
       },
       "description": "An inward striking motion using the edge of the hand, delivered in a chopping motion toward the centerline of the body. Targets vulnerable areas with precise knife hand technique.",
       "execution": {
@@ -522,8 +522,8 @@
         "retraction": "Pull hand back to guard position"
       },
       "striking_tool": {
-        "korean": "손칼",
-        "korean_romanized": "Sonkal",
+        "hangul": "손칼",
+        "romanised": "Sonkal",
         "english": "Knife Hand",
         "phonetic": "/son.kʰal/"
       },
@@ -572,10 +572,10 @@
     {
       "id": "sonkal_taerigi",
       "names": {
-        "korean": "손칼타어리기",
-        "korean_romanized": "Sonkal Taerigi",
         "english": "Knife Hand Strike",
-        "phonetic": "/son.kʰal.tʰa.ʌ.ɾi.ɡi/"
+        "phonetic": "/son.kʰal.tʰa.ʌ.ɾi.ɡi/",
+        "romanised": "Sonkal Taerigi",
+        "hangul": "손칼타어리기"
       },
       "description": "A strike using the edge of the open hand, delivered in a chopping motion. The hand is kept rigid with fingers extended and thumb tucked in.",
       "execution": {
@@ -584,8 +584,8 @@
         "retraction": "Pull hand back to guard or chamber position"
       },
       "striking_tool": {
-        "korean": "손칼",
-        "korean_romanized": "Sonkal",
+        "hangul": "손칼",
+        "romanised": "Sonkal",
         "english": "Knife Hand",
         "phonetic": "/son.kʰal/"
       },
@@ -639,8 +639,8 @@
       "id": "strike_knifehand_front_downward_strike",
       "names": {
         "english": "Knifehand Front Downward Strike",
-        "korean_romanized": "Sonkal Ap Naeryo Taerigi",
-        "korean_hangul": "손칼 앞 내려 태리기"
+        "romanised": "Sonkal Ap Naeryo Taerigi",
+        "hangul": "손칼 앞 내려 태리기"
       },
       "category": "strikes"
     },
@@ -648,8 +648,8 @@
       "id": "strike_knifehand_inwardhighstrike",
       "names": {
         "english": "Knifehand InwardHighStrike",
-        "korean_romanized": "Nopunde Sonkal Anaero Taerigi",
-        "korean_hangul": "높은데 손칼 안으로 태리기"
+        "romanised": "Nopunde Sonkal Anaero Taerigi",
+        "hangul": "높은데 손칼 안으로 태리기"
       },
       "category": "strikes"
     },
@@ -657,8 +657,8 @@
       "id": "strike_knifehand_mid_air_strike",
       "names": {
         "english": "Knifehand Mid Air Strike",
-        "korean_romanized": "Sonkal Twimyo Dolmyo Taerigi",
-        "korean_hangul": "손칼 뛰며 Dolmyo 태리기"
+        "romanised": "Sonkal Twimyo Dolmyo Taerigi",
+        "hangul": "손칼 뛰며 Dolmyo 태리기"
       },
       "category": "strikes"
     },
@@ -666,8 +666,8 @@
       "id": "strike_knifehand_side_strike",
       "names": {
         "english": "Knifehand Side Strike",
-        "korean_romanized": "Sonkal Yop Taerigi",
-        "korean_hangul": "손칼 옆 태리기"
+        "romanised": "Sonkal Yop Taerigi",
+        "hangul": "손칼 옆 태리기"
       },
       "category": "strikes"
     },
@@ -675,8 +675,8 @@
       "id": "strike_knuckle_fist_punch",
       "names": {
         "english": "Knuckle Fist Punch",
-        "korean_romanized": "Songarak Joomuk Jirugi",
-        "korean_hangul": "손가락 주먹 지르기"
+        "romanised": "Songarak Joomuk Jirugi",
+        "hangul": "손가락 주먹 지르기"
       },
       "category": "strikes"
     },
@@ -684,8 +684,8 @@
       "id": "strike_middle_knuckle_fist",
       "names": {
         "english": "Middle Knuckle Fist",
-        "korean_romanized": "Joongi Joomuk",
-        "korean_hangul": "중기 주먹"
+        "romanised": "Joongi Joomuk",
+        "hangul": "중기 주먹"
       },
       "category": "strikes"
     },
@@ -693,18 +693,18 @@
       "id": "strike_middle_turning_punch",
       "names": {
         "english": "Middle Turning Punch",
-        "korean_romanized": "Kaunde Dollyo Jirugi",
-        "korean_hangul": "가운데 돌려 지르기"
+        "romanised": "Kaunde Dollyo Jirugi",
+        "hangul": "가운데 돌려 지르기"
       },
       "category": "strikes"
     },
     {
       "id": "baro_jirugi",
       "names": {
-        "korean": "바로지르기",
-        "korean_romanized": "Baro Jirugi",
         "english": "Obverse Punch",
-        "phonetic": "/pa.ɾo.tʃi.ɾɯ.ɡi/"
+        "phonetic": "/pa.ɾo.tʃi.ɾɯ.ɡi/",
+        "romanised": "Baro Jirugi",
+        "hangul": "바로지르기"
       },
       "description": "A straight punch executed with the same hand as the forward leg, creating a direct linear attack from the forward position.",
       "execution": {
@@ -713,8 +713,8 @@
         "retraction": "Pull fist back to hip in reverse motion"
       },
       "striking_tool": {
-        "korean": "주먹",
-        "korean_romanized": "Joomuk",
+        "hangul": "주먹",
+        "romanised": "Joomuk",
         "english": "Fist",
         "phonetic": "/tʃu.mʌk/"
       },
@@ -768,18 +768,18 @@
       "id": "strike_open_fist_palm_high_reverse_punch",
       "names": {
         "english": "Open Fist (Palm) High Reverse Punch",
-        "korean_romanized": "Pyon Joomuk Nopunde Bandae Jirugi",
-        "korean_hangul": "편 주먹 높은데 반대 지르기"
+        "romanised": "Pyon Joomuk Nopunde Bandae Jirugi",
+        "hangul": "편 주먹 높은데 반대 지르기"
       },
       "category": "strikes"
     },
     {
       "id": "sonbadak_taerigi",
       "names": {
-        "korean": "손바닥타어리기",
-        "korean_romanized": "Sonbadak Taerigi",
         "english": "Palm Strike",
-        "phonetic": "/son.ba.dak.tʰa.ʌ.ɾi.ɡi/"
+        "phonetic": "/son.ba.dak.tʰa.ʌ.ɾi.ɡi/",
+        "romanised": "Sonbadak Taerigi",
+        "hangul": "손바닥타어리기"
       },
       "description": "Powerful striking technique using palm or palm heel for close-range combat. Extremely effective and potentially dangerous - can deliver devastating force to vital targets.",
       "execution": {
@@ -788,8 +788,8 @@
         "recovery": "Return to ready position maintaining hand formation"
       },
       "striking_tool": {
-        "korean": "손바닥",
-        "korean_romanized": "Sonbadak",
+        "hangul": "손바닥",
+        "romanised": "Sonbadak",
         "english": "Palm",
         "phonetic": "/son.ba.dak/"
       },
@@ -840,10 +840,10 @@
     {
       "id": "bandae_nopunde_jirugi",
       "names": {
-        "korean": "반대높은데지르기",
-        "korean_romanized": "Bandae Nopunde Jirugi",
         "english": "Reverse High Punch",
-        "phonetic": "/pan.de.no.pɯn.de.tʃi.ɾɯ.ɡi/"
+        "phonetic": "/pan.de.no.pɯn.de.tʃi.ɾɯ.ɡi/",
+        "romanised": "Bandae Nopunde Jirugi",
+        "hangul": "반대높은데지르기"
       },
       "description": "A high-level punch delivered with the opposite hand to the stance, targeting the head or upper chest area. Combines reverse punch mechanics with high targeting.",
       "execution": {
@@ -852,8 +852,8 @@
         "retraction": "Pull fist back to hip with reverse motion"
       },
       "striking_tool": {
-        "korean": "주먹",
-        "korean_romanized": "Joomuk",
+        "hangul": "주먹",
+        "romanised": "Joomuk",
         "english": "Fist",
         "phonetic": "/tʃu.mʌk/"
       },
@@ -900,10 +900,10 @@
     {
       "id": "sonkal_dung_taerigi",
       "names": {
-        "korean": "손칼등타어리기",
-        "korean_romanized": "Sonkal Dung Taerigi",
         "english": "Reverse Knife Hand Strike",
-        "phonetic": "/son.kʰal.dɯŋ.tʰa.ʌ.ɾi.ɡi/"
+        "phonetic": "/son.kʰal.dɯŋ.tʰa.ʌ.ɾi.ɡi/",
+        "romanised": "Sonkal Dung Taerigi",
+        "hangul": "손칼등타어리기"
       },
       "description": "A striking technique using the back edge of the knife hand, delivered with the reverse side of the traditional knife hand strike. Provides different angle of attack and targeting options.",
       "execution": {
@@ -912,8 +912,8 @@
         "retraction": "Pull hand back to guard position"
       },
       "striking_tool": {
-        "korean": "손칼등",
-        "korean_romanized": "Sonkal Dung",
+        "hangul": "손칼등",
+        "romanised": "Sonkal Dung",
         "english": "Reverse Knife Hand",
         "phonetic": "/son.kʰal.dɯŋ/"
       },
@@ -963,18 +963,18 @@
       "id": "strike_reverse_knifehand_inward_high_strike",
       "names": {
         "english": "Reverse Knifehand Inward High Strike",
-        "korean_romanized": "Nopunde Sonkal Dung Anaero Taerigi",
-        "korean_hangul": "높은데 손칼 등 안으로 태리기"
+        "romanised": "Nopunde Sonkal Dung Anaero Taerigi",
+        "hangul": "높은데 손칼 등 안으로 태리기"
       },
       "category": "strikes"
     },
     {
       "id": "bandae_jirugi",
       "names": {
-        "korean": "반대지르기",
-        "korean_romanized": "Bandae Jirugi",
         "english": "Reverse Punch",
-        "phonetic": "/pan.de.tʃi.ɾɯ.ɡi/"
+        "phonetic": "/pan.de.tʃi.ɾɯ.ɡi/",
+        "romanised": "Bandae Jirugi",
+        "hangul": "반대지르기"
       },
       "description": "A punch executed with the opposite hand to the forward leg, generating power through hip rotation and body mechanics.",
       "execution": {
@@ -983,8 +983,8 @@
         "retraction": "Pull fist back to hip with reverse rotation"
       },
       "striking_tool": {
-        "korean": "주먹",
-        "korean_romanized": "Joomuk",
+        "hangul": "주먹",
+        "romanised": "Joomuk",
         "english": "Fist",
         "phonetic": "/tʃu.mʌk/"
       },
@@ -1036,10 +1036,10 @@
     {
       "id": "yop_palkup_tulgi",
       "names": {
-        "korean": "옭팔꿈치뛷기",
-        "korean_romanized": "Yop Palkup Tulgi",
         "english": "Side Elbow Thrust",
-        "phonetic": "/jʌp.pʰal.k͈um.tʃʰi.tʰul.ɡi/"
+        "phonetic": "/jʌp.pʰal.k͈um.tʃʰi.tʰul.ɡi/",
+        "romanised": "Yop Palkup Tulgi",
+        "hangul": "옭팔꿈치뛷기"
       },
       "description": "A thrusting attack using the elbow delivered to the side, effective in close quarters and clinch situations.",
       "execution": {
@@ -1048,8 +1048,8 @@
         "retraction": "Pull elbow back to guard position"
       },
       "striking_tool": {
-        "korean": "팔꿈치",
-        "korean_romanized": "Palkup",
+        "hangul": "팔꿈치",
+        "romanised": "Palkup",
         "english": "Elbow",
         "phonetic": "/pʰal.k͈um.tʃʰi/"
       },
@@ -1095,10 +1095,10 @@
     {
       "id": "yop_joomuk_taerigi",
       "names": {
-        "korean": "옭주멙타어리기",
-        "korean_romanized": "Yop Joomuk Taerigi",
         "english": "Side Fist Strike",
-        "phonetic": "/jʌp.tʃu.mʌk.tʰa.ʌ.ɾi.ɡi/"
+        "phonetic": "/jʌp.tʃu.mʌk.tʰa.ʌ.ɾi.ɡi/",
+        "romanised": "Yop Joomuk Taerigi",
+        "hangul": "옭주멙타어리기"
       },
       "description": "A striking technique using the side of the fist, delivered with the hammer-like edge of the closed hand. Effective for close-range combat and striking hard targets.",
       "execution": {
@@ -1107,8 +1107,8 @@
         "retraction": "Pull fist back to guard position"
       },
       "striking_tool": {
-        "korean": "옭주멙",
-        "korean_romanized": "Yop Joomuk",
+        "hangul": "옭주멙",
+        "romanised": "Yop Joomuk",
         "english": "Side Fist",
         "phonetic": "/jʌp.tʃu.mʌk/"
       },
@@ -1154,10 +1154,10 @@
     {
       "id": "yop_jirugi",
       "names": {
-        "korean": "옆지르기",
-        "korean_romanized": "Yop Jirugi",
         "english": "Side Punch",
-        "phonetic": "/jʌp.tʃi.ɾɯ.ɡi/"
+        "phonetic": "/jʌp.tʃi.ɾɯ.ɡi/",
+        "romanised": "Yop Jirugi",
+        "hangul": "옆지르기"
       },
       "description": "Lateral punching technique delivered to the side while body faces forward. Utilizes body rotation and hip engagement for power generation in sideways striking motion.",
       "execution": {
@@ -1166,8 +1166,8 @@
         "retraction": "Guided hand pulls back while striking hand returns to chamber"
       },
       "striking_tool": {
-        "korean": "주먹",
-        "korean_romanized": "Joomuk",
+        "hangul": "주먹",
+        "romanised": "Joomuk",
         "english": "Fist",
         "phonetic": "/tʃu.mʌk/"
       },
@@ -1218,18 +1218,18 @@
       "id": "strike_straight_elbow_downward_thrust",
       "names": {
         "english": "Straight Elbow Downward thrust",
-        "korean_romanized": "Sun Palkup Naeryo Tulgi",
-        "korean_hangul": "순 팔굽 내려 틀기"
+        "romanised": "Sun Palkup Naeryo Tulgi",
+        "hangul": "순 팔굽 내려 틀기"
       },
       "category": "strikes"
     },
     {
       "id": "son_sonkut_tulgi",
       "names": {
-        "korean": "손손끝뛷기",
-        "korean_romanized": "Son Sonkut Tulgi",
         "english": "Straight Fingertip Thrust",
-        "phonetic": "/son.son.kɯt.tʰul.ɡi/"
+        "phonetic": "/son.son.kɯt.tʰul.ɡi/",
+        "romanised": "Son Sonkut Tulgi",
+        "hangul": "손손끝뛷기"
       },
       "description": "A direct thrusting attack using the fingertips in a straight line, targeting specific pressure points or soft tissue areas.",
       "execution": {
@@ -1238,8 +1238,8 @@
         "retraction": "Pull hand back along same line"
       },
       "striking_tool": {
-        "korean": "손끝",
-        "korean_romanized": "Sonkut",
+        "hangul": "손끝",
+        "romanised": "Sonkut",
         "english": "Fingertips",
         "phonetic": "/son.kɯt/"
       },
@@ -1287,10 +1287,10 @@
     {
       "id": "dollyo_jirugi",
       "names": {
-        "korean": "돌려지르기",
-        "korean_romanized": "Dollyo Jirugi",
         "english": "Turning Punch",
-        "phonetic": "/dol.ljʌ.tʃi.ɾɯ.ɡi/"
+        "phonetic": "/dol.ljʌ.tʃi.ɾɯ.ɡi/",
+        "romanised": "Dollyo Jirugi",
+        "hangul": "돌려지르기"
       },
       "description": "A punching technique delivered with turning motion, combining body rotation with the punch for increased power and different angle of attack.",
       "execution": {
@@ -1299,8 +1299,8 @@
         "retraction": "Return to guard with reverse rotation"
       },
       "striking_tool": {
-        "korean": "주먹",
-        "korean_romanized": "Joomuk",
+        "hangul": "주먹",
+        "romanised": "Joomuk",
         "english": "Fist",
         "phonetic": "/tʃu.mʌk/"
       },
@@ -1347,8 +1347,8 @@
       "id": "strike_twin_fore-knuckle_fist_crescent_strike",
       "names": {
         "english": "Twin Fore-knuckle fist Crescent Punch",
-        "korean_romanized": "Sang Inji Joomuk Bandal Jirugi",
-        "korean_hangul": "쌍 인지 주먹 반달 지르기"
+        "romanised": "Sang Inji Joomuk Bandal Jirugi",
+        "hangul": "쌍 인지 주먹 반달 지르기"
       },
       "category": "strikes"
     },
@@ -1356,8 +1356,8 @@
       "id": "strike_twin_knifehand_horizontal_strike",
       "names": {
         "english": "Twin Knifehand Horizontal Strike",
-        "korean_romanized": "Sang Sonkal Soopyong Taerigi",
-        "korean_hangul": "쌍 손칼 수평 태리기"
+        "romanised": "Sang Sonkal Soopyong Taerigi",
+        "hangul": "쌍 손칼 수평 태리기"
       },
       "category": "strikes"
     },
@@ -1365,8 +1365,8 @@
       "id": "strike_twin_knifehand_inward_strike",
       "names": {
         "english": "Twin Knifehand Inward Strike",
-        "korean_romanized": "Sang Sonkal Anaero Taerigi",
-        "korean_hangul": "쌍 손칼 안으로 태리기"
+        "romanised": "Sang Sonkal Anaero Taerigi",
+        "hangul": "쌍 손칼 안으로 태리기"
       },
       "category": "strikes"
     },
@@ -1374,18 +1374,18 @@
       "id": "strike_twin_side_elbow_thrust",
       "names": {
         "english": "Twin Side Elbow Thrust",
-        "korean_romanized": "Sang Yop Palkup Tulgi",
-        "korean_hangul": "쌍 옆 팔굽 틀기"
+        "romanised": "Sang Yop Palkup Tulgi",
+        "hangul": "쌍 옆 팔굽 틀기"
       },
       "category": "strikes"
     },
     {
       "id": "sang_dwijibo_jirugi",
       "names": {
-        "korean": "상뒤지보지르기",
-        "korean_romanized": "Sang Dwijibo Jirugi",
         "english": "Twin Upset Punch",
-        "phonetic": "/saŋ.twi.dʑi.bo.tʃi.ɾɯ.ɡi/"
+        "phonetic": "/saŋ.twi.dʑi.bo.tʃi.ɾɯ.ɡi/",
+        "romanised": "Sang Dwijibo Jirugi",
+        "hangul": "상뒤지보지르기"
       },
       "description": "A simultaneous upward punching technique with both fists, delivered in an upsetting motion to overwhelm the opponent's guard. Both fists strike upward simultaneously.",
       "execution": {
@@ -1394,8 +1394,8 @@
         "retraction": "Pull both fists back to starting position"
       },
       "striking_tool": {
-        "korean": "양주먹",
-        "korean_romanized": "Yang Joomuk",
+        "hangul": "양주먹",
+        "romanised": "Yang Joomuk",
         "english": "Both Fists",
         "phonetic": "/jaŋ.tʃu.mʌk/"
       },
@@ -1444,18 +1444,18 @@
       "id": "strike_twin_vertical_punch",
       "names": {
         "english": "Twin Vertical Punch",
-        "korean_romanized": "Sang Sewo Jirugi",
-        "korean_hangul": "쌍 세워 지르기"
+        "romanised": "Sang Sewo Jirugi",
+        "hangul": "쌍 세워 지르기"
       },
       "category": "strikes"
     },
     {
       "id": "wi_palkup_taerigi",
       "names": {
-        "korean": "위팔꿈치타어리기",
-        "korean_romanized": "Wi Palkup Taerigi",
         "english": "Upper Elbow Strike",
-        "phonetic": "/wi.pʰal.k͈um.tʃʰi.tʰa.ʌ.ɾi.ɡi/"
+        "phonetic": "/wi.pʰal.k͈um.tʃʰi.tʰa.ʌ.ɾi.ɡi/",
+        "romanised": "Wi Palkup Taerigi",
+        "hangul": "위팔꿈치타어리기"
       },
       "description": "An upward striking technique using the elbow, delivered in a rising motion. Extremely effective in close-range combat, targeting the underside of the jaw or solar plexus from below.",
       "execution": {
@@ -1464,8 +1464,8 @@
         "retraction": "Lower elbow back to guard position"
       },
       "striking_tool": {
-        "korean": "위팔꿈치",
-        "korean_romanized": "Wi Palkup",
+        "hangul": "위팔꿈치",
+        "romanised": "Wi Palkup",
         "english": "Upper Elbow",
         "phonetic": "/wi.pʰal.k͈um.tʃʰi/"
       },
@@ -1513,18 +1513,18 @@
       "id": "strike_upset_fingertip_thrust",
       "names": {
         "english": "Upset Fingertip Thrust",
-        "korean_romanized": "Dwijibo Sonkut Tulgi",
-        "korean_hangul": "뒤집음 손끝 틀기"
+        "romanised": "Dwijibo Sonkut Tulgi",
+        "hangul": "뒤집음 손끝 틀기"
       },
       "category": "strikes"
     },
     {
       "id": "ollyo_jirugi",
       "names": {
-        "korean": "올려지르기",
-        "korean_romanized": "Ollyo Jirugi",
         "english": "Upward Punch",
-        "phonetic": "/ol.ljʌ.tʃi.ɾɯ.ɡi/"
+        "phonetic": "/ol.ljʌ.tʃi.ɾɯ.ɡi/",
+        "romanised": "Ollyo Jirugi",
+        "hangul": "올려지르기"
       },
       "description": "A punching technique directed upward, typically targeting the underside of the jaw or solar plexus from below.",
       "execution": {
@@ -1533,8 +1533,8 @@
         "retraction": "Pull fist back to starting position"
       },
       "striking_tool": {
-        "korean": "주먹",
-        "korean_romanized": "Joomuk",
+        "hangul": "주먹",
+        "romanised": "Joomuk",
         "english": "Fist",
         "phonetic": "/tʃu.mʌk/"
       },
@@ -1578,8 +1578,8 @@
       "id": "strike_vertical_punch",
       "names": {
         "english": "Vertical Punch",
-        "korean_romanized": "Kyocha Jirugi",
-        "korean_hangul": "교차 지르기"
+        "romanised": "Kyocha Jirugi",
+        "hangul": "교차 지르기"
       },
       "category": "strikes"
     }

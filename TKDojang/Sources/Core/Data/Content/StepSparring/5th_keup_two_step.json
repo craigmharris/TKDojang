@@ -1,6 +1,6 @@
 {
   "belt_level": "5th_keup",
-  "category": "step_sparring", 
+  "category": "step_sparring",
   "type": "two_step",
   "description": "Two-step sparring sequences for 5th keup students (sequences 1-4)",
   "sequences": [
@@ -10,7 +10,13 @@
       "description": "Obverse punch and reverse punch with blocks and punch counter",
       "difficulty": 2,
       "key_learning_points": "Basic punch combinations and blocking sequences",
-      "applicable_belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
+      "applicable_belt_levels": [
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup"
+      ],
       "steps": [
         {
           "step_number": 1,
@@ -18,20 +24,20 @@
           "key_points": "Quick reaction, proper technique",
           "common_mistakes": "Slow response, poor form",
           "attack": {
-            "technique": "Obverse punch",
-            "korean_name": "Baro jirugi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Execute obverse punch with proper stance and targeting"
+            "description": "Execute obverse punch with proper stance and targeting",
+            "english": "Obverse punch",
+            "romanised": "Baro jirugi"
           },
           "defense": {
-            "technique": "Inner forearm block",
-            "korean_name": "An palmok makgi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "left",
-            "description": "Counter with inner forearm block"
+            "description": "Counter with inner forearm block",
+            "english": "Inner forearm block",
+            "romanised": "An palmok makgi"
           }
         },
         {
@@ -40,28 +46,28 @@
           "key_points": "Smooth transition, decisive counter",
           "common_mistakes": "Breaking rhythm, weak counter",
           "attack": {
-            "technique": "Reverse punch",
-            "korean_name": "Bandae jirugi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "left",
-            "description": "Execute reverse punch as follow-up attack"
+            "description": "Execute reverse punch as follow-up attack",
+            "english": "Reverse punch",
+            "romanised": "Bandae jirugi"
           },
           "defense": {
-            "technique": "Outer forearm block",
-            "korean_name": "Bakat palmok makgi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Execute outer forearm block defense"
+            "description": "Execute outer forearm block defense",
+            "english": "Outer forearm block",
+            "romanised": "Bakat palmok makgi"
           },
           "counter": {
-            "technique": "Obverse punch",
-            "korean_name": "Baro jirugi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Immediate counter with obverse punch"
+            "description": "Immediate counter with obverse punch",
+            "english": "Obverse punch",
+            "romanised": "Baro jirugi"
           }
         }
       ]
@@ -72,7 +78,13 @@
       "description": "High punch and middle punch with rising and inner blocks",
       "difficulty": 2,
       "key_learning_points": "Multi-level attack defense and timing",
-      "applicable_belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
+      "applicable_belt_levels": [
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup"
+      ],
       "steps": [
         {
           "step_number": 1,
@@ -80,20 +92,20 @@
           "key_points": "High block preparation, strong stance",
           "common_mistakes": "Block too low, poor positioning",
           "attack": {
-            "technique": "High punch",
-            "korean_name": "Nopunde jirugi",
             "stance": "walking stance",
             "target": "high section",
             "hand": "right",
-            "description": "Execute high punch to opponent's high section"
+            "description": "Execute high punch to opponent's high section",
+            "english": "High punch",
+            "romanised": "Nopunde jirugi"
           },
           "defense": {
-            "technique": "Rising block",
-            "korean_name": "Chookyo makgi",
             "stance": "walking stance",
             "target": "high section",
             "hand": "left",
-            "description": "Counter with rising block"
+            "description": "Counter with rising block",
+            "english": "Rising block",
+            "romanised": "Chookyo makgi"
           }
         },
         {
@@ -102,28 +114,28 @@
           "key_points": "Quick level change, strong counter",
           "common_mistakes": "Slow transition, weak kick",
           "attack": {
-            "technique": "Middle punch",
-            "korean_name": "Kaunde jirugi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "left",
-            "description": "Execute middle punch as follow-up"
+            "description": "Execute middle punch as follow-up",
+            "english": "Middle punch",
+            "romanised": "Kaunde jirugi"
           },
           "defense": {
-            "technique": "Inner forearm block",
-            "korean_name": "An palmok makgi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Execute inner forearm block"
+            "description": "Execute inner forearm block",
+            "english": "Inner forearm block",
+            "romanised": "An palmok makgi"
           },
           "counter": {
-            "technique": "Front kick",
-            "korean_name": "Ap chagi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Immediate counter with front kick"
+            "description": "Immediate counter with front kick",
+            "english": "Front kick",
+            "romanised": "Ap chagi"
           }
         }
       ]
@@ -134,7 +146,13 @@
       "description": "Front kick and punch combination with low block and counter",
       "difficulty": 2,
       "key_learning_points": "Mixed attack types and adaptive defense",
-      "applicable_belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
+      "applicable_belt_levels": [
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup"
+      ],
       "steps": [
         {
           "step_number": 1,
@@ -142,20 +160,20 @@
           "key_points": "Low block angle, stable stance",
           "common_mistakes": "Block too high, poor balance",
           "attack": {
-            "technique": "Front kick",
-            "korean_name": "Ap chagi",
             "stance": "walking stance",
             "target": "low section",
             "hand": "right",
-            "description": "Execute front kick to low section"
+            "description": "Execute front kick to low section",
+            "english": "Front kick",
+            "romanised": "Ap chagi"
           },
           "defense": {
-            "technique": "Low block",
-            "korean_name": "Naejeo makgi",
             "stance": "walking stance",
             "target": "low section",
             "hand": "left",
-            "description": "Counter with low block"
+            "description": "Counter with low block",
+            "english": "Low block",
+            "romanised": "Naejeo makgi"
           }
         },
         {
@@ -164,28 +182,28 @@
           "key_points": "Quick adaptation, powerful counter",
           "common_mistakes": "Slow response, weak kick",
           "attack": {
-            "technique": "Obverse punch",
-            "korean_name": "Baro jirugi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Execute obverse punch as follow-up"
+            "description": "Execute obverse punch as follow-up",
+            "english": "Obverse punch",
+            "romanised": "Baro jirugi"
           },
           "defense": {
-            "technique": "Outer forearm block",
-            "korean_name": "Bakat palmok makgi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Execute outer forearm block"
+            "description": "Execute outer forearm block",
+            "english": "Outer forearm block",
+            "romanised": "Bakat palmok makgi"
           },
           "counter": {
-            "technique": "Side kick",
-            "korean_name": "Yop chagi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Immediate counter with side kick"
+            "description": "Immediate counter with side kick",
+            "english": "Side kick",
+            "romanised": "Yop chagi"
           }
         }
       ]
@@ -196,7 +214,13 @@
       "description": "Turning kick and punch with dodge and block sequence",
       "difficulty": 2,
       "key_learning_points": "Circular attacks and movement-based defense",
-      "applicable_belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
+      "applicable_belt_levels": [
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup"
+      ],
       "steps": [
         {
           "step_number": 1,
@@ -204,20 +228,20 @@
           "key_points": "Dodge timing, effective blocking",
           "common_mistakes": "Poor dodge, weak block",
           "attack": {
-            "technique": "Turning kick",
-            "korean_name": "Dollyo chagi",
             "stance": "walking stance",
             "target": "high section",
             "hand": "right",
-            "description": "Execute turning kick to high section"
+            "description": "Execute turning kick to high section",
+            "english": "Turning kick",
+            "romanised": "Dollyo chagi"
           },
           "defense": {
-            "technique": "Dodge and block",
-            "korean_name": "Piha makgi",
             "stance": "walking stance",
             "target": "high section",
             "hand": "left",
-            "description": "Dodge and block the circular attack"
+            "description": "Dodge and block the circular attack",
+            "english": "Dodge and block",
+            "romanised": "Piha makgi"
           }
         },
         {
@@ -226,28 +250,28 @@
           "key_points": "Strong twin block, spinning counter",
           "common_mistakes": "Weak block, poor spinning technique",
           "attack": {
-            "technique": "Reverse punch",
-            "korean_name": "Bandae jirugi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "left",
-            "description": "Execute reverse punch as follow-up"
+            "description": "Execute reverse punch as follow-up",
+            "english": "Reverse punch",
+            "romanised": "Bandae jirugi"
           },
           "defense": {
-            "technique": "Twin forearm block",
-            "korean_name": "Sang palmok makgi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "both",
-            "description": "Execute twin forearm block"
+            "description": "Execute twin forearm block",
+            "english": "Twin forearm block",
+            "romanised": "Sang palmok makgi"
           },
           "counter": {
-            "technique": "Turning kick",
-            "korean_name": "Dollyo chagi",
             "stance": "walking stance",
             "target": "high section",
             "hand": "right",
-            "description": "Immediate counter with turning kick"
+            "description": "Immediate counter with turning kick",
+            "english": "Turning kick",
+            "romanised": "Dollyo chagi"
           }
         }
       ]

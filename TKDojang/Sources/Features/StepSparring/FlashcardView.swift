@@ -698,7 +698,7 @@ struct FlashcardView: View {
                         .minimumScaleFactor(0.7)
                         .lineLimit(1)
                     
-                    Text(term.romanizedPronunciation)
+                    Text(term.romanisedPronunciation)
                         .font(.title3)
                         .foregroundColor(.primary)
                         .italic()
@@ -762,7 +762,7 @@ struct FlashcardView: View {
                         .font(.system(size: 42, weight: .medium))
                         .foregroundColor(.primary)
                     
-                    Text(term.romanizedPronunciation)
+                    Text(term.romanisedPronunciation)
                         .font(.title2)
                         .foregroundColor(.primary)
                         .italic()
@@ -785,7 +785,7 @@ struct FlashcardView: View {
                     .font(.system(size: 48, weight: .medium))
                     .foregroundColor(.primary)
                 
-                Text(term.romanizedPronunciation)
+                Text(term.romanisedPronunciation)
                     .font(.title2)
                     .foregroundColor(.primary)
                     .italic()

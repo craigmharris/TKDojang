@@ -6,116 +6,199 @@
     {
       "id": "jab_cross_combo",
       "names": {
-        "korean": "밀어치기연속기",
-        "korean_romanized": "Mireo Chigi Yeonsokgi",
         "english": "Jab Cross Combination",
-        "phonetic": "/mi.ɾʌ.tʃʰi.ɡi.jʌn.sok.ɡi/"
+        "phonetic": "/mi.ɾʌ.tʃʰi.ɡi.jʌn.sok.ɡi/",
+        "romanised": "Mireo Chigi Yeonsokgi",
+        "hangul": "밀어치기연속기"
       },
       "description": "A fundamental two-punch combination starting with a lead hand jab followed by a rear hand cross punch.",
       "sequence": [
         {
           "step": 1,
           "technique": "Lead hand jab to head",
-          "korean": "앞손밀어치기",
+          "hangul": "앞손밀어치기",
           "timing": "quick"
         },
         {
-          "step": 2, 
+          "step": 2,
           "technique": "Rear hand cross to body",
-          "korean": "뒷손지르기",
+          "hangul": "뒷손지르기",
           "timing": "power"
         }
       ],
       "combination_type": "hand_combination",
       "total_movements": 2,
-      "applicable_stances": ["narani_junbi_sogi", "gunnun_sogi"],
-      "belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "applicable_stances": [
+        "narani_junbi_sogi",
+        "gunnun_sogi"
+      ],
+      "belt_levels": [
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "intermediate",
-      "tags": ["punching", "combination", "fundamental", "boxing_style"],
-      "setup_techniques": ["footwork", "distance_management"],
-      "follow_up_options": ["kicks", "clinch", "additional_punches"],
+      "tags": [
+        "punching",
+        "combination",
+        "fundamental",
+        "boxing_style"
+      ],
+      "setup_techniques": [
+        "footwork",
+        "distance_management"
+      ],
+      "follow_up_options": [
+        "kicks",
+        "clinch",
+        "additional_punches"
+      ],
       "images": [
         "jab_cross_setup.jpg",
-        "jab_cross_sequence.jpg", 
+        "jab_cross_sequence.jpg",
         "jab_cross_finish.jpg"
       ],
-      "common_mistakes": ["Poor timing between punches", "No hip rotation", "Telegraphing"]
+      "common_mistakes": [
+        "Poor timing between punches",
+        "No hip rotation",
+        "Telegraphing"
+      ]
     },
     {
       "id": "block_counter_combo",
       "names": {
-        "korean": "막기반격조합",
-        "korean_romanized": "Makgi Bangyeok Johap",
         "english": "Block Counter Combination",
-        "phonetic": "/mak.ɡi.pan.ɡjʌk.tʃo.hap/"
+        "phonetic": "/mak.ɡi.pan.ɡjʌk.tʃo.hap/",
+        "romanised": "Makgi Bangyeok Johap",
+        "hangul": "막기반격조합"
       },
       "description": "A defensive combination that blocks an incoming attack and immediately follows with a counter-attack, forming the basis of sparring strategy.",
       "sequence": [
         {
           "step": 1,
           "technique": "Block incoming attack",
-          "korean": "공격막기",
+          "hangul": "공격막기",
           "timing": "defensive"
         },
         {
           "step": 2,
           "technique": "Immediate counter-attack",
-          "korean": "즉시반격",
+          "hangul": "즉시반격",
           "timing": "immediate"
         }
       ],
       "combination_type": "defense_offense",
       "total_movements": 2,
-      "applicable_stances": ["gojung_sogi", "ap_koobi_seogi"],
-      "belt_levels": ["7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "applicable_stances": [
+        "gojung_sogi",
+        "ap_koobi_seogi"
+      ],
+      "belt_levels": [
+        "7th_keup",
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "intermediate",
-      "tags": ["defensive", "counter", "fundamental", "sparring"],
-      "setup_techniques": ["proper_blocking", "distance_assessment"],
-      "follow_up_options": ["additional_attacks", "distance_creation", "clinch"],
+      "tags": [
+        "defensive",
+        "counter",
+        "fundamental",
+        "sparring"
+      ],
+      "setup_techniques": [
+        "proper_blocking",
+        "distance_assessment"
+      ],
+      "follow_up_options": [
+        "additional_attacks",
+        "distance_creation",
+        "clinch"
+      ],
       "images": [
         "block_counter_block.jpg",
         "block_counter_transition.jpg",
         "block_counter_strike.jpg"
       ],
-      "common_mistakes": ["Slow transition", "Wrong counter choice", "Poor distance"]
+      "common_mistakes": [
+        "Slow transition",
+        "Wrong counter choice",
+        "Poor distance"
+      ]
     },
     {
       "id": "kick_punch_combo",
       "names": {
-        "korean": "차기지르기조합",
-        "korean_romanized": "Chagi Jireugi Johap", 
         "english": "Kick Punch Combination",
-        "phonetic": "/tʃʰa.ɡi.tʃi.ɾɯ.ɡi.tʃo.hap/"
+        "phonetic": "/tʃʰa.ɡi.tʃi.ɾɯ.ɡi.tʃo.hap/",
+        "romanised": "Chagi Jireugi Johap",
+        "hangul": "차기지르기조합"
       },
       "description": "A combination that starts with a kick to create distance or damage, followed by closing distance and finishing with hand techniques.",
       "sequence": [
         {
           "step": 1,
           "technique": "Front kick or turning kick",
-          "korean": "앞차기또는돌려차기",
+          "hangul": "앞차기또는돌려차기",
           "timing": "setup"
         },
         {
           "step": 2,
           "technique": "Step forward with punch",
-          "korean": "전진지르기",
+          "hangul": "전진지르기",
           "timing": "follow_up"
         }
       ],
       "combination_type": "kick_hand",
       "total_movements": 2,
-      "applicable_stances": ["narani_junbi_sogi", "gunnun_sogi"],
-      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "applicable_stances": [
+        "narani_junbi_sogi",
+        "gunnun_sogi"
+      ],
+      "belt_levels": [
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "intermediate",
-      "tags": ["kick_punch", "distance_change", "combination"],
-      "setup_techniques": ["distance_assessment", "timing"],
-      "follow_up_options": ["additional_strikes", "grappling", "retreat"],
+      "tags": [
+        "kick_punch",
+        "distance_change",
+        "combination"
+      ],
+      "setup_techniques": [
+        "distance_assessment",
+        "timing"
+      ],
+      "follow_up_options": [
+        "additional_strikes",
+        "grappling",
+        "retreat"
+      ],
       "images": [
         "kick_punch_kick.jpg",
-        "kick_punch_close.jpg", 
+        "kick_punch_close.jpg",
         "kick_punch_punch.jpg"
       ],
-      "common_mistakes": ["Poor distance management", "Slow transition", "Wrong kick choice"]
+      "common_mistakes": [
+        "Poor distance management",
+        "Slow transition",
+        "Wrong kick choice"
+      ]
     }
   ]
 }

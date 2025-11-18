@@ -226,7 +226,7 @@ struct SlotBuilderResultsView: View {
                     .font(.subheadline)
                     .foregroundColor(.primary)
 
-                Text(completed.userPhrase.map { $0.romanized }.joined(separator: " "))
+                Text(completed.userPhrase.map { $0.romanised }.joined(separator: " "))
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
@@ -347,9 +347,9 @@ private enum PerformanceLevel {
                             slotChoices: []
                         ),
                         userPhrase: [
-                            CategorizedWord(english: "Outer", romanized: "Bakat", category: .direction, frequency: 10),
-                            CategorizedWord(english: "Forearm", romanized: "Palmok", category: .tool, frequency: 18),
-                            CategorizedWord(english: "Block", romanized: "Makgi", category: .action, frequency: 27)
+                            CategorizedWord(english: "Outer", romanised: "Bakat", category: .direction, frequency: 10),
+                            CategorizedWord(english: "Forearm", romanised: "Palmok", category: .tool, frequency: 18),
+                            CategorizedWord(english: "Block", romanised: "Makgi", category: .action, frequency: 27)
                         ],
                         isCorrect: i <= 9, // 90% accuracy
                         feedback: "Correct!",
@@ -379,8 +379,8 @@ private enum PerformanceLevel {
                             slotChoices: []
                         ),
                         userPhrase: [
-                            CategorizedWord(english: "Fist", romanized: "Joomuk", category: .tool, frequency: 11),
-                            CategorizedWord(english: "Punch", romanized: "Jirugi", category: .action, frequency: 9)
+                            CategorizedWord(english: "Fist", romanised: "Joomuk", category: .tool, frequency: 11),
+                            CategorizedWord(english: "Punch", romanised: "Jirugi", category: .action, frequency: 9)
                         ],
                         isCorrect: i <= 2, // 40% accuracy
                         feedback: i <= 2 ? "Correct!" : "Incorrect",

@@ -89,7 +89,7 @@ enum WordCategory: String, CaseIterable, Identifiable {
 
 struct CategorizedWord: Identifiable, Hashable {
     let english: String
-    let romanized: String
+    let romanised: String
     let category: WordCategory
     let frequency: Int
 
@@ -131,7 +131,7 @@ class VocabularyCategories {
             }
             return CategorizedWord(
                 english: word.english,
-                romanized: word.romanized,
+                romanised: word.romanised,
                 category: category,
                 frequency: word.frequency
             )

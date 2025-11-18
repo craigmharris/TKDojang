@@ -43,7 +43,7 @@ class CreativeSandboxService: ObservableObject {
             for category in categories {
                 let categorizedWord = CategorizedWord(
                     english: word.english,
-                    romanized: word.romanized,
+                    romanised: word.romanised,
                     category: category,
                     frequency: word.frequency
                 )
@@ -87,7 +87,7 @@ struct PhraseConstruction: Identifiable {
         words.map { $0.english }.joined(separator: " ")
     }
 
-    var romanizedPhrase: String {
-        words.map { $0.romanized }.joined(separator: " ")
+    var romanisedPhrase: String {
+        words.map { $0.romanised }.joined(separator: " ")
     }
 }

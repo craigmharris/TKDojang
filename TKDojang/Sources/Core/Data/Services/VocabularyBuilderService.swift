@@ -7,13 +7,13 @@ import SwiftData
  * PURPOSE: Service for managing vocabulary word learning and phrase construction
  *
  * FEATURES:
- * - Load vocabulary words from generated JSON (English ↔ Korean romanized mappings)
+ * - Load vocabulary words from generated JSON (English ↔ Korean romanised mappings)
  * - Provide words filtered by frequency and mastery level
  * - Track word-level mastery (separate from phrase-level terminology mastery)
  * - Support progressive learning (2-word → 6-word phrase construction)
  *
  * LEARNING MODES SUPPORTED:
- * - Word Matching: Match individual English words to Korean romanized equivalents
+ * - Word Matching: Match individual English words to Korean romanised equivalents
  * - Phrase Building: Construct phrases by arranging word tiles in correct order
  * - Progressive Assembly: Start with 2-word phrases, unlock longer phrases as mastery grows
  *
@@ -126,13 +126,13 @@ class VocabularyBuilderService: ObservableObject {
 
         // Filter for phrases with target word count
         let phrases = terminologyData.terminology
-            .filter { $0.romanized_pronunciation.split(separator: " ").count == wordCount }
+            .filter { $0.romanisedPronunciation.split(separator: " ").count == wordCount }
             .prefix(maxPhrases)
             .map { term in
                 TerminologyPhrase(
-                    english: term.english_term,
-                    romanized: term.romanized_pronunciation,
-                    hangul: term.korean_hangul,
+                    english: term.englishTerm,
+                    romanised: term.romanisedPronunciation,
+                    hangul: term.koreanHangul,
                     wordCount: wordCount
                 )
             }
@@ -158,12 +158,12 @@ class VocabularyBuilderService: ObservableObject {
                        let terminologyData = try? JSONDecoder().decode(VocabTerminologyContainer.self, from: data) {
 
                         let phrases = terminologyData.terminology
-                            .filter { $0.romanized_pronunciation.split(separator: " ").count == wordCount }
+                            .filter { $0.romanisedPronunciation.split(separator: " ").count == wordCount }
                             .map { term in
                                 TerminologyPhrase(
-                                    english: term.english_term,
-                                    romanized: term.romanized_pronunciation,
-                                    hangul: term.korean_hangul,
+                                    english: term.englishTerm,
+                                    romanised: term.romanisedPronunciation,
+                                    hangul: term.koreanHangul,
                                     wordCount: wordCount
                                 )
                             }
@@ -183,7 +183,7 @@ class VocabularyBuilderService: ObservableObject {
 
 struct VocabularyWord: Codable, Identifiable, Hashable {
     let english: String
-    let romanized: String
+    let romanised: String
     let hangul: String?
     let frequency: Int
 
@@ -196,14 +196,14 @@ struct VocabularyData: Codable {
 
 struct TerminologyPhrase: Identifiable, Hashable {
     let english: String
-    let romanized: String
+    let romanised: String
     let hangul: String
     let wordCount: Int
 
     var id: String { english }
 
     var words: [String] {
-        romanized.split(separator: " ").map { String($0) }
+        romanised.split(separator: " ").map { String($0) }
     }
 }
 
@@ -236,7 +236,13 @@ private struct VocabTerminologyContainer: Codable {
 }
 
 private struct VocabTerminologyEntry: Codable {
-    let english_term: String
-    let romanized_pronunciation: String
-    let korean_hangul: String
+    let englishTerm: String
+    let romanisedPronunciation: String
+    let koreanHangul: String
+
+    enum CodingKeys: String, CodingKey {
+        case englishTerm = "english"
+        case romanisedPronunciation = "romanised"
+        case koreanHangul = "hangul"
+    }
 }

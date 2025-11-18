@@ -10,7 +10,11 @@
       "description": "Guided sparring with flexible attack and defense patterns",
       "difficulty": 3,
       "key_learning_points": "Adaptive techniques, distance management, combination flows",
-      "applicable_belt_levels": ["1st_keup", "1st_dan", "2nd_dan"],
+      "applicable_belt_levels": [
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "steps": [
         {
           "step_number": 1,
@@ -18,28 +22,28 @@
           "key_points": "Read opponent's movement, adapt technique selection, maintain control",
           "common_mistakes": "Fixed patterns, poor distance, overly aggressive",
           "attack": {
-            "technique": "Variable attack",
-            "korean_name": "Gahpyeon gonggyeok",
             "stance": "fighting stance",
             "target": "variable section",
             "hand": "either",
-            "description": "Select appropriate attack based on opening and distance"
+            "description": "Select appropriate attack based on opening and distance",
+            "english": "Variable attack",
+            "romanised": "Gahpyeon gonggyeok"
           },
           "defense": {
-            "technique": "Adaptive defense",
-            "korean_name": "Gahpyeon bangeo",
             "stance": "fighting stance",
             "target": "variable section",
             "hand": "either",
-            "description": "Choose defense technique appropriate to incoming attack"
+            "description": "Choose defense technique appropriate to incoming attack",
+            "english": "Adaptive defense",
+            "romanised": "Gahpyeon bangeo"
           },
           "counter": {
-            "technique": "Situational counter",
-            "korean_name": "Sanghwang banggyeok",
             "stance": "fighting stance",
             "target": "variable section",
             "hand": "either",
-            "description": "Execute counter-attack based on opening created by defense"
+            "description": "Execute counter-attack based on opening created by defense",
+            "english": "Situational counter",
+            "romanised": "Sanghwang banggyeok"
           }
         }
       ]

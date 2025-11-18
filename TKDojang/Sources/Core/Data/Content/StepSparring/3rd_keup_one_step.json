@@ -10,7 +10,11 @@
       "description": "Basic attack with immediate defense and counter",
       "difficulty": 2,
       "key_learning_points": "Quick reaction, timing, distance control",
-      "applicable_belt_levels": ["3rd_keup", "2nd_keup", "1st_keup"],
+      "applicable_belt_levels": [
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup"
+      ],
       "steps": [
         {
           "step_number": 1,
@@ -18,28 +22,28 @@
           "key_points": "React quickly, maintain distance, strong counter",
           "common_mistakes": "Slow reaction, backing away, weak counter",
           "attack": {
-            "technique": "Obverse punch",
-            "korean_name": "Baro jirugi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Step forward with right foot into walking stance, execute obverse punch to middle section"
+            "description": "Step forward with right foot into walking stance, execute obverse punch to middle section",
+            "english": "Obverse punch",
+            "romanised": "Baro jirugi"
           },
           "defense": {
-            "technique": "Inner forearm block",
-            "korean_name": "An palmok makgi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "left",
-            "description": "Block with left inner forearm while stepping back"
+            "description": "Block with left inner forearm while stepping back",
+            "english": "Inner forearm block",
+            "romanised": "An palmok makgi"
           },
           "counter": {
-            "technique": "Reverse punch",
-            "korean_name": "Bandae jirugi",
             "stance": "walking stance",
             "target": "middle section",
             "hand": "right",
-            "description": "Immediately counter with right reverse punch"
+            "description": "Immediately counter with right reverse punch",
+            "english": "Reverse punch",
+            "romanised": "Bandae jirugi"
           }
         }
       ]

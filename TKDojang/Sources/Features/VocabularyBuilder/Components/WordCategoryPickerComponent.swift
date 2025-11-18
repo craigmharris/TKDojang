@@ -7,7 +7,7 @@ import SwiftUI
  *
  * FEATURES:
  * - Shows 4-6 word choices for current slot
- * - Displays English + romanized Korean for each option
+ * - Displays English + romanised Korean for each option
  * - Category color coding
  * - Tap to select word
  * - Grid layout for compact presentation
@@ -99,7 +99,7 @@ struct WordCategoryPickerComponent: View {
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
 
-                Text(word.romanized)
+                Text(word.romanised)
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
@@ -119,7 +119,7 @@ struct WordCategoryPickerComponent: View {
         .buttonStyle(.plain)
         .disabled(isDemo)
         .accessibilityIdentifier("slot-builder-word-choice-\(word.english.lowercased())")
-        .accessibilityLabel("\(word.english), \(word.romanized)")
+        .accessibilityLabel("\(word.english), \(word.romanised)")
         .accessibilityHint(isSelected(word) ? "Currently selected" : "Tap to select this word")
         .accessibilityAddTraits(isSelected(word) ? .isSelected : [])
     }
@@ -148,10 +148,10 @@ struct WordCategoryPickerComponent: View {
 #Preview("Tool Category") {
     WordCategoryPickerComponent(
         wordChoices: [
-            CategorizedWord(english: "Forearm", romanized: "Palmok", category: .tool, frequency: 18),
-            CategorizedWord(english: "Fist", romanized: "Joomuk", category: .tool, frequency: 11),
-            CategorizedWord(english: "Palm", romanized: "Sonbadak", category: .tool, frequency: 10),
-            CategorizedWord(english: "Knife", romanized: "Sonkal", category: .tool, frequency: 13)
+            CategorizedWord(english: "Forearm", romanised: "Palmok", category: .tool, frequency: 18),
+            CategorizedWord(english: "Fist", romanised: "Joomuk", category: .tool, frequency: 11),
+            CategorizedWord(english: "Palm", romanised: "Sonbadak", category: .tool, frequency: 10),
+            CategorizedWord(english: "Knife", romanised: "Sonkal", category: .tool, frequency: 13)
         ],
         categoryLabel: "Tool",
         category: .tool,
@@ -163,14 +163,14 @@ struct WordCategoryPickerComponent: View {
 #Preview("Action Category - With Selection") {
     WordCategoryPickerComponent(
         wordChoices: [
-            CategorizedWord(english: "Block", romanized: "Makgi", category: .action, frequency: 27),
-            CategorizedWord(english: "Kick", romanized: "Chagi", category: .action, frequency: 14),
-            CategorizedWord(english: "Punch", romanized: "Jirugi", category: .action, frequency: 9),
-            CategorizedWord(english: "Strike", romanized: "Taerigi", category: .action, frequency: 11)
+            CategorizedWord(english: "Block", romanised: "Makgi", category: .action, frequency: 27),
+            CategorizedWord(english: "Kick", romanised: "Chagi", category: .action, frequency: 14),
+            CategorizedWord(english: "Punch", romanised: "Jirugi", category: .action, frequency: 9),
+            CategorizedWord(english: "Strike", romanised: "Taerigi", category: .action, frequency: 11)
         ],
         categoryLabel: "Action",
         category: .action,
-        selectedWord: CategorizedWord(english: "Block", romanized: "Makgi", category: .action, frequency: 27)
+        selectedWord: CategorizedWord(english: "Block", romanised: "Makgi", category: .action, frequency: 27)
     )
     .padding()
 }
@@ -178,12 +178,12 @@ struct WordCategoryPickerComponent: View {
 #Preview("Direction Category - 6 Options") {
     WordCategoryPickerComponent(
         wordChoices: [
-            CategorizedWord(english: "Outer", romanized: "Bakat", category: .direction, frequency: 10),
-            CategorizedWord(english: "Inner", romanized: "An", category: .direction, frequency: 3),
-            CategorizedWord(english: "Rising", romanized: "Chookyo", category: .direction, frequency: 3),
-            CategorizedWord(english: "Upward", romanized: "Ollyo", category: .direction, frequency: 4),
-            CategorizedWord(english: "Front", romanized: "Ap", category: .direction, frequency: 5),
-            CategorizedWord(english: "Side", romanized: "Yop", category: .direction, frequency: 8)
+            CategorizedWord(english: "Outer", romanised: "Bakat", category: .direction, frequency: 10),
+            CategorizedWord(english: "Inner", romanised: "An", category: .direction, frequency: 3),
+            CategorizedWord(english: "Rising", romanised: "Chookyo", category: .direction, frequency: 3),
+            CategorizedWord(english: "Upward", romanised: "Ollyo", category: .direction, frequency: 4),
+            CategorizedWord(english: "Front", romanised: "Ap", category: .direction, frequency: 5),
+            CategorizedWord(english: "Side", romanised: "Yop", category: .direction, frequency: 8)
         ],
         categoryLabel: "Direction",
         category: .direction,
@@ -195,13 +195,13 @@ struct WordCategoryPickerComponent: View {
 #Preview("Demo Mode") {
     WordCategoryPickerComponent(
         wordChoices: [
-            CategorizedWord(english: "High", romanized: "Nopunde", category: .target, frequency: 5),
-            CategorizedWord(english: "Middle", romanized: "Kaunde", category: .target, frequency: 3),
-            CategorizedWord(english: "Low", romanized: "Daebi", category: .target, frequency: 4)
+            CategorizedWord(english: "High", romanised: "Nopunde", category: .target, frequency: 5),
+            CategorizedWord(english: "Middle", romanised: "Kaunde", category: .target, frequency: 3),
+            CategorizedWord(english: "Low", romanised: "Daebi", category: .target, frequency: 4)
         ],
         categoryLabel: "Target",
         category: .target,
-        selectedWord: CategorizedWord(english: "High", romanized: "Nopunde", category: .target, frequency: 5),
+        selectedWord: CategorizedWord(english: "High", romanised: "Nopunde", category: .target, frequency: 5),
         isDemo: true
     )
     .padding()

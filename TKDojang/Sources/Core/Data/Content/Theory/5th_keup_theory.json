@@ -73,19 +73,19 @@
         ],
         "types": [
           {
-            "name": "Three-step sparring",
             "description": "Attacker performs three attacks, defender blocks and counters",
-            "focus": "Basic timing and distance"
+            "focus": "Basic timing and distance",
+            "english": "Three-step sparring"
           },
           {
-            "name": "Two-step sparring", 
             "description": "Attacker performs two attacks, defender blocks and counters",
-            "focus": "Improved timing and closer distance"
+            "focus": "Improved timing and closer distance",
+            "english": "Two-step sparring"
           },
           {
-            "name": "One-step sparring",
             "description": "Attacker performs one attack, defender blocks and counters",
-            "focus": "Realistic timing and advanced techniques"
+            "focus": "Realistic timing and advanced techniques",
+            "english": "One-step sparring"
           }
         ],
         "safety_principles": [

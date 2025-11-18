@@ -137,14 +137,14 @@ struct MemoryMatchConfigurationView: View {
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
 
-            Text("Flip cards to match English words with their Korean romanized equivalents.")
+            Text("Flip cards to match English words with their Korean romanised equivalents.")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
         }
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("Memory Match: Match word pairs. Flip cards to match English words with their Korean romanized equivalents.")
+        .accessibilityLabel("Memory Match: Match word pairs. Flip cards to match English words with their Korean romanised equivalents.")
     }
 
     // MARK: - Loading View

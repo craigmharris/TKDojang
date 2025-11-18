@@ -25,29 +25,29 @@
         "overview": "The five tenets of Taekwondo form the foundation of moral and ethical behavior for all practitioners.",
         "tenets": [
           {
-            "name": "Courtesy",
-            "korean": "Ye Ui",
-            "description": "Being polite and showing respect to others, including instructors, fellow students, and oneself."
+            "description": "Being polite and showing respect to others, including instructors, fellow students, and oneself.",
+            "english": "Courtesy",
+            "romanised": "Ye Ui"
           },
           {
-            "name": "Integrity", 
-            "korean": "Yom Chi",
-            "description": "Being honest and having strong moral principles; doing what is right even when no one is watching."
+            "description": "Being honest and having strong moral principles; doing what is right even when no one is watching.",
+            "english": "Integrity",
+            "romanised": "Yom Chi"
           },
           {
-            "name": "Perseverance",
-            "korean": "In Nae",
-            "description": "Having the determination to continue despite difficulties or obstacles."
+            "description": "Having the determination to continue despite difficulties or obstacles.",
+            "english": "Perseverance",
+            "romanised": "In Nae"
           },
           {
-            "name": "Self Control",
-            "korean": "Guk Gi",
-            "description": "The ability to control one's emotions, actions, and words, especially in challenging situations."
+            "description": "The ability to control one's emotions, actions, and words, especially in challenging situations.",
+            "english": "Self Control",
+            "romanised": "Guk Gi"
           },
           {
-            "name": "Indomitable Spirit",
-            "korean": "Baekjul Boolgool",
-            "description": "Having an unbreakable will and the courage to stand up for what is right."
+            "description": "Having an unbreakable will and the courage to stand up for what is right.",
+            "english": "Indomitable Spirit",
+            "romanised": "Baekjul Boolgool"
           }
         ]
       },
@@ -94,25 +94,25 @@
         "greeting_terms": [
           {
             "english": "Hello/Goodbye",
-            "korean": "Annyeong Haseyo",
-            "usage": "Respectful greeting used when entering or leaving the dojang"
+            "usage": "Respectful greeting used when entering or leaving the dojang",
+            "romanised": "Annyeong Haseyo"
           },
           {
             "english": "Thank you",
-            "korean": "Gamsahamnida", 
-            "usage": "Used to show gratitude to instructors and training partners"
+            "usage": "Used to show gratitude to instructors and training partners",
+            "romanised": "Gamsahamnida"
           }
         ],
         "dojang_terms": [
           {
             "english": "Training hall",
-            "korean": "Dojang",
-            "usage": "The place where Taekwondo is practiced"
+            "usage": "The place where Taekwondo is practiced",
+            "romanised": "Dojang"
           },
           {
             "english": "Uniform",
-            "korean": "Dobok",
-            "usage": "The traditional white clothing worn during training"
+            "usage": "The traditional white clothing worn during training",
+            "romanised": "Dobok"
           }
         ]
       },

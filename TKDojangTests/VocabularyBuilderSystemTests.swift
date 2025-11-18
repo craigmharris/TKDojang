@@ -425,7 +425,7 @@ final class VocabularyBuilderSystemTests: XCTestCase {
         // Verify word structure
         for word in words.prefix(10) {
             XCTAssertFalse(word.english.isEmpty, "English should not be empty")
-            XCTAssertFalse(word.romanized.isEmpty, "Romanized should not be empty")
+            XCTAssertFalse(word.romanised.isEmpty, "Romanised should not be empty")
             XCTAssertGreaterThan(word.frequency, 0, "Frequency should be > 0")
         }
 
@@ -568,7 +568,7 @@ final class VocabularyBuilderSystemTests: XCTestCase {
 
         // Memory Match - insufficient words
         let memoryService = MemoryMatchService(modelContext: testContext)
-        let minimalWords = [VocabularyWord(english: "Test", romanized: "Test", hangul: nil, frequency: 1)]
+        let minimalWords = [VocabularyWord(english: "Test", romanised: "Test", hangul: nil, frequency: 1)]
 
         XCTAssertThrowsError(
             try memoryService.generateSession(pairCount: 10)

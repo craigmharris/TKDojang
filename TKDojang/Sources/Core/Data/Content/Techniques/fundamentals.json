@@ -6,10 +6,10 @@
     {
       "id": "sajo_jirugi",
       "names": {
-        "korean": "사조지르기",
-        "korean_romanized": "Sajo Jirugi",
         "english": "Four Directional Punch",
-        "phonetic": "/sa.dʑo.tʃi.ɾɯ.ɡi/"
+        "phonetic": "/sa.dʑo.tʃi.ɾɯ.ɡi/",
+        "romanised": "Sajo Jirugi",
+        "hangul": "사조지르기"
       },
       "description": "Basic punching exercise performed in four directions while stepping. Develops basic coordination, stance work, and punching technique.",
       "execution": {
@@ -19,17 +19,44 @@
       },
       "exercise_type": "fundamental_drill",
       "movements": 20,
-      "applicable_stances": ["gunnun_sogi"],
-      "belt_levels": ["10th_keup", "9th_keup", "8th_keup", "7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup"],
+      "applicable_stances": [
+        "gunnun_sogi"
+      ],
+      "belt_levels": [
+        "10th_keup",
+        "9th_keup",
+        "8th_keup",
+        "7th_keup",
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup"
+      ],
       "difficulty": "basic",
-      "tags": ["fundamental", "four_direction", "coordination", "basic_drill"],
-      "skills_developed": ["coordination", "stance_transitions", "basic_punching", "direction_changes"],
+      "tags": [
+        "fundamental",
+        "four_direction",
+        "coordination",
+        "basic_drill"
+      ],
+      "skills_developed": [
+        "coordination",
+        "stance_transitions",
+        "basic_punching",
+        "direction_changes"
+      ],
       "images": [
         "sajo_jirugi_front.jpg",
         "sajo_jirugi_turn.jpg",
         "sajo_jirugi_sequence.jpg"
       ],
-      "common_mistakes": ["Poor stance transitions", "Weak punches", "Wrong timing"]
+      "common_mistakes": [
+        "Poor stance transitions",
+        "Weak punches",
+        "Wrong timing"
+      ]
     }
   ]
 }

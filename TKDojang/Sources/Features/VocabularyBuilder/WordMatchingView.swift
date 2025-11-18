@@ -4,7 +4,7 @@ import SwiftData
 /**
  * WordMatchingView.swift
  *
- * PURPOSE: Word Matching learning mode - match English words to Korean romanized equivalents
+ * PURPOSE: Word Matching learning mode - match English words to Korean romanised equivalents
  *
  * FEATURES:
  * - Show English word, present 4 Korean options
@@ -72,7 +72,7 @@ struct WordMatchingView: View {
                         .font(.title)
                         .fontWeight(.bold)
 
-                    Text("Match English words to their Korean romanized equivalents")
+                    Text("Match English words to their Korean romanised equivalents")
                         .font(.body)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
@@ -208,7 +208,7 @@ struct WordMatchingView: View {
                     // Answer options
                     VStack(spacing: 16) {
                         ForEach(currentAnswerOptions, id: \.self) { option in
-                            answerButton(option: option, correct: currentWord.romanized)
+                            answerButton(option: option, correct: currentWord.romanised)
                         }
                     }
                     .padding(.horizontal, 24)
@@ -391,12 +391,12 @@ struct WordMatchingView: View {
     }
 
     private func answerOptions(for word: VocabularyWord) -> [String] {
-        var options = [word.romanized]
+        var options = [word.romanised]
 
         // Add 3 random incorrect options
         let otherWords = sessionWords.filter { $0.id != word.id }.shuffled()
         for otherWord in otherWords.prefix(3) {
-            options.append(otherWord.romanized)
+            options.append(otherWord.romanised)
         }
 
         return options.shuffled()
@@ -435,9 +435,9 @@ struct WordMatchingView: View {
 
     let service = VocabularyBuilderService(modelContext: modelContainer.mainContext)
     let sampleWords = [
-        VocabularyWord(english: "Block", romanized: "Makgi", hangul: nil, frequency: 27),
-        VocabularyWord(english: "Kick", romanized: "Chagi", hangul: nil, frequency: 14),
-        VocabularyWord(english: "Punch", romanized: "Jirugi", hangul: nil, frequency: 9)
+        VocabularyWord(english: "Block", romanised: "Makgi", hangul: nil, frequency: 27),
+        VocabularyWord(english: "Kick", romanised: "Chagi", hangul: nil, frequency: 14),
+        VocabularyWord(english: "Punch", romanised: "Jirugi", hangul: nil, frequency: 9)
     ]
 
     NavigationStack {

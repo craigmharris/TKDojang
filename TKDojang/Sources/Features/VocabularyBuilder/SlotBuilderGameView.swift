@@ -292,10 +292,10 @@ private extension Array {
                         slotLabel: "Tool",
                         allowedCategories: [.tool],
                         wordChoices: [
-                            CategorizedWord(english: "Forearm", romanized: "Palmok", category: .tool, frequency: 18),
-                            CategorizedWord(english: "Fist", romanized: "Joomuk", category: .tool, frequency: 11),
-                            CategorizedWord(english: "Knife", romanized: "Sonkal", category: .tool, frequency: 13),
-                            CategorizedWord(english: "Palm", romanized: "Sonbadak", category: .tool, frequency: 10)
+                            CategorizedWord(english: "Forearm", romanised: "Palmok", category: .tool, frequency: 18),
+                            CategorizedWord(english: "Fist", romanised: "Joomuk", category: .tool, frequency: 11),
+                            CategorizedWord(english: "Knife", romanised: "Sonkal", category: .tool, frequency: 13),
+                            CategorizedWord(english: "Palm", romanised: "Sonbadak", category: .tool, frequency: 10)
                         ]
                     ),
                     SlotChoices(
@@ -303,10 +303,10 @@ private extension Array {
                         slotLabel: "Action",
                         allowedCategories: [.action],
                         wordChoices: [
-                            CategorizedWord(english: "Block", romanized: "Makgi", category: .action, frequency: 27),
-                            CategorizedWord(english: "Kick", romanized: "Chagi", category: .action, frequency: 14),
-                            CategorizedWord(english: "Punch", romanized: "Jirugi", category: .action, frequency: 9),
-                            CategorizedWord(english: "Strike", romanized: "Taerigi", category: .action, frequency: 11)
+                            CategorizedWord(english: "Block", romanised: "Makgi", category: .action, frequency: 27),
+                            CategorizedWord(english: "Kick", romanised: "Chagi", category: .action, frequency: 14),
+                            CategorizedWord(english: "Punch", romanised: "Jirugi", category: .action, frequency: 9),
+                            CategorizedWord(english: "Strike", romanised: "Taerigi", category: .action, frequency: 11)
                         ]
                     )
                 ]

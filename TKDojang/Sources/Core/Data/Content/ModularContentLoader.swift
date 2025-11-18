@@ -204,7 +204,7 @@ class ModularContentLoader {
             _ = dataService.addTerminologyEntry(
                 englishTerm: term.englishTerm,
                 koreanHangul: term.koreanHangul,
-                romanizedPronunciation: term.romanizedPronunciation,
+                romanisedPronunciation: term.romanisedPronunciation,
                 beltLevel: belt,
                 category: category,
                 difficulty: term.difficulty,
@@ -304,7 +304,7 @@ struct ContentMetadata: Codable {
 struct TerminologyEntryJSON: Codable {
     let englishTerm: String
     let koreanHangul: String
-    let romanizedPronunciation: String
+    let romanisedPronunciation: String
     let phoneticPronunciation: String?
     let definition: String?
     let category: String
@@ -313,10 +313,10 @@ struct TerminologyEntryJSON: Codable {
     let createdAt: String
 
     private enum CodingKeys: String, CodingKey {
-        case englishTerm = "english_term"
-        case koreanHangul = "korean_hangul"
-        case romanizedPronunciation = "romanized_pronunciation"
-        case phoneticPronunciation = "phonetic_pronunciation"
+        case englishTerm = "english"
+        case koreanHangul = "hangul"
+        case romanisedPronunciation = "romanised"
+        case phoneticPronunciation = "phonetic"
         case definition, category, difficulty
         case beltLevel = "belt_level"
         case createdAt = "created_at"

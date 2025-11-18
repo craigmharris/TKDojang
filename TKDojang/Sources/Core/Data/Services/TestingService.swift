@@ -218,18 +218,18 @@ class TestingService: ObservableObject {
     
     /**
      * Generates English→Korean question with smart distractors
-     * Shows English term, user picks correct Korean (romanized)
+     * Shows English term, user picks correct Korean (romanised)
      */
     private func generateEnglishToKoreanQuestion(from entry: TerminologyEntry, allTerminology: [TerminologyEntry]) throws -> TestQuestion? {
         let questionText = "What is the Korean term for:"
-        let correctAnswer = entry.romanizedPronunciation
+        let correctAnswer = entry.romanisedPronunciation
         
         // Generate 3 distractors from same category and belt level
         let distractors = generateSmartDistractors(
             correctAnswer: correctAnswer,
             sourceEntry: entry,
             allTerminology: allTerminology,
-            extractionMethod: { $0.romanizedPronunciation }
+            extractionMethod: { $0.romanisedPronunciation }
         )
         
         guard distractors.count == 3 else {
@@ -253,7 +253,7 @@ class TestingService: ObservableObject {
     
     /**
      * Generates Korean→English question with smart distractors
-     * Shows Korean (romanized + hangul), user picks correct English term
+     * Shows Korean (romanised + hangul), user picks correct English term
      */
     private func generateKoreanToEnglishQuestion(from entry: TerminologyEntry, allTerminology: [TerminologyEntry]) throws -> TestQuestion? {
         let questionText = "What does this Korean term mean?"

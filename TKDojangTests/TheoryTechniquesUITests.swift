@@ -93,41 +93,33 @@ final class TheoryTechniquesUITests: XCTestCase {
         // Support both old and new JSON field formats
         let englishTerm: String?
         let koreanHangul: String?
-        let romanizedPronunciation: String?
+        let romanisedPronunciation: String?
         let phoneticPronunciation: String?
         
         enum CodingKeys: String, CodingKey {
-            case english, korean, pronunciation, phonetic, definition, difficulty
-            case englishTerm = "english_term"
-            case koreanHangul = "korean_hangul"
-            case romanizedPronunciation = "romanized_pronunciation"
-            case phoneticPronunciation = "phonetic_pronunciation"
+            case definition, difficulty
+            case englishTerm = "english"
+            case koreanHangul = "hangul"
+            case romanisedPronunciation = "romanised"
+            case phoneticPronunciation = "phonetic"
         }
         
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            
-            // Try new format first, fallback to old format
-            if let englishTerm = try container.decodeIfPresent(String.self, forKey: .englishTerm) {
-                english = englishTerm
-                korean = try container.decodeIfPresent(String.self, forKey: .koreanHangul) ?? ""
-                pronunciation = try container.decodeIfPresent(String.self, forKey: .romanizedPronunciation) ?? ""
-                phonetic = try container.decodeIfPresent(String.self, forKey: .phoneticPronunciation) ?? ""
-            } else {
-                english = try container.decode(String.self, forKey: .english)
-                korean = try container.decode(String.self, forKey: .korean)
-                pronunciation = try container.decode(String.self, forKey: .pronunciation)
-                phonetic = try container.decode(String.self, forKey: .phonetic)
-            }
-            
+
+            // Decode from standardized JSON format
+            english = try container.decode(String.self, forKey: .englishTerm)
+            korean = try container.decode(String.self, forKey: .koreanHangul)
+            pronunciation = try container.decode(String.self, forKey: .romanisedPronunciation)
+            phonetic = try container.decode(String.self, forKey: .phoneticPronunciation)
             definition = try container.decode(String.self, forKey: .definition)
             difficulty = try container.decode(Int.self, forKey: .difficulty)
-            
-            // Initialize the optional properties
-            englishTerm = try container.decodeIfPresent(String.self, forKey: .englishTerm)
-            koreanHangul = try container.decodeIfPresent(String.self, forKey: .koreanHangul)
-            romanizedPronunciation = try container.decodeIfPresent(String.self, forKey: .romanizedPronunciation)
-            phoneticPronunciation = try container.decodeIfPresent(String.self, forKey: .phoneticPronunciation)
+
+            // Initialize the optional properties (for backward compatibility in struct)
+            englishTerm = english
+            koreanHangul = korean
+            romanisedPronunciation = pronunciation
+            phoneticPronunciation = phonetic
         }
     }
     

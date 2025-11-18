@@ -6,10 +6,10 @@
     {
       "id": "ap_bal_chagi",
       "names": {
-        "korean": "앞발차기",
-        "korean_romanized": "Ap Bal Chagi",
         "english": "Front Foot Kick",
-        "phonetic": "/ap.pal.tʃʰa.ɡi/"
+        "phonetic": "/ap.pal.tʃʰa.ɡi/",
+        "romanised": "Ap Bal Chagi",
+        "hangul": "앞발차기"
       },
       "description": "A quick kick delivered with the front foot without switching stance, used for interrupting opponent's attacks or creating distance.",
       "execution": {
@@ -20,25 +20,48 @@
       "foot_used": "front",
       "primary_purpose": "interruption",
       "timing": "defensive_counter",
-      "applicable_stances": ["dwit_koobi_seogi", "fighting_stance"],
-      "belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "applicable_stances": [
+        "dwit_koobi_seogi",
+        "fighting_stance"
+      ],
+      "belt_levels": [
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "intermediate",
-      "tags": ["front_foot", "quick", "interruption", "defensive"],
-      "variations": ["ap_bal_dollyo_chagi", "ap_bal_yeop_chagi"],
+      "tags": [
+        "front_foot",
+        "quick",
+        "interruption",
+        "defensive"
+      ],
+      "variations": [
+        "ap_bal_dollyo_chagi",
+        "ap_bal_yeop_chagi"
+      ],
       "images": [
         "ap_bal_setup.jpg",
         "ap_bal_execution.jpg",
         "ap_bal_recovery.jpg"
       ],
-      "common_mistakes": ["Too slow", "Poor balance", "Telegraphing"]
+      "common_mistakes": [
+        "Too slow",
+        "Poor balance",
+        "Telegraphing"
+      ]
     },
     {
       "id": "stepping_combinations",
       "names": {
-        "korean": "발동작조합",
-        "korean_romanized": "Bal Dongjak Johap",
         "english": "Stepping Combinations",
-        "phonetic": "/pal.doŋ.dʑak.tʃo.hap/"
+        "phonetic": "/pal.doŋ.dʑak.tʃo.hap/",
+        "romanised": "Bal Dongjak Johap",
+        "hangul": "발동작조합"
       },
       "description": "Coordinated footwork patterns that combine stepping, turning, and stance changes to create angles, distance, and positioning advantages.",
       "execution": {
@@ -49,25 +72,47 @@
       "foot_used": "both",
       "primary_purpose": "positioning",
       "timing": "continuous",
-      "applicable_stances": ["all_stances"],
-      "belt_levels": ["4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "applicable_stances": [
+        "all_stances"
+      ],
+      "belt_levels": [
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "advanced",
-      "tags": ["combination", "flow", "positioning", "tactical"],
-      "variations": ["advance_combinations", "retreat_combinations", "circular_combinations"],
+      "tags": [
+        "combination",
+        "flow",
+        "positioning",
+        "tactical"
+      ],
+      "variations": [
+        "advance_combinations",
+        "retreat_combinations",
+        "circular_combinations"
+      ],
       "images": [
         "stepping_pattern.jpg",
         "stepping_flow.jpg",
         "stepping_angles.jpg"
       ],
-      "common_mistakes": ["Poor timing", "Uneven steps", "Loss of balance"]
+      "common_mistakes": [
+        "Poor timing",
+        "Uneven steps",
+        "Loss of balance"
+      ]
     },
     {
       "id": "bal_badak_chigi",
       "names": {
-        "korean": "발바닥치기",
-        "korean_romanized": "Bal Badak Chigi",
         "english": "Sole Kick / Foot Bottom Strike",
-        "phonetic": "/pal.pa.dak.tʃʰi.ɡi/"
+        "phonetic": "/pal.pa.dak.tʃʰi.ɡi/",
+        "romanised": "Bal Badak Chigi",
+        "hangul": "발바닥치기"
       },
       "description": "A kick or strike using the entire sole of the foot, typically delivered in a thrusting motion for maximum surface contact and pushing power.",
       "execution": {
@@ -76,31 +121,59 @@
         "retraction": "Pull foot back while maintaining balance"
       },
       "striking_tool": {
-        "korean": "발바닥",
-        "korean_romanized": "Bal Badak",
+        "hangul": "발바닥",
+        "romanised": "Bal Badak",
         "english": "Sole of Foot",
         "phonetic": "/pal.pa.dak/"
       },
-      "target_areas": ["abdomen", "chest", "solar plexus", "knee"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi"],
-      "belt_levels": ["6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "abdomen",
+        "chest",
+        "solar plexus",
+        "knee"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "intermediate",
-      "tags": ["sole", "pushing", "surface", "thrusting"],
-      "variations": ["milyo_bal_badak_chigi"],
+      "tags": [
+        "sole",
+        "pushing",
+        "surface",
+        "thrusting"
+      ],
+      "variations": [
+        "milyo_bal_badak_chigi"
+      ],
       "images": [
         "bal_badak_chamber.jpg",
         "bal_badak_thrust.jpg",
         "bal_badak_contact.jpg"
       ],
-      "common_mistakes": ["Wrong foot surface", "Poor thrusting motion", "Loss of balance"]
+      "common_mistakes": [
+        "Wrong foot surface",
+        "Poor thrusting motion",
+        "Loss of balance"
+      ]
     },
     {
       "id": "baldeung_chigi",
       "names": {
-        "korean": "발등치기",
-        "korean_romanized": "Baldeung Chigi",
         "english": "Instep Strike",
-        "phonetic": "/pal.dɯŋ.tʃʰi.ɡi/"
+        "phonetic": "/pal.dɯŋ.tʃʰi.ɡi/",
+        "romanised": "Baldeung Chigi",
+        "hangul": "발등치기"
       },
       "description": "A kick using the top of the foot (instep), commonly used in turning kicks and for striking soft target areas with a whipping motion.",
       "execution": {
@@ -109,31 +182,61 @@
         "retraction": "Return foot to chamber or stance"
       },
       "striking_tool": {
-        "korean": "발등",
-        "korean_romanized": "Baldeung",
+        "hangul": "발등",
+        "romanised": "Baldeung",
         "english": "Instep",
         "phonetic": "/pal.dɯŋ/"
       },
-      "target_areas": ["ribs", "head", "body", "legs"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi", "gojung_sogi"],
-      "belt_levels": ["7th_keup", "6th_keup", "5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "ribs",
+        "head",
+        "body",
+        "legs"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi",
+        "gojung_sogi"
+      ],
+      "belt_levels": [
+        "7th_keup",
+        "6th_keup",
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "basic",
-      "tags": ["instep", "whipping", "snapping", "common"],
-      "variations": ["dollyo_baldeung_chigi"],
+      "tags": [
+        "instep",
+        "whipping",
+        "snapping",
+        "common"
+      ],
+      "variations": [
+        "dollyo_baldeung_chigi"
+      ],
       "images": [
         "baldeung_position.jpg",
         "baldeung_whip.jpg",
         "baldeung_contact.jpg"
       ],
-      "common_mistakes": ["Wrong foot surface", "No snap", "Poor timing"]
+      "common_mistakes": [
+        "Wrong foot surface",
+        "No snap",
+        "Poor timing"
+      ]
     },
     {
       "id": "balkkeut_chigi",
       "names": {
-        "korean": "발끝치기",
-        "korean_romanized": "Balkkeut Chigi",
         "english": "Toe Kick / Toes Strike",
-        "phonetic": "/pal.k͈ɯt.tʃʰi.ɡi/"
+        "phonetic": "/pal.k͈ɯt.tʃʰi.ɡi/",
+        "romanised": "Balkkeut Chigi",
+        "hangul": "발끝치기"
       },
       "description": "A kick using the tips of the toes, typically delivered upward into soft target areas. Requires good foot conditioning and precise targeting.",
       "execution": {
@@ -142,23 +245,50 @@
         "retraction": "Pull foot back while maintaining toe position"
       },
       "striking_tool": {
-        "korean": "발끝",
-        "korean_romanized": "Balkkeut",
+        "hangul": "발끝",
+        "romanised": "Balkkeut",
         "english": "Toes",
         "phonetic": "/pal.k͈ɯt/"
       },
-      "target_areas": ["groin", "abdomen", "under jaw", "solar plexus"],
-      "applicable_stances": ["gunnun_sogi", "narani_junbi_sogi"],
-      "belt_levels": ["5th_keup", "4th_keup", "3rd_keup", "2nd_keup", "1st_keup", "1st_dan", "2nd_dan"],
+      "target_areas": [
+        "groin",
+        "abdomen",
+        "under jaw",
+        "solar plexus"
+      ],
+      "applicable_stances": [
+        "gunnun_sogi",
+        "narani_junbi_sogi"
+      ],
+      "belt_levels": [
+        "5th_keup",
+        "4th_keup",
+        "3rd_keup",
+        "2nd_keup",
+        "1st_keup",
+        "1st_dan",
+        "2nd_dan"
+      ],
       "difficulty": "advanced",
-      "tags": ["toes", "upward", "conditioning", "precise"],
-      "variations": ["ollyo_balkkeut_chigi"],
+      "tags": [
+        "toes",
+        "upward",
+        "conditioning",
+        "precise"
+      ],
+      "variations": [
+        "ollyo_balkkeut_chigi"
+      ],
       "images": [
         "balkkeut_formation.jpg",
         "balkkeut_upward.jpg",
         "balkkeut_target.jpg"
       ],
-      "common_mistakes": ["Poor toe conditioning", "Wrong angle", "Injury risk"]
+      "common_mistakes": [
+        "Poor toe conditioning",
+        "Wrong angle",
+        "Injury risk"
+      ]
     }
   ]
 }

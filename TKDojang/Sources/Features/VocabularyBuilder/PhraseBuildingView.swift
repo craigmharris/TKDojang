@@ -280,7 +280,7 @@ struct PhraseBuildingView: View {
                                         .foregroundColor(correct ? .green : .red)
 
                                     if !correct {
-                                        Text("Correct: \(currentPhrase.romanized)")
+                                        Text("Correct: \(currentPhrase.romanised)")
                                             .font(.subheadline)
                                             .foregroundColor(.secondary)
                                     }
@@ -444,7 +444,7 @@ struct PhraseBuildingView: View {
 
     private func checkAnswer() {
         let userAnswer = arrangedWords.joined(separator: " ")
-        let correctAnswer = phrases[currentIndex].romanized
+        let correctAnswer = phrases[currentIndex].romanised
 
         isCorrect = userAnswer == correctAnswer
         if isCorrect == true {

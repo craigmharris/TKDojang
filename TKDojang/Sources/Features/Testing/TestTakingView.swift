@@ -87,7 +87,7 @@ struct TestTakingView: View {
                                 if let entry = question.terminologyEntry {
                                     VStack(spacing: 8) {
                                         if question.questionType == .koreanToEnglish {
-                                            Text(entry.romanizedPronunciation)
+                                            Text(entry.romanisedPronunciation)
                                                 .font(.largeTitle)
                                                 .fontWeight(.bold)
                                                 .foregroundColor(.primary)
