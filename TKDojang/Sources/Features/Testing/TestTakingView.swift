@@ -94,7 +94,7 @@ struct TestTakingView: View {
                                                 .multilineTextAlignment(.center)
                                             
                                             Text(entry.koreanHangul)
-                                                .font(.title)
+                                                .koreanFont(size: 28)
                                                 .foregroundColor(.secondary)
                                                 .multilineTextAlignment(.center)
                                         } else {
@@ -159,10 +159,6 @@ struct TestTakingView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(showingFeedback)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    ProfileSwitcher()
-                }
-
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if !showingFeedback {
                         Button("Exit") {

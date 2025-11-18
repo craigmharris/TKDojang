@@ -84,10 +84,6 @@ struct FlashcardView: View {
             .navigationTitle("Korean Terms")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    ProfileSwitcher()
-                }
-                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
                         Section("Learning System") {
@@ -693,7 +689,7 @@ struct FlashcardView: View {
                         .foregroundColor(.secondary)
                     
                     Text(term.koreanHangul)
-                        .font(.system(size: 32, weight: .medium))
+                        .koreanFont(size: 32)
                         .foregroundColor(.primary)
                         .minimumScaleFactor(0.7)
                         .lineLimit(1)
@@ -759,7 +755,7 @@ struct FlashcardView: View {
                 // Korean to English
                 VStack(spacing: 12) {
                     Text(term.koreanHangul)
-                        .font(.system(size: 42, weight: .medium))
+                        .koreanFont(size: 42)
                         .foregroundColor(.primary)
                     
                     Text(term.romanisedPronunciation)
@@ -782,7 +778,7 @@ struct FlashcardView: View {
             if direction == .englishToKorean {
                 // Show Korean answer
                 Text(term.koreanHangul)
-                    .font(.system(size: 48, weight: .medium))
+                    .koreanFont(size: 48)
                     .foregroundColor(.primary)
                 
                 Text(term.romanisedPronunciation)

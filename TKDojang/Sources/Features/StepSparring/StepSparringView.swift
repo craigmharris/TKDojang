@@ -61,10 +61,6 @@ struct StepSparringView: View {
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
-                    
-                    // Add profile switcher button for quick access
-                    ProfileSwitcher()
-                        .padding(.top, 8)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
@@ -101,10 +97,6 @@ struct StepSparringView: View {
                 }
                 .accessibilityIdentifier("stepsparring-help-button")
                 .accessibilityLabel("Show step sparring help")
-            }
-
-            ToolbarItem(placement: .navigationBarTrailing) {
-                ProfileSwitcher()
             }
         }
         .sheet(isPresented: $showingHelp) {
@@ -380,11 +372,6 @@ struct StepSparringSequenceListView: View {
         }
         .navigationTitle(type.displayName)
         .navigationBarTitleDisplayMode(.large)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                ProfileSwitcher()
-            }
-        }
         .task {
             await loadSequences()
         }

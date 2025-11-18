@@ -1237,10 +1237,6 @@ struct PatternsView: View {
                 .accessibilityIdentifier("patterns-help-button")
                 .accessibilityLabel("Show pattern selection help")
             }
-
-            ToolbarItem(placement: .navigationBarTrailing) {
-                ProfileSwitcher()
-            }
         }
         .sheet(isPresented: $showingHelp) {
             PatternsHelpSheet()
@@ -1444,7 +1440,7 @@ struct PatternDetailView: View {
                         .multilineTextAlignment(.center)
                     
                     Text(pattern.hangul)
-                        .font(.title2)
+                        .koreanFont(size: 22)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                     

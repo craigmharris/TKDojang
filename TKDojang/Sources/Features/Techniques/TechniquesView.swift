@@ -52,10 +52,6 @@ struct TechniquesView: View {
                     .accessibilityIdentifier("techniques-help-button")
                     .accessibilityLabel("Show techniques help")
                 }
-
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    ProfileSwitcher()
-                }
             }
             .sheet(isPresented: $showingFilters) {
                 TechniqueFiltersView(

@@ -121,6 +121,10 @@ class OnboardingCoordinator: ObservableObject {
         hasSeenInitial = true
         tourSkippedDate = Date().timeIntervalSince1970
         showingInitialTour = false
+
+        // Also mark main onboarding as complete (same as completeInitialTour)
+        UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
+
         DebugLogger.ui("⏭️ User skipped initial tour")
     }
 

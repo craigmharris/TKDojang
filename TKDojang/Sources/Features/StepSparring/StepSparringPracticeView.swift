@@ -171,10 +171,6 @@ struct StepSparringPracticeView: View {
                 .accessibilityIdentifier("stepsparring-help-button")
                 .accessibilityLabel("Show step sparring tour")
             }
-
-            ToolbarItem(placement: .navigationBarTrailing) {
-                ProfileSwitcher()
-            }
         }
         .sheet(isPresented: $showingTour) {
             if let profile = userProfile {

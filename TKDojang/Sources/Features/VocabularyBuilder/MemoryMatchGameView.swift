@@ -336,9 +336,9 @@ private struct MemoryCardView: View {
                     )
                 )
 
-            // Hangul for Taekwondo (태권도) - Using NanumBrushScript font with fallback
+            // Hangul for Taekwondo (태권도) - Using NanumBrushScript font
             Text("태권도")
-                .font(customKoreanFont(size: 48))
+                .koreanFont(size: 48)
                 .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2).opacity(0.3))
                 .rotationEffect(.degrees(-20))
         }
@@ -347,27 +347,6 @@ private struct MemoryCardView: View {
                 .stroke(beltTheme.borderColor, lineWidth: 3) // User's belt color
         )
         .shadow(color: .black.opacity(0.15), radius: 4, x: 0, y: 2)
-    }
-
-    // Helper function for Korean font with fallback (same pattern as LoadingView)
-    private func customKoreanFont(size: CGFloat) -> Font {
-        // Try font names for NanumBrushScript
-        let possibleNames = [
-            "NanumBrushScript-Regular",
-            "NanumBrushScript",
-            "나눔손글씨붓",
-            "NanumBrush"
-        ]
-
-        // Check if any of the font names work
-        for fontName in possibleNames {
-            if UIFont(name: fontName, size: size) != nil {
-                return .custom(fontName, size: size)
-            }
-        }
-
-        // Fallback to system font with serif design
-        return .system(size: size, weight: .ultraLight, design: .serif)
     }
 
     private var cardFront: some View {

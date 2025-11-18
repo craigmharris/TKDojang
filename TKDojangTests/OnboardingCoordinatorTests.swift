@@ -108,6 +108,10 @@ class OnboardingCoordinatorTests: XCTestCase {
         // Then: Tour state should be inactive and marked as seen
         XCTAssertFalse(coordinator.showingInitialTour, "showingInitialTour should be false")
         XCTAssertFalse(coordinator.shouldShowInitialTour(), "Tour should not show again after skip")
+
+        // And: hasCompletedOnboarding should be set (prevents tour from showing on next app launch)
+        let hasCompleted = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
+        XCTAssertTrue(hasCompleted, "hasCompletedOnboarding should be true after skip")
     }
 
     func testReplayInitialTour() {

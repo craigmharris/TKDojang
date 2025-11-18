@@ -47,10 +47,6 @@ struct LineWorkView: View {
                     .accessibilityIdentifier("linework-help-button")
                     .accessibilityLabel("Show line work help")
                 }
-
-                ToolbarItem(placement: .topBarTrailing) {
-                    ProfileSwitcher()
-                }
             }
             .sheet(isPresented: $showingHelp) {
                 LineWorkHelpSheet()
@@ -594,11 +590,17 @@ struct LineWorkExerciseDetailView: View {
                 .font(.caption.weight(.medium))
                 .foregroundColor(.secondary)
                 .frame(width: 70, alignment: .leading)
-            
-            Text(text)
-                .font(label == "Hangul" ? .title3 : .body)
-                .foregroundColor(.primary)
-            
+
+            if label == "Hangul" {
+                Text(text)
+                    .koreanFont(size: 20)
+                    .foregroundColor(.primary)
+            } else {
+                Text(text)
+                    .font(.body)
+                    .foregroundColor(.primary)
+            }
+
             Spacer()
         }
     }

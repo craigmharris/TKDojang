@@ -68,10 +68,6 @@ struct TheoryView: View {
                     .accessibilityIdentifier("theory-help-button")
                     .accessibilityLabel("Show theory help")
                 }
-
-                ToolbarItem(placement: .topBarTrailing) {
-                    ProfileSwitcher()
-                }
             }
         }
         .task {
