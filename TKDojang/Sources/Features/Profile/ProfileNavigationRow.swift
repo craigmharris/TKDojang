@@ -47,6 +47,7 @@ struct ProfileNavigationRow: View {
                     .foregroundStyle(iconColor)
                     .frame(width: 28, alignment: .center)
                     .font(.system(size: 18, weight: .medium))
+                    .accessibilityHidden(true)
 
                 // Text Content
                 VStack(alignment: .leading, spacing: 4) {
@@ -74,16 +75,45 @@ struct ProfileNavigationRow: View {
                         .padding(.vertical, 2)
                         .background(.red)
                         .clipShape(Capsule())
+                        .accessibilityLabel("\(badgeCount) unread")
                 }
 
                 // Chevron
                 Image(systemName: "chevron.right")
                     .font(.system(size: 14, weight: .medium))
                     .foregroundStyle(.secondary)
+                    .accessibilityHidden(true)
             }
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(accessibilityText)
+        .accessibilityHint("Double tap to navigate")
+        .accessibilityIdentifier(accessibilityID)
+    }
+
+    // MARK: - Accessibility Helpers
+
+    private var accessibilityText: String {
+        var text = title
+        if let subtitle = subtitle {
+            text += ", \(subtitle)"
+        }
+        if let badgeCount = badge, badgeCount > 0 {
+            text += ", \(badgeCount) unread"
+        }
+        return text
+    }
+
+    private var accessibilityID: String {
+        // Convert title to kebab-case for identifier
+        // e.g. "Learning Settings" -> "profile-nav-learning-settings"
+        let kebabTitle = title
+            .lowercased()
+            .replacingOccurrences(of: " ", with: "-")
+            .replacingOccurrences(of: "[^a-z0-9-]", with: "", options: .regularExpression)
+        return "profile-nav-\(kebabTitle)"
     }
 }
 
@@ -126,6 +156,7 @@ struct ProfileNavigationLink<Destination: View>: View {
                     .foregroundStyle(iconColor)
                     .frame(width: 28, alignment: .center)
                     .font(.system(size: 18, weight: .medium))
+                    .accessibilityHidden(true)
 
                 // Text Content
                 VStack(alignment: .leading, spacing: 4) {
@@ -153,9 +184,37 @@ struct ProfileNavigationLink<Destination: View>: View {
                         .padding(.vertical, 2)
                         .background(.red)
                         .clipShape(Capsule())
+                        .accessibilityLabel("\(badgeCount) unread")
                 }
             }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(accessibilityText)
+        .accessibilityHint("Double tap to navigate")
+        .accessibilityIdentifier(accessibilityID)
+    }
+
+    // MARK: - Accessibility Helpers
+
+    private var accessibilityText: String {
+        var text = title
+        if let subtitle = subtitle {
+            text += ", \(subtitle)"
+        }
+        if let badgeCount = badge, badgeCount > 0 {
+            text += ", \(badgeCount) unread"
+        }
+        return text
+    }
+
+    private var accessibilityID: String {
+        // Convert title to kebab-case for identifier
+        // e.g. "Learning Settings" -> "profile-nav-learning-settings"
+        let kebabTitle = title
+            .lowercased()
+            .replacingOccurrences(of: " ", with: "-")
+            .replacingOccurrences(of: "[^a-z0-9-]", with: "", options: .regularExpression)
+        return "profile-nav-\(kebabTitle)"
     }
 }
 

@@ -1771,9 +1771,12 @@ struct ProfileView: View {
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel("Family Profiles, \(allProfiles.count) of 6")
 
                     ProfileGridView(profiles: allProfiles, currentProfile: userProfile, onProfileSwitch: switchToProfile)
                         .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                        .accessibilityIdentifier("profile-grid")
 
                     if allProfiles.count < 6 {
                         Button {
@@ -1781,11 +1784,15 @@ struct ProfileView: View {
                         } label: {
                             HStack {
                                 Image(systemName: "plus.circle.fill")
+                                    .accessibilityHidden(true)
                                 Text("Add New Profile")
                                 Spacer()
                             }
                             .foregroundStyle(.blue)
                         }
+                        .accessibilityLabel("Add New Profile")
+                        .accessibilityHint("Double tap to create a new family profile")
+                        .accessibilityIdentifier("profile-add-new")
                     }
 
                     ProfileNavigationRow(
