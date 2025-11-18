@@ -203,7 +203,7 @@ struct RoadmapView: View {
             isLoading = false
         } catch {
             isLoading = false
-            errorMessage = "Failed to load roadmap: \(error.localizedDescription)"
+            errorMessage = CloudKitErrorHandler.userFriendlyMessage(for: error)
             showingError = true
         }
     }
@@ -212,7 +212,7 @@ struct RoadmapView: View {
         do {
             try await roadmapService.voteForItem(itemID: item.id)
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = CloudKitErrorHandler.userFriendlyMessage(for: error)
             showingError = true
         }
     }

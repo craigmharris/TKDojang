@@ -132,6 +132,10 @@ class CloudKitFeedbackService {
         notificationInfo.alertBody = "Developer responded to your feedback"
         notificationInfo.soundName = "default"
         notificationInfo.shouldBadge = true
+
+        // Include feedbackID in notification payload for deep linking
+        notificationInfo.desiredKeys = ["feedbackID"]
+
         subscription.notificationInfo = notificationInfo
 
         _ = try await publicDatabase.save(subscription)

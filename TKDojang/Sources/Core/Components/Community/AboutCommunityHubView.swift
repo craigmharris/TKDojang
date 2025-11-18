@@ -247,19 +247,27 @@ struct AboutCommunityHubView: View {
                 }
             }
 
-            // Developer Info
-            HStack {
-                Image(systemName: "person.fill")
-                    .foregroundStyle(.blue)
-                    .frame(width: 32)
+            // Developer Info & Contact
+            Link(destination: URL(string: "https://github.com/craigmharris/TKDojang")!) {
+                HStack {
+                    Image(systemName: "person.fill")
+                        .foregroundStyle(.blue)
+                        .frame(width: 32)
 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Developer")
-                        .font(.body)
-                        .fontWeight(.medium)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Developer")
+                            .font(.body)
+                            .fontWeight(.medium)
+                            .foregroundStyle(.primary)
 
-                    Text("Craig Matthew Harris")
-                        .font(.caption)
+                        Text("Craig Matthew Harris")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    Spacer()
+
+                    Image(systemName: "arrow.up.right")
                         .foregroundStyle(.secondary)
                 }
             }

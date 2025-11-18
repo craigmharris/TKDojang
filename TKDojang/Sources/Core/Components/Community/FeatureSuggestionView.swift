@@ -162,7 +162,7 @@ struct FeatureSuggestionView: View {
             isLoading = false
         } catch {
             isLoading = false
-            errorMessage = "Failed to load suggestions: \(error.localizedDescription)"
+            errorMessage = CloudKitErrorHandler.userFriendlyMessage(for: error)
             showingError = true
         }
     }
@@ -171,7 +171,7 @@ struct FeatureSuggestionView: View {
         do {
             try await suggestionService.upvoteSuggestion(suggestionID: suggestion.id)
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = CloudKitErrorHandler.userFriendlyMessage(for: error)
             showingError = true
         }
     }
@@ -408,7 +408,7 @@ struct SubmitSuggestionView: View {
 
         } catch {
             isSubmitting = false
-            errorMessage = "Failed to submit suggestion: \(error.localizedDescription)"
+            errorMessage = CloudKitErrorHandler.userFriendlyMessage(for: error)
             showingError = true
         }
     }

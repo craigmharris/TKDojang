@@ -12,6 +12,8 @@ struct MainTabCoordinatorView: View {
     @StateObject private var onboardingCoordinator = OnboardingCoordinator()
     @State private var selectedTab = 0
     @State private var showingWhatsNew = false
+    @State private var showingMyFeedback = false
+    @State private var selectedFeedbackID: String?
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -63,6 +65,17 @@ struct MainTabCoordinatorView: View {
         }
         .sheet(isPresented: $showingWhatsNew) {
             WhatsNewView()
+        }
+        .sheet(isPresented: $showingMyFeedback) {
+            MyFeedbackView(highlightFeedbackID: selectedFeedbackID)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: AppDelegate.openFeedbackNotification)) { notification in
+            // Handle notification tap - open My Feedback view
+            if let feedbackID = notification.userInfo?[AppDelegate.feedbackIDKey] as? String {
+                print("🔗 MainTabCoordinator: Opening feedback: \(feedbackID)")
+                selectedFeedbackID = feedbackID
+                showingMyFeedback = true
+            }
         }
     }
 }

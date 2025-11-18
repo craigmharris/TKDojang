@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 /**
  * MyFeedbackView.swift
@@ -24,6 +25,9 @@ struct MyFeedbackView: View {
     @State private var isLoading = false
     @State private var showingError = false
     @State private var errorMessage: String = ""
+
+    /// Optional feedback ID to scroll to and highlight (from notification tap)
+    var highlightFeedbackID: String? = nil
 
     var body: some View {
         NavigationStack {
@@ -61,28 +65,53 @@ struct MyFeedbackView: View {
     }
 
     private var feedbackListView: some View {
-        List {
-            if feedbackService.unreadResponseCount > 0 {
-                Section {
-                    HStack {
-                        Image(systemName: "bell.badge")
-                            .foregroundStyle(.orange)
-                        Text("\(feedbackService.unreadResponseCount) new response\(feedbackService.unreadResponseCount == 1 ? "" : "s")")
-                            .fontWeight(.semibold)
+        ScrollViewReader { proxy in
+            List {
+                if feedbackService.unreadResponseCount > 0 {
+                    Section {
+                        HStack {
+                            Image(systemName: "bell.badge")
+                                .foregroundStyle(.orange)
+                            Text("\(feedbackService.unreadResponseCount) new response\(feedbackService.unreadResponseCount == 1 ? "" : "s")")
+                                .fontWeight(.semibold)
+                        }
+                    }
+                }
+
+                ForEach(feedbackService.userFeedbackItems) { item in
+                    FeedbackItemRow(
+                        item: item,
+                        isHighlighted: highlightFeedbackID == item.id
+                    ) {
+                        feedbackService.markResponseAsRead(feedbackID: item.id)
+                        // Update badge count when response is read
+                        updateBadgeCount()
+                    }
+                    .id(item.id) // For ScrollViewReader
+                }
+            }
+            .listStyle(.insetGrouped)
+            .onAppear {
+                // Scroll to highlighted feedback if specified
+                if let highlightID = highlightFeedbackID {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        withAnimation {
+                            proxy.scrollTo(highlightID, anchor: .top)
+                        }
                     }
                 }
             }
-
-            ForEach(feedbackService.userFeedbackItems) { item in
-                FeedbackItemRow(item: item) {
-                    feedbackService.markResponseAsRead(feedbackID: item.id)
-                }
-            }
         }
-        .listStyle(.insetGrouped)
     }
 
     // MARK: - Actions
+
+    private func updateBadgeCount() {
+        Task { @MainActor in
+            // Set badge to number of unread responses
+            UIApplication.shared.applicationIconBadgeNumber = feedbackService.unreadResponseCount
+        }
+    }
 
     private func loadFeedback() async {
         isLoading = true
@@ -91,7 +120,7 @@ struct MyFeedbackView: View {
             isLoading = false
         } catch {
             isLoading = false
-            errorMessage = "Failed to load feedback: \(error.localizedDescription)"
+            errorMessage = CloudKitErrorHandler.userFriendlyMessage(for: error)
             showingError = true
         }
     }
@@ -101,6 +130,7 @@ struct MyFeedbackView: View {
 
 struct FeedbackItemRow: View {
     let item: FeedbackItem
+    let isHighlighted: Bool
     let onRead: () -> Void
 
     @State private var isExpanded = false
@@ -185,6 +215,9 @@ struct FeedbackItemRow: View {
             }
         }
         .padding(.vertical, 8)
+        .background(isHighlighted ? Color.blue.opacity(0.1) : Color.clear)
+        .cornerRadius(8)
+        .animation(.easeInOut(duration: 0.3), value: isHighlighted)
     }
 
     private var statusBadge: some View {

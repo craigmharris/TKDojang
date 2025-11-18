@@ -247,13 +247,92 @@ Users control sharing via toggle in FeedbackView:
 3. **Explicit Field Selection**: Using `desiredKeys` parameter avoids system field query issues
 4. **Security Roles**: Three built-in roles (`_world`, `_icloud`, `_creator`) with CREATE/READ/WRITE permissions need careful configuration
 
-#### Next Session Priorities
-1. **Navigation refinements**: Improve modal presentation/dismissal UX
-2. **Error messaging**: Replace CloudKit errors with user-friendly messages
-3. **Push notification setup**: Configure certificates and test developer response notifications
-4. **WhatsNewView content**: Write v1.0 changelog copy
-5. **AboutCommunityHubView polish**: Add app version info, links to feedback/roadmap
-6. **Testing on real device**: Verify CloudKit works outside simulator
+#### Next Session Priorities (Nov 18, 2025)
+
+**Session Order**: 2 → 3 → 4 → 6 → 5 → 1 (device testing reveals navigation issues to fix)
+
+##### Priority 2: Error Messaging (User-Friendly CloudKit Errors) ✅ COMPLETE
+- [x] Create `CloudKitErrorHandler` utility for error translation
+- [x] Map common CloudKit errors to user messages:
+  - Network unavailable → "No internet connection. Check your connection and try again."
+  - Not authenticated → "Please sign in to iCloud in Settings to use community features."
+  - Permission denied → "Unable to access CloudKit. Check iCloud settings."
+  - Server error → "Service temporarily unavailable. Please try again later."
+- [x] Add retry buttons to error alerts where appropriate (isRetryable, suggestedRetryDelay)
+- [x] Update all CloudKit service error handling to use new utility
+  - FeedbackView.swift (line 244)
+  - RoadmapView.swift (lines 206, 215)
+  - FeatureSuggestionView.swift (lines 165, 174, 411)
+  - MyFeedbackView.swift (line 94)
+
+##### Priority 3: WhatsNewView Content (v1.0 Changelog) ✅ COMPLETE
+- [x] Write compelling v1.0 feature highlights:
+  - Multi-profile family learning
+  - 6 interactive vocabulary games
+  - Flashcard system with Leitner spaced repetition
+  - Pattern practice for 11 traditional forms
+  - Community feedback and transparent roadmap
+- [x] Add "What's Coming" section linking to roadmap (lines 152-216)
+  - Pattern Diagram Refresh (December 2025)
+  - Professional Photography (January 2026)
+  - Video Integration (March 2026)
+- [x] Include getting started tips (lines 129-144 with lightbulb icon)
+- [x] Professional tone matching App Store description
+
+##### Priority 4: AboutCommunityHubView Polish ✅ COMPLETE
+- [x] Add app version display (lines 234-248: "Version 1.0 (1)")
+- [x] Add quick action buttons (already implemented):
+  - "Send Feedback" → opens FeedbackView
+  - "View Roadmap" → opens RoadmapView
+  - "What's New" → opens WhatsNewView
+- [x] Add developer contact info (lines 251-273: GitHub link)
+- [x] Clean up spacing and visual hierarchy
+
+##### Priority 6: Push Notification Setup ✅ DOCUMENTATION COMPLETE
+- [x] Document push notification setup process (PUSH_NOTIFICATION_SETUP.md)
+  - Apple Developer Portal certificate creation steps
+  - CSR generation in Keychain Access
+  - Certificate installation process
+  - Testing flow documentation
+  - Troubleshooting guide
+  - Production checklist
+- [ ] USER ACTION REQUIRED: Create certificate in Apple Developer Portal
+- [ ] USER ACTION REQUIRED: Test push notification delivery after certificate installed
+
+##### Priority 5: Real Device Testing (Requires Priority 6 Setup)
+- [ ] Test on physical iPhone with iCloud signed in
+- [ ] Verify CloudKit data loads correctly
+- [ ] Test feedback submission from device
+- [ ] Test roadmap voting from device
+- [ ] Check push notification delivery (requires cert from Priority 6)
+- [ ] Test offline behavior (airplane mode, then reconnect)
+- [ ] Verify sync across multiple devices if available
+
+##### Priority 1: Navigation Polish (After Device Testing Reveals Issues)
+- [ ] Fix any modal dismissal issues found during device testing
+- [ ] Ensure all sheets have proper Done/Close buttons
+- [ ] Test navigation from Community Hub to all features
+- [ ] Verify back navigation works correctly
+- [ ] Test deep linking if applicable
+
+##### Priority 7: Community Features Testing (Non-Destructive) ✅ COMPLETE
+- [x] Create test suite for navigation only (CommunityFeaturesNavigationTests.swift - 24 tests)
+  - Test Community Hub navigation from ProfileView
+  - Test RoadmapView presentation and structure
+  - Test FeedbackView presentation with category enumeration
+  - Test FeatureSuggestionView presentation and tab state
+  - Test MyFeedbackView presentation
+  - Test WhatsNewView presentation
+  - Test CommunityInsightsView presentation
+  - Test all CloudKit service initialization (feedback, roadmap, suggestion)
+  - Test CloudKitErrorHandler availability
+  - Test modal presentation state management
+  - Test profile context requirements
+  - Test complete navigation flow (Profile → Hub → All Features)
+- [x] **Non-destructive design**: Tests verify UI structure only, no CloudKit writes
+- [x] **Read-only operations safe**: Views may fetch data on .task, but no submissions
+- [x] **Safety validation**: testNoUnintendedCloudKitWrites() documents design
+- [x] All 24 tests passing (BUILD SUCCEEDED, TEST EXECUTE SUCCEEDED)
 
 ### CloudKit Container Identifier
 

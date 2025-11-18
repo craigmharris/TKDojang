@@ -12,12 +12,14 @@ struct UserSettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @Query(sort: \BeltLevel.sortOrder, order: .reverse) private var beltLevels: [BeltLevel]
     @Query(sort: \TerminologyCategory.sortOrder) private var categories: [TerminologyCategory]
-    
+
     @State private var userProfile: UserProfile?
     @State private var selectedBeltLevelId: UUID?
     @State private var selectedLearningMode: LearningMode = .progression
     @State private var dailyStudyGoal: Int = 20
     @State private var isRefreshing = false
+
+    @StateObject private var notificationManager = NotificationPermissionManager()
     
     var body: some View {
         NavigationStack {
@@ -133,11 +135,46 @@ struct UserSettingsView: View {
                     Text("Leitner Box uses spaced repetition to optimize learning. Terms are scheduled for review based on how well you know them.")
                 }
                 
+                Section {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Feedback Response Notifications")
+                                    .font(.body)
+                                    .fontWeight(.medium)
+
+                                Text(notificationStatusDescription)
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+
+                            Spacer()
+
+                            notificationStatusIcon
+                        }
+
+                        if notificationManager.permissionStatus == .denied {
+                            Button(action: {
+                                notificationManager.openAppSettings()
+                            }) {
+                                Label("Open Settings", systemImage: "gear")
+                                    .font(.subheadline)
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(.bordered)
+                        }
+                    }
+                } header: {
+                    Text("Notifications")
+                } footer: {
+                    Text(notificationManager.permissionExplanation)
+                }
+
                 Section("Data Management") {
                     NavigationLink("Manage Profile Data", destination: SafeDataManagementView())
                         .foregroundColor(.primary)
-                    
-                    
+
+
                     Text("Delete profiles, reset progress, or export data. Family-safe options with confirmations.")
                         .font(.caption)
                         .foregroundColor(.secondary)
@@ -199,7 +236,40 @@ struct UserSettingsView: View {
     }
     
     // MARK: - Computed Properties
-    
+
+    private var notificationStatusDescription: String {
+        switch notificationManager.permissionStatus {
+        case .authorized, .provisional, .ephemeral:
+            return "Enabled - You'll receive updates on feedback responses"
+        case .denied:
+            return "Disabled - Enable in Settings to get notified"
+        case .notDetermined:
+            return "Not configured - Submit feedback to enable"
+        @unknown default:
+            return "Status unknown"
+        }
+    }
+
+    private var notificationStatusIcon: some View {
+        Group {
+            switch notificationManager.permissionStatus {
+            case .authorized, .provisional, .ephemeral:
+                Image(systemName: "bell.fill")
+                    .foregroundColor(.green)
+            case .denied:
+                Image(systemName: "bell.slash.fill")
+                    .foregroundColor(.orange)
+            case .notDetermined:
+                Image(systemName: "bell")
+                    .foregroundColor(.gray)
+            @unknown default:
+                Image(systemName: "bell.badge.questionmark")
+                    .foregroundColor(.gray)
+            }
+        }
+        .font(.title2)
+    }
+
     private var sortedBeltLevels: [BeltLevel] {
         // Use @Query first, but fall back to service if empty
         if !beltLevels.isEmpty {

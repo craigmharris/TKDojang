@@ -20,6 +20,11 @@ import TipKit
 @main
 struct TKDojangApp: App {
 
+    // MARK: - App Delegate
+
+    /// Bridge to UIKit for notification handling
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     init() {
         DebugLogger.ui("🏁 TKDojangApp.init() - App struct being created - \(Date())")
         DebugLogger.ui("🚀 TKDojang App Starting... - \(Date())")

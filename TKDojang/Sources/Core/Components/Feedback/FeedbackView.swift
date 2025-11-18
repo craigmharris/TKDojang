@@ -12,17 +12,20 @@ import SwiftData
  * - Opt-in demographic sharing for feature prioritization
  * - Anonymous CloudKit submission
  * - Automatic push notification subscription for developer responses
+ * - Contextual notification permission request (on first submission)
  *
  * DESIGN DECISIONS:
  * - Privacy-first: No email required, CloudKit manages anonymous user IDs
  * - Opt-in demographics: Users control sharing belt level, learning mode, usage stats
  * - Device info always included: Essential for bug tracking (iOS version, device model)
- * - Push notifications: User gets notified when developer responds
+ * - Push notifications: Requested in context when user submits first feedback
+ * - Graceful degradation: Feedback works even if notifications are denied
  */
 
 struct FeedbackView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var feedbackService = CloudKitFeedbackService()
+    @StateObject private var notificationManager = NotificationPermissionManager()
 
     // Form state
     @State private var selectedCategory: FeedbackCategory = .general
@@ -34,6 +37,10 @@ struct FeedbackView: View {
     @State private var showingConfirmation = false
     @State private var showingError = false
     @State private var errorMessage: String = ""
+
+    // Notification permission state
+    @State private var showingNotificationExplanation = false
+    @State private var showingPermissionDeniedTip = false
 
     // User profile for demographics (optional)
     var userProfile: UserProfile?
@@ -80,12 +87,42 @@ struct FeedbackView: View {
                     dismiss()
                 }
             } message: {
-                Text("Thank you! Your feedback helps shape TKDojang's future. You'll be notified when the developer responds.")
+                Text(confirmationMessage)
             }
             .alert("Error", isPresented: $showingError) {
                 Button("OK", role: .cancel) { }
             } message: {
                 Text(errorMessage)
+            }
+            .alert("Get Notified of Responses", isPresented: $showingNotificationExplanation) {
+                Button("Enable Notifications") {
+                    Task {
+                        let granted = await notificationManager.requestPermission()
+                        if !granted {
+                            showingPermissionDeniedTip = true
+                        }
+                        // Proceed with submission regardless of permission
+                        await performFeedbackSubmission()
+                    }
+                }
+                Button("Not Now") {
+                    Task {
+                        // Submit feedback without requesting permission
+                        await performFeedbackSubmission()
+                    }
+                }
+            } message: {
+                Text("Allow TKDojang to notify you when developers respond to your feedback. You can change this anytime in Settings.")
+            }
+            .alert("Enable Notifications Later", isPresented: $showingPermissionDeniedTip) {
+                Button("Open Settings") {
+                    notificationManager.openAppSettings()
+                }
+                Button("Maybe Later", role: .cancel) {
+                    showingConfirmation = true
+                }
+            } message: {
+                Text(notificationManager.deniedPermissionGuidance)
             }
             .disabled(isSubmitting)
         }
@@ -216,6 +253,19 @@ struct FeedbackView: View {
     private func submitFeedback() async {
         guard canSubmit else { return }
 
+        // Check if we should request notification permission first
+        if notificationManager.shouldShowPermissionExplanation {
+            // Show our custom explanation before iOS system prompt
+            showingNotificationExplanation = true
+        } else {
+            // Permission already determined (granted or denied), proceed directly
+            await performFeedbackSubmission()
+        }
+    }
+
+    private func performFeedbackSubmission() async {
+        guard canSubmit else { return }
+
         isSubmitting = true
 
         // Gather demographics if user opted in
@@ -241,8 +291,23 @@ struct FeedbackView: View {
 
         } catch {
             isSubmitting = false
-            errorMessage = "Failed to submit feedback: \(error.localizedDescription). Please try again."
+            errorMessage = CloudKitErrorHandler.userFriendlyMessage(for: error)
             showingError = true
+        }
+    }
+
+    // MARK: - Helpers
+
+    private var confirmationMessage: String {
+        switch notificationManager.permissionStatus {
+        case .authorized, .provisional, .ephemeral:
+            return "Thank you! Your feedback helps shape TKDojang's future. You'll be notified when the developer responds."
+        case .denied:
+            return "Thank you! Your feedback was submitted. Enable notifications in Settings to get updates on developer responses."
+        case .notDetermined:
+            return "Thank you! Your feedback helps shape TKDojang's future."
+        @unknown default:
+            return "Thank you! Your feedback was submitted successfully."
         }
     }
 }

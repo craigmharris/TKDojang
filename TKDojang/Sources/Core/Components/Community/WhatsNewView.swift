@@ -82,6 +82,9 @@ struct WhatsNewView: View {
                         ]
                     )
 
+                    // What's Coming Section
+                    whatsComingSection
+
                     // Future versions will be added here
                 }
                 .padding()
@@ -122,11 +125,94 @@ struct WhatsNewView: View {
                 }
             }
 
-            Text("Your complete digital Taekwondo companion")
+            Text("Your complete digital Taekwondo companion - from white belt to black belt preparation")
                 .font(.body)
                 .foregroundStyle(.secondary)
+
+            // Getting Started Tip
+            HStack(alignment: .top, spacing: 12) {
+                Image(systemName: "lightbulb.fill")
+                    .foregroundStyle(.yellow)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("New to TKDojang?")
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                    Text("Create your profile, set your belt level, and start with Flashcards to learn essential Korean terminology.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .padding()
+            .background(Color.yellow.opacity(0.1))
+            .cornerRadius(8)
         }
         .padding(.vertical)
+    }
+
+    private var whatsComingSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack(spacing: 12) {
+                Image(systemName: "map.fill")
+                    .font(.title2)
+                    .foregroundStyle(.purple)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("What's Coming Next")
+                        .font(.title3)
+                        .fontWeight(.bold)
+
+                    Text("Help shape the future")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            Text("TKDojang is built transparently with your input. Check out the roadmap to vote on features you want most!")
+                .font(.body)
+                .foregroundStyle(.secondary)
+
+            VStack(alignment: .leading, spacing: 12) {
+                nextFeature(icon: "photo.fill", title: "Pattern Diagram Refresh", description: "Footprint-based diagrams replacing line indicators - December 2025", color: .blue)
+                nextFeature(icon: "camera.fill", title: "Professional Photography", description: "High-quality technique photos with multiple angles - January 2026", color: .green)
+                nextFeature(icon: "video.fill", title: "Video Integration", description: "Slow-motion pattern demonstrations - March 2026", color: .orange)
+            }
+
+            Button(action: {
+                // This will navigate to roadmap - implement in AboutCommunityHubView integration
+            }) {
+                HStack {
+                    Text("View Full Roadmap & Vote")
+                        .fontWeight(.semibold)
+                    Image(systemName: "arrow.right")
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.purple)
+                .foregroundStyle(.white)
+                .cornerRadius(12)
+            }
+            .buttonStyle(.plain)
+        }
+        .padding()
+        .background(Color.purple.opacity(0.1))
+        .cornerRadius(16)
+    }
+
+    private func nextFeature(icon: String, title: String, description: String, color: Color) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: icon)
+                .foregroundStyle(color)
+                .frame(width: 24)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                Text(description)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+        }
     }
 
     private var currentVersion: String {
