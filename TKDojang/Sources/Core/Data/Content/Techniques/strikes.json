@@ -65,7 +65,7 @@
     {
       "id": "strike_arc-hand_crescent_strike",
       "names": {
-        "english": "Arc-hand Crescent Strike",
+        "english": "Arc-Hand Crescent Strike",
         "romanised": "Bandalson Bandal Taerigi",
         "hangul": "반달손 반달 태리기"
       },
@@ -74,7 +74,7 @@
     {
       "id": "strike_arc-hand_high_reverse_strike",
       "names": {
-        "english": "Arc-hand High Reverse Strike",
+        "english": "Arc-Hand High Reverse Strike",
         "romanised": "Bandalson Nopunde Bandae Taerigi",
         "hangul": "반달손 높은데 반대 태리기"
       },
@@ -321,7 +321,7 @@
     {
       "id": "strike_flat_fingertip_high_reverse_thrust",
       "names": {
-        "english": "Flat Fingertip High reverse Thrust",
+        "english": "Flat Fingertip High Reverse Thrust",
         "romanised": "Opun Sonkut Nopunde Bandae Tulgi",
         "hangul": "엎은 손끝 높은데 반대 틀기"
       },
@@ -767,7 +767,7 @@
     {
       "id": "strike_open_fist_palm_high_reverse_punch",
       "names": {
-        "english": "Open Fist (Palm) High Reverse Punch",
+        "english": "Open Fist (palm) High Reverse Punch",
         "romanised": "Pyon Joomuk Nopunde Bandae Jirugi",
         "hangul": "편 주먹 높은데 반대 지르기"
       },
@@ -1217,7 +1217,7 @@
     {
       "id": "strike_straight_elbow_downward_thrust",
       "names": {
-        "english": "Straight Elbow Downward thrust",
+        "english": "Straight Elbow Downward Thrust",
         "romanised": "Sun Palkup Naeryo Tulgi",
         "hangul": "순 팔굽 내려 틀기"
       },
@@ -1346,7 +1346,7 @@
     {
       "id": "strike_twin_fore-knuckle_fist_crescent_strike",
       "names": {
-        "english": "Twin Fore-knuckle fist Crescent Punch",
+        "english": "Twin Fore-Knuckle Fist Crescent Punch",
         "romanised": "Sang Inji Joomuk Bandal Jirugi",
         "hangul": "쌍 인지 주먹 반달 지르기"
       },

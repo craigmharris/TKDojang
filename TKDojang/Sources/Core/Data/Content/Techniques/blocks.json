@@ -240,7 +240,7 @@
       "id": "block_high_inner_forearm_block",
       "names": {
         "english": "High Inner Forearm Block",
-        "romanised": "Nopunde An Palmok Makgi",
+        "romanised": "Nopunde an Palmok Makgi",
         "hangul": "높은데 안 팔목 막기"
       },
       "category": "blocks"
@@ -402,7 +402,7 @@
     {
       "id": "block_inner_forearm_parallel_block",
       "names": {
-        "english": "Inner Forearm parallel Block",
+        "english": "Inner Forearm Parallel Block",
         "romanised": "An Palmok Narani Makgi",
         "hangul": "안 팔목 나란히 막기"
       },
@@ -544,7 +544,7 @@
     {
       "id": "block_knifehand_low_section_inward_block",
       "names": {
-        "english": "Knifehand low section inward Block",
+        "english": "Knifehand Low Section Inward Block",
         "romanised": "Sonkal Najunde Anaero Makgi",
         "hangul": "손칼 낮은데 안으로 막기"
       },
@@ -571,7 +571,7 @@
     {
       "id": "block_middle_forearm_guarding_block",
       "names": {
-        "english": "Middle forearm Guarding Block",
+        "english": "Middle Forearm Guarding Block",
         "romanised": "Kaunde Palmok Daebi Makgi",
         "hangul": "가운데 팔목 대비 막기"
       },
@@ -581,7 +581,7 @@
       "id": "block_middle_inner_forearm_block",
       "names": {
         "english": "Middle Inner Forearm Block",
-        "romanised": "Kaunde An Palmok Makgi",
+        "romanised": "Kaunde an Palmok Makgi",
         "hangul": "가운데 안 팔목 막기"
       },
       "category": "blocks"
@@ -682,7 +682,7 @@
     {
       "id": "block_outer_forearm_reverse_high_side_block",
       "names": {
-        "english": "Outer Forearm reverse High Side Block",
+        "english": "Outer Forearm Reverse High Side Block",
         "romanised": "Bakat Palmok Nopunde Bandae Yop Makgi",
         "hangul": "바깥 팔목 높은데 반대 옆 막기"
       },
