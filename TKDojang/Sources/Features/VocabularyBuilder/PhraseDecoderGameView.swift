@@ -197,6 +197,7 @@ struct PhraseDecoderGameView: View {
                                     draggedWordIndex = index
                                     hoverTargetIndex = index
                                     dragStartLocation = value.startLocation
+                                    DebugLogger.ui("🎯 DRAG START: index=\(index), startLocation.y=\(String(format: "%.1f", value.startLocation.y)), location.y=\(String(format: "%.1f", value.location.y))")
                                 }
 
                                 dragOffset = value.translation
@@ -238,11 +239,12 @@ struct PhraseDecoderGameView: View {
                     .disabled(validationResult != nil)
                 }
 
-                // Placeholder at end if dragging to last position
+                // Placeholder at end - only show when dragging FROM last position upward
+                // (prevents duplicate with "BEFORE last item" placeholder)
                 if let hoverIdx = hoverTargetIndex,
                    hoverIdx == currentWords.count - 1,
                    let draggedIdx = draggedWordIndex,
-                   draggedIdx != currentWords.count - 1 {
+                   draggedIdx == currentWords.count - 1 {
                     PlaceholderBoxView(position: currentWords.count)
                         .transition(.scale.combined(with: .opacity))
                 }
@@ -251,6 +253,20 @@ struct PhraseDecoderGameView: View {
             // Dragged item overlay - follows finger
             if let draggedIdx = draggedWordIndex,
                draggedIdx < currentWords.count {
+                let itemHeight: CGFloat = 72
+                let itemSpacing: CGFloat = 12
+                let originalY = CGFloat(draggedIdx) * (itemHeight + itemSpacing)
+
+                // Position overlay to match finger position exactly
+                // The finger is at: originalY + startLocation.y + dragOffset.height (from VStack top)
+                // The item's top should be at: fingerY - startLocation.y (so finger stays at same point on item)
+                // Since overlay is positioned from VStack top (y=0), we need: fingerY - startLocation.y
+                let fingerOffsetFromVStackTop = originalY + dragStartLocation.y + dragOffset.height
+                let itemTopEdge = fingerOffsetFromVStackTop - dragStartLocation.y
+                let overlayOffset = itemTopEdge  // Position from VStack top
+
+                let _ = DebugLogger.ui("🎨 OVERLAY: draggedIdx=\(draggedIdx), originalY=\(String(format: "%.1f", originalY)), startLoc.y=\(String(format: "%.1f", dragStartLocation.y)), offset=\(String(format: "%.1f", dragOffset.height)), fingerFromTop=\(String(format: "%.1f", fingerOffsetFromVStackTop)), itemTop=\(String(format: "%.1f", itemTopEdge)), overlayOffset=\(String(format: "%.1f", overlayOffset))")
+
                 WordBoxView(
                     word: currentWords[draggedIdx],
                     position: draggedIdx + 1,
@@ -258,10 +274,10 @@ struct PhraseDecoderGameView: View {
                     isCorrect: validationResult?.correctPositions.contains(draggedIdx),
                     isDropTarget: false
                 )
-                .offset(y: dragOffset.height - 40)  // Subtract ~half item height to center under finger
+                .offset(y: overlayOffset)
                 .opacity(0.95)
                 .shadow(color: .black.opacity(0.3), radius: 12, y: 8)
-                .allowsHitTesting(false)  // Pass touches through to underlying items
+                .allowsHitTesting(false)
             }
         }
         .accessibilityElement(children: .contain)
