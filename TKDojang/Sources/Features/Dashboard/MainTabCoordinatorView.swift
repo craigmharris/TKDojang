@@ -977,21 +977,24 @@ struct ProgressView: View {
         do {
             // Add a small delay to let UI show loading state
             try await Task.sleep(nanoseconds: 100_000_000) // 0.1 seconds
-            
+
             // Load study sessions
             studySessions = try dataServices.profileService.getStudySessions(for: profile)
                 .sorted { $0.startTime > $1.startTime }
-            
+
             // Load grading history
             gradingHistory = try dataServices.profileService.getGradingHistory(for: profile)
-            
+
             // Load grading statistics (only if there are gradings)
             if !gradingHistory.isEmpty {
                 gradingStatistics = try dataServices.profileService.getGradingStatistics(for: profile)
             } else {
                 gradingStatistics = nil
             }
-            
+
+        } catch is CancellationError {
+            // Task was cancelled (user switched tabs/profiles) - this is expected, don't log as error
+            return
         } catch {
             DebugLogger.data("❌ Failed to load progress data: \(error)")
             errorMessage = "Failed to load progress data: \(error.localizedDescription)"

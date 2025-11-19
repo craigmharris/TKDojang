@@ -686,11 +686,14 @@ class DataManager {
             let contents = try fileManager.contentsOfDirectory(atPath: bundlePath)
 
             // Find files matching terminology patterns
+            // Valid categories: basics, numbers, techniques
+            let validCategories = ["_basics.json", "_numbers.json", "_techniques.json"]
             let terminologyFiles = contents.filter { filename in
                 guard filename.hasSuffix(".json") else { return false }
+                guard filename.contains("_keup_") || filename.contains("_dan_") else { return false }
 
-                // Match patterns like: 10th_keup_basics.json, 1st_dan_philosophy.json
-                return filename.contains("_keup_") || filename.contains("_dan_")
+                // Only match actual terminology categories (not patterns, theory, linework, step sparring)
+                return validCategories.contains { filename.hasSuffix($0) }
             }
 
             for jsonFile in terminologyFiles {
