@@ -78,16 +78,9 @@ final class StepSparringDataService {
             let filteredSequences = allSequences.filter { sequence in
                 // First filter by type
                 guard sequence.type == type else { return false }
-                
+
                 // Manual belt level checking - BYPASS the relationship entirely
-                let isAvailable = manualBeltLevelCheck(for: sequence, userBelt: userProfile.currentBeltLevel)
-                
-                DebugLogger.data("🔍 FILTER DEBUG: Sequence #\(sequence.sequenceNumber) '\(sequence.name)':")
-                DebugLogger.data("   Manual belt check result: \(isAvailable)")
-                DebugLogger.data("   User belt: \(userProfile.currentBeltLevel.shortName)(\(userProfile.currentBeltLevel.sortOrder))")
-                DebugLogger.data("   Available: \(isAvailable)")
-                
-                return isAvailable
+                return manualBeltLevelCheck(for: sequence, userBelt: userProfile.currentBeltLevel)
             }
             
             let sortedSequences = filteredSequences.sorted { $0.sequenceNumber < $1.sequenceNumber }
@@ -106,34 +99,26 @@ final class StepSparringDataService {
     private func manualBeltLevelCheck(for sequence: StepSparringSequence, userBelt: BeltLevel) -> Bool {
         // Use JSON belt level data instead of hardcoded patterns
         let expectedBelts = sequence.applicableBeltLevelIds
-        
-        DebugLogger.data("🔍 Checking sequence '\(sequence.name)' for user belt '\(userBelt.shortName)'")
-        DebugLogger.data("   JSON applicable belts: \(expectedBelts)")
-        
+
         // If no belt levels defined in JSON, sequence is not available
         guard !expectedBelts.isEmpty else {
-            DebugLogger.data("❌ No applicable belt levels found for \(sequence.name)")
             return false
         }
-        
+
         // Convert expected belts to normalized names and check against user belt
         for expectedBelt in expectedBelts {
             let normalizedBelt = expectedBelt.replacingOccurrences(of: "_", with: " ")
                 .replacingOccurrences(of: "keup", with: "Keup")
                 .replacingOccurrences(of: "dan", with: "Dan")
-            
-            DebugLogger.data("   Checking '\(expectedBelt)' -> '\(normalizedBelt)' vs user '\(userBelt.shortName)'")
-            
+
             // Check if user's belt matches any expected belt
             // User can access sequences for their current belt and all previous belts (higher sort order)
-            if normalizedBelt == userBelt.shortName || 
+            if normalizedBelt == userBelt.shortName ||
                (getBeltSortOrder(for: normalizedBelt) >= userBelt.sortOrder) {
-                DebugLogger.data("✅ Belt match found - sequence available")
                 return true
             }
         }
-        
-        DebugLogger.data("❌ No belt match found - sequence not available")
+
         return false
     }
     

@@ -67,22 +67,13 @@ class TemplateFillerService: ObservableObject {
             throw TemplateFillerError.techniquesNotLoaded
         }
 
-        // Filter techniques by word count
-        let matchingWordCount = TechniquePhraseLoader.filterByWordCount(
+        // Filter techniques by word count in the SOURCE language (direction-aware)
+        // WHY: English and Korean may have different word counts - we only care about the language being studied
+        let availableTechniques = TechniquePhraseLoader.filterByWordCount(
             techniquePhrases,
-            wordCount: wordCount
+            wordCount: wordCount,
+            direction: direction
         )
-
-        // CRITICAL: Filter out techniques where English and Korean word counts don't match
-        let availableTechniques = matchingWordCount.filter { technique in
-            let englishCount = technique.englishWords.count
-            let koreanCount = technique.koreanWords.count
-            if englishCount != koreanCount {
-                DebugLogger.data("  ⚠️ Skipping technique '\(technique.id)' - word count mismatch (EN:\(englishCount), KR:\(koreanCount))")
-                return false
-            }
-            return true
-        }
 
         guard availableTechniques.count >= phraseCount else {
             throw TemplateFillerError.insufficientTechniques(
@@ -209,28 +200,28 @@ class TemplateFillerService: ObservableObject {
         wordCount: Int,
         direction: StudyDirection
     ) throws -> [String] {
-        // Get all techniques with same word count
-        let sameLengthTechniques = techniquePhrases.filter { $0.wordCount == wordCount }
+        // Get all techniques with same word count in the SOURCE language
+        // WHY: We only care about the language being studied, not both languages matching
+        let sameLengthTechniques = TechniquePhraseLoader.filterByWordCount(
+            techniquePhrases,
+            wordCount: wordCount,
+            direction: direction
+        )
 
         // Extract words at this position from other techniques (direction-aware)
         var positionalWords: [String] = []
         for technique in sameLengthTechniques {
-            // Bounds check to prevent crash if technique has mismatched or fewer words
-            let englishCount = technique.englishWords.count
-            let koreanCount = technique.koreanWords.count
+            // Get source words based on study direction
+            let sourceWords = direction == .englishToKorean
+                ? technique.englishWords
+                : technique.koreanWords
 
-            guard position < englishCount && position < koreanCount else {
-                if englishCount != koreanCount {
-                    DebugLogger.data("  ⚠️ Skipping technique '\(technique.id)' - word count mismatch (EN:\(englishCount), KR:\(koreanCount))")
-                } else {
-                    DebugLogger.data("  ⚠️ Skipping technique '\(technique.id)' - insufficient words (has \(englishCount), position \(position))")
-                }
+            // Bounds check for the source language only
+            guard position < sourceWords.count else {
                 continue
             }
 
-            let wordAtPosition = direction == .englishToKorean
-                ? technique.englishWords[position]
-                : technique.koreanWords[position]
+            let wordAtPosition = sourceWords[position]
 
             if wordAtPosition != correctWord && !positionalWords.contains(wordAtPosition) {
                 positionalWords.append(wordAtPosition)

@@ -820,6 +820,27 @@ let configuration = ModelConfiguration(
   - CommunityFeaturesNavigationTests.swift - non-destructive navigation validation
   - Tests modal presentation, view hierarchy, no inadvertent CloudKit writes
   - Validates complete navigation flow (ProfileView → Community Hub → 4 features)
+
+**Nov 19, 2025** - `PENDING` - refactor(logging): production debug log optimization and Template Filler parsing fix
+- **Debug Log Optimization (92% reduction):**
+  - Removed Step Sparring belt filtering debug logs (~200 lines of verbose checking)
+  - Removed ProfileSwitcher instance tracking logs (~80 lines of render/tap events)
+  - Removed Config body evaluation and cache hit logs (~30 lines of SwiftUI internals)
+  - Moved LoadingView lifecycle logs to DEBUG-only conditionals
+  - Aggregated Template Filler technique warnings (60 lines → 1 summary line)
+  - Removed drag & drop position tracking in PhraseDecoder
+  - **Impact:** ~900 lines → ~80-100 lines of production logs (89-92% reduction)
+- **Template Filler Direction-Aware Filtering Fix:**
+  - **Problem:** Game rejected techniques where English/Korean word counts differed
+  - **Root Cause:** Incorrectly validated both languages match (e.g., "Knife Hand Strike" = 3 EN vs "Sonkal Taerigi" = 2 KR)
+  - **Solution:** Added direction-aware filtering to only check source language word count
+  - **New Method:** `TechniquePhraseLoader.filterByWordCount(_:wordCount:direction:)`
+  - **Choice Generation:** Updated to use source language only for distractor generation
+  - **Impact:** All valid techniques now available regardless of target language differences
+- **Files Modified:** 6 (StepSparringDataService, ProfileSwitcher, MultipleChoiceConfigurationView, LoadingView, VocabularyBuilderService, TemplateFillerService, TechniquePhraseLoader, PhraseDecoderGameView)
+- **Build Status:** ✅ BUILD SUCCEEDED
+- **Log Noise Eliminated:** Step sparring debug spam, ProfileSwitcher render tracking, technique mismatch warnings
+- **User Impact:** Template Filler now has full technique catalog available for all word count/direction combinations
 - **Enhanced UI Components:**
   - WhatsNewView.swift: Added "Getting Started" tip box and "What's Coming Next" roadmap preview
   - AboutCommunityHubView.swift: GitHub link for Developer Info (clickable)

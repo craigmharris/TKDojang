@@ -40,7 +40,6 @@ class VocabularyBuilderService: ObservableObject {
      */
     func loadVocabularyWords() throws -> [VocabularyWord] {
         if !cachedWords.isEmpty {
-            DebugLogger.data("📦 VocabularyBuilderService: Using cached words (\(cachedWords.count))")
             return cachedWords
         }
 

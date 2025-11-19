@@ -36,7 +36,6 @@ struct MultipleChoiceConfigurationView: View {
     @State private var errorMessage: String?
 
     var body: some View {
-        let _ = DebugLogger.ui("🔄 Config.body: Evaluating body - showingTest=\(showingTest), testSession=\(testSession?.id.uuidString ?? "NIL")")
         NavigationStack {
             ScrollView {
                 VStack(spacing: 24) {
@@ -111,9 +110,7 @@ struct MultipleChoiceConfigurationView: View {
                 }
             }
             .fullScreenCover(isPresented: $showingTest) {
-                let _ = DebugLogger.ui("🎭 Config: fullScreenCover triggered - showingTest=\(showingTest), testSession=\(testSession?.id.uuidString ?? "NIL")")
                 if let session = testSession {
-                    let _ = DebugLogger.ui("✅ Config: testSession EXISTS, creating TestTakingView with sessionID=\(session.id)")
                     TestTakingView(
                         testSession: session,
                         dismissToLearn: {
@@ -124,8 +121,6 @@ struct MultipleChoiceConfigurationView: View {
                     )
                     .environmentObject(dataServices)
                     .environmentObject(onboardingCoordinator)
-                } else {
-                    let _ = DebugLogger.ui("❌ Config: testSession is NIL - cannot show TestTakingView!")
                 }
             }
             .task {

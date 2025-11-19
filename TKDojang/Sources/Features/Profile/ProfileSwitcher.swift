@@ -26,10 +26,7 @@ struct ProfileSwitcher: View {
     @State private var showingProfileManagement = false
     @State private var errorMessage: String?
     @State private var showingError = false
-    
-    // Instance identifier for debugging
-    private let instanceId = UUID().uuidString.prefix(8)
-    
+
     // Use shared published state instead of local state
     private var profiles: [UserProfile] { dataServices.allProfiles }
     private var activeProfile: UserProfile? { dataServices.activeProfile }
@@ -58,11 +55,8 @@ struct ProfileSwitcher: View {
                 ForEach(profiles) { profile in
                     Button(action: {
                         let isCurrentlyActive = (activeProfile?.id == profile.id)
-                        DebugLogger.profile("🔍 ProfileSwitcher: Tapped profile \(profile.name), isCurrentlyActive: \(isCurrentlyActive)")
                         if !isCurrentlyActive {
                             switchToProfile(profile)
-                        } else {
-                            DebugLogger.profile("⚠️ ProfileSwitcher: Profile \(profile.name) is already active, ignoring tap")
                         }
                     }) {
                         HStack {
@@ -108,19 +102,15 @@ struct ProfileSwitcher: View {
         }
         .id("ProfileSwitcher-\(activeProfile?.id.uuidString ?? "none")")
         .onAppear {
-            DebugLogger.ui("🎬 ProfileSwitcher: onAppear triggered [Instance: \(instanceId)]")
-            DebugLogger.ui("🔄 ProfileSwitcher: Rendering menu with \(profiles.count) profiles, active: \(activeProfile?.name ?? "none") [Instance: \(instanceId)]")
-            
             // Load shared profile state only once across all instances
             dataServices.loadSharedProfileState()
         }
-        
+
         .sheet(isPresented: $showingProfileManagement) {
             ProfileManagementView()
                 .environmentObject(dataServices)
                 .environmentObject(appCoordinator)
                 .onDisappear {
-                    DebugLogger.profile("👋 ProfileSwitcher: ProfileManagementView disappeared, refreshing shared state [Instance: \(instanceId)]")
                     dataServices.refreshSharedProfileState()
                 }
         }
@@ -135,12 +125,8 @@ struct ProfileSwitcher: View {
     
     private func switchToProfile(_ profile: UserProfile) {
         do {
-            DebugLogger.profile("🔄 ProfileSwitcher: Switching to profile: \(profile.name) [Instance: \(instanceId)]")
-            
             // Use shared DataServices method for profile switching
             try dataServices.switchToProfile(profile)
-            
-            DebugLogger.profile("✅ ProfileSwitcher: Profile switch completed [Instance: \(instanceId)]")
         } catch {
             DebugLogger.profile("❌ ProfileSwitcher: Failed to switch profile: \(error)")
             errorMessage = "Failed to switch profile: \(error.localizedDescription)"

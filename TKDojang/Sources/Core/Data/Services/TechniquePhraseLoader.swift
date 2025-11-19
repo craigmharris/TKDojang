@@ -144,8 +144,21 @@ class TechniquePhraseLoader {
     }
 
     /// Filter phrases by word count (for difficulty levels)
+    /// Note: Only filters by English word count (default for backward compatibility)
     static func filterByWordCount(_ phrases: [TechniquePhrase], wordCount: Int) -> [TechniquePhrase] {
         return phrases.filter { $0.wordCount == wordCount }
+    }
+
+    /// Filter phrases by word count for a specific study direction
+    /// WHY: English and Korean may have different word counts (e.g., "Knife Hand Strike" = 3 words in English, "Sonkal Taerigi" = 2 words in Korean)
+    /// Only the SOURCE language word count matters for the game
+    static func filterByWordCount(_ phrases: [TechniquePhrase], wordCount: Int, direction: StudyDirection) -> [TechniquePhrase] {
+        return phrases.filter { phrase in
+            let sourceWordCount = direction == .englishToKorean
+                ? phrase.englishWords.count
+                : phrase.koreanWords.count
+            return sourceWordCount == wordCount
+        }
     }
 
     /// Filter phrases by word count range

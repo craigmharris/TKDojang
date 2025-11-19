@@ -197,7 +197,6 @@ struct PhraseDecoderGameView: View {
                                     draggedWordIndex = index
                                     hoverTargetIndex = index
                                     dragStartLocation = value.startLocation
-                                    DebugLogger.ui("🎯 Started dragging word at index \(index)")
                                 }
 
                                 dragOffset = value.translation
@@ -215,14 +214,12 @@ struct PhraseDecoderGameView: View {
                                 newHoverIndex = max(0, min(currentWords.count - 1, newHoverIndex))
 
                                 if newHoverIndex != hoverTargetIndex {
-                                    DebugLogger.ui("🎯 Hover target: \(hoverTargetIndex ?? -1) → \(newHoverIndex) (offset: \(Int(value.translation.height))px)")
                                     withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                                         hoverTargetIndex = newHoverIndex
                                     }
                                 }
                             }
                             .onEnded { value in
-                                DebugLogger.ui("🏁 Drag ended: from=\(draggedWordIndex ?? -1), to=\(hoverTargetIndex ?? -1)")
 
                                 if let fromIndex = draggedWordIndex,
                                    let toIndex = hoverTargetIndex,
