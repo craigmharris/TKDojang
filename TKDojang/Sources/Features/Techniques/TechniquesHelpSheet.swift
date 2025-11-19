@@ -50,13 +50,13 @@ struct TechniquesHelpSheet: View {
                     helpSection(
                         icon: "square.grid.2x2.fill",
                         title: "Category Browsing",
-                        description: "Techniques are organized into logical categories for easy exploration:",
+                        description: "Techniques are organised into logical categories for easy exploration:",
                         tips: [
                             "Blocks: Defensive movements (makgi)",
                             "Kicks: All kicking techniques (chagi)",
                             "Punches & Strikes: Hand techniques (jirugi, taerigi)",
                             "Stances: Foundational positions (sogi)",
-                            "Plus specialized categories like throws and dodges"
+                            "Plus specialised categories like throws and dodges"
                         ]
                     )
 
@@ -78,7 +78,7 @@ struct TechniquesHelpSheet: View {
                         description: "Tap any technique card to view comprehensive information:",
                         tips: [
                             "Detailed execution instructions step-by-step",
-                            "Korean terminology with romanization",
+                            "Korean terminology with romanisation",
                             "Belt level requirements and difficulty ratings",
                             "Target areas and typical applications",
                             "Related techniques and variations"

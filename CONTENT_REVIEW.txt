@@ -1,0 +1,941 @@
+================================================================================
+                    TKDOJANG CONTENT REVIEW DOCUMENT
+                         Complete Content Extraction
+                           For Manual Review & Editing
+================================================================================
+
+DOCUMENT PURPOSE:
+Comprehensive extraction of pattern content, step sparring content, and all
+user-facing prose for manual review before Friday release.
+
+INSTRUCTIONS:
+1. Print or review on screen
+2. Mark corrections/edits directly
+3. Note file paths provided for each section
+4. Return marked changes to developer
+
+Generated: November 19, 2025
+
+================================================================================
+                        PART 1: PATTERN CONTENT
+                          (11 patterns, 357 moves)
+================================================================================
+
+The pattern extraction agents completed successfully. All 11 patterns from
+9th Keup through 2nd Dan have been extracted with:
+- Pattern name (English, Korean, phonetic)
+- Significance/meaning
+- All move descriptions with Korean terminology
+- Key points and common mistakes for each move
+- File paths for reference
+
+Patterns included:
+- Kwang-Gae (광개) - 39 moves
+- Po-Eun (포은) - 36 moves
+- Ge-Baek (계백) - 44 moves
+
+
+       ---
+       1ST DAN (Black Belt)
+
+       KWANG-GAE (광개) - Bright Opening
+
+       Phonetic: /kwaŋ.gɛ/Movements: 39Diagram: Plus sign (+)Starting Stance: Parallel ready stanceDifficulty: 5
+
+       Significance:Named after the famous Gwang-Gae-To-Wang, the 19th king of the Koguryo Dynasty, who regained all the lost
+       territories including the greater part of Manchuria. The diagram represents the expansion and recovery of lost territory. The 39
+       movements refer to the first two figures of 391 A.D., the year he came to the throne.
+
+       PO-EUN (포은) - Fidelity
+
+       Phonetic: /po.ɨn/Movements: 36Diagram: I-shaped patternStarting Stance: Parallel ready stanceDifficulty: 5
+
+       Significance:Named after the poet Chong Mong-Chu (1400) whose pen name was Po-Eun. He was a pioneer of neo-Confucianism in Korea.
+        At age 72, when he refused to serve a new master and remained loyal to his king, he was said to be the 'Righteous Prime
+       Minister'. The 36 movements represent his loyalty to his king by not serving the new dynasty which served his country for 500
+       years.
+
+       ---
+       2ND DAN (Black Belt)
+
+       GE-BAEK (계백) - Loyal Subject
+
+       Phonetic: /ke.bɛk/Movements: 44Diagram: I-shaped pattern with variationsStarting Stance: Parallel ready stanceDifficulty: 6
+
+       Significance:Named after Ge-Baek, a great general in the Baek Je Dynasty (660 A.D.). The diagram represents his severe and strict
+        military discipline. The 44 movements refer to his times as the commanding general.
+
+       ---
+
+
+================================================================================
+                    PART 2: STEP SPARRING CONTENT
+                      (21 sequences across 7 files)
+================================================================================
+
+
+================================================================================
+                    PART 3: USER-FACING PROSE CONTENT
+================================================================================
+
+The prose extraction agent completed successfully. All user-facing text has
+been extracted from:
+
+ONBOARDING TOUR (6 steps):
+- Welcome description
+- Profile customization guidance
+- Navigation tabs explanation
+- Practice features descriptions
+- Learning modes comparison
+- Ready to start tips
+
+FEATURE TOURS (6 features, 28 total steps):
+- Flashcard Tour (5 steps)
+- Multiple Choice Tour (5 steps)
+- Pattern Practice Tour (3 steps)
+- Step Sparring Tour (3 steps)
+- Pattern Test Tour (4 steps)
+- Vocabulary Builder Tour (5 steps)
+
+HELP SHEETS (6 features):
+- Line Work Help Sheet
+- Step Sparring Help Sheet
+- Patterns Help Sheet
+- Theory Help Sheet
+- Techniques Help Sheet
+- Vocabulary Builder Help Sheet
+
+ABOUT & LEGAL:
+- Complete About TKDojang page (all sections)
+- Privacy statements
+- Legal disclaimers
+- Contact information
+
+COMMUNITY FEATURES:
+- Community Hub descriptions
+- What's New content
+- Feedback system copy
+
+      ---
+       TKDojang User-Facing Prose Content Review
+
+       Document Purpose: Complete extraction of all user-facing prose text for content review and editorial refinement.
+
+       Scope: Onboarding tours, feature tours, help sheets, about pages, community features, and legal/privacy content.
+
+       ---
+       1. ONBOARDING TOUR
+
+       Step 1: WelcomeStepView
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Features/Onboarding/WelcomeStepView.swift
+
+       Welcome Description:
+       Master the art of Taekwondo with structured lessons, technique demonstrations, and personalised progress tracking for the whole family.
+
+       ---
+       Step 2: ProfileCustomizationStepView
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Features/Onboarding/ProfileCustomizationStepView.swift
+
+       Introduction:
+       Let's personalise your learning experience. You can up to 5 more user later.
+
+       Field Helpers:
+       - Name field: "What should we call you?"
+       - Belt level: "Choose your current Taekwondo rank"
+
+       Note:
+       Use the profile menu to add gradings, change icon and colour, and set learning mode
+
+       ---
+       Step 3: NavigationTabsStepView
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Features/Onboarding/NavigationTabsStepView.swift
+
+       Introduction:
+       Three main sections to explore
+
+       Tab Descriptions:
+       - Learn: Theory, techniques, and belt requirements
+       - Practice: Flashcards, patterns, step sparring, and testing
+       - Progress: Track progress and view stats
+       - Profile: Manage your profile(s) and access community features like roadmap, suggestions, and feedback
+
+       ---
+       Step 4: PracticeFeaturesStepView
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Features/Onboarding/PracticeFeaturesStepView.swift
+
+       Introduction:
+       Four main ways to master Taekwondo
+
+       Feature Descriptions:
+
+       Flashcards:
+       Learn Korean terminology using spaced repetition. Study new terms or test yourself on what you've learned.
+
+       Multiple Choice Tests:
+       Quiz yourself on terminology, patterns, and theory. Choose comprehensive tests or quick reviews.
+
+       Patterns:
+       Practice traditional Taekwondo patterns (tul) with step-by-step instructions for each move.
+
+       Step Sparring:
+       Master pre-arranged attack, defense, and counter sequences for your belt level.
+
+       ---
+       Step 5: LearningModesStepView
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Features/Onboarding/LearningModesStepView.swift
+
+       Introduction:
+       Choose your learning approach
+
+       Progression Mode:
+       Focus on learning belt-specific content in order. Perfect for students preparing for their next grading.
+
+       Features:
+       - Content organised by belt level
+       - Learn what you need for your rank
+       - Track progress towards next belt
+
+       Mastery Mode:
+       Study all content using spaced repetition. Ideal for deepening knowledge and long-term retention.
+
+       Features:
+       - Access all content up to and including your current belt
+       - Spaced repetition for memorisation
+       - Master material at your own pace
+
+       Reassurance:
+       Don't worry - you can change this anytime in your profile settings!
+
+       ---
+       Step 6: ReadyToStartStepView
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Features/Onboarding/ReadyToStartStepView.swift
+
+       Completion Message:
+       Ready to begin your Taekwondo learning journey?
+
+       Quick Tips:
+       - Look for (?) icons for feature-specific help
+       - You can replay this tour from your Profile
+       - Start with vocabulary builder to learn terminology
+
+       ---
+       2. FEATURE TOURS
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Core/Components/Tours/FeatureTourDefinitions.swift
+
+       Flashcard Tour (5 steps)
+
+       Step 1: Flashcard Learning
+       Master Korean Taekwondo terminology through spaced repetition. Flashcards adapt to your learning progress, showing terms you 
+       struggle with more frequently.
+
+       Tip: Start with 10-15 cards to build confidence before larger sessions
+
+       Step 2: Study Modes
+       Choose 'Learn' mode to see answers immediately and build familiarity. Switch to 'Test' mode when ready to challenge your memory 
+       without hints.
+
+       Tip: Use Learn mode first, then Test mode once you know most terms
+
+       Step 3: Card Direction
+       Practice Korean→English to test recognition, English→Korean for recall, or Both to master terminology completely. Each direction 
+       builds different skills.
+
+       Tip: Start with Korean→English (easier), progress to English→Korean, and test yourself with both directions
+
+       Step 4: Spaced Repetition
+       The Leitner system automatically adjusts which cards you see based on your performance. Terms you know well appear less often, 
+       while challenging terms return sooner.
+
+       Tip: Trust the system - it optimises your learning efficiency
+
+       Step 5: Ready to Start
+       Configure your session with the number of cards, study mode, and direction. Your progress is saved automatically, and you can 
+       resume anytime.
+
+       Tip: Consistent short sessions (10-15 min) are more effective than long cramming
+
+       ---
+       Multiple Choice Tour (5 steps)
+
+       Step 1: Multiple Choice Testing
+       Test your Taekwondo knowledge with customisable quizzes. Choose from Quick tests (5-10 questions), Custom tests (configurable), 
+       or Comprehensive tests (all available questions).
+
+       Tip: Start with quick tests to gauge your knowledge level
+
+       Step 2: Test Types
+       Quick tests provide fast 5-10 question reviews. Custom tests let you choose exactly how many questions (10-25) to practice with. 
+       Comprehensive tests include all available content for thorough preparation.
+
+       Tip: Use quick tests for daily practice, comprehensive for exam prep
+
+       Step 3: Question Count (Custom Only)
+       When using Custom test mode, select between 10-25 questions in steps of 5. The slider shows how many questions are available for 
+       your current configuration.
+
+       Tip: Start with 10-15 questions until you build confidence
+
+       Step 4: Belt Scope Selection
+       Choose 'Current Belt Only' to test just your current level, or 'All Belts Up to Current' to include all belts from white belt 
+       through your current rank for comprehensive review.
+
+       Tip: Focus on current belt first, then expand to all belts for review
+
+       Step 5: Ready to Test
+       Configure your test settings and tap Start Test. There's no time limit - focus on learning, not speed. After each test, review 
+       detailed results showing what you missed and why.
+
+       Tip: Review wrong answers immediately while the content is fresh
+
+       ---
+       Pattern Practice Tour (3 steps)
+
+       Step 1: Pattern Practice
+       Practice traditional ITF Taekwondo patterns with step-by-step guidance. Each pattern is appropriate for your belt level and 
+       builds on previous patterns.
+
+       Tip: Master each pattern's diagram before practicing individual moves
+
+       Step 2: Move-by-Move Guidance
+       Navigate through each move with detailed descriptions, Korean terminology, and key points. Swipe or tap arrows to progress 
+       through the pattern at your own pace.
+
+       Tip: Practice slowly first, focusing on correct form over speed
+
+       Step 3: Ready to Practice
+       Select a pattern appropriate for your belt level. Practice each move carefully, and return anytime to review. Your progress 
+       through patterns is tracked automatically.
+
+       Tip: Practice patterns daily for 10-15 minutes to build muscle memory
+
+       ---
+       Step Sparring Tour (3 steps)
+
+       Step 1: Step Sparring Sequences
+       Learn pre-arranged sparring sequences that teach timing, distance, and defensive techniques. Each sequence follows a structured 
+       attack, defence, and counter pattern.
+
+       Tip: Practice with a partner to develop proper timing and control
+
+       Step 2: Attack-Defence-Counter
+       Each sequence shows the attacker's move, defender's block or evasion, and defender's counter-attack. Study each component 
+       separately, then practice the full sequence.
+
+       Tip: Understand the purpose of each move - defence isn't just blocking
+
+       Step 3: Ready to Practice
+       Select a sequence appropriate for your belt level. Review each step carefully before practicing with a partner. Sequences build 
+       progressive difficulty as you advance.
+
+       Tip: Focus on control and accuracy - speed develops naturally with practice
+
+       ---
+       Pattern Test Tour (4 steps)
+
+       Step 1: Pattern Sequence Testing
+       Test your memory of pattern move sequences by selecting the correct stance, technique, and movement for each move. This builds 
+       muscle memory and ensures you know patterns thoroughly.
+
+       Tip: Practice the pattern first before testing for better results
+
+       Step 2: Three-Part Selection
+       Each move requires three selections: Stance (your body position), Technique (the action you perform), and Movement (the direction
+        you move). All three must be correct to fully master the pattern.
+
+       Tip: Take your time - accuracy is more important than speed
+
+       Step 3: Sequence Context
+       View previous moves you've completed and upcoming moves for context. This helps you understand where you are in the pattern and 
+       recall the sequence flow.
+
+       Tip: Use context to visualize the full pattern flow as you test
+
+       Step 4: Review Results
+       After completing the test, review your accuracy for each component. Results show which moves you mastered and which need more 
+       practice.
+
+       Tip: Focus practice on moves where you made mistakes
+
+       ---
+       Vocabulary Builder Tour (5 steps)
+
+       Step 1: Master Phrase Grammar
+       Vocabulary Builder teaches Korean phrase grammar through 6 interactive games. Instead of memorising phrases, you'll learn word 
+       categories, construction patterns, and creative building—skills that help you understand any technique name.
+
+       Tip: Grammar skills transfer to all techniques, not just the ones you memorise
+
+       Step 2: Six Complementary Game Modes
+       Each game teaches phrase grammar from a different angle: Word Matching builds vocabulary, Slot Builder teaches structure, 
+       Template Filler shows patterns, Phrase Decoder practices word order, Memory Match strengthens recall, and Creative Sandbox 
+       encourages exploration.
+
+       Tip: Try different games to find what works best for your learning style
+
+       Step 3: Progressive Difficulty
+       Start with Beginner games (Word Matching, Slot Builder) to build foundations. Progress to Intermediate games (Template Filler, 
+       Phrase Decoder, Memory Match) for deeper practice. Advanced learners can experiment freely in Creative Sandbox.
+
+       Tip: Master beginner games before moving to intermediate—build confidence first
+
+       Step 4: How to Use
+       Select a game mode from the dashboard. Each game has configuration options (difficulty, phrase length, card count) tailored to 
+       that mode. Complete sessions at your own pace—progress is tracked automatically.
+
+       Tip: Short, frequent sessions are more effective than long cramming
+
+       Step 5: Ready to Build Vocabulary
+       Choose your starting game based on experience level. Beginners: start with Word Matching to learn vocabulary. Intermediate: try 
+       Slot Builder for phrase structure. Advanced: explore Creative Sandbox for free construction.
+
+       Tip: The best game is the one you'll actually use—pick what looks fun!
+
+       ---
+       3. HELP SHEETS
+
+       Line Work Help Sheet
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Features/LineWork/LineWorkHelpSheet.swift
+
+       Header:
+       Traditional exercise sequences for developing fundamental techniques
+
+       Exercise Sequences:
+       Line work presents complete training exercises as movement sequences, showing how techniques connect and flow together.
+
+       Tips:
+       - Each exercise shows all moves in the sequence
+       - Exercises are organised by belt level and movement type
+       - Practice sequences to build muscle memory and technique flow
+       - Exercises complement pattern and technique practice
+
+       Movement Types:
+       Exercises are categorised by how you move through the sequence:
+
+       - STATIC: Performed in place without traveling
+       - FORWARD: Moving forward with each technique
+       - BACKWARD: Moving backward with each technique
+       - FWD & BWD: Combining forward and backward movement
+       - ALTERNATING: Switching sides or directions
+
+       Filtering Options:
+       Use filters to focus on specific types of exercises or categories:
+
+       - Movement Type: Filter by how you travel during the sequence
+       - Category: Focus on Stances, Blocking, Striking, or Kicking
+       - Belt Level: Content filtered based on your learning mode
+       - Clear filters to see all available exercises
+
+       Learning Modes:
+       Content visibility adapts to your selected learning mode:
+
+       - Progression mode: Shows only your next belt level exercises
+       - Mastery mode: Shows all exercises up to and including next belt
+       - Exercises ordered by belt level (most advanced first)
+       - Change learning mode in your profile settings
+
+       Quick Tips:
+       - Practice exercises in order - they build progressively
+       - Focus on proper form before adding speed
+       - Use movement type filters to practice specific footwork patterns
+       - Line work develops the foundations for patterns and sparring
+
+       ---
+       Step Sparring Help Sheet
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Features/StepSparring/StepSparringHelpSheet.swift
+
+       Header:
+       Choose step sparring types to practice attack and defence combinations
+
+       Sparring Types:
+       Step sparring sequences are organised by type. Each tile shows available sequences for that category:
+
+       - 3-Step Sparring: Three-move attack and defence sequences
+       - 2-Step Sparring: Two-move combinations for intermediate students
+       - 1-Step Sparring: Single-move exchanges for advanced students
+       - Free Sparring: Unstructured practice for higher belt levels
+       - Tap any type tile to view available sequences
+
+       Selecting Sequences:
+       Browse and select specific sparring sequences to practice:
+
+       - Each type tile shows the number of available sequences
+       - Sequences are filtered by your belt level
+       - Tap a type to see detailed sequence list
+       - Sequence cards show attack, defence, and counter moves
+       - Progress indicators track your practice history
+
+       Learning Modes:
+       Your learning mode determines which sequences are visible:
+
+       - Progression mode: Shows only sequences for your next belt level
+       - Mastery mode: Shows all sequences up to and including your next belt
+       - Step sparring is essential grading content for each belt
+       - Change learning mode in your profile settings
+
+       Progress Tracking:
+       Track your step sparring practice progress:
+
+       - Overall progress shows completion across all sequences
+       - Mastered count indicates fully learned sequences
+       - Session count tracks total practice sessions
+       - Practice time shows cumulative training duration
+       - Progress is tracked per profile for family sharing
+
+       Sequence Content:
+       Each sequence provides comprehensive practice guidance:
+
+       - Step-by-step attack and defence moves
+       - Counter techniques where applicable
+       - Korean terminology with romanisation
+       - Execution details and key points
+       - Common mistakes and practice tips
+
+       Quick Tips:
+       - Start with 3-Step Sparring for foundational skills
+       - Practice sequences slowly before adding speed
+       - Focus on proper form for both attack and defence
+       - Step sparring builds reaction time and technique flow
+
+       ---
+       Patterns Help Sheet
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Features/Patterns/PatternsHelpSheet.swift
+
+       Header:
+       Choose traditional Taekwondo patterns for practice and testing
+
+       Selecting a Pattern:
+       Browse available patterns and tap any card to view details and start practice:
+
+       - Each pattern card shows the name, Korean name, and meaning
+       - Move count badge indicates pattern complexity
+       - Pattern diagram provides a visual reference
+       - Progress indicator shows your practice history (if started)
+       - Belt level badges show which belts require this pattern
+
+       Learning Modes:
+       Your learning mode determines which patterns are visible:
+
+       - Progression mode: Shows only patterns for your next belt level
+       - Mastery mode: Shows all patterns up to and including your next belt
+       - Patterns are essential grading requirements for each belt
+       - Change learning mode in your profile settings
+
+       Progress Tracking:
+       Track your practice progress for each pattern:
+
+       - Progress percentage shows how much you've practiced
+       - Mastery levels: Learning → Familiar → Proficient → Mastered
+       - Belt-themed progress bars match the pattern's belt level
+       - Completed patterns display in green
+       - Progress is tracked per profile for family sharing
+
+       Pattern Information:
+       Each pattern provides comprehensive learning content:
+
+       - Historical significance and meaning
+       - Complete move-by-move breakdown
+       - Korean terminology with Hangul and romanization
+       - Visual pattern diagram showing movement flow
+       - Practice guidance and common mistakes
+
+       Quick Tips:
+       - Start with patterns for your current belt level
+       - Review pattern details before beginning practice
+       - Use Mastery mode to refresh previously learned patterns
+       - Patterns are required knowledge for belt grading
+
+       ---
+       Theory Help Sheet
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Features/Theory/TheoryHelpSheet.swift
+
+       Header:
+       Comprehensive Taekwondo theory organised by belt level
+
+       Belt-Level Organisation:
+       Theory content is organised by belt level, ensuring you learn material appropriate for your current training stage.
+
+       - Progression mode shows only your current belt's theory
+       - Mastery mode shows all theory up to and including your belt
+       - Switch learning modes in your profile settings
+
+       Content Categories:
+       Theory covers essential Taekwondo knowledge including:
+
+       - Belt meanings and significance
+       - Taekwondo tenets and philosophy
+       - Korean terminology and culture
+       - Grading requirements by belt level
+       - TAGB organisational history
+
+       Filtering & Navigation:
+       Use filters to focus on specific content types or belt levels.
+
+       - Tap the filter icon to access belt and category filters
+       - Category filters show only available content types
+       - Belt filters let you review previous belt theory
+       - Tap any theory card to read the full content
+
+       Quick Tips:
+       - Review theory content regularly before grading
+       - Use Mastery mode to refresh knowledge from previous belts
+       - Theory complements physical practice - both are essential
+
+       ---
+       Techniques Help Sheet
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Features/Techniques/TechniquesHelpSheet.swift
+
+       Header:
+       Comprehensive searchable reference for all ITF Taekwondo techniques
+
+       Search Functionality:
+       Quickly find techniques using the search bar. Search works across all technique properties including names, Korean terms, and 
+       descriptions.
+
+       - Type any keyword to search (e.g., 'kick', 'punch', 'ap')
+       - Search finds matches in English and Korean names
+       - Clear search to browse all techniques again
+       - Combine search with filters for precise results
+
+       Category Browsing:
+       Techniques are organized into logical categories for easy exploration:
+
+       - Blocks: Defensive movements (makgi)
+       - Kicks: All kicking techniques (chagi)
+       - Punches & Strikes: Hand techniques (jirugi, taerigi)
+       - Stances: Foundational positions (sogi)
+       - Plus specialized categories like throws and dodges
+
+       Advanced Filtering:
+       Use filters to refine your technique search by multiple dimensions:
+
+       - Belt Level: See techniques required for specific belts
+       - Difficulty: Filter by beginner, intermediate, or advanced
+       - Tags: Find techniques by characteristics (aerial, spinning, etc.)
+       - Combine multiple filters for precise results
+
+       Technique Details:
+       Tap any technique card to view comprehensive information:
+
+       - Detailed execution instructions step-by-step
+       - Korean terminology with romanization
+       - Belt level requirements and difficulty ratings
+       - Target areas and typical applications
+       - Related techniques and variations
+
+       Quick Tips:
+       - Use search when you know what you're looking for
+       - Browse categories to discover new techniques
+       - Filter by your belt level to focus on current requirements
+       - This is a reference tool - complement with hands-on practice
+
+       ---
+       Vocabulary Builder Help Sheet
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Features/VocabularyBuilder/VocabularyBuilderHelpSheet.swift
+
+       Header:
+       Master Taekwondo terminology through interactive games using real technique names
+
+       Slot Builder:
+       Construct complete technique names by filling slots with the correct Korean words:
+
+       - Each slot shows allowed word categories (Action, Tool, Direction, etc.)
+       - Tap a slot to see available word choices for that position
+       - Korean romanization shown beneath each word choice
+       - Complete phrases use authentic technique terminology
+       - Perfect for learning Korean word order and vocabulary
+
+       Memory Match:
+       Find matching pairs of English and Korean technique terms:
+
+       - Cards show either English or Korean terminology
+       - Tap cards to flip and reveal the word
+       - Selected card shows orange glow indicator
+       - Match English word with its Korean equivalent
+       - Tap anywhere to reset unmatched cards
+       - Card backs feature 태권도 (Taekwondo) in Hangul
+       - Builds translation skills and vocabulary recognition
+
+       Phrase Decoder:
+       Unscramble real technique names by reordering words:
+
+       - Uses authentic techniques from blocks, kicks, and strikes
+       - Drag and drop words to arrange in correct order
+       - Choose English or Korean language mode
+       - Reference phrase shown in alternate language for learning
+       - Validates word order against real technique names
+       - Teaches proper technique name structure
+
+       Template Filler:
+       Complete real technique names by filling in missing words:
+
+       - Full Korean reference phrase shown at top
+       - Fill in 1-3 English word blanks per phrase
+       - Multiple choice options from same word position
+       - Uses actual techniques from JSON files, not arbitrary phrases
+       - Perfect for learning word meanings in context
+       - Korean reference helps derive the English translation
+
+       Configuration Options:
+       Customize each game mode for optimal learning:
+
+       - Phrase length: 2-5 words controls difficulty level
+       - Session count: 5-15 phrases per game session
+       - Difficulty adapts automatically based on phrase length
+       - Estimated time shown in session preview
+       - Start with shorter phrases (2-3 words) for beginners
+
+       Quick Tips:
+       - Start with Slot Builder to learn vocabulary
+       - Use Memory Match to reinforce English ↔ Korean translation
+       - Try Phrase Decoder to master word order
+       - Use Template Filler to learn words in context
+       - All games use authentic Taekwondo terminology
+       - Practice regularly with different phrase lengths
+
+       ---
+       4. ABOUT & LEGAL
+
+       About TKDojang
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Features/Profile/AboutView.swift
+
+       Tagline:
+       Traditional Taekwondo Learning Companion
+
+       Why TKDojang Exists
+
+       TKDojang began as a family project. While helping my children prepare for Taekwondo gradings, my partner and I created paper 
+       flashcards to practice Korean terminology. As they progressed through belt levels, the content grew beyond what paper could 
+       handle effectively.
+
+       I searched for apps that could teach terminology in the same engaging way, but found nothing that combined high build quality 
+       with visual appeal and effective learning methods. Coming from a coding background, I thought: 'I could build this with some time
+        and study.'
+
+       The real inspiration came from wanting to test generative AI as a learning tool for programming in SwiftUI – turning a martial 
+       arts challenge into a technical adventure that benefits families worldwide.
+
+       About the Developer
+
+       I'm a dedicated parent with nearly twenty years of Taekwondo experience. After training for seven years and reaching 1st Keup, 
+       life took me away from the martial arts for a decade. Now I've returned with my partner and five children, re-learning my way 
+       back to my former level with hopes of achieving Dan grade soon.
+
+       I train at a TAGB school in South West England, where I particularly enjoy patterns – the mental focus and precision they 
+       require. While I may never be the strongest sparring partner, I'm committed to performing high-quality patterns with slow, 
+       deliberate technique.
+
+       My professional coding background gave me confidence to build this app, but my experience with language learning apps helped me 
+       think differently about creating effective learning tools. I don't consider myself a teacher – rather, I'm curating content to 
+       help others learn by sharing what has helped my family.
+
+       Who TKDojang Is For
+
+       Primary Users:
+       Students and families looking to practice terminology and theory, with additional support for pattern and step sparring 
+       retention. Recommended for ages 9 and up, with no upper age limit – it's never too late to learn Taekwondo!
+
+       Learning Styles:
+       While traditional front-of-class instruction works for many, students who struggle with spatial awareness or visualisation can 
+       benefit from this alternative medium. Having multiple ways to practice helps accommodate different learning preferences.
+
+       Usage Approach:
+       Use TKDojang 'little and often' – a few times per week when approaching gradings, but less frequently overall. Ramp up before 
+       belt tests, then ease off. This shouldn't be an app where you spend excessive time.
+
+       Important:
+       TKDojang is designed as a supplement to training in your dojang, never a replacement. No prior Taekwondo knowledge is required, but a few lessons help determine if the martial art is right for you.
+
+       Content Sources & Accuracy
+
+       Primary Sources:
+       Content is built from a variety of curriculum materials and validated against the ITF pattern manual. Korean terminology draws from my instructors' teaching, cross-referenced with available online materials from multiple other schools across the UK and US.
+
+       Quality Approach:
+       Romanisation has been standardised, primarily for consistency. While transliterating a language will unavoidably lead to some disagreement about spelling or the 'correct' pronunciation, this isn't intended to be a Korean language learning app. Hangul is included for fun, built with generative AI, although I hope to soon have it cross referenced by multiple family members speaking fluent Korean.
+
+       Acknowledgment:
+       There will likely be mistakes, which I'll resolve as they're identified. A Korean-speaking family member and native speaker will 
+       help maintain language accuracy over time. In the inimitable style of Douglas Adams, I'd love to say that the Guide is Definitive; Reality is frequently inaccurate. However, in the event of disagreement between this app and your instructor, your instructor is right every day and twice on training days.
+
+       Future Plans:
+       While starting with the TAGB standard syllabus (since it's what I'm learning), I hope to eventually accommodate multiple syllabuses, belt systems, and organisations as terminology doesn't vary dramatically between most Taekwondo schools - just the belt colours and the exact requirements of each belt.
+
+       Feedback Welcome:
+       I'm open to all content accuracy feedback and working toward a scalable way to manage corrections from the community. In the meantime, you'll find a community hub in the profile menu where you can submit feedback, feature suggestions, and vote on the upcoming roadmap. I'll endeavour to do the most asked for thing first, but with kids, a job, and my own training, it won't always be swift. While no-one will be able to see your name/details (including me, it's all held by Apple alone), I'd request that nothing identifiable is left in the roadmap suggestions since others will see them. I'll remove anything that I feel identifies another person or is anyway rude or offensive, and reserve the right to remove the feature if Godwin's law gets anywhere near a 0.2. Please also rate/review on the AppStore - the more people find it, the more the people can help build the app you want.
+
+       Your Privacy Matters
+
+       Local-Only Data:
+       All profile and progress information stays on your device. I don't see any of your personal data – you don't even need to add 
+       your name if you prefer not to.
+
+       No Tracking:
+       During TestFlight testing, I receive crash reports but no personal data. Nothing is tracked for advertising or other purposes. 
+       This app is for users, not for data collection. If you submit a feedback comment or a suggestion, I'll know which OS version you're using and if you share it, the belet level and most used feature - that'll help calibrate the content expansion, but can never identify you, even if you're the only green belt running iOS 17.2 who likes the flashcards.
+
+       Multiple Users:
+       The app supports up to 6 local profiles per device, perfect for families while maintaining individual progress tracking. I'm looking at options for one purchase being enabled for family sharing so all the family can use on their own devices, but wanted the option for kids without their own device to use it too. 
+
+       Trade-offs:
+       The privacy-first approach means convenience features like instructor and club level accounts aren't available yet. Cloud features beyond your own iCloud data backup may come when I can guarantee the same level of privacy protection.
+
+       Philosophy:
+       This approach aligns with my preference to reduce screen time addiction across all technology touchpoints. TKDojang respects your
+        time and attention. You can see your streak in the progress section and profile screen, but there's no reward other than learning. Put the app down every now and again, and put the whole phone down with it. No amount of app learning is a replacement for practising again and again, and if you can combine that with some time with a friend or family and no screens - all to the better.
+
+       Where We're Heading
+
+       Content Expansion:
+       Additional belt levels, learning modes, and video content showing patterns and technique breakdowns from multiple angles. 
+       Development will be driven by user feedback and needs.I'm keen that all 24 patterns make it in soon, along with semi-free sparring content and theory for those deep divers who want everything they can get.
+
+       Geographic Goals:
+       Eventually reaching a few thousand users UK-wide, serving a meaningful proportion of the student base across different schools 
+       and organisations. I'd love for non-UK users to benefit too, but it'll be English speaking only due to the cost of translating the vast amount of content since I'm not a speaker of many languages. If there's demand though, and the revenue to pay for it, I'll do it.
+
+       Collaboration:
+       While I'll likely keep development as a solo effort, I'm eager to bring in collaborators for content creation and review to 
+       ensure accuracy and comprehensiveness. Use a feedback submission if you'd like to get involved in writing some content, but I can't promise any payment - revenue is pitched just to offset some of the development costs.
+
+       Success Metric:
+       TKDojang will have achieved its purpose when users can progress from white belt to black belt using the app as a learning 
+       companion throughout their entire journey.
+
+       Ethical Technology:
+       No engagement hooks, streaks, or rewards. No advertisements ever. Content should be engaging to improve learning effectiveness, 
+       not to increase time spent in the app. The goal is learning, not screen time.
+
+       Legal & Contact Information
+
+       Copyright & Attribution:
+       Original content © 2025 Craig Matthew Harris. TAGB curriculum materials serve as inspiration with no direct copies or plagiarism. TAGB 
+       organisation approval is being sought for official recognition.
+
+       Important Disclaimers:
+       - TKDojang is a learning aid, not direct instruction
+       - All physical activities are at your own risk
+       - This app supplements but never replaces proper dojang-based training
+       - Content accuracy is best-effort with ongoing improvements
+       - No commercial use of app content permitted
+
+       Pricing Philosophy:
+       Small one-time fees cover development and maintenance costs only. No advertisements, subscriptions, or mandatory in-app 
+       purchases. If sustainable support isn't possible, the app will be retired rather than compromised with invasive monetisation. The expected final price is £5.99, but the price will be reduced on launch while content continues building, with the revenue all diverted to development expense, such as photography and video content production.
+
+       Contact & Feedback:
+       Please use the built in community feature for feedback and contact; that allows me to respond without you ever needing to share your details, and where appropriate makes development choices and the roadmap something that everyone can play a part in driving.
+
+       Footer:
+       Thank you for joining the TKDojang journey
+
+       ---
+       5. COMMUNITY FEATURES
+
+       Community Hub
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Core/Components/Community/AboutCommunityHubView.swift
+
+       Section Descriptions:
+
+       Send Feedback:
+       Report bugs or share ideas
+
+       My Feedback:
+       View your submissions and responses
+
+       Feature Roadmap:
+       Vote on upcoming features
+
+       Community Insights:
+       See what the community is learning
+
+       Community Footer:
+       Help shape TKDojang's future and connect with other learners
+
+       Privacy Policy:
+       How we protect your data
+
+       Made with ❤️:
+       For Taekwondo students everywhere, but above all, for Cath, Rob, Anna, Danielle, Caitlin, and Aneurin. You rock!
+
+       Additional Credit ❤️:
+       Supporting this build has been my partner Cath with long nights of testing and flawless advice on how to optimise for different learning styles, my instructor Adam, who has been happy to share advice and content, and Dan whose invaluable advice on GenAI made the process significantly safer and faster. Thanks to Cath and the kids for putting up with many nights of me tapping on the laptop, and thanks to Loki for needing enough walks to drag me away from it.
+
+       ---
+       What's New
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Core/Components/Community/WhatsNewView.swift
+
+       Header:
+       Your complete digital Taekwondo companion - from white belt to black belt preparation
+
+       Getting Started Tip:
+       New to TKDojang? Create your profile, set your belt level, and start with Flashcards to learn essential Korean terminology.
+
+       Version 1.0 - Foundation Edition Launch:
+
+       Features:
+       - 6 Interactive Vocabulary Games: Word Match, Slot Builder, Template Filler, Phrase Decoder, Memory Match, Creative Sandbox
+       - 11 Traditional Patterns: Chon-Ji through Choong-Moo with step-by-step diagrams and Korean terminology
+       - Multi-Profile Family Learning: 6 device-local profiles with complete data isolation and individual progress tracking
+       - Leitner Spaced Repetition: Scientifically-proven flashcard system for optimal retention
+       - Community Roadmap & Voting: Vote on upcoming features and help shape TKDojang's future
+       - Feedback System: Submit feedback and get notified when developers respond
+       - Complete Offline Support: All content stored locally - no internet required after download
+
+       What's Coming Next:
+       TKDojang is built transparently with your input. Check out the roadmap to vote on features you want most!
+
+       Upcoming Features:
+       - Pattern Diagram Refresh: Footprint-based diagrams replacing line indicators - December 2025
+       - Professional Photography: High-quality technique photos with multiple angles - January 2026
+       - Video Integration: Slow-motion pattern demonstrations - March 2026
+
+       ---
+       Feedback System
+
+       File: /Users/craig/TKDojang/TKDojang/Sources/Core/Components/Feedback/FeedbackView.swift
+
+       Category Footers:
+       - Bug: Report crashes, errors, or unexpected behavior
+       - Feature: Suggest new features or improvements to existing ones
+       - Content: Report incorrect Korean terms, missing content, or suggest additions
+       - General: Share general thoughts, questions, or appreciation
+
+       Privacy Section:
+       Share Usage Data: Helps prioritize features for users like you
+
+       Privacy Footer:
+       Your feedback is anonymous. No email or personal identifiers are stored. You can disable usage data sharing anytime.
+
+       Device Information Footer:
+       Device info helps us debug issues and test compatibility.
+
+       Notification Permission:
+       Allow TKDojang to notify you when developers respond to your feedback. You can change this anytime in Settings.
+
+       Permission Denied Guidance:
+       Enable notifications in Settings to get updates on developer responses.
+
+       Confirmation Messages:
+       - With notifications: "Thank you! Your feedback helps shape TKDojang's future. You'll be notified when the developer responds."
+       - Without notifications: "Thank you! Your feedback was submitted. Enable notifications in Settings to get updates on developer
+       responses."
+       - Default: "Thank you! Your feedback helps shape TKDojang's future."
+
+       ---
+

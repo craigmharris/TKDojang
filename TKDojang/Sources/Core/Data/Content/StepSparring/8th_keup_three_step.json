@@ -27,20 +27,20 @@
           "key_points": "Maintain proper distance, strong block",
           "common_mistakes": "Backing away instead of blocking, weak block",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
             "description": "Step forward with right foot into walking stance, execute obverse punch to opponent's middle section",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "left",
-            "description": "Step back with left foot into walking stance, execute inner forearm block",
-            "english": "Inner forearm block",
-            "romanised": "An palmok makgi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Step back with right foot into left walking stance, execute inner forearm block",
+            "english": "Inner Forearm Block",
+            "romanised": "An Palmok Makgi"
           }
         },
         {
@@ -49,20 +49,20 @@
           "key_points": "Maintain forward pressure, strong stance",
           "common_mistakes": "Hesitation between steps, weak stance transitions",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
             "description": "Continue forward with right foot, execute obverse punch",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "left",
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
             "description": "Step back with left foot, execute inner forearm block",
-            "english": "Inner forearm block",
-            "romanised": "An palmok makgi"
+            "english": "Inner Forearm Block",
+            "romanised": "An Palmok Makgi"
           }
         },
         {
@@ -71,28 +71,28 @@
           "key_points": "Quick transition, accurate targeting",
           "common_mistakes": "Telegraphing the attack, poor timing",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
             "description": "Final forward step with obverse punch",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "left",
-            "description": "Step back with left foot, execute inner forearm block",
-            "english": "Inner forearm block",
-            "romanised": "An palmok makgi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Step back with right foot, execute inner forearm block",
+            "english": "Inner Forearm Block",
+            "romanised": "An Palmok Makgi"
           },
           "counter": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Immediately counter with right obverse punch to opponent's middle section",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Immediately counter with reverse punch to opponent's middle section",
+            "english": "Reverse Punch",
+            "romanised": "Bandae Jirugi"
           }
         }
       ]
@@ -120,20 +120,20 @@
           "key_points": "High block preparation, good stance",
           "common_mistakes": "Block too low, poor foot positioning",
           "attack": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "right",
-            "description": "Step forward with right foot into walking stance, execute obverse punch to high section",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Step forward with right foot into walking stance, execute obverse punch to middle section",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "left",
-            "description": "Step back with left foot, execute rising block",
-            "english": "Rising block",
-            "romanised": "Chookyo makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Step back with left foot, execute inner forearm block from outside opponent's punch",
+            "english": "Inner Forearm Block",
+            "romanised": "An Palmok Makgi"
           }
         },
         {
@@ -142,20 +142,20 @@
           "key_points": "Maintain rhythm, strong blocks",
           "common_mistakes": "Timing off, weak transitions",
           "attack": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "right",
-            "description": "Continue forward, execute obverse punch to high section",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Continue forward, execute obverse punch to middle section",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "left",
-            "description": "Step back, execute rising block",
-            "english": "Rising block",
-            "romanised": "Chookyo makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Step back, execute inner forearm block from outside",
+            "english": "Inner Forearm Block",
+            "romanised": "An Palmok Makgi"
           }
         },
         {
@@ -164,28 +164,28 @@
           "key_points": "Quick counter, accurate targeting",
           "common_mistakes": "Slow counter, poor distance",
           "attack": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "right",
-            "description": "Final forward step with obverse punch to high section",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Final forward step with obverse punch to middle section",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "left",
-            "description": "Final step back with rising block",
-            "english": "Rising block",
-            "romanised": "Chookyo makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Final step back with inner forearm block",
+            "english": "Inner Forearm Block",
+            "romanised": "An Palmok Makgi"
           },
           "counter": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Immediately counter with right front kick to opponent's middle section",
-            "english": "Front kick",
-            "romanised": "Ap chagi"
+            "stance": "L Stance",
+            "target": "High Section",
+            "hand": "Right",
+            "description": "Step twice (left followed by right foot) to place right foot behind attacker's right foot and execute Knife Hand Strike to opponent's neck",
+            "english": "Knife Hand Strike",
+            "romanised": "Sonkal Taerigi"
           }
         }
       ]
@@ -213,20 +213,20 @@
           "key_points": "Strong outside block, proper angle",
           "common_mistakes": "Weak block, poor arm position",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
+            "stance": "Walking Stance",
+            "target": "L Section",
+            "hand": "Right",
             "description": "Step forward with right foot into walking stance, execute obverse punch",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Step back with left foot, execute outer forearm block with right arm",
-            "english": "Outer forearm block",
-            "romanised": "Bakat palmok makgi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Step back with left foot, execute outer forearm inward block with right arm",
+            "english": "Outer Forearm Inward Block",
+            "romanised": "Bakat Palmok Anaero Makgi"
           }
         },
         {
@@ -235,20 +235,20 @@
           "key_points": "Maintain blocking angle, strong stance",
           "common_mistakes": "Block too wide, poor timing",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
             "description": "Continue forward, execute obverse punch",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Step back, execute outer forearm block with right arm",
-            "english": "Outer forearm block",
-            "romanised": "Bakat palmok makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Step back with the right foot, execute outer forearm inward block with left arm",
+            "english": "Outer Forearm Inward Block",
+            "romanised": "Bakat Palmok Anaero Makgi"
           }
         },
         {
@@ -257,28 +257,28 @@
           "key_points": "Quick reverse punch, proper hip rotation",
           "common_mistakes": "Slow counter, no hip movement",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
             "description": "Final forward step with obverse punch",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Final step back with outer forearm block",
-            "english": "Outer forearm block",
-            "romanised": "Bakat palmok makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Final step back (eft foot) with outer forearm inward block",
+            "english": "Outer Forearm Inward Block",
+            "romanised": "Bakat Palmok Anaero Makgi"
           },
           "counter": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "left",
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
             "description": "Immediately counter with left reverse punch using hip rotation",
-            "english": "Reverse punch",
-            "romanised": "Bandae jirugi"
+            "english": "Back Fist Side Strike",
+            "romanised": "Dung Joomuk Yop Taerigi"
           }
         }
       ]
@@ -303,23 +303,23 @@
         {
           "step_number": 1,
           "timing": "Attack and block simultaneously",
-          "key_points": "Low block angle, strong stance",
+          "key_points": "Defence is as #2, with a different counter",
           "common_mistakes": "Block too high, poor stance",
           "attack": {
-            "stance": "walking stance",
-            "target": "low section",
-            "hand": "right",
-            "description": "Step forward and execute front kick to low section",
-            "english": "Front kick",
-            "romanised": "Ap chagi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Step forward and execute front punch to middle section",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "low section",
-            "hand": "left",
-            "description": "Step back with right foot, execute low block with left arm",
-            "english": "Low block",
-            "romanised": "Naejeo makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Step back with left foot, execute middle block with right arm to outside of opponent's punch",
+            "english": "Inner Forearm Block",
+            "romanised": "An Palmok Makgi"
           }
         },
         {
@@ -328,50 +328,50 @@
           "key_points": "Consistent blocking, maintain distance",
           "common_mistakes": "Inconsistent blocks, poor footwork",
           "attack": {
-            "stance": "walking stance",
-            "target": "low section",
-            "hand": "right",
-            "description": "Continue forward with front kick to low section",
-            "english": "Front kick",
-            "romanised": "Ap chagi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Continue forward with front punch to middle section",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "low section",
-            "hand": "left",
-            "description": "Step back, execute low block with left arm",
-            "english": "Low block",
-            "romanised": "Naejeo makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Step back with right foot, execute low block with left arm",
+            "english": "Inner Forearm Block",
+            "romanised": "An Palmok Makgi"
           }
         },
         {
           "step_number": 3,
           "timing": "Immediate counter after final block",
-          "key_points": "Powerful side kick, good chamber",
-          "common_mistakes": "Weak kick, poor balance",
+          "key_points": "Focus cleanly with left hand fully extended to ensure correct distance",
+          "common_mistakes": "Incorrect stance in counter",
           "attack": {
-            "stance": "walking stance",
-            "target": "low section",
-            "hand": "right",
-            "description": "Final forward step with front kick to low section",
-            "english": "Front kick",
-            "romanised": "Ap chagi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Final forward step with front punch to middle section",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "low section",
-            "hand": "left",
-            "description": "Final step back with low block",
-            "english": "Low block",
-            "romanised": "Naejeo makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Final step back with middle block",
+            "english": "Inner Forearm Block",
+            "romanised": "An Palmok Makgi"
           },
           "counter": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Immediately counter with right side kick to opponent's middle section",
-            "english": "Side kick",
-            "romanised": "Yop chagi"
+            "stance": "Sitting Stance",
+            "target": "Middle Section",
+            "hand": "Both",
+            "description": "Slide into sitting stance while extending left hand for distance and focus, and execute double punch",
+            "english": "Double Punch",
+            "romanised": "Doo Jirugi"
           }
         }
       ]

@@ -26,7 +26,7 @@ struct StepSparringHelpSheet: View {
                             .font(.title)
                             .fontWeight(.bold)
 
-                        Text("Choose step sparring types to practice attack and defense combinations")
+                        Text("Choose step sparring types to practise attack and defence combinations")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -38,9 +38,9 @@ struct StepSparringHelpSheet: View {
                     helpSection(
                         icon: "square.grid.2x2.fill",
                         title: "Sparring Types",
-                        description: "Step sparring sequences are organized by type. Each tile shows available sequences for that category:",
+                        description: "Step sparring sequences are organised by type. Each tile shows available sequences for that category:",
                         tips: [
-                            "3-Step Sparring: Three-move attack and defense sequences",
+                            "3-Step Sparring: Three-move attack and defence sequences",
                             "2-Step Sparring: Two-move combinations for intermediate students",
                             "1-Step Sparring: Single-move exchanges for advanced students",
                             "Free Sparring: Unstructured practice for higher belt levels",
@@ -56,7 +56,7 @@ struct StepSparringHelpSheet: View {
                             "Each type tile shows the number of available sequences",
                             "Sequences are filtered by your belt level",
                             "Tap a type to see detailed sequence list",
-                            "Sequence cards show attack, defense, and counter moves",
+                            "Sequence cards show attack, defence, and counter moves",
                             "Progress indicators track your practice history"
                         ]
                     )
@@ -91,9 +91,9 @@ struct StepSparringHelpSheet: View {
                         title: "Sequence Content",
                         description: "Each sequence provides comprehensive practice guidance:",
                         tips: [
-                            "Step-by-step attack and defense moves",
+                            "Step-by-step attack and defence moves",
                             "Counter techniques where applicable",
-                            "Korean terminology with romanization",
+                            "Korean terminology with romanisation",
                             "Execution details and key points",
                             "Common mistakes and practice tips"
                         ]
@@ -110,7 +110,7 @@ struct StepSparringHelpSheet: View {
 
                         tipRow("Start with 3-Step Sparring for foundational skills")
                         tipRow("Practice sequences slowly before adding speed")
-                        tipRow("Focus on proper form for both attack and defense")
+                        tipRow("Focus on proper form for both attack and defence")
                         tipRow("Step sparring builds reaction time and technique flow")
                     }
                     .padding()

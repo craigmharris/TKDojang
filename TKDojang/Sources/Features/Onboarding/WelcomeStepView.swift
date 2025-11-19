@@ -28,7 +28,7 @@ struct WelcomeStepView: View {
                 .accessibilityAddTraits(.isHeader)
 
             // Description
-            Text("Master the ancient art of Taekwondo with structured lessons, technique demonstrations, and personalized progress tracking.")
+            Text("Master the art of Taekwondo with structured lessons, technique demonstrations, and personalised progress tracking for the whole family.")
                 .font(.body)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)

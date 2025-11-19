@@ -43,7 +43,7 @@ struct LearningModesStepView: View {
                         color: .blue,
                         description: "Focus on learning belt-specific content in order. Perfect for students preparing for their next grading.",
                         features: [
-                            "Content organized by belt level",
+                            "Content organised by belt level",
                             "Learn what you need for your rank",
                             "Track progress towards next belt"
                         ]
@@ -58,8 +58,8 @@ struct LearningModesStepView: View {
                         color: .orange,
                         description: "Study all content using spaced repetition. Ideal for deepening knowledge and long-term retention.",
                         features: [
-                            "Access all content regardless of belt",
-                            "Spaced repetition for memorization",
+                            "Access all content up to and including your current belt",
+                            "Spaced repetition for memorisation",
                             "Master material at your own pace"
                         ]
                     )

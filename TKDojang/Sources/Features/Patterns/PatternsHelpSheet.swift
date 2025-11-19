@@ -65,7 +65,7 @@ struct PatternsHelpSheet: View {
                         title: "Progress Tracking",
                         description: "Track your practice progress for each pattern:",
                         tips: [
-                            "Progress percentage shows how much you've practiced",
+                            "Progress percentage shows how much you've practised",
                             "Mastery levels: Learning → Familiar → Proficient → Mastered",
                             "Belt-themed progress bars match the pattern's belt level",
                             "Completed patterns display in green",
@@ -80,7 +80,7 @@ struct PatternsHelpSheet: View {
                         tips: [
                             "Historical significance and meaning",
                             "Complete move-by-move breakdown",
-                            "Korean terminology with Hangul and romanization",
+                            "Korean terminology with Hangul and romanisation",
                             "Visual pattern diagram showing movement flow",
                             "Practice guidance and common mistakes"
                         ]

@@ -35,7 +35,7 @@ struct ProfileCustomizationStepView: View {
                         .multilineTextAlignment(.center)
                         .accessibilityAddTraits(.isHeader)
 
-                    Text("Let's personalize your learning experience")
+                    Text("Let's personalise your learning experience. You can add up to 5 more users later.")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
@@ -135,6 +135,13 @@ struct ProfileCustomizationStepView: View {
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
                     }
+
+                    // Note about profile menu
+                    Text("Use the profile menu to add gradings, change icon and colour, and set learning mode")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding(.horizontal, 24)
+                        .multilineTextAlignment(.center)
                 }
                 .padding(.horizontal, 24)
 

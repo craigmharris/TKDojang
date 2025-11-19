@@ -28,7 +28,7 @@ struct PracticeFeaturesStepView: View {
                         .multilineTextAlignment(.center)
                         .accessibilityAddTraits(.isHeader)
 
-                    Text("Four ways to master Taekwondo")
+                    Text("Four main ways to master Taekwondo")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
@@ -58,7 +58,7 @@ struct PracticeFeaturesStepView: View {
                     FeatureCard(
                         icon: "figure.2.arms.open",
                         title: "Step Sparring",
-                        description: "Master pre-arranged attack, defense, and counter sequences for your belt level."
+                        description: "Master pre-arranged attack, defence, and counter sequences for your belt level."
                     )
                 }
                 .padding(.horizontal)

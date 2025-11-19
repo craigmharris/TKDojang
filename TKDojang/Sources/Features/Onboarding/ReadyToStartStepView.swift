@@ -59,7 +59,7 @@ struct ReadyToStartStepView: View {
 
                 QuickTipRow(
                     icon: "figure.walk",
-                    text: "Start with flashcards to learn terminology"
+                    text: "Start with vocabulary builder to learn terminology"
                 )
             }
             .padding()

@@ -43,7 +43,7 @@ struct VocabularyBuilderHelpSheet: View {
                         tips: [
                             "Each slot shows allowed word categories (Action, Tool, Direction, etc.)",
                             "Tap a slot to see available word choices for that position",
-                            "Korean romanization shown beneath each word choice",
+                            "Korean romanisation shown beneath each word choice",
                             "Complete phrases use authentic technique terminology",
                             "Perfect for learning Korean word order and vocabulary"
                         ]

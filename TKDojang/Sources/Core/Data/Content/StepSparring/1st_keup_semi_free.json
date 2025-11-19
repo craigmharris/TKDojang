@@ -22,28 +22,28 @@
           "key_points": "Read opponent's movement, adapt technique selection, maintain control",
           "common_mistakes": "Fixed patterns, poor distance, overly aggressive",
           "attack": {
-            "stance": "fighting stance",
-            "target": "variable section",
-            "hand": "either",
+            "stance": "Fighting Stance",
+            "target": "Variable Section",
+            "hand": "Either",
             "description": "Select appropriate attack based on opening and distance",
-            "english": "Variable attack",
-            "romanised": "Gahpyeon gonggyeok"
+            "english": "Variable Attack",
+            "romanised": "Gahpyeon Gonggyeok"
           },
           "defense": {
-            "stance": "fighting stance",
-            "target": "variable section",
-            "hand": "either",
+            "stance": "Fighting Stance",
+            "target": "Variable Section",
+            "hand": "Either",
             "description": "Choose defense technique appropriate to incoming attack",
-            "english": "Adaptive defense",
-            "romanised": "Gahpyeon bangeo"
+            "english": "Adaptive Defense",
+            "romanised": "Gahpyeon Bangeo"
           },
           "counter": {
-            "stance": "fighting stance",
-            "target": "variable section",
-            "hand": "either",
+            "stance": "Fighting Stance",
+            "target": "Variable Section",
+            "hand": "Either",
             "description": "Execute counter-attack based on opening created by defense",
-            "english": "Situational counter",
-            "romanised": "Sanghwang banggyeok"
+            "english": "Situational Counter",
+            "romanised": "Sanghwang Banggyeok"
           }
         }
       ]

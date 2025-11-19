@@ -1086,6 +1086,26 @@ let configuration = ModelConfiguration(
 - **Build:** ✅ Successful with zero errors
 - **Status:** Priority 1 (Vocabulary Builder) navigation amendment complete
 
+**Nov 19, 2025** - `PENDING` - docs(content): Comprehensive content review and British English standardization
+- **Content Quality Pass:**
+  - Reviewed and refined all user-facing prose content across 15+ Swift files
+  - Standardized British English spelling throughout (organised, customised, defence, practise, romanisation, etc.)
+  - Applied 50+ spelling corrections and content improvements
+- **Files Updated:**
+  - Onboarding tours (6 files): WelcomeStep, ProfileCustomization, NavigationTabs, PracticeFeatures, LearningModes, ReadyToStart
+  - Feature tours: Flashcards, MultipleChoice, Patterns, StepSparring, PatternTest, VocabularyBuilder
+  - Help sheets: LineWork, StepSparring, Patterns, Theory, Techniques, VocabularyBuilder
+  - About page: Major content refresh with expanded privacy, roadmap, and legal sections
+  - Community hub: Added comprehensive dedication and credits footer
+- **Content Enhancements:**
+  - AboutView: Updated source attribution (ITF manual, multiple UK/US schools), Douglas Adams quote, instructor authority disclaimer
+  - Privacy section: Detailed usage data explanation, family sharing plans, iCloud backup clarification
+  - Roadmap section: 24 patterns goal, international expansion plans, collaboration guidance
+  - Legal: 2025 copyright, £5.99 pricing philosophy, dojang terminology
+  - Community hub: Family dedication (Cath, Rob, Anna, Danielle, Caitlin, Aneurin), credits (Adam, Dan, Loki)
+- **Build:** ✅ Successful with zero errors
+- **Status:** Friday release content finalization complete
+
 **Nov 19, 2025** - `1a0e5d2` - feat(content): Hash-based content synchronization system
 - **Automatic Content Updates:**
   - Implemented build-time hash generation for all JSON content types

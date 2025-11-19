@@ -41,7 +41,7 @@ struct LineWorkHelpSheet: View {
                         description: "Line work presents complete training exercises as movement sequences, showing how techniques connect and flow together.",
                         tips: [
                             "Each exercise shows all moves in the sequence",
-                            "Exercises are organized by belt level and movement type",
+                            "Exercises are organised by belt level and movement type",
                             "Practice sequences to build muscle memory and technique flow",
                             "Exercises complement pattern and technique practice"
                         ]
@@ -50,7 +50,7 @@ struct LineWorkHelpSheet: View {
                     helpSection(
                         icon: "arrow.left.and.right",
                         title: "Movement Types",
-                        description: "Exercises are categorized by how you move through the sequence:",
+                        description: "Exercises are categorised by how you move through the sequence:",
                         tips: [
                             "STATIC: Performed in place without traveling",
                             "FORWARD: Moving forward with each technique",

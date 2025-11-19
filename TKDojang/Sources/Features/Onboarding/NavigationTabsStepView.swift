@@ -38,13 +38,6 @@ struct NavigationTabsStepView: View {
             // Tab Explanations
             VStack(spacing: 20) {
                 NavigationTabCard(
-                    icon: "play.circle.fill",
-                    title: "Practice",
-                    description: "Flashcards, patterns, step sparring, and testing",
-                    color: .blue
-                )
-
-                NavigationTabCard(
                     icon: "book.fill",
                     title: "Learn",
                     description: "Theory, techniques, and belt requirements",
@@ -52,9 +45,23 @@ struct NavigationTabsStepView: View {
                 )
 
                 NavigationTabCard(
+                    icon: "play.circle.fill",
+                    title: "Practice",
+                    description: "Flashcards, patterns, step sparring, and testing",
+                    color: .blue
+                )
+
+                NavigationTabCard(
+                    icon: "chart.bar.fill",
+                    title: "Progress",
+                    description: "Track progress and view stats",
+                    color: .purple
+                )
+
+                NavigationTabCard(
                     icon: "person.circle.fill",
                     title: "Profile",
-                    description: "Track progress, manage profiles, and view stats",
+                    description: "Manage your profile(s) and access community features like roadmap, suggestions, and feedback",
                     color: .orange
                 )
             }

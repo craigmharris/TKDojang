@@ -298,19 +298,37 @@ struct AboutCommunityHubView: View {
             }
 
             // Acknowledgments
-            HStack {
-                Image(systemName: "heart.fill")
-                    .foregroundStyle(.red)
-                    .frame(width: 32)
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    Image(systemName: "heart.fill")
+                        .foregroundStyle(.red)
+                        .frame(width: 32)
 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Made with ❤️")
-                        .font(.body)
-                        .fontWeight(.medium)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Made with ❤️")
+                            .font(.body)
+                            .fontWeight(.medium)
 
-                    Text("For Taekwondo students everywhere")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                        Text("For Taekwondo students everywhere, but above all, for Cath, Rob, Anna, Danielle, Caitlin, and Aneurin. You rock!")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
+                HStack {
+                    Image(systemName: "heart.fill")
+                        .foregroundStyle(.red)
+                        .frame(width: 32)
+
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Additional Credit ❤️")
+                            .font(.body)
+                            .fontWeight(.medium)
+
+                        Text("Supporting this build has been my partner Cath with long nights of testing and flawless advice on how to optimise for different learning styles, my instructor Adam, who has been happy to share advice and content, and Dan whose invaluable advice on GenAI made the process significantly safer and faster. Thanks to Cath and the kids for putting up with many nights of me tapping on the laptop, and thanks to Loki for needing enough walks to drag me away from it.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
 

@@ -26,7 +26,7 @@ struct TheoryHelpSheet: View {
                             .font(.title)
                             .fontWeight(.bold)
 
-                        Text("Comprehensive Taekwondo theory organized by belt level")
+                        Text("Comprehensive Taekwondo theory organised by belt level")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -37,8 +37,8 @@ struct TheoryHelpSheet: View {
                     // Content Sections
                     helpSection(
                         icon: "figure.martial.arts",
-                        title: "Belt-Level Organization",
-                        description: "Theory content is organized by belt level, ensuring you learn material appropriate for your current training stage.",
+                        title: "Belt-Level Organisation",
+                        description: "Theory content is organised by belt level, ensuring you learn material appropriate for your current training stage.",
                         tips: [
                             "Progression mode shows only your current belt's theory",
                             "Mastery mode shows all theory up to and including your belt",
@@ -55,7 +55,7 @@ struct TheoryHelpSheet: View {
                             "Taekwondo tenets and philosophy",
                             "Korean terminology and culture",
                             "Grading requirements by belt level",
-                            "TAGB organizational history"
+                            "TAGB organisational history"
                         ]
                     )
 

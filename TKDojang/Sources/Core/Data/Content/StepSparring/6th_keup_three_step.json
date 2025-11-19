@@ -7,9 +7,9 @@
     {
       "name": "3-Step Sparring #8",
       "sequence_number": 8,
-      "description": "Rising block with back kick counter",
+      "description": "Knife hand blocks with side kick counter",
       "difficulty": 3,
-      "key_learning_points": "High defense with powerful back techniques",
+      "key_learning_points": "High defense with powerful kick techniques",
       "applicable_belt_levels": [
         "6th_keup",
         "5th_keup",
@@ -22,75 +22,75 @@
         {
           "step_number": 1,
           "timing": "Attack and block simultaneously",
-          "key_points": "Strong rising motion, solid base",
-          "common_mistakes": "Weak rising block, poor balance",
+          "key_points": "3rd Block and Counter performed simultaneously",
+          "common_mistakes": "Block too high, poor stance",
           "attack": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "right",
-            "description": "Step forward with right foot into walking stance, execute obverse punch to high section",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Step forward and execute front punch to middle section",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "left",
-            "description": "Step back with left foot, execute strong rising block",
-            "english": "Rising block",
-            "romanised": "Chookyo makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Step back with right foot, execute middle block with left arm",
+            "english": "Knifehand Block",
+            "romanised": "Sonkal Makgi"
           }
         },
         {
           "step_number": 2,
           "timing": "Continuous attack sequence",
-          "key_points": "Maintain high block angle, strong defense",
-          "common_mistakes": "Dropping guard, weak blocks",
+          "key_points": "Consistent blocking, maintain distance",
+          "common_mistakes": "Inconsistent blocks, poor footwork",
           "attack": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "right",
-            "description": "Continue forward, execute obverse punch to high section",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Continue forward with front punch to middle section",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "left",
-            "description": "Step back, execute rising block",
-            "english": "Rising block",
-            "romanised": "Chookyo makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Step back with left foot, execute middle block with right arm",
+            "english": "Knifehand Block",
+            "romanised": "Sonkal Makgi"
           }
         },
         {
           "step_number": 3,
-          "timing": "Immediate counter after final block",
-          "key_points": "Powerful back kick, good pivot",
-          "common_mistakes": "Weak kick, poor turning technique",
+          "timing": "Return to countering after the block, executing each counter move separately and cleanly",
+          "key_points": "Place foot following kick and step forward",
+          "common_mistakes": "Falling from kick into next stance",
           "attack": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "right",
-            "description": "Final forward step with obverse punch to high section",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Final forward punch with right hand",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "left",
-            "description": "Final step back with rising block",
-            "english": "Rising block",
-            "romanised": "Chookyo makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Slide back at 45deg into a guarding block beyond reach of opponent's punch",
+            "english": "Knifehand Block",
+            "romanised": "Sonkal Daebi Makgi"
           },
           "counter": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Immediately pivot and counter with right back kick to opponent's middle section",
-            "english": "Back kick",
-            "romanised": "Dwit chagi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Execute a middle section side kick from the rear (right) leg, landing into L stance, executing a knife hand strike to opponent's neck",
+            "english": "Side Kick, Knife Hand Strike",
+            "romanised": "Yop Chagi, Sonkal Taerigi"
           }
         }
       ]
@@ -98,9 +98,9 @@
     {
       "name": "3-Step Sparring #9",
       "sequence_number": 9,
-      "description": "X-block with side piercing kick counter",
+      "description": "Palm pushing blocks with multiple counters",
       "difficulty": 3,
-      "key_learning_points": "Crossed arm defense and piercing kicks",
+      "key_learning_points": "Coordination and timing to accurately block fist with palm",
       "applicable_belt_levels": [
         "6th_keup",
         "5th_keup",
@@ -113,75 +113,75 @@
         {
           "step_number": 1,
           "timing": "Attack and block simultaneously",
-          "key_points": "Crossed arm formation, strong structure",
-          "common_mistakes": "Poor crossing technique, weak block",
+          "key_points": "3rd Block and Counter performed simultaneously",
+          "common_mistakes": "Block too high, poor stance",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Step forward with right foot into walking stance, execute obverse punch",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Step forward and execute front punch to middle section",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "both",
-            "description": "Step back with left foot, execute X-block with crossed forearms",
-            "english": "X-block",
-            "romanised": "Kyocha makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Step back with right foot, execute middle block with left arm",
+            "english": "Palm Inward Pushing Block",
+            "romanised": "Sonbadak Miro Makgi"
           }
         },
         {
           "step_number": 2,
           "timing": "Continuous attack sequence",
-          "key_points": "Maintain crossed structure, solid defense",
-          "common_mistakes": "Breaking X formation, weak blocks",
+          "key_points": "Consistent blocking, maintain distance",
+          "common_mistakes": "Inconsistent blocks, poor footwork",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Continue forward, execute obverse punch",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Continue forward with front punch to middle section",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "both",
-            "description": "Step back, execute X-block with crossed forearms",
-            "english": "X-block",
-            "romanised": "Kyocha makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Step back with left foot, execute middle block with right arm",
+            "english": "Palm Inward Pushing Block",
+            "romanised": "Sonbadak Miro Makgi"
           }
         },
         {
           "step_number": 3,
-          "timing": "Immediate counter after final block",
-          "key_points": "Piercing kick technique, precise targeting",
-          "common_mistakes": "Poor piercing form, inaccurate targeting",
+          "timing": "Return to countering after the block, executing each counter move separately and cleanly",
+          "key_points": "Place foot following kick and step forward",
+          "common_mistakes": "Falling from kick into next stance",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Final forward step with obverse punch",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Final forward punch with right hand",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "both",
-            "description": "Final step back with X-block",
-            "english": "X-block",
-            "romanised": "Kyocha makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Final block before multi-step counter",
+            "english": "Palm Inward Pushing Block",
+            "romanised": "Sonbadak Miro Makgi"
           },
           "counter": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Immediately counter with right side piercing kick to opponent's middle section",
-            "english": "Side piercing kick",
-            "romanised": "Yop cha jirugi"
+            "stance": "Vertical Stance",
+            "target": "High Section",
+            "hand": "Right",
+            "description": "Execute a middle section turning kick to the solar plexus with the right foot. Place the right foot next to opponent's front (right) foot and draw left foot to vertical stance, executing high section knife hand strike",
+            "english": "Turning Kick, Knife Hand Strike",
+            "romanised": "Dollyo Chagi, Sonkal Taerigi"
           }
         }
       ]
@@ -189,7 +189,7 @@
     {
       "name": "3-Step Sparring #10",
       "sequence_number": 10,
-      "description": "U-shape block with reverse turning kick counter",
+      "description": "Knifehand blocks with reverse turning kick and strike counter",
       "difficulty": 3,
       "key_learning_points": "Advanced defense patterns and spinning counters",
       "applicable_belt_levels": [
@@ -204,75 +204,75 @@
         {
           "step_number": 1,
           "timing": "Attack and block simultaneously",
-          "key_points": "U-shape formation, balanced stance",
-          "common_mistakes": "Poor U formation, unstable stance",
+          "key_points": "3rd Block and Counter performed simultaneously",
+          "common_mistakes": "Block too high, poor stance",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Step forward with right foot into walking stance, execute obverse punch",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Step forward and execute front punch to middle section",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "both",
-            "description": "Step back with left foot, execute U-shape block with both arms",
-            "english": "U-shape block",
-            "romanised": "Digutja makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Step back with right foot, execute middle block with left arm",
+            "english": "Knife Hand Block",
+            "romanised": "Sonkal Makgi"
           }
         },
         {
           "step_number": 2,
           "timing": "Continuous attack sequence",
-          "key_points": "Maintain U formation, strong blocks",
-          "common_mistakes": "Breaking formation, weak defense",
+          "key_points": "Consistent blocking, maintain distance",
+          "common_mistakes": "Inconsistent blocks, poor footwork",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Continue forward, execute obverse punch",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Continue forward with front punch to middle section",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "both",
-            "description": "Step back, execute U-shape block with both arms",
-            "english": "U-shape block",
-            "romanised": "Digutja makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Step back with left foot, execute middle block with right arm",
+            "english": "Knife Hand Block",
+            "romanised": "Sonkal Makgi"
           }
         },
         {
           "step_number": 3,
-          "timing": "Immediate counter after final block",
-          "key_points": "Reverse spinning motion, accurate targeting",
-          "common_mistakes": "Poor spinning technique, loss of balance",
+          "timing": "Counter by pulling back to safe distance, enabling time to chamber effectively",
+          "key_points": "Focus cleanly with left hand fully extended to ensure correct distance",
+          "common_mistakes": "Incorrect stance in counter",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Final forward step with obverse punch",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Final forward punch with right hand",
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "both",
-            "description": "Final step back with U-shape block",
-            "english": "U-shape block",
-            "romanised": "Digutja makgi"
+            "stance": "Sitting Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Slide back at 45deg beyond reach of opponent's punch into guarding block",
+            "english": "Knife Hand Guarding Block",
+            "romanised": "Sonkal Daebi Makgi"
           },
           "counter": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "left",
-            "description": "Immediately counter with left reverse turning kick to opponent's high section",
-            "english": "Reverse turning kick",
-            "romanised": "Bandae dollyo chagi"
+            "stance": "Sitting Stance",
+            "target": "High Section",
+            "hand": "Right",
+            "description": "Reverse side kick (360deg clockwise), landing in walking stance with reverse knifehand srike to opponent's neck",
+            "english": "Reverse Side Kick, Reverse Knife Hand Inward Strike",
+            "romanised": "Bandae Yop Chagi, Bandae Sonkal Anaero Taerigi"
           }
         }
       ]

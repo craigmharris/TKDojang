@@ -7,7 +7,7 @@
     {
       "name": "2-Step Sparring #1",
       "sequence_number": 1,
-      "description": "Obverse punch and reverse punch with blocks and punch counter",
+      "description": "Obverse punch and front kick with blocks and punch counter",
       "difficulty": 2,
       "key_learning_points": "Basic punch combinations and blocking sequences",
       "applicable_belt_levels": [
@@ -24,20 +24,20 @@
           "key_points": "Quick reaction, proper technique",
           "common_mistakes": "Slow response, poor form",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
+            "stance": "Walking Stance",
+            "target": "High Section",
+            "hand": "Right",
             "description": "Execute obverse punch with proper stance and targeting",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "left",
-            "description": "Counter with inner forearm block",
-            "english": "Inner forearm block",
-            "romanised": "An palmok makgi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Right leg back into rising block",
+            "english": "Outer Forearm Rising Block",
+            "romanised": "Bakat Palmok Chookyoo Makgi"
           }
         },
         {
@@ -46,28 +46,28 @@
           "key_points": "Smooth transition, decisive counter",
           "common_mistakes": "Breaking rhythm, weak counter",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "left",
-            "description": "Execute reverse punch as follow-up attack",
-            "english": "Reverse punch",
-            "romanised": "Bandae jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Execute front kick as follow-up attack",
+            "english": "Front Kick",
+            "romanised": "Ap Chagi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Execute outer forearm block defense",
-            "english": "Outer forearm block",
-            "romanised": "Bakat palmok makgi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Execute X-fist pressing block to keep kick beneath mid section (left leg back)",
+            "english": "X-Fist Pressing Block",
+            "romanised": "Kyocha Noollo Makgi"
           },
           "counter": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Immediate counter with obverse punch",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Immediate counter with twin vertical punch",
+            "english": "Twin Vertical Punch",
+            "romanised": "Sang Sewo Jirugi"
           }
         }
       ]
@@ -75,7 +75,7 @@
     {
       "name": "2-Step Sparring #2",
       "sequence_number": 2,
-      "description": "High punch and middle punch with rising and inner blocks",
+      "description": "Side punch and turning kick with palm and waist blocks",
       "difficulty": 2,
       "key_learning_points": "Multi-level attack defense and timing",
       "applicable_belt_levels": [
@@ -92,20 +92,20 @@
           "key_points": "High block preparation, strong stance",
           "common_mistakes": "Block too low, poor positioning",
           "attack": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "right",
-            "description": "Execute high punch to opponent's high section",
-            "english": "High punch",
-            "romanised": "Nopunde jirugi"
+            "stance": "Fixed Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Execute side punch to opponent's mid section",
+            "english": "Side Punch",
+            "romanised": "Yop Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "left",
-            "description": "Counter with rising block",
-            "english": "Rising block",
-            "romanised": "Chookyo makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Counter with upward palm block while moving right leg back",
+            "english": "Upward Palm Block",
+            "romanised": "Anaero Sonbadak Makgi"
           }
         },
         {
@@ -114,28 +114,28 @@
           "key_points": "Quick level change, strong counter",
           "common_mistakes": "Slow transition, weak kick",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "left",
-            "description": "Execute middle punch as follow-up",
-            "english": "Middle punch",
-            "romanised": "Kaunde jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Execute turning kick as follow-up",
+            "english": "Turning Kick",
+            "romanised": "Dollyo Chagi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Execute inner forearm block",
-            "english": "Inner forearm block",
-            "romanised": "An palmok makgi"
+            "stance": "L Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Left leg back, executing waist block",
+            "english": "Outer Forearm Waist Block",
+            "romanised": "Bakat Palmok Hori Makgi"
           },
           "counter": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Immediate counter with front kick",
-            "english": "Front kick",
-            "romanised": "Ap chagi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Turn counter-clockwise and slide backwards into opponent, with right hand elbow thrust to solar plexus",
+            "english": "Side Elbow Thrust",
+            "romanised": "Yop Palkup Tulgi"
           }
         }
       ]
@@ -143,7 +143,7 @@
     {
       "name": "2-Step Sparring #3",
       "sequence_number": 3,
-      "description": "Front kick and punch combination with low block and counter",
+      "description": "Front snap kick and punch combination with multiple block types and kick counter",
       "difficulty": 2,
       "key_learning_points": "Mixed attack types and adaptive defense",
       "applicable_belt_levels": [
@@ -160,50 +160,50 @@
           "key_points": "Low block angle, stable stance",
           "common_mistakes": "Block too high, poor balance",
           "attack": {
-            "stance": "walking stance",
-            "target": "low section",
-            "hand": "right",
-            "description": "Execute front kick to low section",
-            "english": "Front kick",
-            "romanised": "Ap chagi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
+            "description": "Execute front kick to middle section",
+            "english": "Front Snap Kick",
+            "romanised": "Ap Cha Busigi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "low section",
-            "hand": "left",
-            "description": "Counter with low block",
-            "english": "Low block",
-            "romanised": "Naejeo makgi"
+            "stance": "Walking Stance",
+            "target": "Low Section",
+            "hand": "Left",
+            "description": "Right leg back into X-Fist pressing block",
+            "english": "X-Fist Pressing Block",
+            "romanised": "Kyocha Noollo Makgi"
           }
         },
         {
           "step_number": 2,
           "timing": "Continuous flow into counter",
           "key_points": "Quick adaptation, powerful counter",
-          "common_mistakes": "Slow response, weak kick",
+          "common_mistakes": "Fists too close together or wide apart, making block impossible or redundant",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Execute obverse punch as follow-up",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "stance": "Walking Stance",
+            "target": "High Section",
+            "hand": "Both",
+            "description": "Execute twin vertical punch in left walking stance",
+            "english": "Twin Vertical Punch",
+            "romanised": "Sang Sewo Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Execute outer forearm block",
-            "english": "Outer forearm block",
-            "romanised": "Bakat palmok makgi"
+            "stance": "Walking Stance",
+            "target": "High Section",
+            "hand": "Right",
+            "description": "Right leg back, executing wedging block inside twin vertical punch",
+            "english": "Outer Forearm Wedging Block",
+            "romanised": "Bakat Palmok Hechyo Makgi"
           },
           "counter": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
-            "description": "Immediate counter with side kick",
-            "english": "Side kick",
-            "romanised": "Yop chagi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Grasp oponent's shoulder and simulate pulling opponent down to rising knee kick. Release after grasp and do not pull opponent down.",
+            "english": "Front Knee Kick",
+            "romanised": "Ap Moorup Chagi"
           }
         }
       ]
@@ -211,7 +211,7 @@
     {
       "name": "2-Step Sparring #4",
       "sequence_number": 4,
-      "description": "Turning kick and punch with dodge and block sequence",
+      "description": "Spear fingertip thrust and side kick with kick and punch counter sequence",
       "difficulty": 2,
       "key_learning_points": "Circular attacks and movement-based defense",
       "applicable_belt_levels": [
@@ -228,50 +228,50 @@
           "key_points": "Dodge timing, effective blocking",
           "common_mistakes": "Poor dodge, weak block",
           "attack": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "right",
-            "description": "Execute turning kick to high section",
-            "english": "Turning kick",
-            "romanised": "Dollyo chagi"
+            "stance": "Walking Stance",
+            "target": "High Section",
+            "hand": "Right",
+            "description": "Right foot forward into high section fingertip thrust",
+            "english": "Flat Fingertip Thrust",
+            "romanised": "Opun Sonkut Tulgi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "left",
-            "description": "Dodge and block the circular attack",
-            "english": "Dodge and block",
-            "romanised": "Piha makgi"
+            "stance": "Walking Stance",
+            "target": "High Section",
+            "hand": "Left",
+            "description": "Right leg back into walking stance with high section rising block",
+            "english": "Knifehand Rising Block",
+            "romanised": "Sonal Chookyoo Makgi"
           }
         },
         {
           "step_number": 2,
-          "timing": "Continuous flow into counter",
-          "key_points": "Strong twin block, spinning counter",
+          "timing": "Continuous flow into kick",
+          "key_points": "Defender will push opponent into 180 spin",
           "common_mistakes": "Weak block, poor spinning technique",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "left",
-            "description": "Execute reverse punch as follow-up",
-            "english": "Reverse punch",
-            "romanised": "Bandae jirugi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
+            "description": "Side kick with rear leg (left) - opponent will push leg into 180 spin, ending with back to defender",
+            "english": "Side Kick",
+            "romanised": "Yop Chagi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "both",
-            "description": "Execute twin forearm block",
-            "english": "Twin forearm block",
-            "romanised": "Sang palmok makgi"
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Both",
+            "description": "Block with the palm, forcing foot beyond mid point so that attacker ends with 180 spin, presenting back for counter",
+            "english": "Palm Pushing Inward Block",
+            "romanised": "Sonbadak Miro Makgi"
           },
           "counter": {
-            "stance": "walking stance",
-            "target": "high section",
-            "hand": "right",
-            "description": "Immediate counter with turning kick",
-            "english": "Turning kick",
-            "romanised": "Dollyo chagi"
+            "stance": "Walking Stance",
+            "target": "High Section",
+            "hand": "Both",
+            "description": "Execute front kick from rear leg (left), landing in walking stance with a twin upset punch to the kidney area",
+            "english": "Front Kick, Twin Upset Punch",
+            "romanised": "Ap Chagi, Sang Dwijibo Jirugi"
           }
         }
       ]

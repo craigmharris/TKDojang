@@ -22,28 +22,28 @@
           "key_points": "React quickly, maintain distance, strong counter",
           "common_mistakes": "Slow reaction, backing away, weak counter",
           "attack": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
             "description": "Step forward with right foot into walking stance, execute obverse punch to middle section",
-            "english": "Obverse punch",
-            "romanised": "Baro jirugi"
+            "english": "Obverse Punch",
+            "romanised": "Baro Jirugi"
           },
           "defense": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "left",
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Left",
             "description": "Block with left inner forearm while stepping back",
-            "english": "Inner forearm block",
-            "romanised": "An palmok makgi"
+            "english": "Inner Forearm Block",
+            "romanised": "An Palmok Makgi"
           },
           "counter": {
-            "stance": "walking stance",
-            "target": "middle section",
-            "hand": "right",
+            "stance": "Walking Stance",
+            "target": "Middle Section",
+            "hand": "Right",
             "description": "Immediately counter with right reverse punch",
-            "english": "Reverse punch",
-            "romanised": "Bandae jirugi"
+            "english": "Reverse Punch",
+            "romanised": "Bandae Jirugi"
           }
         }
       ]

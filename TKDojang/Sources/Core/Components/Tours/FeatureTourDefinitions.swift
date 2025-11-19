@@ -172,14 +172,14 @@ private var flashcardTourSteps: [FeatureTourStep] {
                 }
                 .disabled(true) // Demo mode - visual only
             ),
-            tipText: "Start with Korean→English (easier), then progress to English→Korean"
+            tipText: "Start with Korean→English (easier), progress to English→Korean, and test yourself with both directions"
         ),
 
         FeatureTourStep(
             icon: "chart.line.uptrend.xyaxis",
             title: "Spaced Repetition",
             description: "The Leitner system automatically adjusts which cards you see based on your performance. Terms you know well appear less often, while challenging terms return sooner.",
-            tipText: "Trust the system - it optimizes your learning efficiency"
+            tipText: "Trust the system - it optimises your learning efficiency"
         ),
 
         FeatureTourStep(
@@ -212,7 +212,7 @@ private var multipleChoiceTourSteps: [FeatureTourStep] {
         FeatureTourStep(
             icon: "checkmark.circle.fill",
             title: "Multiple Choice Testing",
-            description: "Test your Taekwondo knowledge with customizable quizzes. Choose from Quick tests (5-10 questions), Custom tests (configurable), or Comprehensive tests (all available questions).",
+            description: "Test your Taekwondo knowledge with customisable quizzes. Choose from Quick tests (5-10 questions), Custom tests (configurable), or Comprehensive tests (all available questions).",
             tipText: "Start with quick tests to gauge your knowledge level"
         ),
 
@@ -329,15 +329,15 @@ private var stepSparringTourSteps: [FeatureTourStep] {
         FeatureTourStep(
             icon: "figure.2.arms.open",
             title: "Step Sparring Sequences",
-            description: "Learn pre-arranged sparring sequences that teach timing, distance, and defensive techniques. Each sequence follows a structured attack, defense, and counter pattern.",
+            description: "Learn pre-arranged sparring sequences that teach timing, distance, and defensive techniques. Each sequence follows a structured attack, defence, and counter pattern.",
             tipText: "Practice with a partner to develop proper timing and control"
         ),
 
         FeatureTourStep(
             icon: "arrow.triangle.2.circlepath",
             title: "Attack-Defense-Counter",
-            description: "Each sequence shows the attacker's move, defender's block or evasion, and defender's counter-attack. Study each component separately, then practice the full sequence.",
-            tipText: "Understand the purpose of each move - defense isn't just blocking"
+            description: "Each sequence shows the attacker's move, defender's block or evasion, and defender's counter-attack. Study each component separately, then practise the full sequence.",
+            tipText: "Understand the purpose of each move - defence isn't just blocking"
         ),
 
         FeatureTourStep(
@@ -435,8 +435,8 @@ private var vocabularyBuilderTourSteps: [FeatureTourStep] {
         FeatureTourStep(
             icon: "character.book.closed.fill",
             title: "Master Phrase Grammar",
-            description: "Vocabulary Builder teaches Korean phrase grammar through 6 interactive games. Instead of memorizing phrases, you'll learn word categories, construction patterns, and creative building—skills that help you understand any technique name.",
-            tipText: "Grammar skills transfer to all techniques, not just the ones you memorize"
+            description: "Vocabulary Builder teaches Korean phrase grammar through 6 interactive games. Instead of memorising phrases, you'll learn word categories, construction patterns, and creative building—skills that help you understand any technique name.",
+            tipText: "Grammar skills transfer to all techniques, not just the ones you memorise"
         ),
 
         FeatureTourStep(
