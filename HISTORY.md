@@ -1053,6 +1053,28 @@ let configuration = ModelConfiguration(
 - Validated property-based testing approach for game logic
 - Achieved 100% build success across all vocabulary builder components
 
+**Nov 19, 2025** - `[commit hash]` - fix: Phrase Decoder drag positioning and debug output cleanup
+
+**Phrase Decoder UI Fixes:**
+- Fixed dragged item positioning to follow thumb exactly across all starting indices
+- Fixed drop zone positioning to respect drag direction (appears before target when dragging up, after target when dragging down)
+- Resolved coordinate system mismatch between relative drag translation and absolute overlay positioning
+
+**Debug Output Cleanup:**
+- Eliminated 36 false terminology counting warnings by filtering to valid categories only (basics, numbers, techniques)
+- Removed CancellationError logging for expected SwiftUI task cancellations (when users switch tabs/profiles)
+- Startup logs now show only actual errors, improving debugging clarity
+
+**Technical Insights:**
+- SwiftUI drag overlays require absolute positioning: `originalY + dragOffset.height`
+- Direction-aware placeholder logic prevents visual confusion in drag-and-drop interfaces
+- Swift Concurrency best practice: catch `CancellationError` separately from real errors
+
+**Documentation:**
+- Added Critical Technical Pattern #12 to CLAUDE.md: "SwiftUI: Drag Gesture Coordinate System for Overlays"
+- Pattern documents coordinate system mismatch between `value.translation` (relative) and overlay positioning (absolute)
+- Provides reusable formula and explains WHY different list items need different offset calculations
+
 ---
 
 ## Future Development History

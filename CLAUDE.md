@@ -855,6 +855,49 @@ xcodebuild build
 4. **Inline script**: Script embedded in project.pbxproj, not external file (sandbox blocks reading external scripts)
 5. **Belt level preservation**: Content sync NEVER deletes BeltLevel records (preserves user progress foreign keys)
 
+### 12. SwiftUI: Drag Gesture Coordinate System for Overlays
+
+**Context:** When implementing drag-and-drop with overlays in SwiftUI, dragged items can appear offset from the user's finger if coordinate systems are mixed.
+
+```swift
+// ❌ WRONG - Mixing relative and absolute coordinates
+.gesture(
+    DragGesture()
+        .onChanged { value in
+            dragOffset = value.translation  // Relative to drag start
+        }
+)
+// Overlay positioned with relative offset - appears at wrong location
+.offset(y: dragOffset.height)
+
+
+// ✅ CORRECT - Position overlay in absolute coordinates
+.gesture(
+    DragGesture()
+        .onChanged { value in
+            dragOffset = value.translation  // Relative to drag start
+        }
+)
+// Calculate absolute position from VStack top
+let originalY = CGFloat(itemIndex) * itemHeight
+let overlayOffset = originalY + dragOffset.height
+// Overlay positioned correctly regardless of starting index
+.offset(y: overlayOffset)
+```
+
+**WHY:**
+- `value.translation` is relative to the drag start location (always starts at 0)
+- `value.startLocation` is relative to the tapped view's frame (not the parent container)
+- Overlays in a ZStack need absolute positioning from the container's origin
+- Formula: `absolutePosition = originalPosition + translation`
+
+**WHEN TO USE:**
+- Drag-and-drop interfaces with visual feedback overlays
+- Any time dragged items need to follow finger position exactly
+- When dragging items from different starting positions in a list
+
+**CRITICAL:** Different items in a list have different `originalY` positions. Using only `dragOffset.height` causes position errors that vary by starting index.
+
 ## Environment & Commands
 
 ### Testing Workflow
