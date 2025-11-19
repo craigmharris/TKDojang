@@ -172,11 +172,13 @@ struct PhraseDecoderGameView: View {
                 ForEach(0..<currentWords.count, id: \.self) { index in
                     let isBeingDragged = draggedWordIndex == index
 
-                    // Show placeholder gap BEFORE this position if hover target is here
+                    // Show placeholder gap based on drag direction
+                    // Dragging UP (draggedIdx > hoverIdx): Show placeholder BEFORE hover target
+                    // Dragging DOWN (draggedIdx < hoverIdx): Show placeholder AFTER hover target (handled at end of loop)
                     if let hoverIdx = hoverTargetIndex,
                        let draggedIdx = draggedWordIndex,
                        hoverIdx == index,
-                       draggedIdx != index {
+                       draggedIdx > index {  // Only show BEFORE when dragging UP
                         PlaceholderBoxView(position: index + 1)
                             .transition(.scale.combined(with: .opacity))
                     }
@@ -197,7 +199,6 @@ struct PhraseDecoderGameView: View {
                                     draggedWordIndex = index
                                     hoverTargetIndex = index
                                     dragStartLocation = value.startLocation
-                                    DebugLogger.ui("🎯 DRAG START: index=\(index), startLocation.y=\(String(format: "%.1f", value.startLocation.y)), location.y=\(String(format: "%.1f", value.location.y))")
                                 }
 
                                 dragOffset = value.translation
@@ -237,6 +238,15 @@ struct PhraseDecoderGameView: View {
                             }
                     )
                     .disabled(validationResult != nil)
+
+                    // Show placeholder gap AFTER this item when dragging DOWN
+                    if let hoverIdx = hoverTargetIndex,
+                       let draggedIdx = draggedWordIndex,
+                       hoverIdx == index,
+                       draggedIdx < index {  // Only show AFTER when dragging DOWN
+                        PlaceholderBoxView(position: index + 1)
+                            .transition(.scale.combined(with: .opacity))
+                    }
                 }
 
                 // Placeholder at end - only show when dragging FROM last position upward
@@ -256,16 +266,7 @@ struct PhraseDecoderGameView: View {
                 let itemHeight: CGFloat = 72
                 let itemSpacing: CGFloat = 12
                 let originalY = CGFloat(draggedIdx) * (itemHeight + itemSpacing)
-
-                // Position overlay to match finger position exactly
-                // The finger is at: originalY + startLocation.y + dragOffset.height (from VStack top)
-                // The item's top should be at: fingerY - startLocation.y (so finger stays at same point on item)
-                // Since overlay is positioned from VStack top (y=0), we need: fingerY - startLocation.y
-                let fingerOffsetFromVStackTop = originalY + dragStartLocation.y + dragOffset.height
-                let itemTopEdge = fingerOffsetFromVStackTop - dragStartLocation.y
-                let overlayOffset = itemTopEdge  // Position from VStack top
-
-                let _ = DebugLogger.ui("🎨 OVERLAY: draggedIdx=\(draggedIdx), originalY=\(String(format: "%.1f", originalY)), startLoc.y=\(String(format: "%.1f", dragStartLocation.y)), offset=\(String(format: "%.1f", dragOffset.height)), fingerFromTop=\(String(format: "%.1f", fingerOffsetFromVStackTop)), itemTop=\(String(format: "%.1f", itemTopEdge)), overlayOffset=\(String(format: "%.1f", overlayOffset))")
+                let overlayOffset = originalY + dragOffset.height
 
                 WordBoxView(
                     word: currentWords[draggedIdx],
