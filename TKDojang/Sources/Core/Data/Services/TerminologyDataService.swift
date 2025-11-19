@@ -343,6 +343,54 @@ class TerminologyDataService {
             return newProgress
         }
     }
+
+    // MARK: - Content Synchronization
+
+    /**
+     * Clears all terminology entries and reloads from JSON files
+     *
+     * PURPOSE: Ensures terminology content stays synchronized with JSON files
+     * when app is updated with new/corrected content
+     *
+     * SAFETY: Only deletes TerminologyEntry and TerminologyCategory objects
+     * Never touches user progress data (UserTerminologyProgress)
+     */
+    func clearAndReloadTerminology() {
+        DebugLogger.data("🔄 clearAndReloadTerminology() - Starting terminology reload...")
+
+        do {
+            // Delete all terminology entries
+            let entryDescriptor = FetchDescriptor<TerminologyEntry>()
+            let allEntries = try modelContext.fetch(entryDescriptor)
+            DebugLogger.data("🗑️ Deleting \(allEntries.count) existing terminology entries...")
+
+            for entry in allEntries {
+                modelContext.delete(entry)
+            }
+
+            // Delete all terminology categories
+            let categoryDescriptor = FetchDescriptor<TerminologyCategory>()
+            let allCategories = try modelContext.fetch(categoryDescriptor)
+            DebugLogger.data("🗑️ Deleting \(allCategories.count) existing terminology categories...")
+
+            for category in allCategories {
+                modelContext.delete(category)
+            }
+
+            try modelContext.save()
+            DebugLogger.data("✅ Terminology cleared successfully")
+
+            // Reload from JSON using ModularContentLoader
+            DebugLogger.data("📥 Reloading terminology from JSON files...")
+            let modularLoader = ModularContentLoader(dataService: self)
+            modularLoader.loadCompleteSystem()
+
+            DebugLogger.data("✅ Terminology reload completed successfully")
+
+        } catch {
+            DebugLogger.data("❌ clearAndReloadTerminology() failed: \(error)")
+        }
+    }
 }
 
 // MARK: - Error Types

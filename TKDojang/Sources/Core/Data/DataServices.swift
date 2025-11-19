@@ -20,9 +20,11 @@ class DataServices: ObservableObject {
     private static var _shared: DataServices?
     
     // MARK: - Published Profile State (for ProfileSwitcher optimization)
-    
+
     @Published var allProfiles: [UserProfile] = []
     @Published var activeProfile: UserProfile?
+    @Published var databaseResetId: UUID = UUID()
+    @Published var isResetting: Bool = false  // Local flag to avoid accessing DataManager during reset
     private var hasLoadedProfiles = false
     
     static var shared: DataServices {
@@ -107,15 +109,30 @@ class DataServices: ObservableObject {
     }
     
     func resetAndReloadDatabase() async throws {
+        DebugLogger.data("🚨🚨🚨 NEW CODE: DataServices.resetAndReloadDatabase() ENTRY POINT 🚨🚨🚨")
+
+        // CRITICAL: Set local flag FIRST to prevent UI from accessing DataManager
+        isResetting = true
+
+        // CRITICAL: Clear profile state BEFORE reset to prevent UI crashes
+        // This must happen FIRST, before DataManager nils out services
+        allProfiles = []
+        activeProfile = nil
+        hasLoadedProfiles = false
+
+        DebugLogger.data("✅ NEW CODE: Cleared profile state and set isResetting flag")
+
+        // Now trigger the actual reset
         try await dataManager.resetAndReloadDatabase()
+
+        // Update databaseResetId to force UI recreation
+        databaseResetId = UUID()
+        isResetting = false
     }
-    
+
     var isResettingDatabase: Bool {
-        dataManager.isResettingDatabase
-    }
-    
-    var databaseResetId: UUID {
-        dataManager.databaseResetId
+        // Use local flag instead of accessing DataManager to avoid crashes
+        isResetting
     }
     
     // MARK: - Shared Profile State Management

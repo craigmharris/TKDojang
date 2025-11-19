@@ -68,10 +68,30 @@ class ModularContentLoader {
     
     /**
      * Creates belt levels with full metadata from configuration
+     *
+     * WHY: Only creates belts if they don't already exist to prevent duplicates
+     * during database reset where ensureBeltSystemIsSynchronized() runs first
      */
     private func createBeltLevels(from config: BeltSystemConfig) throws -> [String: BeltLevel] {
+        // First, check if belt levels already exist
+        let existingBelts = try dataService.modelContextForLoading.fetch(FetchDescriptor<BeltLevel>())
+
+        if !existingBelts.isEmpty {
+            DebugLogger.data("✅ Belt levels already exist (\(existingBelts.count)), reusing existing belts")
+            // Return existing belts mapped by shortName -> config ID
+            var beltDict: [String: BeltLevel] = [:]
+            for beltConfig in config.beltSystem.belts {
+                if let existingBelt = existingBelts.first(where: { $0.shortName == beltConfig.shortName }) {
+                    beltDict[beltConfig.id] = existingBelt
+                }
+            }
+            return beltDict
+        }
+
+        // No existing belts, create them
+        DebugLogger.data("📋 Creating \(config.beltSystem.belts.count) new belt levels from configuration")
         var beltDict: [String: BeltLevel] = [:]
-        
+
         for beltConfig in config.beltSystem.belts {
             let belt = BeltLevel(
                 name: beltConfig.name,
@@ -80,21 +100,22 @@ class ModularContentLoader {
                 sortOrder: beltConfig.sortOrder,
                 isKyup: beltConfig.isKeup
             )
-            
+
             // Store visual styling information
             belt.requirements = beltConfig.description
             belt.primaryColor = beltConfig.primaryColor
             belt.secondaryColor = beltConfig.secondaryColor
             belt.textColor = beltConfig.textColor
             belt.borderColor = beltConfig.borderColor
-            
+
             // Belt created successfully
-            
+
             dataService.modelContextForLoading.insert(belt)
             beltDict[beltConfig.id] = belt
         }
-        
+
         try dataService.modelContextForLoading.save()
+        DebugLogger.data("✅ Created \(beltDict.count) new belt levels")
         return beltDict
     }
     

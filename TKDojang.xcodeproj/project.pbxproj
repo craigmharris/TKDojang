@@ -218,7 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 		444D542C2E4F8EF8009F3E49 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -226,14 +226,14 @@
 			files = (
 				44104D482E9FAB9F0005703F /* ViewInspector in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 		444D54362E4F8EF8009F3E49 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -320,6 +320,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 444D54432E4F8EF8009F3E49 /* Build configuration list for PBXNativeTarget "TKDojang" */;
 			buildPhases = (
+				4424894B2ECD1AAC00A5578A /* Generate Content Hashes */,
 				444D54192E4F8EF4009F3E49 /* Sources */,
 				444D541A2E4F8EF4009F3E49 /* Frameworks */,
 				444D541B2E4F8EF4009F3E49 /* Resources */,
@@ -432,23 +433,131 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 		444D542D2E4F8EF8009F3E49 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 		444D54372E4F8EF8009F3E49 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4424894B2ECD1AAC00A5578A /* Generate Content Hashes */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+							);
+			inputPaths = (
+			);
+			name = "Generate Content Hashes";
+			outputFileListPaths = (
+							);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash
+# generate-content-hashes.sh
+# PURPOSE: Generates content version hashes at build time
+
+set -e
+
+SRCROOT=\"${SRCROOT:-$(cd \"$(dirname \"$0\")/..\" && pwd)}\"
+CONTENT_BASE=\"$SRCROOT/TKDojang/Sources/Core/Data/Content\"
+OUTPUT_FILE=\"$SRCROOT/TKDojang/Sources/Core/Data/ContentVersion.swift\"
+
+echo \"Generating content version hashes...\"
+
+# Hash files in specific directories only (avoids sandbox issues with find)
+hash_json_files() {
+    local dir=\"$1\"
+    local pattern=\"$2\"
+
+    if [ ! -d \"$dir\" ]; then
+        echo \"00000000\"
+        return
+    fi
+
+    # Use shell globbing instead of find to avoid sandbox issues
+    shopt -s nullglob
+    local files=(\"$dir\"/$pattern)
+    shopt -u nullglob
+
+    if [ ${#files[@]} -eq 0 ]; then
+        echo \"00000000\"
+        return
+    fi
+
+    cat \"${files[@]}\" | shasum -a 256 | cut -d' ' -f1
+}
+
+# Hash terminology files (in Terminology subdirectory)
+TERM_KEUP=$(hash_json_files \"$CONTENT_BASE/Terminology\" \"*_keup_*.json\")
+TERM_DAN=$(hash_json_files \"$CONTENT_BASE/Terminology\" \"*_dan_*.json\")
+TERMINOLOGY_HASH=$(echo \"${TERM_KEUP}${TERM_DAN}\" | shasum -a 256 | cut -d' ' -f1)
+
+# Hash pattern files (in Patterns subdirectory)
+PATTERNS_HASH=$(hash_json_files \"$CONTENT_BASE/Patterns\" \"*_patterns.json\")
+
+# Hash step sparring files (in StepSparring subdirectory)
+STEP_HASH=$(hash_json_files \"$CONTENT_BASE/StepSparring\" \"*_step.json\")
+SEMI_FREE=$(hash_json_files \"$CONTENT_BASE/StepSparring\" \"*semi_free*.json\")
+STEP_SPARRING_HASH=$(echo \"${STEP_HASH}${SEMI_FREE}\" | shasum -a 256 | cut -d' ' -f1)
+
+# Hash other content files
+BELT_SYSTEM_HASH=$(shasum -a 256 \"$SRCROOT/TKDojang/Sources/belt_system.json\" 2>/dev/null | cut -d' ' -f1 || echo \"00000000\")
+LINE_WORK_HASH=$(hash_json_files \"$CONTENT_BASE/LineWork\" \"*_linework.json\")
+THEORY_HASH=$(hash_json_files \"$CONTENT_BASE/Theory\" \"*_theory.json\")
+
+BUILD_TIMESTAMP=$(date -u +\"%Y-%m-%dT%H:%M:%SZ\")
+
+cat > \"$OUTPUT_FILE\" << 'EOF'
+// ContentVersion.swift
+// Auto-generated - DO NOT EDIT
+
+import Foundation
+
+struct ContentVersion {
+    static let terminologyHash = \"TERMINOLOGY_PLACEHOLDER\"
+    static let patternsHash = \"PATTERNS_PLACEHOLDER\"
+    static let stepSparringHash = \"STEP_SPARRING_PLACEHOLDER\"
+    static let beltSystemHash = \"BELT_SYSTEM_PLACEHOLDER\"
+    static let lineWorkHash = \"LINE_WORK_PLACEHOLDER\"
+    static let theoryHash = \"THEORY_PLACEHOLDER\"
+    static let generatedAt = \"TIMESTAMP_PLACEHOLDER\"
+}
+EOF
+
+sed -i '' \"s/TERMINOLOGY_PLACEHOLDER/$TERMINOLOGY_HASH/\" \"$OUTPUT_FILE\"
+sed -i '' \"s/PATTERNS_PLACEHOLDER/$PATTERNS_HASH/\" \"$OUTPUT_FILE\"
+sed -i '' \"s/STEP_SPARRING_PLACEHOLDER/$STEP_SPARRING_HASH/\" \"$OUTPUT_FILE\"
+sed -i '' \"s/BELT_SYSTEM_PLACEHOLDER/$BELT_SYSTEM_HASH/\" \"$OUTPUT_FILE\"
+sed -i '' \"s/LINE_WORK_PLACEHOLDER/$LINE_WORK_HASH/\" \"$OUTPUT_FILE\"
+sed -i '' \"s/THEORY_PLACEHOLDER/$THEORY_HASH/\" \"$OUTPUT_FILE\"
+sed -i '' \"s/TIMESTAMP_PLACEHOLDER/$BUILD_TIMESTAMP/\" \"$OUTPUT_FILE\"
+
+echo \"Content hashes generated:\"
+echo \"  Terminology: ${TERMINOLOGY_HASH:0:16}...\"
+echo \"  Patterns:    ${PATTERNS_HASH:0:16}...\"
+echo \"  Step Spar:   ${STEP_SPARRING_HASH:0:16}...\"
+echo \"  Belt System: ${BELT_SYSTEM_HASH:0:16}...\"
+";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		444D54192E4F8EF4009F3E49 /* Sources */ = {
@@ -456,7 +565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 		444D542B2E4F8EF8009F3E49 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -501,7 +610,7 @@
 				1CA6F51B13D6437F9DA17B2C /* TestingSystemUITests.swift in Sources */,
 				AF059284ABE141F99C112E17 /* TheoryTechniquesUITests.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 		444D54352E4F8EF8009F3E49 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -510,7 +619,7 @@
 				4435EA312EA933E0003FE95E /* CriticalUserJourneysUITests.swift in Sources */,
 				448135B42E550CC900966B0E /* TKDojangUITests.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXSourcesBuildPhase section */
 

@@ -33,8 +33,25 @@ struct ProfileSwitcher: View {
     // Use shared published state instead of local state
     private var profiles: [UserProfile] { dataServices.allProfiles }
     private var activeProfile: UserProfile? { dataServices.activeProfile }
-    
+
     var body: some View {
+        // CRITICAL: Don't render during database reset to avoid accessing invalidated models
+        if dataServices.isResettingDatabase {
+            // Show minimal placeholder during reset
+            Menu {
+                Text("Resetting...")
+                    .foregroundColor(.secondary)
+            } label: {
+                Image(systemName: "person.circle")
+                    .imageScale(.large)
+            }
+        } else {
+            normalMenu
+        }
+    }
+
+    @ViewBuilder
+    private var normalMenu: some View {
         Menu {
             // All Profiles with Current Selection Indicator
             Section("Family Profiles") {

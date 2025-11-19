@@ -394,6 +394,32 @@ Features/[FeatureName]/
 
 All learning content is JSON-driven and located in `TKDojang/Sources/Core/Data/Content/`.
 
+### Content Update Workflow (IMPORTANT)
+
+**Hash-Based Content Synchronization**
+
+TKDojang uses automatic content version detection to ensure users always have up-to-date learning content. When you modify any JSON files, you must update content hashes before building:
+
+**Development Workflow:**
+```bash
+# 1. Check for modified JSON files
+git status | grep "\.json"
+
+# 2. If any JSON files changed, update hashes
+bash Scripts/update-content-hashes-dev.sh
+
+# 3. Build normally
+xcodebuild build
+```
+
+**Why this matters:**
+- Content hashes are generated during build to detect changes
+- Xcode sandbox blocks automatic hash generation in development builds
+- Manual script ensures your changes are detected by the app's sync system
+- Production builds (Archive/TestFlight) generate hashes automatically
+
+**Skip this if:** You only changed Swift code, not JSON content files.
+
 ### 1. Adding Terminology
 
 **File:** `Sources/Core/Data/Content/Terminology/terminology.json`

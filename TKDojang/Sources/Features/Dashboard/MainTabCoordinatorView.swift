@@ -9,6 +9,7 @@ import SwiftData
 struct MainTabCoordinatorView: View {
 
     @EnvironmentObject var appCoordinator: AppCoordinator
+    @EnvironmentObject private var dataServices: DataServices
     @StateObject private var onboardingCoordinator = OnboardingCoordinator()
     @State private var selectedTab = 0
     @State private var showingWhatsNew = false
@@ -57,6 +58,7 @@ struct MainTabCoordinatorView: View {
                 .tag(4)
                 .accessibilityIdentifier("navigation-tab-profile")
         }
+        .id("MainTabCoordinator-\(dataServices.databaseResetId.uuidString)")
         .environmentObject(onboardingCoordinator)
         .accentColor(.blue)
         .onAppear {
@@ -85,7 +87,8 @@ struct MainTabCoordinatorView: View {
 struct DashboardView: View {
     @EnvironmentObject private var dataServices: DataServices
     @State private var userProfile: UserProfile?
-    
+    @State private var activeProfileId: UUID?
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -99,11 +102,11 @@ struct DashboardView: View {
                             Image(systemName: "figure.martial.arts")
                                 .font(.system(size: 60))
                                 .foregroundColor(.blue)
-                            
+
                             Text("Welcome to TKDojang")
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
-                            
+
                             Text("Your martial arts journey begins here")
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
@@ -111,15 +114,15 @@ struct DashboardView: View {
                         }
                         .padding()
                     }
-                    
+
                     // Quick Action Navigation Cards
                     QuickActionGrid()
-                    
+
                     // Recent Activity Section (if profile exists)
                     if let profile = userProfile {
                         RecentActivityCard(profile: profile)
                     }
-                    
+
                     Spacer(minLength: 20)
                 }
                 .padding()
@@ -131,23 +134,30 @@ struct DashboardView: View {
                     ProfileSwitcher()
                 }
             }
+            .id("DashboardView-\(activeProfileId?.uuidString ?? "none")")
             .onAppear {
                 loadUserProfile()
             }
             .onReceive(dataServices.objectWillChange) { _ in
                 // Refresh profile when DataServices changes (e.g., profile switch)
+                let newProfileId = dataServices.profileService.getActiveProfile()?.id
+                if newProfileId != activeProfileId {
+                    activeProfileId = newProfileId
+                }
                 loadUserProfile()
             }
         }
     }
-    
+
     private func loadUserProfile() {
         userProfile = dataServices.profileService.getActiveProfile()
-        
+
         // If no active profile, create/get default
         if userProfile == nil {
             userProfile = dataServices.getOrCreateDefaultUserProfile()
         }
+
+        activeProfileId = userProfile?.id
     }
 }
 
@@ -458,6 +468,7 @@ struct LearnView: View {
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject private var dataServices: DataServices
     @State private var userProfile: UserProfile?
+    @State private var activeProfileId: UUID?
 
     var body: some View {
         NavigationStack {
@@ -521,13 +532,27 @@ struct LearnView: View {
                 Spacer()
             }
             .navigationTitle("Learn")
+            .id("LearnView-\(activeProfileId?.uuidString ?? "none")")
             .onAppear {
-                userProfile = dataServices.profileService.getActiveProfile()
-                if userProfile == nil {
-                    userProfile = dataServices.getOrCreateDefaultUserProfile()
+                loadUserProfile()
+            }
+            .onReceive(dataServices.objectWillChange) { _ in
+                // Refresh profile when DataServices changes (e.g., profile switch)
+                let newProfileId = dataServices.profileService.getActiveProfile()?.id
+                if newProfileId != activeProfileId {
+                    activeProfileId = newProfileId
+                    loadUserProfile()
                 }
             }
         }
+    }
+
+    private func loadUserProfile() {
+        userProfile = dataServices.profileService.getActiveProfile()
+        if userProfile == nil {
+            userProfile = dataServices.getOrCreateDefaultUserProfile()
+        }
+        activeProfileId = userProfile?.id
     }
 }
 
@@ -650,7 +675,8 @@ struct ProgressView: View {
     @State private var isLoading = false
     @State private var errorMessage: String?
     @State private var hasLoadedData = false
-    
+    @State private var activeProfileId: UUID?
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -660,18 +686,18 @@ struct ProgressView: View {
                     } else if let profile = userProfile {
                         // Progress Overview Cards
                         progressOverviewSection(profile: profile)
-                        
+
                         // Study Activity Section
                         studyActivitySection
-                        
+
                         // Belt Progression Section
                         beltProgressionSection
-                        
+
                         // Grading History Section (if any gradings exist)
                         if !gradingHistory.isEmpty {
                             gradingHistorySection
                         }
-                        
+
                         Spacer(minLength: 20)
                     } else {
                         noProfileView
@@ -686,16 +712,26 @@ struct ProgressView: View {
                     ProfileSwitcher()
                 }
             }
+            .id("ProgressView-\(activeProfileId?.uuidString ?? "none")")
             .refreshable {
                 await loadProgressData()
             }
+            .task(id: activeProfileId) {
+                // Reload when active profile changes
+                await loadProgressData()
+            }
             .onAppear {
-                // Only load data when user actually navigates to Progress tab
-                if !hasLoadedData {
-                    Task {
-                        await loadProgressData()
-                        hasLoadedData = true
-                    }
+                // Set initial profile ID
+                let newProfileId = dataServices.profileService.getActiveProfile()?.id
+                if newProfileId != activeProfileId {
+                    activeProfileId = newProfileId
+                }
+            }
+            .onReceive(dataServices.objectWillChange) { _ in
+                // Force reload when DataServices changes (profile switch)
+                let newProfileId = dataServices.profileService.getActiveProfile()?.id
+                if newProfileId != activeProfileId {
+                    activeProfileId = newProfileId
                 }
             }
         }
@@ -1168,17 +1204,17 @@ struct PatternsView: View {
                 Image(systemName: "square.grid.3x3.fill")
                     .font(.system(size: 60))
                     .foregroundColor(.blue)
-                
+
                 Text("Patterns/Tul")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                
+
                 Text("Traditional Taekwondo forms with detailed guidance")
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
                     .padding(.horizontal)
             }
-            
+
             if isLoading {
                 VStack {
                     ProgressView()
@@ -1192,11 +1228,11 @@ struct PatternsView: View {
                     Image(systemName: "questionmark.square.dashed")
                         .font(.system(size: 40))
                         .foregroundColor(.gray)
-                    
+
                     Text("No patterns available")
                         .font(.headline)
                         .foregroundColor(.secondary)
-                    
+
                     Text("Patterns will be available based on your current belt level")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
@@ -1241,6 +1277,7 @@ struct PatternsView: View {
         .sheet(isPresented: $showingHelp) {
             PatternsHelpSheet()
         }
+        .id("PatternsView-\(activeProfileId?.uuidString ?? "none")")
         .task(id: activeProfileId) {
             // Reload patterns whenever active profile ID changes
             await loadPatterns()
@@ -1248,6 +1285,13 @@ struct PatternsView: View {
         .onAppear {
             // Update profile ID to trigger task reload
             activeProfileId = dataServices.profileService.getActiveProfile()?.id
+        }
+        .onReceive(dataServices.objectWillChange) { _ in
+            // Force reload when DataServices changes (profile switch)
+            let newProfileId = dataServices.profileService.getActiveProfile()?.id
+            if newProfileId != activeProfileId {
+                activeProfileId = newProfileId
+            }
         }
     }
     
@@ -1747,7 +1791,8 @@ struct ProfileView: View {
     @State private var showingSettings = false
     @State private var userProfile: UserProfile?
     @State private var allProfiles: [UserProfile] = []
-    
+    @State private var activeProfileId: UUID?
+
     var body: some View {
         NavigationStack {
             List {
@@ -1852,11 +1897,16 @@ struct ProfileView: View {
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.large)
+            .id("ProfileView-\(activeProfileId?.uuidString ?? "none")")
             .onAppear {
                 loadProfiles()
             }
             .onReceive(dataServices.objectWillChange) { _ in
                 // Refresh profiles when DataServices changes (e.g., profile switch)
+                let newProfileId = dataServices.profileService.getActiveProfile()?.id
+                if newProfileId != activeProfileId {
+                    activeProfileId = newProfileId
+                }
                 loadProfiles()
             }
             .sheet(isPresented: $showingProfileManagement) {
@@ -1865,15 +1915,17 @@ struct ProfileView: View {
             }
         }
     }
-    
+
     private func loadProfiles() {
         userProfile = dataServices.profileService.getActiveProfile()
-        
+
         // If no active profile, create default
         if userProfile == nil {
             userProfile = dataServices.getOrCreateDefaultUserProfile()
         }
-        
+
+        activeProfileId = userProfile?.id
+
         // Load all profiles
         do {
             allProfiles = try dataServices.profileService.getAllProfiles()
@@ -1882,7 +1934,7 @@ struct ProfileView: View {
             allProfiles = []
         }
     }
-    
+
     private func switchToProfile(_ profile: UserProfile) {
         do {
             DebugLogger.profile("🔄 ProfileGridView: Switching to profile: \(profile.name)")

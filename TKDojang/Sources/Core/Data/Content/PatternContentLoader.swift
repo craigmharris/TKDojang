@@ -91,7 +91,21 @@ struct PatternContentLoader {
             
             // Get belt levels for association
             let beltLevels = getBeltLevels()
-            let beltLevelDict = Dictionary(uniqueKeysWithValues: beltLevels.map { ($0.shortName, $0) })
+
+            // Build dictionary safely to handle corrupt belt data
+            var beltLevelDict: [String: BeltLevel] = [:]
+            for belt in beltLevels {
+                guard !belt.shortName.isEmpty else {
+                    DebugLogger.data("⚠️ Skipping belt with empty shortName: \(belt.name)")
+                    continue
+                }
+
+                if beltLevelDict[belt.shortName] != nil {
+                    DebugLogger.data("⚠️ Duplicate belt shortName '\(belt.shortName)' detected - keeping first")
+                } else {
+                    beltLevelDict[belt.shortName] = belt
+                }
+            }
             
             // Create patterns from JSON data
             for patternData in contentData.patterns {
