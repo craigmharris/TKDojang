@@ -44,6 +44,9 @@ struct FeatureTourView: View {
     /// Current step index (0-based)
     @State private var currentStep = 0
 
+    /// Content readiness flag
+    @State private var isContentReady = false
+
     /// Tour steps loaded from feature definition
     private let steps: [FeatureTourStep]
 
@@ -64,21 +67,40 @@ struct FeatureTourView: View {
 
     var body: some View {
         NavigationStack {
-            TabView(selection: $currentStep) {
-                ForEach(Array(steps.enumerated()), id: \.offset) { index, step in
-                    TourStepCard(step: step)
-                        .tag(index)
+            ZStack {
+                // Main content (only shown when ready)
+                if isContentReady {
+                    TabView(selection: $currentStep) {
+                        ForEach(Array(steps.enumerated()), id: \.offset) { index, step in
+                            TourStepCard(step: step)
+                                .tag(index)
+                        }
+                    }
+                    .tabViewStyle(.page)
+                    .indexViewStyle(.page(backgroundDisplayMode: .always))
+                    .transition(.opacity)
+                } else {
+                    // Loading state
+                    VStack(spacing: 16) {
+                        ProgressView()
+                            .scaleEffect(1.5)
+
+                        Text("Preparing tour...")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
-            .tabViewStyle(.page)
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     skipButton
                 }
 
                 ToolbarItem(placement: .principal) {
-                    progressIndicator
+                    if isContentReady {
+                        progressIndicator
+                    }
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
@@ -91,6 +113,10 @@ struct FeatureTourView: View {
         }
         .accessibilityElement(children: .contain)
         .accessibilityLabel("\(feature.title) tour, step \(currentStep + 1) of \(steps.count)")
+        .task {
+            // Validate content and show with small delay to ensure components are ready
+            await validateAndShowContent()
+        }
     }
 
     // MARK: - Toolbar Components
@@ -142,6 +168,39 @@ struct FeatureTourView: View {
     private func handleComplete() {
         DebugLogger.ui("✅ User completed \(feature.title) tour")
         onComplete()
+    }
+
+    // MARK: - Content Validation
+
+    /**
+     * Validate content and show tour when ready
+     *
+     * WHY: Prevents blank screen issues when live components take time to load
+     * - Validates that steps array is not empty
+     * - Adds small delay to ensure SwiftUI components are rendered
+     * - Auto-dismisses if no valid content (edge case protection)
+     */
+    @MainActor
+    private func validateAndShowContent() async {
+        // Check if we have valid steps
+        guard !steps.isEmpty else {
+            DebugLogger.ui("⚠️ Feature tour has no steps, auto-dismissing")
+            // Auto-dismiss if no content
+            try? await Task.sleep(nanoseconds: 100_000_000) // 0.1s
+            onSkip()
+            return
+        }
+
+        // Add small delay to ensure live components are ready
+        // WHY: Live components (like flashcard config UI) may need time to render
+        try? await Task.sleep(nanoseconds: 300_000_000) // 0.3 seconds
+
+        // Show content with animation
+        withAnimation(.easeIn(duration: 0.2)) {
+            isContentReady = true
+        }
+
+        DebugLogger.ui("✅ Feature tour content ready: \(feature.title) with \(steps.count) steps")
     }
 }
 

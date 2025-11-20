@@ -25,6 +25,7 @@ struct AboutCommunityHubView: View {
     @State private var showingRoadmap = false
     @State private var showingWhatsNew = false
     @State private var showingInsights = false
+    @State private var showingPrivacyPolicy = false
 
     var userProfile: UserProfile?
 
@@ -57,6 +58,9 @@ struct AboutCommunityHubView: View {
             }
             .sheet(isPresented: $showingInsights) {
                 CommunityInsightsView()
+            }
+            .sheet(isPresented: $showingPrivacyPolicy) {
+                PrivacyPolicyView()
             }
         }
     }
@@ -247,33 +251,10 @@ struct AboutCommunityHubView: View {
                 }
             }
 
-            // Developer Info & Contact
-            Link(destination: URL(string: "https://github.com/craigmharris/TKDojang")!) {
-                HStack {
-                    Image(systemName: "person.fill")
-                        .foregroundStyle(.blue)
-                        .frame(width: 32)
-
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Developer")
-                            .font(.body)
-                            .fontWeight(.medium)
-                            .foregroundStyle(.primary)
-
-                        Text("Craig Matthew Harris")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-
-                    Spacer()
-
-                    Image(systemName: "arrow.up.right")
-                        .foregroundStyle(.secondary)
-                }
-            }
-
             // Privacy Link
-            Link(destination: URL(string: "https://tkdojang.app/privacy")!) {
+            Button {
+                showingPrivacyPolicy = true
+            } label: {
                 HStack {
                     Image(systemName: "hand.raised.fill")
                         .foregroundStyle(.blue)
@@ -292,7 +273,7 @@ struct AboutCommunityHubView: View {
 
                     Spacer()
 
-                    Image(systemName: "arrow.up.right")
+                    Image(systemName: "chevron.right")
                         .foregroundStyle(.secondary)
                 }
             }

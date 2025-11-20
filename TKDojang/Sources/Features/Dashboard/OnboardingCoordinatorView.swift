@@ -4,7 +4,7 @@ import SwiftData
 /**
  * OnboardingCoordinatorView.swift
  *
- * PURPOSE: Manages the first-time user experience with interactive 6-step tour
+ * PURPOSE: Manages the first-time user experience with interactive 7-step tour
  *
  * ARCHITECTURE DECISION: TabView with page-style navigation
  * WHY: Native iOS pattern that users understand intuitively
@@ -13,7 +13,7 @@ import SwiftData
  * RESPONSIBILITIES:
  * - Guide users through app features
  * - Customize default "Student" profile
- * - Explain learning modes and navigation
+ * - Explain learning modes, navigation, and community features
  * - Complete onboarding and transition to main app
  */
 
@@ -59,15 +59,23 @@ struct OnboardingCoordinatorView: View {
                 LearningModesStepView()
                     .tag(4)
 
-                // Step 6: Ready to Start
-                ReadyToStartStepView(onComplete: completeOnboarding)
+                // Step 6: Community Hub
+                CommunityHubStepView()
                     .tag(5)
+
+                // Step 7: Ready to Start
+                ReadyToStartStepView(onComplete: completeOnboarding)
+                    .tag(6)
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
             .indexViewStyle(.page(backgroundDisplayMode: .always))
+            .onChange(of: currentStep) { oldValue, newValue in
+                // Dismiss keyboard when transitioning between steps
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
 
-            // Skip Button (visible on steps 0-4)
-            if currentStep < 5 {
+            // Skip Button (visible on steps 0-5)
+            if currentStep < 6 {
                 HStack {
                     Spacer()
 

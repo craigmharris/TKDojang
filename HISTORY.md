@@ -1053,7 +1053,7 @@ let configuration = ModelConfiguration(
 - Validated property-based testing approach for game logic
 - Achieved 100% build success across all vocabulary builder components
 
-**Nov 19, 2025** - `[commit hash]` - fix: Phrase Decoder drag positioning and debug output cleanup
+**Nov 19, 2025** - `4de6266` - fix: Phrase Decoder drag positioning and debug output cleanup
 
 **Phrase Decoder UI Fixes:**
 - Fixed dragged item positioning to follow thumb exactly across all starting indices

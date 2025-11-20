@@ -199,7 +199,7 @@ struct TimeRangePicker: View {
 struct ActivityChartCard: View {
     let progressData: ProgressSnapshot
     let timeRange: TimeRange
-    
+
     var chartData: [DailyProgressData] {
         switch timeRange {
         case .week:
@@ -208,14 +208,14 @@ struct ActivityChartCard: View {
             return Array(progressData.monthlyData.suffix(30))
         }
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Study Activity")
                 .font(.headline)
                 .padding(.horizontal)
-            
-            SimpleBarChart(data: chartData)
+
+            SimpleBarChart(data: chartData, timeRange: timeRange)
                 .frame(height: 200)
                 .padding(.horizontal)
         }
@@ -231,11 +231,37 @@ struct ActivityChartCard: View {
 
 struct SimpleBarChart: View {
     let data: [DailyProgressData]
-    
+    let timeRange: TimeRange
+
     var maxValue: Double {
         data.map { $0.studyTime }.max() ?? 1
     }
-    
+
+    /// For month view, determine which indices should show date markers (7-day intervals)
+    private func shouldShowDateMarker(at index: Int) -> Bool {
+        guard timeRange == .month else { return true } // Week view shows all labels
+
+        // Calculate intervals from the end (most recent date)
+        let totalDays = data.count
+        let reversedIndex = totalDays - 1 - index
+
+        // Show markers at 7-day intervals from the end
+        return reversedIndex % 7 == 0
+    }
+
+    /// Get label text for a given day
+    private func labelText(for dayData: DailyProgressData, at index: Int) -> String? {
+        switch timeRange {
+        case .week:
+            return dayData.dayName // Mon, Tue, etc.
+        case .month:
+            guard shouldShowDateMarker(at: index) else { return nil }
+            let formatter = DateFormatter()
+            formatter.dateFormat = "d" // Day number only (1-31)
+            return formatter.string(from: dayData.date)
+        }
+    }
+
     var body: some View {
         HStack(alignment: .bottom, spacing: 4) {
             ForEach(Array(data.enumerated()), id: \.offset) { index, dayData in
@@ -244,10 +270,16 @@ struct SimpleBarChart: View {
                         .fill(dayData.studyTime > 0 ? Color.blue : Color.gray.opacity(0.3))
                         .frame(height: max(4, (dayData.studyTime / maxValue) * 160))
                         .cornerRadius(2)
-                    
-                    Text(dayData.dayName)
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
+
+                    if let label = labelText(for: dayData, at: index) {
+                        Text(label)
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                    } else {
+                        // Empty space to maintain alignment
+                        Text(" ")
+                            .font(.caption2)
+                    }
                 }
                 .frame(maxWidth: .infinity)
             }
