@@ -105,6 +105,9 @@
 git clone https://github.com/yourusername/TKDojang.git
 cd TKDojang
 
+# Install Git hooks (one-time setup)
+bash Scripts/install-git-hooks.sh
+
 # Open project
 open TKDojang.xcodeproj
 
@@ -113,6 +116,11 @@ open TKDojang.xcodeproj
 # Or use xcodebuild:
 xcodebuild -project TKDojang.xcodeproj -scheme TKDojang build
 ```
+
+**Why this hook?**
+- Automatically updates content version hashes when JSON files change
+- Runs on commit (not build), avoiding Xcode Cloud sandbox issues
+- Ensures hashes stay in sync without manual intervention
 
 ### Running Tests
 

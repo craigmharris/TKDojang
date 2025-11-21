@@ -898,6 +898,60 @@ let overlayOffset = originalY + dragOffset.height
 
 **CRITICAL:** Different items in a list have different `originalY` positions. Using only `dragOffset.height` causes position errors that vary by starting index.
 
+### 13. Build-Time vs Commit-Time Automation: Xcode Cloud Sandbox Constraints
+
+**Context:** Archive builds (Xcode Cloud, local archives with `runOnlyForDeploymentPostprocessing=1`) have strict sandboxing that prevents writing to source directory
+
+```swift
+// ❌ WRONG - Build script trying to write to source directory
+# In Xcode Build Phase:
+OUTPUT_FILE="$SRCROOT/TKDojang/Sources/Core/Data/ContentVersion.swift"
+cat > "$OUTPUT_FILE" << EOF
+struct ContentVersion {
+    static let hash = "$HASH"
+}
+EOF
+# Error in Xcode Cloud: "Operation not permitted"
+```
+
+```bash
+# ✅ CORRECT - Git pre-commit hook (runs outside Xcode sandbox)
+#!/bin/bash
+# Scripts/pre-commit
+
+# Detect staged JSON changes
+if git diff --cached --name-only | grep -q "\.json$"; then
+    # Regenerate hashes
+    bash Scripts/update-content-hashes-dev.sh
+
+    # Stage updated ContentVersion.swift
+    git add TKDojang/Sources/Core/Data/ContentVersion.swift
+fi
+```
+
+**WHY:**
+- Xcode Cloud builds run in read-only source directory environment
+- `runOnlyForDeploymentPostprocessing=1` enables strict sandbox (required for archive builds)
+- Local dev builds work differently than CI builds (inconsistent behavior)
+- Git hooks run outside Xcode's sandbox, no permission issues
+- Commit-time generation ensures hashes are always current before code reaches CI
+
+**WHEN TO USE:**
+- Any build automation that needs to write to source files
+- Content versioning, code generation from data files
+- Replacing Xcode build phases that modify source code
+- When local builds succeed but Xcode Cloud builds fail with permission errors
+
+**DEVELOPER SETUP:**
+```bash
+bash Scripts/install-git-hooks.sh  # Run once per clone
+```
+
+**WHEN NOT TO USE:**
+- Writing to `DERIVED_FILE_DIR` or `BUILD_DIR` (these are writable in build scripts)
+- Code generation that outputs to build products directory
+- Build steps that only read files (no sandbox issue)
+
 ## Environment & Commands
 
 ### Testing Workflow

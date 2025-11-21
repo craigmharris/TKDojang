@@ -1172,6 +1172,31 @@ let configuration = ModelConfiguration(
 - **Build:** ✅ Successful with automated hash generation
 - **Status:** Critical architectural improvement enabling seamless content evolution
 
+**Nov 21, 2025** - `[commit hash]` - fix(build): Replace build-time hash generation with pre-commit hook
+- **Critical Xcode Cloud Build Fix:**
+  - Resolved "Operation not permitted" errors blocking TestFlight/App Store releases
+  - Root cause: Archive builds (`runOnlyForDeploymentPostprocessing=1`) have strict sandboxing
+  - Xcode Cloud runs builds in read-only source directory (can't write to ContentVersion.swift)
+  - Local dev builds succeeded but CI builds failed (inconsistent behavior)
+- **Solution: Git Pre-Commit Hook:**
+  - Removed "Generate Content Hashes" build phase entirely
+  - Created `Scripts/pre-commit` hook detecting JSON content changes
+  - Auto-generates hashes and stages ContentVersion.swift before commit
+  - Runs outside Xcode's sandbox (no permission issues)
+  - Ensures hashes are current before code reaches CI
+- **Developer Workflow:**
+  - One-time setup: `bash Scripts/install-git-hooks.sh`
+  - Automatic: Hook triggers on commit when JSON files staged
+  - Zero manual intervention, no chance of forgetting to update hashes
+- **Files Created:**
+  - `Scripts/pre-commit` (62 lines) - Git hook with JSON change detection
+  - `Scripts/install-git-hooks.sh` (68 lines) - Symlink installer with validation
+  - Fixed encoding issues in `Scripts/update-content-hashes-dev.sh`
+- **Key Achievement:** Eliminated build/deploy blocker, consistent local/CI behavior
+- **Pattern Documented:** CLAUDE.md Pattern #13 (Build-Time vs Commit-Time Automation)
+- **Build:** ✅ Successful locally and in Xcode Cloud
+- **Status:** Deployment pipeline restored, ready for TestFlight/App Store releases
+
 ---
 
 ## Lessons Learned
