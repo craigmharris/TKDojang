@@ -10,5 +10,5 @@ struct ContentVersion {
     static let beltSystemHash = "b4bcf561dd232a2920384864fa68520c180352c7f7e3152beb7b622429d340c8"
     static let lineWorkHash = "4c1b612d7c342cae6b9cfa987117b71ae973d023f0417b39d51ade409877c6d2"
     static let theoryHash = "3e3d8c7a19b1e56b5357d165ebf508311c4c43942bcbe9cb64ffe520db2e7321"
-    static let generatedAt = "2025-11-19T16:31:24Z"
+    static let generatedAt = "2025-11-21T03:01:54Z"
 }

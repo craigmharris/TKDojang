@@ -320,7 +320,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 444D54432E4F8EF8009F3E49 /* Build configuration list for PBXNativeTarget "TKDojang" */;
 			buildPhases = (
-				4424894B2ECD1AAC00A5578A /* Generate Content Hashes */,
 				444D54192E4F8EF4009F3E49 /* Sources */,
 				444D541A2E4F8EF4009F3E49 /* Frameworks */,
 				444D541B2E4F8EF4009F3E49 /* Resources */,
@@ -450,29 +449,6 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		4424894B2ECD1AAC00A5578A /* Generate Content Hashes */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Generate Content Hashes";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n# generate-content-hashes.sh\n# PURPOSE: Generates content version hashes at build time\n\nset -e\n\nSRCROOT=\"${SRCROOT:-$(cd \"$(dirname \"$0\")/..\" && pwd)}\"\nCONTENT_BASE=\"$SRCROOT/TKDojang/Sources/Core/Data/Content\"\nOUTPUT_FILE=\"$SRCROOT/TKDojang/Sources/Core/Data/ContentVersion.swift\"\n\necho \"Generating content version hashes...\"\n\n# Hash files in specific directories only (avoids sandbox issues with find)\nhash_json_files() {\n    local dir=\"$1\"\n    local pattern=\"$2\"\n\n    if [ ! -d \"$dir\" ]; then\n        echo \"00000000\"\n        return\n    fi\n\n    # Use shell globbing instead of find to avoid sandbox issues\n    shopt -s nullglob\n    local files=(\"$dir\"/$pattern)\n    shopt -u nullglob\n\n    if [ ${#files[@]} -eq 0 ]; then\n        echo \"00000000\"\n        return\n    fi\n\n    cat \"${files[@]}\" | shasum -a 256 | cut -d' ' -f1\n}\n\n# Hash terminology files (in Terminology subdirectory)\nTERM_KEUP=$(hash_json_files \"$CONTENT_BASE/Terminology\" \"*_keup_*.json\")\nTERM_DAN=$(hash_json_files \"$CONTENT_BASE/Terminology\" \"*_dan_*.json\")\nTERMINOLOGY_HASH=$(echo \"${TERM_KEUP}${TERM_DAN}\" | shasum -a 256 | cut -d' ' -f1)\n\n# Hash pattern files (in Patterns subdirectory)\nPATTERNS_HASH=$(hash_json_files \"$CONTENT_BASE/Patterns\" \"*_patterns.json\")\n\n# Hash step sparring files (in StepSparring subdirectory)\nSTEP_HASH=$(hash_json_files \"$CONTENT_BASE/StepSparring\" \"*_step.json\")\nSEMI_FREE=$(hash_json_files \"$CONTENT_BASE/StepSparring\" \"*semi_free*.json\")\nSTEP_SPARRING_HASH=$(echo \"${STEP_HASH}${SEMI_FREE}\" | shasum -a 256 | cut -d' ' -f1)\n\n# Hash other content files\nBELT_SYSTEM_HASH=$(shasum -a 256 \"$SRCROOT/TKDojang/Sources/belt_system.json\" 2>/dev/null | cut -d' ' -f1 || echo \"00000000\")\nLINE_WORK_HASH=$(hash_json_files \"$CONTENT_BASE/LineWork\" \"*_linework.json\")\nTHEORY_HASH=$(hash_json_files \"$CONTENT_BASE/Theory\" \"*_theory.json\")\n\nBUILD_TIMESTAMP=$(date -u +\"%Y-%m-%dT%H:%M:%SZ\")\n\ncat > \"$OUTPUT_FILE\" << 'EOF'\n// ContentVersion.swift\n// Auto-generated - DO NOT EDIT\n\nimport Foundation\n\nstruct ContentVersion {\n    static let terminologyHash = \"TERMINOLOGY_PLACEHOLDER\"\n    static let patternsHash = \"PATTERNS_PLACEHOLDER\"\n    static let stepSparringHash = \"STEP_SPARRING_PLACEHOLDER\"\n    static let beltSystemHash = \"BELT_SYSTEM_PLACEHOLDER\"\n    static let lineWorkHash = \"LINE_WORK_PLACEHOLDER\"\n    static let theoryHash = \"THEORY_PLACEHOLDER\"\n    static let generatedAt = \"TIMESTAMP_PLACEHOLDER\"\n}\nEOF\n\nsed -i '' \"s/TERMINOLOGY_PLACEHOLDER/$TERMINOLOGY_HASH/\" \"$OUTPUT_FILE\"\nsed -i '' \"s/PATTERNS_PLACEHOLDER/$PATTERNS_HASH/\" \"$OUTPUT_FILE\"\nsed -i '' \"s/STEP_SPARRING_PLACEHOLDER/$STEP_SPARRING_HASH/\" \"$OUTPUT_FILE\"\nsed -i '' \"s/BELT_SYSTEM_PLACEHOLDER/$BELT_SYSTEM_HASH/\" \"$OUTPUT_FILE\"\nsed -i '' \"s/LINE_WORK_PLACEHOLDER/$LINE_WORK_HASH/\" \"$OUTPUT_FILE\"\nsed -i '' \"s/THEORY_PLACEHOLDER/$THEORY_HASH/\" \"$OUTPUT_FILE\"\nsed -i '' \"s/TIMESTAMP_PLACEHOLDER/$BUILD_TIMESTAMP/\" \"$OUTPUT_FILE\"\n\necho \"Content hashes generated:\"\necho \"  Terminology: ${TERMINOLOGY_HASH:0:16}...\"\necho \"  Patterns:    ${PATTERNS_HASH:0:16}...\"\necho \"  Step Spar:   ${STEP_SPARRING_HASH:0:16}...\"\necho \"  Belt System: ${BELT_SYSTEM_HASH:0:16}...\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		444D54192E4F8EF4009F3E49 /* Sources */ = {
